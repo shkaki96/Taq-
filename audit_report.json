@@ -1,0 +1,28 @@
+{
+  "stats": {
+    "ar": {
+      "file": "public/locales/ar/translation.json",
+      "size": 107156,
+      "keys": 894
+    },
+    "en": {
+      "file": "public/locales/en/translation.json",
+      "size": 82106,
+      "keys": 894
+    },
+    "kmr": {
+      "file": "public/locales/kmr/translation.json",
+      "size": 87270,
+      "keys": 894
+    },
+    "ku": {
+      "file": "public/locales/ku/translation.json",
+      "size": 108724,
+      "keys": 894
+    }
+  },
+  "totalUniqueKeys": 894,
+  "missing": {},
+  "empty": {},
+  "placeholders": {}
+}

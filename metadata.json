@@ -1,0 +1,6 @@
+{
+  "name": "مختبر الفيزياء التفاعلي - Virtual Physics Lab",
+  "description": "Comprehensive interactive physics laboratory simulator featuring Mechanics, Circuits, Optics, Waves, Data Logging, Formulas, and Lab Challenges.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,2611 @@
+{
+  "appTitle": "Interactive Virtual Physics Lab",
+  "appSubtitle": "Simulator for Mechanics, Circuits, Optics & Waves with Data Logging and Error Analysis",
+  "tabs": {
+    "experiments": "Experiments",
+    "notebook": "Lab Notebook & Data",
+    "formulas": "Formula Reference",
+    "challenges": "Physics Challenges"
+  },
+  "experiments": {
+    "pendulum": {
+      "title": "Simple Pendulum & Energy Conservation",
+      "shortDesc": "Simple harmonic motion, period measurement, and mechanical energy transformations.",
+      "length": "String Length (L)",
+      "mass": "Bob Mass (m)",
+      "gravity": "Gravitational Acceleration (g)",
+      "damping": "Air Drag / Damping",
+      "initialAngle": "Initial Displacement Angle (θ₀)",
+      "period": "Theoretical Period (T)",
+      "frequency": "Frequency (f)",
+      "maxVelocity": "Max Linear Speed (v_max)",
+      "kineticEnergy": "Kinetic Energy (Ek)",
+      "potentialEnergy": "Potential Energy (Ep)",
+      "totalEnergy": "Total Energy (E_total)",
+      "currentAngle": "Current Angle (θ)",
+      "timeElapsed": "Elapsed Time (t)",
+      "oscillations": "Completed Oscillations",
+      "release": "Release Bob",
+      "dragToAngle": "Drag the pendulum bob with mouse or adjust the slider",
+      "showVectors": "Show Velocity & Force Vectors",
+      "showEnergyBars": "Show Live Energy Bar Chart",
+      "varPeriod": "Pendulum Period (T)",
+      "expVariablesTitle": "Experimental Variables",
+      "notesText": "Measured under specified gravity and string length conditions."
+    },
+    "spring": {
+      "title": "Hooke's Law & Harmonic Spring-Mass Oscillator",
+      "shortDesc": "Investigate elastic spring extension, measure stiffness k, oscillation period, and elastic potential energy.",
+      "springConstant": "Spring Constant (k)",
+      "mass": "Attached Mass (m)",
+      "displacement": "Initial Displacement (x₀)",
+      "damping": "Damping / Friction Coefficient (b)",
+      "orientation": "Spring Orientation",
+      "vertical": "Vertical (With Gravity)",
+      "horizontal": "Horizontal (Frictionless Track)",
+      "theoreticalPeriod": "Theoretical Period (T)",
+      "measuredPeriod": "Measured Period",
+      "springForce": "Restoring Force (F = -kx)",
+      "elasticPotentialEnergy": "Elastic Potential Energy (E_pe = ½kx²)",
+      "kineticEnergy": "Kinetic Energy (E_k)",
+      "totalEnergy": "Total Mechanical Energy",
+      "pullMass": "Drag the mass with mouse or adjust displacement to oscillate"
+    },
+    "buoyancy": {
+      "title": "Archimedes' Principle & Buoyant Force",
+      "shortDesc": "Investigate floating, sinking, submerged volume, apparent weight, and fluid densities.",
+      "fluidType": "Surrounding Liquid",
+      "fluidDensity": "Fluid Density (ρ_fluid)",
+      "objectMaterial": "Object Material",
+      "objectDensity": "Object Density (ρ_obj)",
+      "objectVolume": "Object Volume (V)",
+      "objectMass": "Object Mass (m)",
+      "actualWeight": "Weight in Air (W = mg)",
+      "buoyantForce": "Upward Buoyant Force (F_b = ρ_f·V_sub·g)",
+      "apparentWeight": "Apparent Weight (W_app)",
+      "submergedVolume": "Submerged Volume (V_sub)",
+      "submergedPercent": "Submerged Percentage",
+      "statusFloating": "🟢 Object Floats on Surface (ρ_obj < ρ_fluid)",
+      "statusNeutral": "🟡 Neutrally Buoyant Suspended (ρ_obj = ρ_fluid)",
+      "statusSinking": "🔴 Object Sinks to Bottom (ρ_obj > ρ_fluid)",
+      "waterDisplaced": "Displaced Liquid in Overflow Beaker"
+    },
+    "collision": {
+      "title": "Conservation of Linear Momentum & Collisions",
+      "shortDesc": "Simulate 1D glider collisions on an air track, investigate elastic vs inelastic impacts and kinetic energy conservation.",
+      "cart1": "Glider Cart 1",
+      "cart2": "Glider Cart 2",
+      "mass1": "Mass of Cart 1 (m₁)",
+      "mass2": "Mass of Cart 2 (m₂)",
+      "vel1": "Initial Velocity Cart 1 (v₁)",
+      "vel2": "Initial Velocity Cart 2 (v₂)",
+      "elasticity": "Coefficient of Restitution (e)",
+      "elastic": "Perfect Elastic (e = 1.0 - KE Conserved)",
+      "inelastic": "Completely Inelastic (e = 0.0 - Stick Together)",
+      "partiallyElastic": "Partially Elastic (e = 0.5)",
+      "totalMomentumBefore": "Total Initial Momentum (P_init)",
+      "totalMomentumAfter": "Total Final Momentum (P_final)",
+      "keInitial": "Initial Total Kinetic Energy",
+      "keFinal": "Final Total Kinetic Energy",
+      "keLost": "Kinetic Energy Dissipated (Heat/Deform)",
+      "launchCarts": "Release Carts toward Collision",
+      "varMomentum": "Total Post-Collision Momentum (P_total)",
+      "collisionOccurred": "Collision Occurred!",
+      "elasticShort": "Elastic",
+      "inelasticShort": "Inelastic",
+      "cartsConfig": "Glider Carts Configuration",
+      "calculatedFinalVel": "Calculated Final Velocities",
+      "noteText": "1D Glider collision trial (e = {{eVal}}). Initial momentum = {{initP}} kg·m/s, KE lost = {{keL}} J."
+    },
+    "thermodynamics": {
+      "title": "Ideal Gas Law & Kinetic Theory (P-V Cycles)",
+      "shortDesc": "Microscopic gas particle motion inside a piston chamber, PV=nRT state equations, and P-V indicator diagram.",
+      "temperature": "Temperature (T)",
+      "volume": "Cylinder Volume (V)",
+      "pressure": "Measured Pressure (P)",
+      "particles": "Gas Molecule Count (N)",
+      "heatPiston": "Heat with Flame 🔥",
+      "coolPiston": "Cool with Ice ❄️",
+      "processType": "Thermodynamic Process",
+      "isothermal": "Isothermal (T = Const)",
+      "isobaric": "Isobaric (P = Const)",
+      "isochoric": "Isochoric (V = Const)",
+      "idealGasConst": "Calculated Gas Constant (R)",
+      "workDone": "Work Done by Gas (W = ∫P dV)",
+      "particleSpeedDist": "Maxwell-Boltzmann Velocity Distribution",
+      "varPressure": "Calculated Gas Pressure (P)",
+      "pistonChamber": "Piston Cylinder Chamber",
+      "pvDiagram": "P-V Indicator Diagram",
+      "tempLabel": "Temp",
+      "gasParameters": "Gas State Parameters",
+      "idealGasLaw": "Ideal Gas Law",
+      "notesFormat": "Ideal Gas state trial at T={{temp}}K, V={{vol}}L. Pressure P={{press}} kPa."
+    },
+    "projectile": {
+      "title": "2D Projectile Motion",
+      "shortDesc": "Investigate trajectory curves, horizontal range, maximum height, and velocity vector components.",
+      "velocity": "Initial Velocity (v₀)",
+      "angle": "Launch Angle (θ)",
+      "height": "Platform Height (h₀)",
+      "airResistance": "Air Resistance (Drag)",
+      "launch": "Launch Projectile 🚀",
+      "reset": "Reset Cannon",
+      "maxHeight": "Max Height (H_max)",
+      "range": "Horizontal Range (R)",
+      "flightTime": "Total Flight Time (t)",
+      "vx": "Horizontal Velocity (v_x)",
+      "vy": "Vertical Velocity (v_y)",
+      "targetMode": "Target Bullseye Challenge",
+      "targetDistance": "Target Distance",
+      "hitTarget": "🎯 Direct Hit! Target Destroyed!",
+      "missedTarget": "Target missed! Adjust launch angle or velocity.",
+      "varRange": "Projectile Range (R)",
+      "launchControlsTitle": "Launch Controls",
+      "notesText": "Evaluated parabolic trajectory parameters and maximum height."
+    },
+    "circuits": {
+      "title": "Ohm's Law & DC Circuit Simulator",
+      "shortDesc": "DC circuit builder with live voltage, current, resistance, and dissipated power meters.",
+      "voltage": "Supply Voltage (V)",
+      "resistance1": "Resistor 1 (R₁)",
+      "resistance2": "Resistor 2 (R₂)",
+      "circuitType": "Circuit Topology",
+      "series": "Series",
+      "parallel": "Parallel",
+      "single": "Single Resistor",
+      "switch": "Circuit Switch",
+      "switchOn": "Closed Switch (Conducting)",
+      "switchOff": "Open Switch (Disconnected)",
+      "current": "Total Circuit Current (I)",
+      "totalResistance": "Equivalent Resistance (R_eq)",
+      "power": "Total Power Dissipation (P)",
+      "bulbBrightness": "Light Bulb Brightness",
+      "multimeter": "Multimeter Probes",
+      "ammeter": "Ammeter (A)",
+      "voltmeter": "Voltmeter (V)",
+      "electronFlow": "Live Electron Flow Particles",
+      "varTotalCurrent": "Total Circuit Current (I)",
+      "notesText": "Verified Ohm's Law and series/parallel resistor rules.",
+      "componentSettingsTitle": "Circuit Component Settings",
+      "liveCalculationsTitle": "Live Calculations:"
+    },
+    "optics": {
+      "title": "Optics & Snell's Law of Refraction",
+      "shortDesc": "Trace laser rays through optical media, compute critical angle and total internal reflection.",
+      "medium1": "Incident Medium (Medium 1)",
+      "medium2": "Refractive Medium (Medium 2)",
+      "incidentAngle": "Angle of Incidence (θ₁)",
+      "refractedAngle": "Angle of Refraction (θ₂)",
+      "reflectedAngle": "Angle of Reflection (θ_r)",
+      "criticalAngle": "Critical Angle (θ_c)",
+      "totalInternalReflection": "⚠️ Total Internal Reflection Occurred",
+      "refractionOccurs": "Refraction with partial reflection",
+      "prismMode": "White Light Prism Dispersion Mode",
+      "laserColor": "Laser Beam Color",
+      "normalLine": "Normal Line",
+      "varRefractionAngle": "Angle of Refraction (θ₂)",
+      "opticalMediaSelection": "Optical Media Selection",
+      "notesTIR": "Total internal reflection occurred as incident angle exceeded critical angle.",
+      "notesSnell": "Verified Snell's Law n1·sin(θ1) = n2·sin(θ2).",
+      "snellsInterface": "Snell's Interface",
+      "laserRay": "Laser Ray",
+      "snellsLawSub": "Snell's Law",
+      "criticalAngleCond": "n1 > n2 only",
+      "reflectionLawSub": "Law of Reflection"
+    },
+    "freefall": {
+      "title": "Free Fall & Galileo's Leaning Tower",
+      "shortDesc": "Drop disparate masses in vacuum vs atmospheric air across different planetary gravities.",
+      "dropHeight": "Drop Height (h)",
+      "objectA": "Object A (Iron Ball 5kg)",
+      "objectB": "Object B (Feather 0.01kg)",
+      "mediumEnv": "Environment",
+      "vacuum": "Complete Vacuum (Zero Air Drag)",
+      "air": "Atmospheric Air (With Aerodynamic Drag)",
+      "drop": "Drop Objects ⏱️",
+      "timeA": "Object A Fall Time",
+      "timeB": "Object B Fall Time",
+      "finalSpeedA": "Object A Impact Speed",
+      "finalSpeedB": "Object B Impact Speed",
+      "galileoQuote": "«In a vacuum, all bodies fall with the exact same acceleration regardless of mass.» - Galileo Galilei",
+      "varFreeFallTime": "Free Fall Duration (t)",
+      "settingsTitle": "Drop Height & Gravity Settings",
+      "theoreticalVacuumTitle": "Theoretical Vacuum Values:",
+      "recordedResultsTitle": "Recorded Fall Results:",
+      "vacuumNote": "In a vacuum, both the feather and iron ball fall in the exact same time, demonstrating Galileo’s principle.",
+      "airNote": "Air resistance caused the feather to lag behind and reach terminal velocity."
+    },
+    "waves": {
+      "title": "Wave Interference & Young's Double Slit",
+      "shortDesc": "Diffraction patterns, wave interference, and constructive/destructive fringe calculation.",
+      "wavelength": "Wavelength (λ)",
+      "slitDistance": "Slit Separation (d)",
+      "screenDistance": "Distance to Screen (L)",
+      "fringeWidth": "Fringe Width (Δy)",
+      "numFringes": "Visible Maxima Count",
+      "waveType": "Simulation Type",
+      "doubleSlit": "Young's Double Slit Experiment",
+      "rippleTank": "2D Ripple Tank Wave Interference",
+      "waveFrequency": "Wave Frequency",
+      "varFringeWidth": "Interference Fringe Width (Δy)",
+      "youngSlitParams": "Young’s Slit Parameters",
+      "notesText": "Verified Young's Double Slit relationship Δy = λL/d."
+    },
+    "pendulum_energy": {
+      "title": "Conservation of Mechanical Energy in Simple Pendulum (E = K + U)",
+      "subTitle": "Conservation of Mechanical Energy in Simple Pendulum",
+      "shortDesc": "Study energy conversion between kinetic and potential energy in a simple pendulum.",
+      "start": "Start",
+      "pause": "Pause",
+      "photogateVelLabel": "Photogate Velocity",
+      "bottomKELabel": "Bottom Kinetic Energy",
+      "initialPELabel": "Initial Potential Energy",
+      "periodLabel": "Period (T)",
+      "proofTitle": "Physical Proof of Energy Conservation:",
+      "proofText": "At release angle θ₀, K=0 and all energy is potential: E = U = m·g·h = m·g·L(1 - cos θ₀). At the lowest point (h=0), potential energy converts completely into kinetic energy: K = ½ m v² = E. Hence, bottom velocity is v = √(2 g h).",
+      "controlsTitle": "Pendulum Parameters",
+      "lengthLabel": "String Length (L)",
+      "massLabel": "Bob Mass (m)",
+      "angleLabel": "Release Angle (θ₀)",
+      "dampingLabel": "Air Resistance (Damping)",
+      "conservativeZero": "0 (Conservative)",
+      "gravityLabel": "Planetary Gravity (g):",
+      "loggedMsg": "Logged to Lab Notebook!",
+      "logBtn": "Log Energy Conservation Data",
+      "photogateLabel": "PHOTOGATE",
+      "varEnergyVel": "Total Energy & Bottom Velocity"
+    },
+    "photoelectric_effect": {
+      "title": "Photoelectric Effect Simulation",
+      "play": "Play",
+      "pause": "Pause",
+      "logMeasurement": "Log",
+      "activeEmission": "⚡ Photoelectric Emission Active (hf > Φ)",
+      "noEmission": "⛔ No Emission (hf < Φ - Below Threshold)",
+      "photocurrentLabel": "Photocurrent:",
+      "cathodeLabel": "Cathode (-)",
+      "anodeLabel": "Anode (+)",
+      "photonEnergyMeter": "Photon Energy",
+      "workFunctionMeter": "Work Function",
+      "maxKineticEnergyMeter": "Max Kinetic Energy",
+      "stoppingPotentialMeter": "Stopping Potential",
+      "controlsTitle": "Experimental Controls",
+      "targetMetalLabel": "Target Metal (Φ):",
+      "wavelengthLabel": "Light Wavelength (λ):",
+      "intensityLabel": "Light Intensity:",
+      "biasVoltageLabel": "Bias Potential (V):",
+      "thresholdWavelengthCard": "Threshold Wavelength (λ₀)",
+      "thresholdWavelengthSubtext": "λ₀ = hc / Φ (Longest wavelength causing emission)",
+      "thresholdFrequencyCard": "Threshold Frequency (f₀)",
+      "thresholdFrequencySubtext": "f₀ = Φ / h (Minimum frequency required)",
+      "maxVelocityCard": "Max Electron Velocity",
+      "einsteinLawCard": "Einstein Equation"
+    },
+    "radioactive_decay": {
+      "title": "Radioactive Decay & Half-life Simulation",
+      "pause": "Pause",
+      "play": "Play",
+      "stepHalfLifeTooltip": "Step 1 Half-life (+1 T½)",
+      "log": "Log",
+      "activeParentNuclei": "Active Parent Nuclei",
+      "decayedDaughter": "Decayed Daughter",
+      "halfLivesCount": "Half-lives:",
+      "elapsedTime": "Elapsed Time",
+      "activeNucleiCard": "Active Nuclei",
+      "remainingPercent": "Remaining %",
+      "activityRate": "Activity (A)",
+      "isotopeControls": "Isotope & Controls",
+      "targetIsotopeLabel": "Radioactive Isotope:",
+      "initialNucleiLabel": "Initial Nuclei (N₀):",
+      "realHalfLife": "Real Half-life:",
+      "radiationType": "Decay Mode:",
+      "decayConstant": "Decay Constant λ:",
+      "decayedNucleiCard": "Decayed Nuclei",
+      "theoreticalN": "Theoretical N(t)",
+      "decayConstantCard": "Decay Constant (λ)",
+      "instantaneousActivity": "Instantaneous Activity (A)"
+    },
+    "rotational_dynamics": {
+      "title": "Moment of Inertia & Rotational Dynamics (τ = I α)",
+      "subTitle": "Moment of Inertia & Rotational Dynamics",
+      "shortDesc": "Study moment of inertia for various geometric shapes and their angular acceleration.",
+      "start": "Start",
+      "pause": "Pause",
+      "inertiaLabel": "Inertia (I)",
+      "angularAccLabel": "Angular Acc (α)",
+      "angularVelLabel": "Angular Vel (ω)",
+      "rotKELabel": "Rotational KE",
+      "theoryTitle": "Comparison of Moments of Inertia:",
+      "theoryText": "Resistance to rotation (Moment of Inertia I) depends on mass distribution: Thin Ring (I = MR²) has maximum inertia, whereas Solid Cylinder (I = 0.5 MR²) and Solid Sphere (I = 0.4 MR²) rotate faster under the same torque.",
+      "controlsTitle": "Geometry & Mode Selection",
+      "modePulley": "Pulley & Torque",
+      "modeIncline": "Incline Rolling",
+      "geometryLabel": "Rotating Body Geometry:",
+      "geoCylinder": "Solid Cylinder / Disk",
+      "geoRing": "Thin Ring / Hoop",
+      "geoSphere": "Solid Sphere",
+      "geoRodCenter": "Thin Rod (Center)",
+      "massLabel": "Object Mass (M)",
+      "radiusLabel": "Object Radius (R)",
+      "hangingMassLabel": "Hanging Mass (m)",
+      "inclineAngleLabel": "Incline Angle (θ)",
+      "loggedMsg": "Logged to Lab Notebook!",
+      "logBtn": "Log Inertia & Acceleration",
+      "reset": "Reset"
+    },
+    "viscosity_stokes": {
+      "title": "Viscosity & Stokes' Law (Terminal Velocity)",
+      "subtitle": "Falling sphere viscometer calculating terminal velocity vt = 2r²g(Δρ)/(9η) and Stokes drag resistance Fd = 6πηrv.",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "controlsTitle": "Liquid & Sphere Controls",
+      "liquidLabel": "Liquid & Viscosity (η):",
+      "sphereMaterialLabel": "Sphere Material:",
+      "radiusLabel": "Sphere Radius (r):",
+      "terminalSpeedCard": "Terminal Speed (vt)",
+      "stokesDragCard": "Stokes Drag (Fd)",
+      "viscosityCard": "Viscosity (η)",
+      "apparentWeightCard": "Apparent Weight",
+      "varTerminalVel": "Terminal Velocity vt (Stokes’ Law of Viscosity)",
+      "notesLog": "Stokes' Law fluid mechanics experiment determining fluid viscosity through terminal falling speed of micro spheres in viscous columns.",
+      "dragCanvasLabel": "Fd (Drag)",
+      "resetPosition": "Reset Position"
+    }
+  },
+  "controls": {
+    "play": "Play",
+    "pause": "Pause",
+    "reset": "Reset",
+    "step": "Step Forward",
+    "speed": "Sim Speed",
+    "logData": "📝 Log to Lab Notebook",
+    "loggedSuccess": "Measurement logged to Lab Notebook successfully!",
+    "stopwatch": "Lab Stopwatch",
+    "calculator": "Physics Calculator",
+    "constants": "Physical Constants",
+    "planetPreset": "Select Planet Gravity"
+  },
+  "notebook": {
+    "title": "Lab Notebook & Experimental Data",
+    "description": "Record trials, compare experimental vs theoretical calculations, and analyze percentage error.",
+    "empty": "No measurements logged yet. Run an experiment and click \"Log to Lab Notebook\".",
+    "tableHeaders": {
+      "experiment": "Experiment",
+      "variable": "Measured Variable",
+      "measured": "Measured",
+      "theoretical": "Theoretical",
+      "error": "% Error",
+      "parameters": "Parameters",
+      "notes": "Notes & Analysis",
+      "time": "Timestamp",
+      "actions": "Actions"
+    },
+    "clearAll": "Clear All Records",
+    "exportCSV": "Export as CSV",
+    "exportJSON": "Export JSON",
+    "addNotePlaceholder": "Add observation or scientific deduction...",
+    "errorFormula": "% Error = |(Measured - Theoretical) / Theoretical| × 100%"
+  },
+  "formulas": {
+    "pendulum_period": {
+      "name": "Simple Pendulum Period",
+      "topic": "mechanics",
+      "formula": "T = 2π √(L / g)",
+      "description": "Calculates the period of a simple pendulum for small oscillations, independent of mass.",
+      "variables": [
+        {
+          "symbol": "T",
+          "name": "Period",
+          "unit": "s"
+        },
+        {
+          "symbol": "L",
+          "name": "String Length",
+          "unit": "m"
+        },
+        {
+          "symbol": "g",
+          "name": "Gravitational Acceleration",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "projectile_range": {
+      "name": "Projectile Range",
+      "topic": "mechanics",
+      "formula": "R = (v₀² · sin(2θ)) / g",
+      "description": "Total horizontal distance traveled by a projectile launched on flat terrain.",
+      "variables": [
+        {
+          "symbol": "R",
+          "name": "Range",
+          "unit": "m"
+        },
+        {
+          "symbol": "v₀",
+          "name": "Initial Velocity",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "θ",
+          "name": "Launch Angle",
+          "unit": "degrees (°)"
+        },
+        {
+          "symbol": "g",
+          "name": "Gravity",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "projectile_height": {
+      "name": "Maximum Projectile Height",
+      "topic": "mechanics",
+      "formula": "H = (v₀ · sin θ)² / (2g)",
+      "description": "The highest vertical position reached when vertical velocity component equals zero.",
+      "variables": [
+        {
+          "symbol": "H",
+          "name": "Max Height",
+          "unit": "m"
+        },
+        {
+          "symbol": "v₀",
+          "name": "Initial Velocity",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "θ",
+          "name": "Launch Angle",
+          "unit": "degrees (°)"
+        },
+        {
+          "symbol": "g",
+          "name": "Gravity",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "ohms_law": {
+      "name": "Voltage",
+      "topic": "electricity",
+      "formula": "V = I · R",
+      "description": "States that current through a conductor between two points is directly proportional to voltage.",
+      "variables": [
+        {
+          "symbol": "V",
+          "name": "Voltage",
+          "unit": "V (Volt)"
+        },
+        {
+          "symbol": "I",
+          "name": "Current",
+          "unit": "A (Ampere)"
+        },
+        {
+          "symbol": "R",
+          "name": "Resistance",
+          "unit": "Ω (Ohm)"
+        }
+      ]
+    },
+    "electric_power": {
+      "name": "Electric Power",
+      "topic": "electricity",
+      "formula": "P = V · I = I² · R = V² / R",
+      "description": "The rate at which electrical energy is transferred or dissipated by an electric circuit.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Power",
+          "unit": "W (Watt)"
+        },
+        {
+          "symbol": "V",
+          "name": "Voltage",
+          "unit": "V"
+        },
+        {
+          "symbol": "I",
+          "name": "Current",
+          "unit": "A"
+        },
+        {
+          "symbol": "R",
+          "name": "Resistance",
+          "unit": "Ω"
+        }
+      ]
+    },
+    "snells_law": {
+      "name": "Index of Medium 1",
+      "topic": "optics",
+      "formula": "n₁ · sin(θ₁) = n₂ · sin(θ₂)",
+      "description": "Describes the relationship between angles of incidence and refraction when passing between media.",
+      "variables": [
+        {
+          "symbol": "n₁",
+          "name": "Index of Medium 1",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "θ₁",
+          "name": "Angle of Incidence",
+          "unit": "°"
+        },
+        {
+          "symbol": "n₂",
+          "name": "Index of Medium 2",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "θ₂",
+          "name": "Angle of Refraction",
+          "unit": "°"
+        }
+      ]
+    },
+    "critical_angle": {
+      "name": "Critical Angle & Total Internal Reflection",
+      "topic": "optics",
+      "formula": "θ_c = arcsin(n₂ / n₁)",
+      "description": "Angle of incidence yielding an angle of refraction of 90 degrees. Beyond this, total internal reflection occurs.",
+      "variables": [
+        {
+          "symbol": "θ_c",
+          "name": "Critical Angle",
+          "unit": "°"
+        },
+        {
+          "symbol": "n₁",
+          "name": "Denser Medium Index",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "n₂",
+          "name": "Less Dense Medium Index",
+          "unit": "dimensionless"
+        }
+      ]
+    },
+    "young_double_slit": {
+      "name": "Fringe Position",
+      "topic": "waves",
+      "formula": "y_m = (m · λ · L) / d",
+      "description": "Position of m-th bright fringe relative to the central bright maximum.",
+      "variables": [
+        {
+          "symbol": "y_m",
+          "name": "Fringe Position",
+          "unit": "m"
+        },
+        {
+          "symbol": "λ",
+          "name": "Wavelength",
+          "unit": "m / nm"
+        },
+        {
+          "symbol": "L",
+          "name": "Distance to Screen",
+          "unit": "m"
+        },
+        {
+          "symbol": "d",
+          "name": "Slit Separation",
+          "unit": "m / mm"
+        },
+        {
+          "symbol": "m",
+          "name": "Order of Fringe",
+          "unit": "integer"
+        }
+      ]
+    },
+    "kinetic_energy": {
+      "name": "Kinetic Energy",
+      "topic": "mechanics",
+      "formula": "E_k = ½ · m · v²",
+      "description": "The energy an object possesses due to its motion, proportional to mass and square of speed.",
+      "variables": [
+        {
+          "symbol": "E_k",
+          "name": "Kinetic Energy",
+          "unit": "J (Joule)"
+        },
+        {
+          "symbol": "m",
+          "name": "Mass",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v",
+          "name": "Velocity",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "potential_energy": {
+      "name": "Gravitational Potential Energy",
+      "topic": "mechanics",
+      "formula": "E_p = m · g · h",
+      "description": "Energy stored in an object as a result of its vertical position in a gravitational field.",
+      "variables": [
+        {
+          "symbol": "E_p",
+          "name": "Potential Energy",
+          "unit": "J"
+        },
+        {
+          "symbol": "m",
+          "name": "Mass",
+          "unit": "kg"
+        },
+        {
+          "symbol": "g",
+          "name": "Gravity",
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "h",
+          "name": "Height",
+          "unit": "m"
+        }
+      ]
+    },
+    "hookes_law": {
+      "name": "Restoring Force",
+      "topic": "mechanics",
+      "formula": "F = -k · x",
+      "description": "Restoring force exerted by a spring is directly proportional to displacement from equilibrium.",
+      "variables": [
+        {
+          "symbol": "F",
+          "name": "Restoring Force",
+          "unit": "N"
+        },
+        {
+          "symbol": "k",
+          "name": "Spring Constant",
+          "unit": "N/m"
+        },
+        {
+          "symbol": "x",
+          "name": "Displacement",
+          "unit": "m"
+        }
+      ]
+    },
+    "spring_oscillator_period": {
+      "name": "Spring-Mass Oscillator Period",
+      "topic": "mechanics",
+      "formula": "T = 2π √(m / k)",
+      "description": "Period of oscillation for a mass attached to an ideal elastic spring.",
+      "variables": [
+        {
+          "symbol": "T",
+          "name": "Oscillation Period",
+          "unit": "s"
+        },
+        {
+          "symbol": "m",
+          "name": "Attached Mass",
+          "unit": "kg"
+        },
+        {
+          "symbol": "k",
+          "name": "Spring Constant",
+          "unit": "N/m"
+        }
+      ]
+    },
+    "archimedes_buoyancy": {
+      "name": "Buoyant Force",
+      "topic": "mechanics",
+      "formula": "F_b = ρ_fluid · V_sub · g",
+      "description": "An upward buoyant force exerted on a submerged body equal to the weight of fluid displaced.",
+      "variables": [
+        {
+          "symbol": "F_b",
+          "name": "Buoyant Force",
+          "unit": "N"
+        },
+        {
+          "symbol": "ρ_fluid",
+          "name": "Fluid Density",
+          "unit": "kg/m³"
+        },
+        {
+          "symbol": "V_sub",
+          "name": "Submerged Volume",
+          "unit": "m³"
+        },
+        {
+          "symbol": "g",
+          "name": "Gravity",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "momentum_conservation": {
+      "name": "Conservation of Linear Momentum",
+      "topic": "mechanics",
+      "formula": "m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'",
+      "description": "Total linear momentum before collision equals total linear momentum after collision in isolated systems.",
+      "variables": [
+        {
+          "symbol": "m₁",
+          "name": "Mass 1",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v₁",
+          "name": "Initial Velocity 1",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "m₂",
+          "name": "Mass 2",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v₂",
+          "name": "Initial Velocity 2",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "ideal_gas_law": {
+      "name": "Ideal Gas State Equation",
+      "topic": "thermo",
+      "formula": "P · V = n · R · T",
+      "description": "Equation of state of a hypothetical ideal gas relating pressure, volume, and temperature.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Pressure",
+          "unit": "Pa / kPa"
+        },
+        {
+          "symbol": "V",
+          "name": "Volume",
+          "unit": "m³ / L"
+        },
+        {
+          "symbol": "n",
+          "name": "Amount of Substance",
+          "unit": "mol"
+        },
+        {
+          "symbol": "R",
+          "name": "Gas Constant (8.314)",
+          "unit": "J/(mol·K)"
+        },
+        {
+          "symbol": "T",
+          "name": "Absolute Temperature",
+          "unit": "K (Kelvin)"
+        }
+      ]
+    },
+    "arc_length_radian": {
+      "name": "Arc Length and Radian Angle",
+      "topic": "mechanics",
+      "formula": "s = r · θ",
+      "description": "The arc length s is equal to the radius r multiplied by the central angle in radians θ.",
+      "variables": [
+        {
+          "symbol": "s",
+          "name": "Arc Length",
+          "unit": "m"
+        },
+        {
+          "symbol": "r",
+          "name": "Radius",
+          "unit": "m"
+        },
+        {
+          "symbol": "θ",
+          "name": "Angle in Radians",
+          "unit": "rad"
+        }
+      ]
+    },
+    "rotational_inertia_torque": {
+      "name": "Rotational Inertia and Torque",
+      "topic": "mechanics",
+      "formula": "τ = I · α",
+      "description": "Net torque equals moment of inertia multiplied by angular acceleration, with I=½mr² for cylinder and I=mr² for hoop.",
+      "variables": [
+        {
+          "symbol": "τ",
+          "name": "Torque",
+          "unit": "N·m"
+        },
+        {
+          "symbol": "I",
+          "name": "Moment of Inertia",
+          "unit": "kg·m²"
+        },
+        {
+          "symbol": "α",
+          "name": "Angular Acceleration",
+          "unit": "rad/s²"
+        }
+      ]
+    },
+    "center_of_mass_formula": {
+      "name": "Center of Mass Formula",
+      "topic": "mechanics",
+      "formula": "X_cm = (Σ m_i · x_i) / (Σ m_i)",
+      "description": "The weighted average position of the mass distribution in a system.",
+      "variables": [
+        {
+          "symbol": "X_cm",
+          "name": "Center of Mass X",
+          "unit": "m"
+        },
+        {
+          "symbol": "m_i",
+          "name": "Particle Mass",
+          "unit": "kg"
+        },
+        {
+          "symbol": "x_i",
+          "name": "Particle Position",
+          "unit": "m"
+        }
+      ]
+    },
+    "acoustic_pipe_resonance": {
+      "name": "Acoustic Resonance in Open/Closed Pipes",
+      "topic": "waves",
+      "formula": "L = (2n - 1) · (λ / 4)",
+      "description": "Resonant column lengths for standing sound waves in closed-end tubes with v = f · λ.",
+      "variables": [
+        {
+          "symbol": "L",
+          "name": "Tube Length",
+          "unit": "m"
+        },
+        {
+          "symbol": "n",
+          "name": "Harmonic Mode (1, 2, 3..)",
+          "unit": "integer"
+        },
+        {
+          "symbol": "λ",
+          "name": "Acoustic Wavelength",
+          "unit": "m"
+        },
+        {
+          "symbol": "v",
+          "name": "Speed of Sound",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "sound_speed_formula": {
+      "name": "Speed of Sound via Closed Resonance Tube",
+      "topic": "waves",
+      "formula": "v = 4 · (L + 0.6·r) · f",
+      "description": "Determining acoustic velocity from tuning fork frequency and fundamental resonant column length.",
+      "variables": [
+        {
+          "symbol": "v",
+          "name": "Speed of Sound",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "L",
+          "name": "Resonant Air Column",
+          "unit": "m"
+        },
+        {
+          "symbol": "f",
+          "name": "Tuning Fork Frequency",
+          "unit": "Hz"
+        }
+      ]
+    },
+    "solenoid_magnetic_field": {
+      "name": "Magnetic Field of Solenoid and Lorentz Force",
+      "topic": "electricity",
+      "formula": "B = μ₀ · n · I  و  F = I · L · B · sin(θ)",
+      "description": "Magnetic flux density inside a solenoid and magnetic force on a current-carrying conductor.",
+      "variables": [
+        {
+          "symbol": "B",
+          "name": "Magnetic Field",
+          "unit": "T (Tesla)"
+        },
+        {
+          "symbol": "μ₀",
+          "name": "Permeability 4π×10⁻⁷",
+          "unit": "T·m/A"
+        },
+        {
+          "symbol": "n",
+          "name": "Turns per unit length",
+          "unit": "m⁻¹"
+        },
+        {
+          "symbol": "I",
+          "name": "Current",
+          "unit": "A"
+        },
+        {
+          "symbol": "F",
+          "name": "Magnetic Force",
+          "unit": "N"
+        }
+      ]
+    },
+    "atomic_energy_quantum": {
+      "name": "Atomic Spectra & Planck Photon Energy",
+      "topic": "optics",
+      "formula": "ΔE = h · f = (h · c) / λ",
+      "description": "Energy of emitted or absorbed photon during electron transitions between discrete energy levels.",
+      "variables": [
+        {
+          "symbol": "ΔE",
+          "name": "Energy Transition",
+          "unit": "J / eV"
+        },
+        {
+          "symbol": "h",
+          "name": "Planck Constant (6.626×10⁻³⁴)",
+          "unit": "J·s"
+        },
+        {
+          "symbol": "f",
+          "name": "Radiation Frequency",
+          "unit": "Hz"
+        },
+        {
+          "symbol": "λ",
+          "name": "Spectral Wavelength",
+          "unit": "nm"
+        }
+      ]
+    },
+    "metric_prefixes_scaling": {
+      "name": "SI Metric Prefixes & Dimensional Scaling",
+      "topic": "mechanics",
+      "formula": "V_target = V_source · 10^(exp_source - exp_target)",
+      "description": "Dimensional scaling between metric decimal prefixes using exponent differences.",
+      "variables": [
+        {
+          "symbol": "V_source",
+          "name": "Source Value",
+          "unit": "SI unit"
+        },
+        {
+          "symbol": "V_target",
+          "name": "Target Value",
+          "unit": "SI unit"
+        },
+        {
+          "symbol": "exp",
+          "name": "Prefix Exponent",
+          "unit": "power"
+        }
+      ]
+    },
+    "stress_strain_young": {
+      "name": "Tensile Stress",
+      "topic": "mechanics",
+      "formula": "σ = F / A ,  ε = ΔL / L₀ ,  E = σ / ε",
+      "description": "Stress-strain elastic deformation and Young modulus measuring tensile stiffness of solid materials.",
+      "variables": [
+        {
+          "symbol": "σ",
+          "name": "Tensile Stress",
+          "unit": "Pa / MPa"
+        },
+        {
+          "symbol": "ε",
+          "name": "Strain (dimensionless)",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "E",
+          "name": "Young's Elastic Modulus",
+          "unit": "GPa"
+        },
+        {
+          "symbol": "F",
+          "name": "Applied Tensile Force",
+          "unit": "N"
+        },
+        {
+          "symbol": "A",
+          "name": "Cross-Sectional Area",
+          "unit": "m²"
+        }
+      ]
+    },
+    "bernoulli_principle": {
+      "name": "Static Fluid Pressure",
+      "topic": "mechanics",
+      "formula": "P₁ + ½ρv₁² = P₂ + ½ρv₂²  (A₁v₁ = A₂v₂)",
+      "description": "Conservation of fluid mechanical energy where increased flow speed at constrictions causes pressure drops.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Static Fluid Pressure",
+          "unit": "Pa / kPa"
+        },
+        {
+          "symbol": "v",
+          "name": "Flow Velocity",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "ρ",
+          "name": "Fluid Density",
+          "unit": "kg/m³"
+        },
+        {
+          "symbol": "A",
+          "name": "Cross-section Area",
+          "unit": "m²"
+        }
+      ]
+    },
+    "angled_mirrors_images": {
+      "name": "Multiple Reflections & Angled Mirrors",
+      "topic": "optics",
+      "formula": "N = (360° / θ) - 1",
+      "description": "Number of virtual images formed by symmetrical multiple reflections between two inclined plane mirrors.",
+      "variables": [
+        {
+          "symbol": "N",
+          "name": "Number of Virtual Images",
+          "unit": "images"
+        },
+        {
+          "symbol": "θ",
+          "name": "Angle between Mirrors",
+          "unit": "degrees (°)"
+        }
+      ]
+    },
+    "curved_mirrors_formula": {
+      "name": "Spherical Curved Mirrors (Concave & Convex)",
+      "topic": "optics",
+      "formula": "1/f = 1/d_o + 1/d_i ,  f = R / 2 ,  m = -d_i / d_o",
+      "description": "Mirror equation for spherical surfaces determining focal distance, image location, and lateral magnification.",
+      "variables": [
+        {
+          "symbol": "f",
+          "name": "Focal Length (R/2)",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_o",
+          "name": "Object Distance",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "Image Distance",
+          "unit": "cm"
+        },
+        {
+          "symbol": "m",
+          "name": "Magnification",
+          "unit": "ratio"
+        }
+      ]
+    },
+    "thin_lenses_formula": {
+      "name": "Thin Lens Equation & Optical Dioptric Power",
+      "topic": "optics",
+      "formula": "1/f = 1/d_o + 1/d_i ,  P = 1 / f(m) = 100 / f(cm)",
+      "description": "Thin lens equation determining image distance, magnification, and refractive power in Diopters (D = 1/m).",
+      "variables": [
+        {
+          "symbol": "f",
+          "name": "Lens Focal Length",
+          "unit": "cm"
+        },
+        {
+          "symbol": "P",
+          "name": "Optical Power (1/f)",
+          "unit": "D (Diopters)"
+        },
+        {
+          "symbol": "d_o",
+          "name": "Object Distance",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "Image Distance",
+          "unit": "cm"
+        }
+      ]
+    },
+    "malus_law_polarization": {
+      "name": "Transmitted Intensity",
+      "topic": "optics",
+      "formula": "I = I_initial · cos²(θ) ,  E = E₀ · cos(θ)",
+      "description": "Transmitted intensity of linearly polarized light through an analyzer oriented at angle θ to polarization axis.",
+      "variables": [
+        {
+          "symbol": "I",
+          "name": "Transmitted Intensity",
+          "unit": "W/m²"
+        },
+        {
+          "symbol": "I_initial",
+          "name": "Incident Polarized Intensity",
+          "unit": "W/m²"
+        },
+        {
+          "symbol": "θ",
+          "name": "Angle between Polarizers",
+          "unit": "degrees (°)"
+        }
+      ]
+    },
+    "rayleigh_scattering_law": {
+      "name": "Scattering Intensity",
+      "topic": "optics",
+      "formula": "I_scatter ∝ 1 / λ⁴ ,  T = e^(-τ)",
+      "description": "Rayleigh scattering of light by particles smaller than wavelength, inversely proportional to the 4th power of wavelength.",
+      "variables": [
+        {
+          "symbol": "I_scatter",
+          "name": "Scattering Intensity",
+          "unit": "proportional"
+        },
+        {
+          "symbol": "λ",
+          "name": "Light Wavelength",
+          "unit": "nm"
+        },
+        {
+          "symbol": "T",
+          "name": "Direct Transmitted Light",
+          "unit": "ratio"
+        }
+      ]
+    },
+    "work_heat_first_law": {
+      "name": "Mechanical Work & Joule Heat (Q = mcΔT, W = Fd)",
+      "topic": "mechanics",
+      "formula": "Q = m · c · ΔT ,  W = F · d ,  ΔU = Q - W",
+      "description": "Joule's mechanical equivalent of heat and first law of thermodynamics connecting mechanical work and thermal energy.",
+      "variables": [
+        {
+          "symbol": "Q",
+          "name": "Heat Energy",
+          "unit": "J / kJ"
+        },
+        {
+          "symbol": "W",
+          "name": "Work Done (Fd)",
+          "unit": "J / kJ"
+        },
+        {
+          "symbol": "c",
+          "name": "Specific Heat (4184 J/kg·K)",
+          "unit": "J/(kg·K)"
+        },
+        {
+          "symbol": "ΔT",
+          "name": "Temperature Rise",
+          "unit": "°C"
+        }
+      ]
+    },
+    "prescription_glasses_power": {
+      "name": "Prescription Glasses Diopter Power & Lens Maker",
+      "topic": "optics",
+      "formula": "P = 1 / f (in meters) ,  1/f = 1/d_o + 1/d_i",
+      "description": "Corrective eyeglass lens optical power in diopters (P = 1/f) and conjugate focus correction.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Lens Power",
+          "unit": "Diopters (D)"
+        },
+        {
+          "symbol": "f",
+          "name": "Focal Length",
+          "unit": "m / cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "Image Distance",
+          "unit": "cm"
+        }
+      ]
+    },
+    "periscope_law_reflection": {
+      "name": "Periscope Dual Mirror Reflection (θ_i = θ_r)",
+      "topic": "optics",
+      "formula": "θ_incident = θ_reflected = 45° ,  Δθ_total = 90° + 90° = 180°",
+      "description": "Periscope dual 45° plane mirror reflection shifting line-of-sight vertically by double right-angle deflections.",
+      "variables": [
+        {
+          "symbol": "θ_i",
+          "name": "Angle of Incidence",
+          "unit": "° (deg)"
+        },
+        {
+          "symbol": "θ_r",
+          "name": "Angle of Reflection",
+          "unit": "° (deg)"
+        }
+      ]
+    },
+    "coulomb_static_balloons": {
+      "name": "Electrostatic Force",
+      "topic": "electricity",
+      "formula": "F_e = k · |q₁ · q₂| / r² ,  tan(θ) = F_e / (m · g)",
+      "description": "Coulomb's law quantifying the electrostatic repulsion or attraction between charged balloons and angular string deflection.",
+      "variables": [
+        {
+          "symbol": "F_e",
+          "name": "Electrostatic Force",
+          "unit": "N"
+        },
+        {
+          "symbol": "k",
+          "name": "Coulomb Constant",
+          "unit": "N·m²/C²"
+        },
+        {
+          "symbol": "q",
+          "name": "Electric Charge",
+          "unit": "μC / C"
+        },
+        {
+          "symbol": "r",
+          "name": "Separation Distance",
+          "unit": "m"
+        }
+      ]
+    },
+    "sled_friction_mechanics": {
+      "name": "Static & Kinetic Friction (f_s,max = μ_s·N, f_k = μ_k·N)",
+      "topic": "mechanics",
+      "formula": "f_s,max = μ_s · N ,  f_k = μ_k · N ,  F_net = m · a",
+      "description": "Static friction barrier vs kinetic sliding friction on varying materials and Newton second law acceleration.",
+      "variables": [
+        {
+          "symbol": "f_s",
+          "name": "Max Static Friction",
+          "unit": "N"
+        },
+        {
+          "symbol": "f_k",
+          "name": "Kinetic Friction",
+          "unit": "N"
+        },
+        {
+          "symbol": "μ",
+          "name": "Friction Coefficient",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "N",
+          "name": "Normal Force (mg)",
+          "unit": "N"
+        }
+      ]
+    },
+    "fourier_heat_conduction": {
+      "name": "Heat Transfer Rate",
+      "topic": "mechanics",
+      "formula": "Q / t = k · A · (T_hot - T_cold) / d",
+      "description": "Rate of heat conduction through solid materials proportional to thermal conductivity and temperature gradient.",
+      "variables": [
+        {
+          "symbol": "Q/t",
+          "name": "Heat Transfer Rate",
+          "unit": "Watts (W)"
+        },
+        {
+          "symbol": "k",
+          "name": "Thermal Conductivity",
+          "unit": "W/(m·K)"
+        },
+        {
+          "symbol": "A",
+          "name": "Cross-Section Area",
+          "unit": "m²"
+        },
+        {
+          "symbol": "d",
+          "name": "Rod Length",
+          "unit": "m"
+        }
+      ]
+    },
+    "seesaw_rotational_torque": {
+      "name": "Rotational Torque & Seesaw Equilibrium (Στ = 0)",
+      "topic": "mechanics",
+      "formula": "τ = F · r = m · g · r ,  Στ = τ₁ - τ₂ = 0",
+      "description": "Rotational static equilibrium of lever arms and principle of moments on a seesaw fulcrum pivot.",
+      "variables": [
+        {
+          "symbol": "τ",
+          "name": "Torque (Moment)",
+          "unit": "N·m"
+        },
+        {
+          "symbol": "r",
+          "name": "Lever Arm Distance",
+          "unit": "m"
+        },
+        {
+          "symbol": "m",
+          "name": "Body Mass",
+          "unit": "kg"
+        }
+      ]
+    },
+    "faraday_lenz_induction": {
+      "name": "Induced EMF",
+      "topic": "electricity",
+      "formula": "ε = -N · (ΔΦ_B / Δt) ,  I = ε / R",
+      "description": "Induced electromotive force (EMF) generated by time-varying magnetic flux through multi-turn solenoid coils.",
+      "variables": [
+        {
+          "symbol": "ε",
+          "name": "Induced EMF",
+          "unit": "Volts (V)"
+        },
+        {
+          "symbol": "N",
+          "name": "Number of Coil Turns",
+          "unit": "turns"
+        },
+        {
+          "symbol": "Φ_B",
+          "name": "Magnetic Flux (B·A)",
+          "unit": "Weber (Wb)"
+        },
+        {
+          "symbol": "I",
+          "name": "Induced Current",
+          "unit": "A / mA"
+        }
+      ]
+    },
+    "stokes_viscosity_terminal_vel": {
+      "name": "Stokes Drag Force",
+      "topic": "mechanics",
+      "formula": "F_d = 6π · η · r · v ,  v_t = [2r²g(ρ_s - ρ_f)] / (9η)",
+      "description": "Stokes' drag equation on falling micro spheres in viscous columns and steady-state terminal falling speed.",
+      "variables": [
+        {
+          "symbol": "F_d",
+          "name": "Stokes Drag Force",
+          "unit": "N"
+        },
+        {
+          "symbol": "η",
+          "name": "Dynamic Viscosity",
+          "unit": "Pa·s"
+        },
+        {
+          "symbol": "v_t",
+          "name": "Terminal Falling Velocity",
+          "unit": "m/s / cm/s"
+        },
+        {
+          "symbol": "r",
+          "name": "Sphere Radius",
+          "unit": "mm / m"
+        }
+      ]
+    },
+    "inclined_plane_simple_machine": {
+      "name": "Inclined Plane Simple Machine (IMA, AMA & Efficiency)",
+      "topic": "mechanics",
+      "formula": "IMA = L / h ,  AMA = F_load / F_effort ,  η = (W_out / W_in) · 100%",
+      "description": "Mechanical force multiplication using inclined ramps, comparing ideal mechanical advantage (IMA = L/h) with real efficiency.",
+      "variables": [
+        {
+          "symbol": "IMA",
+          "name": "Ideal Mechanical Advantage",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "AMA",
+          "name": "Actual Mechanical Advantage",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "η",
+          "name": "Machine Efficiency",
+          "unit": "%"
+        },
+        {
+          "symbol": "W_out",
+          "name": "Useful Work Output (mgh)",
+          "unit": "J"
+        }
+      ]
+    }
+  },
+  "challenges": {
+    "title": "Physics Lab Challenges & Quizzes",
+    "description": "Test your conceptual understanding of physical laws explored in the laboratory.",
+    "score": "Current Score",
+    "checkAnswer": "Check Answer",
+    "next": "Next Question",
+    "restart": "Retake Quiz",
+    "explanation": "Scientific Explanation:",
+    "perfectScore": "🎉 Outstanding! True Physics Master!",
+    "goodScore": "Great performance! Keep exploring the simulations.",
+    "keepTrying": "Review the experiment simulations and try again."
+  },
+  "common": {
+    "seconds": "seconds (s)",
+    "meters": "meters (m)",
+    "metersPerSec": "m/s",
+    "metersPerSec2": "m/s²",
+    "joules": "Joules (J)",
+    "volts": "Volts (V)",
+    "amperes": "Amperes (A)",
+    "ohms": "Ohms (Ω)",
+    "watts": "Watts (W)",
+    "degrees": "degrees (°)",
+    "close": "Close",
+    "copy": "Copy",
+    "copied": "Copied!"
+  },
+  "catalog": {
+    "work_heat": {
+      "title": "Work, Heat and 1st Law of Thermodynamics",
+      "inputs": [
+        "Added Heat Quantity Q",
+        "Work Done W",
+        "Gas Type"
+      ],
+      "outputs": [
+        "Change in Internal Energy ΔU",
+        "Final Temperature T",
+        "Final Volume V"
+      ]
+    },
+    "prescription_glasses": {
+      "title": "Prescription Glasses and Lens Power",
+      "inputs": [
+        "Vision Defect Type (Myopia / Hyperopia)",
+        "Eye Focal Length f_eye",
+        "Far / Near Point Distance"
+      ],
+      "outputs": [
+        "Corrective Lens Power P (Diopters)",
+        "Retinal Image Position",
+        "Visual Acuity"
+      ]
+    },
+    "periscope": {
+      "title": "Periscope and Law of Reflection",
+      "inputs": [
+        "First Mirror Tilt Angle θ1",
+        "Second Mirror Tilt Angle θ2",
+        "Periscope Height h"
+      ],
+      "outputs": [
+        "Light Ray Path",
+        "Final Emergence Angle",
+        "Line-of-Sight Alignment"
+      ]
+    },
+    "static_balloons": {
+      "title": "Static Electricity and Coulomb Law",
+      "inputs": [
+        "Charge Magnitude q1 (C)",
+        "Charge Magnitude q2 (C)",
+        "Separation Distance r (m)"
+      ],
+      "outputs": [
+        "Electrostatic Force F (N)",
+        "Force Type (Attraction / Repulsion)",
+        "Balloons Acceleration"
+      ]
+    },
+    "sled_friction": {
+      "title": "Sled Racing and Friction Laws",
+      "inputs": [
+        "Kinetic Friction Coefficient μ_k",
+        "Sled Mass m",
+        "Incline Angle θ"
+      ],
+      "outputs": [
+        "Kinetic Friction Force f_k",
+        "Net Acceleration a",
+        "Track Traversal Time t"
+      ]
+    },
+    "heat_conduction": {
+      "title": "Heat Conduction and Fourier Law",
+      "inputs": [
+        "Thermal Conductivity k of Material",
+        "Cross-Sectional Area A",
+        "Temperature Difference ΔT",
+        "Rod Length L"
+      ],
+      "outputs": [
+        "Heat Transfer Rate q (W)",
+        "Thermal Gradient dT/dx",
+        "Transferred Energy Amount"
+      ]
+    },
+    "seesaw_torque": {
+      "title": "Seesaw Balance and Torque Equilibrium",
+      "inputs": [
+        "Left Weight Position & Mass (m1, r1)",
+        "Right Weight Position & Mass (m2, r2)"
+      ],
+      "outputs": [
+        "Net Torque Στ",
+        "Rotational Equilibrium State",
+        "Seesaw Tilt Angle"
+      ]
+    },
+    "electromagnetic_induction": {
+      "title": "Electromagnetic Induction and Faraday Law",
+      "inputs": [
+        "Number of Coil Turns N",
+        "Magnet Speed v",
+        "Magnetic Field Intensity B"
+      ],
+      "outputs": [
+        "Induced Electromotive Force ε (V)",
+        "Induced Current I",
+        "Bulb Brightness"
+      ]
+    },
+    "viscosity_stokes": {
+      "title": "Viscosity, Stokes Law & Terminal Velocity",
+      "inputs": [
+        "Liquid Viscosity Coefficient η",
+        "Sphere Radius r",
+        "Sphere Density ρ_s",
+        "Liquid Density ρ_f"
+      ],
+      "outputs": [
+        "Terminal Velocity v_t (m/s)",
+        "Drag Force F_d",
+        "Velocity vs Time Curve"
+      ]
+    },
+    "ramp_machine": {
+      "title": "Inclined Plane & Simple Machines",
+      "inputs": [
+        "Incline Plane Angle θ",
+        "Object Mass to Lift m",
+        "Friction Coefficient μ"
+      ],
+      "outputs": [
+        "Mechanical Advantage MA",
+        "Required Pulling Force F_pull",
+        "Mechanical Efficiency η"
+      ]
+    },
+    "metric_prefixes": {
+      "title": "Metric Prefixes and Scientific Conversions",
+      "inputs": [
+        "Base Numerical Value",
+        "Reference Base Unit",
+        "Target Prefix (nano / micro / mega / giga)"
+      ],
+      "outputs": [
+        "Scientific Notation Value",
+        "Value in Target Prefix",
+        "Exact Conversion Factor"
+      ]
+    },
+    "stress_strain": {
+      "title": "Stress, Strain and Young Modulus",
+      "inputs": [
+        "Applied Force F",
+        "Cross-Sectional Area A",
+        "Original Length L0",
+        "Material Type (Steel / Copper / Aluminum)"
+      ],
+      "outputs": [
+        "Stress σ (Pa)",
+        "Relative Strain ε",
+        "Elongation ΔL",
+        "Elastic Limit"
+      ]
+    },
+    "bernoulli": {
+      "title": "Bernoulli Principle and Venturi Flow",
+      "inputs": [
+        "Volumetric Flow Rate Q",
+        "Wide Section Diameter D1",
+        "Narrow Section Diameter D2"
+      ],
+      "outputs": [
+        "Pressure Difference ΔP",
+        "Fluid Velocity in Constriction v2",
+        "Liquid Column Height in Venturi"
+      ]
+    },
+    "angled_mirrors": {
+      "title": "Angled Mirrors and Multiple Reflection Images",
+      "inputs": [
+        "Angle Between Mirrors θ (deg)",
+        "Object Position Relative to Mirrors"
+      ],
+      "outputs": [
+        "Number of Formed Images N",
+        "Positions and Symmetry of Reflected Images"
+      ]
+    },
+    "curved_mirrors": {
+      "title": "Curved Spherical Mirrors (Concave & Convex)",
+      "inputs": [
+        "Mirror Type (Concave / Convex)",
+        "Focal Length f",
+        "Object Distance from Mirror d_o",
+        "Object Height h_o"
+      ],
+      "outputs": [
+        "Image Distance d_i",
+        "Magnification M",
+        "Image Characteristics (Real / Virtual / Inverted / Upright)"
+      ]
+    },
+    "thin_lenses": {
+      "title": "Thin Lenses and Focal Length Equation",
+      "inputs": [
+        "Focal Length f",
+        "Object Position d_o",
+        "Object Height h_o"
+      ],
+      "outputs": [
+        "Image Position d_i",
+        "Magnification Factor M",
+        "Ray Trajectory & Image Formation"
+      ]
+    },
+    "polarization": {
+      "title": "Light Polarization and Malus Law",
+      "inputs": [
+        "Initial Light Intensity I0",
+        "First Polarizer Angle θ1",
+        "Analyzer Angle θ2"
+      ],
+      "outputs": [
+        "Transmitted Light Intensity I (W/m²)",
+        "Transmittance Ratio I/I0",
+        "Resultant Polarization Axis"
+      ]
+    },
+    "light_scattering": {
+      "title": "Light Scattering and Rayleigh Scattering Law",
+      "inputs": [
+        "Incident Light Wavelength λ",
+        "Scattering Particle Size d",
+        "Medium Density"
+      ],
+      "outputs": [
+        "Scattered Light Intensity I",
+        "Observed Atmospheric Color",
+        "Explanation of Sky Blue & Sunset Redness"
+      ]
+    },
+    "arc_length": {
+      "title": "Arc Length, Radians & Angular Motion",
+      "inputs": [
+        "Path Radius r (m)",
+        "Rotation Angle θ (deg/rad)",
+        "Angular Velocity ω"
+      ],
+      "outputs": [
+        "Arc Length Traveled s (m)",
+        "Linear Velocity v (m/s)",
+        "Angular Position"
+      ]
+    },
+    "rotational_dynamics": {
+      "title": "Moment of Inertia & Rotational Dynamics",
+      "inputs": [
+        "Applied Torque τ",
+        "Rotating Body Mass & Geometry (Disk / Cylinder / Ring)",
+        "Radius r"
+      ],
+      "outputs": [
+        "Moment of Inertia I",
+        "Angular Acceleration α (rad/s²)",
+        "Angular Velocity ω(t)"
+      ]
+    },
+    "center_of_mass": {
+      "title": "Center of Mass of Systems and Objects",
+      "inputs": [
+        "Point Mass Values (m1, m2, m3)",
+        "Mass Position Coordinates (x_i, y_i)"
+      ],
+      "outputs": [
+        "Center of Mass Coordinates (X_cm, Y_cm)",
+        "Stable Mechanical Equilibrium Point"
+      ]
+    },
+    "pendulum_energy": {
+      "title": "Conservation of Energy in a Pendulum",
+      "inputs": [
+        "Initial Release Angle θ0",
+        "String Length L",
+        "Bob Mass m"
+      ],
+      "outputs": [
+        "Kinetic Energy K (J)",
+        "Gravitational Potential Energy U (J)",
+        "Live Energy Transformation Diagram"
+      ]
+    },
+    "pendulum": {
+      "title": "Simple Pendulum Period and Gravity",
+      "inputs": [
+        "Pendulum Length L (m)",
+        "Gravitational Acceleration g (m/s²)",
+        "Sphere Mass m"
+      ],
+      "outputs": [
+        "Period T (s)",
+        "Oscillation Frequency f (Hz)",
+        "Calculated Gravitational Acceleration"
+      ]
+    },
+    "projectile": {
+      "title": "Projectile Motion and Range Trajectory",
+      "inputs": [
+        "Initial Launch Velocity v0 (m/s)",
+        "Launch Angle θ (deg)",
+        "Initial Height h0 (m)"
+      ],
+      "outputs": [
+        "Maximum Horizontal Range R",
+        "Maximum Height H",
+        "Total Flight Time t_flight",
+        "Curved Trajectory Profile"
+      ]
+    },
+    "spring": {
+      "title": "Hooke Law and Spring Harmonic Oscillation",
+      "inputs": [
+        "Spring Constant k (N/m)",
+        "Suspended Mass m (kg)",
+        "Initial Displacement x0 (m)"
+      ],
+      "outputs": [
+        "Restoring Force F_spring",
+        "Elastic Potential Energy U_s",
+        "Oscillation Period T (s)"
+      ]
+    },
+    "collision": {
+      "title": "Linear Momentum Conservation and Collisions",
+      "inputs": [
+        "Masses of Bodies (m1, m2)",
+        "Initial Velocities (v1i, v2i)",
+        "Restitution Coefficient e (Elastic/Inelastic)"
+      ],
+      "outputs": [
+        "Final Velocities (v1f, v2f)",
+        "Total Conserved Momentum P_tot",
+        "Lost Kinetic Energy ΔK"
+      ]
+    },
+    "freefall": {
+      "title": "Free Fall Kinematics and Gravitational Acceleration",
+      "inputs": [
+        "Drop Height h (m)",
+        "Planetary Gravity g (Earth/Moon/Mars)",
+        "Air Resistance"
+      ],
+      "outputs": [
+        "Free Fall Time t (s)",
+        "Ground Impact Velocity v_impact",
+        "Distance & Velocity Plot"
+      ]
+    },
+    "acoustic_resonance": {
+      "title": "Acoustic Resonance in Open and Closed Pipes",
+      "inputs": [
+        "Air Column Length L",
+        "Pipe Type (Closed / Open Tube)",
+        "Air Temperature T"
+      ],
+      "outputs": [
+        "Harmonic Frequencies fn",
+        "Pressure Wave Nodes and Antinodes Locations",
+        "Resonance State"
+      ]
+    },
+    "sound_speed": {
+      "title": "Speed of Sound with Water Column Resonance",
+      "inputs": [
+        "Tuning Fork Frequency f (Hz)",
+        "Water Column Resonance Levels L1 & L2",
+        "Medium Temperature T"
+      ],
+      "outputs": [
+        "Sound Wavelength λ",
+        "Calculated Speed of Sound v (m/s)",
+        "Standard Percentage Error"
+      ]
+    },
+    "waves": {
+      "title": "Wave Optics & Young Double Slit Interference",
+      "inputs": [
+        "Slit Separation Distance d",
+        "Light Wavelength λ (nm)",
+        "Screen Distance L"
+      ],
+      "outputs": [
+        "Fringe Spacing Between Bright Fringes Δy",
+        "Interference Pattern & Intensity Profile on Screen"
+      ]
+    },
+    "magnetic_field": {
+      "title": "Magnetic Field and Lorentz Force on Charges",
+      "inputs": [
+        "Particle Charge q",
+        "Particle Mass m",
+        "Velocity Vector v",
+        "Magnetic Field Intensity B"
+      ],
+      "outputs": [
+        "Lorentz Force F (N)",
+        "Circular Orbit Radius r",
+        "Cyclotron Frequency"
+      ]
+    },
+    "atomic_spectra": {
+      "title": "Atomic Emission Spectra and Quantum Transitions",
+      "inputs": [
+        "Element Type (Hydrogen / Helium / Mercury / Neon)",
+        "Electron Transition Levels n1 & n2"
+      ],
+      "outputs": [
+        "Visible Emission Spectral Lines",
+        "Emitted Photon Energy ΔE (eV)",
+        "Wavelength λ"
+      ]
+    },
+    "circuits": {
+      "title": "Electric Circuits, Ohm Law and Power Dissipation",
+      "inputs": [
+        "Battery Voltage V (Volts)",
+        "Resistance Value R (Ohms)",
+        "Connection Type (Series / Parallel)"
+      ],
+      "outputs": [
+        "Current Intensity I (Amperes)",
+        "Consumed Electrical Power P (Watts)",
+        "Voltage Drop"
+      ]
+    },
+    "buoyancy": {
+      "title": "Archimedes Principle and Buoyant Force",
+      "inputs": [
+        "Submerged Body Volume V_obj",
+        "Body Material Density ρ_obj",
+        "Liquid Density ρ_fluid"
+      ],
+      "outputs": [
+        "Buoyant Force F_B (N)",
+        "Apparent Weight of Body W_apparent",
+        "Body State (Floats / Suspended / Sinks)"
+      ]
+    },
+    "thermodynamics": {
+      "title": "Ideal Gas Law and Thermodynamics State",
+      "inputs": [
+        "Gas Moles Count n",
+        "Container Volume V",
+        "Absolute Temperature T (K)"
+      ],
+      "outputs": [
+        "Gas Pressure P (Pa)",
+        "Average Kinetic Energy of Molecules <E_k>",
+        "P-V Diagram"
+      ]
+    },
+    "optics": {
+      "title": "Optics and Snell Law of Refraction",
+      "inputs": [
+        "Refractive Index of First Medium n1",
+        "Refractive Index of Second Medium n2",
+        "Incident Angle θ1"
+      ],
+      "outputs": [
+        "Refracted Angle θ2",
+        "Critical Angle for Total Internal Reflection θ_c",
+        "Speed of Light in Medium"
+      ]
+    },
+    "build_atom": {
+      "title": "Build an Atom & Periodic Table",
+      "inputs": [
+        "Number of Protons p",
+        "Number of Neutrons n",
+        "Number of Electrons e"
+      ],
+      "outputs": [
+        "Element Name & Symbol",
+        "Mass Number A",
+        "Net Charge & Atomic Equilibrium"
+      ]
+    },
+    "build_nucleus": {
+      "title": "Build a Nucleus & Binding Energy",
+      "inputs": [
+        "Atomic Number Z",
+        "Mass Number A",
+        "Binding Energy per Nucleon"
+      ],
+      "outputs": [
+        "Total Nuclear Binding Energy E_b",
+        "Mass Defect Δm",
+        "Nuclear Stability & Decay Type"
+      ]
+    },
+    "rutherford_scattering": {
+      "title": "Rutherford Alpha Scattering Experiment",
+      "inputs": [
+        "Incident Alpha Particle Energy E_α",
+        "Target Foil Atomic Number Z",
+        "Impact Parameter b"
+      ],
+      "outputs": [
+        "Scattering Angle θ",
+        "Alpha Particles Trajectory",
+        "Distance of Closest Approach d_min"
+      ]
+    },
+    "molecules_and_light": {
+      "title": "Molecules and Light Photon Interaction",
+      "inputs": [
+        "Molecule Type (CO2, H2O, CH4, O2, N2)",
+        "Photon Wavelength (Microwave / Infrared / Visible / Ultraviolet)"
+      ],
+      "outputs": [
+        "Molecule Response (Rotation / Vibration / Ionization / Transmission)",
+        "Greenhouse Effect Explanation"
+      ]
+    },
+    "color_vision": {
+      "title": "Color Vision and RGB Additive Mixing",
+      "inputs": [
+        "Red Intensity R (0-255)",
+        "Green Intensity G (0-255)",
+        "Blue Intensity B (0-255)"
+      ],
+      "outputs": [
+        "Final Perceived Color in Eye",
+        "Retinal Cone Photoreceptors Response"
+      ]
+    },
+    "capacitor_lab": {
+      "title": "Capacitor Lab & Stored Electric Energy",
+      "inputs": [
+        "Plate Area A (m²)",
+        "Separation Distance d (mm)",
+        "Battery Voltage V (Volts)",
+        "Dielectric Constant κ"
+      ],
+      "outputs": [
+        "Capacitance C (Farads)",
+        "Accumulated Charge Q (Coulombs)",
+        "Stored Energy U (Joules)"
+      ]
+    },
+    "charges_and_fields": {
+      "title": "Electric Charges, Field Lines & Potential",
+      "inputs": [
+        "مواقع الشحنات الموجبة والسالبة (x, y)",
+        "مقدار الشحنة Q"
+      ],
+      "outputs": [
+        "شبكة متجهات شدة المجال E",
+        "خطوط تساوي الجهد V",
+        "حركة الشحنة الاختبارية"
+      ]
+    },
+    "resistance_in_wire": {
+      "title": "Wire Resistance & Specific Resistivity Law",
+      "inputs": [
+        "المقاومية النوعية للمادة ρ",
+        "طول السلك L",
+        "مساحة المقطع العرضي A"
+      ],
+      "outputs": [
+        "المقاومة الإجمالية R (أوم)",
+        "كثافة الشوائب الذرية المعيقة للتيار"
+      ]
+    },
+    "gravity_and_orbits": {
+      "title": "Gravity and Orbital Mechanics",
+      "inputs": [
+        "Central Star Mass (M)",
+        "Planet/Moon Mass (m)",
+        "Orbital Radius (r)"
+      ],
+      "outputs": [
+        "Orbital Velocity (v)",
+        "Orbital Period (T)",
+        "Orbital Stability Trajectory"
+      ]
+    },
+    "keplers_laws": {
+      "title": "Kepler Laws of Planetary Motion",
+      "inputs": [
+        "Semi-Major Axis (a)",
+        "Orbital Eccentricity (e)",
+        "Central Star Mass (M)"
+      ],
+      "outputs": [
+        "Orbital Period (T)",
+        "Equal Areas in Equal Times (Kepler’s Second Law)",
+        "Perihelion & Aphelion Positions"
+      ]
+    },
+    "energy_skate_park": {
+      "title": "Energy Skate Park and Energy Transformations",
+      "inputs": [
+        "Track Shape (Curved / Loop / Incline)",
+        "Skater Mass m",
+        "Friction Coefficient"
+      ],
+      "outputs": [
+        "Kinetic Energy K",
+        "Gravitational Potential Energy U_g",
+        "Generated Thermal Energy",
+        "Skater Speed at Each Point"
+      ]
+    },
+    "fourier_making_waves": {
+      "title": "Fourier Series and Harmonic Wave Synthesis",
+      "inputs": [
+        "Harmonic Amplitudes A1, A2, A3, A4...",
+        "Fundamental Frequency f0",
+        "Target Waveform (Square / Triangle / Sawtooth)"
+      ],
+      "outputs": [
+        "Resultant Composite Waveform",
+        "Frequency Spectrum (Spectrum Analyzer)"
+      ]
+    },
+    "wave_on_a_string": {
+      "title": "Wave on a String & Phase Speed",
+      "inputs": [
+        "Tension Force T",
+        "Linear Mass Density μ",
+        "Oscillation Amplitude A",
+        "Oscillator Frequency f"
+      ],
+      "outputs": [
+        "Wave Propagation Speed v",
+        "Wavelength λ",
+        "Wave Reflection at Fixed/Free End"
+      ]
+    },
+    "states_of_matter": {
+      "title": "States of Matter, Phase Transitions & Latent Heat",
+      "inputs": [
+        "Substance Type (Water / Neon / Argon / Oxygen)",
+        "Added or Extracted Temperature",
+        "External Pressure P"
+      ],
+      "outputs": [
+        "Physical State (Solid / Liquid / Gas)",
+        "Phase Diagram",
+        "Molecular Kinetic Energy"
+      ]
+    },
+    "gas_diffusion": {
+      "title": "Gas Diffusion and Graham Law of Effusion",
+      "inputs": [
+        "Molar Mass of First Gas M1",
+        "Molar Mass of Second Gas M2",
+        "Temperature T"
+      ],
+      "outputs": [
+        "Diffusion Rate Ratio r1/r2",
+        "Spatial Molecular Distribution over Time"
+      ]
+    },
+    "rotational_dynamics_torque": {
+      "title": "Rotational Motion & Net Torque",
+      "inputs": [
+        "Tangential Force F (N)",
+        "Radius r (m)",
+        "Moment of Inertia I (kg·m²)"
+      ],
+      "outputs": [
+        "Angular Momentum L (kg·m²/s)",
+        "Angular Acceleration α (rad/s²)",
+        "Rotational Kinetic Energy K_rot (J)"
+      ]
+    },
+    "models_h_atom": {
+      "title": "Models of the Hydrogen Atom",
+      "inputs": [
+        "Ground Quantum Level n1",
+        "Excited Quantum Level n2",
+        "Incident Photon Energy"
+      ],
+      "outputs": [
+        "Orbital Energy En (eV)",
+        "Emitted Photon Wavelength λ (nm)",
+        "Spectral Series (Lyman / Balmer / Paschen)"
+      ]
+    },
+    "circuit_construction_kit": {
+      "title": "Circuit Construction Kit (Advanced)",
+      "inputs": [
+        "Source Voltage V_sources",
+        "Resistor Values R1, R2, R3",
+        "Grid Network Topology"
+      ],
+      "outputs": [
+        "Branch Currents I_branches",
+        "Voltage Drops Across Elements",
+        "Total Dissipated Power"
+      ]
+    },
+    "generator": {
+      "title": "Electric Generator",
+      "inputs": [
+        "Angular Rotation Speed ω (rpm)",
+        "Number of Coil Turns N",
+        "Magnetic Field Intensity B"
+      ],
+      "outputs": [
+        "Maximum EMF ε_max (Volts)",
+        "Generated AC Frequency f (Hz)",
+        "Sinusoidal Voltage Waveform"
+      ]
+    },
+    "magnet_compass": {
+      "title": "Magnet and Compass",
+      "inputs": [
+        "Magnet Position Relative to Compass (x, y)",
+        "Magnetic Dipole Moment Strength m",
+        "Poles Deflection Angle"
+      ],
+      "outputs": [
+        "Compass Needle Deflection Angle θ",
+        "Total Field Vector Map",
+        "Magnetic Lines of Force"
+      ]
+    },
+    "magnets_electromagnets": {
+      "title": "Magnets and Electromagnets",
+      "inputs": [
+        "Passing Current Intensity I (Amperes)",
+        "Turns Density n = N/L",
+        "Inserting Super-Permeable Iron Core"
+      ],
+      "outputs": [
+        "Center Magnetic Field Intensity B (Tesla / mT)",
+        "Number of Attracted Pins",
+        "Magnet Polarity N/S"
+      ]
+    },
+    "gravity_force_lab": {
+      "title": "Gravity Force Lab",
+      "inputs": [
+        "First Body Mass m1 (kg)",
+        "Second Body Mass m2 (kg)",
+        "Distance Between Centers of Masses r (m)"
+      ],
+      "outputs": [
+        "Mutual Gravitational Attraction Force F (nN)",
+        "Equal & Opposite Force Vectors F12 & F21"
+      ]
+    },
+    "solar_system": {
+      "title": "My Solar System & Multi-Body Mechanics",
+      "inputs": [
+        "Star & Planet Masses (M_sun, m_planet)",
+        "Initial Tangential Velocity v0",
+        "Initial Orbital Distance r0"
+      ],
+      "outputs": [
+        "Real Motion Trajectories (Circular / Elliptical / Parabolic Orbit)",
+        "Conservation of Angular Momentum & Total Energy"
+      ]
+    },
+    "energy_forms": {
+      "title": "Energy Forms and Transformations",
+      "inputs": [
+        "Substance Material (Water / Iron / Brick / Oil)",
+        "Energy Source (Thermal Flame / Cooling Ice / Electric Energy)"
+      ],
+      "outputs": [
+        "Temperature T over Time",
+        "Energy Unit Distribution (Kinetic, Thermal, Radiant, Chemical)",
+        "Final Thermal Equilibrium"
+      ]
+    },
+    "normal_modes": {
+      "title": "Normal Modes & Resonant Frequencies",
+      "inputs": [
+        "Harmonic Mode Number n (1, 2, 3...)",
+        "Tension Force in String T (N)",
+        "String Length L",
+        "Linear Mass Density μ"
+      ],
+      "outputs": [
+        "Resonant Frequency fn (Hz)",
+        "Wavelength λn",
+        "Nodes and Antinodes Positions"
+      ]
+    },
+    "forces_motion": {
+      "title": "Forces and Motion: Basics",
+      "inputs": [
+        "Applied External Force F_applied (N)",
+        "Crate Mass m (kg)",
+        "Surface Friction Coefficient μ"
+      ],
+      "outputs": [
+        "Net Resultant Force F_net",
+        "Resulting Acceleration a (m/s²)",
+        "Free Body Diagram (FBD)",
+        "Velocity Vector v"
+      ]
+    },
+    "gas_properties": {
+      "title": "Gas Properties & Kinetic Pressure Law",
+      "inputs": [
+        "Number of Injected Molecules N",
+        "Cylinder Volume V",
+        "Thermal Heating or Cooling"
+      ],
+      "outputs": [
+        "Internal Pressure P (Pa)",
+        "RMS Molecular Speed v_rms",
+        "Molecule Collision Rate with Container Walls"
+      ]
+    },
+    "diffusion": {
+      "title": "Molecular Diffusion & Fick First Law",
+      "inputs": [
+        "Molecule Mass & Type (Light / Heavy)",
+        "Medium Temperature T",
+        "Opening / Closing Separation Barrier"
+      ],
+      "outputs": [
+        "Diffusion Flux Rate J",
+        "Concentration Gradient dC/dx",
+        "Time to Homogeneous Equilibrium"
+      ]
+    },
+    "blackbody_spectrum": {
+      "title": "Blackbody Spectrum, Planck & Wien Laws",
+      "inputs": [
+        "Blackbody Temperature T (Kelvin) from 300K to 10000K (Earth, Bulb, Sun, Blue Stars)"
+      ],
+      "outputs": [
+        "Peak Wavelength λ_max (μm)",
+        "Total Radiant Intensity I (W/m²)",
+        "Spectral Distribution Curve & Visible Color"
+      ]
+    },
+    "doppler_effect": {
+      "title": "Doppler Effect & Sound Shift",
+      "inputs": [
+        "Moving Source Velocity vₛ (m/s)",
+        "Observer Velocity vₒ (m/s)",
+        "Source Emitted Frequency f (Hz)",
+        "Speed of Sound in Medium v (m/s)"
+      ],
+      "outputs": [
+        "Observed Apparent Frequency f' (Hz)",
+        "Doppler Frequency Shift Δf",
+        "Front & Rear Wavelength λ",
+        "Mach Number"
+      ]
+    },
+    "electrical_transformer": {
+      "title": "Electrical Transformer & Mutual Induction Law",
+      "inputs": [
+        "Primary Source Voltage Vₚ (Volts)",
+        "Primary Coil Turns Nₚ",
+        "Secondary Coil Turns Nₛ",
+        "Load Resistance R_L (Ohms)",
+        "Transformer Efficiency η%"
+      ],
+      "outputs": [
+        "Induced Secondary Voltage Vₛ (Volts)",
+        "Primary Iₚ & Secondary Iₛ Currents (Amperes)",
+        "Transformation Ratio a & Transformer Type",
+        "Transferred Electric Power Pₛ (Watts)"
+      ]
+    },
+    "photoelectric_effect": {
+      "title": "Photoelectric Effect & Einstein Quantum Law",
+      "inputs": [
+        "Incident Light Wavelength λ (nm)",
+        "Light Intensity (%)",
+        "Cathode Metal Type (Work Function Φ)",
+        "External Bias Voltage V (Volts)"
+      ],
+      "outputs": [
+        "Incident Photon Energy E (eV)",
+        "Max Electron Kinetic Energy K_max",
+        "Stopping Potential V_stop (Volts)",
+        "Threshold Frequency & Wavelength f₀ & λ₀",
+        "Emitted Electron Speed v_max"
+      ]
+    },
+    "radioactive_decay": {
+      "title": "Radioactive Decay & Nuclear Half-Life Law",
+      "inputs": [
+        "Initial Radioactive Nuclei Count N₀",
+        "Isotope Type & Half-Life T₁/₂",
+        "Elapsed Time t (seconds)",
+        "Jump Full Half-Life (+1 T½)"
+      ],
+      "outputs": [
+        "Remaining Radioactive Nuclei N(t)",
+        "Formed Stable Nuclei N_decayed",
+        "Remaining Percentage %",
+        "Instantaneous Activity A(t) (Bq)",
+        "Decay Constant λ"
+      ]
+    },
+    "calorimetry_equilibrium": {
+      "title": "Calorimetry & Thermal Equilibrium Law",
+      "inputs": [
+        "Mass & Material of Hot Solid Body m₁ & c₁",
+        "Initial Body Temperature T₁ (°C)",
+        "Mass & Type of Calorimeter Liquid m₂ & c₂",
+        "Initial Liquid Temperature T₂ (°C)"
+      ],
+      "outputs": [
+        "Final Thermal Equilibrium Temperature T_f (°C & K)",
+        "Exchanged Thermal Energy Quantity Q (J & cal)",
+        "Heat Capacities C₁ & C₂",
+        "Temperature Changes ΔT₁ & ΔT₂"
+      ]
+    }
+  },
+  "planets": {
+    "earth": {
+      "name": "Earth",
+      "g": "9.81",
+      "icon": "🌍"
+    },
+    "moon": {
+      "name": "Moon",
+      "g": "1.62",
+      "icon": "🌕"
+    },
+    "mars": {
+      "name": "Mars",
+      "g": "3.71",
+      "icon": "🔴"
+    },
+    "jupiter": {
+      "name": "Jupiter",
+      "g": "24.79",
+      "icon": "🪐"
+    },
+    "sun": {
+      "name": "Sun",
+      "g": "274.0",
+      "icon": "☀️"
+    },
+    "space": {
+      "name": "Deep Space (Zero-g)",
+      "g": "0.0",
+      "icon": "✨"
+    }
+  },
+  "opticalMediums": {
+    "air": {
+      "name": "Air / Vacuum",
+      "n": "1.0003",
+      "color": "rgba(224, 242, 254, 0.15)"
+    },
+    "water": {
+      "name": "Water",
+      "n": "1.333",
+      "color": "rgba(56, 189, 248, 0.25)"
+    },
+    "oil": {
+      "name": "Vegetable Oil",
+      "n": "1.47",
+      "color": "rgba(234, 179, 8, 0.25)"
+    },
+    "glass": {
+      "name": "Crown Glass",
+      "n": "1.52",
+      "color": "rgba(147, 197, 253, 0.35)"
+    },
+    "flint_glass": {
+      "name": "Flint Glass",
+      "n": "1.66",
+      "color": "rgba(168, 85, 247, 0.35)"
+    },
+    "diamond": {
+      "name": "Diamond",
+      "n": "2.417",
+      "color": "rgba(236, 72, 153, 0.4)"
+    }
+  },
+  "constants": {
+    "g": {
+      "name": "Standard Earth Gravity",
+      "symbol": "g",
+      "value": "9.80665",
+      "unit": "m/s²"
+    },
+    "c": {
+      "name": "Speed of Light in Vacuum",
+      "symbol": "c",
+      "value": "2.998 × 10⁸",
+      "unit": "m/s"
+    },
+    "G": {
+      "name": "Gravitational Constant",
+      "symbol": "G",
+      "value": "6.674 × 10⁻¹¹",
+      "unit": "N·m²/kg²"
+    },
+    "e": {
+      "name": "Elementary Charge",
+      "symbol": "e",
+      "value": "1.602 × 10⁻¹⁹",
+      "unit": "C"
+    },
+    "ε0": {
+      "name": "Vacuum Permittivity",
+      "symbol": "ε₀",
+      "value": "8.854 × 10⁻¹²",
+      "unit": "F/m"
+    },
+    "h": {
+      "name": "Planck Constant",
+      "symbol": "h",
+      "value": "6.626 × 10⁻³⁴",
+      "unit": "J·s"
+    },
+    "kB": {
+      "name": "Boltzmann Constant",
+      "symbol": "k_B",
+      "value": "1.381 × 10⁻²³",
+      "unit": "J/K"
+    }
+  },
+  "quiz": {
+    "q1": {
+      "experiment": "pendulum",
+      "question": "If we quadruple the mass of a simple pendulum bob while keeping length constant, what happens to the period?",
+      "options": [
+        "Doubles",
+        "Halves",
+        "Remains unchanged",
+        "Quadruples"
+      ],
+      "correctIndex": 2,
+      "explanation": "The period of a simple pendulum T = 2π√(L/g) depends only on length and gravity, completely independent of mass."
+    },
+    "q2": {
+      "experiment": "projectile",
+      "question": "What launch angle achieves maximum horizontal range on flat ground neglecting air resistance?",
+      "options": [
+        "30°",
+        "45°",
+        "60°",
+        "90°"
+      ],
+      "correctIndex": 1,
+      "explanation": "Range R = (v₀² sin(2θ))/g achieves its maximum when sin(2θ) = 1, meaning 2θ = 90° so θ = 45°."
+    },
+    "q3": {
+      "experiment": "circuits",
+      "question": "When two identical 10Ω resistors are connected in parallel, what is the equivalent resistance?",
+      "options": [
+        "20 Ω",
+        "10 Ω",
+        "5 Ω",
+        "2.5 Ω"
+      ],
+      "correctIndex": 2,
+      "explanation": "In parallel connection of identical resistors: R_eq = R / n = 10 / 2 = 5 Ω."
+    },
+    "q4": {
+      "experiment": "optics",
+      "question": "Under what condition can Total Internal Reflection occur?",
+      "options": [
+        "When light moves from less dense to more dense medium",
+        "When light moves from denser to rarer medium with angle > critical angle",
+        "When incident angle is always 0°",
+        "In all media regardless of density and angle"
+      ],
+      "correctIndex": 1,
+      "explanation": "Total internal reflection occurs only when light passes from a higher refractive index to a lower one at an angle greater than the critical angle."
+    },
+    "q5": {
+      "experiment": "freefall",
+      "question": "If a feather and an iron ball are dropped in a complete vacuum, which reaches the ground first?",
+      "options": [
+        "Iron ball due to weight",
+        "Feather due to lightness",
+        "Both hit the ground at the exact same instant",
+        "Depends on surface area"
+      ],
+      "correctIndex": 2,
+      "explanation": "In a vacuum without air resistance, all objects accelerate at the exact same rate g, hitting the ground simultaneously regardless of mass."
+    },
+    "q6": {
+      "experiment": "waves",
+      "question": "In Young’s double slit experiment, if slit separation (d) increases, what happens to the fringe spacing (y)?",
+      "options": [
+        "Fringe spacing increases",
+        "Fringe spacing decreases",
+        "Fringe spacing remains constant",
+        "Fringes vanish completely"
+      ],
+      "correctIndex": 1,
+      "explanation": "According to Young’s formula y = (m·λ·L)/d, fringe spacing is inversely proportional to slit separation d, so fringes get closer together."
+    },
+    "q7": {
+      "experiment": "spring",
+      "question": "If a 4kg mass on a spring oscillates with a 2-second period, what is the period if the mass is increased to 16kg?",
+      "options": [
+        "2 seconds",
+        "4 seconds",
+        "8 seconds",
+        "1 second"
+      ],
+      "correctIndex": 1,
+      "explanation": "Period T = 2π√(m/k). Quadrupling the mass increases period by √4 = 2, so 2 × 2 = 4 seconds."
+    },
+    "q8": {
+      "experiment": "buoyancy",
+      "question": "A wooden block with density 600 kg/m³ is placed in water (1000 kg/m³). What percentage of its volume is submerged?",
+      "options": [
+        "40%",
+        "60%",
+        "100%",
+        "0%"
+      ],
+      "correctIndex": 1,
+      "explanation": "For a floating object, fraction submerged equals ρ_object / ρ_fluid = 600 / 1000 = 60%."
+    },
+    "q9": {
+      "experiment": "collision",
+      "question": "In a perfectly elastic collision between two isolated bodies, which of the following quantities are conserved?",
+      "options": [
+        "Momentum only",
+        "Kinetic Energy only",
+        "Both Linear Momentum and Kinetic Energy",
+        "Individual velocity of each body"
+      ],
+      "correctIndex": 2,
+      "explanation": "A perfectly elastic collision is defined by conservation of both total momentum and total kinetic energy."
+    },
+    "q10": {
+      "experiment": "thermodynamics",
+      "question": "In an isothermal process for an ideal gas, if volume is doubled, what happens to pressure?",
+      "options": [
+        "Pressure doubles",
+        "Pressure halves",
+        "Pressure remains unchanged",
+        "Pressure drops to zero"
+      ],
+      "correctIndex": 1,
+      "explanation": "Under isothermal conditions (Boyle’s Law), P·V = constant. Doubling volume halves the pressure."
+    }
+  }
+}

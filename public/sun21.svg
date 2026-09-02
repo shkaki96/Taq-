@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100%" height="100%">
+  <defs>
+    <linearGradient id="sunGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FDE047" />
+      <stop offset="45%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </linearGradient>
+    <radialGradient id="sunCoreGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FEF08A" />
+      <stop offset="70%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#D97706" />
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#D97706" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- White background -->
+  <rect x="2" y="2" width="96" height="96" rx="22" fill="#FFFFFF" stroke="#E2E8F0" stroke-width="2" />
+
+  <!-- 21 Sun Rays -->
+  <g filter="url(#shadow)">
+    <!-- 21 rays around 360 degrees -->
+    <path fill="url(#sunGoldGrad)" d="
+      M 50.00 6.00 L 52.06 35.14 A 15 15 0 0 0 47.94 35.14 Z
+      M 62.90 9.87 L 62.46 38.64 A 15 15 0 0 0 58.74 36.87 Z
+      M 74.34 17.65 L 70.83 43.68 A 15 15 0 0 0 67.87 40.59 Z
+      M 83.00 28.53 L 76.10 49.65 A 15 15 0 0 0 74.22 45.69 Z
+      M 87.89 41.44 L 77.72 55.79 A 15 15 0 0 0 77.10 51.46 Z
+      M 88.52 55.22 L 75.60 61.27 A 15 15 0 0 0 76.32 57.06 Z
+      M 84.81 68.61 L 70.02 65.34 A 15 15 0 0 0 71.93 61.54 Z
+      M 77.01 79.91 L 61.57 67.43 A 15 15 0 0 0 64.40 64.38 Z
+      M 65.98 88.08 L 51.04 67.24 A 15 15 0 0 0 54.51 65.41 Z
+      M 52.88 92.29 L 39.46 64.67 A 15 15 0 0 0 43.15 63.99 Z
+      M 38.83 91.98 L 28.02 59.95 A 15 15 0 0 0 31.54 60.57 Z
+      M 25.59 87.21 L 18.06 53.48 A 15 15 0 0 0 21.05 55.29 Z
+      M 14.86 78.47 L 10.63 45.91 A 15 15 0 0 0 12.87 48.64 Z
+      M 7.82 66.82 L 6.45 37.95 A 15 15 0 0 0 7.74 41.31 Z
+      M 5.15 53.28 L 5.92 30.29 A 15 15 0 0 0 6.13 34.02 Z
+      M 7.21 39.49 L 9.00 23.51 A 15 15 0 0 0 8.04 27.27 Z
+      M 13.91 26.89 L 15.39 18.10 A 15 15 0 0 0 13.25 21.57 Z
+      M 24.57 16.51 L 24.63 14.39 A 15 15 0 0 0 21.41 17.38 Z
+      M 38.08 9.38 L 36.14 12.60 A 15 15 0 0 0 32.06 15.01 Z
+      M 53.20 6.09 L 49.00 12.88 A 15 15 0 0 0 44.47 14.61 Z
+      M 67.89 7.02 L 61.94 15.17 A 15 15 0 0 0 57.34 16.14 Z
+    " />
+  </g>
+
+  <!-- Central Sun Disc -->
+  <circle cx="50" cy="50" r="14" fill="url(#sunCoreGlow)" stroke="#B45309" stroke-width="0.8" />
+  <circle cx="50" cy="50" r="8.4" fill="none" stroke="#FEF08A" stroke-width="0.8" opacity="0.6" />
+</svg>

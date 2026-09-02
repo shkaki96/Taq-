@@ -1,0 +1,2611 @@
+{
+  "appTitle": "Laboratûvara Fîzîkê ya Înteraktîf",
+  "appSubtitle": "Simulasyona Mekanîk, Çerxeyên Elektrîkê, Optîk û Pêlan bi Tomarkirina Daneyan û Hesabkirina Çewtiyê",
+  "tabs": {
+    "experiments": "Ezmûnên Fîzîkê",
+    "notebook": "Devera Tomaran û Daneyan",
+    "formulas": "Rêbernameya Formûlan",
+    "challenges": "Pirsgirêk û Testên Fîzîkê"
+  },
+  "experiments": {
+    "pendulum": {
+      "title": "Dandûla Hêsan û Parastina Enerjiyê",
+      "shortDesc": "Tevgera ahengdar a hêsan, pîvandina dema hejînê û guherînên enerjiya mekanîkî.",
+      "length": "Dirêjahiya Werîs (L)",
+      "mass": "Maseya Golikê (m)",
+      "gravity": "Leza Rakêşanê (g)",
+      "damping": "Beriya Hewayê / Nermkirin",
+      "initialAngle": "Kovara Guhestina Destpêkê (θ₀)",
+      "period": "Dema Hejînê ya Teorîk (T)",
+      "frequency": "Frekans (f)",
+      "maxVelocity": "Leza Herî Bilind a Hêlî (v_max)",
+      "kineticEnergy": "Enerjiya Tevgerê (Ek)",
+      "potentialEnergy": "Enerjiya Rewşê (Ep)",
+      "totalEnergy": "Enerjiya Giştî (E_total)",
+      "currentAngle": "Kovara Niha (θ)",
+      "timeElapsed": "Dema Derbasbûyî (t)",
+      "oscillations": "Hejmara Hejînên Temam",
+      "release": "Dandûlê Berde",
+      "dragToAngle": "Golika dandûlê bi mişkê bikişîne an kovarê eyar bike",
+      "showVectors": "Vektorên Lez û Hêzê Nîşan Bide",
+      "showEnergyBars": "Grafîka Enerjiyê ya Zindî Nîşan Bide",
+      "varPeriod": "Dema Hejîna Dandûlê (T)",
+      "expVariablesTitle": "Guhêrbarên Ezmûnê",
+      "notesText": "Pîvan bi hûrgulî di bin şert û mercên diyarkirî de hate tomar kirin."
+    },
+    "spring": {
+      "title": "Zanista Hooke û Hejînera Guhêzbar a Sprîngê",
+      "shortDesc": "Vekolîna vekişandin û zexta sprîngê, berdewamiya sprîngê k, dema hejînê û enerjiya potansiyel a nermbûnê.",
+      "springConstant": "Berdewamiya Sprîngê (k)",
+      "mass": "Maseya Pêvekirî (m)",
+      "displacement": "Guhestina Destpêkê (x₀)",
+      "damping": "Hevbeşa Fîzîkî ya Nermkirinê (b)",
+      "orientation": "Arasteya Sprîngê",
+      "vertical": "Stûnî (Bi Rakêşanê re)",
+      "horizontal": "Asoyî (Bê Xişandin)",
+      "theoreticalPeriod": "Dema Hejînê ya Teorîk (T)",
+      "measuredPeriod": "Dema Hejînê ya Pîvandî",
+      "springForce": "Hêza Vegerandinê ya Sprîngê (F = -kx)",
+      "elasticPotentialEnergy": "Enerjiya Potansiyel a Nermbûnê (E_pe = ½kx²)",
+      "kineticEnergy": "Enerjiya Tevgerê (E_k)",
+      "totalEnergy": "Enerjiya Mekanîkî ya Giştî",
+      "pullMass": "Maseyê bi mişkê bikişîne an guhestinê biguherîne ji bo destpêkirina hejînê"
+    },
+    "buoyancy": {
+      "title": "Zanista Arşîmedes û Hêza Rakirina Şilemeniyan",
+      "shortDesc": "Vekolîna avjenî, noqbûn, qebareya bin avê, giraniya xuyayî û dendika şilemeniyan.",
+      "fluidType": "Cureyê Şilemeniyê",
+      "fluidDensity": "Dendika Şilemeniyê (ρ_fluid)",
+      "objectMaterial": "Madeya Tiştê",
+      "objectDensity": "Dendika Tiştê (ρ_obj)",
+      "objectVolume": "Qebareya Tiştê (V)",
+      "objectMass": "Maseya Tiştê (m)",
+      "actualWeight": "Giraniya Rastîn di Hewayê de (W = mg)",
+      "buoyantForce": "Hêza Rakirinê ya Ber bi Jor (F_b = ρ_f·V_sub·g)",
+      "apparentWeight": "Giraniya Xuyayî di Şilemeniyê de (W_app)",
+      "submergedVolume": "Qebareya Noqbûyî (V_sub)",
+      "submergedPercent": "Rêjeya Noqbûnê (%)",
+      "statusFloating": "🟢 Tişt li ser avê dimîne (ρ_obj < ρ_fluid)",
+      "statusNeutral": "🟡 Di nav şilemeniyê de daliqandî ye (ρ_obj = ρ_fluid)",
+      "statusSinking": "🔴 Tişt ber bi binî ve noq dibe (ρ_obj > ρ_fluid)",
+      "waterDisplaced": "Şilemeniya Rijiya di Fîncanê de"
+    },
+    "collision": {
+      "title": "Pevketin û Parastina Mometûma Hêlî",
+      "shortDesc": "Simulasyona pevketina du erebeyan li ser rêça hewayê, vekolîna pevketinên elastîk û ne-elastîk û parastina enerjiya tevgerê.",
+      "cart1": "Erebeya Yekem (Cart 1)",
+      "cart2": "Erebeya Duyem (Cart 2)",
+      "mass1": "Maseya Erebeya Yekem (m₁)",
+      "mass2": "Maseya Erebeya Duyem (m₂)",
+      "vel1": "Leza Destpêkê ya Erebeya 1 (v₁)",
+      "vel2": "Leza Destpêkê ya Erebeya 2 (v₂)",
+      "elasticity": "Rêjeya Vegerandinê (e)",
+      "elastic": "Temam Elastîk (e = 1.0 - Enerjiya Tevgerê Parastî ye)",
+      "inelastic": "Temam Ne-elastîk (e = 0.0 - Pêkve Dizeliqin)",
+      "partiallyElastic": "Nîv Elastîk (e = 0.5)",
+      "totalMomentumBefore": "Momenta Giştî ya Destpêkê (P_init)",
+      "totalMomentumAfter": "Momenta Giştî ya Dawî (P_final)",
+      "keInitial": "Enerjiya Tevgerê ya Destpêkê",
+      "keFinal": "Enerjiya Tevgerê ya Dawî",
+      "keLost": "Enerjiya Tevgerê ya Wenda (Germî/Deformasyon)",
+      "launchCarts": "Erebeyan Berde ji bo Pevketinê",
+      "varMomentum": "Mementoma giştî ya piştî lihevketinê (P_total)",
+      "collisionOccurred": "Lihevketin çêbû!",
+      "elasticShort": "Elastîk",
+      "inelasticShort": "Ne-elastîk",
+      "cartsConfig": "Mîhengên erebokên glide",
+      "calculatedFinalVel": "Lezên hesabkirî yên piştî lihevketinê",
+      "noteText": "Ceribandina lihevketinê di yek rehendî de (e = {{eVal}}). Mementoma destpêkê = {{initP}} kg·m/s, KE ya windabûyî = {{keL}} J."
+    },
+    "thermodynamics": {
+      "title": "Gaza Îdeal û Termodînamîk (P-V)",
+      "shortDesc": "Tevgera molekulên gazê di sîlînderê de, qanûna PV=nRT û grafîka guherîna zext û qebareyê.",
+      "temperature": "Germahî (T)",
+      "volume": "Qebareya Sîlînderê (V)",
+      "pressure": "Zexta Pîvandî (P)",
+      "particles": "Hejmara Molekulên Gazê (N)",
+      "heatPiston": "Germkirin bi Agir 🔥",
+      "coolPiston": "Sarkirin bi Qeşayê ❄️",
+      "processType": "Cureyê Pêvajoya Termodînamîkî",
+      "isothermal": "Germahiya Neguherbar (Îzotermal T=C)",
+      "isobaric": "Zexta Neguherbar (Îzobarîk P=C)",
+      "isochoric": "Qebareya Neguherbar (Îzokorîk V=C)",
+      "idealGasConst": "Berdewamiya Gazê ya Hesabkirî (R)",
+      "workDone": "Karê ku ji aliyê Gazê ve Hatiye Kirin (W = ∫P dV)",
+      "particleSpeedDist": "Belavbûna Lezê ya Maxwell-Boltzmann",
+      "varPressure": "Zexta gazê ya hesabkirî (P)",
+      "pistonChamber": "Odeya silindir û pistonê",
+      "pvDiagram": "Dîagrama nîşander a P-V",
+      "tempLabel": "Pîleya germiyê",
+      "gasParameters": "Parametreyên rewşa gazê",
+      "idealGasLaw": "Hevkêşeya gazên îdeal",
+      "notesFormat": "Taqîkirina rewşa gazên îdeal li T={{temp}}K, V={{vol}}L. Zext P={{press}} kPa."
+    },
+    "projectile": {
+      "title": "Tevgera Hawêjtiyan di Du Rehendan de",
+      "shortDesc": "Vekolîna xeta hawêjtiyê, mesafeya asoyî, bilindahiya herî zêde, û analîzkirina vektorên lezê.",
+      "velocity": "Leza Destpêkê (v₀)",
+      "angle": "Kovara Avêtinê (θ)",
+      "height": "Bilindahiya Cihê Avêtinê (h₀)",
+      "airResistance": "Berxwedana Hewayê (Drag)",
+      "launch": "Guleyê Biavêje 🚀",
+      "reset": "Topê Sifir Bike",
+      "maxHeight": "Bilindahiya Herî Zêde (H_max)",
+      "range": "Mesafeya Asoyî (R)",
+      "flightTime": "Dema Firînê ya Giştî (t)",
+      "vx": "Leza Asoyî (v_x)",
+      "vy": "Leza Stûnî (v_y)",
+      "targetMode": "Moda Pêkanîna Armancê",
+      "targetDistance": "Dûriya Armancê",
+      "hitTarget": "🎯 Te armanc bi serkeftî lêxist!",
+      "missedTarget": "Armanc nehat lêxistin, kovar an lezê biguherîne!",
+      "varRange": "Mawaya horizontî ya haviştî (R)",
+      "launchControlsTitle": "Mîhengên haviştina guleyê",
+      "notesText": "Tevgera haviştî di bin bandora kêşkirinê de hate lêkolînkirin."
+    },
+    "circuits": {
+      "title": "Qanûna Ohm û Çerxeyên Elektrîkê",
+      "shortDesc": "Simulasyona çerxeya DC, pîvandina voltaj, herikîn, berxwedan û hêza elektrîkê.",
+      "voltage": "Voltaja Çavkaniyê (V)",
+      "resistance1": "Berxwedana Yekem (R₁)",
+      "resistance2": "Berxwedana Duyem (R₂)",
+      "circuitType": "Cureyê Girêdanê",
+      "series": "Li pey hev (Series)",
+      "parallel": "Hevtewere (Parallel)",
+      "single": "Tek Berxwedan (Single)",
+      "switch": "Mifteya Çerxeyê",
+      "switchOn": "Çerxeya Girtî (Herikîn heye)",
+      "switchOff": "Çerxeya Vekirî (Qutbûyî)",
+      "current": "Herikîna Giştî (I)",
+      "totalResistance": "Berxwedana Hevseng (R_eq)",
+      "power": "Hêza Bikaranînê (P)",
+      "bulbBrightness": "Ronahiya Çirayê",
+      "multimeter": "Multîmetre (Pîvok)",
+      "ammeter": "Ampermeter (A)",
+      "voltmeter": "Voltmeter (V)",
+      "electronFlow": "Tevgera Elektronan",
+      "varTotalCurrent": "Tewşema giştî ya çerxa elektrîkî (I)",
+      "notesText": "Qanûna Ohm V = I · R û belavbûna voltaj û tewşemê hate îspatkirin.",
+      "componentSettingsTitle": "Nirxên hêmanên çerxa elektrîkî",
+      "liveCalculationsTitle": "Hesabên zindî yên çerxê:"
+    },
+    "optics": {
+      "title": "Optîk û Qanûna Snell ji bo Şikandina Ronahiyê",
+      "shortDesc": "Vekolîna şikandin û derketina tîrêjan, kovara sînorî û rengvedana tevahî ya navxweyî.",
+      "medium1": "Navgîna Yekem (Ketin)",
+      "medium2": "Navgîna Duyem (Şikandin)",
+      "incidentAngle": "Kovara Ketinê (θ₁)",
+      "refractedAngle": "Kovara Şikandinê (θ₂)",
+      "reflectedAngle": "Kovara Rengvedanê (θ_r)",
+      "criticalAngle": "Kovara Sînorî (θ_c)",
+      "totalInternalReflection": "⚠️ Rengvedana Tevahî ya Navxweyî Çêbû (Total Internal Reflection)",
+      "refractionOccurs": "Şikandina asayî bi kêmek rengvedan re",
+      "prismMode": "Moda Analîza Ronahiyê bi Prîzmayê",
+      "laserColor": "Rengê Tîrêja Lazerê",
+      "normalLine": "Xêza stûnî (Normal)",
+      "varRefractionAngle": "Goşeya şkestinê (θ₂)",
+      "opticalMediaSelection": "Taybetmendiyên hawîrdorên ronahiyê û goşeyan",
+      "notesTIR": "Eksbûna navxweyî ya giştî çêbû ji ber ku goşeya ketinê ji goşeya krîtîk mezin de bû.",
+      "notesSnell": "Qanûna Snell n1·sin(θ1) = n2·sin(θ2) hate îspatkirin.",
+      "snellsInterface": "Rûyê Snell ê şkestinê",
+      "laserRay": "Tîşka lazerê",
+      "snellsLawSub": "Qanûna Snell",
+      "criticalAngleCond": "Bitênê n1 > n2",
+      "reflectionLawSub": "Qanûna eksbûnê"
+    },
+    "freefall": {
+      "title": "Ketina Azad û Ezmûna Galîleo",
+      "shortDesc": "Berawirdkirina ketina tiştên cuda di hewayê de li hember valahiya temam li ser gerstêrkên cuda.",
+      "dropHeight": "Bilindahiya Ketinê (h)",
+      "objectA": "Tiştê Yekem (Goka Hesinî 5kg)",
+      "objectB": "Tiştê Duyem (Pera Çûkê 0.01kg)",
+      "mediumEnv": "Jîngeha Ketinê",
+      "vacuum": "Valahiya Temam (Bê berxwedana hewayê)",
+      "air": "Hewaya Asayî (Bi berxwedana hewayê)",
+      "drop": "Tiştan Berde ⏱️",
+      "timeA": "Dema Gihiştina Tiştê Yekem",
+      "timeB": "Dema Gihiştina Tiştê Duyem",
+      "finalSpeedA": "Leza Ketina Tiştê Yekem",
+      "finalSpeedB": "Leza Ketina Tiştê Duyem",
+      "galileoQuote": "«Di valahiyê de, hemû tişt bi heman lezbûnê dikevin bêyî ku giraniya wan li ber çavan were girtin.» - Galileo Galilei",
+      "varFreeFallTime": "Maweyê ketina serbest (t)",
+      "settingsTitle": "Mîhengên bilindiya ketinê û kêşkirinê",
+      "theoreticalVacuumTitle": "Nirxên teorîk di valahiya temam de:",
+      "recordedResultsTitle": "Encamên ketinê yên hatine tomarkirin:",
+      "vacuumNote": "Di valahiyê de pûk û goga hesinî di heman demê de ketin xwarê bo îspatkirina prensîba Galîleo.",
+      "airNote": "Berxwedana hewayê bû sedema derengketina pûkê û gihîştina wê ya leza sînorî."
+    },
+    "waves": {
+      "title": "Destwerdana Pêlan û Ezmûna Young",
+      "shortDesc": "Şikandina pêlan, destwerdana ronahî û pêlên avê û dîtina xetên ronî û tarî.",
+      "wavelength": "Dirêjahiya Pêlê (λ)",
+      "slitDistance": "Dûriya di Navbera Du Qelîşan de (d)",
+      "screenDistance": "Dûriya Perdeyê (L)",
+      "fringeWidth": "Firehiya Navbera Xetan (Δy)",
+      "numFringes": "Hejmara Xetên Xuyayî",
+      "waveType": "Cureyê Simulasyonê",
+      "doubleSlit": "Ezmûna Du Qelîşên Young (Young Double Slit)",
+      "rippleTank": "Hewza Pêlên Du Rehendî (2D Ripple Tank)",
+      "waveFrequency": "Frekansa Pêlê",
+      "varFringeWidth": "Mawaya navbera xêzên desttêwerdanê (Δy)",
+      "youngSlitParams": "Guhêrbarên du şeqên Young û ronahiyê",
+      "notesText": "Awa desttêwerdana du şeqên Young û têkiliya mawaya navbera xêzan bi dirêjahiya pêlê re hate lêkolînkirin."
+    },
+    "pendulum_energy": {
+      "title": "Ispatkirina parastina anarjiyê bi karanîna pandula sade (E = K + U)",
+      "subTitle": "Ispatkirina parastina anarjiyê bi karanîna pandula sade (E = K + U)",
+      "shortDesc": "Lêkolîna guherîna anarjiya tewereyî û anarjiya tevgerê di pandula sade de.",
+      "start": "Destpêkirin",
+      "pause": "Pewstandin",
+      "photogateVelLabel": "Leza dergehê ronahiyê (v_max)",
+      "bottomKELabel": "Anarjiya tevgerê li binî (K_max)",
+      "initialPELabel": "Anarjiya tewereyî ya destpêkê (U_0)",
+      "periodLabel": "Dema dewranê (T)",
+      "proofTitle": "Ispata fîzîkî ya yasaya parastina anarjiya mekanîkî:",
+      "proofText": "Di goşeya berdanê θ₀ de K=0 ye û hemi anarjî U_max = m·g·h_max e. Li xala herî jêr (h=0) anarjiya tewereyî dibe anarjiya tevgerê: K_max = ½ m v_max² = E.",
+      "controlsTitle": "Parametreyên pandulê",
+      "lengthLabel": "Dirêjiya benik (L)",
+      "massLabel": "Massa gogê (m)",
+      "angleLabel": "Goşeya berdanê ya destpêkê (θ₀)",
+      "dampingLabel": "Berxwedana hewayê (Dempyasyon)",
+      "conservativeZero": "0 (Sîstema parastî)",
+      "gravityLabel": "Cilveya kîşkirina gerstêrkan (g):",
+      "loggedMsg": "Hat tomarkirin di defterê de!",
+      "logBtn": "Tomarkirina parastina anarjiyê û leza binî",
+      "photogateLabel": "PHOTOGATE",
+      "varEnergyVel": "Parastina anarjiya mekanîkî û leza binî"
+    },
+    "photoelectric_effect": {
+      "title": "Diyardeya Fotoelektrîkê",
+      "play": "Dest Pê Beke",
+      "pause": "Aram Be",
+      "logMeasurement": "Tomarkirina pîvanê",
+      "activeEmission": "⚡ Emîsyona fotoelektrîkî çalak e (hf > Φ)",
+      "noEmission": "⛔ Emîsyon tune ye (hf < Φ - Di bin benda şên de)",
+      "photocurrentLabel": "Herikîna ronahiyê:",
+      "cathodeLabel": "Katod (-)",
+      "anodeLabel": "Anod (+)",
+      "photonEnergyMeter": "Anersiya fotonê",
+      "workFunctionMeter": "Karkirina kargêrî (Φ)",
+      "maxKineticEnergyMeter": "Herî zêde anersiya kinetîkî",
+      "stoppingPotentialMeter": "Potansiyela rawestandinê (V_stop)",
+      "controlsTitle": "Kontrolên ezmûnê",
+      "targetMetalLabel": "Metala armanc (Φ):",
+      "wavelengthLabel": "Dirêjiya pêla ronahiyê (λ):",
+      "intensityLabel": "Siddeta ronahiyê:",
+      "biasVoltageLabel": "Potansiyela derve (V):",
+      "thresholdWavelengthCard": "Dirêjiya pêla bendê (λ₀)",
+      "thresholdWavelengthSubtext": "λ₀ = hc / Φ (Dirêjtirîn pêl)",
+      "thresholdFrequencyCard": "Frekansa bendê (f₀)",
+      "thresholdFrequencySubtext": "f₀ = Φ / h (Kêmtirîn frekans)",
+      "maxVelocityCard": "Herî zêde leza elektronan",
+      "einsteinLawCard": "Hevkêşeya Einstein"
+    },
+    "radioactive_decay": {
+      "title": "Modelkirina Hilweşîna Radyoaktîf",
+      "pause": "Sekrandin",
+      "play": "Bide xebitandin",
+      "stepHalfLifeTooltip": "Pêşveçûna 1 nîvelemrikî (+1 T½)",
+      "log": "Toma kirin",
+      "activeParentNuclei": "Nokteyên radyoaktîf yên çalak (N)",
+      "decayedDaughter": "Nokteyên keçê yên cîgir",
+      "halfLivesCount": "Xulên nîvelemran:",
+      "elapsedTime": "Dema derbasbûyî (t)",
+      "activeNucleiCard": "Nokteyên mayî (N)",
+      "remainingPercent": "Rêjeya mayî %",
+      "activityRate": "Çalakiya radyoaktîf (A)",
+      "isotopeControls": "Guherbar û îzotop",
+      "targetIsotopeLabel": "Îzotopa radyoaktîf:",
+      "initialNucleiLabel": "Hejmara nokteyên destpêkê (N₀):",
+      "realHalfLife": "Nîvelemrê rastî:",
+      "radiationType": "Cûreyê tîşka derketî:",
+      "decayConstant": "Neqora hilweşînê (λ):",
+      "decayedNucleiCard": "Nokteyên hilweşiyayî",
+      "theoreticalN": "Bihayê teorîk yê nokteyên mayî",
+      "decayConstantCard": "Neqora hilweşîna radyoaktîf (λ):",
+      "instantaneousActivity": "Çalakiya radyoaktîf ya lezîngî (A)"
+    },
+    "rotational_dynamics": {
+      "title": "Momena sistiyê û dînamîka zevirînê (τ = I α)",
+      "subTitle": "Momena sistiyê û dînamîka zevirînê (τ = I α)",
+      "shortDesc": "Lêkolîna momena sistiyê ji bo şêweyên cuda cuda û leztirbûna goşeyî ya wan.",
+      "start": "Destpêkirin",
+      "pause": "Pewstandin",
+      "inertiaLabel": "Momena sistiyê (I)",
+      "angularAccLabel": "Leztirbûna goşeyî (α)",
+      "angularVelLabel": "Leza goşeyî (ω)",
+      "rotKELabel": "Anarjiya tevgera zevirînê",
+      "theoryTitle": "Berdewamiya momena sistiyê di şêweyên geometrîk de:",
+      "theoryText": "Berxwedana laş beramberî zevirînê (Momena sistiyê I) li ser belavbûna giraniyê ye: Bera tenik xwediya momena sistiyê ya herî mezin e (I = MR²).",
+      "controlsTitle": "Şêweyê geometrîk û moda azmûnê",
+      "modePulley": "Zevir bi massa daliqandî",
+      "modeIncline": "Gevizîn li ser berpalê",
+      "geometryLabel": "Şêweyê geometrîk ê laşê zevirî:",
+      "geoCylinder": "Sîlîndera tijî / Dîsk",
+      "geoRing": "Bera tenik (Hoop)",
+      "geoSphere": "Goya tijî (Solid Sphere)",
+      "geoRodCenter": "Darê tenik (Tewereya navend)",
+      "massLabel": "Massa laşê zevirî (M)",
+      "radiusLabel": "Nîvçerxa laş (R)",
+      "hangingMassLabel": "Massa daliqandî ya çêkerê torque (m)",
+      "inclineAngleLabel": "Goşeya berpalê (θ)",
+      "loggedMsg": "Hat tomarkirin di defterê de!",
+      "logBtn": "Tomarkirina momena sistiyê û leztirbûnê",
+      "reset": "Rêk xistin"
+    },
+    "viscosity_stokes": {
+      "title": "Lîncbûn û Zagona Stoks (Leza Dawî)",
+      "subtitle": "Kevitina gogên metalî di nava şilekên lînc de û hesabkirina hêza xwegiriyê Fd = 6πηrv û leza dawî vt = 2r²g(ρs - ρf)/(9η).",
+      "logged": "Tomaarkirî ✓",
+      "logMeasurement": "Pîvanê Tomar Bikin",
+      "controlsTitle": "Taybetmendiyên Şilek û Gogê",
+      "liquidLabel": "Cureyê Şilekê û Lîncbûn (η):",
+      "sphereMaterialLabel": "Madeya Gogê:",
+      "radiusLabel": "Nîveçapa Gogê (r):",
+      "terminalSpeedCard": "Leza Dawî (vt)",
+      "stokesDragCard": "Hêza Xwegiriyê (Fd)",
+      "viscosityCard": "Asta Lîncbûnê (η)",
+      "apparentWeightCard": "Giraniya Xuyanî (W - Fb)",
+      "varTerminalVel": "Leza Dawî vt (Zagona Stoks)",
+      "notesLog": "Taqîkirina lîncbûna şilekê û pîvandina leza dawî a goga kevtî.",
+      "dragCanvasLabel": "Fd (Xwegirî)",
+      "resetPosition": "Meqamê Nû Bikin"
+    }
+  },
+  "controls": {
+    "play": "Destpêkirin",
+    "pause": "Rawestandin",
+    "reset": "Sifirkirin",
+    "step": "Pêngavek Pêşve",
+    "speed": "Leza Simulasyonê",
+    "logData": "📝 Di Devera Tomaran de Binivîse",
+    "loggedSuccess": "Pîvan bi serkeftî di devera tomaran de hate tomarkirin!",
+    "stopwatch": "Demjimêra Laboratûvarê",
+    "calculator": "Hesabkera Fîzîkê",
+    "constants": "Berdewamên Fîzîkî",
+    "planetPreset": "Hilbijartina Rakêşana Gerstêrkê"
+  },
+  "notebook": {
+    "title": "Devera Tomaran û Daneyên Ezmûnî",
+    "description": "Ezmûnên xwe tomar bike, pîvanên teorîk û ceribandinî berawird bike û rêjeya çewtiyê hesab bike.",
+    "empty": "Hîç dane nehatiye tomarkirin. Ezmûnekê pêk bîne û li ser \"Di Devera Tomaran de Binivîse\" bitikîne.",
+    "tableHeaders": {
+      "experiment": "Ezmûn",
+      "variable": "Guhêrbara Pîvandî",
+      "measured": "Nirxa Pîvandî",
+      "theoretical": "Nirxa Teorîk",
+      "error": "Rêjeya Çewtiyê %",
+      "parameters": "Şertên Ezmûnê",
+      "notes": "Têbînî û Daxuyanî",
+      "time": "Dem",
+      "actions": "Çalakî"
+    },
+    "clearAll": "Hemû Tomaran Jê Bibe",
+    "exportCSV": "Daxistin wekî CSV",
+    "exportJSON": "Daxistin wekî JSON",
+    "addNotePlaceholder": "Têbînî an daxuyaniyek zanistî lê zêde bike...",
+    "errorFormula": "Rêjeya Çewtiyê = |(Pîvandî - Teorîk) / Teorîk| × 100%"
+  },
+  "formulas": {
+    "pendulum_period": {
+      "name": "Dema Hejîna Dandûla Hêsan",
+      "topic": "mechanics",
+      "formula": "T = 2π √(L / g)",
+      "description": "Dema hejîna dandûla hêsan ji bo guhestinên piçûk hesab dike, ku tenê bi dirêjahiya werîs û leza rakêşanê ve girêdayî ye.",
+      "variables": [
+        {
+          "symbol": "T",
+          "name": "Dema Hejînê",
+          "unit": "s"
+        },
+        {
+          "symbol": "L",
+          "name": "Dirêjahiya Werîs",
+          "unit": "m"
+        },
+        {
+          "symbol": "g",
+          "name": "Leza Rakêşanê",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "projectile_range": {
+      "name": "Mesafeya Asoyî ya Hawêjtiyê",
+      "topic": "mechanics",
+      "formula": "R = (v₀² · sin(2θ)) / g",
+      "description": "Hemû mesafeya asoyî ya ku hawêjtiyek ji dema avêtinê heta gihîştina heman astê derbas dike.",
+      "variables": [
+        {
+          "symbol": "R",
+          "name": "Mesafeya Asoyî",
+          "unit": "m"
+        },
+        {
+          "symbol": "v₀",
+          "name": "Leza Destpêkê",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "θ",
+          "name": "Kovara Avêtinê",
+          "unit": "degrees (°)"
+        },
+        {
+          "symbol": "g",
+          "name": "Leza Rakêşanê",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "projectile_height": {
+      "name": "Bilindahiya Herî Zêde ya Hawêjtiyê",
+      "topic": "mechanics",
+      "formula": "H = (v₀ · sin θ)² / (2g)",
+      "description": "Xala herî bilind a stûnî ya ku hawêjtî digihîjê dema ku leza stûnî dibe sifir.",
+      "variables": [
+        {
+          "symbol": "H",
+          "name": "Bilindahiya Herî Zêde",
+          "unit": "m"
+        },
+        {
+          "symbol": "v₀",
+          "name": "Leza Destpêkê",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "θ",
+          "name": "Kovara Avêtinê",
+          "unit": "degrees (°)"
+        },
+        {
+          "symbol": "g",
+          "name": "Leza Rakêşanê",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "ohms_law": {
+      "name": "Qanûna Bingehîn a Ohm",
+      "topic": "electricity",
+      "formula": "V = I · R",
+      "description": "Pêwendiya rasterast a di navbera voltaj, herikîna elektrîkê û berxwedanê de nîşan dide.",
+      "variables": [
+        {
+          "symbol": "V",
+          "name": "Voltaj",
+          "unit": "V (Volt)"
+        },
+        {
+          "symbol": "I",
+          "name": "Herikîn",
+          "unit": "A (Ampere)"
+        },
+        {
+          "symbol": "R",
+          "name": "Berxwedan",
+          "unit": "Ω (Ohm)"
+        }
+      ]
+    },
+    "electric_power": {
+      "name": "Hêza Elektrîkê",
+      "topic": "electricity",
+      "formula": "P = V · I = I² · R = V² / R",
+      "description": "Rêjeya bikaranîn an veguherîna enerjiya elektrîkê bo enerjiyên din di yekîneya demê de.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Hêza Elektrîkê",
+          "unit": "W (Watt)"
+        },
+        {
+          "symbol": "V",
+          "name": "Voltaj",
+          "unit": "V"
+        },
+        {
+          "symbol": "I",
+          "name": "Herikîn",
+          "unit": "A"
+        },
+        {
+          "symbol": "R",
+          "name": "Berxwedan",
+          "unit": "Ω"
+        }
+      ]
+    },
+    "snells_law": {
+      "name": "Qanûna Snell ji bo Şikandina Ronahiyê",
+      "topic": "optics",
+      "formula": "n₁ · sin(θ₁) = n₂ · sin(θ₂)",
+      "description": "Pêwendiya di navbera kovara ketin û şikandina tîrêja ronahiyê de di navbera du navgînên cuda de diyar dike.",
+      "variables": [
+        {
+          "symbol": "n₁",
+          "name": "Dendika Navgîna 1",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "θ₁",
+          "name": "Kovara Ketinê",
+          "unit": "°"
+        },
+        {
+          "symbol": "n₂",
+          "name": "Dendika Navgîna 2",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "θ₂",
+          "name": "Kovara Şikandinê",
+          "unit": "°"
+        }
+      ]
+    },
+    "critical_angle": {
+      "name": "Kovara Sînorî û Rengvedana Tevahî",
+      "topic": "optics",
+      "formula": "θ_c = arcsin(n₂ / n₁)",
+      "description": "Kovara ketinê ya di navgîna dendiktir de ku kovara şikandina wê dibe 90 pile.",
+      "variables": [
+        {
+          "symbol": "θ_c",
+          "name": "Kovara Sînorî",
+          "unit": "°"
+        },
+        {
+          "symbol": "n₁",
+          "name": "Dendika Navgîna Dendiktir",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "n₂",
+          "name": "Dendika Navgîna Kêm-dendik",
+          "unit": "dimensionless"
+        }
+      ]
+    },
+    "young_double_slit": {
+      "name": "Formûla Du Qelîşên Young ji bo Destwerdanê",
+      "topic": "waves",
+      "formula": "y_m = (m · λ · L) / d",
+      "description": "Cihê xeta ronî ya m-emîn li gorî xeta navendî.",
+      "variables": [
+        {
+          "symbol": "y_m",
+          "name": "Cihê Xeta Ronî",
+          "unit": "m"
+        },
+        {
+          "symbol": "λ",
+          "name": "Dirêjahiya Pêlê",
+          "unit": "m / nm"
+        },
+        {
+          "symbol": "L",
+          "name": "Dûriya Perdeyê",
+          "unit": "m"
+        },
+        {
+          "symbol": "d",
+          "name": "Dûriya Du Qelîşan",
+          "unit": "m / mm"
+        },
+        {
+          "symbol": "m",
+          "name": "Rêza Xetê",
+          "unit": "integer"
+        }
+      ]
+    },
+    "kinetic_energy": {
+      "name": "Enerjiya Tevgerê ya Mekanîkî",
+      "topic": "mechanics",
+      "formula": "E_k = ½ · m · v²",
+      "description": "Ew enerjiya ku tiştek ji ber tevgera xwe heye, rasterast bi mase û çargoşeya leza wî ve girêdayî ye.",
+      "variables": [
+        {
+          "symbol": "E_k",
+          "name": "Enerjiya Tevgerê",
+          "unit": "J (Joule)"
+        },
+        {
+          "symbol": "m",
+          "name": "Maseya Tiştê",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v",
+          "name": "Leza Tiştê",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "potential_energy": {
+      "name": "Enerjiya Potansiyel a Rakêşanê",
+      "topic": "mechanics",
+      "formula": "E_p = m · g · h",
+      "description": "Ew enerjiya ku di tiştekî de tê hilanîn ji ber bilindahiya wî di qada rakêşanê de.",
+      "variables": [
+        {
+          "symbol": "E_p",
+          "name": "Enerjiya Potansiyel",
+          "unit": "J"
+        },
+        {
+          "symbol": "m",
+          "name": "Mase",
+          "unit": "kg"
+        },
+        {
+          "symbol": "g",
+          "name": "Leza Rakêşanê",
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "h",
+          "name": "Bilindahî",
+          "unit": "m"
+        }
+      ]
+    },
+    "hookes_law": {
+      "name": "Qanûna Hooke û Vekişîna Sprîngê",
+      "topic": "mechanics",
+      "formula": "F = -k · x",
+      "description": "Hêza vegerandinê ya sprîngê rasterast bi guhestinê re diguhere û ber bi aliyê dijber ve kar dike.",
+      "variables": [
+        {
+          "symbol": "F",
+          "name": "Hêza Vegerandinê",
+          "unit": "N"
+        },
+        {
+          "symbol": "k",
+          "name": "Berdewamiya Sprîngê",
+          "unit": "N/m"
+        },
+        {
+          "symbol": "x",
+          "name": "Guhestin an Vekişîn",
+          "unit": "m"
+        }
+      ]
+    },
+    "spring_oscillator_period": {
+      "name": "Dema Hejîna Sîstema Mase-Sprîng",
+      "topic": "mechanics",
+      "formula": "T = 2π √(m / k)",
+      "description": "Dema pêwîst ji bo hejîneke temam a maseya girêdayî sprîngê.",
+      "variables": [
+        {
+          "symbol": "T",
+          "name": "Dema Hejînê",
+          "unit": "s"
+        },
+        {
+          "symbol": "m",
+          "name": "Maseya Pêvekirî",
+          "unit": "kg"
+        },
+        {
+          "symbol": "k",
+          "name": "Berdewamiya Sprîngê",
+          "unit": "N/m"
+        }
+      ]
+    },
+    "archimedes_buoyancy": {
+      "name": "Qanûna Arşîmedes û Hêza Rakirina Şilemeniyan",
+      "topic": "mechanics",
+      "formula": "F_b = ρ_fluid · V_sub · g",
+      "description": "Şilemenî hêzeke ber bi jor dide her tiştê ku noq dibe, ku wekhevî giraniya şilemeniya rijiyayî ye.",
+      "variables": [
+        {
+          "symbol": "F_b",
+          "name": "Hêza Rakirinê",
+          "unit": "N"
+        },
+        {
+          "symbol": "ρ_fluid",
+          "name": "Dendika Şilemeniyê",
+          "unit": "kg/m³"
+        },
+        {
+          "symbol": "V_sub",
+          "name": "Qebareya Noqbûyî",
+          "unit": "m³"
+        },
+        {
+          "symbol": "g",
+          "name": "Leza Rakêşanê",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "momentum_conservation": {
+      "name": "Parastina Momentûma Hêlî di Pevketinê de",
+      "topic": "mechanics",
+      "formula": "m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'",
+      "description": "Di hemû sîstemên girtî de, momentûma giştî ya tiştan berî û piştî pevketinê parastî ye.",
+      "variables": [
+        {
+          "symbol": "m₁",
+          "name": "Maseya Tiştê 1",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v₁",
+          "name": "Leza Tiştê 1 ya Berî Pevketinê",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "m₂",
+          "name": "Maseya Tiştê 2",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v₂",
+          "name": "Leza Tiştê 2 ya Berî Pevketinê",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "ideal_gas_law": {
+      "name": "Qanûna Rewşa Gaza Îdeal",
+      "topic": "thermo",
+      "formula": "P · V = n · R · T",
+      "description": "Pêwendiya di navbera zext, qebare, germahî û hejmara molên gazê de diyar dike.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Zexta Gazê",
+          "unit": "Pa / kPa"
+        },
+        {
+          "symbol": "V",
+          "name": "Qebareya Gazê",
+          "unit": "m³ / L"
+        },
+        {
+          "symbol": "n",
+          "name": "Hejmara Molan",
+          "unit": "mol"
+        },
+        {
+          "symbol": "R",
+          "name": "Berdewamiya Giştî ya Gazan",
+          "unit": "J/(mol·K)"
+        },
+        {
+          "symbol": "T",
+          "name": "Germahiya Kelvin",
+          "unit": "K (Kelvin)"
+        }
+      ]
+    },
+    "arc_length_radian": {
+      "name": "Pêwendiya Dirêjahiya Kevanê û Kovara bi Radyan",
+      "topic": "mechanics",
+      "formula": "s = r · θ",
+      "description": "Dirêjahiya kevana xelekî wekhevî tîreya nîvî lêzêdekirî bi kovara navendî bi radyan e.",
+      "variables": [
+        {
+          "symbol": "s",
+          "name": "Dirêjahiya Kevanê",
+          "unit": "m"
+        },
+        {
+          "symbol": "r",
+          "name": "Tîreya Nîvî",
+          "unit": "m"
+        },
+        {
+          "symbol": "θ",
+          "name": "Kovara bi Radyan",
+          "unit": "rad"
+        }
+      ]
+    },
+    "rotational_inertia_torque": {
+      "name": "Bêdengiya Zivirînê û Qanûna Duyem a Newton ji bo Zivirînê",
+      "topic": "mechanics",
+      "formula": "τ = I · α",
+      "description": "Zora zivirînê wekhevî bêdengiya zivirînê lêzêdekirî bi lezbûna kovarî ye.",
+      "variables": [
+        {
+          "symbol": "τ",
+          "name": "Zora Zivirînê",
+          "unit": "N·m"
+        },
+        {
+          "symbol": "I",
+          "name": "Bêdengiya Zivirînê",
+          "unit": "kg·m²"
+        },
+        {
+          "symbol": "α",
+          "name": "Lezbûna Kovarî",
+          "unit": "rad/s²"
+        }
+      ]
+    },
+    "center_of_mass_formula": {
+      "name": "Diyarkirina Navenda Maseyê ya Sîstemê",
+      "topic": "mechanics",
+      "formula": "X_cm = (Σ m_i · x_i) / (Σ m_i)",
+      "description": "Navîna xala belavbûna maseyê ya tiştan di nav sîstemekê de.",
+      "variables": [
+        {
+          "symbol": "X_cm",
+          "name": "Navenda Maseyê",
+          "unit": "m"
+        },
+        {
+          "symbol": "m_i",
+          "name": "Maseya Parçeyê",
+          "unit": "kg"
+        },
+        {
+          "symbol": "x_i",
+          "name": "Cihê Parçeyê",
+          "unit": "m"
+        }
+      ]
+    },
+    "acoustic_pipe_resonance": {
+      "name": "Dengvedana Deng di Lûleyên Hewayê de",
+      "topic": "waves",
+      "formula": "L = (2n - 1) · (λ / 4)",
+      "description": "Mercên çêbûna pêlên rawestayî û dengvedanê di lûleyên girtî de.",
+      "variables": [
+        {
+          "symbol": "L",
+          "name": "Dirêjahiya Lûleyê",
+          "unit": "m"
+        },
+        {
+          "symbol": "n",
+          "name": "Rêza Dengvedanê",
+          "unit": "integer"
+        },
+        {
+          "symbol": "λ",
+          "name": "Dirêjahiya Pêlê",
+          "unit": "m"
+        },
+        {
+          "symbol": "v",
+          "name": "Leza Deng",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "sound_speed_formula": {
+      "name": "Leza Deng bi Rêya Lûleya Dengvedanê",
+      "topic": "waves",
+      "formula": "v = 4 · (L + 0.6·r) · f",
+      "description": "Diyarkirina leza deng di hewayê de bi bikaranîna çengeleya dengvedanê û dirêjahiya stûna hewayê.",
+      "variables": [
+        {
+          "symbol": "v",
+          "name": "Leza Deng",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "L",
+          "name": "Dirêjahiya Stûna Hewayê",
+          "unit": "m"
+        },
+        {
+          "symbol": "f",
+          "name": "Frekansa Çengeleyê",
+          "unit": "Hz"
+        }
+      ]
+    },
+    "solenoid_magnetic_field": {
+      "name": "Qada Magnetîkî di Solenoîdê de û Hêza Lorentz",
+      "topic": "electricity",
+      "formula": "B = μ₀ · n · I  و  F = I · L · B · sin(θ)",
+      "description": "Dendika qada magnetîkî di nav solenoîdê de û hêza bandorker li ser rêberekî ku herikînê hildigire.",
+      "variables": [
+        {
+          "symbol": "B",
+          "name": "Dendika Qadê",
+          "unit": "T (Tesla)"
+        },
+        {
+          "symbol": "μ₀",
+          "name": "Destûrdana Magnetîkî",
+          "unit": "T·m/A"
+        },
+        {
+          "symbol": "n",
+          "name": "Hejmara Zivirînan di Metreyekê de",
+          "unit": "m⁻¹"
+        },
+        {
+          "symbol": "I",
+          "name": "Herikîna Elektrîkê",
+          "unit": "A"
+        },
+        {
+          "symbol": "F",
+          "name": "Hêza Magnetîkî",
+          "unit": "N"
+        }
+      ]
+    },
+    "atomic_energy_quantum": {
+      "name": "Spektroma Atomî û Qanûna Enerjiya Fotonê",
+      "topic": "optics",
+      "formula": "ΔE = h · f = (h · c) / λ",
+      "description": "Enerjiya fotona derketî dema ku elektron di navbera astên enerjiyê de diguhere.",
+      "variables": [
+        {
+          "symbol": "ΔE",
+          "name": "Cudahiya Enerjiyê",
+          "unit": "J / eV"
+        },
+        {
+          "symbol": "h",
+          "name": "Berdewamiya Planck",
+          "unit": "J·s"
+        },
+        {
+          "symbol": "f",
+          "name": "Frekansa Tîrêjê",
+          "unit": "Hz"
+        },
+        {
+          "symbol": "λ",
+          "name": "Dirêjahiya Pêla Xeta Spektromê",
+          "unit": "nm"
+        }
+      ]
+    },
+    "metric_prefixes_scaling": {
+      "name": "Pêşgirên Metrîkî û Guhertina Yekîneyan",
+      "topic": "mechanics",
+      "formula": "V_target = V_source · 10^(exp_source - exp_target)",
+      "description": "Guhertina matematîkî ya yekîneyên metrîkî yên navneteweyî li gorî hêzên dehî.",
+      "variables": [
+        {
+          "symbol": "V_source",
+          "name": "Nirxa Destpêkê",
+          "unit": "SI unit"
+        },
+        {
+          "symbol": "V_target",
+          "name": "Nirxa Guherî",
+          "unit": "SI unit"
+        },
+        {
+          "symbol": "exp",
+          "name": "Hêza Dehî",
+          "unit": "power"
+        }
+      ]
+    },
+    "stress_strain_young": {
+      "name": "Zext, Guherîna Relatîv û Modûla Young",
+      "topic": "mechanics",
+      "formula": "σ = F / A ,  ε = ΔL / L₀ ,  E = σ / ε",
+      "description": "Pêwendiya di navbera zext û vekişînê de di beşa elastîk a madeyên zexm de.",
+      "variables": [
+        {
+          "symbol": "σ",
+          "name": "Zexta Mekanîkî",
+          "unit": "Pa / MPa"
+        },
+        {
+          "symbol": "ε",
+          "name": "Guherîna bê Yekîne",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "E",
+          "name": "Modûla Young",
+          "unit": "GPa"
+        },
+        {
+          "symbol": "F",
+          "name": "Hêza Vekêşanê",
+          "unit": "N"
+        },
+        {
+          "symbol": "A",
+          "name": "Rûbera Birînê",
+          "unit": "m²"
+        }
+      ]
+    },
+    "bernoulli_principle": {
+      "name": "Formûla Bernoulli û Herikîna Şilemeniyê di Lûleya Venturi de",
+      "topic": "mechanics",
+      "formula": "P₁ + ½ρv₁² = P₂ + ½ρv₂²  (A₁v₁ = A₂v₂)",
+      "description": "Parastina enerjiya şilemeniya ne-zextbar, zêdebûna lezê dibe sedema kêmbûna zextê di cihên teng de.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Zexta Şilemeniyê",
+          "unit": "Pa / kPa"
+        },
+        {
+          "symbol": "v",
+          "name": "Leza Herikînê",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "ρ",
+          "name": "Dendika Şilemeniyê",
+          "unit": "kg/m³"
+        },
+        {
+          "symbol": "A",
+          "name": "Rûbera Lûleyê",
+          "unit": "m²"
+        }
+      ]
+    },
+    "angled_mirrors_images": {
+      "name": "Rengvedana Pir caran di Neynikên Xwar de û Kaledoskop",
+      "topic": "optics",
+      "formula": "N = (360° / θ) - 1",
+      "description": "Hejmara wêneyên xeyalî yên ku ji ber rengvedana ronahiyê di navbera du neynikên xwar de çêdibin.",
+      "variables": [
+        {
+          "symbol": "N",
+          "name": "Hejmara Wêneyan",
+          "unit": "images"
+        },
+        {
+          "symbol": "θ",
+          "name": "Kovara di Navbera Du Neynikan de",
+          "unit": "degrees (°)"
+        }
+      ]
+    },
+    "curved_mirrors_formula": {
+      "name": "Neynikên Qor û Xwar û Formûla Neynikê",
+      "topic": "optics",
+      "formula": "1/f = 1/d_o + 1/d_i ,  f = R / 2 ,  m = -d_i / d_o",
+      "description": "Formûla giştî ya neynikên gilover ji bo diyarkirina dûriya tîşkoyê û mezinkirinê.",
+      "variables": [
+        {
+          "symbol": "f",
+          "name": "Dirêjahiya Tîşkoyê",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_o",
+          "name": "Dûriya Tiştê",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "Dûriya Wêneyê",
+          "unit": "cm"
+        },
+        {
+          "symbol": "m",
+          "name": "Mezinkirin",
+          "unit": "ratio"
+        }
+      ]
+    },
+    "thin_lenses_formula": {
+      "name": "Zerbînên Tenik û Hêza Zerbînê bi Diyopterê",
+      "topic": "optics",
+      "formula": "1/f = 1/d_o + 1/d_i ,  P = 1 / f(m) = 100 / f(cm)",
+      "description": "Şikandina ronahiyê di zerbînan de û diyarkirina cihê wêneyê û hêza zerbînê bi diyopterê.",
+      "variables": [
+        {
+          "symbol": "f",
+          "name": "Dirêjahiya Tîşkoya Zerbînê",
+          "unit": "cm"
+        },
+        {
+          "symbol": "P",
+          "name": "Hêza Zerbînê",
+          "unit": "D (Diopters)"
+        },
+        {
+          "symbol": "d_o",
+          "name": "Dûriya Tiştê",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "Dûriya Wêneyê",
+          "unit": "cm"
+        }
+      ]
+    },
+    "malus_law_polarization": {
+      "name": "Polarîzasyona Ronahiyê û Qanûna Malus",
+      "topic": "optics",
+      "formula": "I = I_initial · cos²(θ) ,  E = E₀ · cos(θ)",
+      "description": "Giranbûna ronahiya polarîzekirî piştî derbasbûna ji analîzatorê di kovara θ de.",
+      "variables": [
+        {
+          "symbol": "I",
+          "name": "Giranbûna Derbasbûyî",
+          "unit": "W/m²"
+        },
+        {
+          "symbol": "I_initial",
+          "name": "Giranbûna Destpêkê",
+          "unit": "W/m²"
+        },
+        {
+          "symbol": "θ",
+          "name": "Kovara di Navbera Polarîzatoran de",
+          "unit": "degrees (°)"
+        }
+      ]
+    },
+    "rayleigh_scattering_law": {
+      "name": "Qanûna Rayleigh ji bo Belavbûna Ronahiyê (Çima Esman Şîn e?)",
+      "topic": "optics",
+      "formula": "I_scatter ∝ 1 / λ⁴ ,  T = e^(-τ)",
+      "description": "Giranbûna belavbûna ronahiyê bi berevajî bi hêza çarem a dirêjahiya pêlê re diguhere I ∝ 1/λ⁴.",
+      "variables": [
+        {
+          "symbol": "I_scatter",
+          "name": "Giranbûna Belavbûnê",
+          "unit": "proportional"
+        },
+        {
+          "symbol": "λ",
+          "name": "Dirêjahiya Pêlê",
+          "unit": "nm"
+        },
+        {
+          "symbol": "T",
+          "name": "Ronahiya Derbasbûyî",
+          "unit": "ratio"
+        }
+      ]
+    },
+    "work_heat_first_law": {
+      "name": "Karê Mekanîkî, Germî û Qanûna Yekem a Termodînamîkê",
+      "topic": "mechanics",
+      "formula": "Q = m · c · ΔT ,  W = F · d ,  ΔU = Q - W",
+      "description": "Wekheviya mekanîkî ji bo germiyê di ezmûna Joule de û guhertina karê bo germiyê.",
+      "variables": [
+        {
+          "symbol": "Q",
+          "name": "Enerjiya Germiyê",
+          "unit": "J / kJ"
+        },
+        {
+          "symbol": "W",
+          "name": "Karê Mekanîkî",
+          "unit": "J / kJ"
+        },
+        {
+          "symbol": "c",
+          "name": "Kapasîteya Germiyê ya Taybet",
+          "unit": "J/(kg·K)"
+        },
+        {
+          "symbol": "ΔT",
+          "name": "Bilindbûna Germahiyê",
+          "unit": "°C"
+        }
+      ]
+    },
+    "prescription_glasses_power": {
+      "name": "Berçavkên Bijîşkî û Hêza Zerbînê bi Diyopterê",
+      "topic": "optics",
+      "formula": "P = 1 / f (in meters) ,  1/f = 1/d_o + 1/d_i",
+      "description": "Hêza dîtinê ya zerbîna berçavkê bi yekîneya diyopterê ji bo çareserkirina kêmdîtinê û dûrdîtinê.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "Hêza Zerbînê",
+          "unit": "Diopters (D)"
+        },
+        {
+          "symbol": "f",
+          "name": "Dirêjahiya Tîşkoyê",
+          "unit": "m / cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "Dûriya Wêneyê",
+          "unit": "cm"
+        }
+      ]
+    },
+    "periscope_law_reflection": {
+      "name": "Perîskop û Qanûna Rengvedana Ronahiyê",
+      "topic": "optics",
+      "formula": "θ_incident = θ_reflected = 45° ,  Δθ_total = 90° + 90° = 180°",
+      "description": "Rengvedana ronahiyê bi kovara 45 pile li ser du neynikên paralel di perîskopê de.",
+      "variables": [
+        {
+          "symbol": "θ_i",
+          "name": "Kovara Ketinê",
+          "unit": "° (deg)"
+        },
+        {
+          "symbol": "θ_r",
+          "name": "Kovara Rengvedanê",
+          "unit": "° (deg)"
+        }
+      ]
+    },
+    "coulomb_static_balloons": {
+      "name": "Elektrîka Rawestayî û Qanûna Coulomb",
+      "topic": "electricity",
+      "formula": "F_e = k · |q₁ · q₂| / r² ,  tan(θ) = F_e / (m · g)",
+      "description": "Hêza kişandin û dehfdana elektrostatîk li gorî qanûna Coulomb di navbera barên elektrîkê de.",
+      "variables": [
+        {
+          "symbol": "F_e",
+          "name": "Hêza Elektrostatîk",
+          "unit": "N"
+        },
+        {
+          "symbol": "k",
+          "name": "Berdewamiya Coulomb",
+          "unit": "N·m²/C²"
+        },
+        {
+          "symbol": "q",
+          "name": "Bara Elektrîkê",
+          "unit": "μC / C"
+        },
+        {
+          "symbol": "r",
+          "name": "Dûriya Navberê",
+          "unit": "m"
+        }
+      ]
+    },
+    "sled_friction_mechanics": {
+      "name": "Xişandina Rawestayî û Tevgerî û Qanûna Duyem a Newton",
+      "topic": "mechanics",
+      "formula": "f_s,max = μ_s · N ,  f_k = μ_k · N ,  F_net = m · a",
+      "description": "Hêza xişandina rawestayî û tevgerî li ser rûberên cuda û lezbûna Newton.",
+      "variables": [
+        {
+          "symbol": "f_s",
+          "name": "Herî Zêde Xişandina Rawestayî",
+          "unit": "N"
+        },
+        {
+          "symbol": "f_k",
+          "name": "Xişandina Tevgerî",
+          "unit": "N"
+        },
+        {
+          "symbol": "μ",
+          "name": "Hevbeşa Xişandinê",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "N",
+          "name": "Hêza Stûnî",
+          "unit": "N"
+        }
+      ]
+    },
+    "fourier_heat_conduction": {
+      "name": "Qanûna Fourier ji bo Gihandina Germiyê di Metalen de",
+      "topic": "mechanics",
+      "formula": "Q / t = k · A · (T_hot - T_cold) / d",
+      "description": "Leza veguhestina germiyê bi rêya gihandinê di nav madeyên zexm de li gorî qanûna Fourier.",
+      "variables": [
+        {
+          "symbol": "Q/t",
+          "name": "Leza Veguhestina Germiyê",
+          "unit": "Watts (W)"
+        },
+        {
+          "symbol": "k",
+          "name": "Hevbeşa Gihandina Germiyê",
+          "unit": "W/(m·K)"
+        },
+        {
+          "symbol": "A",
+          "name": "Rûbera Birînê",
+          "unit": "m²"
+        },
+        {
+          "symbol": "d",
+          "name": "Dirêjahiya Şîşê",
+          "unit": "m"
+        }
+      ]
+    },
+    "seesaw_rotational_torque": {
+      "name": "Zora Zivirînê û Hevsengiya Cilûkê",
+      "topic": "mechanics",
+      "formula": "τ = F · r = m · g · r ,  Στ = τ₁ - τ₂ = 0",
+      "description": "Merca hevsengiya zivirînê li ser tewereya cilûkê dema ku koma zorên zivirînê dibe sifir.",
+      "variables": [
+        {
+          "symbol": "τ",
+          "name": "Zora Zivirînê",
+          "unit": "N·m"
+        },
+        {
+          "symbol": "r",
+          "name": "Dûriya Milê Hêzê ji Xala Piştgiriyê",
+          "unit": "m"
+        },
+        {
+          "symbol": "m",
+          "name": "Maseya Tiştê",
+          "unit": "kg"
+        }
+      ]
+    },
+    "faraday_lenz_induction": {
+      "name": "Hêzkirina Elektromagnetîk û Qanûna Faraday û Lenz",
+      "topic": "electricity",
+      "formula": "ε = -N · (ΔΦ_B / Δt) ,  I = ε / R",
+      "description": "Çêbûna hêza elektromotor a hêzkirî di dema guherîna lehiya magnetîkî de li gorî qanûna Faraday.",
+      "variables": [
+        {
+          "symbol": "ε",
+          "name": "Hêza Elektromotor a Hêzkirî",
+          "unit": "Volts (V)"
+        },
+        {
+          "symbol": "N",
+          "name": "Hejmara Zivirînên Bobînê",
+          "unit": "turns"
+        },
+        {
+          "symbol": "Φ_B",
+          "name": "Lehiya Magnetîkî",
+          "unit": "Weber (Wb)"
+        },
+        {
+          "symbol": "I",
+          "name": "Herikîna Hêzkirî",
+          "unit": "A / mA"
+        }
+      ]
+    },
+    "stokes_viscosity_terminal_vel": {
+      "name": "Qanûna Stokes ji bo Tîrbûnê û Leza Dawî",
+      "topic": "mechanics",
+      "formula": "F_d = 6π · η · r · v ,  v_t = [2r²g(ρ_s - ρ_f)] / (9η)",
+      "description": "Hêza berxwedana şilemeniyê li hember goka ketiye û hesabkirina leza dawî li gorî qanûna Stokes.",
+      "variables": [
+        {
+          "symbol": "F_d",
+          "name": "Hêza Berxwedana Stokes",
+          "unit": "N"
+        },
+        {
+          "symbol": "η",
+          "name": "Hevbeşa Tîrbûna Şilemeniyê",
+          "unit": "Pa·s"
+        },
+        {
+          "symbol": "v_t",
+          "name": "Leza Dawî",
+          "unit": "m/s / cm/s"
+        },
+        {
+          "symbol": "r",
+          "name": "Tîreya Nîvî ya Gokê",
+          "unit": "mm / m"
+        }
+      ]
+    },
+    "inclined_plane_simple_machine": {
+      "name": "Rûbera Xwar, Amûrên Hêsan û Qezenca Mekanîkî",
+      "topic": "mechanics",
+      "formula": "IMA = L / h ,  AMA = F_load / F_effort ,  η = (W_out / W_in) · 100%",
+      "description": "Qezenca mekanîkî ya rûbera xwar û kêmkirina hêza pêwîst ji bo bilindkirina baran.",
+      "variables": [
+        {
+          "symbol": "IMA",
+          "name": "Qezenca Mekanîkî ya Îdeal",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "AMA",
+          "name": "Qezenca Mekanîkî ya Rastîn",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "η",
+          "name": "Qabiliyeta Amûrê",
+          "unit": "%"
+        },
+        {
+          "symbol": "W_out",
+          "name": "Karê Bikêrhatî yê Derketî",
+          "unit": "J"
+        }
+      ]
+    }
+  },
+  "challenges": {
+    "title": "Pirsgirêk û Ceribandinên Laboratûvara Fîzîkê",
+    "description": "Fêhmkirina xwe ya têgehên fîzîkî yên ku we di laboratûvarê de ceribandine bipîvin.",
+    "score": "Puana Niha",
+    "checkAnswer": "Bersivê Kontrol Bike",
+    "next": "Pirsa Din",
+    "restart": "Testê Dîsa Dest Pê Bike",
+    "explanation": "Ravekirina Zanistî:",
+    "perfectScore": "🎉 Pir baş e! Hûn zanyarekî rastîn ê fîzîkê ne!",
+    "goodScore": "Encamek pir baş e! Berdewam bin li ser lêgerînê.",
+    "keepTrying": "Dîsa biceribînin û li ezmûnan vegerin."
+  },
+  "common": {
+    "seconds": "çirke (s)",
+    "meters": "metre (m)",
+    "metersPerSec": "m/s",
+    "metersPerSec2": "m/s²",
+    "joules": "Joule (J)",
+    "volts": "Volt (V)",
+    "amperes": "Amper (A)",
+    "ohms": "Ohm (Ω)",
+    "watts": "Watt (W)",
+    "degrees": "pile (°)",
+    "close": "Girtin",
+    "copy": "Kopîkirin",
+    "copied": "Hate kopîkirin!"
+  },
+  "catalog": {
+    "work_heat": {
+      "title": "Kar, Germî û Qanûna Yekem a Termodînamîkê",
+      "inputs": [
+        "Mîqdara Germiya Zêdekirî Q",
+        "Karê Kirî W",
+        "Cureyê Gazê"
+      ],
+      "outputs": [
+        "Guhertina Enerjiya Hundirîn ΔU",
+        "Germahiya Dawî T",
+        "Qebareya Dawî V"
+      ]
+    },
+    "prescription_glasses": {
+      "title": "Berçavkên Bijîşkî û Hêza Zerbînê",
+      "inputs": [
+        "Cureyê Kêmasiya Dîtinê (Kortbîn/Dûrbîn)",
+        "Dûriya Tîşkoyî ya Çav f_eye",
+        "Dûriya Xala Dûr/Nêzîk"
+      ],
+      "outputs": [
+        "Hêza Zerbîna Rastker P (Diyopter)",
+        "Cihê Wêneyê li ser Tora Çav",
+        "Zelaliya Dîtinê"
+      ]
+    },
+    "periscope": {
+      "title": "Perîskop û Qanûna Rengvedanê",
+      "inputs": [
+        "Kovara Xwarbûna Neynika Yekem θ1",
+        "Kovara Xwarbûna Neynika Duyem θ2",
+        "Bilindahiya Perîskopê h"
+      ],
+      "outputs": [
+        "Rêça Tîrêja Ronahiyê",
+        "Kovara Derketina Dawî",
+        "Hevsengbûna Xeta Dîtinê"
+      ]
+    },
+    "static_balloons": {
+      "title": "Elektrîka Rawestayî û Qanûna Coulomb",
+      "inputs": [
+        "Mîqdara Barê q1 (Coulomb)",
+        "Mîqdara Barê q2 (Coulomb)",
+        "Dûriya Navberê r (Metre)"
+      ],
+      "outputs": [
+        "Hêza Elektrostatîk F (Newton)",
+        "Cureyê Hêzê (Kişandin / Dehfkirin)",
+        "Lezbûna Balonan"
+      ]
+    },
+    "sled_friction": {
+      "title": "Xişandin li ser Rûberên Xwar",
+      "inputs": [
+        "Hevbeşa Xişandina Tevgerî μ_k",
+        "Maseya Xişokê m",
+        "Kovara Xwarbûnê θ"
+      ],
+      "outputs": [
+        "Hêza Xişandina Tevgerî f_k",
+        "Lezbûna Giştî a",
+        "Dema Derbasbûna Rêçê t"
+      ]
+    },
+    "heat_conduction": {
+      "title": "Gihandina Germiyê û Qanûna Fourier",
+      "inputs": [
+        "Gihandina Germiyê ya Madeyê k",
+        "Rûbera Birînê A",
+        "Cudahiya Germahiyê ΔT",
+        "Dirêjahiya Şîşê L"
+      ],
+      "outputs": [
+        "Rêjeya Herikîna Germiyê q (Watt)",
+        "Asta Germahiyê dT/dx",
+        "Mîqdara Enerjiya Veguhestî"
+      ]
+    },
+    "seesaw_torque": {
+      "title": "Hevsengiya Cilûkê û Zora Zivirînê",
+      "inputs": [
+        "Cih û Maseya Giraniya Çepê (m1, r1)",
+        "Cih û Maseya Giraniya Rastê (m2, r2)"
+      ],
+      "outputs": [
+        "Zora Zivirînê ya Giştî Στ",
+        "Rewşa Hevsengiya Zivirînê",
+        "Kovara Xwarbûna Cilûkê"
+      ]
+    },
+    "electromagnetic_induction": {
+      "title": "Hêzkirina Elektromagnetîk û Qanûna Faraday",
+      "inputs": [
+        "Hejmara Zivirînên Bobînê N",
+        "Leza Tevgera Magnetê v",
+        "Giranbûna Qada Magnetîkî B"
+      ],
+      "outputs": [
+        "Hêza Elektromotor a Hêzkirî ε (Volt)",
+        "Herikîna Hêzkirî I",
+        "Ronahiya Çirayê"
+      ]
+    },
+    "viscosity_stokes": {
+      "title": "Tîrbûn, Qanûna Stokes û Leza Dawî",
+      "inputs": [
+        "Hevbeşa Tîrbûna Şilemeniyê η",
+        "Tîreya Nîvî ya Gokê r",
+        "Dendika Gokê ρ_s",
+        "Dendika Şilemeniyê ρ_f"
+      ],
+      "outputs": [
+        "Leza Dawî v_t (m/s)",
+        "Hêza Astengkirinê F_d",
+        "Grafîka Lezê li Gorî Demê"
+      ]
+    },
+    "ramp_machine": {
+      "title": "Rûbera Xwar û Amûrên Hêsan",
+      "inputs": [
+        "Kovara Rûbera Xwar θ",
+        "Maseya Tiştê Hilgirtî m",
+        "Hevbeşa Xişandinê μ"
+      ],
+      "outputs": [
+        "Qezenca Mekanîkî MA",
+        "Hêza Pêwîst ji bo Kişandinê F_pull",
+        "Qabiliyeta Mekanîkî η"
+      ]
+    },
+    "metric_prefixes": {
+      "title": "Pêşgirên Metrîkî û Veguherînên Zanistî",
+      "inputs": [
+        "Nirxa Hejmarî ya Bingehîn",
+        "Yekîneya Pîvanê ya Bingehîn",
+        "Pêşgira Armanckirî (nano/mîkro/mega/gîga)"
+      ],
+      "outputs": [
+        "Nirx bi Şêweya Zanistî",
+        "Nirx bi Pêşgira Armanckirî",
+        "Faktora Rastîn a Veguherînê"
+      ]
+    },
+    "stress_strain": {
+      "title": "Zext, Kêşan û Modûla Young",
+      "inputs": [
+        "Hêza Bandorker F",
+        "Rûbera Birînê A",
+        "Dirêjahiya Destpêkê L0",
+        "Cureyê Madeyê (Pola/Sifir/Alumînyûm)"
+      ],
+      "outputs": [
+        "Zext σ (Pascal)",
+        "Kêşana Relatîv ε",
+        "Dirêjbûn ΔL",
+        "Sînorê Nermbûnê (Elastîk)"
+      ]
+    },
+    "bernoulli": {
+      "title": "Zanista Bernoulli û Lûleya Venturi",
+      "inputs": [
+        "Rêjeya Herikîna Qebareyê Q",
+        "Tîreya Beşa Fireh D1",
+        "Tîreya Beşa Teng D2"
+      ],
+      "outputs": [
+        "Cudahiya Zextê ΔP",
+        "Leza Şilemeniyê di Beşa Teng de v2",
+        "Bilindahiya Stûna Şilemeniyê di Venturi de"
+      ]
+    },
+    "angled_mirrors": {
+      "title": "Neynikên Xwar û Wêneyên Hevbeş",
+      "inputs": [
+        "Kovara di Navbera Du Neynikan de θ (Pile)",
+        "Cihê Tiştê li Gorî Du Neynikan"
+      ],
+      "outputs": [
+        "Hejmara Wêneyên Çêbûyî N",
+        "Cih û Hevsengiya Wêneyên Rengvedayî"
+      ]
+    },
+    "curved_mirrors": {
+      "title": "Neynikên Gilover (Qor û Xwar)",
+      "inputs": [
+        "Cureyê Neynikê (Qor/Xwar)",
+        "Dûriya Tîşkoyî f",
+        "Dûriya Tiştê ji Neynikê d_o",
+        "Bilindahiya Tiştê h_o"
+      ],
+      "outputs": [
+        "Dûriya Wêneyê d_i",
+        "Mezinkirin M",
+        "Taybetmendiyên Wêneyê (Rastîn/Xeyalî/Serûbin/Rast)"
+      ]
+    },
+    "thin_lenses": {
+      "title": "Zerbînên Tenik û Dûriya Tîşkoyî",
+      "inputs": [
+        "Dûriya Tîşkoyî f",
+        "Cihê Tiştê d_o",
+        "Bilindahiya Tiştê h_o"
+      ],
+      "outputs": [
+        "Cihê Wêneyê d_i",
+        "Faktora Mezinkirinê M",
+        "Rêça Tîrêjan û Çêbûna Wêneyê"
+      ]
+    },
+    "polarization": {
+      "title": "Polarîzasyona Ronahiyê û Qanûna Malus",
+      "inputs": [
+        "Giranbûna Ronahiya Destpêkê I0",
+        "Kovara Polarîzatorê Yekem θ1",
+        "Kovara Analîzatorê θ2"
+      ],
+      "outputs": [
+        "Giranbûna Ronahiya Derbasbûyî I (Watt/m²)",
+        "Rêjeya Derbasbûnê I/I0",
+        "Tewereya Polarîzasyonê ya Bidestxistî"
+      ]
+    },
+    "light_scattering": {
+      "title": "Belavbûna Ronahiyê û Qanûna Rayleigh",
+      "inputs": [
+        "Dirêjahiya Pêla Ronahiya Ketî λ",
+        "Mezinahiya Parçeyên Belavbûyî d",
+        "Dendika Navgînê"
+      ],
+      "outputs": [
+        "Giranbûna Ronahiya Belavbûyî I",
+        "Rengê Xuyayî yê Atmosferê",
+        "Ravekirina Şînbûna Esman û Sorahiya Şeveqê"
+      ]
+    },
+    "arc_length": {
+      "title": "Dirêjahiya Kevanê, Radyan û Tevgera Kovarî",
+      "inputs": [
+        "Tîreya Nîvî ya Rêçê r (Metre)",
+        "Kovara Zivirînê θ (Pile/Radyan)",
+        "Leza Kovarî ω"
+      ],
+      "outputs": [
+        "Dirêjahiya Kevana Birrî s (Metre)",
+        "Leza Hêlî v (m/s)",
+        "Cihê Kovarî"
+      ]
+    },
+    "rotational_dynamics": {
+      "title": "Bêdengiya Zivirînê û Dînamîka Zivirînê",
+      "inputs": [
+        "Zora Hêza Bandorker τ",
+        "Jeometrî û Maseya Tiştê Zivirî (Dîsk/Sîlînder/Xelek)",
+        "Tîreya Nîvî r"
+      ],
+      "outputs": [
+        "Bêdengiya Zivirînê I",
+        "Lezbûna Kovarî α (Radyan/çirke²)",
+        "Leza Kovarî ω(t)"
+      ]
+    },
+    "center_of_mass": {
+      "title": "Navenda Maseyê ya Sîstem û Tiştan",
+      "inputs": [
+        "Maseyên Tiştên Xalî (m1, m2, m3)",
+        "Koordînatên Cihê Maseyan (x_i, y_i)"
+      ],
+      "outputs": [
+        "Koordînatên Navenda Maseyê (X_cm, Y_cm)",
+        "Xala Hevsengiya Mekanîkî ya Sabît"
+      ]
+    },
+    "pendulum_energy": {
+      "title": "Parastina Enerjiya Mekanîkî di Dandûlê de",
+      "inputs": [
+        "Kovara Berdana Destpêkê θ0",
+        "Dirêjahiya Werîs L",
+        "Maseya Golikê m"
+      ],
+      "outputs": [
+        "Enerjiya Tevgerê K (Joule)",
+        "Enerjiya Potansiyel a Rakêşanê U (Joule)",
+        "Diyagrama Guherînên Enerjiyê ya Zindî"
+      ]
+    },
+    "pendulum": {
+      "title": "Dandûla Hêsan û Dema Hejînê",
+      "inputs": [
+        "Dirêjahiya Dandûlê L (Metre)",
+        "Leza Rakêşanê g (m/s²)",
+        "Maseya Golikê m"
+      ],
+      "outputs": [
+        "Dema Hejînê T (Çirke)",
+        "Frekansa Hejînê f (Hertz)",
+        "Leza Rakêşanê ya Hesabkirî"
+      ]
+    },
+    "projectile": {
+      "title": "Tevgera Hawêjtiyan û Rêça Kevanî",
+      "inputs": [
+        "Leza Destpêkê v0 (m/s)",
+        "Kovara Avêtinê θ (Pile)",
+        "Bilindahiya Destpêkê h0"
+      ],
+      "outputs": [
+        "Mesafeya Asoyî ya Herî Zêde R",
+        "Bilindahiya Herî Zêde H",
+        "Tevahiya Dema Firînê t_flight",
+        "Rêça Kevanî"
+      ]
+    },
+    "spring": {
+      "title": "Qanûna Hooke û Hejîna Ahengdar a Sprîngê",
+      "inputs": [
+        "Berdewamiya Sprîngê k (N/m)",
+        "Maseya Daliqandî m (kg)",
+        "Guhestina Destpêkê x0"
+      ],
+      "outputs": [
+        "Hêza Vegerandinê F_spring",
+        "Enerjiya Potansiyel a Nermbûnê U_s",
+        "Dema Hejînê T (Çirke)"
+      ]
+    },
+    "collision": {
+      "title": "Parastina Momentûma Hêlî û Pevketin",
+      "inputs": [
+        "Maseyên Her Du Tiştan (m1, m2)",
+        "Lezên Destpêkê (v1i, v2i)",
+        "Hevbeşa Nermbûnê e (Elastîk/Ne-elastîk)"
+      ],
+      "outputs": [
+        "Lezên Dawî (v1f, v2f)",
+        "Tevahiya Momentûma Parastî P_tot",
+        "Enerjiya Tevgerê ya Wenda ΔK"
+      ]
+    },
+    "freefall": {
+      "title": "Ketina Azad û Lezbûna Rakêşanê",
+      "inputs": [
+        "Bilindahiya Berdanê h (Metre)",
+        "Leza Rakêşana Gerstêrkê g (Erd/Heyv/Mars)",
+        "Berxwedana Hewayê"
+      ],
+      "outputs": [
+        "Dema Ketina Azad t (Çirke)",
+        "Leza Li Erdê Ketinê v_impact",
+        "Diyagrama Dûrî û Lezê"
+      ]
+    },
+    "acoustic_resonance": {
+      "title": "Dengvedan di Lûleyên Hewayê de",
+      "inputs": [
+        "Dirêjahiya Stûna Hewayê L",
+        "Cureyê Lûleyê (Girtî / Vekirî)",
+        "Germahiya Hewayê T"
+      ],
+      "outputs": [
+        "Frekansên Harmonîk fn",
+        "Cihên Girê û Zikên Pêla Zextê",
+        "Rewşa Dengvedanê"
+      ]
+    },
+    "sound_speed": {
+      "title": "Leza Deng bi Stûna Avê",
+      "inputs": [
+        "Frekansa Çengeleya Dengdêr f (Hertz)",
+        "Astên Bilindahiya Avê L1 û L2",
+        "Germahiya Navgînê T"
+      ],
+      "outputs": [
+        "Dirêjahiya Pêla Deng λ",
+        "Leza Deng a Hesabkirî v (m/s)",
+        "Rêjeya Çewtiya Standard"
+      ]
+    },
+    "waves": {
+      "title": "Pêl û Du Qelîşên Young",
+      "inputs": [
+        "Dûriya di Navbera Her Du Qelîşan de d",
+        "Dirêjahiya Pêla Ronahiyê λ (Nanometre)",
+        "Dûriya Perdeyê L"
+      ],
+      "outputs": [
+        "Dûriya di Navbera Xetên Ronî de Δy",
+        "Şêwaza Destwerdanê û Giranbûna Ronahiyê li ser Perdeyê"
+      ]
+    },
+    "magnetic_field": {
+      "title": "Qada Magnetîkî û Hêza Lorentz",
+      "inputs": [
+        "Bara Parçeyê q",
+        "Maseya Parçeyê m",
+        "Leza Arasteyî v",
+        "Giranbûna Qada Magnetîkî B"
+      ],
+      "outputs": [
+        "Hêza Lorentz F (Newton)",
+        "Tîreya Nîvî ya Rêça Xelekî r",
+        "Frekansa Sîklotronê"
+      ]
+    },
+    "atomic_spectra": {
+      "title": "Analîza Spektromî û Guhertina Kuantûmê",
+      "inputs": [
+        "Cureyê Elementê (Hîdrojen / Helyûm / Cîve / Neon)",
+        "Astên Guhertina Elektronî n1 û n2"
+      ],
+      "outputs": [
+        "Xetên Spektromî yên Derketî yên Xuyayî",
+        "Enerjiya Fotona Derketî ΔE (eV)",
+        "Dirêjahiya Pêlê λ"
+      ]
+    },
+    "circuits": {
+      "title": "Çerxeyên Elektrîkê, Qanûna Ohm û Hêza Elektrîkê",
+      "inputs": [
+        "Voltaja Pîlê V (Volt)",
+        "Nirxa Berxwedanê R (Ohm)",
+        "Cureyê Girêdanê (Li pey hev / Hevtewere)"
+      ],
+      "outputs": [
+        "Giranbûna Herikîna Derbasbûyî I (Amper)",
+        "Hêza Elektrîkê ya Bikaranînê P (Watt)",
+        "Daketina Voltajê"
+      ]
+    },
+    "buoyancy": {
+      "title": "Zanista Arşîmedes û Hêza Rakirina Şilemeniyan",
+      "inputs": [
+        "Qebareya Tiştê Noqbûyî V_obj",
+        "Dendika Madeya Tiştê ρ_obj",
+        "Dendika Şilemeniyê ρ_fluid"
+      ],
+      "outputs": [
+        "Hêza Rakirinê F_B (Newton)",
+        "Giraniya Xuyayî ya Tiştê W_apparent",
+        "Rewşa Tiştê (Li ser avê dimîne / Daliqandî / Noq dibe)"
+      ]
+    },
+    "thermodynamics": {
+      "title": "Gaza Îdeal û Termodînamîk",
+      "inputs": [
+        "Hejmara Molên Gazê n",
+        "Qebareya Firaqê V",
+        "Germahiya Mitleq T (Kelvin)"
+      ],
+      "outputs": [
+        "Zexta Gazê P (Pascal)",
+        "Navîna Enerjiya Tevgerê ya Parçeyan <E_k>",
+        "Grafîka P-V"
+      ]
+    },
+    "optics": {
+      "title": "Optîk û Qanûna Snell di Şikandinê de",
+      "inputs": [
+        "Hevbeşa Şikandinê ya Navgîna Yekem n1",
+        "Hevbeşa Şikandinê ya Navgîna Duyem n2",
+        "Kovara Ketinê θ1"
+      ],
+      "outputs": [
+        "Kovara Şikandinê θ2",
+        "Kovara Sînorî ji bo Rengvedana Tevahî ya Navxweyî θ_c",
+        "Leza Ronahiyê di Navgînê de"
+      ]
+    },
+    "build_atom": {
+      "title": "Çêkirina Atomê û Tabloya Periyodîk",
+      "inputs": [
+        "Hejmara Protonan p",
+        "Hejmara Neutronan n",
+        "Hejmara Elektronan e"
+      ],
+      "outputs": [
+        "Nav û Hêmaya Elementê",
+        "Hejmara Maseyê A",
+        "Bara Paqij û Hevsengiya Atomî"
+      ]
+    },
+    "build_nucleus": {
+      "title": "Çêkirina Dendikê û Enerjiya Girêdanê ya Dendikî",
+      "inputs": [
+        "Hejmara Atomî Z",
+        "Hejmara Maseyê A",
+        "Enerjiya Girêdanê ji bo Her Nukleonekê"
+      ],
+      "outputs": [
+        "Tevahiya Enerjiya Girêdanê ya Dendikî E_b",
+        "Kêmbûna Maseyê Δm",
+        "Îstîkrara Dendikê û Cureyê Têkçûnê"
+      ]
+    },
+    "rutherford_scattering": {
+      "title": "Belavbûna Alfa ya Rutherford û Vedîtina Dendikê",
+      "inputs": [
+        "Enerjiya Parçeyên Alfa yên Ketî E_α",
+        "Hejmara Atomî ya Rûpelê Armanc Z",
+        "Hevbeşa Pevketinê b"
+      ],
+      "outputs": [
+        "Kovara Belavbûnê θ",
+        "Rêça Parçeyên Alfa",
+        "Nêzîktirîn Dûrî ji Dendikê d_min"
+      ]
+    },
+    "molecules_and_light": {
+      "title": "Molekul, Ronahî û Bandora Fotonan",
+      "inputs": [
+        "Cureyê Molekulê (CO2, H2O, CH4, O2, N2)",
+        "Dirêjahiya Pêla Fotonê (Mîkropêl / Jêr-sor / Xuyayî / Ser-binefşî)"
+      ],
+      "outputs": [
+        "Bersiva Molekulê (Zivirîn / Hejîn / Îyonbûn / Derbasbûn)",
+        "Ravekirina Bandora Serayê"
+      ]
+    },
+    "color_vision": {
+      "title": "Dîtina Rengan û Tevlihevkirina Ronahiyê",
+      "inputs": [
+        "Giranbûna Rengê Sor R (0-255)",
+        "Giranbûna Rengê Kesk G (0-255)",
+        "Giranbûna Rengê Şîn B (0-255)"
+      ],
+      "outputs": [
+        "Rengê Dawî yê Hatî Dîtin di Çav de",
+        "Bersiva Wergirên Konîk ên Dîtinê"
+      ]
+    },
+    "capacitor_lab": {
+      "title": "Laboratûvara Kondansatorê û Enerjiya Elektrîkê",
+      "inputs": [
+        "Rûbera Her Du Pelan A",
+        "Dûriya Navberê d (Milîmetre)",
+        "Voltaja Pîlê V (Volt)",
+        "Berdewamiya Îzolekirinê κ"
+      ],
+      "outputs": [
+        "Kapasîteya Kondansatorê C (Farad)",
+        "Bara Komkirî Q (Coulomb)",
+        "Enerjiya Komkirî U (Joule)"
+      ]
+    },
+    "charges_and_fields": {
+      "title": "Barên Elektrîkê, Xetên Qadê û Potansiyel",
+      "inputs": [
+        "Cihê Barên Erênî û Neyînî (x, y)",
+        "Mîqdara Barê Q"
+      ],
+      "outputs": [
+        "Tora Vektorên Giranbûna Qadê E",
+        "Xetên Hevpotansiyel V",
+        "Tevgera Bara Ceribandinê"
+      ]
+    },
+    "resistance_in_wire": {
+      "title": "Berxwedan di Têlê de û Berxwedana Taybet",
+      "inputs": [
+        "Berxwedana Taybet a Madeyê ρ",
+        "Dirêjahiya Têlê L",
+        "Rûbera Birînê A"
+      ],
+      "outputs": [
+        "Berxwedana Giştî R (Ohm)",
+        "Dendika Qisûran ku Herikînê Asteng Dike"
+      ]
+    },
+    "gravity_and_orbits": {
+      "title": "Rakêşan û Rêgehên Fezayî",
+      "inputs": [
+        "Maseya Stêrka Navendî M",
+        "Maseya Gerstêrk/Heyv m",
+        "Tîreya Nîvî ya Rêgehê r"
+      ],
+      "outputs": [
+        "Leza Rêgehî v",
+        "Dema Rêgehê T",
+        "Rêça Îstîkrara Rêgehê"
+      ]
+    },
+    "keplers_laws": {
+      "title": "Qanûnên Kepler ji bo Tevgera Gerstêrkan",
+      "inputs": [
+        "Nîvtewereya Mezin a",
+        "Kêmasiya Xelekê e",
+        "Maseya Stêrka Navendî M"
+      ],
+      "outputs": [
+        "Dema Rêgehê T",
+        "Rûberên Wekhev di Demên Wekhev de (Qanûna Duyem a Kepler)",
+        "Cihê Nêzîktirîn Xal (Perihelion) û Dûrtirîn Xal (Aphelion)"
+      ]
+    },
+    "energy_skate_park": {
+      "title": "Parka Pilingan û Guherînên Enerjiyê",
+      "inputs": [
+        "Şiklê Rêçê (Kevanî / Xeleka Girtî / Xwarbûn)",
+        "Maseya Xizok m",
+        "Hevbeşa Xişandinê"
+      ],
+      "outputs": [
+        "Enerjiya Tevgerê K",
+        "Enerjiya Potansiyel a Rakêşanê U_g",
+        "Enerjiya Germiyê ya Çêbûyî",
+        "Leza Xizok di Her Xalekê de"
+      ]
+    },
+    "fourier_making_waves": {
+      "title": "Rêzeçiyayên Fourier û Çêkirina Pêlên Ahengdar",
+      "inputs": [
+        "Firehiya Harmonîkan A1, A2, A3, A4...",
+        "Frekansa Bingehîn f0",
+        "Şiklê Pêla Armanckirî (Çargoşe / Sêgoşe / Dirandar)"
+      ],
+      "outputs": [
+        "Şiklê Pêla Hevbeş",
+        "Spektroma Frekansê (Analîzatora Spektromê)"
+      ]
+    },
+    "wave_on_a_string": {
+      "title": "Pêl li ser Têlê û Leza Qonaxê",
+      "inputs": [
+        "Hêza Rakêşanê T",
+        "Dendika Dirêjahiya Têlê μ",
+        "Firehiya Hejînê A",
+        "Frekansa Hejînerê f"
+      ],
+      "outputs": [
+        "Leza Belavbûna Pêlê v",
+        "Dirêjahiya Pêlê λ",
+        "Vegerîna Pêlê ji Serê Sabît / Azad"
+      ]
+    },
+    "states_of_matter": {
+      "title": "Rewşên Madeyê, Guherîna Rewşê û Germiya Veşartî",
+      "inputs": [
+        "Cureyê Madeyê (Av / Neon / Argon / Oksîjen)",
+        "Germahiya Zêdekirî an Kêmkirî",
+        "Zexta Derve P"
+      ],
+      "outputs": [
+        "Rewşa Fîzîkî (Zexm / Şil / Gaz)",
+        "Grafîka Rewşê (Phase Diagram)",
+        "Enerjiya Tevgerê ya Molekulî"
+      ]
+    },
+    "gas_diffusion": {
+      "title": "Belavbûna Gazan û Qanûna Graham",
+      "inputs": [
+        "Maseya Molar a Gaza Yekem M1",
+        "Maseya Molar a Gaza Duyem M2",
+        "Germahî T"
+      ],
+      "outputs": [
+        "Rêjeya Leza Belavbûnê r1/r2",
+        "Belavbûna Cihê ya Molekulan li Gorî Demê"
+      ]
+    },
+    "rotational_dynamics_torque": {
+      "title": "Tevgera Zivirînê û Zora Zivirînê ya Bidestxistî",
+      "inputs": [
+        "Hêza Têketî F (Newton)",
+        "Tîreya Nîvî r (Metre)",
+        "Bêdengiya Zivirînê I (kg·m²)"
+      ],
+      "outputs": [
+        "Momentûma Kovarî L",
+        "Lezbûna Kovarî α",
+        "Enerjiya Tevgerê ya Zivirînê K_rot"
+      ]
+    },
+    "models_h_atom": {
+      "title": "Modelên Atoma Hîdrojenê",
+      "inputs": [
+        "Asta Kuantûmê ya Bingehîn n1",
+        "Asta Kuantûmê ya Hiyarbûyî n2",
+        "Enerjiya Fotona Ketî"
+      ],
+      "outputs": [
+        "Enerjiya Rêgehê En (eV)",
+        "Dirêjahiya Pêla Fotona Derketî λ (nm)",
+        "Rêzeya Spektromê (Lyman / Balmer / Paschen)"
+      ]
+    },
+    "circuit_construction_kit": {
+      "title": "Çêkirina Çerxeya Elektrîkê ya Pêşketî",
+      "inputs": [
+        "Voltaja Çavkaniyan V_sources",
+        "Nirxên Berxwedanê R1, R2, R3",
+        "Şêwaza Girêdana Torê (Topolojî)"
+      ],
+      "outputs": [
+        "Herikîn di Her Çiqekê de I_branches",
+        "Cudahiya Potansiyel li ser Her Parçeyekê",
+        "Tevahiya Hêza Windabûyî"
+      ]
+    },
+    "generator": {
+      "title": "Jeneratora Elektrîkê",
+      "inputs": [
+        "Leza Zivirîna Kovarî ω (rpm)",
+        "Hejmara Zivirînên Bobînê N",
+        "Giranbûna Qada Magnetîkî B"
+      ],
+      "outputs": [
+        "Herî Zêde Hêza Elektromotor ε_max (Volt)",
+        "Frekansa Herikîna Guherbar a Çêbûyî f (Hz)",
+        "Şiklê Pêla Sînusê ji bo Voltajê"
+      ]
+    },
+    "magnet_compass": {
+      "title": "Qible-nima û Magnet",
+      "inputs": [
+        "Cihê Magnetê li Gorî Qible-nimayê (x, y)",
+        "Giranbûna Zora Dûqutbî ya Magnetîkî m",
+        "Kovara Guhestina Her Du Qutban"
+      ],
+      "outputs": [
+        "Kovara Guhestina Derziya Qible-nimayê θ",
+        "Nexşeya Vektorên Qada Giştî",
+        "Xetên Hêza Magnetîkî"
+      ]
+    },
+    "magnets_electromagnets": {
+      "title": "Magnet û Elektromagnet",
+      "inputs": [
+        "Giranbûna Herikîna Derbasbûyî I (Amper)",
+        "Dendika Zivirînan n = N/L",
+        "Têxistina Dendika Hesinî ya Pir Derbasbar"
+      ],
+      "outputs": [
+        "Giranbûna Qada Magnetîkî di Navendê de B (Tesla / mT)",
+        "Hejmara Derziyên Kişandî",
+        "Qutbbûna Magnetê N/S"
+      ]
+    },
+    "gravity_force_lab": {
+      "title": "Laboratûvara Hêza Rakêşanê",
+      "inputs": [
+        "Maseya Tiştê Yekem m1 (kg)",
+        "Maseya Tiştê Duyem m2 (kg)",
+        "Dûriya di Navbera Navendên Maseyê de r (Metre)"
+      ],
+      "outputs": [
+        "Hêza Kişandina Hevbeş F (nN)",
+        "Vektorên Hêza Wekhev û Dijber F12 û F21"
+      ]
+    },
+    "solar_system": {
+      "title": "Koma Rojê û Rêgehên Gerstêrkan",
+      "inputs": [
+        "Maseya Roj û Gerstêrkan (M_sun, m_planet)",
+        "Leza Destpêkê ya Têketî v0",
+        "Dûriya Rêgehî ya Destpêkê r0"
+      ],
+      "outputs": [
+        "Rêçên Tevgera Rastîn (Rêgeha Xelekî / Hêkî / Parabol)",
+        "Parastina Momentûma Kovarî û Enerjiya Giştî"
+      ]
+    },
+    "energy_forms": {
+      "title": "Şêwazên Enerjiyê û Guherînên Wan",
+      "inputs": [
+        "Cureyê Madeyê (Av / Hesin / Kerpîç / Rûn)",
+        "Çavkaniya Enerjiyê (Agir / Qeşa / Enerjiya Elektrîkê)"
+      ],
+      "outputs": [
+        "Germahî T li Gorî Demê",
+        "Belavbûna Yekîneyên Enerjiyê (Tevgerî, Germî, Tîrêjdar, Kîmyewî)",
+        "Hevsengiya Germiyê ya Dawî"
+      ]
+    },
+    "normal_modes": {
+      "title": "Şêwazên Xwezayî yên Hejînê",
+      "inputs": [
+        "Hejmara Şêwaza Harmonîk n (1, 2, 3...)",
+        "Hêza Rakêşana Têlê T (Newton)",
+        "Dirêjahiya Têlê L",
+        "Dendika Dirêjahiya Maseyê μ"
+      ],
+      "outputs": [
+        "Frekansa Dengvedanê fn (Hz)",
+        "Dirêjahiya Pêlê λn",
+        "Cihên Girê (Nodes) û Zikan (Antinodes)"
+      ]
+    },
+    "forces_motion": {
+      "title": "Hêz û Tevger: Bingeh",
+      "inputs": [
+        "Hêza Derve ya Bikaranînê F_applied (Newton)",
+        "Maseya Sindoqê m (kg)",
+        "Hevbeşa Xişandina Rûberê μ"
+      ],
+      "outputs": [
+        "Hêza Dawî ya Paqij F_net",
+        "Lezbûna Encambûyî a (m/s²)",
+        "Diyagrama Tiştê Azad a Hêzan (FBD)",
+        "Leza Arasteyî v"
+      ]
+    },
+    "gas_properties": {
+      "title": "Taybetmendiyên Gazê û Zexta Tevgerî",
+      "inputs": [
+        "Hejmara Molekulên Têketî N",
+        "Qebareya Lûleyê V",
+        "Germkirin an Sarkirina Germiyê"
+      ],
+      "outputs": [
+        "Zexta Hundirîn P (Pascal)",
+        "Navîna Leza Molekulî v_rms",
+        "Rêjeya Lihevketina Molekulan bi Dîwarê Firaqê re"
+      ]
+    },
+    "diffusion": {
+      "title": "Belavbûna Molekulî û Qanûna Fick",
+      "inputs": [
+        "Mase û Cureyê Molekulan (Sivik / Giran)",
+        "Germahiya Navgînê T",
+        "Vekirin / Girtina Astengiya Veqetandinê"
+      ],
+      "outputs": [
+        "Rêjeya Herikîna Belavbûnê J",
+        "Asta Xestiyê dC/dx",
+        "Dema Gihiştina Hevsengiya Yekreng"
+      ]
+    },
+    "blackbody_spectrum": {
+      "title": "Spektroma Tiştên Reş û Qanûnên Planck û Wien",
+      "inputs": [
+        "Germahiya Tiştê Reş T (Kelvin) ji 300K heta 10000K (wek Erd, Çira, Roj, Stêrkên Şîn)"
+      ],
+      "outputs": [
+        "Dirêjahiya Pêla Lûtkeya Tîrêjdanê λ_max (Mîkrometre)",
+        "Giranbûna Tîrêjdana Giştî I (Watt/m²)",
+        "Grafîka Belavbûna Spektromî û Rengê Xuyayî"
+      ]
+    },
+    "doppler_effect": {
+      "title": "Bandora Doppler û Guherîna Frekansê",
+      "inputs": [
+        "Leza Çavkaniya Tevgerbar vₛ (m/s)",
+        "Leza Çavdêr vₒ (m/s)",
+        "Frekansa Derketî ya Çavkaniyê f (Hz)",
+        "Leza Deng di Navgînê de v (m/s)"
+      ],
+      "outputs": [
+        "Frekansa Hatî Pîvandin f' (Hz)",
+        "Guherîna Frekansa Doppler Δf",
+        "Dirêjahiya Pêla Pêş û Paş λ",
+        "Hejmara Mach"
+      ]
+    },
+    "electrical_transformer": {
+      "title": "Transformatora Elektrîkê û Qanûna Hêzkirina Hevbeş",
+      "inputs": [
+        "Voltaja Çavkaniya Yekem Vₚ (Volt)",
+        "Hejmara Zivirînên Bobîna Yekem Nₚ",
+        "Hejmara Zivirînên Bobîna Duyem Nₛ",
+        "Berxwedana Barê R_L (Ohm)",
+        "Qabiliyeta Transformatorê η%"
+      ],
+      "outputs": [
+        "Voltaja Duyem a Hêzkirî Vₛ (Volt)",
+        "Herikîna Her Du Bobînan Iₚ û Iₛ (Amper)",
+        "Rêjeya Guhertinê a û Cureyê Transformatorê",
+        "Hêza Elektrîkê ya Veguhestî Pₛ (Watt)"
+      ]
+    },
+    "photoelectric_effect": {
+      "title": "Diyardeya Fotoelektrîkê û Qanûna Kuantûmê ya Einstein",
+      "inputs": [
+        "Dirêjahiya Pêla Ronahiya Ketî λ (Nanometre)",
+        "Giranbûna Ronahiyê (%)",
+        "Cureyê Metala Katodê (Fonksiyona Karê Φ)",
+        "Voltaja Derve V (Volt)"
+      ],
+      "outputs": [
+        "Enerjiya Fotona Ketî E (eV)",
+        "Herî Zêde Enerjiya Tevgerê ya Elektronan K_max",
+        "Voltaja Rawestandinê V_stop (Volt)",
+        "Frekans û Dirêjahiya Pêla Sînor f₀ û λ₀",
+        "Leza Derketina Elektronan v_max"
+      ]
+    },
+    "radioactive_decay": {
+      "title": "Hilweşîna Radyoaktîf û Qanûna Nîv-jiyana Dendikî",
+      "inputs": [
+        "Hejmara Dendikên Radyoaktîf ên Destpêkê N₀",
+        "Cureyê Îzotopê û Nîv-jiyana Wî T₁/₂",
+        "Dema Derbasbûyî t (Çirke)",
+        "Derbaskirina Nîv-jiyanekê (+1 T½)"
+      ],
+      "outputs": [
+        "Hejmara Dendikên Radyoaktîf ên Mayî N(t)",
+        "Hejmara Dendikên Îstîkrar ên Çêbûyî N_decayed",
+        "Rêjeya Sedî ya Mayî %",
+        "Çalakiya Radyoaktîf A(t) (Bq)",
+        "Berdewamiya Hilweşînê λ"
+      ]
+    },
+    "calorimetry_equilibrium": {
+      "title": "Kalorîmetre û Qanûna Hevsengiya Germiyê",
+      "inputs": [
+        "Mase û Cureyê Tiştê Zexm ê Germ m₁ û c₁",
+        "Germahiya Destpêkê ya Tiştê T₁ (°C)",
+        "Mase û Cureyê Şilemeniya Kalorîmetreyê m₂ û c₂",
+        "Germahiya Destpêkê ya Şilemeniyê T₂ (°C)"
+      ],
+      "outputs": [
+        "Germahiya Hevsengiya Germiyê ya Dawî T_f (°C û K)",
+        "Mîqdara Enerjiya Germiyê ya Guherbar Q (Joule û Kalorî)",
+        "Kapasîteyên Germiyê C₁ û C₂",
+        "Guherîna Germahiyan ΔT₁ û ΔT₂"
+      ]
+    }
+  },
+  "planets": {
+    "earth": {
+      "name": "Erd (Dinya)",
+      "g": "9.81",
+      "icon": "🌍"
+    },
+    "moon": {
+      "name": "Heyv",
+      "g": "1.62",
+      "icon": "🌕"
+    },
+    "mars": {
+      "name": "Mars",
+      "g": "3.71",
+      "icon": "🔴"
+    },
+    "jupiter": {
+      "name": "Jupiter",
+      "g": "24.79",
+      "icon": "🪐"
+    },
+    "sun": {
+      "name": "Roj",
+      "g": "274.0",
+      "icon": "☀️"
+    },
+    "space": {
+      "name": "Valahiya Fezayê (Bê Kêş)",
+      "g": "0.0",
+      "icon": "✨"
+    }
+  },
+  "opticalMediums": {
+    "air": {
+      "name": "Hewa / Valahî",
+      "n": "1.0003",
+      "color": "rgba(224, 242, 254, 0.15)"
+    },
+    "water": {
+      "name": "Av",
+      "n": "1.333",
+      "color": "rgba(56, 189, 248, 0.25)"
+    },
+    "oil": {
+      "name": "Rûnê Nebatî",
+      "n": "1.47",
+      "color": "rgba(234, 179, 8, 0.25)"
+    },
+    "glass": {
+      "name": "Cam (Crown Glass)",
+      "n": "1.52",
+      "color": "rgba(147, 197, 253, 0.35)"
+    },
+    "flint_glass": {
+      "name": "Flint Glass",
+      "n": "1.66",
+      "color": "rgba(168, 85, 247, 0.35)"
+    },
+    "diamond": {
+      "name": "Elmas",
+      "n": "2.417",
+      "color": "rgba(236, 72, 153, 0.4)"
+    }
+  },
+  "constants": {
+    "g": {
+      "name": "Leza Rakêşana Erdê ya Standard",
+      "symbol": "g",
+      "value": "9.80665",
+      "unit": "m/s²"
+    },
+    "c": {
+      "name": "Leza Ronahiyê di Valahiyê de",
+      "symbol": "c",
+      "value": "2.998 × 10⁸",
+      "unit": "m/s"
+    },
+    "G": {
+      "name": "Berdewamiya Rakêşana Gerdûnî",
+      "symbol": "G",
+      "value": "6.674 × 10⁻¹¹",
+      "unit": "N·m²/kg²"
+    },
+    "e": {
+      "name": "Bara Bingehîn a Elektronê",
+      "symbol": "e",
+      "value": "1.602 × 10⁻¹⁹",
+      "unit": "C"
+    },
+    "ε0": {
+      "name": "Destûrdana Elektrîkê ya Valahiyê",
+      "symbol": "ε₀",
+      "value": "8.854 × 10⁻¹²",
+      "unit": "F/m"
+    },
+    "h": {
+      "name": "Berdewamiya Planck",
+      "symbol": "h",
+      "value": "6.626 × 10⁻³⁴",
+      "unit": "J·s"
+    },
+    "kB": {
+      "name": "Berdewamiya Boltzmann",
+      "symbol": "k_B",
+      "value": "1.381 × 10⁻²³",
+      "unit": "J/K"
+    }
+  },
+  "quiz": {
+    "q1": {
+      "experiment": "pendulum",
+      "question": "Heke em maseya golika dandûla hêsan 4 qat zêde bikin dema ku dirêjahiya werîs neguherbar be, çi tê serê dema hejînê?",
+      "options": [
+        "Du qat dibe",
+        "Dibe nîvî",
+        "Neguherbar dimîne",
+        "Çar qat dibe"
+      ],
+      "correctIndex": 2,
+      "explanation": "Dema hejîna dandûlê tenê bi dirêjahî û rakêşanê ve girêdayî ye T = 2π√(L/g) û pêwendiya wê bi maseyê re nîne."
+    },
+    "q2": {
+      "experiment": "projectile",
+      "question": "Kîjan kovara avêtinê mezintirîn mesafeya asoyî dide hawêjtiyekê li ser rûyê erdê bêyî berxwedana hewayê?",
+      "options": [
+        "30°",
+        "45°",
+        "60°",
+        "90°"
+      ],
+      "correctIndex": 1,
+      "explanation": "Qanûna mesafeyê R = (v₀² sin(2θ))/g di kovara 45 pile de nirxa herî mezin digire ji ber ku sin(90°) = 1."
+    },
+    "q3": {
+      "experiment": "circuits",
+      "question": "Dema ku du berxwedanên heman 10 Ohm bi şêweya hevtewere (Parallel) werin girêdan, berxwedana hevseng çend e?",
+      "options": [
+        "20 Ω",
+        "10 Ω",
+        "5 Ω",
+        "2.5 Ω"
+      ],
+      "correctIndex": 2,
+      "explanation": "Di girêdana hevtewere ya berxwedanên wekhev de: R_eq = R / n = 10 / 2 = 5 Ω."
+    },
+    "q4": {
+      "experiment": "optics",
+      "question": "Kengî Rengvedana Tevahî ya Navxweyî (Total Internal Reflection) di ronahiyê de çêdibe?",
+      "options": [
+        "Dema ku ronahî ji navgînek kêm-dendik diçe navgînek dendiktir",
+        "Dema ku ronahî ji navgîna dendiktir diçe kêm-dendik bi kovarek ji kovara sînorî mezintir",
+        "Dema ku kovara ketinê her dem 0° be",
+        "Di hemû navgînan de bêyî ku li dendik û kovaran binêrin"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rengvedana tevahî tenê dema çêdibe ku tîrêj ji navgîna dendiktir ber bi kêm-dendik biçe û kovara ketinê ji kovara sînorî mezintir be."
+    },
+    "q5": {
+      "experiment": "freefall",
+      "question": "Heke perek û gokek hesinî di lûleyek valahiya temam de (bê hewa) werin berdan, kîjan zûtir digihîje erdê?",
+      "options": [
+        "Goka hesinî ji ber giraniya xwe",
+        "Per ji ber sivikiya xwe",
+        "Her du jî di heman demê de digihîjin erdê",
+        "Bi rûbera tiştê ve girêdayî ye"
+      ],
+      "correctIndex": 2,
+      "explanation": "Di valahiyê de berxwedana hewayê nîne û hemû tişt bi heman lezbûna rakêşanê (g) dikevin û di heman gavê de digihîjin."
+    },
+    "q6": {
+      "experiment": "waves",
+      "question": "Di ezmûna du qelîşên Young de, heke dûriya di navbera qelîşan de (d) zêde bibe, çi tê serê dûriya di navbera xetan de (y)?",
+      "options": [
+        "Dûriya di navbera xetan de zêde dibe",
+        "Dûriya di navbera xetan de kêm dibe û nêzîkî hev dibin",
+        "Dûrî neguherbar dimîne",
+        "Xet bi tevahî wenda dibin"
+      ],
+      "correctIndex": 1,
+      "explanation": "Li gorî formûla Young y = (m·λ·L)/d dûriya di navbera xetan de bi berevajî bi d re diguhere, lewma bi zêdebûna d xet nêzîkî hev dibin."
+    },
+    "q7": {
+      "experiment": "spring",
+      "question": "Heke maseya 4kg bi sprîngekê ve bi dema 2 çirkeyan biheje, heke mase bibe 16kg dema hejînê dibe çend?",
+      "options": [
+        "2 çirke",
+        "4 çirke",
+        "8 çirke",
+        "1 çirke"
+      ],
+      "correctIndex": 1,
+      "explanation": "Dema hejînê T = 2π√(m/k). Bi zêdekirina maseyê bi 4 qatan, dema hejînê bi koka 4 ku dike 2 qat zêde dibe (2 × 2 = 4 çirke)."
+    },
+    "q8": {
+      "experiment": "buoyancy",
+      "question": "Pirtûkek dar bi dendika 600 kg/m³ ket nav avê bi dendika 1000 kg/m³. Çend ji sedî ya qebareya wê noq dibe?",
+      "options": [
+        "40%",
+        "60%",
+        "100%",
+        "0%"
+      ],
+      "correctIndex": 1,
+      "explanation": "Rêjeya noqbûna tiştê wekhevî dendika tiştê dabeşî dendika şilemeniyê ye: 600 / 1000 = 60%."
+    },
+    "q9": {
+      "experiment": "collision",
+      "question": "Di pevketina temam elastîk de di navbera du tiştan de, kîjan ji van nirxên fîzîkî parastî ne?",
+      "options": [
+        "Tenê momentûm",
+        "Tenê enerjiya tevgerê",
+        "Her du momentûm û enerjiya tevgerê bi hev re",
+        "Leza her tiştekî bi serê xwe"
+      ],
+      "correctIndex": 2,
+      "explanation": "Di pevketina temam elastîk de hem momentûma hêlî û hem jî enerjiya tevgerê ya giştî ya sîstemê parastî ne."
+    },
+    "q10": {
+      "experiment": "thermodynamics",
+      "question": "Di pêvajoyek germahiya neguherbar (Îzotermal) de ji bo gaza îdeal, heke qebare du qat bibe, çi tê serê zextê?",
+      "options": [
+        "Zext du qat dibe",
+        "Zext dibe nîvî",
+        "Zext wekî xwe neguherbar dimîne",
+        "Zext dibe sifir"
+      ],
+      "correctIndex": 1,
+      "explanation": "Li gorî qanûna Boyle di germahiya neguherbar de P·V = neguherbar e, zext û qebare dijber in; duqatkirina qebareyê zextê dike nîvî."
+    }
+  }
+}

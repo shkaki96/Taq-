@@ -1,0 +1,2611 @@
+{
+  "appTitle": "مختبر الفيزياء الافتراضي التفاعلي",
+  "appSubtitle": "محاكي تجارب الميكانيكا، الكهرباء، البصريات والموجات مع تسجيل القياسات وحساب نسبة الخطأ",
+  "tabs": {
+    "experiments": "التجارب الفيزيائية",
+    "notebook": "دفتر المختبر والقياسات",
+    "formulas": "دليل القوانين الفيزيائية",
+    "challenges": "تحديات واختبارات"
+  },
+  "experiments": {
+    "pendulum": {
+      "title": "البندول البسيط وحفظ الطاقة",
+      "shortDesc": "حركة توافقية بسيطة، حساب الزمن الدوري وتحولات الطاقة الميكانيكية.",
+      "length": "طول الخيط (L)",
+      "mass": "كتلة الكرة (m)",
+      "gravity": "تسارع الجاذبية (g)",
+      "damping": "معامل مقاومة الهواء (التخميد)",
+      "initialAngle": "زاوية الإزاحة الابتدائية (θ₀)",
+      "period": "الزمن الدوري النظري (T)",
+      "frequency": "التردد (f)",
+      "maxVelocity": "أقصى سرعة خطية (v_max)",
+      "kineticEnergy": "طاقة الحركة (Ek)",
+      "potentialEnergy": "طاقة الوضع (Ep)",
+      "totalEnergy": "الطاقة الكلية (E_total)",
+      "currentAngle": "الزاوية الحالية (θ)",
+      "timeElapsed": "الزمن المنقضي (t)",
+      "oscillations": "عدد الاهتزازات الكاملة",
+      "release": "إفلات البندول",
+      "dragToAngle": "يمكنك سحب كرة البندول بالماوس أو ضبط الزاوية بالمنزلق",
+      "showVectors": "عرض متجهات السرعة والقوة",
+      "showEnergyBars": "عرض مخطط الطاقة الحي",
+      "varPeriod": "الزمن الدوري للبندول (T)",
+      "expVariablesTitle": "عوامل التجربة وضبط المتغيرات",
+      "notesText": "تم القياس بدقة متناهية مع حساب الزمن والتردد."
+    },
+    "spring": {
+      "title": "قانون هوك والنابض التوافقي (Spring-Mass)",
+      "shortDesc": "دراسة استطالة النوابض المرنة، حساب ثابت الصلابة k والزمن الدوري وتحولات طاقة الوضع المرونية.",
+      "springConstant": "ثابت صلابة النابض (k)",
+      "mass": "كتلة الجسم المعلق (m)",
+      "displacement": "الإزاحة الابتدائية (x₀)",
+      "damping": "معامل التخميد واللزوجة (b)",
+      "orientation": "اتجاه النابض",
+      "vertical": "رأسي (مع الجاذبية)",
+      "horizontal": "أفقي (عديم الاحتكاك)",
+      "theoreticalPeriod": "الزمن الدوري النظري (T)",
+      "measuredPeriod": "الزمن الدوري المقاس",
+      "springForce": "قوة الإرجاع للنابض (F = -kx)",
+      "elasticPotentialEnergy": "طاقة الوضع المرونية (E_pe = ½kx²)",
+      "kineticEnergy": "طاقة الحركة (E_k)",
+      "totalEnergy": "الطاقة الميكانيكية الكلية",
+      "pullMass": "اسحب الكتلة بالماوس أو اضبط الإزاحة لتشغيل الاهتزاز"
+    },
+    "buoyancy": {
+      "title": "قاعدة أرخميدس وقوة الطفو (Archimedes & Buoyancy)",
+      "shortDesc": "دراسة طفو وغمر الأجسام، قياس حجم السائل المزاح والوزن الظاهري وكثافة الموائع.",
+      "fluidType": "نوع السائل المحيط",
+      "fluidDensity": "كثافة السائل (ρ_fluid)",
+      "objectMaterial": "مادة الجسم المغمور",
+      "objectDensity": "كثافة مادة الجسم (ρ_obj)",
+      "objectVolume": "حجم الجسم (V)",
+      "objectMass": "كتلة الجسم (m)",
+      "actualWeight": "الوزن الحقيقي في الهواء (W = mg)",
+      "buoyantForce": "قوة الطفو للأعلى (F_b = ρ_f·V_sub·g)",
+      "apparentWeight": "الوزن الظاهري المقاس (W_app)",
+      "submergedVolume": "الحجم المغمور الفعلي (V_sub)",
+      "submergedPercent": "نسبة الغمر المئوية",
+      "statusFloating": "🟢 الجسم يطفو على السطح (ρ_obj < ρ_fluid)",
+      "statusNeutral": "🟡 تعويم متوازن ومعلق (ρ_obj = ρ_fluid)",
+      "statusSinking": "🔴 الجسم يغوص نحو القاع (ρ_obj > ρ_fluid)",
+      "waterDisplaced": "السائل المزاح في الوعاء الجانبي"
+    },
+    "collision": {
+      "title": "التصادمات وحفظ كمية الحركة (Momentum & Collisions)",
+      "shortDesc": "محاكاة تصادم عربتين على المسار الهوائي، دراسة التصادم المرن وغير المرن وحفظ الطاقة الحركية.",
+      "cart1": "العربة الأولى (Cart 1)",
+      "cart2": "العربة الثانية (Cart 2)",
+      "mass1": "كتلة العربة الأولى (m₁)",
+      "mass2": "كتلة العربة الثانية (m₂)",
+      "vel1": "السرعة الابتدائية للعربة 1 (v₁)",
+      "vel2": "السرعة الابتدائية للعربة 2 (v₂)",
+      "elasticity": "معامل الارتداد والمرونة (e)",
+      "elastic": "مرن تام (e = 1.0 - حفظ الطاقة الحركية)",
+      "inelastic": "عديم المرونة تماماً (e = 0.0 - التحام)",
+      "partiallyElastic": "مرن جزئياً (e = 0.5)",
+      "totalMomentumBefore": "كمية الحركة قبل التصادم (P_init)",
+      "totalMomentumAfter": "كمية الحركة بعد التصادم (P_final)",
+      "keInitial": "الطاقة الحركية الكلية الابتدائية",
+      "keFinal": "الطاقة الحركية الكلية النهائية",
+      "keLost": "الطاقة الحركية المفقودة (حرارة/تشوه)",
+      "launchCarts": "إطلاق العربتين نحو التصادم",
+      "varMomentum": "كمية الحركة الكلية بعد التصادم (P_total)",
+      "collisionOccurred": "تم التصادم!",
+      "elasticShort": "مرن",
+      "inelasticShort": "عديم المرونة",
+      "cartsConfig": "معايير العربتين",
+      "calculatedFinalVel": "السرعات المحسوبة بعد التصادم",
+      "noteText": "تجربة تصادم في بعد واحد (e = {{eVal}}). كمية الحركة الابتدائية = {{initP}} kg·m/s، والمفقود من الطاقة الحركية = {{keL}} J."
+    },
+    "thermodynamics": {
+      "title": "الغاز المثالي والديناميكا الحرارية (Ideal Gas & P-V)",
+      "shortDesc": "محاكاة حركة جزيئات الغاز المجهرية داخل المكبس، قانون PV=nRT ومنحنى الضغط والحجم.",
+      "temperature": "درجة الحرارة (T)",
+      "volume": "حجم الأسطوانة (V)",
+      "pressure": "الضغط المقاس (P)",
+      "particles": "عدد جزيئات الغاز (N)",
+      "heatPiston": "تسخين بلهب 🔥",
+      "coolPiston": "تبريد بجليد ❄️",
+      "processType": "العملية الديناميكية الحرارية",
+      "isothermal": "ثابت درجة الحرارة (Isothermal T=C)",
+      "isobaric": "ثابت الضغط (Isobaric P=C)",
+      "isochoric": "ثابت الحجم (Isochoric V=C)",
+      "idealGasConst": "ثابت الغازات العام المقاس (R)",
+      "workDone": "الشغل المنجز من الغاز (W = ∫P dV)",
+      "particleSpeedDist": "توزيع سرعات ماكسويل-بولتزمان",
+      "varPressure": "ضغط الغاز المحسوب (P)",
+      "pistonChamber": "حجرة الأسطوانة والكباس",
+      "pvDiagram": "مخطط مؤشر P-V",
+      "tempLabel": "درجة الحرارة",
+      "gasParameters": "معايير حالة الغاز",
+      "idealGasLaw": "معادلة الغاز المثالي",
+      "notesFormat": "حالة الغاز المثالي عند T={{temp}}K و V={{vol}}L. الضغط الناتج P={{press}} kPa."
+    },
+    "projectile": {
+      "title": "حركة المقذوفات في بعدين",
+      "shortDesc": "دراسة مسار القذيفة، المدى الأفقي، أقصى ارتفاع، وتحليل متجهات السرعة.",
+      "velocity": "السرعة الابتدائية (v₀)",
+      "angle": "زاوية الإطلاق (θ)",
+      "height": "ارتفاع منصة الإطلاق (h₀)",
+      "airResistance": "مقاومة الهواء (Drag)",
+      "launch": "إطلاق القذيفة 🚀",
+      "reset": "إعادة ضبط المنصة",
+      "maxHeight": "أقصى ارتفاع (H_max)",
+      "range": "المدى الأفقي (R)",
+      "flightTime": "زمن التحليق الكلي (t)",
+      "vx": "السرعة الأفقية (v_x)",
+      "vy": "السرعة الرأسية (v_y)",
+      "targetMode": "وضع إصابة الهدف",
+      "targetDistance": "مسافة الهدف",
+      "hitTarget": "🎯 أحسنت! إصابة مباشرة للهدف!",
+      "missedTarget": "لم تصب الهدف، عدل الزاوية أو السرعة!",
+      "varRange": "المدى الأفقي للمقذوف (R)",
+      "launchControlsTitle": "معايير إطلاق القذيفة",
+      "notesText": "تمت دراسة حركة المقذوف تحت تأثير الجاذبية."
+    },
+    "circuits": {
+      "title": "قانون أوم والدوائر الكهربائية",
+      "shortDesc": "محاكاة دوائر التيار المستمر، قياس الجهد والتيار والمقاومة والقدرة.",
+      "voltage": "جهد المصدر (V)",
+      "resistance1": "المقاومة الأولى (R₁)",
+      "resistance2": "المقاومة الثانية (R₂)",
+      "circuitType": "نوع التوصيل",
+      "series": "على التوالي (Series)",
+      "parallel": "على التوازي (Parallel)",
+      "single": "مقاومة مفردة (Single)",
+      "switch": "مفتاح الدائرة",
+      "switchOn": "الدائرة مغلقة (مفتوح للتيار)",
+      "switchOff": "الدائرة مفتوحة (مقطوع)",
+      "current": "شدة التيار الكلي (I)",
+      "totalResistance": "المقاومة المكافئة (R_eq)",
+      "power": "القدرة الكلية المستهلكة (P)",
+      "bulbBrightness": "سطوع المصباح",
+      "multimeter": "المقياس المتعدد (Multimeter)",
+      "ammeter": "مقياس التيار (A)",
+      "voltmeter": "مقياس الجهد (V)",
+      "electronFlow": "حركة الإلكترونات الحية",
+      "varTotalCurrent": "شدة التيار الكلي للدائرة (I)",
+      "notesText": "تم التحقق من قانون أوم V = I · R وتوزيع الجهد والتيار.",
+      "componentSettingsTitle": "قيم عناصر الدائرة الكهربائية",
+      "liveCalculationsTitle": "الحسابات الحية للدائرة:"
+    },
+    "optics": {
+      "title": "البصريات وقانون سنيل للإنكسار",
+      "shortDesc": "دراسة انكسار وانعكاس الضوء والزاوية الحرجة والانعكاس الكلي الداخلي.",
+      "medium1": "الوسط الأول (السقوط)",
+      "medium2": "الوسط الثاني (الانكسار)",
+      "incidentAngle": "زاوية السقوط (θ₁)",
+      "refractedAngle": "زاوية الانكسار (θ₂)",
+      "reflectedAngle": "زاوية الانعكاس (θ_r)",
+      "criticalAngle": "الزاوية الحرجة (θ_c)",
+      "totalInternalReflection": "⚠️ حدوث انعكاس كلي داخلي (Total Internal Reflection)",
+      "refractionOccurs": "انكسار طبيعي مع جزء منعكس جزئياً",
+      "prismMode": "وضع تحليل الضوء عبر المنشور الزجاجي (Prism)",
+      "laserColor": "لون شعاع الليزر",
+      "normalLine": "العمود المقام (Normal)",
+      "varRefractionAngle": "زاوية الانكسار (θ₂)",
+      "opticalMediaSelection": "خصائص الأوساط الضوئية والزوايا",
+      "notesTIR": "حدث انعكاس كلي داخلي لأن زاوية السقوط أكبر من الزاوية الحرجة.",
+      "notesSnell": "تم التحقق من قانون سنيل n1·sin(θ1) = n2·sin(θ2).",
+      "snellsInterface": "واجهة سنيل للانكسار",
+      "laserRay": "شعاع الليزر",
+      "snellsLawSub": "قانون سنيل",
+      "criticalAngleCond": "n1 > n2 فقط",
+      "reflectionLawSub": "قانون الانعكاس"
+    },
+    "freefall": {
+      "title": "السقوط الحر وتجربة برج غاليليو",
+      "shortDesc": "مقارنة سقوط الأجسام المختلفة في الهواء مقابل الفراغ التام عبر الكواكب.",
+      "dropHeight": "ارتفاع الإسقاط (h)",
+      "objectA": "الجسم الأول (كرة حديدية 5kg)",
+      "objectB": "الجسم الثاني (ريشة طائر 0.01kg)",
+      "mediumEnv": "وسط السقوط",
+      "vacuum": "فراغ تام (Vacuum - لا توجد مقاومة هواء)",
+      "air": "هواء طبيعي (مع مقاومة الهواء)",
+      "drop": "إسقاط الأجسام ⏱️",
+      "timeA": "زمن وصول الجسم الأول",
+      "timeB": "زمن وصول الجسم الثاني",
+      "finalSpeedA": "سرعة ارتطام الجسم الأول",
+      "finalSpeedB": "سرعة ارتطام الجسم الثاني",
+      "galileoQuote": "«في الفراغ تسقط جميع الأجسام بتسارع متطابق بغض النظر عن كتلها» - غاليليو غاليلي",
+      "varFreeFallTime": "زمن السقوط الحر (t)",
+      "settingsTitle": "إعدادات برج الإسقاط والجاذبية",
+      "theoreticalVacuumTitle": "القيم النظرية في الفراغ التام:",
+      "recordedResultsTitle": "نتائج السقوط المسجلة:",
+      "vacuumNote": "في الفراغ سقطت الريشة والكرة الحديدية في نفس الزمن تماماً إثباتاً لمبدأ غاليليو.",
+      "airNote": "أدت مقاومة الهواء إلى تأخر وصول الريشة ووصولها للسرعة الحدية."
+    },
+    "waves": {
+      "title": "تداخل الموجات وتجربة شقي يونغ",
+      "shortDesc": "حيود وتداخل الموجات الضوئية والمائية ونمط الأهداب المضيئة والمعتمة.",
+      "wavelength": "الطول الموجي (λ)",
+      "slitDistance": "المسافة بين الشقين (d)",
+      "screenDistance": "المسافة إلى الشاشة (L)",
+      "fringeWidth": "المسافة بين هدبين متتاليين (Δy)",
+      "numFringes": "عدد الأهداب المرئية",
+      "waveType": "نوع المحاكاة",
+      "doubleSlit": "تجربة شقي يونغ (Young Double Slit)",
+      "rippleTank": "حوض الأمواج ثنائي الأبعاد (2D Ripple Tank)",
+      "waveFrequency": "تردد الموجة",
+      "varFringeWidth": "المسافة بين أهداب التداخل (Δy)",
+      "youngSlitParams": "متغيرات شقي يونغ والضوء",
+      "notesText": "تمت دراسة نمط تداخل شقي يونغ وعلاقة المسافة بين الأهداب بالطول الموجي."
+    },
+    "pendulum_energy": {
+      "title": "التحقق من حفظ الطاقة باستخدام النواس البسيط (E = K + U)",
+      "subTitle": "التحقق من حفظ الطاقة باستخدام النواس البسيط (E = K + U)",
+      "shortDesc": "دراسة التحول بين طاقة الوضع الحركية والوضع في النواس البسيط",
+      "start": "تشغيل",
+      "pause": "إيقاف",
+      "photogateVelLabel": "سرعة البوابة الضوئية (v_max)",
+      "bottomKELabel": "طاقة الحركة عند القاع (K_max)",
+      "initialPELabel": "طاقة الوضع الابتدائية (U_0)",
+      "periodLabel": "الزمن الدوري (T)",
+      "proofTitle": "البرهان الفيزيائي لقانون حفظ الطاقة الميكانيكية:",
+      "proofText": "عند إفلات البندول من أقصى زاوية θ₀، تكون طاقة الحركة صفراً وتكون الطاقة كلها طاقة وضع: E = U_max = m·g·h_max = m·g·L(1 - cos θ₀). وعند مروره بأدنى نقطة (موضع الاتزان h=0)، تتحول طاقة الوضع بالكامل إلى طاقة حركة: K_max = ½ m v_max² = E. وبالتالي فإن السرعة عند القاع تساوي دائماً v = √(2 g h_max).",
+      "controlsTitle": "عناصر التحكم بالبندول",
+      "lengthLabel": "طول الخيط (L)",
+      "massLabel": "كتلة الكرة (m)",
+      "angleLabel": "زاوية الإفلات الابتدائية (θ₀)",
+      "dampingLabel": "مقاومة الهواء (التخميد)",
+      "conservativeZero": "0 (نظام محافظ تام)",
+      "gravityLabel": "تسارع الجاذبية الكوكبية (g):",
+      "loggedMsg": "تم تسجيل القياس في دفتر المختبر!",
+      "logBtn": "تسجيل حفظ الطاقة وسرعة القاع",
+      "photogateLabel": "PHOTOGATE",
+      "varEnergyVel": "حفظ الطاقة الميكانيكية وسرعة القاع"
+    },
+    "photoelectric_effect": {
+      "title": "محاكاة الظاهرة الكهروضوئية (Photoelectric Effect)",
+      "play": "تشغيل",
+      "pause": "إيقاف",
+      "logMeasurement": "تسجيل القياس",
+      "activeEmission": "⚡ انبعاث كهروضوئي نشط (E_photon > Φ)",
+      "noEmission": "⛔ لا يوجد انبعاث (طاقة الفوتون أقل من دالة الشغل)",
+      "photocurrentLabel": "التيار الضوئي:",
+      "cathodeLabel": "المهبط (Cathode)",
+      "anodeLabel": "المصعد (Anode)",
+      "photonEnergyMeter": "طاقة الفوتون (E)",
+      "workFunctionMeter": "دالة الشغل (Φ)",
+      "maxKineticEnergyMeter": "أقصى طاقة حركية (K_max)",
+      "stoppingPotentialMeter": "جهد الإيقاف (V_stop)",
+      "controlsTitle": "المعاملات والمتغيرات",
+      "targetMetalLabel": "معدن الهدف (دالة الشغل Φ):",
+      "wavelengthLabel": "طول موجة الضوء (λ):",
+      "intensityLabel": "شدة الإضاءة:",
+      "biasVoltageLabel": "جهد الانحياز الخارجي (V):",
+      "thresholdWavelengthCard": "طول موجة العتبة (λ₀)",
+      "thresholdWavelengthSubtext": "λ₀ = hc / Φ (أطول موجة تسبب انبعاث)",
+      "thresholdFrequencyCard": "تردد العتبة (f₀)",
+      "thresholdFrequencySubtext": "f₀ = Φ / h (أقل تردد مطلوب)",
+      "maxVelocityCard": "سرعة الإلكترونات القصوى (v_max)",
+      "einsteinLawCard": "معادلة أينشتاين (Einstein Law)"
+    },
+    "radioactive_decay": {
+      "title": "محاكاة التحلل الإشعاعي وعمر النصف",
+      "pause": "إيقاف",
+      "play": "تشغيل",
+      "stepHalfLifeTooltip": "تقديم نصف عمر كامل (+1 T½)",
+      "log": "تسجيل القياس",
+      "activeParentNuclei": "أنوية مشعة نشطة (N)",
+      "decayedDaughter": "أنوية وليدة مستقرة",
+      "halfLivesCount": "دورات عمر النصف:",
+      "elapsedTime": "الزمن المنقضي (t)",
+      "activeNucleiCard": "الأنوية المتبقية (N)",
+      "remainingPercent": "النسبة المتبقية",
+      "activityRate": "النشاط الإشعاعي (A)",
+      "isotopeControls": "المتغيرات والنظائر",
+      "targetIsotopeLabel": "النظير المشع المستهدف:",
+      "initialNucleiLabel": "عدد الأنوية الابتدائية (N₀):",
+      "realHalfLife": "عمر النصف الفعلي:",
+      "radiationType": "نوع الإشعاع المنبعث:",
+      "decayConstant": "ثابت التحلل (λ):",
+      "decayedNucleiCard": "الأنوية المتفككة (N_decayed)",
+      "theoreticalN": "القيمة النظرية للأنوية المتبقية",
+      "decayConstantCard": "ثابت التحلل الإشعاعي (λ)",
+      "instantaneousActivity": "النشاط الإشعاعي اللحظي (A)"
+    },
+    "rotational_dynamics": {
+      "title": "عزم القصور الذاتي والحركة الدورانية (τ = I α)",
+      "subTitle": "عزم القصور الذاتي والحركة الدورانية (τ = I α)",
+      "shortDesc": "دراسة عزم القصور الذاتي للأجسام الهندسية المختلفة وتسارعها الزاوي",
+      "start": "تشغيل",
+      "pause": "إيقاف",
+      "inertiaLabel": "عزم القصور الذاتي (I)",
+      "angularAccLabel": "التسارع الزاوي (α)",
+      "angularVelLabel": "السرعة الزاوية (ω)",
+      "rotKELabel": "طاقة الحركة الدورانية (K_rot)",
+      "theoryTitle": "مقارنة عزم القصور الذاتي للأشكال الهندسية المختلفة:",
+      "theoryText": "تعتمد مقاومة الجسم للدوران (عزم القصور الذاتي I) على كتلته وكيفية توزيعها حول محور الدوران: الحلقة (I = MR²) تمتلك أكبر عزم قصور لأن كل كتلتها عند أقصى بعد، بينما الأسطوانة المصمتة (I = ½MR²) والكرة المصمتة (I = ⅖MR²) تدور بتسارع أكبر لنفس عزم التدوير.",
+      "controlsTitle": "الشكل الهندسي ونظام التجربة",
+      "modePulley": "عزم بكتلة معلقة",
+      "modeIncline": "دحرجة على منحدر",
+      "geometryLabel": "الشكل الهندسي للجسم الدوار:",
+      "geoCylinder": "أسطوانة مصمتة / قرص",
+      "geoRing": "حلقة دائرية رقيقة (Hoop)",
+      "geoSphere": "كرة مصمتة (Solid Sphere)",
+      "geoRodCenter": "ساق رفيعة (محور المركز)",
+      "massLabel": "كتلة الجسم الدوار (M)",
+      "radiusLabel": "نصف قطر الجسم (R)",
+      "hangingMassLabel": "الكتلة المعلقة المولدة للعزم (m)",
+      "inclineAngleLabel": "زاوية المنحدر (θ)",
+      "loggedMsg": "تم تسجيل القياس في دفتر المختبر!",
+      "logBtn": "تسجيل عزم القصور والتسارع",
+      "reset": "إعادة ضبط"
+    },
+    "viscosity_stokes": {
+      "title": "اللزوجة وقانون ستوكس والسرعة الحدية",
+      "subtitle": "سقوط الكرات المعدنية في الموائع اللزجة (ماء، زيت، جلسرين، عسل) وحساب قوة مقاومة المائع Fd = 6πηrv والسرعة الحدية vt = 2r²g(ρs - ρf)/(9η).",
+      "logged": "تم التسجيل في الدفتر ✓",
+      "logMeasurement": "تسجيل في دفتر المختبر",
+      "controlsTitle": "معايير السائل والكرة الساقطة",
+      "liquidLabel": "نوع السائل واللزوجة (η):",
+      "sphereMaterialLabel": "مادة الكرة الساقطة:",
+      "radiusLabel": "نصف قطر الكرة (r):",
+      "terminalSpeedCard": "السرعة الحدية (vt)",
+      "stokesDragCard": "قوة مقاومة المائع (Fd)",
+      "viscosityCard": "معامل اللزوجة (η)",
+      "apparentWeightCard": "الوزن الظاهري (W - Fb)",
+      "varTerminalVel": "السرعة الحدية vt (قانون ستوكس للزوجة)",
+      "notesLog": "تجربة ستوكس للموائع لحساب اللزوجة والسرعة الحدية للكرة الساقطة.",
+      "dragCanvasLabel": "Fd (مقاومة)",
+      "resetPosition": "إعادة ضبط الموقع"
+    }
+  },
+  "controls": {
+    "play": "تشغيل",
+    "pause": "إيقاف مؤقت",
+    "reset": "إعادة ضبط",
+    "step": "خطوة واحدة",
+    "speed": "سرعة المحاكاة",
+    "logData": "📝 تسجيل القياس في دفتر المختبر",
+    "loggedSuccess": "تم تسجيل القياس بنجاح في دفتر المختبر!",
+    "stopwatch": "ساعة إيقاف المختبر",
+    "calculator": "آلة حاسبة فيزيائية",
+    "constants": "الثوابت الفيزيائية",
+    "planetPreset": "اختر الجاذبية حسب الكوكب"
+  },
+  "notebook": {
+    "title": "دفتر المختبر والبيانات التجريبية",
+    "description": "سجل تجاربك، قارن القياسات المحسوبة نظرياً بالنتائج المسجلة واحسب نسبة الخطأ المئوية.",
+    "empty": "لم تسجل أي بيانات بعد. قم بإجراء تجربة واضغط على زر \"تسجيل القياس\".",
+    "tableHeaders": {
+      "experiment": "التجربة",
+      "variable": "المتغير المقاس",
+      "measured": "القيمة المقاسة",
+      "theoretical": "القيمة النظرية",
+      "error": "نسبة الخطأ %",
+      "parameters": "شروط التجربة",
+      "notes": "ملاحظات وتفسير",
+      "time": "الوقت",
+      "actions": "إجراءات"
+    },
+    "clearAll": "مسح جميع السجلات",
+    "exportCSV": "تصدير كملف CSV",
+    "exportJSON": "تصدير JSON",
+    "addNotePlaceholder": "أضف ملاحظة أو تفسيراً علمياً...",
+    "errorFormula": "نسبة الخطأ = |(المقاسة - النظرية) / النظرية| × 100%"
+  },
+  "formulas": {
+    "pendulum_period": {
+      "name": "الزمن الدوري للبندول البسيط",
+      "topic": "mechanics",
+      "formula": "T = 2π √(L / g)",
+      "description": "يحسب الزمن الدوري للبندول البسيط لسعات زاوية صغيرة حيث يعتمد على طول الخيط وتسارع الجاذبية فقط.",
+      "variables": [
+        {
+          "symbol": "T",
+          "name": "الزمن الدوري",
+          "unit": "s"
+        },
+        {
+          "symbol": "L",
+          "name": "طول الخيط",
+          "unit": "m"
+        },
+        {
+          "symbol": "g",
+          "name": "تسارع الجاذبية",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "projectile_range": {
+      "name": "المدى الأفقي للمقذوف",
+      "topic": "mechanics",
+      "formula": "R = (v₀² · sin(2θ)) / g",
+      "description": "المسافة الأفقية الكلية التي يقطعها المقذوف من لحظة إطلاقه حتى وصوله لنفس المستوى الأفقي.",
+      "variables": [
+        {
+          "symbol": "R",
+          "name": "المدى الأفقي",
+          "unit": "m"
+        },
+        {
+          "symbol": "v₀",
+          "name": "السرعة الابتدائية",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "θ",
+          "name": "زاوية الإطلاق",
+          "unit": "degrees (°)"
+        },
+        {
+          "symbol": "g",
+          "name": "تسارع الجاذبية",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "projectile_height": {
+      "name": "أقصى ارتفاع للمقذوف",
+      "topic": "mechanics",
+      "formula": "H = (v₀ · sin θ)² / (2g)",
+      "description": "أعلى نقطة عمودية يصل إليها المقذوف أثناء مسار حركته حيث تصبح السرعة الرأسية صفراً.",
+      "variables": [
+        {
+          "symbol": "H",
+          "name": "أقصى ارتفاع",
+          "unit": "m"
+        },
+        {
+          "symbol": "v₀",
+          "name": "السرعة الابتدائية",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "θ",
+          "name": "زاوية الإطلاق",
+          "unit": "degrees (°)"
+        },
+        {
+          "symbol": "g",
+          "name": "تسارع الجاذبية",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "ohms_law": {
+      "name": "قانون أوم الأساسي",
+      "topic": "electricity",
+      "formula": "V = I · R",
+      "description": "يحدد العلاقة الخطية بين فرق الجهد الكهربائي وشدة التيار والمقاومة الكهربائية.",
+      "variables": [
+        {
+          "symbol": "V",
+          "name": "فرق الجهد الكهربائي",
+          "unit": "V (Volt)"
+        },
+        {
+          "symbol": "I",
+          "name": "شدة التيار الكهربائي",
+          "unit": "A (Ampere)"
+        },
+        {
+          "symbol": "R",
+          "name": "المقاومة الكهربائية",
+          "unit": "Ω (Ohm)"
+        }
+      ]
+    },
+    "electric_power": {
+      "name": "القدرة الكهربائية المستهلكة",
+      "topic": "electricity",
+      "formula": "P = V · I = I² · R = V² / R",
+      "description": "معدل استهلاك أو تحول الطاقة الكهربائية إلى أشكال أخرى كالحرارة أو الضوء في وحدة الزمن.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "القدرة الكهربائية",
+          "unit": "W (Watt)"
+        },
+        {
+          "symbol": "V",
+          "name": "فرق الجهد",
+          "unit": "V"
+        },
+        {
+          "symbol": "I",
+          "name": "التيار",
+          "unit": "A"
+        },
+        {
+          "symbol": "R",
+          "name": "المقاومة",
+          "unit": "Ω"
+        }
+      ]
+    },
+    "snells_law": {
+      "name": "قانون سنيل للإنكسار الضوئي",
+      "topic": "optics",
+      "formula": "n₁ · sin(θ₁) = n₂ · sin(θ₂)",
+      "description": "يصف انحراف مسار الشعاع الضوئي عند انتقاله بين وسطين شفافين مختلفين في الكثافة الضوئية.",
+      "variables": [
+        {
+          "symbol": "n₁",
+          "name": "معامل انكسار الوسط الأول",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "θ₁",
+          "name": "زاوية السقوط",
+          "unit": "°"
+        },
+        {
+          "symbol": "n₂",
+          "name": "معامل انكسار الوسط الثاني",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "θ₂",
+          "name": "زاوية الانكسار",
+          "unit": "°"
+        }
+      ]
+    },
+    "critical_angle": {
+      "name": "الزاوية الحرجة والانعكاس الكلي",
+      "topic": "optics",
+      "formula": "θ_c = arcsin(n₂ / n₁)",
+      "description": "زاوية السقوط في الوسط الأكثر كثافة ضوئية التي تقابلها زاوية انكسار قائمة (90 درجة). إذا زادت زاوية السقوط عنها يحدث انعكاس كلي.",
+      "variables": [
+        {
+          "symbol": "θ_c",
+          "name": "الزاوية الحرجة",
+          "unit": "°"
+        },
+        {
+          "symbol": "n₁",
+          "name": "معامل الوسط الكثيف",
+          "unit": "dimensionless"
+        },
+        {
+          "symbol": "n₂",
+          "name": "معامل الوسط الأقل كثافة",
+          "unit": "dimensionless"
+        }
+      ]
+    },
+    "young_double_slit": {
+      "name": "تجربة شقي يونغ لتداخل الضوء",
+      "topic": "waves",
+      "formula": "y_m = (m · λ · L) / d",
+      "description": "موضع الهدب المضيء من الرتبة m بالنسبة للهدب المركزي المضيء.",
+      "variables": [
+        {
+          "symbol": "y_m",
+          "name": "موضع الهدب المضيء",
+          "unit": "m"
+        },
+        {
+          "symbol": "λ",
+          "name": "الطول الموجي للضوء",
+          "unit": "m / nm"
+        },
+        {
+          "symbol": "L",
+          "name": "المسافة بين الشقين والشاشة",
+          "unit": "m"
+        },
+        {
+          "symbol": "d",
+          "name": "المسافة الفاصلة بين الشقين",
+          "unit": "m / mm"
+        },
+        {
+          "symbol": "m",
+          "name": "رتبة الهدب (0, 1, 2, ...)",
+          "unit": "integer"
+        }
+      ]
+    },
+    "kinetic_energy": {
+      "name": "طاقة الحركة الميكانيكية",
+      "topic": "mechanics",
+      "formula": "E_k = ½ · m · v²",
+      "description": "الطاقة التي يمتلكها الجسم بسبب حركته وتتناسب طردياً مع كتلته ومربع سرعته.",
+      "variables": [
+        {
+          "symbol": "E_k",
+          "name": "طاقة الحركة",
+          "unit": "J (Joule)"
+        },
+        {
+          "symbol": "m",
+          "name": "كتلة الجسم",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v",
+          "name": "سرعة الجسم",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "potential_energy": {
+      "name": "طاقة الوضع التثاقلية",
+      "topic": "mechanics",
+      "formula": "E_p = m · g · h",
+      "description": "الطاقة المخزونة في الجسم نتيجة موضعه في مجال الجاذبية بالنسبة لمستوى الإسناد.",
+      "variables": [
+        {
+          "symbol": "E_p",
+          "name": "طاقة الوضع",
+          "unit": "J"
+        },
+        {
+          "symbol": "m",
+          "name": "الكتلة",
+          "unit": "kg"
+        },
+        {
+          "symbol": "g",
+          "name": "تسارع الجاذبية",
+          "unit": "m/s²"
+        },
+        {
+          "symbol": "h",
+          "name": "الارتفاع",
+          "unit": "m"
+        }
+      ]
+    },
+    "hookes_law": {
+      "name": "قانون هوك واستطالة النابض",
+      "topic": "mechanics",
+      "formula": "F = -k · x",
+      "description": "قوة الإرجاع للنابض المرن تتناسب طردياً مع مقدار الاستطالة أو الانضغاط وتعاكسه في الاتجاه.",
+      "variables": [
+        {
+          "symbol": "F",
+          "name": "قوة الإرجاع",
+          "unit": "N"
+        },
+        {
+          "symbol": "k",
+          "name": "ثابت صلابة النابض",
+          "unit": "N/m"
+        },
+        {
+          "symbol": "x",
+          "name": "مقدار الإزاحة أو الاستطالة",
+          "unit": "m"
+        }
+      ]
+    },
+    "spring_oscillator_period": {
+      "name": "الزمن الدوري للمهتز التوافقي (كتلة-نابض)",
+      "topic": "mechanics",
+      "formula": "T = 2π √(m / k)",
+      "description": "الزمن اللازم لإكمال دورة اهتزازية واحدة لكتلة m متصلة بنابض ذي ثابت صلابة k.",
+      "variables": [
+        {
+          "symbol": "T",
+          "name": "الزمن الدوري",
+          "unit": "s"
+        },
+        {
+          "symbol": "m",
+          "name": "كتلة الجسم",
+          "unit": "kg"
+        },
+        {
+          "symbol": "k",
+          "name": "ثابت صلابة النابض",
+          "unit": "N/m"
+        }
+      ]
+    },
+    "archimedes_buoyancy": {
+      "name": "قاعدة أرخميدس وقوة الطفو",
+      "topic": "mechanics",
+      "formula": "F_b = ρ_fluid · V_sub · g",
+      "description": "يؤثر المائع على أي جسم مغمور فيه كلياً أو جزئياً بقوة دفع للأعلى تساوي وزن المائع المزاح.",
+      "variables": [
+        {
+          "symbol": "F_b",
+          "name": "قوة الطفو",
+          "unit": "N"
+        },
+        {
+          "symbol": "ρ_fluid",
+          "name": "كثافة السائل",
+          "unit": "kg/m³"
+        },
+        {
+          "symbol": "V_sub",
+          "name": "حجم الجزء المغمور",
+          "unit": "m³"
+        },
+        {
+          "symbol": "g",
+          "name": "تسارع الجاذبية",
+          "unit": "m/s²"
+        }
+      ]
+    },
+    "momentum_conservation": {
+      "name": "حفظ كمية الحركة في التصادمات",
+      "topic": "mechanics",
+      "formula": "m₁v₁ + m₂v₂ = m₁v₁' + m₂v₂'",
+      "description": "في أي نظام مغلق ومعزول، تظل كمية الحركة الخطية الكلية للأجسام المتصادمة محفوظة وثابتة.",
+      "variables": [
+        {
+          "symbol": "m₁",
+          "name": "كتلة الجسم الأول",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v₁",
+          "name": "سرعة الجسم الأول قبل التصادم",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "m₂",
+          "name": "كتلة الجسم الثاني",
+          "unit": "kg"
+        },
+        {
+          "symbol": "v₂",
+          "name": "سرعة الجسم الثاني قبل التصادم",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "ideal_gas_law": {
+      "name": "معادلة الحالة للغاز المثالي",
+      "topic": "thermo",
+      "formula": "P · V = n · R · T",
+      "description": "تحدد العلاقة الفيزيائية بين ضغط الغاز وحجمه ودرجة حرارته المطلقة وعدد مولاته.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "ضغط الغاز",
+          "unit": "Pa / kPa"
+        },
+        {
+          "symbol": "V",
+          "name": "حجم الغاز",
+          "unit": "m³ / L"
+        },
+        {
+          "symbol": "n",
+          "name": "كمية المادة بالمولات",
+          "unit": "mol"
+        },
+        {
+          "symbol": "R",
+          "name": "ثابت الغازات العام (8.314)",
+          "unit": "J/(mol·K)"
+        },
+        {
+          "symbol": "T",
+          "name": "درجة الحرارة المطلقة",
+          "unit": "K (Kelvin)"
+        }
+      ]
+    },
+    "arc_length_radian": {
+      "name": "العلاقة بين طول القوس والزاوية بالراديان",
+      "topic": "mechanics",
+      "formula": "s = r · θ",
+      "description": "طول القوس الدائري يساوي حاصل ضرب نصف القطر في الزاوية المركزية المقابلة مقاسة بالراديان.",
+      "variables": [
+        {
+          "symbol": "s",
+          "name": "طول القوس",
+          "unit": "m"
+        },
+        {
+          "symbol": "r",
+          "name": "نصف القطر",
+          "unit": "m"
+        },
+        {
+          "symbol": "θ",
+          "name": "الزاوية المركزية",
+          "unit": "rad"
+        }
+      ]
+    },
+    "rotational_inertia_torque": {
+      "name": "عزم القصور الذاتي والحركة الدورانية",
+      "topic": "mechanics",
+      "formula": "τ = I · α",
+      "description": "العزم الكلي المؤثر على جسم دوار يساوي عزم القصور الذاتي مضروباً في التسارع الزاوي، حيث I=½mr² للأسطوانة المصمتة و I=mr² للحلقة.",
+      "variables": [
+        {
+          "symbol": "τ",
+          "name": "عزم الدوران",
+          "unit": "N·m"
+        },
+        {
+          "symbol": "I",
+          "name": "عزم القصور الذاتي",
+          "unit": "kg·m²"
+        },
+        {
+          "symbol": "α",
+          "name": "التسارع الزاوي",
+          "unit": "rad/s²"
+        }
+      ]
+    },
+    "center_of_mass_formula": {
+      "name": "تحديد مركز الكتلة لنظام نقطي",
+      "topic": "mechanics",
+      "formula": "X_cm = (Σ m_i · x_i) / (Σ m_i)",
+      "description": "الموضع المرجح لكتل النظام حيث تتصرف جميع القوى الخارجية كأنها تؤثر في هذه النقطة.",
+      "variables": [
+        {
+          "symbol": "X_cm",
+          "name": "إحداثي مركز الكتلة",
+          "unit": "m"
+        },
+        {
+          "symbol": "m_i",
+          "name": "كتلة الجسيم i",
+          "unit": "kg"
+        },
+        {
+          "symbol": "x_i",
+          "name": "موضع الجسيم i",
+          "unit": "m"
+        }
+      ]
+    },
+    "acoustic_pipe_resonance": {
+      "name": "الرنين الصوتي في الأنابيب الهوائية",
+      "topic": "waves",
+      "formula": "L = (2n - 1) · (λ / 4)",
+      "description": "شروط تكون الموجات الموقوفة والرنين في الأنابيب المغلقة مع العلاقة v = f · λ.",
+      "variables": [
+        {
+          "symbol": "L",
+          "name": "طول عمود الهواء الرنان",
+          "unit": "m"
+        },
+        {
+          "symbol": "n",
+          "name": "رتبة الرنين (التوافقي)",
+          "unit": "integer"
+        },
+        {
+          "symbol": "λ",
+          "name": "الطول الموجي للصوت",
+          "unit": "m"
+        },
+        {
+          "symbol": "v",
+          "name": "سرعة الصوت في الهواء",
+          "unit": "m/s"
+        }
+      ]
+    },
+    "sound_speed_formula": {
+      "name": "تعيين سرعة الصوت بأنبوب الرنين وعمود الماء",
+      "topic": "waves",
+      "formula": "v = 4 · (L + 0.6·r) · f",
+      "description": "حساب سرعة الصوت في الهواء الجوي بمعرفة تردد الشوكة الرنانة وطول عمود الهواء عند الرنين الأول مع تصحيح نهاية الأنبوب.",
+      "variables": [
+        {
+          "symbol": "v",
+          "name": "سرعة الصوت",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "L",
+          "name": "طول عمود الهواء الرنان",
+          "unit": "m"
+        },
+        {
+          "symbol": "f",
+          "name": "تردد الشوكة الرنانة",
+          "unit": "Hz"
+        }
+      ]
+    },
+    "solenoid_magnetic_field": {
+      "name": "المجال المغناطيسي للملف وقوة لورنتز",
+      "topic": "electricity",
+      "formula": "B = μ₀ · n · I  و  F = I · L · B · sin(θ)",
+      "description": "شدة المجال المغناطيسي داخل ملف لولبي منتظم والقوة المغناطيسية المؤثرة على سلك يمر به تيار.",
+      "variables": [
+        {
+          "symbol": "B",
+          "name": "شدة المجال المغناطيسي",
+          "unit": "T (Tesla)"
+        },
+        {
+          "symbol": "μ₀",
+          "name": "نفاذية الفراغ المغناطيسية",
+          "unit": "T·m/A"
+        },
+        {
+          "symbol": "n",
+          "name": "عدد اللفات لكل متر (N/L)",
+          "unit": "m⁻¹"
+        },
+        {
+          "symbol": "I",
+          "name": "شدة التيار",
+          "unit": "A"
+        },
+        {
+          "symbol": "F",
+          "name": "القوة المغناطيسية",
+          "unit": "N"
+        }
+      ]
+    },
+    "atomic_energy_quantum": {
+      "name": "الأطياف الذرية وقانون بلانك-أينشتاين",
+      "topic": "optics",
+      "formula": "ΔE = h · f = (h · c) / λ",
+      "description": "طاقة الفوتون المنبعث أو الممتص عند انتقال الإلكترون بين مستويات الطاقة الذرية تساوي حاصل ضرب ثابت بلانك في التردد.",
+      "variables": [
+        {
+          "symbol": "ΔE",
+          "name": "فرق الطاقة بين المستويين",
+          "unit": "J / eV"
+        },
+        {
+          "symbol": "h",
+          "name": "ثابت بلانك",
+          "unit": "J·s"
+        },
+        {
+          "symbol": "f",
+          "name": "تردد الإشعاع",
+          "unit": "Hz"
+        },
+        {
+          "symbol": "λ",
+          "name": "الطول الموجي للخط الطيفي",
+          "unit": "nm"
+        }
+      ]
+    },
+    "metric_prefixes_scaling": {
+      "name": "البادئات المترية وتحويل الوحدات القياسية",
+      "topic": "mechanics",
+      "formula": "V_target = V_source · 10^(exp_source - exp_target)",
+      "description": "التحويل الرياضي بين المراتب الأسية للبادئات الدولية (من البيكو 10⁻¹² إلى التيرا 10¹²).",
+      "variables": [
+        {
+          "symbol": "V_source",
+          "name": "القيمة بالبادئة المصدر",
+          "unit": "SI unit"
+        },
+        {
+          "symbol": "V_target",
+          "name": "القيمة بالبادئة الهدف",
+          "unit": "SI unit"
+        },
+        {
+          "symbol": "exp",
+          "name": "الأس العشري للبادئة",
+          "unit": "power"
+        }
+      ]
+    },
+    "stress_strain_young": {
+      "name": "الإجهاد والانفعال ومعامل يونج للمرونة",
+      "topic": "mechanics",
+      "formula": "σ = F / A ,  ε = ΔL / L₀ ,  E = σ / ε",
+      "description": "العلاقة بين الإجهاد الميكانيكي والانفعال الطولي للمواد الصلبة في منطقة المرونة الخطية بقانون هوك المعمم.",
+      "variables": [
+        {
+          "symbol": "σ",
+          "name": "الإجهاد الميكانيكي",
+          "unit": "Pa / MPa"
+        },
+        {
+          "symbol": "ε",
+          "name": "الانفعال الخالي من الوحدات",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "E",
+          "name": "معامل يونج للمرونة",
+          "unit": "GPa"
+        },
+        {
+          "symbol": "F",
+          "name": "قوة الشد المطبقة",
+          "unit": "N"
+        },
+        {
+          "symbol": "A",
+          "name": "مساحة المقطع العرضي",
+          "unit": "m²"
+        }
+      ]
+    },
+    "bernoulli_principle": {
+      "name": "معادلة برنولي وديناميكا الموائع وأنبوب فنتوري",
+      "topic": "mechanics",
+      "formula": "P₁ + ½ρv₁² = P₂ + ½ρv₂²  (A₁v₁ = A₂v₂)",
+      "description": "حفظ الطاقة في الموائع غير القابلة للانضغاط: يقل الضغط السكوني عندما تزداد سرعة تدفق المائع عند التضيّق.",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "الضغط الساكن للمائع",
+          "unit": "Pa / kPa"
+        },
+        {
+          "symbol": "v",
+          "name": "سرعة التدفق",
+          "unit": "m/s"
+        },
+        {
+          "symbol": "ρ",
+          "name": "كثافة المائع المتدفق",
+          "unit": "kg/m³"
+        },
+        {
+          "symbol": "A",
+          "name": "مساحة مقطع الأنبوب",
+          "unit": "m²"
+        }
+      ]
+    },
+    "angled_mirrors_images": {
+      "name": "الانعكاسات المتعددة في المرآتين المائلتين",
+      "topic": "optics",
+      "formula": "N = (360° / θ) - 1",
+      "description": "عدد الصور التخيلية الناتجة عن الانعكاس المتكرر للضوء بين مرآتين مستويتين بينهما زاوية θ.",
+      "variables": [
+        {
+          "symbol": "N",
+          "name": "عدد الصور المتكونة",
+          "unit": "images"
+        },
+        {
+          "symbol": "θ",
+          "name": "الزاوية بين المرآتين",
+          "unit": "degrees (°)"
+        }
+      ]
+    },
+    "curved_mirrors_formula": {
+      "name": "المرايا الكروية المقعرة والمحدبة",
+      "topic": "optics",
+      "formula": "1/f = 1/d_o + 1/d_i ,  f = R / 2 ,  m = -d_i / d_o",
+      "description": "المعادلة العامة للمرايا الكروية وحساب البعد البؤري والتكبير وتتبع الأشعة الضوئية البؤرية والمركزية.",
+      "variables": [
+        {
+          "symbol": "f",
+          "name": "البعد البؤري",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_o",
+          "name": "بعد الجسم عن المرآة",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "بعد الصورة عن المرآة",
+          "unit": "cm"
+        },
+        {
+          "symbol": "m",
+          "name": "معامل التكبير الخطي",
+          "unit": "ratio"
+        }
+      ]
+    },
+    "thin_lenses_formula": {
+      "name": "العدسات الرقيقة وقوة العدسة بالديوبتر",
+      "topic": "optics",
+      "formula": "1/f = 1/d_o + 1/d_i ,  P = 1 / f(m) = 100 / f(cm)",
+      "description": "انكسار الضوء في العدسات المحدبة والمقعرة وحساب موضع الصورة وقوة العدسة البصرية بوحدة الديوبتر D.",
+      "variables": [
+        {
+          "symbol": "f",
+          "name": "البعد البؤري للعدسة",
+          "unit": "cm"
+        },
+        {
+          "symbol": "P",
+          "name": "قوة العدسة البصرية",
+          "unit": "D (Diopters)"
+        },
+        {
+          "symbol": "d_o",
+          "name": "بعد الجسم",
+          "unit": "cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "بعد الصورة",
+          "unit": "cm"
+        }
+      ]
+    },
+    "malus_law_polarization": {
+      "name": "استقطاب الضوء وقانون مالوس",
+      "topic": "optics",
+      "formula": "I = I_initial · cos²(θ) ,  E = E₀ · cos(θ)",
+      "description": "شدة الضوء المستقطب خطياً المار عبر مرشح محلل بزاوية دوران θ بالنسبة لمحور الاستقطاب.",
+      "variables": [
+        {
+          "symbol": "I",
+          "name": "الشدة النافذة",
+          "unit": "W/m²"
+        },
+        {
+          "symbol": "I_initial",
+          "name": "الشدة الابتدائية للمستقطب الأول",
+          "unit": "W/m²"
+        },
+        {
+          "symbol": "θ",
+          "name": "زاوية الدوران بين المستقطبين",
+          "unit": "degrees (°)"
+        }
+      ]
+    },
+    "rayleigh_scattering_law": {
+      "name": "تشتت رايلي وتفسير زرقة السماء وحمرة الغروب",
+      "topic": "optics",
+      "formula": "I_scatter ∝ 1 / λ⁴ ,  T = e^(-τ)",
+      "description": "شدة تشتت الضوء على جسيمات الهواء تتناسب عكسياً مع الأس الرابع للطول الموجي، مما يجعل تشتت الأزرق أكبر بنحو 6 أضعاف من الأحمر.",
+      "variables": [
+        {
+          "symbol": "I_scatter",
+          "name": "شدة التشتت",
+          "unit": "proportional"
+        },
+        {
+          "symbol": "λ",
+          "name": "الطول الموجي للضوء",
+          "unit": "nm"
+        },
+        {
+          "symbol": "T",
+          "name": "الضوء النافذ المباشر",
+          "unit": "ratio"
+        }
+      ]
+    },
+    "work_heat_first_law": {
+      "name": "الشغل الميكانيكي والحرارة والقانون الأول للديناميكا",
+      "topic": "mechanics",
+      "formula": "Q = m · c · ΔT ,  W = F · d ,  ΔU = Q - W",
+      "description": "المكافئ الميكانيكي للحرارة لتجربة جول: تحول الشغل المبذول إلى طاقة حرارية ترفع درجة حرارة الماء.",
+      "variables": [
+        {
+          "symbol": "Q",
+          "name": "الحرارة المضافة",
+          "unit": "J / kJ"
+        },
+        {
+          "symbol": "W",
+          "name": "الشغل الميكانيكي",
+          "unit": "J / kJ"
+        },
+        {
+          "symbol": "c",
+          "name": "السعة الحرارية النوعية للماء",
+          "unit": "J/(kg·K)"
+        },
+        {
+          "symbol": "ΔT",
+          "name": "الارتفاع في درجة الحرارة",
+          "unit": "°C"
+        }
+      ]
+    },
+    "prescription_glasses_power": {
+      "name": "النظارات الطبية وقوة العدسة بالديوبتر",
+      "topic": "optics",
+      "formula": "P = 1 / f (in meters) ,  1/f = 1/d_o + 1/d_i",
+      "description": "قوة العدسة التصحيحية بالديوبتر لعلاج قصر النظر (عدسة مفرقة مقعرة) وطول النظر (عدسة مجمعة محدبة).",
+      "variables": [
+        {
+          "symbol": "P",
+          "name": "قوة العدسة بالديوبتر",
+          "unit": "Diopters (D)"
+        },
+        {
+          "symbol": "f",
+          "name": "البعد البؤري",
+          "unit": "m / cm"
+        },
+        {
+          "symbol": "d_i",
+          "name": "بعد الصورة المتكونة",
+          "unit": "cm"
+        }
+      ]
+    },
+    "periscope_law_reflection": {
+      "name": "المنظار الغاطس (البيريسكوب) وقانون الانعكاس",
+      "topic": "optics",
+      "formula": "θ_incident = θ_reflected = 45° ,  Δθ_total = 90° + 90° = 180°",
+      "description": "انعكاس الأشعة الضوئية بزاوية 45 درجة على مرآتين متوازيتين لتمكين الرؤية من وراء الحواجز والغواصات.",
+      "variables": [
+        {
+          "symbol": "θ_i",
+          "name": "زاوية السقوط",
+          "unit": "° (deg)"
+        },
+        {
+          "symbol": "θ_r",
+          "name": "زاوية الانعكاس",
+          "unit": "° (deg)"
+        }
+      ]
+    },
+    "coulomb_static_balloons": {
+      "name": "الكهرباء الساكنة وقانون كولوم للشحنات",
+      "topic": "electricity",
+      "formula": "F_e = k · |q₁ · q₂| / r² ,  tan(θ) = F_e / (m · g)",
+      "description": "قوة التجاذب والتنافر الكهروستاتيكية بين شحنتين نقطيتين تتناسب طردياً مع حاصل ضرب الشحنتين وعكسياً مع مربع المسافة.",
+      "variables": [
+        {
+          "symbol": "F_e",
+          "name": "القوة الكهروستاتيكية",
+          "unit": "N"
+        },
+        {
+          "symbol": "k",
+          "name": "ثابت كولوم (8.99×10⁹)",
+          "unit": "N·m²/C²"
+        },
+        {
+          "symbol": "q",
+          "name": "مقدار الشحنة الكهربائية",
+          "unit": "μC / C"
+        },
+        {
+          "symbol": "r",
+          "name": "المسافة الفاصلة",
+          "unit": "m"
+        }
+      ]
+    },
+    "sled_friction_mechanics": {
+      "name": "الاحتكاك الساكن والحركي وقانون نيوتن الثاني",
+      "topic": "mechanics",
+      "formula": "f_s,max = μ_s · N ,  f_k = μ_k · N ,  F_net = m · a",
+      "description": "مقاومة الاحتكاك بين الأسطح المتلامسة وقوة العتبة السكونية والانزلاق الحركي تحت تأثير قوى السحب.",
+      "variables": [
+        {
+          "symbol": "f_s",
+          "name": "قوة الاحتكاك الساكن الأقصى",
+          "unit": "N"
+        },
+        {
+          "symbol": "f_k",
+          "name": "قوة الاحتكاك الحركي",
+          "unit": "N"
+        },
+        {
+          "symbol": "μ",
+          "name": "معامل الاحتكاك",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "N",
+          "name": "القوة العمودية (mg)",
+          "unit": "N"
+        }
+      ]
+    },
+    "fourier_heat_conduction": {
+      "name": "قانون فورييه للتوصيل الحراري في المعادن",
+      "topic": "mechanics",
+      "formula": "Q / t = k · A · (T_hot - T_cold) / d",
+      "description": "معدل سريان الطاقة الحرارية بالتوصيل عبر المواد الصلبة يتناسب طردياً مع المعامل الحراري ومساحة المقطع وفرق درجات الحرارة.",
+      "variables": [
+        {
+          "symbol": "Q/t",
+          "name": "معدل انتقال الحرارة",
+          "unit": "Watts (W)"
+        },
+        {
+          "symbol": "k",
+          "name": "معامل التوصيل الحراري",
+          "unit": "W/(m·K)"
+        },
+        {
+          "symbol": "A",
+          "name": "مساحة المقطع العرضي",
+          "unit": "m²"
+        },
+        {
+          "symbol": "d",
+          "name": "طول القضيب الموصل",
+          "unit": "m"
+        }
+      ]
+    },
+    "seesaw_rotational_torque": {
+      "name": "عزم القوة والاتزان الدوراني للأرجوحة",
+      "topic": "mechanics",
+      "formula": "τ = F · r = m · g · r ,  Στ = τ₁ - τ₂ = 0",
+      "description": "شرط الاتزان الدوراني للأجسام القابلة للدوران حول محور: محصلة العزوم في اتجاه عقارب الساعة تساوي العزوم المعاكسة.",
+      "variables": [
+        {
+          "symbol": "τ",
+          "name": "عزم الدوران",
+          "unit": "N·m"
+        },
+        {
+          "symbol": "r",
+          "name": "ذراع القوة عن نقطة الارتكاز",
+          "unit": "m"
+        },
+        {
+          "symbol": "m",
+          "name": "كتلة الجسم",
+          "unit": "kg"
+        }
+      ]
+    },
+    "faraday_lenz_induction": {
+      "name": "الحث الكهرومغناطيسي وقانونا فاراداي ولينز",
+      "topic": "electricity",
+      "formula": "ε = -N · (ΔΦ_B / Δt) ,  I = ε / R",
+      "description": "تولد قوة دافعة كهربائية حثية تعاكس التغير في التدفق المغناطيسي الذي سببها وفق قانون لينز.",
+      "variables": [
+        {
+          "symbol": "ε",
+          "name": "القوة الدافعة الكهربائية الحثية",
+          "unit": "Volts (V)"
+        },
+        {
+          "symbol": "N",
+          "name": "عدد لفات الملف",
+          "unit": "turns"
+        },
+        {
+          "symbol": "Φ_B",
+          "name": "التدفق المغناطيسي (B·A)",
+          "unit": "Weber (Wb)"
+        },
+        {
+          "symbol": "I",
+          "name": "التيار الحثي المتولد",
+          "unit": "A / mA"
+        }
+      ]
+    },
+    "stokes_viscosity_terminal_vel": {
+      "name": "قانون ستوكس للزوجة والسرعة الحدية",
+      "topic": "mechanics",
+      "formula": "F_d = 6π · η · r · v ,  v_t = [2r²g(ρ_s - ρ_f)] / (9η)",
+      "description": "قوة مقاومة المائع للكرات الساقطة وحساب السرعة الحدية الثابتة عندما تتزن قوى الجاذبية والطفو ومقاومة اللزوجة.",
+      "variables": [
+        {
+          "symbol": "F_d",
+          "name": "قوة مقاومة اللزوجة (ستوكس)",
+          "unit": "N"
+        },
+        {
+          "symbol": "η",
+          "name": "معامل لزوجة المائع",
+          "unit": "Pa·s"
+        },
+        {
+          "symbol": "v_t",
+          "name": "السرعة الحدية الثابتة",
+          "unit": "m/s / cm/s"
+        },
+        {
+          "symbol": "r",
+          "name": "نصف قطر الكرة الساقطة",
+          "unit": "mm / m"
+        }
+      ]
+    },
+    "inclined_plane_simple_machine": {
+      "name": "المستوى المائل والآلات البسيطة والفائدة الميكانيكية",
+      "topic": "mechanics",
+      "formula": "IMA = L / h ,  AMA = F_load / F_effort ,  η = (W_out / W_in) · 100%",
+      "description": "تقليل القوة العضلية المطلوبة لرفع الأحمال عبر زيادة مسافة الإزاحة، وحساب الفائدة الميكانيكية والكفاءة مع الاحتكاك.",
+      "variables": [
+        {
+          "symbol": "IMA",
+          "name": "الفائدة الميكانيكية المثالية (L/h)",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "AMA",
+          "name": "الفائدة الميكانيكية الحقيقية",
+          "unit": "ratio"
+        },
+        {
+          "symbol": "η",
+          "name": "كفاءة الآلة الميكانيكية",
+          "unit": "%"
+        },
+        {
+          "symbol": "W_out",
+          "name": "الشغل الناتج المفيد (m·g·h)",
+          "unit": "J"
+        }
+      ]
+    }
+  },
+  "challenges": {
+    "title": "تحديات واختبارات المختبر الفيزيائي",
+    "description": "اختبر فهمك للمفاهيم الفيزيائية التي جربتها داخل المختبر العملي.",
+    "score": "النتيجة الحالية",
+    "checkAnswer": "تحقق من الإجابة",
+    "next": "السؤال التالي",
+    "restart": "إعادة الاختبار",
+    "explanation": "التفسير الفيزيائي العلمي:",
+    "perfectScore": "🎉 ممتاز! عبقري فيزياء حقيقي!",
+    "goodScore": "أداء رائع جداً! استمر في استكشاف المحاكاة.",
+    "keepTrying": "حاول مجدداً وراجع نتائج التجارب داخل المحاكي."
+  },
+  "common": {
+    "seconds": "ثانية (s)",
+    "meters": "متر (m)",
+    "metersPerSec": "م/ث (m/s)",
+    "metersPerSec2": "م/ث² (م/s²)",
+    "joules": "جول (J)",
+    "volts": "فولت (V)",
+    "amperes": "أمبير (A)",
+    "ohms": "أوم (Ω)",
+    "watts": "واط (W)",
+    "degrees": "درجة (°)",
+    "close": "إغلاق",
+    "copy": "نسخ",
+    "copied": "تم النسخ!"
+  },
+  "catalog": {
+    "work_heat": {
+      "title": "الشغل والحرارة والقانون الأول للديناميكا",
+      "inputs": [
+        "كمية الحرارة المضافة Q",
+        "الشغل المبذول W",
+        "نوع الغاز"
+      ],
+      "outputs": [
+        "التغير في الطاقة الداخلية ΔU",
+        "درجة الحرارة النهائية T",
+        "الحجم النهائي V"
+      ]
+    },
+    "prescription_glasses": {
+      "title": "النظارات الطبية وقوة العدسة",
+      "inputs": [
+        "نوع عيب الإبصار (قصر/طول نظر)",
+        "البعد البؤري للعين f_eye",
+        "بعد النقطة البعيدة/القريبة"
+      ],
+      "outputs": [
+        "قوة العدسة التصحيحية P (ديوبتر)",
+        "موقع الصورة الشبكية",
+        "وضوح الرؤية"
+      ]
+    },
+    "periscope": {
+      "title": "منظار الأفق وقانون الانعكاس",
+      "inputs": [
+        "زاوية ميلان المرآة الأولى θ1",
+        "زاوية ميلان المرآة الثانية θ2",
+        "ارتفاع المنظار h"
+      ],
+      "outputs": [
+        "مسار الشعاع الضوئي",
+        "زاوية الخروج النهائية",
+        "تطابق زاوية الرؤية"
+      ]
+    },
+    "static_balloons": {
+      "title": "الكهرباء الساكنة وقانون كولوم",
+      "inputs": [
+        "مقدار الشحنة q1 (كولوم)",
+        "مقدار الشحنة q2 (كولوم)",
+        "المسافة الفاصلة r (متر)"
+      ],
+      "outputs": [
+        "القوة الكهروستاتيكية F (نيوتن)",
+        "نوع القوة (تجاذب / تنافر)",
+        "تسارع البالونات"
+      ]
+    },
+    "sled_friction": {
+      "title": "سباق التزلج وقوانين الاحتكاك",
+      "inputs": [
+        "معامل الاحتكاك الحركي μ_k",
+        "كتلة الزلاجة m",
+        "زاوية الانحدار θ"
+      ],
+      "outputs": [
+        "قوة الاحتكاك f_k",
+        "التسارع الصافي a",
+        "زمن قطع المضمار t"
+      ]
+    },
+    "heat_conduction": {
+      "title": "التوصيل الحراري وقانون فورييه",
+      "inputs": [
+        "الموصلية الحرارية k للمادة",
+        "مساحة المقطع A",
+        "فرق درجات الحرارة ΔT",
+        "طول القضيب L"
+      ],
+      "outputs": [
+        "معدل التدفق الحراري q (واط)",
+        "التدرج الحراري dT/dx",
+        "كمية الطاقة المنقولة"
+      ]
+    },
+    "seesaw_torque": {
+      "title": "أرجوحة التوازن وعزم الدوران",
+      "inputs": [
+        "موقع وكتلة الثقل الأيسر (m1, r1)",
+        "موقع وكتلة الثقل الأيمن (m2, r2)"
+      ],
+      "outputs": [
+        "العزم الصافي Στ",
+        "حالة الاتزان الدوراني",
+        "زاوية ميلان الأرجوحة"
+      ]
+    },
+    "electromagnetic_induction": {
+      "title": "الحث الكهرومغناطيسي وقانون فاراداي",
+      "inputs": [
+        "عدد لفات الملف N",
+        "سرعة حركة المغناطيس v",
+        "شدة المجال المغناطيسي B"
+      ],
+      "outputs": [
+        "القوة الدافعة الكهربائية الحثية ε (فولت)",
+        "التيار الحثي I",
+        "إضاءة المصباح"
+      ]
+    },
+    "viscosity_stokes": {
+      "title": "اللزوجة وقانون ستوكس والسرعة الحدية",
+      "inputs": [
+        "معامل لزوجة السائل η",
+        "نصف قطر الكرة r",
+        "كثافة الكرة ρ_s",
+        "كثافة السائل ρ_f"
+      ],
+      "outputs": [
+        "السرعة الحدية v_t (م/ث)",
+        "قوة الإعاقة F_d",
+        "منحنى السرعة مع الزمن"
+      ]
+    },
+    "ramp_machine": {
+      "title": "المستوى المائل والآلات البسيطة",
+      "inputs": [
+        "زاوية ميل المستوى θ",
+        "كتلة الجسم المراد رفعه m",
+        "معامل الاحتكاك μ"
+      ],
+      "outputs": [
+        "الفائدة الميكانيكية MA",
+        "القوة اللازمة للسحب F_pull",
+        "الكفاءة الميكانيكية η"
+      ]
+    },
+    "metric_prefixes": {
+      "title": "البادئات المترية والتحويلات الفيزيائية",
+      "inputs": [
+        "القيمة العددية الأساسية",
+        "الوحدة المرجعية",
+        "البادئة المطلوبة (نانو/ميكرو/ميجا/جيجا)"
+      ],
+      "outputs": [
+        "القيمة بالصيغة العلمية",
+        "القيمة بالبادئة الهدف",
+        "معامل التحويل الدقيق"
+      ]
+    },
+    "stress_strain": {
+      "title": "الإجهاد والانفعال ومعامل يونج",
+      "inputs": [
+        "القوة المؤثرة F",
+        "مساحة المقطع A",
+        "الطول الأصلي L0",
+        "نوع المادة (صلب/نحاس/ألمنيوم)"
+      ],
+      "outputs": [
+        "الإجهاد σ (باسكال)",
+        "الانفعال النسبي ε",
+        "الاستطالة ΔL",
+        "حد المرونة"
+      ]
+    },
+    "bernoulli": {
+      "title": "مبدأ برنولي وأنبوب فنتوري",
+      "inputs": [
+        "معدل التدفق الحجمي Q",
+        "قطر المقطع العريض D1",
+        "قطر المقطع الضيق D2"
+      ],
+      "outputs": [
+        "فرق الضغط ΔP",
+        "سرعة المائع في التضيق v2",
+        "ارتفاع عمود السائل في فنتوري"
+      ]
+    },
+    "angled_mirrors": {
+      "title": "المرآتان المائلتان والانعكاسات المتعددة",
+      "inputs": [
+        "الزاوية بين المرآتين θ (درجات)",
+        "موقع الجسم بالنسبة للمرآتين"
+      ],
+      "outputs": [
+        "عدد الصور المتكونة N",
+        "مواقع وتماثل الصور المنعكسة"
+      ]
+    },
+    "curved_mirrors": {
+      "title": "المرايا الكروية (المقعرة والمحدبة)",
+      "inputs": [
+        "نوع المرآة (مقعرة/محدبة)",
+        "البعد البؤري f",
+        "بعد الجسم عن المرآة d_o",
+        "طول الجسم h_o"
+      ],
+      "outputs": [
+        "بعد الصورة d_i",
+        "التكبير M",
+        "صفات الصورة (حقيقية/تقديرية/مقلوبة/معتدلة)"
+      ]
+    },
+    "thin_lenses": {
+      "title": "العدسات الرقيقة والبعد البؤري",
+      "inputs": [
+        "البعد البؤري f",
+        "موقع الجسم d_o",
+        "ارتفاع الجسم h_o"
+      ],
+      "outputs": [
+        "موقع الصورة d_i",
+        "معامل التكبير M",
+        "مسار الأشعة وتكون الصورة"
+      ]
+    },
+    "polarization": {
+      "title": "استقطاب الضوء وقانون مالوس",
+      "inputs": [
+        "شدة الضوء الابتدائي I0",
+        "زاوية المستقطب الأول θ1",
+        "زاوية المحلل θ2"
+      ],
+      "outputs": [
+        "شدة الضوء النافذ I (واط/م²)",
+        "نسبة النفاذية I/I0",
+        "محور الاستقطاب الناتج"
+      ]
+    },
+    "light_scattering": {
+      "title": "تشتت الضوء وتشتت رايلي",
+      "inputs": [
+        "الطول الموجي للضوء الساقط λ",
+        "حجم الجسيمات المشتتة d",
+        "كثافة الوسط"
+      ],
+      "outputs": [
+        "شدة الضوء المشتت I",
+        "اللون الملاحظ للغلاف الجوي",
+        "تفسير زرقة السماء وحمرة الشفق"
+      ]
+    },
+    "arc_length": {
+      "title": "طول القوس والراديان والسرعة الزاوية",
+      "inputs": [
+        "نصف قطر المسار r (متر)",
+        "زاوية الدوران θ (درجات/راديان)",
+        "السرعة الزاوية ω"
+      ],
+      "outputs": [
+        "طول القوس المقطوع s (متر)",
+        "السرعة الخطية v (م/ث)",
+        "الموقع الزاوي"
+      ]
+    },
+    "rotational_dynamics": {
+      "title": "عزم القصور والحركة الدورانية",
+      "inputs": [
+        "عزم القوة المؤثرة τ",
+        "هندسة وكتلة الجسم الدوار (قرص/أسطوانة/حلقة)",
+        "نصف القطر r"
+      ],
+      "outputs": [
+        "عزم القصور الذاتي I",
+        "التسارع الزاوي α (راد/ث²)",
+        "السرعة الزاوية ω(t)"
+      ]
+    },
+    "center_of_mass": {
+      "title": "مركز الكتلة للأجسام والأنظمة المركبة",
+      "inputs": [
+        "كتل الأجسام النقطية (m1, m2, m3)",
+        "إحداثيات مواقع الأجسام (x_i, y_i)"
+      ],
+      "outputs": [
+        "إحداثيات مركز الكتلة (X_cm, Y_cm)",
+        "نقطة الاتزان الميكانيكي المستقر"
+      ]
+    },
+    "pendulum_energy": {
+      "title": "حفظ الطاقة الميكانيكية للنواس",
+      "inputs": [
+        "زاوية الإطلاق الابتدائية θ0",
+        "طول الخيط L",
+        "كتلة الثقل m"
+      ],
+      "outputs": [
+        "طاقة الحركة K (جول)",
+        "طاقة الوضع الثقالية U (جول)",
+        "مخطط تحولات الطاقة الحية"
+      ]
+    },
+    "pendulum": {
+      "title": "البندول البسيط والزمن الدوري",
+      "inputs": [
+        "طول البندول L (متر)",
+        "تسارع الجاذبية g (م/ث²)",
+        "كتلة الكرة m"
+      ],
+      "outputs": [
+        "الزمن الدوري T (ثانية)",
+        "تردد الاهتزاز f (هرتز)",
+        "تسارع الجاذبية المحسوب"
+      ]
+    },
+    "projectile": {
+      "title": "حركة المقذوفات والمدى الأقصى",
+      "inputs": [
+        "السرعة الابتدائية v0 (م/ث)",
+        "زاوية الإطلاق θ (درجات)",
+        "الارتفاع الابتدائي h0"
+      ],
+      "outputs": [
+        "المدى الأفقي الأقصى R",
+        "أقصى ارتفاع H",
+        "زمن التحليق الكلي t_flight",
+        "المسار المنحني"
+      ]
+    },
+    "spring": {
+      "title": "قانون هوك والاهتزاز التوافقي للنابض",
+      "inputs": [
+        "ثابت صلابة النابض k (نيوتن/م)",
+        "كتلة الثقل المعلق m (كجم)",
+        "الإزاحة الابتدائية x0"
+      ],
+      "outputs": [
+        "قوة الإرجاع F_spring",
+        "طاقة الوضع المرنة U_s",
+        "الزمن الدوري للاهتزاز T"
+      ]
+    },
+    "collision": {
+      "title": "حفظ الزخم الخطي والتصادمات",
+      "inputs": [
+        "كتل الجسمين (m1, m2)",
+        "السرعات الابتدائية (v1i, v2i)",
+        "معامل المرونة e (مرن/غير مرن)"
+      ],
+      "outputs": [
+        "السرعات النهائية (v1f, v2f)",
+        "الزخم الكلي المحفوظ P_tot",
+        "الطاقة الحركية المفقودة ΔK"
+      ]
+    },
+    "freefall": {
+      "title": "السقوط الحر وتسارع الجاذبية",
+      "inputs": [
+        "ارتفاع الإسقاط h (متر)",
+        "تسارع كوكب الجاذبية g (أرض/قمر/مريخ)",
+        "مقاومة الهواء"
+      ],
+      "outputs": [
+        "زمن السقوط الحر t (ثانية)",
+        "سرعة الاصطدام بالأرض v_impact",
+        "منحنى المسافة والسرعة"
+      ]
+    },
+    "acoustic_resonance": {
+      "title": "الرنين الصوتي في الأعمدة الهوائية والأنابيب",
+      "inputs": [
+        "طول العمود الهوائي L",
+        "نوع الأنبوب (مغلق/مفتوح الطرفين)",
+        "درجة حرارة الهواء T"
+      ],
+      "outputs": [
+        "ترددات النغمات التوافقية fn",
+        "مواقع العقد والبطون لموجة الضغط",
+        "حالة الرنين"
+      ]
+    },
+    "sound_speed": {
+      "title": "سرعة الصوت في عمود الرنين المائي",
+      "inputs": [
+        "تردد الشوكة الرنانة f (هرتز)",
+        "مستوى ارتفاع الماء L1 و L2",
+        "درجة حرارة الوسط T"
+      ],
+      "outputs": [
+        "الطول الموجي للصوت λ",
+        "سرعة الصوت المحسوبة v (م/ث)",
+        "نسبة الخطأ القياسي"
+      ]
+    },
+    "waves": {
+      "title": "الموجات وتداخل شقي يونغ والحيود",
+      "inputs": [
+        "المسافة بين الشقين d",
+        "الطول الموجي للضوء λ (نانومتر)",
+        "بعد الشاشة L"
+      ],
+      "outputs": [
+        "المسافة بين الأهداب المضيئة Δy",
+        "نمط التداخل والشدة الضوئية على الشاشة"
+      ]
+    },
+    "magnetic_field": {
+      "title": "المجال المغناطيسي وقوة لورنتز",
+      "inputs": [
+        "شحنة الجسيم q",
+        "كتلة الجسيم m",
+        "السرعة المتجهة v",
+        "شدة المجال المغناطيسي B"
+      ],
+      "outputs": [
+        "قوة لورنتز F (نيوتن)",
+        "نصف قطر المدار الدائري r",
+        "تردد السيكلوترون"
+      ]
+    },
+    "atomic_spectra": {
+      "title": "التحليل الطيفي والكمي",
+      "inputs": [
+        "نوع العنصر (هيدروجين/هيليوم/زئبق/نيون)",
+        "مستويات الانتقال الإلكتروني n1 و n2"
+      ],
+      "outputs": [
+        "خطوط الطيف الانبعاثي المرئية",
+        "طاقة الفوتون المنبعث ΔE (إلكترون فولت)",
+        "الطول الموجي λ"
+      ]
+    },
+    "circuits": {
+      "title": "الدوائر الكهربائية وقانون أوم والقدرة",
+      "inputs": [
+        "جهد البطارية V (فولت)",
+        "قيمة المقاومة R (أوم)",
+        "نوع التوصيل (توالي/توازي)"
+      ],
+      "outputs": [
+        "شدة التيار المار I (أمبير)",
+        "القدرة الكهربائية المستهلكة P (واط)",
+        "هبوط الجهد"
+      ]
+    },
+    "buoyancy": {
+      "title": "قاعدة أرخميدس وقوة الطفو في السوائل",
+      "inputs": [
+        "حجم الجسم المغمور V_obj",
+        "كثافة مادة الجسم ρ_obj",
+        "كثافة السائل ρ_fluid"
+      ],
+      "outputs": [
+        "قوة الطفو F_B (نيوتن)",
+        "الوزن الظاهري للجسم W_apparent",
+        "حالة الجسم (يطفو / يعلق / يغوص)"
+      ]
+    },
+    "thermodynamics": {
+      "title": "الغاز المثالي والديناميكا الحرارية",
+      "inputs": [
+        "عدد مولات الغاز n",
+        "حجم الوعاء V",
+        "درجة الحرارة المطلقة T (كلفن)"
+      ],
+      "outputs": [
+        "ضغط الغاز P (باسكال)",
+        "متوسط الطاقة الحركية للجزيئات <E_k>",
+        "مخطط P-V"
+      ]
+    },
+    "optics": {
+      "title": "البصريات وقانون سنيل في الانكسار",
+      "inputs": [
+        "معامل انكسار الوسط الأول n1",
+        "معامل انكسار الوسط الثاني n2",
+        "زاوية السقوط θ1"
+      ],
+      "outputs": [
+        "زاوية الانكسار θ2",
+        "الزاوية الحرجة للانعكاس الكلي الداخلي θ_c",
+        "سرعة الضوء بالوسط"
+      ]
+    },
+    "build_atom": {
+      "title": "بناء الذرة والجدول الدوري",
+      "inputs": [
+        "عدد البروتونات p",
+        "عدد النيوترونات n",
+        "عدد الإلكترونات e"
+      ],
+      "outputs": [
+        "اسم ورمز العنصر",
+        "العدد الكتلي A",
+        "الشحنة الصافية والاتزان الذري"
+      ]
+    },
+    "build_nucleus": {
+      "title": "بناء النواة وطاقة الربط النووي",
+      "inputs": [
+        "العدد الذري Z",
+        "العدد الكتلي A",
+        "طاقة الربط لكل نيوكليون"
+      ],
+      "outputs": [
+        "طاقة الربط النووي الكلية E_b",
+        "نقص الكتلة Δm",
+        "استقرار النواة ونوع الانحلال"
+      ]
+    },
+    "rutherford_scattering": {
+      "title": "تشتت رذرفورد واكتشاف النواة الذرية",
+      "inputs": [
+        "طاقة جسيمات ألفا الساقطة E_α",
+        "العدد الذري لصفيحة الهدف Z",
+        "معامل التصادم b"
+      ],
+      "outputs": [
+        "زاوية التشتت θ",
+        "مسار جسيمات ألفا",
+        "المسافة الأقرب للنواة d_min"
+      ]
+    },
+    "molecules_and_light": {
+      "title": "الجزيئات والضوء وتفاعل الفوتونات",
+      "inputs": [
+        "نوع الجزيء (CO2, H2O, CH4, O2, N2)",
+        "طول موجة الفوتون (ميكروويف/تحت حمراء/مرئي/فوق بنفسجي)"
+      ],
+      "outputs": [
+        "استجابة الجزيء (دوران/اهتزاز/تأين/نفاذ)",
+        "تفسير ظاهرة الاحتباس الحراري"
+      ]
+    },
+    "color_vision": {
+      "title": "رؤية الألوان والخلط الإضافي للضوء",
+      "inputs": [
+        "شدة اللون الأحمر R (0-255)",
+        "شدة اللون الأخضر G (0-255)",
+        "شدة اللون الأزرق B (0-255)"
+      ],
+      "outputs": [
+        "اللون النهائي المدرك في العين",
+        "استجابة مستقبلات المخاريط البصرية"
+      ]
+    },
+    "capacitor_lab": {
+      "title": "مختبر المكثف الكهربائي والطاقة المخزونة",
+      "inputs": [
+        "مساحة اللوحين A",
+        "المسافة الفاصلة d",
+        "جهد البطارية V",
+        "ثابت العازلية κ"
+      ],
+      "outputs": [
+        "السعة الكهربائية C (فاراد)",
+        "الشحنة المتراكمة Q",
+        "الطاقة المخزونة U (جول)"
+      ]
+    },
+    "charges_and_fields": {
+      "title": "الشحنات الكهربائية وخطوط المجال والجهد",
+      "inputs": [
+        "مواقع الشحنات الموجبة والسالبة (x, y)",
+        "مقدار الشحنة Q"
+      ],
+      "outputs": [
+        "شبكة متجهات شدة المجال E",
+        "خطوط تساوي الجهد V",
+        "حركة الشحنة الاختبارية"
+      ]
+    },
+    "resistance_in_wire": {
+      "title": "مقاومة السلك والمقاومية النوعية",
+      "inputs": [
+        "المقاومية النوعية للمادة ρ",
+        "طول السلك L",
+        "مساحة المقطع العرضي A"
+      ],
+      "outputs": [
+        "المقاومة الإجمالية R (أوم)",
+        "كثافة الشوائب الذرية المعيقة للتيار"
+      ]
+    },
+    "gravity_and_orbits": {
+      "title": "الجاذبية والمدارات الفضائية والسرعة المدارية",
+      "inputs": [
+        "كتلة النجم المركزي M",
+        "كتلة الكوكب/القمر m",
+        "نصف القطر المداري r"
+      ],
+      "outputs": [
+        "السرعة المدارية v",
+        "الزمن الدوري للدورة T",
+        "مسار الاستقرار المداري"
+      ]
+    },
+    "keplers_laws": {
+      "title": "قوانين كبلر لحركة الكواكب المدارية",
+      "inputs": [
+        "نصف المحور الأكبر a",
+        "الانحراف المداري e",
+        "كتلة النجم المركزي M"
+      ],
+      "outputs": [
+        "الزمن الدوري للمدار T",
+        "مساحات القطاعات المتساوية في أزمنة متساوية",
+        "موقع الحضيض والأوج"
+      ]
+    },
+    "energy_skate_park": {
+      "title": "حديقة التزلج وتحولات الطاقة وحفظها",
+      "inputs": [
+        "شكل المسار (منحنى/حلقة دائرية/منحدر)",
+        "كتلة المتزلج m",
+        "معامل الاحتكاك"
+      ],
+      "outputs": [
+        "طاقة الحركة K",
+        "طاقة الوضع U_g",
+        "الطاقة الحرارية المتولدة",
+        "سرعة المتزلج في كل نقطة"
+      ]
+    },
+    "fourier_making_waves": {
+      "title": "متسلسلة فورييه وتركيب الموجات التوافقية",
+      "inputs": [
+        "سعات التوافقيات A1, A2, A3, A4...",
+        "التردد الأساسي f0",
+        "شكل الموجة المستهدفة (مربعة/مثلثة/سن منشار)"
+      ],
+      "outputs": [
+        "شكل الموجة المركبة الناتجة",
+        "طيف الترددات الطيفية (Spectrum Analyzer)"
+      ]
+    },
+    "wave_on_a_string": {
+      "title": "الأمواج في وتر مشدود وسرعة الطور",
+      "inputs": [
+        "قوة الشد T",
+        "الكثافة الطولية للوتر μ",
+        "سعة الاهتزاز A",
+        "تردد المهتز f"
+      ],
+      "outputs": [
+        "سرعة انتشار الموجة v",
+        "الطول الموجي λ",
+        "انعكاس الموجة عند النهاية الثابتة/الحرة"
+      ]
+    },
+    "states_of_matter": {
+      "title": "حالات المادة والتحول الطوري والحرارة الكامنة",
+      "inputs": [
+        "نوع المادة (ماء/نيون/أرجون/أكسجين)",
+        "درجة الحرارة المضافة أو المسحوبة",
+        "الضغط الخارجي P"
+      ],
+      "outputs": [
+        "الحالة الفيزيائية (صلب/سائل/غاز)",
+        "مخطط الطور Phase Diagram",
+        "طاقة الحركة الجزيئية"
+      ]
+    },
+    "gas_diffusion": {
+      "title": "انتشار الغازات وقانون غراهام",
+      "inputs": [
+        "الكتلة المولية للغاز الأول M1",
+        "الكتلة المولية للغاز الثاني M2",
+        "درجة الحرارة T"
+      ],
+      "outputs": [
+        "نسبة سرعة الانتشار r1/r2",
+        "التوزيع المكاني للجزيئات عبر الزمن"
+      ]
+    },
+    "rotational_dynamics_torque": {
+      "title": "الحركة الدورانية والعزم المحصل",
+      "inputs": [
+        "القوة المماسية F",
+        "نصف القطر r",
+        "عزم القصور الذاتي I"
+      ],
+      "outputs": [
+        "الزخم الزاوي L",
+        "التسارع الزاوي α",
+        "الطاقة الحركية الدورانية K_rot"
+      ]
+    },
+    "models_h_atom": {
+      "title": "نماذج ذرة الهيدروجين",
+      "inputs": [
+        "المستوى الكمي الأساسي n1",
+        "المستوى الكمي المثار n2",
+        "طاقة الفوتون الساقط"
+      ],
+      "outputs": [
+        "طاقة المدار En (إلكترون فولت)",
+        "الطول الموجي للفوتون المنبعث λ (نانومتر)",
+        "سلسلة الطيف (لايمان/بالمر/باشن)"
+      ]
+    },
+    "circuit_construction_kit": {
+      "title": "بناء الدوائر الكهربائية (المتقدمة)",
+      "inputs": [
+        "جهد المصادر V_sources",
+        "قيم المقاومات R1, R2, R3",
+        "طوبولوجيا التوصيل الشبكي"
+      ],
+      "outputs": [
+        "التيارات في كل فرع I_branches",
+        "فروق الجهد عبر كل عنصر",
+        "القدرة الكلية المبددة"
+      ]
+    },
+    "generator": {
+      "title": "المولد الكهربائي",
+      "inputs": [
+        "سرعة الدوران الزاوية ω (دورة/دقيقة)",
+        "عدد لفات الملف N",
+        "شدة المجال المغناطيسي B"
+      ],
+      "outputs": [
+        "القوة الدافعة الكهربائية العظمى ε_max (فولت)",
+        "تردد التيار المتردد المتولد f (هرتز)",
+        "شكل الموجة الجيبية للجهد"
+      ]
+    },
+    "magnet_compass": {
+      "title": "البوصلة والمغناطيس",
+      "inputs": [
+        "موقع المغناطيس بالنسبة للبوصلة (x, y)",
+        "شدة عزم ثنائي القطب المغناطيسي m",
+        "زاوية انحراف القطبين"
+      ],
+      "outputs": [
+        "زاوية انحراف إبرة البوصلة θ",
+        "خريطة متجهات المجال الكلي",
+        "خطوط القوى المغناطيسية"
+      ]
+    },
+    "magnets_electromagnets": {
+      "title": "المغناطيسات والكهرومغناطيسات",
+      "inputs": [
+        "شدة التيار المار I (أمبير)",
+        "كثافة اللفات n = N/L",
+        "إدخال قلب حديدي فائق النفاذية"
+      ],
+      "outputs": [
+        "شدة المجال المغناطيسي في المركز B (تسلا / ملي تسلا)",
+        "عدد الدبابيس المنجذبة",
+        "قطبية المغناطيس N/S"
+      ]
+    },
+    "gravity_force_lab": {
+      "title": "معمل قوة الجاذبية",
+      "inputs": [
+        "كتلة الجسم الأول m1 (كجم)",
+        "كتلة الجسم الثاني m2 (كجم)",
+        "المسافة بين مركزي الكتلتين r (متر)"
+      ],
+      "outputs": [
+        "قوة التجاذب المتبادلة F (نانو نيوتن)",
+        "متجهات القوة المتساوية والمتعاكسة F12 و F21"
+      ]
+    },
+    "solar_system": {
+      "title": "النظام الشمسي والمدارات الكوكبية",
+      "inputs": [
+        "كتل النجوم والكواكب (M_sun, m_planet)",
+        "السرعة الابتدائية المماسية v0",
+        "المسافة المدارية الابتدائية r0"
+      ],
+      "outputs": [
+        "مسارات الحركة الحقيقية (مدار دائري/إهليلجي/قطع مكافئ)",
+        "حفظ الزخم الزاوي والطاقة الكلية"
+      ]
+    },
+    "energy_forms": {
+      "title": "أشكال الطاقة وتحولاتها",
+      "inputs": [
+        "نوع المادة (ماء/حديد/طوب/زيت)",
+        "مصدر الطاقة (شعلة حرارية/جليد مبرد/طاقة كهربائية)"
+      ],
+      "outputs": [
+        "درجة الحرارة T مع الزمن",
+        "توزيع وحدات الطاقة (حركية، حرارية، إشعاعية، كيميائية)",
+        "الاتزان الحراري النهائي"
+      ]
+    },
+    "normal_modes": {
+      "title": "الأنماط الطبيعية للاهتزاز والموجات الموقوفة",
+      "inputs": [
+        "رتبة النغمة التوافقية n (1, 2, 3...)",
+        "قوة الشد في الوتر T (نيوتن)",
+        "طول الوتر L",
+        "الكثافة الخطية للكتلة μ"
+      ],
+      "outputs": [
+        "التردد الرنان fn (هرتز)",
+        "الطول الموجي λn",
+        "مواقع العقد (Nodes) والبطون (Antinodes)"
+      ]
+    },
+    "forces_motion": {
+      "title": "القوى والحركة: الأساسيات",
+      "inputs": [
+        "القوة الخارجية المطبقة F_applied (نيوتن)",
+        "كتلة الصندوق m (كجم)",
+        "معامل الاحتكاك السطحي μ"
+      ],
+      "outputs": [
+        "القوة المحصلة الصافية F_net",
+        "التسارع الناتج a (م/ث²)",
+        "مخطط الجسم الحر للقوى (FBD)",
+        "السرعة المتجهة v"
+      ]
+    },
+    "gas_properties": {
+      "title": "خصائص الغازات والضغط الحركي",
+      "inputs": [
+        "عدد الجزيئات المحقونة N",
+        "حجم الأسطوانة V",
+        "التسخين أو التبريد الحراري"
+      ],
+      "outputs": [
+        "الضغط الداخلي P (باسكال)",
+        "متوسط السرعة الجزيئية v_rms",
+        "معدل تصادم الجزيئات بجدران الوعاء"
+      ]
+    },
+    "diffusion": {
+      "title": "الانتشار الجزيئي وقانون فيك",
+      "inputs": [
+        "كتلة ونوع الجزيئات (خفيفة/ثقيلة)",
+        "درجة حرارة الوسط T",
+        "فتح/إغلاق الحاجز الفاصل"
+      ],
+      "outputs": [
+        "معدل تدفق الانتشار J",
+        "تدرج التركيز dC/dx",
+        "زمن الوصول إلى الاتزان المتجانس"
+      ]
+    },
+    "blackbody_spectrum": {
+      "title": "إشعاع الجسم الأسود وقانونا بلانك وفين",
+      "inputs": [
+        "درجة حرارة الجسم الأسود T (كلفن) من 300K إلى 10000K (مثل الأرض، المصباح، الشمس، النجوم الزرقاء)"
+      ],
+      "outputs": [
+        "طول موجة الذروة الإشعاعية λ_max (ميكرومتر)",
+        "الشدة الإشعاعية الكلية I (واط/م²)",
+        "منحنى التوزيع الطيفي واللون المرئي"
+      ]
+    },
+    "doppler_effect": {
+      "title": "تأثير دوبلر وإزاحة التردد الصوتي",
+      "inputs": [
+        "سرعة المصدر المتحرك vₛ (م/ث)",
+        "سرعة الراصد vₒ (م/ث)",
+        "التردد المنبعث من المصدر f (هرتز)",
+        "سرعة الصوت في الوسط v (م/ث)"
+      ],
+      "outputs": [
+        "التردد المرصود الظاهري f' (هرتز)",
+        "إزاحة دوبلر الترددية Δf",
+        "الطول الموجي الأمامي والخلفي λ",
+        "معامل ماخ (Mach Number)"
+      ]
+    },
+    "electrical_transformer": {
+      "title": "المحول الكهربائي وقانون الحث المتبادل",
+      "inputs": [
+        "جهد المصدر الابتدائي Vₚ (فولت)",
+        "عدد لفات الملف الابتدائي Nₚ",
+        "عدد لفات الملف الثانوي Nₛ",
+        "مقاومة الحمل R_L (أوم)",
+        "كفاءة المحول η%"
+      ],
+      "outputs": [
+        "الجهد الثانوي المستحث Vₛ (فولت)",
+        "تيار الملفين الابتدائي Iₚ والثانوي Iₛ (أمبير)",
+        "نسبة التحويل a ونوع المحول",
+        "القدرة الكهربائية المنقولة Pₛ (واط)"
+      ]
+    },
+    "photoelectric_effect": {
+      "title": "الظاهرة الكهروضوئية ومعادلة أينشتاين للكم",
+      "inputs": [
+        "طول موجة الضوء الساقط λ (نانومتر)",
+        "شدة الإضاءة (%)",
+        "نوع معدن المهبط (دالة الشغل Φ)",
+        "جهد الانحياز الخارجي V (فولت)"
+      ],
+      "outputs": [
+        "طاقة الفوتون الساقط E (إلكترون فولت)",
+        "أقصى طاقة حركية للإلكترونات K_max",
+        "جهد الإيقاف V_stop (فولت)",
+        "تردد وطول موجة العتبة f₀ و λ₀",
+        "سرعة انطلاق الإلكترونات v_max"
+      ]
+    },
+    "radioactive_decay": {
+      "title": "التحلل الإشعاعي وقانون عمر النصف للنواة",
+      "inputs": [
+        "عدد الأنوية المشعة الابتدائية N₀",
+        "نوع النظير المشع وعمر النصف T₁/₂",
+        "الزمن المنقضي t (ثانية)",
+        "القفز بنصف عمر كامل (+1 T½)"
+      ],
+      "outputs": [
+        "عدد الأنوية المشعة المتبقية N(t)",
+        "عدد الأنوية المستقرة المتكونة N_decayed",
+        "النسبة المئوية المتبقية %",
+        "النشاط الإشعاعي اللحظي A(t) (بيكربل)",
+        "ثابت التحلل λ"
+      ]
+    },
+    "calorimetry_equilibrium": {
+      "title": "المسعر الحراري وقانون الاتزان وتبادل الحرارة",
+      "inputs": [
+        "كتلة ونوع الجسم الصلب الساخن m₁ و c₁",
+        "درجة حرارة الجسم الابتدائية T₁ (°C)",
+        "كتلة ونوع سائل المسعر m₂ و c₂",
+        "درجة حرارة السائل الابتدائية T₂ (°C)"
+      ],
+      "outputs": [
+        "درجة حرارة الاتزان الحراري النهائية T_f (°C و K)",
+        "كمية الطاقة الحرارية المتبادلة Q (جول وسعر حراري)",
+        "السعات الحرارية C₁ و C₂",
+        "تغير درجات الحرارة ΔT₁ و ΔT₂"
+      ]
+    }
+  },
+  "planets": {
+    "earth": {
+      "name": "الأرض",
+      "g": "9.81",
+      "icon": "🌍"
+    },
+    "moon": {
+      "name": "القمر",
+      "g": "1.62",
+      "icon": "🌕"
+    },
+    "mars": {
+      "name": "المريخ",
+      "g": "3.71",
+      "icon": "🔴"
+    },
+    "jupiter": {
+      "name": "المشتري",
+      "g": "24.79",
+      "icon": "🪐"
+    },
+    "sun": {
+      "name": "الشمس",
+      "g": "274.0",
+      "icon": "☀️"
+    },
+    "space": {
+      "name": "الفضاء (انعدام وزن)",
+      "g": "0.0",
+      "icon": "✨"
+    }
+  },
+  "opticalMediums": {
+    "air": {
+      "name": "الهواء / الفراغ",
+      "n": "1.0003",
+      "color": "rgba(224, 242, 254, 0.15)"
+    },
+    "water": {
+      "name": "الماء",
+      "n": "1.333",
+      "color": "rgba(56, 189, 248, 0.25)"
+    },
+    "oil": {
+      "name": "الزيت النباتي",
+      "n": "1.47",
+      "color": "rgba(234, 179, 8, 0.25)"
+    },
+    "glass": {
+      "name": "الزجاج التاجي",
+      "n": "1.52",
+      "color": "rgba(147, 197, 253, 0.35)"
+    },
+    "flint_glass": {
+      "name": "الزجاج الصواني",
+      "n": "1.66",
+      "color": "rgba(168, 85, 247, 0.35)"
+    },
+    "diamond": {
+      "name": "الماس",
+      "n": "2.417",
+      "color": "rgba(236, 72, 153, 0.4)"
+    }
+  },
+  "constants": {
+    "g": {
+      "name": "تسارع الجاذبية الأرضية",
+      "symbol": "g",
+      "value": "9.80665",
+      "unit": "m/s²"
+    },
+    "c": {
+      "name": "سرعة الضوء في الفراغ",
+      "symbol": "c",
+      "value": "2.998 × 10⁸",
+      "unit": "m/s"
+    },
+    "G": {
+      "name": "ثابت الجذب العام",
+      "symbol": "G",
+      "value": "6.674 × 10⁻¹¹",
+      "unit": "N·m²/kg²"
+    },
+    "e": {
+      "name": "الشحنة الأولية للإلكترون",
+      "symbol": "e",
+      "value": "1.602 × 10⁻¹⁹",
+      "unit": "C"
+    },
+    "ε0": {
+      "name": "سماحية الفراغ الكهربائية",
+      "symbol": "ε₀",
+      "value": "8.854 × 10⁻¹²",
+      "unit": "F/m"
+    },
+    "h": {
+      "name": "ثابت بلانك",
+      "symbol": "h",
+      "value": "6.626 × 10⁻³⁴",
+      "unit": "J·s"
+    },
+    "kB": {
+      "name": "ثابت بولتزمان",
+      "symbol": "k_B",
+      "value": "1.381 × 10⁻²³",
+      "unit": "J/K"
+    }
+  },
+  "quiz": {
+    "q1": {
+      "experiment": "pendulum",
+      "question": "إذا ضاعفنا كتلة كرة البندول البسيط بمقدار 4 أضعاف مع بقاء طول الخيط ثابتاً، ماذا يحدث للزمن الدوري؟",
+      "options": [
+        "يتضاعف مرتين",
+        "يقل إلى النصف",
+        "يبقى ثابتاً لا يتغير",
+        "يزداد بمقدار 4 أضعاف"
+      ],
+      "correctIndex": 2,
+      "explanation": "الزمن الدوري للبندول البسيط يعتمد فقط على طول الخيط وتسارع الجاذبية T = 2π√(L/g) ولا يعتمد إطلاقاً على كتلة الجسم."
+    },
+    "q2": {
+      "experiment": "projectile",
+      "question": "ما هي زاوية الإطلاق التي تعطي أقصى مدى أفقي ممكن لمقذوف أُطلق من مستوى الأرض بإهمال مقاومة الهواء؟",
+      "options": [
+        "30°",
+        "45°",
+        "60°",
+        "90°"
+      ],
+      "correctIndex": 1,
+      "explanation": "قانون المدى R = (v₀² sin(2θ))/g، وتصل الدالة sin(2θ) إلى أقصى قيمة (1) عندما يكون 2θ = 90°، أي θ = 45°."
+    },
+    "q3": {
+      "experiment": "circuits",
+      "question": "عند توصيل مقاومتين متماثلتين (كل منهما 10 أوم) على التوازي، ما هي المقاومة المكافئة للدائرة؟",
+      "options": [
+        "20 Ω",
+        "10 Ω",
+        "5 Ω",
+        "2.5 Ω"
+      ],
+      "correctIndex": 2,
+      "explanation": "في التوصيل على التوازي للمقاومات المتماثلة: R_eq = R / n = 10 / 2 = 5 أوم."
+    },
+    "q4": {
+      "experiment": "optics",
+      "question": "متى يمكن أن يحدث الانعكاس الكلي الداخلي للضوء؟",
+      "options": [
+        "عند انتقال الضوء من وسط أقل كثافة ضوئية إلى وسط أكبر كثافة",
+        "عند انتقال الضوء من وسط أكبر كثافة ضوئية إلى وسط أقل كثافة بزاوية أكبر من الزاوية الحرجة",
+        "عندما تكون زاوية السقوط تساوي صفراً دائماً",
+        "في جميع الأوساط بغض النظر عن الكثافة والزوايا"
+      ],
+      "correctIndex": 1,
+      "explanation": "يحدث الانعكاس الكلي الداخلي فقط عند انتقال الضوء من وسط ذي معامل انكسار أعلى (كثافة ضوئية أكبر) إلى وسط ذي معامل أقل وبزاوية سقوط تتجاوز الزاوية الحرجة."
+    },
+    "q5": {
+      "experiment": "freefall",
+      "question": "إذا أُسقطت ريشة وكرة حديدية في أنبوب مفرغ تماماً من الهواء (Vacuum)، أي منهما يصل للأرض أولاً؟",
+      "options": [
+        "الكرة الحديدية لثقلها",
+        "الريشة لخفتها",
+        "يصلان معاً في نفس اللحظة تماماً",
+        "يعتمد على مساحة السطح"
+      ],
+      "correctIndex": 2,
+      "explanation": "في الفراغ التام تنعدم مقاومة الهواء، ويسقط كلا الجسمين بنفس تسارع الجاذبية الأرضية الثابت g، فيصلان في نفس اللحظة (تجربة غاليليو المشهورة)."
+    },
+    "q6": {
+      "experiment": "waves",
+      "question": "في تجربة شقي يونغ، إذا قمنا بزيادة المسافة بين الشقين (d)، ماذا يحدث للمسافة بين أهداب التداخل (y)؟",
+      "options": [
+        "تزداد المسافة بين الأهداب وتتباعد",
+        "تقل المسافة بين الأهداب وتتقارب",
+        "تبقى المسافة بين الأهداب ثابتة",
+        "تختفي الأهداب تماماً"
+      ],
+      "correctIndex": 1,
+      "explanation": "وفق معادلة يونغ y = (m·λ·L)/d، المسافة بين الأهداب تتناسب عكسياً مع المسافة بين الشقين d، فبزيادة d تقترب الأهداب من بعضها."
+    },
+    "q7": {
+      "experiment": "spring",
+      "question": "إذا علقنا كتلة 4kg بنابض مرن فاهتز بزمن دوري 2 ثانية، كم يصبح الزمن الدوري إذا استبدلنا الكتلة بـ 16kg على نفس النابض؟",
+      "options": [
+        "2 ثانية",
+        "4 ثوانٍ",
+        "8 ثوانٍ",
+        "1 ثانية"
+      ],
+      "correctIndex": 1,
+      "explanation": "الزمن الدوري T = 2π√(m/k). عند زيادة الكتلة 4 أضعاف (من 4 إلى 16kg)، يزداد الزمن الدوري بمقدار √4 = 2 ضعف، أي 2 × 2 = 4 ثوانٍ."
+    },
+    "q8": {
+      "experiment": "buoyancy",
+      "question": "قطعة خشب كثافتها 600 kg/m³ وضعت في حوض ماء كثافته 1000 kg/m³. ما هي نسبة الجزء المغمور من حجم الخشب؟",
+      "options": [
+        "40%",
+        "60%",
+        "100%",
+        "0%"
+      ],
+      "correctIndex": 1,
+      "explanation": "نسبة الحجم المغمور لجسم يطفو تساوي نسبة كثافة الجسم إلى كثافة السائل: V_sub / V_total = ρ_obj / ρ_fluid = 600 / 1000 = 60%."
+    },
+    "q9": {
+      "experiment": "collision",
+      "question": "في التصادم المرن التام (Perfect Elastic Collision) بين جسمين معزولين، أي من الكميات الفيزيائية التالية تكون محفوظة؟",
+      "options": [
+        "كمية الحركة فقط",
+        "الطاقة الحركية فقط",
+        "كلا من كمية الحركة والطاقة الحركية معاً",
+        "السرعة المتجهة لكل جسم على حدة"
+      ],
+      "correctIndex": 2,
+      "explanation": "التصادم المرن التام يتميز بحفظ كمية الحركة الخطية الكلية وحفظ الطاقة الحركية الكلية (e = 1.0) دون أي فقد في صورة حرارة أو تشوه."
+    },
+    "q10": {
+      "experiment": "thermodynamics",
+      "question": "في عملية ديناميكية حرارية متساوية درجة الحرارة (Isothermal Process) لغاز مثالي، إذا تضاعف حجم الأسطوانة إلى مثليه، ماذا يحدث للضغط؟",
+      "options": [
+        "يتضاعف الضغط مرتين",
+        "يقل الضغط إلى النصف",
+        "يبقى الضغط ثابتاً",
+        "يصبح الضغط صفراً"
+      ],
+      "correctIndex": 1,
+      "explanation": "وفق قانون بويل في العملية الأيزوثيرمية (T ثابت): P₁V₁ = P₂V₂، وبالتالي P يتناسب عكسياً مع V؛ فمضاعفة الحجم تخفض الضغط إلى النصف."
+    }
+  }
+}
