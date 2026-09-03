@@ -9,6 +9,7 @@ interface MoleculesLightSimProps {
 }
 
 export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [lightType, setLightType] = useState<'microwave' | 'infrared' | 'visible' | 'uv'>('infrared');
   const [molecule, setMolecule] = useState<'co2' | 'h2o' | 'n2' | 'o3'>('co2');
   const [isEmitting, setIsEmitting] = useState<boolean>(true);
@@ -46,85 +47,6 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
     ? 'dissociation'
     : 'transmitted';
 
-  const t = {
-    ar: {
-      title: 'تفاعل الجزيئات والضوء (Photon Absorption)',
-      lightSource: 'نوع المصدر الإشعاعي (Photon Energy)',
-      microwave: 'ميكروويف (طاقة منخفضة - دوران)',
-      infrared: 'تحت حمراء (طاقة متوسطة - اهتزاز)',
-      visible: 'ضوء مرئي (طاقة إلكترونية)',
-      uv: 'فوق بنفسجي (طاقة عالية - تفكك كيميائي)',
-      targetMolecule: 'الجزيء الهدف',
-      co2: 'ثاني أكسيد الكربون (CO₂ - غاز دفيئة)',
-      h2o: 'بخار الماء (H₂O - قطبي)',
-      n2: 'النيتروجين (N₂ - غير قطبي)',
-      o3: 'الأوزون (O₃ - حامي من الأشعة)',
-      effect: 'التأثير المجهري الملاحظ',
-      rotationMsg: '🌀 امتصاص الفوتونات يسبب دوران الجزيء ثنائي القطب.',
-      vibrationMsg: '🔥 امتصاص الأشعة تحت الحمراء يسبب اهتزاز الروابط الكيميائية (الاحتباس الحراري).',
-      dissociationMsg: '💥 طاقة الفوتون الفوق بنفسجي تكسر الروابط التساهمية وتفكك الجزيء.',
-      transmittedMsg: '✨ الفوتونات تمر عبر الجزيء دون امتصاص (شفافية تامة).',
-      toggleEmitter: 'تشغيل / إيقاف منبع الضوء',
-    },
-    en: {
-      title: 'Molecules & Light Interaction Lab',
-      lightSource: 'Photon Energy & Radiation Type',
-      microwave: 'Microwave (Rotation)',
-      infrared: 'Infrared (Bond Vibration)',
-      visible: 'Visible Light',
-      uv: 'Ultraviolet (Dissociation)',
-      targetMolecule: 'Target Molecule',
-      co2: 'Carbon Dioxide (CO₂)',
-      h2o: 'Water Vapor (H₂O)',
-      n2: 'Nitrogen (N₂)',
-      o3: 'Ozone (O₃)',
-      effect: 'Microscopic Interaction Mode',
-      rotationMsg: '🌀 Photons induce molecular dipole rotation.',
-      vibrationMsg: '🔥 IR absorption causes bond stretching/bending (Greenhouse Effect).',
-      dissociationMsg: '💥 High-energy UV photon breaks covalent bonds (Photodissociation).',
-      transmittedMsg: '✨ Photons pass straight through without absorption.',
-      toggleEmitter: 'Toggle Photon Emitter',
-    },
-    ku: {
-      title: 'کارلێکی گەردەکان و تیشکی ڕووناکی',
-      lightSource: 'جۆری تیشکدان',
-      microwave: 'مایکرۆوەیڤ (خولانەوە)',
-      infrared: 'ژێر سوور (لەرزین)',
-      visible: 'ڕووناکی بینراو',
-      uv: 'سەروو بنەوشەیی (هەڵوەشاندن)',
-      targetMolecule: 'گەردی ئامانج',
-      co2: 'دووەم ئۆکسیدی کاربۆن (CO₂)',
-      h2o: 'هەڵمی ئاو (H₂O)',
-      n2: 'نایترۆجین (N₂)',
-      o3: 'ئۆزۆن (O₃)',
-      effect: 'کاریگەری مایکڕۆسکۆپی',
-      rotationMsg: '🌀 فۆتۆنەکان دەبنە هۆی خولانەوەی گەردەکە.',
-      vibrationMsg: '🔥 هەڵمژینی تیشکی ژێر سوور دەبێتە هۆی لەرزینی بەستەرەکان.',
-      dissociationMsg: '💥 وزەی بەرز بەستەرەکان دەپچڕێنێت.',
-      transmittedMsg: '✨ فۆتۆنەکان بەبێ هەڵمژین تێدەپەڕن.',
-      toggleEmitter: 'داگیرساندن / کوژاندنەوە',
-    },
-    kmr: {
-      title: 'Têkiliya Molekulan bi Ronahiyê re',
-      lightSource: 'Cureyê Tîrêjê',
-      microwave: 'Mîkropêl (Zivirîn)',
-      infrared: 'Bin-sor (Lerzîna Bendan)',
-      visible: 'Ronahiya Xuyanî',
-      uv: 'Ser-binefşî (Şikestina Bendan)',
-      targetMolecule: 'Molekula Hedefê',
-      co2: 'Duyem Oksîda Karbonê (CO₂)',
-      h2o: 'Hilma Avê (H₂O)',
-      n2: 'Nîtrojen (N₂)',
-      o3: 'Ozon (O₃)',
-      effect: 'Bandora Mîkroskopîk',
-      rotationMsg: '🌀 Foton dibin sedema zivirîna molekulê.',
-      vibrationMsg: '🔥 Tîrêjên bin-sor bendên kîmyewî dilerizînin.',
-      dissociationMsg: '💥 Fotona bi hêz bendan dişkîne.',
-      transmittedMsg: '✨ Foton rasterast derbas dibin bêyî ku werin mijandin.',
-      toggleEmitter: 'Vekirin / Girtina Çavkaniyê',
-    },
-  }[lang];
-
   // Colors based on light type
   const photonColor =
     lightType === 'microwave'
@@ -152,7 +74,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
             <Waves  className="w-6 h-6"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.molecules_and_light.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER A • SIMULATION 6</p>
           </div>
         </div>
@@ -161,7 +83,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
           onClick={() => setIsEmitting(!isEmitting)}
           className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors"
         >
-          {isEmitting ? '⏸️ إيقاف الحزمة' : '▶️ إطلاق الفوتونات'}
+          {isEmitting ? `⏸️ ${tI18n('experiments.molecules_and_light.pauseBeam')}` : `▶️ ${tI18n('experiments.molecules_and_light.playBeam')}`}
         </button>
       </div>
 
@@ -245,15 +167,15 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
 
           {/* Interaction status banner (Cleanly outside the visual stage) */}
           <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-3 text-center text-xs shadow-sm">
-            <span className="text-amber-300 font-semibold block mb-0.5">{t.effect}:</span>
+            <span className="text-amber-300 font-semibold block mb-0.5">{tI18n('experiments.molecules_and_light.effect')}:</span>
             <p className="text-slate-200">
               {effectType === 'rotation'
-                ? t.rotationMsg
+                ? tI18n('experiments.molecules_and_light.rotationMsg')
                 : effectType === 'vibration'
-                ? t.vibrationMsg
+                ? tI18n('experiments.molecules_and_light.vibrationMsg')
                 : effectType === 'dissociation'
-                ? t.dissociationMsg
-                : t.transmittedMsg}
+                ? tI18n('experiments.molecules_and_light.dissociationMsg')
+                : tI18n('experiments.molecules_and_light.transmittedMsg')}
             </p>
           </div>
         </div>
@@ -262,7 +184,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
         <div className="lg:col-span-4 space-y-4">
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300 block">{t.lightSource}</label>
+              <label className="text-xs font-semibold text-slate-300 block">{tI18n('experiments.molecules_and_light.lightSource')}</label>
               <div className="grid grid-cols-2 gap-1.5 text-xs">
                 <button
                   onClick={() => setLightType('microwave')}
@@ -270,7 +192,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     lightType === 'microwave' ? 'bg-sky-500/20 border-sky-500 text-sky-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  📡 {t.microwave}
+                  📡 {tI18n('experiments.molecules_and_light.microwave')}
                 </button>
                 <button
                   onClick={() => setLightType('infrared')}
@@ -278,7 +200,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     lightType === 'infrared' ? 'bg-red-500/20 border-red-500 text-red-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  🔥 {t.infrared}
+                  🔥 {tI18n('experiments.molecules_and_light.infrared')}
                 </button>
                 <button
                   onClick={() => setLightType('visible')}
@@ -286,7 +208,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     lightType === 'visible' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  🌈 {t.visible}
+                  🌈 {tI18n('experiments.molecules_and_light.visible')}
                 </button>
                 <button
                   onClick={() => setLightType('uv')}
@@ -294,13 +216,13 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     lightType === 'uv' ? 'bg-purple-500/20 border-purple-500 text-purple-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  ⚡ {t.uv}
+                  ⚡ {tI18n('experiments.molecules_and_light.uv')}
                 </button>
               </div>
             </div>
 
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300 block">{t.targetMolecule}</label>
+              <label className="text-xs font-semibold text-slate-300 block">{tI18n('experiments.molecules_and_light.targetMolecule')}</label>
               <div className="grid grid-cols-2 gap-1.5 text-xs">
                 <button
                   onClick={() => setMolecule('co2')}
@@ -308,7 +230,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     molecule === 'co2' ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  🌍 {t.co2}
+                  🌍 {tI18n('experiments.molecules_and_light.co2')}
                 </button>
                 <button
                   onClick={() => setMolecule('h2o')}
@@ -316,7 +238,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     molecule === 'h2o' ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  💧 {t.h2o}
+                  💧 {tI18n('experiments.molecules_and_light.h2o')}
                 </button>
                 <button
                   onClick={() => setMolecule('n2')}
@@ -324,7 +246,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     molecule === 'n2' ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  💨 {t.n2}
+                  💨 {tI18n('experiments.molecules_and_light.n2')}
                 </button>
                 <button
                   onClick={() => setMolecule('o3')}
@@ -332,7 +254,7 @@ export const MoleculesLightSim: React.FC<MoleculesLightSimProps> = ({ lang }) =>
                     molecule === 'o3' ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  🛡️ {t.o3}
+                  🛡️ {tI18n('experiments.molecules_and_light.o3')}
                 </button>
               </div>
             </div>

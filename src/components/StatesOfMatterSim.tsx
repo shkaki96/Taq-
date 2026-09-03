@@ -17,6 +17,7 @@ interface Particle {
 }
 
 export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [element, setElement] = useState<'neon' | 'argon' | 'water'>('neon');
   const [tempK, setTempK] = useState<number>(27); // default solid Neon (27K)
   const [particles, setParticles] = useState<Particle[]>([]);
@@ -154,69 +155,6 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
     else setTempK(450);
   };
 
-  const t = {
-    ar: {
-      title: 'حالات المادة والتحول الطوري (PV = NkT, E_k = 3/2 kT)',
-      substance: 'المادة / العنصر النقي',
-      neon: 'نيون (Neon)',
-      argon: 'أرجون (Argon)',
-      water: 'ماء (H₂O)',
-      temperature: 'درجة الحرارة (T)',
-      pressure: 'الضغط داخل الوعاء (P)',
-      solid: 'صلب (Solid)',
-      liquid: 'سائل (Liquid)',
-      gas: 'غاز (Gas)',
-      heat: 'تسخين 🔥',
-      cool: 'تبريد ❄️',
-      currentPhase: 'الحالة الطورية الحالية:',
-    },
-    en: {
-      title: 'States of Matter & Phase Changes (PV = NkT, E_k = 3/2 kT)',
-      substance: 'Substance / Atom',
-      neon: 'Neon',
-      argon: 'Argon',
-      water: 'Water',
-      temperature: 'Temperature (T)',
-      pressure: 'Internal Pressure (P)',
-      solid: 'Solid',
-      liquid: 'Liquid',
-      gas: 'Gas',
-      heat: 'Heat Flame 🔥',
-      cool: 'Cool Ice ❄️',
-      currentPhase: 'Current Phase State:',
-    },
-    ku: {
-      title: 'دۆخەکانی ماددە و گۆڕانی قۆناغ',
-      substance: 'ماددە / توخم',
-      neon: 'نیۆن',
-      argon: 'ئارگۆن',
-      water: 'ئاو',
-      temperature: 'پلەی گەرمی (T)',
-      pressure: 'پەستان (P)',
-      solid: 'ڕەق',
-      liquid: 'شلە',
-      gas: 'گاز',
-      heat: 'گەرمکردن 🔥',
-      cool: 'ساردکردنەوە ❄️',
-      currentPhase: 'دۆخی ئێستا:',
-    },
-    kmr: {
-      title: 'Rewşên Madeyê û Guherîna Qonaxê',
-      substance: 'Made / Element',
-      neon: 'Neon',
-      argon: 'Argon',
-      water: 'Av',
-      temperature: 'Germahî (T)',
-      pressure: 'Zext (P)',
-      solid: 'Zexm',
-      liquid: 'Avî',
-      gas: 'Gaz',
-      heat: 'Germkirin 🔥',
-      cool: 'Sarkirin ❄️',
-      currentPhase: 'Qonaxa Niha:',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -225,7 +163,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
             <Flame className="w-6 h-6 animate-pulse" />
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.states_of_matter.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER F • SIMULATION 29</p>
           </div>
         </div>
@@ -238,7 +176,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
               phase === 'solid' ? 'bg-sky-500/20 border-sky-500 text-sky-300' : 'bg-slate-800 border-slate-700 text-slate-400'
             }`}
           >
-            🧊 {t.solid}
+            🧊 {tI18n('experiments.states_of_matter.solid')}
           </button>
           <button
             onClick={setLiquidPreset}
@@ -246,7 +184,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
               phase === 'liquid' ? 'bg-blue-500/20 border-blue-500 text-blue-300' : 'bg-slate-800 border-slate-700 text-slate-400'
             }`}
           >
-            💧 {t.liquid}
+            💧 {tI18n('experiments.states_of_matter.liquid')}
           </button>
           <button
             onClick={setGasPreset}
@@ -254,7 +192,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
               phase === 'gas' ? 'bg-amber-500/20 border-amber-500 text-amber-300' : 'bg-slate-800 border-slate-700 text-slate-400'
             }`}
           >
-            💨 {t.gas}
+            💨 {tI18n('experiments.states_of_matter.gas')}
           </button>
         </div>
       </div>
@@ -270,10 +208,10 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
 
           <div className="flex justify-between items-center text-xs pt-2 border-t border-slate-800 px-2 font-mono">
             <span className="text-amber-400">
-              {t.temperature}: {tempK} K ({(tempK - 273.15).toFixed(1)} °C)
+              {tI18n('experiments.states_of_matter.temperature')}: {tempK} K ({(tempK - 273.15).toFixed(1)} °C)
             </span>
             <span className="text-sky-400">
-              {t.pressure}: {pressureAtm} atm
+              {tI18n('experiments.states_of_matter.pressure')}: {pressureAtm} atm
             </span>
           </div>
         </div>
@@ -281,7 +219,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
         <div className="lg:col-span-4 space-y-4">
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-slate-300 block">{t.substance}</label>
+              <label className="text-xs font-semibold text-slate-300 block">{tI18n('experiments.states_of_matter.substance')}</label>
               <div className="grid grid-cols-3 gap-1.5 text-xs">
                 <button
                   onClick={() => {
@@ -292,7 +230,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
                     element === 'neon' ? 'bg-red-500/20 border-red-500 text-red-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.neon}
+                  {tI18n('experiments.states_of_matter.neon')}
                 </button>
                 <button
                   onClick={() => {
@@ -303,7 +241,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
                     element === 'argon' ? 'bg-sky-500/20 border-sky-500 text-sky-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.argon}
+                  {tI18n('experiments.states_of_matter.argon')}
                 </button>
                 <button
                   onClick={() => {
@@ -314,7 +252,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
                     element === 'water' ? 'bg-blue-500/20 border-blue-500 text-blue-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.water}
+                  {tI18n('experiments.states_of_matter.water')}
                 </button>
               </div>
             </div>
@@ -322,7 +260,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
             {/* Temperature Slider */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-amber-400">{t.temperature}</span>
+                <span className="text-amber-400">{tI18n('experiments.states_of_matter.temperature')}</span>
                 <span className="font-mono text-white text-sm">{tempK} K</span>
               </div>
               <input
@@ -342,13 +280,13 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
                 onClick={() => setTempK((prev) => Math.min(prev + 40, 600))}
                 className="p-2 bg-rose-600/20 hover:bg-rose-600/30 text-rose-300 border border-rose-500/40 rounded-lg text-xs font-bold transition-colors"
               >
-                {t.heat}
+                {tI18n('experiments.states_of_matter.heat')}
               </button>
               <button
                 onClick={() => setTempK((prev) => Math.max(prev - 40, 5))}
                 className="p-2 bg-sky-600/20 hover:bg-sky-600/30 text-sky-300 border border-sky-500/40 rounded-lg text-xs font-bold transition-colors"
               >
-                {t.cool}
+                {tI18n('experiments.states_of_matter.cool')}
               </button>
             </div>
           </div>

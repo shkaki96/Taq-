@@ -1,11 +1,12 @@
 import { Calculator, ChevronDown, ChevronUp, Eye, Delete, RotateCcw, Check, Copy, Sparkles, Hash, CornerDownLeft, X, Layers } from 'lucide-react';
 import React, { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { evaluate } from 'mathjs';
 
 import { Language } from '../types';
 
 interface PhysicsEquationKeyboardProps {
-  lang: Language;
+  lang?: Language;
   value?: string;
   onChange?: (val: string) => void;
   onInsert?: (symbol: string) => void;
@@ -26,6 +27,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
   isOpen = true,
   docked = false,
 }) => {
+  const { t, i18n } = useTranslation();
   const [internalValue, setInternalValue] = useState(value);
   const [activeTab, setActiveTab] = useState<TabType>('operators');
   const [copied, setCopied] = useState(false);
@@ -149,27 +151,16 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
         const num = res.toNumber();
         setEvalResult(num.toLocaleString(undefined, { maximumFractionDigits: 6 }));
       } else {
-        const getSyntaxError = () => {
-          if (lang === 'ku') return 'تکایە دڵنیابە لە دروستی ژمارەکان و هاوکێشەکە';
-          if (lang === 'kmr') return 'Ji kerema xwe rastbûna hejmar û formulê kontrol bikin';
-          if (lang === 'en') return 'Check numerical and operator syntax';
-          return 'تأكد من صحة الأرقام والصيغة الرياضية';
-        };
-        setEvalError(getSyntaxError());
+        setEvalError(t('equationKeyboard.errors.syntax'));
       }
     } catch {
-      const getEvalError = () => {
-        if (lang === 'ku') return 'ناتوانرێت ئەنجامەکەی بە شێوەی ڕاستەوخۆ هەژمار بکرێت (نموونە: 1.5 * 2 + 3.14)';
-        if (lang === 'kmr') return 'Ev formul nayê hesabkirin (Mînak: 1.5 * 2 + 3.14)';
-        if (lang === 'en') return 'Cannot evaluate expression (e.g. try: 1.5 * 2 + 3.14)';
-        return 'صيغة غير قابلة للحساب المباشر (جرب مثلاً: 1.5 * 2 + 3.14)';
-      };
-      setEvalError(getEvalError());
+      setEvalError(t('equationKeyboard.errors.eval'));
     }
   };
 
   const getLabel = (item: { ar: string; ku: string; kmr: string; en: string }) => {
-    switch (lang) {
+    const curLang = i18n.language || lang;
+    switch (curLang) {
       case 'ku': return item.ku;
       case 'kmr': return item.kmr;
       case 'en': return item.en;
@@ -306,51 +297,51 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
 
   const readyFormulas = [
     { 
-      name: lang === 'ar' ? 'الزمن الدوري للبندول' : lang === 'ku' ? 'خولی لەرینەوەی پەندۆڵ' : lang === 'kmr' ? 'Dema gerê ya pendulê' : 'Pendulum Period', 
+      name: t('equationKeyboard.formulas.pendulumPeriod'), 
       eq: 'T = 2π √(L / g)' 
     },
     { 
-      name: lang === 'ar' ? 'المدى الأفقي للمقذوف' : lang === 'ku' ? 'مەودای ئاسۆیی هاوێژراو' : lang === 'kmr' ? 'Dûrahiya asoyî ya avêtinê' : 'Projectile Range', 
+      name: t('equationKeyboard.formulas.projectileRange'), 
       eq: 'R = (v₀² · sin(2θ)) / g' 
     },
     { 
-      name: lang === 'ar' ? 'أقصى ارتفاع للمقذوف' : lang === 'ku' ? 'بەرزترین ئاستی هاوێژراو' : lang === 'kmr' ? 'Bilindahiya herî zêde ya avêtinê' : 'Max Projectile Height', 
+      name: t('equationKeyboard.formulas.maxProjectileHeight'), 
       eq: 'H = (v₀ · sin θ)² / (2g)' 
     },
     { 
-      name: lang === 'ar' ? 'قانون هووك للنابض' : lang === 'ku' ? 'یاسای هووک بۆ کانی' : lang === 'kmr' ? 'Qanûna Hooke ya kanî' : "Hooke's Law", 
+      name: t('equationKeyboard.formulas.hookesLaw'), 
       eq: 'F = -k · x' 
     },
     { 
-      name: lang === 'ar' ? 'قانون نيوتن الثاني' : lang === 'ku' ? 'یاسای دووەمی نیوتن' : lang === 'kmr' ? 'Qanûna duyemîn a Newton' : "Newton's 2nd Law", 
+      name: t('equationKeyboard.formulas.newtonsSecondLaw'), 
       eq: 'F = m · a' 
     },
     { 
-      name: lang === 'ar' ? 'طاقة الحركة' : lang === 'ku' ? 'وزەی جوڵە' : lang === 'kmr' ? 'Enerjiya tevgerê' : 'Kinetic Energy', 
+      name: t('equationKeyboard.formulas.kineticEnergy'), 
       eq: 'E_k = ½ · m · v²' 
     },
     { 
-      name: lang === 'ar' ? 'طاقة الوضع الثقالية' : lang === 'ku' ? 'وزەی پۆتێنشیاڵی کێش' : lang === 'kmr' ? 'Enerjiya potansiyel a kêşkirinê' : 'Potential Energy', 
+      name: t('equationKeyboard.formulas.potentialEnergy'), 
       eq: 'E_p = m · g · h' 
     },
     { 
-      name: lang === 'ar' ? 'قانون أوم' : lang === 'ku' ? 'یاسای ئۆم' : lang === 'kmr' ? 'Qanûna Ohm' : "Ohm's Law", 
+      name: t('equationKeyboard.formulas.ohmsLaw'), 
       eq: 'V = I · R' 
     },
     { 
-      name: lang === 'ar' ? 'القدرة الكهربائية' : lang === 'ku' ? 'توانای کارەبایی' : lang === 'kmr' ? 'Hêza elektrîkî' : 'Electric Power', 
+      name: t('equationKeyboard.formulas.electricPower'), 
       eq: 'P = V · I = I² · R' 
     },
     { 
-      name: lang === 'ar' ? 'قانون سنيل للانكسار' : lang === 'ku' ? 'یاسای سنێل بۆ شکانەوە' : lang === 'kmr' ? 'Qanûna Snell ya şikestinê' : "Snell's Law", 
+      name: t('equationKeyboard.formulas.snellsLaw'), 
       eq: 'n₁ · sin(θ₁) = n₂ · sin(θ₂)' 
     },
     { 
-      name: lang === 'ar' ? 'اتساع هدب يونغ' : lang === 'ku' ? 'پانی هێڵی تاقیکردنەوەی یۆنگ' : lang === 'kmr' ? 'Berfirehiya qada Young' : "Young's Slit Width", 
+      name: t('equationKeyboard.formulas.youngsSlitWidth'), 
       eq: 'Δy = (λ · L) / d' 
     },
     { 
-      name: lang === 'ar' ? 'معادلة السقوط الحر' : lang === 'ku' ? 'هاوکێشەی کەوتنی ئازاد' : lang === 'kmr' ? 'Hevkêşeya ketina azad' : 'Free Fall Distance', 
+      name: t('equationKeyboard.formulas.freeFallDistance'), 
       eq: 'h = ½ · g · t²' 
     },
   ];
@@ -376,13 +367,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
           </div>
           <div>
             <h4 className="text-sm font-semibold text-zinc-200 flex items-center gap-1.5">
-              {lang === 'ar' 
-                ? 'لوحة إدخال المعادلات والرموز الرياضية والفيزيائية' 
-                : lang === 'ku'
-                ? 'تەختەکلیلی هاوکێشە، هێما و ژمارە فیزیاییەکان'
-                : lang === 'kmr'
-                ? 'Tebleya Hevkêşe, Hêma û Hejmarên Fîzîkî'
-                : 'Physics Equation, Symbols & Formulas Keyboard'}
+              {t('equationKeyboard.title')}
               <span className="text-[10px] bg-indigo-950/80 text-indigo-300 border border-indigo-800/60 px-1.5 py-0.5 rounded font-mono">v2.5</span>
             </h4>
           </div>
@@ -398,11 +383,11 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
             className={`px-2.5 py-1.5 rounded-lg text-xs flex items-center gap-1.5 transition-all shadow-xs ${
               showEvaluator ? 'bg-indigo-600 text-white shadow-indigo-600/30' : 'bg-zinc-800 hover:bg-zinc-750 text-zinc-300 border border-zinc-700'
             }`}
-            title={lang === 'ar' ? 'حساب القيمة العددية' : 'Evaluate Numerical Expression'}
+            title={t('equationKeyboard.evalTitle')}
           >
             <Calculator className="w-3.5 h-3.5 text-amber-400" />
             <span className="font-medium">
-              {lang === 'ar' ? 'حاسبة فورية' : lang === 'ku' ? 'شیکارکەری ژمارەیی' : lang === 'kmr' ? 'Hesabker' : 'Compute'}
+              {t('equationKeyboard.compute')}
             </span>
           </button>
 
@@ -410,7 +395,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
             id="toggle-collapse-kb-btn"
             onClick={() => setIsCollapsed(!isCollapsed)}
             className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors"
-            title={isCollapsed ? (lang === 'ar' ? 'توسيع' : 'Expand') : (lang === 'ar' ? 'طي' : 'Collapse')}
+            title={isCollapsed ? t('equationKeyboard.expand') : t('equationKeyboard.collapse')}
           >
             {isCollapsed ? <ChevronDown className="w-4 h-4" /> : <ChevronUp className="w-4 h-4" />}
           </button>
@@ -420,7 +405,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
               id="close-keyboard-btn"
               onClick={onClose}
               className="p-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-400 hover:text-zinc-200 transition-colors"
-              title={lang === 'ar' ? 'إغلاق' : 'Close'}
+              title={t('common.close')}
             >
               <X className="w-4 h-4" />
             </button>
@@ -435,16 +420,10 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
             <div className="flex items-center justify-between text-xs text-zinc-400 mb-1.5">
               <span className="flex items-center gap-1.5">
                 <Eye className="w-3.5 h-3.5 text-indigo-400" />
-                {lang === 'ar' 
-                  ? 'المعادلة أو القيمة الحالية المعروضة:' 
-                  : lang === 'ku'
-                  ? 'هاوکێشە یان بڕی نووسراوی ئێستا:'
-                  : lang === 'kmr'
-                  ? 'Hevkêşe an nirxa niha ya xuyakirî:'
-                  : 'Current Expression Display:'}
+                {t('equationKeyboard.currentDisplay')}
               </span>
               <span className="text-[11px] font-mono text-zinc-500">
-                {currentValue.length} {lang === 'ar' ? 'رمز' : lang === 'ku' ? 'پیت' : 'chars'}
+                {currentValue.length} {t('equationKeyboard.chars')}
               </span>
             </div>
 
@@ -454,15 +433,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                 type="text"
                 value={currentValue}
                 onChange={(e) => updateValue(e.target.value)}
-                placeholder={
-                  lang === 'ar' 
-                    ? 'اكتب هنا أو انقر الرموز بالأسفل (يدعم الأرقام، الفاصلة 1.5، والدوال)...' 
-                    : lang === 'ku'
-                    ? 'لێرە بنووسە یان هێماکان دابگرە (پشتگیری ژمارە، خاڵی دەیی 1.5 و نەخشەکان)...'
-                    : lang === 'kmr'
-                    ? 'Li vir binivîse an hêmayan bitikîne (piştgiriya hejmar, xala 1.5 û fonksiyonan)...'
-                    : 'Type or click symbols below (supports decimals 1.5, operators, functions)...'
-                }
+                placeholder={t('equationKeyboard.inputPlaceholder')}
                 className="w-full bg-transparent text-indigo-200 font-mono text-base sm:text-lg focus:outline-none placeholder:text-zinc-600"
                 dir="ltr"
               />
@@ -473,7 +444,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                   onClick={handleBackspace}
                   disabled={!currentValue}
                   className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 disabled:opacity-40 text-zinc-300 transition-colors"
-                  title={lang === 'ar' ? 'حذف آخر رمز' : 'Backspace'}
+                  title={t('equationKeyboard.backspace')}
                 >
                   <Delete className="w-4 h-4" />
                 </button>
@@ -482,7 +453,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                   onClick={handleUndo}
                   disabled={historyIdx <= 0}
                   className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 disabled:opacity-40 text-zinc-300 transition-colors"
-                  title={lang === 'ar' ? 'تراجع' : 'Undo'}
+                  title={t('equationKeyboard.undo')}
                 >
                   <RotateCcw className="w-4 h-4" />
                 </button>
@@ -491,7 +462,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                   onClick={handleCopy}
                   disabled={!currentValue}
                   className="p-2 rounded-lg bg-zinc-800 hover:bg-zinc-700 disabled:opacity-40 text-zinc-300 transition-colors"
-                  title={lang === 'ar' ? 'نسخ المعادلة' : 'Copy'}
+                  title={t('equationKeyboard.copy')}
                 >
                   {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
                 </button>
@@ -501,7 +472,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                   disabled={!currentValue}
                   className="px-2.5 py-1.5 rounded-lg bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 text-xs border border-rose-500/30 disabled:opacity-40 transition-colors font-medium"
                 >
-                  {lang === 'ar' ? 'مسح' : lang === 'ku' ? 'سڕینەوە' : lang === 'kmr' ? 'Paqij bike' : 'Clear'}
+                  {t('equationKeyboard.clear')}
                 </button>
               </div>
             </div>
@@ -511,7 +482,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
               <div className="mt-2.5 pt-2 border-t border-zinc-800/80 flex flex-wrap items-center justify-between gap-2 text-xs bg-zinc-950/80 p-2.5 rounded-lg">
                 <div className="flex items-center gap-2 flex-wrap">
                   <span className="text-zinc-400 font-medium">
-                    {lang === 'ar' ? 'الناتج الحسابي الدقيق:' : lang === 'ku' ? 'ئەنجامی ژمێریاری:' : lang === 'kmr' ? 'Encama hesabkirî:' : 'Evaluated Result:'}
+                    {t('equationKeyboard.evalResultLabel')}
                   </span>
                   {evalResult !== null && (
                     <span className="font-mono text-sm font-bold text-emerald-400 bg-emerald-950/60 px-2.5 py-0.5 rounded-md border border-emerald-800/60">
@@ -528,7 +499,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                   className="px-3 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium text-xs flex items-center gap-1.5 transition-colors shadow-sm"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-amber-300" />
-                  <span>{lang === 'ar' ? 'احسب الآن' : lang === 'ku' ? 'هەژمارکردن' : lang === 'kmr' ? 'Hesab bike' : 'Compute'}</span>
+                  <span>{t('equationKeyboard.computeNow')}</span>
                 </button>
               </div>
             )}
@@ -539,23 +510,23 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
             {[
               { 
                 id: 'operators', 
-                label: { ar: '➗ عمليات ودوال وأرقام', ku: '➗ کرداری، نەخشە و ژمارەکان', kmr: '➗ Kiryar û Fonksiyon', en: '➗ Operators & Math' } 
+                label: t('equationKeyboard.tabs.operators') 
               },
               { 
                 id: 'variables', 
-                label: { ar: '⚛️ كميات فيزيائية', ku: '⚛️ بڕە فیزیاییەکان', kmr: '⚛️ Mezinahiyên Fîzîkî', en: '⚛️ Physics Variables' } 
+                label: t('equationKeyboard.tabs.variables') 
               },
               { 
                 id: 'greek', 
-                label: { ar: 'αβγ حروف يونانية', ku: 'αβγ پیتە یۆنانییەکان', kmr: 'αβγ Tîpên Yewnanî', en: 'αβγ Greek Letters' } 
+                label: t('equationKeyboard.tabs.greek') 
               },
               { 
                 id: 'units', 
-                label: { ar: '📏 وحدات دولية SI', ku: '📏 یەکە نێودەوڵەتییەکان', kmr: '📏 Yekeyên Navneteweyî', en: '📏 SI Units' } 
+                label: t('equationKeyboard.tabs.units') 
               },
               { 
                 id: 'presets', 
-                label: { ar: '📜 قوانين ومعادلات جاهزة', ku: '📜 یاسا و هاوکێشە ئامادەکراوەکان', kmr: '📜 Formulên Amade', en: '📜 Ready Formulas' } 
+                label: t('equationKeyboard.tabs.presets') 
               },
             ].map((tab) => (
               <button
@@ -568,7 +539,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                     : 'bg-zinc-900/60 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/80 border border-zinc-800/60'
                 }`}
               >
-                {getLabel(tab.label)}
+                {tab.label}
               </button>
             ))}
           </div>
@@ -679,7 +650,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                       ? 'bg-amber-500/20 text-amber-300 border border-amber-500/40 hover:bg-amber-500 hover:text-black font-extrabold text-base'
                       : 'bg-zinc-900 hover:bg-zinc-750 text-zinc-200 border border-zinc-800 hover:border-zinc-700'
                   }`}
-                  title={num === '.' || num === '٫' ? (lang === 'ar' ? 'فاصلة عشرية (بوينت)' : 'Decimal point') : undefined}
+                  title={num === '.' || num === '٫' ? t('equationKeyboard.decimalPoint') : undefined}
                 >
                   {num}
                 </button>
@@ -693,7 +664,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                     ? 'bg-amber-500/20 text-amber-300 border-amber-500/40' 
                     : 'bg-zinc-900 text-zinc-400 border-zinc-800 hover:text-zinc-200'
                 }`}
-                title={lang === 'ar' ? 'تبديل نمط الأرقام (١٢٣ / 123)' : 'Toggle Arabic/Latin digits'}
+                title={t('equationKeyboard.toggleDigits')}
               >
                 <Hash className="w-3 h-3" />
                 <span>{useArabicNumerals ? '١٢٣' : '123'}</span>
@@ -706,7 +677,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                 className="px-3 py-1.5 bg-zinc-900 hover:bg-zinc-750 text-zinc-300 rounded-lg border border-zinc-800 font-mono text-xs flex items-center gap-1.5 transition-colors shrink-0"
               >
                 <span>␣</span>
-                <span className="truncate">{lang === 'ar' ? 'مسافة' : lang === 'ku' ? 'بۆشایی' : 'Space'}</span>
+                <span className="truncate">{t('equationKeyboard.space')}</span>
               </button>
 
               {onInsert && (
@@ -715,7 +686,7 @@ export const PhysicsEquationKeyboard: React.FC<PhysicsEquationKeyboardProps> = (
                   className="px-3.5 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-medium text-xs flex items-center gap-1.5 transition-colors shadow-sm shrink-0 min-w-0"
                 >
                   <CornerDownLeft className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">{lang === 'ar' ? 'إدراج في الحقل' : lang === 'ku' ? 'تێکردن بۆ خانە' : lang === 'kmr' ? 'Têxe nav xanî' : 'Insert'}</span>
+                  <span className="truncate">{t('equationKeyboard.insertInField')}</span>
                 </button>
               )}
             </div>

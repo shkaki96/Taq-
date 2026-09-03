@@ -276,6 +276,7 @@ export default function App() {
   }, [records]);
 
   useEffect(() => {
+    // Direction handling for RTL languages (Arabic and Sorani Kurdish)
     document.documentElement.dir = lang === 'ku' || lang === 'ar' ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
@@ -333,6 +334,7 @@ export default function App() {
     return t(`catalog.${exp.expKey}.title`, { defaultValue: (exp as any).title || exp.expKey });
   };
 
+  // Cross-language subtitle fallback logic
   const getSubTitle = (exp: ExperimentItem, language: Language) => {
     if (language === 'ku' || language === 'ar') {
       return t(`catalog.${exp.expKey}.title`, { lng: 'en' });
@@ -363,65 +365,27 @@ export default function App() {
     return matchesCategory && matchesSearch;
   });
 
-  // Category labels across all 4 supported languages
+  // Category options list
   const categoryOptions = [
-    {
-      id: 'all',
-      labelAr: `جميع التجارب (${experimentsList.length})`,
-      labelKu: `هەموو تاقیکردنەوەکان (${experimentsList.length})`,
-      labelKmr: `Hemû Ezmûn (${experimentsList.length})`,
-      labelEn: `All Labs (${experimentsList.length})`
-    },
-    {
-      id: 'mechanics',
-      labelAr: 'الميكانيكا والحركة والقوى',
-      labelKu: 'میکانیک، جووڵە و هێزەکان',
-      labelKmr: 'Mekanîk, Tevger û Hêz',
-      labelEn: 'Mechanics & Motion'
-    },
-    {
-      id: 'waves_sound',
-      labelAr: 'الموجات والصوت والاهتزاز',
-      labelKu: 'شەپۆلەکان، دەنگ و لەرینەوە',
-      labelKmr: 'Pêl, Deng û Hejîn',
-      labelEn: 'Waves & Sound'
-    },
-    {
-      id: 'em_atomic',
-      labelAr: 'الكهرومغناطيسية والذرية والكم',
-      labelKu: 'کارۆموگناتیسی، گەردیلە و کوانتەم',
-      labelKmr: 'Elektromanyetîk, Atom û Kwantûm',
-      labelEn: 'E&M & Quantum'
-    },
-    {
-      id: 'fluids_thermo_optics',
-      labelAr: 'الموائع والحرارة والبصريات',
-      labelKu: 'شلەمەنی، گەرمی و بینایی',
-      labelKmr: 'Şilek, Termodînamîk û Optîk',
-      labelEn: 'Fluids, Thermo & Optics'
-    },
-    {
-      id: 'gravity_astrophysics',
-      labelAr: 'الجاذبية والفلك والمدارات',
-      labelKu: 'کێشکردن، گەردوونناسی و خولگەکان',
-      labelKmr: 'Gravîte, Gerdûnnasî û Xelek',
-      labelEn: 'Gravity & Space'
-    },
+    { id: 'all' as const },
+    { id: 'mechanics' as const },
+    { id: 'waves_sound' as const },
+    { id: 'em_atomic' as const },
+    { id: 'fluids_thermo_optics' as const },
+    { id: 'gravity_astrophysics' as const },
   ];
 
   const getCategoryLabel = (cat: typeof categoryOptions[0]) => {
-    switch (lang) {
-      case 'ku': return cat.labelKu;
-      case 'kmr': return cat.labelKmr;
-      case 'en': return cat.labelEn;
-      case 'ar':
-      default: return cat.labelAr;
+    if (cat.id === 'all') {
+      return `${t('categories.all')} (${experimentsList.length})`;
     }
+    return t(`categories.${cat.id}`);
   };
 
   return (
     <div
       id="app-container"
+      /* Direction attribute for RTL languages */
       dir={lang === 'ar' || lang === 'ku' ? 'rtl' : 'ltr'}
       className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500/20 selection:text-indigo-200"
     >
@@ -446,13 +410,7 @@ export default function App() {
                 </h1>
               </div>
               <p className="text-[11px] text-slate-400 hidden sm:block">
-                {lang === 'ar'
-                  ? 'المختبر الفيزيائي التفاعلي المتكامل'
-                  : lang === 'ku'
-                  ? 'تاقیگەی فیزیای کارلێکەر'
-                  : lang === 'kmr'
-                  ? 'Laboratûwara Fîzîkê ya Înteraktîf'
-                  : 'Comprehensive Virtual Physics Laboratory'}
+                {t('headerSubtitle')}
               </p>
             </div>
           </div>
@@ -484,13 +442,7 @@ export default function App() {
                       >
                         <Filter className="w-4 h-4 text-indigo-400 group-hover:scale-110 transition-transform shrink-0" />
                         <span className="text-slate-400">
-                          {lang === 'ar'
-                            ? 'القسم:'
-                            : lang === 'ku'
-                            ? 'بەش:'
-                            : lang === 'kmr'
-                            ? 'Beş:'
-                            : 'Category:'}
+                          {t('catalogUI.category')}
                         </span>
                         <span className="text-white font-bold max-w-[180px] sm:max-w-[240px] truncate">
                           {getCategoryLabel(
@@ -516,15 +468,7 @@ export default function App() {
                         type="text"
                         value={experimentSearch}
                         onChange={(e) => setExperimentSearch(e.target.value)}
-                        placeholder={
-                          lang === 'ar'
-                            ? 'بحث عن تجربة، رقم أو قانون أو متغير...'
-                            : lang === 'ku'
-                            ? 'گەڕان بەدوای تاقیکردنەوە، ژمارە، یاسا یان گۆڕەک...'
-                            : lang === 'kmr'
-                            ? 'Li ezmûn, hejmar, qanûn an guherbarê bigere...'
-                            : 'Search experiments by name, id, law...'
-                        }
+                        placeholder={t('catalogUI.searchPlaceholder')}
                         className="w-full ltr:pl-9 ltr:pr-3 rtl:pr-9 rtl:pl-3 py-2 text-xs rounded-xl bg-slate-950 border border-slate-800 text-slate-100 placeholder-slate-500 focus:outline-none focus:border-indigo-500 shadow-inner"
                       />
                       {experimentSearch && (
@@ -613,7 +557,7 @@ export default function App() {
                           </div>
                           {isNew13 ? (
                             <span className="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] font-bold">
-                              {lang === 'ar' ? '★ تجربة جديدة' : lang === 'ku' ? '★ نوێ' : '★ NEW'}
+                              {t('catalogUI.newBadge')}
                             </span>
                           ) : (
                             <span className="text-[10px] text-slate-500 font-mono">
@@ -648,13 +592,7 @@ export default function App() {
                         >
                           <Play className="w-3.5 h-3.5 fill-current" />
                           <span>
-                            {lang === 'ar'
-                              ? 'بدء التجربة'
-                              : lang === 'ku'
-                              ? 'دەستپێکردنی تاقیکردنەوە'
-                              : lang === 'kmr'
-                              ? 'Ezmûnê Destpê Bike'
-                              : 'Launch Lab'}
+                            {t('catalogUI.launchLab')}
                           </span>
                         </button>
                       </div>
@@ -665,7 +603,7 @@ export default function App() {
                 {filteredExperiments.length === 0 && (
                   <div className="p-12 text-center rounded-2xl bg-slate-900/50 border border-slate-800 space-y-2">
                     <p className="text-slate-400 text-sm">
-                      {lang === 'ar' ? 'لم يتم العثور على تجارب تطابق البحث' : 'No experiments matched your search'}
+                      {t('catalogUI.noResults')}
                     </p>
                     <button
                       onClick={() => {
@@ -674,7 +612,7 @@ export default function App() {
                       }}
                       className="px-3 py-1.5 rounded-lg bg-indigo-600 text-white text-xs font-medium"
                     >
-                      {lang === 'ar' ? 'إعادة ضبط الفلاتر' : 'Reset Filters'}
+                      {t('catalogUI.resetFilters')}
                     </button>
                   </div>
                 )}
@@ -692,13 +630,7 @@ export default function App() {
                   >
                     <ArrowLeft className="w-3.5 h-3.5 rtl:rotate-180 text-indigo-400" />
                     <span>
-                      {lang === 'ar'
-                        ? 'العودة لقائمة التجارب'
-                        : lang === 'ku'
-                        ? 'گەڕانەوە بۆ پێڕستی تاقیکردنەوەکان'
-                        : lang === 'kmr'
-                        ? 'Vegere bo Lîsteya Ezmûnan'
-                        : 'Back to Labs Catalog'}
+                      {t('catalogUI.backToCatalog')}
                     </span>
                   </button>
 
@@ -742,7 +674,7 @@ export default function App() {
                   <ErrorBoundary>
                     <Suspense fallback={
                       <div className="flex items-center justify-center min-h-[400px] text-gray-400">
-                        جاري تحميل المحاكاة...
+                        {t('loading')}
                       </div>
                     }>
                       {/* 36 Classic Experiments */}
@@ -856,13 +788,7 @@ export default function App() {
                         <div>
                           <h3 className="text-sm sm:text-base font-bold text-white flex items-center gap-2">
                             <span>
-                              {lang === 'ar'
-                                ? 'الشرح العلمي والقوانين الفيزيائية'
-                                : lang === 'ku'
-                                ? 'ڕوونکردنەوەی زانستی و یاسا فیزیاییەکان'
-                                : lang === 'kmr'
-                                ? 'Ravekirina Zanistî û Qanûnên Fîzîkê'
-                                : 'Scientific Theory & Physical Laws'}
+                              {t('catalogUI.theoryTitle')}
                             </span>
                           </h3>
                           <p className="text-[11px] text-slate-400">
@@ -873,9 +799,7 @@ export default function App() {
 
                       <div className="flex items-center gap-2">
                         <span className="text-xs text-slate-400 hidden sm:inline">
-                          {isTheoryExpanded
-                            ? lang === 'ar' ? 'إخفاء' : lang === 'ku' ? 'شاردنەوە' : 'Hide'
-                            : lang === 'ar' ? 'عرض التفاصيل' : lang === 'ku' ? 'پیشاندان' : 'Show Details'}
+                          {isTheoryExpanded ? t('common.hide') : t('common.showDetails')}
                         </span>
                         <div className="p-1 rounded-lg bg-slate-800 text-slate-300">
                           {isTheoryExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -890,13 +814,7 @@ export default function App() {
                           <span className="text-xs font-bold text-indigo-400 flex items-center gap-1.5">
                             <BookOpen className="w-3.5 h-3.5" />
                             <span>
-                              {lang === 'ar'
-                                ? 'القانون الفيزيائي:'
-                                : lang === 'ku'
-                                ? 'یاسای فیزیا:'
-                                : lang === 'kmr'
-                                ? 'Zagona Fîzîkê:'
-                                : 'Physical Law:'}
+                              {t('catalogUI.physicalLaw')}
                             </span>
                           </span>
                           <span className="text-xs sm:text-sm font-mono text-amber-300 font-bold tracking-wide">
@@ -911,13 +829,7 @@ export default function App() {
                             <span className="text-xs font-bold text-sky-400 flex items-center gap-1.5 uppercase">
                               <Sliders className="w-3.5 h-3.5" />
                               <span>
-                                {lang === 'ar'
-                                  ? 'متغيرات الدخل (Inputs):'
-                                  : lang === 'ku'
-                                  ? 'گۆڕەکەکانی تێکردن (Inputs):'
-                                  : lang === 'kmr'
-                                  ? 'Guherbarên Têketinê (Inputs):'
-                                  : 'Simulation Inputs:'}
+                                {t('catalogUI.simulationInputs')}
                               </span>
                             </span>
                             <div className="flex flex-wrap gap-1.5">
@@ -938,13 +850,7 @@ export default function App() {
                             <span className="text-xs font-bold text-emerald-400 flex items-center gap-1.5 uppercase">
                               <TrendingUp className="w-3.5 h-3.5" />
                               <span>
-                                {lang === 'ar'
-                                  ? 'مخرجات المحاكاة (Outputs):'
-                                  : lang === 'ku'
-                                  ? 'دەرئەنجامەکانی پێوانە (Outputs):'
-                                  : lang === 'kmr'
-                                  ? 'Encamên Simûlasyonê (Outputs):'
-                                  : 'Simulation Outputs:'}
+                                {t('catalogUI.simulationOutputs')}
                               </span>
                             </span>
                             <div className="flex flex-wrap gap-1.5">
@@ -988,13 +894,7 @@ export default function App() {
               >
                 <ArrowLeft className="w-4 h-4 rtl:rotate-180 text-indigo-200" />
                 <span>
-                  {lang === 'ar'
-                    ? `العودة للتجربة: ${getExpTitle(currentExp, lang)} (#${currentExp.id})`
-                    : lang === 'ku'
-                    ? `گەڕانەوە بۆ تاقیکردنەوە: ${getExpTitle(currentExp, lang)} (#${currentExp.id})`
-                    : lang === 'kmr'
-                    ? `Vegere bo Simûlasyonê: ${getExpTitle(currentExp, lang)} (#${currentExp.id})`
-                    : `Return to Sim: ${getExpTitle(currentExp, lang)} (#${currentExp.id})`}
+                  {t('navigation.returnToSim', { title: getExpTitle(currentExp, lang), id: currentExp.id })}
                 </span>
               </button>
 
@@ -1010,13 +910,7 @@ export default function App() {
               >
                 <Home className="w-4 h-4 text-teal-400" />
                 <span>
-                  {lang === 'ar'
-                    ? 'الصفحة الرئيسية (قائمة التجارب)'
-                    : lang === 'ku'
-                    ? 'سەرەکی (پێڕستی تاقیکردنەوەکان)'
-                    : lang === 'kmr'
-                    ? 'Serekî (Lîsteya Ezmûnan)'
-                    : 'Home (Labs Catalog)'}
+                  {t('navigation.homeCatalog')}
                 </span>
               </button>
             </div>
@@ -1025,11 +919,7 @@ export default function App() {
             <div className="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-950/80 border border-slate-800 text-xs font-medium">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
               <span className="text-slate-300">
-                {activeMainTab === 'notebook'
-                  ? (lang === 'ar' ? 'دفتر المختبر والقياسات' : lang === 'ku' ? 'دەفتەری تاقیگە' : 'Lab Notebook & Data')
-                  : activeMainTab === 'formulas'
-                  ? (lang === 'ar' ? 'دليل القوانين الفيزيائية' : lang === 'ku' ? 'ڕێبەری یاساکان' : 'Formula Sheet')
-                  : (lang === 'ar' ? 'الاختبارات والتحديات' : lang === 'ku' ? 'تاقیکردنەوە و پرسیارەکان' : 'Lab Quiz & Challenges')}
+                {t(`tabs.${activeMainTab}`)}
               </span>
             </div>
           </div>
@@ -1058,25 +948,23 @@ export default function App() {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/70 backdrop-blur-sm animate-fade-in">
           <div className="bg-slate-900 border border-slate-700/80 rounded-2xl p-6 max-w-md w-full shadow-2xl space-y-4">
             <h3 className="text-base font-bold text-slate-100">
-              {lang === 'ar' ? 'تأكيد مسح جميع السجلات' : 'Confirm Clear All Records'}
+              {t('notebook.confirmClearTitle')}
             </h3>
             <p className="text-xs sm:text-sm text-slate-300">
-              {lang === 'ar'
-                ? 'هل أنت متأكد من رغبتك في حذف كافة السجلات والقياسات من دفتر المختبر؟ لن تتمكن من استعادتها.'
-                : 'Are you sure you want to delete all measurement records from the lab notebook? This cannot be undone.'}
+              {t('notebook.confirmClearMessage')}
             </p>
             <div className="flex items-center justify-end gap-2.5 pt-2">
               <button
                 onClick={() => setShowClearConfirm(false)}
                 className="px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition-colors"
               >
-                {lang === 'ar' ? 'إلغاء' : 'Cancel'}
+                {t('common.cancel')}
               </button>
               <button
                 onClick={confirmClearAllRecords}
                 className="px-4 py-2 rounded-xl bg-rose-600 hover:bg-rose-500 text-white text-xs font-medium shadow-md shadow-rose-600/30 transition-colors"
               >
-                {lang === 'ar' ? 'نعم، امسح الكل' : 'Yes, Clear All'}
+                {t('notebook.confirmClearBtn')}
               </button>
             </div>
           </div>
@@ -1087,9 +975,7 @@ export default function App() {
       <footer id="main-footer" className="border-t border-slate-900 py-4 mb-20 text-center text-xs text-slate-400">
         <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
           <span>
-            {lang === 'ar'
-              ? `مختبر الفيزياء الافتراضي التفاعلي • ${experimentsList.length} تجربة محاكاة علمية تفاعلية مجانية بالكامل (من 1 إلى ${experimentsList.length})`
-              : `Interactive Virtual Physics Lab • ${experimentsList.length} Free & Open Scientific Simulators (1 to ${experimentsList.length})`}
+            {t('footer.text', { count: experimentsList.length })}
           </span>
           <span className="font-mono text-slate-500">
             Mechanics • Waves & Acoustics • E&M • Optics • Thermodynamics • Quantum & Astrophysics
@@ -1108,32 +994,20 @@ export default function App() {
                 </div>
                 <div>
                   <h3 className="text-sm font-bold text-slate-100">
-                    {lang === 'ar'
-                      ? 'لوحة مفاتيح الرموز والمعادلات الرياضية'
-                      : lang === 'ku'
-                      ? 'تەختەکلیلی هێما و هاوکێشە بیرکارییەکان'
-                      : lang === 'kmr'
-                      ? 'Klavyeya Sembol û Hevkêşeyên Bîrkarî'
-                      : 'Physics & Math Symbols Keyboard'}
+                    {t('equationKeyboard.modalTitle')}
                   </h3>
                   <p className="text-[11px] text-slate-400">
-                    {lang === 'ar'
-                      ? 'إدراج الرموز اليونانية، المتغيرات، الثوابت وحساب الصيغ الرياضية فورياً'
-                      : lang === 'ku'
-                      ? 'تێکردنی پیتە یۆنانییەکان، گۆڕەک و هەژمارکردنی ڕاستەوخۆ'
-                      : lang === 'kmr'
-                      ? 'Têketina tîpên yewnanî, guherbar û hesabkirina rasterast'
-                      : 'Insert Greek letters, physics variables & evaluate expressions'}
+                    {t('equationKeyboard.modalSubtitle')}
                   </p>
                 </div>
               </div>
               <button
                 onClick={() => setIsEquationKeyboardOpen(false)}
                 className="px-3.5 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 hover:text-white text-xs font-semibold flex items-center gap-1.5 transition-colors border border-slate-700 shadow-sm"
-                title={lang === 'ar' ? 'رجوع / إغلاق' : 'Close / Return'}
+                title={t('navigation.closeOrReturn')}
               >
                 <X className="w-4 h-4 text-rose-400" />
-                <span>{lang === 'ar' ? 'رجوع للتجربة' : lang === 'ku' ? 'گەڕانەوە' : 'Return'}</span>
+                <span>{t('navigation.returnToSimShort')}</span>
               </button>
             </div>
             
@@ -1179,14 +1053,8 @@ export default function App() {
             </div>
             <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap truncate max-w-full block text-center min-w-0 shrink">
               {activeMainTab === 'notebook'
-                ? (lang === 'ar' ? '↩ رجوع' : lang === 'ku' ? '↩ گەڕانەوە' : '↩ Return')
-                : (lang === 'ar'
-                  ? 'دفتر المختبر'
-                  : lang === 'ku'
-                  ? 'دەفتەری تاقیگە'
-                  : lang === 'kmr'
-                  ? 'Deftera Laboratûwarê'
-                  : 'Lab Notebook')}
+                ? t('navigation.returnBack')
+                : t('tabs.notebookShort')}
             </span>
           </button>
 
@@ -1210,14 +1078,8 @@ export default function App() {
             <BookOpen className={`w-5 h-5 shrink-0 ${activeMainTab === 'formulas' ? 'text-purple-400' : 'text-purple-400'}`} />
             <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap truncate max-w-full block text-center min-w-0 shrink">
               {activeMainTab === 'formulas'
-                ? (lang === 'ar' ? '↩ رجوع' : lang === 'ku' ? '↩ گەڕانەوە' : '↩ Return')
-                : (lang === 'ar'
-                  ? 'دليل القوانين'
-                  : lang === 'ku'
-                  ? 'ڕێبەری یاساکان'
-                  : lang === 'kmr'
-                  ? 'Rêberê Zagonan'
-                  : 'Formula Sheet')}
+                ? t('navigation.returnBack')
+                : t('tabs.formulasShort')}
             </span>
           </button>
 
@@ -1229,13 +1091,7 @@ export default function App() {
           >
             <Calculator className="w-5 h-5 text-indigo-400 group-hover:scale-110 transition-transform shrink-0" />
             <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap truncate max-w-full block text-center min-w-0 shrink">
-              {lang === 'ar'
-                ? 'لوحة الرموز'
-                : lang === 'ku'
-                ? 'تەختەکلیلی هێماکان'
-                : lang === 'kmr'
-                ? 'Klavyeya Sembolan'
-                : 'Equation Keys'}
+              {t('tabs.equationKeys')}
             </span>
           </button>
 
@@ -1259,14 +1115,8 @@ export default function App() {
             <Award className={`w-5 h-5 shrink-0 ${activeMainTab === 'challenges' ? 'text-amber-400' : 'text-amber-400'}`} />
             <span className="text-[10px] sm:text-xs font-semibold whitespace-nowrap truncate max-w-full block text-center min-w-0 shrink">
               {activeMainTab === 'challenges'
-                ? (lang === 'ar' ? '↩ رجوع' : lang === 'ku' ? '↩ گەڕانەوە' : '↩ Return')
-                : (lang === 'ar'
-                  ? 'الاختبارات'
-                  : lang === 'ku'
-                  ? 'تاقیکردنەوەکان'
-                  : lang === 'kmr'
-                  ? 'Test û Ezmûn'
-                  : 'Lab Quiz')}
+                ? t('navigation.returnBack')
+                : t('tabs.challengesShort')}
             </span>
           </button>
         </div>

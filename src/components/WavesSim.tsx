@@ -50,6 +50,7 @@ export default function WavesSim({ lang, onLogMeasurement }: Props) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     let lastTime = performance.now();
 

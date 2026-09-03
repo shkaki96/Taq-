@@ -9,6 +9,7 @@ interface FourierWavesSimProps {
 }
 
 export const FourierWavesSim: React.FC<FourierWavesSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   // Amplitudes for harmonics n = 1 to 8
   const [harmonics, setHarmonics] = useState<number[]>([1.0, 0.0, 0.33, 0.0, 0.2, 0.0, 0.14, 0.0]); // default square wave approx
   const [fundamentalFreq, setFundamentalFreq] = useState<number>(1.0);
@@ -48,53 +49,6 @@ export const FourierWavesSim: React.FC<FourierWavesSimProps> = ({ lang }) => {
 
   const pathD = points.reduce((acc, pt, idx) => `${acc} ${idx === 0 ? 'M' : 'L'} ${pt.x} ${pt.y}`, '');
 
-  const t = {
-    ar: {
-      title: 'متسلسلة فورييه وتركيب الموجات (f(x) = Σ Aₙ sin(nωt))',
-      fundamental: 'التردد الأساسي (Fundamental Harmonic n=1)',
-      harmonicsHeader: 'سعة التوافقيات الفردية والزوجية (Harmonics A₁ - A₈)',
-      presets: 'أشكال الموجات القياسية (Fourier Presets):',
-      square: 'موجة مربعة (Square Wave)',
-      sawtooth: 'موجة سن المنشار (Sawtooth)',
-      triangle: 'موجة مثلثية (Triangle)',
-      sine: 'جيبية نقية (Pure Sine)',
-      reset: 'إعادة ضبط (مربعة)',
-    },
-    en: {
-      title: 'Fourier: Making Waves Lab (f(x) = Σ Aₙ sin(nωt))',
-      fundamental: 'Fundamental Harmonic (n=1)',
-      harmonicsHeader: 'Harmonic Amplitudes (A₁ - A₈)',
-      presets: 'Waveform Presets:',
-      square: 'Square Wave',
-      sawtooth: 'Sawtooth Wave',
-      triangle: 'Triangle Wave',
-      sine: 'Pure Sine',
-      reset: 'Reset (Square)',
-    },
-    ku: {
-      title: 'زنجیرەی فۆریە و دروستکردنی شەپۆل',
-      fundamental: 'فریکوێنسی بنەڕەتی (n=1)',
-      harmonicsHeader: 'فراوانیی فریکوێنسییەکان (A₁ - A₈)',
-      presets: 'شێوە شەپۆلە بنەڕەتییەکان:',
-      square: 'شەپۆلی چوارگۆشە',
-      sawtooth: 'شەپۆلی ددانی مشار',
-      triangle: 'شەپۆلی سێگۆشە',
-      sine: 'شەپۆلی ساین',
-      reset: 'ڕێکخستنەوە',
-    },
-    kmr: {
-      title: 'Rêzeya Fourier û Çêkirina Pêlan',
-      fundamental: 'Frekansa Bingehîn (n=1)',
-      harmonicsHeader: 'Firehiya Harmonîkan (A₁ - A₈)',
-      presets: 'Pêşsaziyên Pêlan:',
-      square: 'Pêla Çargoşe',
-      sawtooth: 'Pêla Diranê Mişarê',
-      triangle: 'Pêla Sêgoşe',
-      sine: 'Pêla Sine ya Paqij',
-      reset: 'Nûkirin',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -103,7 +57,7 @@ export const FourierWavesSim: React.FC<FourierWavesSimProps> = ({ lang }) => {
             <Waves  className="w-6 h-6"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.fourier_making_waves.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER E • SIMULATION 21</p>
           </div>
         </div>
@@ -112,7 +66,7 @@ export const FourierWavesSim: React.FC<FourierWavesSimProps> = ({ lang }) => {
           onClick={setSquareWave}
          className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors flex items-center gap-1.5">
           <RotateCcw  className="w-3.5 h-3.5"/>
-          {t.reset}
+          {tI18n('experiments.fourier_making_waves.reset')}
         </button>
       </div>
 
@@ -130,27 +84,27 @@ export const FourierWavesSim: React.FC<FourierWavesSimProps> = ({ lang }) => {
 
           {/* Presets buttons */}
           <div className="pt-2 border-t border-slate-800">
-            <span className="text-xs font-semibold text-slate-400 block mb-2">{t.presets}</span>
+            <span className="text-xs font-semibold text-slate-400 block mb-2">{tI18n('experiments.fourier_making_waves.presets')}</span>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
               <button
                 onClick={setSquareWave}
                className="min-h-[44px] min-w-[44px] p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium">
-                ⬛ {t.square}
+                ⬛ {tI18n('experiments.fourier_making_waves.square')}
               </button>
               <button
                 onClick={setSawtoothWave}
                className="min-h-[44px] min-w-[44px] p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium">
-                📐 {t.sawtooth}
+                📐 {tI18n('experiments.fourier_making_waves.sawtooth')}
               </button>
               <button
                 onClick={setTriangleWave}
                className="min-h-[44px] min-w-[44px] p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium">
-                🔺 {t.triangle}
+                🔺 {tI18n('experiments.fourier_making_waves.triangle')}
               </button>
               <button
                 onClick={setPureSine}
                className="min-h-[44px] min-w-[44px] p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium">
-                〰️ {t.sine}
+                〰️ {tI18n('experiments.fourier_making_waves.sine')}
               </button>
             </div>
           </div>
@@ -159,7 +113,7 @@ export const FourierWavesSim: React.FC<FourierWavesSimProps> = ({ lang }) => {
         {/* Harmonics Sliders */}
         <div className="lg:col-span-5 space-y-3">
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-3">
-            <span className="text-xs font-semibold text-sky-400 block">{t.harmonicsHeader}</span>
+            <span className="text-xs font-semibold text-sky-400 block">{tI18n('experiments.fourier_making_waves.harmonicsHeader')}</span>
             <div className="space-y-2 max-h-[300px] overflow-y-auto pr-1">
               {harmonics.map((amp, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-xs">

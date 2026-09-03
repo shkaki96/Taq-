@@ -12,183 +12,6 @@ interface Props {
 
 export default function SpringSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'قانون هوك والنابض التوافقي (Spring-Mass)',
-      subTitle: 'قانون هوك والاهتزاز التوافقي للنابض',
-      shortDesc: 'دراسة استطالة النوابض المرنة، حساب ثابت الصلابة k والزمن الدوري وتحولات طاقة الوضع المرونية.',
-      springConstant: 'ثابت صلابة النابض (k)',
-      mass: 'كتلة الجسم المعلق (m)',
-      displacement: 'الإزاحة الابتدائية (x₀)',
-      damping: 'التخميد (مقاومة الهواء)',
-      orientation: 'وضع النابض',
-      vertical: 'رأسي (عمودي)',
-      horizontal: 'أفقي',
-      theoreticalPeriod: 'الزمن الدوري النظري (T)',
-      pullMass: 'اسحب الكتلة بالماوس أو اضبط المنزلق لرؤية الاهتزاز', // غير موثّق بمصدر
-      totalEnergy: 'الطاقة الميكانيكية الكلية (E_total)',
-      eqPos: 'موضع الاتزان x = 0',
-      eqPosShort: 'الاتزان x = 0',
-      dispX: 'الإزاحة x',
-      velV: 'السرعة v',
-      restoringF: 'قوة الإرجاع F',
-      kineticEnergy: 'طاقة حركية',
-      elasticPotential: 'طاقة مرونية',
-      showVectors: 'عرض المتجهات',
-      energyChart: 'مخطط الطاقة',
-      oscillatorParams: 'معايير النابض والكتلة', // غير موثّق بمصدر
-      theoreticalAnalysis: 'النتائج والتحليل النظري', // غير موثّق بمصدر
-      naturalFreq: 'التردد الطبيعي f₀',
-      angularFreq: 'السرعة الزاوية ω',
-      loggedSuccess: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      logData: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      play: 'تشغيل', // غير موثّق بمصدر
-      pause: 'إيقاف مؤقت', // غير موثّق بمصدر
-      reset: 'إعادة ضبط', // غير موثّق بمصدر
-      variableName: 'الزمن الدوري للمهتز (T)',
-      notes: 'اهتزاز توافقي بسيط لكتلة m على نابض مرن بثابت k.',
-    },
-    en: {
-      title: "Hooke's Law & Harmonic Spring-Mass Oscillator",
-      subTitle: 'Hooke Law and Spring Harmonic Oscillation',
-      shortDesc: 'Investigate elastic spring extension, measure stiffness k, oscillation period, and elastic potential energy.',
-      springConstant: 'Spring Constant (k)',
-      mass: 'Attached Mass (m)',
-      displacement: 'Initial Displacement (x₀)',
-      damping: 'Damping (Air Resistance)',
-      orientation: 'Spring Orientation',
-      vertical: 'Vertical',
-      horizontal: 'Horizontal',
-      theoreticalPeriod: 'Theoretical Period (T)',
-      pullMass: 'Drag the mass with mouse or adjust slider to oscillate', // غير موثّق بمصدر
-      totalEnergy: 'Total Mechanical Energy (E_total)',
-      eqPos: 'Equilibrium x = 0',
-      eqPosShort: 'x = 0',
-      dispX: 'Displacement x',
-      velV: 'Velocity v',
-      restoringF: 'Restoring F',
-      kineticEnergy: 'Kinetic Energy',
-      elasticPotential: 'Elastic Potential',
-      showVectors: 'Show Vectors',
-      energyChart: 'Energy Chart',
-      oscillatorParams: 'Oscillator Parameters', // غير موثّق بمصدر
-      theoreticalAnalysis: 'Theoretical Analysis', // غير موثّق بمصدر
-      naturalFreq: 'Natural Frequency f₀',
-      angularFreq: 'Angular Frequency ω',
-      loggedSuccess: 'Logged ✓', // غير موثّق بمصدر
-      logData: 'Log Measurement', // غير موثّق بمصدر
-      play: 'Play', // غير موثّق بمصدر
-      pause: 'Pause', // غير موثّق بمصدر
-      reset: 'Reset', // غير موثّق بمصدر
-      variableName: 'Oscillation Period (T)',
-      notes: 'Simple harmonic oscillator trial with attached mass on elastic spring.',
-    },
-    ku: {
-      title: 'یاسای هووک و لەرەوەرەی سپرینگی هاوسەنگ',
-      subTitle: 'یاسای هووک و لەرینەوەی سپرینگ',
-      shortDesc: 'لێکۆڵینەوە لە کشان و پەستانی سپرینگەکان، نەگۆڕی سپرینگ k، خولی لەرینەوە و وزەی مەینینی نەرمی.',
-      springConstant: 'نەگۆڕی سپرینگ (k)',
-      mass: 'بارستەی هەڵواسراو (m)',
-      displacement: 'لادانی سەرەتایی (x₀)',
-      damping: 'تخمید (بەرگری هەوا)',
-      orientation: 'ئاراستەی سپرینگ',
-      vertical: 'ستوونی',
-      horizontal: 'ئاسۆیی',
-      theoreticalPeriod: 'خولی لەرینەوەی تیۆری (T)',
-      pullMass: 'بارستەکە بە ماوس ڕابکێشە یان منزڵقەکە ڕێکبخە بۆ لەرینەوە', // غير موثّق بمصدر
-      totalEnergy: 'کۆی وزەی ميكانيكی (E_total)',
-      eqPos: 'شوێنی هاوسەنگی x = 0',
-      eqPosShort: 'هاوسەنگی x = 0',
-      dispX: 'لادان x',
-      velV: 'خێرایی v',
-      restoringF: 'هێزی گەڕێنەرەوە F',
-      kineticEnergy: 'وزەی جووڵە',
-      elasticPotential: 'وزەی شاراوەی نەرم',
-      showVectors: 'پیشاندانی ئاراستەبڕەکان',
-      energyChart: 'هێڵکاری وزە',
-      oscillatorParams: 'تایبەتمەندییەکانی سپرینگ و بارستە', // غير موثّق بمصدر
-      theoreticalAnalysis: 'ئەنجامەکان و شیکاری تیۆری', // غير موثّق بمصدر
-      naturalFreq: 'فرێکوێنسی سروشتی f₀',
-      angularFreq: 'خێرایی گۆشەیی ω',
-      loggedSuccess: 'تۆمارکرا ✓', // غير موثّق بمصدر
-      logData: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      play: 'دەستپێکردن', // غير موثّق بمصدر
-      pause: 'وەستاندن', // غير موثّق بمصدر
-      reset: 'ڕێکخستنەوە', // غير موثّق بمصدر
-      variableName: 'خولی لەرینەوەی لەرەوەر (T)',
-      notes: 'تاقیکردنەوەی لەرینەوەی توافوقی سادەی بارستە لەسەر سپرینگ.',
-    },
-    kmr: {
-      title: 'Qanûna Hooke û Hejînera Spîringê',
-      subTitle: 'Qanûna Hooke û lerizîna spîringê',
-      shortDesc: 'Vekolîna dirêjbûn û pestana spîringan, k kerta spîringê, dema hejînê û enerjiya potansiyela elastîk.',
-      springConstant: 'Kerta Spîringê (k)',
-      mass: 'Masa Hilawistî (m)',
-      displacement: 'Cihguherîna Destpêkê (x₀)',
-      damping: 'Dempyasyon (Berxwedana hewayê)',
-      orientation: 'Cihê Spîringê',
-      vertical: 'Sitûnî',
-      horizontal: 'Asoyî',
-      theoreticalPeriod: 'Dema teorîk a hejînê (T)',
-      pullMass: 'Maseyê bi mişk bikişîne an rêkxistinê biguhere', // غير موثّق بمصدر
-      totalEnergy: 'Tevaya Enerjiya Mekanîkî (E_total)',
-      eqPos: 'Şûna hevsengiyê x = 0',
-      eqPosShort: 'Hevsengî x = 0',
-      dispX: 'Cihguherîn x',
-      velV: 'Lez v',
-      restoringF: 'Hêza veggerîner F',
-      kineticEnergy: 'Enerjiya tevgerê',
-      elasticPotential: 'Enerjiya potansiyela elastîk',
-      showVectors: 'Vektorans nîşan bide',
-      energyChart: 'Grafîka Enerjiyê',
-      oscillatorParams: 'Parametreyên spîring û masê', // غير موثّق بمصدر
-      theoreticalAnalysis: 'Encam û analîza teorîk', // غير موثّق بمصدر
-      naturalFreq: 'Frekansa xwezayî f₀',
-      angularFreq: 'Leza goşeyî ω',
-      loggedSuccess: 'Hat tomarkirin ✓', // غير موثّق بمصدر
-      logData: 'Pêvanê tomar bike', // غير موثّق بمصدر
-      play: 'Destpêkirin', // غير موثّق بمصدر
-      pause: 'Pewstandin', // غير موثّق بمصدر
-      reset: 'Rêk xistin', // غير موثّق بمصدر
-      variableName: 'Dema hejîna hejîner (T)',
-      notes: 'Ezmûna hejînera sîmpl a m li ser spîringê.',
-    },
-  }[lang] || {
-    title: 'قانون هوك والنابض التوافقي (Spring-Mass)',
-    subTitle: 'قانون هوك والاهتزاز التوافقي للنابض',
-    shortDesc: 'دراسة استطالة النوابض المرنة، حساب ثابت الصلابة k والزمن الدوري وتحولات طاقة الوضع المرونية.',
-    springConstant: 'ثابت صلابة النابض (k)',
-    mass: 'كتلة الجسم المعلق (m)',
-    displacement: 'الإزاحة الابتدائية (x₀)',
-    damping: 'التخميد (مقاومة الهواء)',
-    orientation: 'وضع النابض',
-    vertical: 'رأسي (عمودي)',
-    horizontal: 'أفقي',
-    theoreticalPeriod: 'الزمن الدوري النظري (T)',
-    pullMass: 'اسحب الكتلة بالماوس أو اضبط المنزلق لرؤية الاهتزاز',
-    totalEnergy: 'الطاقة الميكانيكية الكلية (E_total)',
-    eqPos: 'موضع الاتزان x = 0',
-    eqPosShort: 'الاتزان x = 0',
-    dispX: 'الإزاحة x',
-    velV: 'السرعة v',
-    restoringF: 'قوة الإرجاع F',
-    kineticEnergy: 'طاقة حركية',
-    elasticPotential: 'طاقة مرونية',
-    showVectors: 'عرض المتجهات',
-    energyChart: 'مخطط الطاقة',
-    oscillatorParams: 'معايير النابض والكتلة',
-    theoreticalAnalysis: 'النتائج والتحليل النظري',
-    naturalFreq: 'التردد الطبيعي f₀',
-    angularFreq: 'السرعة الزاوية ω',
-    loggedSuccess: 'تم التسجيل في الدفتر ✓',
-    logData: 'تسجيل في دفتر المختبر',
-    play: 'تشغيل',
-    pause: 'إيقاف مؤقت',
-    reset: 'إعادة ضبط',
-    variableName: 'الزمن الدوري للمهتز (T)',
-    notes: 'اهتزاز توافقي بسيط لكتلة m على نابض مرن بثابت k.',
-  };
-
   // Parameters
   const [springConstant, setSpringConstant] = useState<number>(50); // N/m (k)
   const [mass, setMass] = useState<number>(1.0); // kg (m)
@@ -346,6 +169,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     const width = canvas.width;
     const height = canvas.height;
@@ -410,7 +234,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
 
       ctx.fillStyle = '#38bdf8';
       ctx.font = '10px monospace';
-      ctx.fillText(t.eqPos, startX + 95, eqLineY + 3);
+      ctx.fillText(tI18n('experiments.spring.eqPos'), startX + 95, eqLineY + 3);
 
       // Draw Coiled Spring
       const coils = 16;
@@ -535,7 +359,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
       ctx.fillStyle = '#38bdf8';
       ctx.font = '10px monospace';
       ctx.textAlign = 'center';
-      ctx.fillText(t.eqPosShort, eqLineX, trackY - 65);
+      ctx.fillText(tI18n('experiments.spring.eqPosShort'), eqLineX, trackY - 65);
 
       // Draw horizontal spring
       const coils = 18;
@@ -612,7 +436,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
   const handleLog = () => {
     onLogMeasurement({
       experiment: 'spring',
-      variableName: t.variableName,
+      variableName: tI18n('experiments.spring.variableName'),
       measuredValue: Number(metrics.periodMeasured.toFixed(3)),
       theoreticalValue: Number(theoreticalPeriod.toFixed(3)),
       unit: 's',
@@ -624,7 +448,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
         Damping: damping,
       },
       equation: 'T = 2π √(m / k)',
-      notes: t.notes,
+      notes: tI18n('experiments.spring.notes'),
     });
     setLogged(true);
     setTimeout(() => setLogged(false), 2000);
@@ -641,9 +465,9 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
               <span className="p-1.5 rounded-lg bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
                 <Activity className="w-4 h-4" />
               </span>
-              <h2 className="text-base font-bold text-zinc-100">{t.title}</h2>
+              <h2 className="text-base font-bold text-zinc-100">{tI18n('experiments.spring.title')}</h2>
             </div>
-            <p className="text-xs text-zinc-400 mt-0.5">{t.shortDesc}</p>
+            <p className="text-xs text-zinc-400 mt-0.5">{tI18n('experiments.spring.shortDesc')}</p>
           </div>
 
           <div className="flex items-center gap-2">
@@ -653,7 +477,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
               className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20"
             >
               <BookmarkCheck className="w-3.5 h-3.5" />
-              <span>{logged ? t.loggedSuccess : t.logData}</span>
+              <span>{logged ? tI18n('experiments.spring.loggedSuccess') : tI18n('experiments.spring.logData')}</span>
             </button>
           </div>
         </div>
@@ -661,15 +485,15 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
         {/* Live Metrics Header Bar (Displacement, Velocity, Restoring Force) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           <div className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 font-mono text-xs flex items-center justify-between">
-            <span className="text-sky-300 font-semibold">{t.dispX}:</span>
+            <span className="text-sky-300 font-semibold">{tI18n('experiments.spring.dispX')}:</span>
             <span className="text-zinc-100 font-bold text-sm">{metrics.x.toFixed(3)} m</span>
           </div>
           <div className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 font-mono text-xs flex items-center justify-between">
-            <span className="text-emerald-300 font-semibold">{t.velV}:</span>
+            <span className="text-emerald-300 font-semibold">{tI18n('experiments.spring.velV')}:</span>
             <span className="text-zinc-100 font-bold text-sm">{metrics.v.toFixed(3)} m/s</span>
           </div>
           <div className="p-3 rounded-xl bg-zinc-900/90 border border-zinc-800 font-mono text-xs flex items-center justify-between">
-            <span className="text-rose-300 font-semibold">{t.restoringF}:</span>
+            <span className="text-rose-300 font-semibold">{tI18n('experiments.spring.restoringF')}:</span>
             <span className="text-zinc-100 font-bold text-sm">{metrics.force.toFixed(2)} N</span>
           </div>
         </div>
@@ -687,7 +511,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
             onMouseLeave={handleMouseUp}
           />
           <div className="text-center py-1 text-[11px] text-zinc-400 font-medium">
-            {t.pullMass}
+            {tI18n('experiments.spring.pullMass')}
           </div>
         </div>
 
@@ -695,13 +519,13 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
         {showEnergyBars && (
           <div className="p-4 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-2">
             <div className="text-xs font-bold text-zinc-300 flex items-center justify-between border-b border-zinc-800 pb-2">
-              <span>{t.totalEnergy}</span>
+              <span>{tI18n('experiments.spring.totalEnergy')}</span>
               <span className="font-mono text-amber-400">{metrics.eTotal.toFixed(2)} J</span>
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs font-mono pt-1">
               <div className="space-y-1">
                 <div className="flex justify-between text-emerald-400">
-                  <span>E_k ({t.kineticEnergy})</span>
+                  <span>E_k ({tI18n('experiments.spring.kineticEnergy')})</span>
                   <span className="font-bold">{metrics.ek.toFixed(2)} J</span>
                 </div>
                 <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
@@ -714,7 +538,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
 
               <div className="space-y-1">
                 <div className="flex justify-between text-indigo-400">
-                  <span>E_pe ({t.elasticPotential})</span>
+                  <span>E_pe ({tI18n('experiments.spring.elasticPotential')})</span>
                   <span className="font-bold">{metrics.epe.toFixed(2)} J</span>
                 </div>
                 <div className="h-2 rounded-full bg-zinc-800 overflow-hidden">
@@ -741,14 +565,14 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
               }`}
             >
               {isRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-              <span>{isRunning ? t.pause : t.play}</span>
+              <span>{isRunning ? tI18n('experiments.spring.pause') : tI18n('experiments.spring.play')}</span>
             </button>
 
             <button
               id="spring-reset-btn"
               onClick={resetSimulation}
               className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs transition-colors"
-              title={t.reset}
+              title={tI18n('experiments.spring.reset')}
             >
               <RotateCcw className="w-4 h-4" />
             </button>
@@ -762,7 +586,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
                 onChange={(e) => setShowVectors(e.target.checked)}
                 className="rounded border-zinc-700 bg-zinc-800 text-indigo-600 focus:ring-0"
               />
-              <span>{t.showVectors}</span>
+              <span>{tI18n('experiments.spring.showVectors')}</span>
             </label>
 
             <label className="flex items-center gap-1.5 text-zinc-400 cursor-pointer">
@@ -772,7 +596,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
                 onChange={(e) => setShowEnergyBars(e.target.checked)}
                 className="rounded border-zinc-700 bg-zinc-800 text-indigo-600 focus:ring-0"
               />
-              <span>{t.energyChart}</span>
+              <span>{tI18n('experiments.spring.energyChart')}</span>
             </label>
           </div>
         </div>
@@ -784,13 +608,13 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
         <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-4">
           <h3 className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-1.5">
             <Gauge className="w-3.5 h-3.5 text-indigo-400" />
-            <span>{t.oscillatorParams}</span>
+            <span>{tI18n('experiments.spring.oscillatorParams')}</span>
           </h3>
 
           {/* Spring Constant (k) */}
           <div className="space-y-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.springConstant}</span>
+              <span className="text-zinc-400">{tI18n('experiments.spring.springConstant')}</span>
               <span className="font-mono text-indigo-400 font-bold">{springConstant} N/m</span>
             </div>
             <input
@@ -807,7 +631,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
           {/* Mass (m) */}
           <div className="space-y-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.mass}</span>
+              <span className="text-zinc-400">{tI18n('experiments.spring.mass')}</span>
               <span className="font-mono text-indigo-400 font-bold">{mass.toFixed(1)} kg</span>
             </div>
             <input
@@ -824,7 +648,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
           {/* Initial Displacement (x0) */}
           <div className="space-y-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.displacement}</span>
+              <span className="text-zinc-400">{tI18n('experiments.spring.displacement')}</span>
               <span className="font-mono text-indigo-400 font-bold">{displacement.toFixed(2)} m</span>
             </div>
             <input
@@ -841,7 +665,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
           {/* Damping */}
           <div className="space-y-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.damping}</span>
+              <span className="text-zinc-400">{tI18n('experiments.spring.damping')}</span>
               <span className="font-mono text-indigo-400 font-bold">{damping.toFixed(2)}</span>
             </div>
             <input
@@ -857,7 +681,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
 
           {/* Orientation Mode */}
           <div className="space-y-1.5">
-            <span className="text-xs text-zinc-400 block">{t.orientation}</span>
+            <span className="text-xs text-zinc-400 block">{tI18n('experiments.spring.orientation')}</span>
             <div className="grid grid-cols-2 gap-2">
               <button
                 onClick={() => setOrientation('vertical')}
@@ -867,7 +691,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
                     : 'bg-zinc-800/60 border-zinc-700 text-zinc-400 hover:text-zinc-200'
                 }`}
               >
-                {t.vertical}
+                {tI18n('experiments.spring.vertical')}
               </button>
               <button
                 onClick={() => setOrientation('horizontal')}
@@ -877,7 +701,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
                     : 'bg-zinc-800/60 border-zinc-700 text-zinc-400 hover:text-zinc-200'
                 }`}
               >
-                {t.horizontal}
+                {tI18n('experiments.spring.horizontal')}
               </button>
             </div>
           </div>
@@ -886,20 +710,20 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
         {/* Real-time Theoretical Calculations Card */}
         <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-3">
           <h3 className="text-xs font-bold text-zinc-300 uppercase tracking-wider">
-            {t.theoreticalAnalysis}
+            {tI18n('experiments.spring.theoreticalAnalysis')}
           </h3>
 
           <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800 space-y-2 font-mono text-xs">
             <div className="flex justify-between items-center text-zinc-400">
-              <span>{t.theoreticalPeriod}:</span>
+              <span>{tI18n('experiments.spring.theoreticalPeriod')}:</span>
               <span className="text-sky-300 font-bold text-sm">{theoreticalPeriod.toFixed(3)} s</span>
             </div>
             <div className="flex justify-between items-center text-zinc-400">
-              <span>{t.naturalFreq}:</span>
+              <span>{tI18n('experiments.spring.naturalFreq')}:</span>
               <span className="text-indigo-300 font-bold">{theoreticalFrequency.toFixed(2)} Hz</span>
             </div>
             <div className="flex justify-between items-center text-zinc-400">
-              <span>{t.angularFreq}:</span>
+              <span>{tI18n('experiments.spring.angularFreq')}:</span>
               <span className="text-emerald-300 font-bold">{Math.sqrt(springConstant / mass).toFixed(2)} rad/s</span>
             </div>
           </div>

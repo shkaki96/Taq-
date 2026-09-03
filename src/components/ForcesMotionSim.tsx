@@ -11,83 +11,6 @@ interface Props {
 
 export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'القوى والحركة: الأساسيات (قانون نيوتن الثاني)',
-      pause: 'إيقاف مؤقت', // غير موثّق بمصدر
-      play: 'تشغيل المحاكاة', // غير موثّق بمصدر
-      log: 'تسجيل القياس', // غير موثّق بمصدر
-      netForce: 'القوة المحصلة F_net',
-      acceleration: 'التسارع (a)',
-      velocity: 'السرعة (v)',
-      crate: 'صندوق', // غير موثّق بمصدر
-      frictionExplanation: 'إذا كانت القوة المطبقة أكبر من قوة الاحتكاك الساكن القصوى، يتسارع الصندوق بمعدل a = F_net / m.',
-      simulationInputs: 'المتغيرات القابلة للتحكم', // غير موثّق بمصدر
-      appliedForce: 'القوة المطبقة (F_applied):',
-      mass: 'كتلة الصندوق (m):',
-      frictionCoeff: 'معامل الاحتكاك (μ):',
-    },
-    en: {
-      title: 'Forces and Motion: Basics (Newton 2nd Law)',
-      pause: 'Pause', // غير موثّق بمصدر
-      play: 'Play Simulation', // غير موثّق بمصدر
-      log: 'Log Measurement', // غير موثّق بمصدر
-      netForce: 'Net Force (F_net)',
-      acceleration: 'Acceleration (a)',
-      velocity: 'Velocity (v)',
-      crate: 'Crate', // غير موثّق بمصدر
-      frictionExplanation: 'When applied force overcomes friction, the object accelerates following Newton 2nd Law.',
-      simulationInputs: 'Simulation Inputs', // غير موثّق بمصدر
-      appliedForce: 'Applied Force (F_applied):',
-      mass: 'Mass (m):',
-      frictionCoeff: 'Friction Coeff (μ):',
-    },
-    ku: {
-      title: 'هێزەکان و جووڵە: بنەماکان (یاسای دووەمی نيوتن)',
-      pause: 'ڕاگرتنی کاتی', // غير موثّق بمصدر
-      play: 'دەستپێکردنی هاوشێوەکردن', // غير موثّق بمصدر
-      log: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      netForce: 'هێزی ئاکام (F_net)',
-      acceleration: 'تاودان (a)',
-      velocity: 'خێرایی (v)',
-      crate: 'سندوق', // غير موثّق بمصدر
-      frictionExplanation: 'ئەگەر هێزی سەپێنراو گەورەتر بێت لە ئەوپەڕی هێزی لێكخشاندنی سكونی، سندوقەکە بە ڕێژەی a = F_net / m تاودەدرێت.',
-      simulationInputs: 'گۆڕاوەکانی توانای کۆنترۆڵکردن', // غير موثّق بمصدر
-      appliedForce: 'هێزی سەپێنراو (F_applied):',
-      mass: 'بارستەی سندوق (m):',
-      frictionCoeff: 'هاوکۆلکەی لێکخشاندن (μ):',
-    },
-    kmr: {
-      title: 'Hêz û Tevger: Bingeh (Qanûna Duyem a Newton)',
-      pause: 'Rawestana demkî', // غير موثّق بمصدر
-      play: 'Lêxistina sîmulasyonê', // غير موثّق بمصدر
-      log: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      netForce: 'Hêza encamî (F_net)',
-      acceleration: 'Lezkirin (a)',
-      velocity: 'Lez (v)',
-      crate: 'Sindoq', // غير موثّق بمصدر
-      frictionExplanation: 'Zar e ku hêza sepandî ji zêdetirîn hêza lêkdana sekinî mezin bibe, sindoq bi rêjeya a = F_net / m lez dibe.',
-      simulationInputs: 'Guherbarên kontrolkirinê', // غير موثّق بمصدر
-      appliedForce: 'Hêza sepandî (F_applied):',
-      mass: 'Baristeya sindoqê (m):',
-      frictionCoeff: 'Hevkefiya lêkdanê (μ):',
-    },
-  }[lang] || {
-    title: 'القوى والحركة: الأساسيات (قانون نيوتن الثاني)',
-    pause: 'إيقاف مؤقت',
-    play: 'تشغيل المحاكاة',
-    log: 'تسجيل القياس',
-    netForce: 'القوة المحصلة F_net',
-    acceleration: 'التسارع (a)',
-    velocity: 'السرعة (v)',
-    crate: 'صندوق',
-    frictionExplanation: 'إذا كانت القوة المطبقة أكبر من قوة الاحتكاك الساكن القصوى، يتسارع الصندوق بمعدل a = F_net / m.',
-    simulationInputs: 'المتغيرات القابلة للتحكم',
-    appliedForce: 'القوة المطبقة (F_applied):',
-    mass: 'كتلة الصندوق (m):',
-    frictionCoeff: 'معامل الاحتكاك (μ):',
-  };
-
   const [mass, setMass] = useState<number>(50); // kg
   const [appliedForce, setAppliedForce] = useState<number>(150); // N (-300 to +300)
   const [frictionCoeff, setFrictionCoeff] = useState<number>(0.2); // mu_k
@@ -182,7 +105,7 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
           </div>
           <div>
             <h3 className="text-sm font-bold text-white">
-              {t.title}
+              {tI18n('experiments.forces_motion.title')}
             </h3>
             <p className="text-xs text-slate-400 font-mono">F_net = m · a</p>
           </div>
@@ -195,7 +118,7 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
             }`}
           >
             {isPlaying ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
-            <span>{isPlaying ? t.pause : t.play}</span>
+            <span>{isPlaying ? tI18n('experiments.forces_motion.pause') : tI18n('experiments.forces_motion.play')}</span>
           </button>
           <button
             onClick={handleReset}
@@ -207,7 +130,7 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
             onClick={handleLog}
            className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
             <Activity  className="w-3.5 h-3.5"/>
-            <span>{t.log}</span>
+            <span>{tI18n('experiments.forces_motion.log')}</span>
           </button>
         </div>
       </div>
@@ -218,15 +141,15 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
           {/* Metrics Hud */}
           <div className="grid grid-cols-3 gap-2 z-10">
             <div className="bg-slate-900/90 border border-slate-800 p-2 rounded-xl text-center">
-              <span className="text-[10px] text-slate-400 block">{t.netForce}</span>
+              <span className="text-[10px] text-slate-400 block">{tI18n('experiments.forces_motion.netForce')}</span>
               <span className="text-sm font-mono font-bold text-amber-300">{netForce.toFixed(1)} N</span>
             </div>
             <div className="bg-slate-900/90 border border-slate-800 p-2 rounded-xl text-center">
-              <span className="text-[10px] text-slate-400 block">{t.acceleration}</span>
+              <span className="text-[10px] text-slate-400 block">{tI18n('experiments.forces_motion.acceleration')}</span>
               <span className="text-sm font-mono font-bold text-emerald-300">{acceleration.toFixed(2)} m/s²</span>
             </div>
             <div className="bg-slate-900/90 border border-slate-800 p-2 rounded-xl text-center">
-              <span className="text-[10px] text-slate-400 block">{t.velocity}</span>
+              <span className="text-[10px] text-slate-400 block">{tI18n('experiments.forces_motion.velocity')}</span>
               <span className="text-sm font-mono font-bold text-sky-300">{velocity.toFixed(2)} m/s</span>
             </div>
           </div>
@@ -240,7 +163,7 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
               }}
              className="absolute bottom-0 w-24 h-24 bg-gradient-to-br from-amber-700 via-amber-800 to-amber-950 border-2 border-amber-500 rounded-xl shadow-2xl flex flex-col items-center justify-center transition-all duration-75">
               <span className="text-xs font-bold text-amber-200 font-mono">{mass} kg</span>
-              <span className="text-[10px] text-amber-400">{t.crate}</span>
+              <span className="text-[10px] text-amber-400">{tI18n('experiments.forces_motion.crate')}</span>
 
               {/* Applied Force Vector (Orange) */}
               {appliedForce !== 0 && (
@@ -277,7 +200,7 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
           </div>
 
           <div className="text-[11px] text-slate-400 text-center">
-            {t.frictionExplanation}
+            {tI18n('experiments.forces_motion.frictionExplanation')}
           </div>
         </div>
 
@@ -285,13 +208,13 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
         <div className="lg:col-span-4 space-y-4">
           <div className="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3">
             <h4 className="text-xs font-bold text-orange-300 uppercase tracking-wider">
-              {t.simulationInputs}
+              {tI18n('experiments.forces_motion.simulationInputs')}
             </h4>
 
             {/* Applied Force Slider */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.appliedForce}</span>
+                <span className="text-slate-300">{tI18n('experiments.forces_motion.appliedForce')}</span>
                 <span className="font-mono text-orange-400 font-bold">{appliedForce} N</span>
               </div>
               <input
@@ -308,7 +231,7 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
             {/* Mass Slider */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.mass}</span>
+                <span className="text-slate-300">{tI18n('experiments.forces_motion.mass')}</span>
                 <span className="font-mono text-amber-400 font-bold">{mass} kg</span>
               </div>
               <input
@@ -325,7 +248,7 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
             {/* Friction Slider */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.frictionCoeff}</span>
+                <span className="text-slate-300">{tI18n('experiments.forces_motion.frictionCoeff')}</span>
                 <span className="font-mono text-red-400 font-bold">{frictionCoeff.toFixed(2)}</span>
               </div>
               <input

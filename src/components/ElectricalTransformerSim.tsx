@@ -20,121 +20,6 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [acPhase, setAcPhase] = useState<number>(0);
 
-  const t = {
-    ar: {
-      title: 'محاكاة المحول الكهربائي (Electrical Transformer)',
-      play: 'تشغيل', // غير موثّق بمصدر
-      pause: 'إيقاف', // غير موثّق بمصدر
-      logMeasurement: 'تسجيل القياس', // غير موثّق بمصدر
-      stepUpBadge: '⚡ محول رافع للجهد (Step-Up Transformer)',
-      stepDownBadge: '🔋 محول خافض للجهد (Step-Down Transformer)',
-      isolationBadge: '⚖️ محول عازل 1:1 (Isolation Transformer)',
-      primaryLabel: 'الملف الابتدائي',
-      secondaryLabel: 'الملف الثانوي',
-      primaryVoltageMeter: 'الجهد الابتدائي (Vₚ)',
-      secondaryVoltageMeter: 'الجهد الثانوي (Vₛ)',
-      secondaryCurrentMeter: 'التيار الثانوي (Iₛ)',
-      secondaryPowerMeter: 'القدرة الناتجة (Pₛ)',
-      paramsTitle: 'متغيرات المحول والملفات', // غير موثّق بمصدر
-      primaryVoltageLabel: 'جهد المصدر (Vₚ):',
-      primaryTurnsLabel: 'لفات الابتدائي (Nₚ):',
-      secondaryTurnsLabel: 'لفات الثانوي (Nₛ):',
-      loadResistanceLabel: 'مقاومة الحمل (R_L):',
-      efficiencyLabel: 'كفاءة المحول (η):',
-      primaryCurrentCard: 'التيار الابتدائي المسحوب (Iₚ)',
-      energyConservationSubtext: 'Iₚ = Pₚ / Vₚ (قانون حفظ الطاقة)',
-      primaryPowerCard: 'القدرة الابتدائية المغذية (Pₚ)',
-      efficiencySubtext: 'كفاءة',
-      turnsRatioCard: 'نسبة التحويل (Transformation Ratio a)',
-      peakFluxCard: 'أقصى تدفق مغناطيسي (Φ_max)',
-      turnsUnit: 'لفات',
-    },
-    en: {
-      title: 'Electrical Transformer Simulation',
-      play: 'Play', // غير موثّق بمصدر
-      pause: 'Pause', // غير موثّق بمصدر
-      logMeasurement: 'Log', // غير موثّق بمصدر
-      stepUpBadge: '⚡ Step-Up Transformer (Vₛ > Vₚ)',
-      stepDownBadge: '🔋 Step-Down Transformer (Vₛ < Vₚ)',
-      isolationBadge: '⚖️ 1:1 Isolation Transformer',
-      primaryLabel: 'Primary',
-      secondaryLabel: 'Secondary',
-      primaryVoltageMeter: 'Primary Voltage',
-      secondaryVoltageMeter: 'Secondary Voltage',
-      secondaryCurrentMeter: 'Secondary Current',
-      secondaryPowerMeter: 'Secondary Power',
-      paramsTitle: 'Transformer Parameters', // غير موثّق بمصدر
-      primaryVoltageLabel: 'Primary Voltage (Vₚ):',
-      primaryTurnsLabel: 'Primary Turns (Nₚ):',
-      secondaryTurnsLabel: 'Secondary Turns (Nₛ):',
-      loadResistanceLabel: 'Load Resistance (R_L):',
-      efficiencyLabel: 'Efficiency (η):',
-      primaryCurrentCard: 'Primary Current (Iₚ)',
-      energyConservationSubtext: 'Iₚ = Pₚ / Vₚ (Conservation of Energy)',
-      primaryPowerCard: 'Primary Power (Pₚ)',
-      efficiencySubtext: 'Efficiency',
-      turnsRatioCard: 'Turns Ratio (a)',
-      peakFluxCard: 'Peak Magnetic Flux (Φ_max)',
-      turnsUnit: 'turns',
-    },
-    ku: {
-      title: 'مۆدێلی گۆڕەری کارەبایی (Transformer)',
-      play: 'دەستپێکردن', // غير موثّق بمصدر
-      pause: 'وەستان', // غير موثّق بمصدر
-      logMeasurement: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      stepUpBadge: '⚡ گۆڕەری بەرزکەرەوەی ڤۆڵتیە (Step-Up)',
-      stepDownBadge: '🔋 گۆڕەری دابەزێنەری ڤۆڵتیە (Step-Down)',
-      isolationBadge: '⚖️ گۆڕەری جیاکەرەوەی 1:1 (Isolation)',
-      primaryLabel: 'کۆیلی سەرەتایی',
-      secondaryLabel: 'کۆیلی دووەم',
-      primaryVoltageMeter: 'ڤۆڵتیەی سەرەتایی (Vₚ)',
-      secondaryVoltageMeter: 'ڤۆڵتیەی دووەم (Vₛ)',
-      secondaryCurrentMeter: 'تەزووی دووەم (Iₛ)',
-      secondaryPowerMeter: 'توانای دووەم (Pₛ)',
-      paramsTitle: 'تایبەتمەندییەکانی گۆڕەر', // غير موثّق بمصدر
-      primaryVoltageLabel: 'ڤۆڵتیەی سەرچاوە (Vₚ):',
-      primaryTurnsLabel: 'خولەکانی سەرەتایی (Nₚ):',
-      secondaryTurnsLabel: 'خولەکانی دووەم (Nₛ):',
-      loadResistanceLabel: 'بەرگریی بار (R_L):',
-      efficiencyLabel: 'کارامەییی گۆڕەر (η):',
-      primaryCurrentCard: 'تەزووی سەرەتایی (Iₚ)',
-      energyConservationSubtext: 'Iₚ = Pₚ / Vₚ (یاسای پاراستنی توانا)',
-      primaryPowerCard: 'توانای سەرەتایی (Pₚ)',
-      efficiencySubtext: 'کارامەیی',
-      turnsRatioCard: 'ڕێژەی گۆڕین (a)',
-      peakFluxCard: 'زۆرترین لێشاوى موگناتیسی (Φ_max)',
-      turnsUnit: 'خول',
-    },
-    kmr: {
-      title: 'Modelkirina Transformatorek Elektrîkî',
-      play: 'Dest Pê Beke', // غير موثّق بمصدر
-      pause: 'Aram Be', // غير موثّق بمصدر
-      logMeasurement: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      stepUpBadge: '⚡ Transformatora bilindkerê voltajê (Step-Up)',
-      stepDownBadge: '🔋 Transformatora kêmkerê voltajê (Step-Down)',
-      isolationBadge: '⚖️ Transformatora veqetîner 1:1 (Isolation)',
-      primaryLabel: 'Bobîna yekemîn',
-      secondaryLabel: 'Bobîna duyemîn',
-      primaryVoltageMeter: 'Voltaja yekemîn (Vₚ)',
-      secondaryVoltageMeter: 'Voltaja duyemîn (Vₛ)',
-      secondaryCurrentMeter: 'Herikîna duyemîn (Iₛ)',
-      secondaryPowerMeter: 'Hêza duyemîn (Pₛ)',
-      paramsTitle: 'Parametreyên transformatorê', // غير موثّق بمصدر
-      primaryVoltageLabel: 'Voltaja çavkaniyê (Vₚ):',
-      primaryTurnsLabel: 'Pêçanên yekemîn (Nₚ):',
-      secondaryTurnsLabel: 'Pêçanên duyemîn (Nₛ):',
-      loadResistanceLabel: 'Berxwedana barê (R_L):',
-      efficiencyLabel: 'Karîgeriya transformatorê (η):',
-      primaryCurrentCard: 'Herikîna yekemîn (Iₚ)',
-      energyConservationSubtext: 'Iₚ = Pₚ / Vₚ (Qanûna parastina energiyê)',
-      primaryPowerCard: 'Hêza yekemîn (Pₚ)',
-      efficiencySubtext: 'Karîgerî',
-      turnsRatioCard: 'Rêjeya veguherînê (a)',
-      peakFluxCard: 'Herî zêde herikîna magnetîkî (Φ_max)',
-      turnsUnit: 'pêçan',
-    },
-  }[lang];
-
   // Transformer Equations:
   // Vs = Vp * (Ns / Np)
   const turnsRatio = secondaryTurns / primaryTurns; // Ns / Np
@@ -205,7 +90,7 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
           </div>
           <div>
             <h3 className="text-sm font-bold text-white">
-              {t.title}
+              {tI18n('experiments.electrical_transformer.title')}
             </h3>
             <p className="text-xs text-slate-400 font-mono">
               Vₛ / Vₚ = Nₛ / Nₚ &nbsp;|&nbsp; Pₚ · η = Pₛ &nbsp;|&nbsp; Vₚ·Iₚ = Vₛ·Iₛ
@@ -214,20 +99,20 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
         </div>
 
         <div className="flex items-center gap-2">
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all ${
+            className={`min-h-[44px] min-w-[44px] px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all ${
               isPlaying ? 'bg-amber-600 hover:bg-amber-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'
             }`}
           >
             {isPlaying ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
-            <span>{isPlaying ? t.pause : t.play}</span>
+            <span>{isPlaying ? tI18n('experiments.electrical_transformer.pause') : tI18n('experiments.electrical_transformer.play')}</span>
           </button>
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={handleLog}
-           className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
+            className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
             <Activity  className="w-3.5 h-3.5"/>
-            <span>{t.logMeasurement}</span>
+            <span>{tI18n('experiments.electrical_transformer.logMeasurement')}</span>
           </button>
         </div>
       </div>
@@ -240,10 +125,10 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
             <span
               className={`px-3 py-1 rounded-lg font-bold border ${ isStepUp ? 'bg-rose-500/20 text-rose-300 border-rose-500/40' : isStepDown ? 'bg-sky-500/20 text-sky-300 border-sky-500/40' : 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' }`}>
               {isStepUp
-                ? t.stepUpBadge
+                ? tI18n('experiments.electrical_transformer.stepUpBadge')
                 : isStepDown
-                ? t.stepDownBadge
-                : t.isolationBadge}
+                ? tI18n('experiments.electrical_transformer.stepDownBadge')
+                : tI18n('experiments.electrical_transformer.isolationBadge')}
             </span>
 
             <span className="font-mono text-slate-400 bg-slate-900/80 px-2.5 py-1 rounded-md border border-slate-800">
@@ -286,7 +171,7 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
               {/* Primary Coil (Left Arm: x=25 to 37) */}
               <g>
                 <text x="18" y="8" fill="#f87171" fontSize="3" fontWeight="bold" textAnchor="middle">
-                  {t.primaryLabel}
+                  {tI18n('experiments.electrical_transformer.primaryLabel')}
                 </text>
                 {Array.from({ length: primaryCoilRings }).map((_, i) => {
                   const y = 22 + (i / (primaryCoilRings - 1 || 1)) * 36;
@@ -308,7 +193,7 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
               {/* Secondary Coil (Right Arm: x=63 to 75) */}
               <g>
                 <text x="82" y="8" fill="#38bdf8" fontSize="3" fontWeight="bold" textAnchor="middle">
-                  {t.secondaryLabel}
+                  {tI18n('experiments.electrical_transformer.secondaryLabel')}
                 </text>
                 {Array.from({ length: secondaryCoilRings }).map((_, i) => {
                   const y = 22 + (i / (secondaryCoilRings - 1 || 1)) * 36;
@@ -352,19 +237,19 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
           {/* Quick Metrics Bar */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl text-center text-xs font-mono">
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.primaryVoltageMeter}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.electrical_transformer.primaryVoltageMeter')}</span>
               <span className="text-rose-400 font-bold">{primaryVoltage} V</span>
             </div>
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.secondaryVoltageMeter}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.electrical_transformer.secondaryVoltageMeter')}</span>
               <span className="text-sky-400 font-bold">{secondaryVoltage.toFixed(1)} V</span>
             </div>
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.secondaryCurrentMeter}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.electrical_transformer.secondaryCurrentMeter')}</span>
               <span className="text-emerald-400 font-bold">{secondaryCurrent.toFixed(2)} A</span>
             </div>
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.secondaryPowerMeter}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.electrical_transformer.secondaryPowerMeter')}</span>
               <span className="text-amber-400 font-bold">{secondaryPower.toFixed(1)} W</span>
             </div>
           </div>
@@ -374,13 +259,13 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
         <div className="lg:col-span-4 space-y-4 max-h-[50vh] overflow-y-auto pr-1">
           <div className="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3">
             <h4 className="text-xs font-bold text-amber-300 uppercase tracking-wider">
-              {t.paramsTitle}
+              {tI18n('experiments.electrical_transformer.paramsTitle')}
             </h4>
 
             {/* Primary Voltage */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.primaryVoltageLabel}</span>
+                <span className="text-slate-300">{tI18n('experiments.electrical_transformer.primaryVoltageLabel')}</span>
                 <span className="font-mono text-rose-400 font-bold">{primaryVoltage} V</span>
               </div>
               <input
@@ -397,8 +282,8 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
             {/* Primary Turns Np */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.primaryTurnsLabel}</span>
-                <span className="font-mono text-rose-400 font-bold">{primaryTurns} {t.turnsUnit}</span>
+                <span className="text-slate-300">{tI18n('experiments.electrical_transformer.primaryTurnsLabel')}</span>
+                <span className="font-mono text-rose-400 font-bold">{primaryTurns} {tI18n('experiments.electrical_transformer.turnsUnit')}</span>
               </div>
               <input
                 type="range"
@@ -414,8 +299,8 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
             {/* Secondary Turns Ns */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.secondaryTurnsLabel}</span>
-                <span className="font-mono text-sky-400 font-bold">{secondaryTurns} {t.turnsUnit}</span>
+                <span className="text-slate-300">{tI18n('experiments.electrical_transformer.secondaryTurnsLabel')}</span>
+                <span className="font-mono text-sky-400 font-bold">{secondaryTurns} {tI18n('experiments.electrical_transformer.turnsUnit')}</span>
               </div>
               <input
                 type="range"
@@ -431,7 +316,7 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
             {/* Load Resistance RL */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.loadResistanceLabel}</span>
+                <span className="text-slate-300">{tI18n('experiments.electrical_transformer.loadResistanceLabel')}</span>
                 <span className="font-mono text-amber-400 font-bold">{loadResistance} Ω</span>
               </div>
               <input
@@ -448,7 +333,7 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
             {/* Transformer Efficiency */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.efficiencyLabel}</span>
+                <span className="text-slate-300">{tI18n('experiments.electrical_transformer.efficiencyLabel')}</span>
                 <span className="font-mono text-emerald-400 font-bold">{efficiency}%</span>
               </div>
               <input
@@ -469,27 +354,27 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.primaryCurrentCard}
+            {tI18n('experiments.electrical_transformer.primaryCurrentCard')}
           </div>
           <div className="text-lg font-mono font-bold text-rose-400">
             {primaryCurrent.toFixed(2)} A
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">{t.energyConservationSubtext}</div>
+          <div className="text-[10px] text-slate-500 font-mono">{tI18n('experiments.electrical_transformer.energyConservationSubtext')}</div>
         </div>
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.primaryPowerCard}
+            {tI18n('experiments.electrical_transformer.primaryPowerCard')}
           </div>
           <div className="text-lg font-mono font-bold text-amber-400">
             {primaryPower.toFixed(1)} W
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">Pₚ = Pₛ / η ({efficiency}% {t.efficiencySubtext})</div>
+          <div className="text-[10px] text-slate-500 font-mono">Pₚ = Pₛ / η ({efficiency}% {tI18n('experiments.electrical_transformer.efficiencySubtext')})</div>
         </div>
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.turnsRatioCard}
+            {tI18n('experiments.electrical_transformer.turnsRatioCard')}
           </div>
           <div className="text-lg font-mono font-bold text-sky-400">
             {turnsRatio.toFixed(3)}
@@ -499,7 +384,7 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.peakFluxCard}
+            {tI18n('experiments.electrical_transformer.peakFluxCard')}
           </div>
           <div className="text-lg font-mono font-bold text-emerald-400">
             {(maxMagneticFlux * 1000).toFixed(2)} mWb

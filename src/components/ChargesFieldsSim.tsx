@@ -16,6 +16,7 @@ interface Charge {
 }
 
 export const ChargesFieldsSim: React.FC<ChargesFieldsSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [charges, setCharges] = useState<Charge[]>([
     { id: 1, x: 200, y: 150, q: 1 },
     { id: 2, x: 400, y: 150, q: -1 },
@@ -59,6 +60,7 @@ export const ChargesFieldsSim: React.FC<ChargesFieldsSimProps> = ({ lang }) => {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     ctx.clearRect(0, 0, 600, 300);
 
@@ -140,65 +142,6 @@ export const ChargesFieldsSim: React.FC<ChargesFieldsSimProps> = ({ lang }) => {
     setSensorPos({ x, y });
   };
 
-  const t = {
-    ar: {
-      title: 'الشحنات والمجالات الكهروستاتيكية (E = kQ / r²)',
-      subtitle: 'مختبر الفيزياء الكهرومغناطيسية', // غير موثّق بمصدر
-      addPos: 'إضافة شحنة موجبة (+1 nC)',
-      addNeg: 'إضافة شحنة سالبة (-1 nC)',
-      toggleVectors: 'إظهار شبكة المتجهات',
-      hideVectors: 'إخفاء شبكة المتجهات', // غير موثّق بمصدر
-      manageCharges: 'إدارة الشحنات النقطية:', // غير موثّق بمصدر
-      sensorHeader: 'مجس قياس المجال والجهد (Voltmeter Sensor)',
-      clickToPlaceSensor: 'انقر فوق أي نقطة في اللوحة لوضع المجس وقياس المجال والجهد',
-      potential: 'الجهد الكهربائي (V)',
-      fieldIntensity: 'شدة المجال (E)',
-      reset: 'إعادة ضبط الشحنات',
-    },
-    en: {
-      title: 'Charges and Fields Lab (E = kQ / r²)',
-      subtitle: 'Electromagnetism Physics Lab', // غير موثّق بمصدر
-      addPos: 'Add Positive (+1 nC)',
-      addNeg: 'Add Negative (-1 nC)',
-      toggleVectors: 'Toggle Vector Grid',
-      hideVectors: 'Hide Vector Grid', // غير موثّق بمصدر
-      manageCharges: 'Point Charge Control:', // غير موثّق بمصدر
-      sensorHeader: 'Field & Potential Sensor Probe',
-      clickToPlaceSensor: 'Click anywhere on canvas to move sensor probe',
-      potential: 'Electric Potential (V)',
-      fieldIntensity: 'Field Magnitude (E)',
-      reset: 'Reset Charges',
-    },
-    ku: {
-      title: 'بارگەکان و بوارە کارەباییەکان',
-      subtitle: 'تاقیگەی فیزیا', // غير موثّق بمصدر
-      addPos: 'زیادکردنی بارگەی ئەرێنی (+)',
-      addNeg: 'زیادکردنی بارگەی نەرێنی (-)',
-      toggleVectors: 'پیشاندانی تیشکەکان',
-      hideVectors: 'شاردنەوەی تیشکەکان', // غير موثّق بمصدر
-      manageCharges: 'بەڕێوەبردنی بارگەکان:', // غير موثّق بمصدر
-      sensorHeader: 'ئامێری پێوانەکردنی بوار',
-      clickToPlaceSensor: 'کرتە بکە بۆ دانانی ئامێری پێوانە',
-      potential: 'پۆتەنشیاڵ (V)',
-      fieldIntensity: 'بڕی بوار (E)',
-      reset: 'ڕێکخستنەوە',
-    },
-    kmr: {
-      title: 'Barg û Qadên Elektrîkê (E = kQ / r²)',
-      subtitle: 'Laboratûwara Fîzîkê', // غير موثّق بمصدر
-      addPos: 'Barga Erênî Zêde Bike (+)',
-      addNeg: 'Barga Neyînî Zêde Bike (-)',
-      toggleVectors: 'Nîşandana Tîrên Qadê',
-      hideVectors: 'Veqetandina Tîrên Qadê', // غير موثّق بمصدر
-      manageCharges: 'Rêveberiya Bargan:', // غير موثّق بمصدر
-      sensorHeader: 'Sensora Qadê û Potansiyelê',
-      clickToPlaceSensor: 'Ji bo pîvanê li ser tabloyê bitikîne',
-      potential: 'Potansiyela Elektrîkî (V)',
-      fieldIntensity: 'Mezinahiya Qadê (E)',
-      reset: 'Nûkirin',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -207,15 +150,15 @@ export const ChargesFieldsSim: React.FC<ChargesFieldsSimProps> = ({ lang }) => {
             <Sparkles  className="w-6 h-6"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
-            <p className="text-xs text-slate-400 font-mono">{t.subtitle}</p>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.charges_and_fields.title')}</h2>
+            <p className="text-xs text-slate-400 font-mono">{tI18n('experiments.charges_and_fields.subtitle')}</p>
           </div>
         </div>
 
         <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors flex items-center gap-1.5"
         >
           <RotateCcw  className="w-3.5 h-3.5"/>
-          {t.reset}
+          {tI18n('experiments.charges_and_fields.reset')}
         </button>
       </div>
 
@@ -228,43 +171,43 @@ export const ChargesFieldsSim: React.FC<ChargesFieldsSimProps> = ({ lang }) => {
             height={300}
             onClick={handleCanvasClick}
            className="w-full h-auto max-h-[340px] rounded-xl bg-slate-950 cursor-crosshair border border-slate-900"/>
-          <span className="text-[11px] text-slate-400 mt-2 font-mono">{t.clickToPlaceSensor}</span>
+          <span className="text-[11px] text-slate-400 mt-2 font-mono">{tI18n('experiments.charges_and_fields.clickToPlaceSensor')}</span>
         </div>
 
         {/* Controls & Sensor Readings */}
         <div className="lg:col-span-4 space-y-4">
           {/* Add Charges */}
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-3">
-            <span className="text-xs font-semibold text-slate-300 block">{t.manageCharges}</span>
+            <span className="text-xs font-semibold text-slate-300 block">{tI18n('experiments.charges_and_fields.manageCharges')}</span>
             <div className="grid grid-cols-2 gap-2">
               <button className="min-h-[44px] min-w-[44px] flex items-center justify-center gap-1.5 p-2 bg-red-600/20 hover:bg-red-600/30 text-red-300 border border-red-500/40 rounded-lg text-xs font-bold transition-colors"
               >
                 <Plus  className="w-4 h-4"/>
-                {t.addPos}
+                {tI18n('experiments.charges_and_fields.addPos')}
               </button>
               <button className="min-h-[44px] min-w-[44px] flex items-center justify-center gap-1.5 p-2 bg-blue-600/20 hover:bg-blue-600/30 text-blue-300 border border-blue-500/40 rounded-lg text-xs font-bold transition-colors"
               >
                 <Minus  className="w-4 h-4"/>
-                {t.addNeg}
+                {tI18n('experiments.charges_and_fields.addNeg')}
               </button>
             </div>
 
             <button className="min-h-[44px] min-w-[44px] w-full py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-semibold border border-slate-700 transition-colors"
             >
-              {showVectors ? t.hideVectors : t.toggleVectors}
+              {showVectors ? tI18n('experiments.charges_and_fields.hideVectors') : tI18n('experiments.charges_and_fields.toggleVectors')}
             </button>
           </div>
 
           {/* Sensor Probe Readout */}
           <div className="p-4 bg-amber-950/30 border border-amber-500/30 rounded-xl space-y-2">
-            <span className="text-xs text-amber-300 font-bold block">{t.sensorHeader}</span>
+            <span className="text-xs text-amber-300 font-bold block">{tI18n('experiments.charges_and_fields.sensorHeader')}</span>
             <div className="space-y-1 text-xs font-mono">
               <div className="flex justify-between text-slate-300">
-                <span>{t.potential}:</span>
+                <span>{tI18n('experiments.charges_and_fields.potential')}:</span>
                 <span className="font-bold text-amber-400">{sensorReading.V.toFixed(1)} V</span>
               </div>
               <div className="flex justify-between text-slate-300">
-                <span>{t.fieldIntensity}:</span>
+                <span>{tI18n('experiments.charges_and_fields.fieldIntensity')}:</span>
                 <span className="font-bold text-sky-400">{sensorReading.E_total.toFixed(2)} V/m</span>
               </div>
               <div className="flex justify-between text-slate-400 text-[11px] pt-1 border-t border-amber-500/20">

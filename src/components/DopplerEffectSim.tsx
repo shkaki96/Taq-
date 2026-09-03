@@ -11,138 +11,6 @@ interface Props {
 
 export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'محاكاة تأثير دوبلر (Doppler Effect)',
-      pause: 'إيقاف', // غير موثّق بمصدر
-      play: 'تشغيل', // غير موثّق بمصدر
-      resetPosition: 'إعادة ضبط الموقع', // غير موثّق بمصدر
-      log: 'تسجيل القياس', // غير موثّق بمصدر
-      approaching: '← المصدر يقترب من الراصد (تردد أعلى)',
-      receding: 'المصدر يبتعد عن الراصد (تردد أقل) →',
-      observer: 'الراصد',
-      source: 'المصدر',
-      emittedFreq: 'التردد المنبعث (f)',
-      observedFreq: "التردد المرصود (f')",
-      freqShift: 'إزاحة التردد (Δf)',
-      pitchRatio: "نسبة النغمة (f'/f)",
-      simulationControls: 'عناصر التحكم بالمتغيرات', // غير موثّق بمصدر
-      sourceSpeed: 'سرعة المصدر (vₛ):',
-      emittedFreqInput: 'التردد المنبعث (f):',
-      speedOfSound: 'سرعة الصوت في الوسط (v):',
-      observerSpeed: 'سرعة الراصد (vₒ):',
-      wavelengthFront: 'الطول الموجي في الأمام (λ_front)',
-      wavelengthBack: 'الطول الموجي في الخلف (λ_back)',
-      restWavelength: 'الطول الموجي الساكن (λ₀)',
-      machNumber: 'معامل ماخ (Mach Number)',
-      subsonic: 'دون صوتي',
-      supersonic: 'فوق صوتي',
-    },
-    en: {
-      title: 'Doppler Effect Simulation',
-      pause: 'Pause', // غير موثّق بمصدر
-      play: 'Play', // غير موثّق بمصدر
-      resetPosition: 'Reset Position', // غير موثّق بمصدر
-      log: 'Log Measurement', // غير موثّق بمصدر
-      approaching: '← Source Approaching (Higher Pitch)',
-      receding: 'Source Receding (Lower Pitch) →',
-      observer: 'Observer',
-      source: 'Source',
-      emittedFreq: 'Emitted Freq (f)',
-      observedFreq: "Observed Freq (f')",
-      freqShift: 'Freq Shift (Δf)',
-      pitchRatio: "Pitch Ratio (f'/f)",
-      simulationControls: 'Simulation Controls', // غير موثّق بمصدر
-      sourceSpeed: 'Source Speed (vₛ):',
-      emittedFreqInput: 'Emitted Freq (f):',
-      speedOfSound: 'Speed of Sound (v):',
-      observerSpeed: 'Observer Speed (vₒ):',
-      wavelengthFront: 'Wavelength in Front',
-      wavelengthBack: 'Wavelength in Back',
-      restWavelength: 'Rest Wavelength',
-      machNumber: 'Mach Number',
-      subsonic: 'Subsonic',
-      supersonic: 'Supersonic',
-    },
-    ku: {
-      title: 'کاریگەری دۆپلەر (Doppler Effect)',
-      pause: 'ڕاگرتن', // غير موثّق بمصدر
-      play: 'دەستپێکردن', // غير موثّق بمصدر
-      resetPosition: 'گەڕاندنەوەی شوێن', // غير موثّق بمصدر
-      log: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      approaching: '← سەرچاوە لە بینەر ننزیک دەبێتەوە (فرێکوێنسی بەرزتر)',
-      receding: 'سەرچاوە لە بینەر دوور دەکەوێتەوە (فرێکوێنسی نزمتر) →',
-      observer: 'بینەر',
-      source: 'سەرچاوە',
-      emittedFreq: 'فرێکوێنسیی دەرچوو (f)',
-      observedFreq: "فرێکوێنسیی بینراو (f')",
-      freqShift: 'لایەنگریی فرێکوێنسی (Δf)',
-      pitchRatio: "ڕێژەی دەنگ (f'/f)",
-      simulationControls: 'کۆنترۆڵەکانی هاوشێوەکردن', // غير موثّق بمصدر
-      sourceSpeed: 'خێرایی سەرچاوە (vₛ):',
-      emittedFreqInput: 'فرێکوێنسیی دەرچوو (f):',
-      speedOfSound: 'خێرایی دەنگ لە ژینگەدا (v):',
-      observerSpeed: 'خێرایی بینەر (vₒ):',
-      wavelengthFront: 'درێژی شەپۆل لە پێشەوە (λ_front)',
-      wavelengthBack: 'درێژی شەپۆل لە دواوە (λ_back)',
-      restWavelength: 'درێژی شەپۆلی سكون (λ₀)',
-      machNumber: 'ژمارەی ماخ (Mach Number)',
-      subsonic: 'ژێر دەنگی',
-      supersonic: 'سەروو دەنگی',
-    },
-    kmr: {
-      title: 'Bandora Dopplerê',
-      pause: 'Rawestandin', // غير موثّق بمصدر
-      play: 'Lêxistin', // غير موثّق بمصدر
-      resetPosition: 'Zivirandina شوێنê', // غير موثّق بمصدر
-      log: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      approaching: '← Çavkanî nêzîkî çavdêr dibe (tonê bilindtir)',
-      receding: 'Çavkanî ji çavdêr dûr dibe (tonê nizmti) →',
-      observer: 'Çavdêr',
-      source: 'Çavkanî',
-      emittedFreq: 'Pirhêziya derketî (f)',
-      observedFreq: "Pirhêziya çavdêrîکراو (f')",
-      freqShift: 'Veguhastina pirhêziyê (Δf)',
-      pitchRatio: "Rêjeya awazê (f'/f)",
-      simulationControls: 'Kontrolên sîmulasyonê', // غير موثّق بمصدر
-      sourceSpeed: 'Leza çavkaniyê (vₛ):',
-      emittedFreqInput: 'Pirhêziya derketî (f):',
-      speedOfSound: 'Leza دەنگê di navberê de (v):',
-      observerSpeed: 'Leza çavdêr (vₒ):',
-      wavelengthFront: 'Dirêjahiya pêlê li pêş (λ_front)',
-      wavelengthBack: 'Dirêjahiya pêlê li paş (λ_back)',
-      restWavelength: 'Dirêjahiya pêlê ya sekinî (λ₀)',
-      machNumber: 'Hejmara Machê (Mach Number)',
-      subsonic: 'Subsonîk',
-      supersonic: 'Supersonîk',
-    },
-  }[lang] || {
-    title: 'محاكاة تأثير دوبلر (Doppler Effect)',
-    pause: 'إيقاف',
-    play: 'تشغيل',
-    resetPosition: 'إعادة ضبط الموقع',
-    log: 'تسجيل القياس',
-    approaching: '← المصدر يقترب من الراصد (تردد أعلى)',
-    receding: 'المصدر يبتعد عن الراصد (تردد أقل) →',
-    observer: 'الراصد',
-    source: 'المصدر',
-    emittedFreq: 'التردد المنبعث (f)',
-    observedFreq: "التردد المرصود (f')",
-    freqShift: 'إزاحة التردد (Δf)',
-    pitchRatio: "نسبة النغمة (f'/f)",
-    simulationControls: 'عناصر التحكم بالمتغيرات',
-    sourceSpeed: 'سرعة المصدر (vₛ):',
-    emittedFreqInput: 'التردد المنبعث (f):',
-    speedOfSound: 'سرعة الصوت في الوسط (v):',
-    observerSpeed: 'سرعة الراصد (vₒ):',
-    wavelengthFront: 'الطول الموجي في الأمام (λ_front)',
-    wavelengthBack: 'الطول الموجي في الخلف (λ_back)',
-    restWavelength: 'الطول الموجي الساكن (λ₀)',
-    machNumber: 'معامل ماخ (Mach Number)',
-    subsonic: 'دون صوتي',
-    supersonic: 'فوق صوتي',
-  };
-
   const [sourceSpeed, setSourceSpeed] = useState<number>(60); // m/s (positive = moving towards observer)
   const [observerSpeed, setObserverSpeed] = useState<number>(0); // m/s (positive = moving towards source)
   const [emittedFreq, setEmittedFreq] = useState<number>(440); // Hz (A4)
@@ -259,7 +127,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
           </div>
           <div>
             <h3 className="text-sm font-bold text-white">
-              {t.title}
+              {tI18n('experiments.doppler_effect.title')}
             </h3>
             <p className="text-xs text-slate-400 font-mono">
               f' = f · ((v ± vₒ) / (v ∓ vₛ))
@@ -268,26 +136,26 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
         </div>
 
         <div className="flex items-center gap-2">
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={() => setIsPlaying(!isPlaying)}
-            className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all ${
+            className={`min-h-[44px] min-w-[44px] px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all ${
               isPlaying ? 'bg-amber-600 hover:bg-amber-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'
             }`}
           >
             {isPlaying ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
-            <span>{isPlaying ? t.pause : t.play}</span>
+            <span>{isPlaying ? tI18n('experiments.doppler_effect.pause') : tI18n('experiments.doppler_effect.play')}</span>
           </button>
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={handleReset}
-            title={t.resetPosition}
-           className="min-h-[44px] min-w-[44px] px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all">
+            title={tI18n('experiments.doppler_effect.resetPosition')}
+            className="min-h-[44px] min-w-[44px] px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all">
             <RotateCcw  className="w-3.5 h-3.5"/>
           </button>
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={handleLog}
-           className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
+            className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
             <Activity  className="w-3.5 h-3.5"/>
-            <span>{t.log}</span>
+            <span>{tI18n('experiments.doppler_effect.log')}</span>
           </button>
         </div>
       </div>
@@ -299,7 +167,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between z-10 text-xs">
             <span
              className={`px-2.5 py-1 rounded-lg font-bold border ${ isApproaching ? 'bg-emerald-500/20 text-emerald-300 border-emerald-500/40' : 'bg-rose-500/20 text-rose-300 border-rose-500/40' }`}>
-              {isApproaching ? t.approaching : t.receding}
+              {isApproaching ? tI18n('experiments.doppler_effect.approaching') : tI18n('experiments.doppler_effect.receding')}
             </span>
             <span className="font-mono text-slate-400">
               Mach {machNumber.toFixed(2)} {machNumber >= 1 ? '⚠️ Sonic Boom' : ''}
@@ -332,7 +200,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
                 <circle cx="0" cy="0" r="4.5" fill="#10b981" />
                 <circle cx="0" cy="0" r="7" fill="none" stroke="#10b981" strokeWidth="0.8" opacity="0.6" />
                 <text x="0" y="-8" fill="#a7f3d0" fontSize="3.5" textAnchor="middle" fontWeight="bold">
-                  {t.observer}
+                  {tI18n('experiments.doppler_effect.observer')}
                 </text>
               </g>
 
@@ -341,7 +209,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
                 <circle cx="0" cy="0" r="4.5" fill="#ef4444" />
                 <polygon points="4,0 -2,-3 -2,3" fill="#ffffff" />
                 <text x="0" y="9" fill="#fca5a5" fontSize="3.5" textAnchor="middle" fontWeight="bold">
-                  {t.source}
+                  {tI18n('experiments.doppler_effect.source')}
                 </text>
               </g>
             </svg>
@@ -350,23 +218,23 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
           {/* Quick Real-Time Indicators */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-900/90 border border-slate-800 p-2.5 rounded-xl text-center text-xs font-mono">
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.emittedFreq}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.doppler_effect.emittedFreq')}</span>
               <span className="text-slate-200 font-bold">{emittedFreq} Hz</span>
             </div>
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.observedFreq}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.doppler_effect.observedFreq')}</span>
               <span className={`font-bold ${isApproaching ? 'text-emerald-400' : 'text-rose-400'}`}>
                 {observedFreq.toFixed(1)} Hz
               </span>
             </div>
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.freqShift}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.doppler_effect.freqShift')}</span>
               <span className="text-indigo-300 font-bold">
                 {freqShift >= 0 ? `+${freqShift.toFixed(1)}` : freqShift.toFixed(1)} Hz
               </span>
             </div>
             <div>
-              <span className="text-slate-400 text-[10px] block">{t.pitchRatio}</span>
+              <span className="text-slate-400 text-[10px] block">{tI18n('experiments.doppler_effect.pitchRatio')}</span>
               <span className="text-amber-300 font-bold">{(observedFreq / emittedFreq).toFixed(3)}x</span>
             </div>
           </div>
@@ -376,13 +244,13 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
         <div className="lg:col-span-4 space-y-4 max-h-[50vh] overflow-y-auto pr-1">
           <div className="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3">
             <h4 className="text-xs font-bold text-sky-300 uppercase tracking-wider">
-              {t.simulationControls}
+              {tI18n('experiments.doppler_effect.simulationControls')}
             </h4>
 
             {/* Source Velocity */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.sourceSpeed}</span>
+                <span className="text-slate-300">{tI18n('experiments.doppler_effect.sourceSpeed')}</span>
                 <span className="font-mono text-rose-400 font-bold">{sourceSpeed} m/s</span>
               </div>
               <input
@@ -404,7 +272,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
             {/* Emitted Frequency */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.emittedFreqInput}</span>
+                <span className="text-slate-300">{tI18n('experiments.doppler_effect.emittedFreqInput')}</span>
                 <span className="font-mono text-sky-400 font-bold">{emittedFreq} Hz</span>
               </div>
               <input
@@ -421,7 +289,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
             {/* Speed of Sound */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.speedOfSound}</span>
+                <span className="text-slate-300">{tI18n('experiments.doppler_effect.speedOfSound')}</span>
                 <span className="font-mono text-amber-400 font-bold">{soundSpeed} m/s</span>
               </div>
               <input
@@ -438,7 +306,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
             {/* Observer Speed */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.observerSpeed}</span>
+                <span className="text-slate-300">{tI18n('experiments.doppler_effect.observerSpeed')}</span>
                 <span className="font-mono text-emerald-400 font-bold">{observerSpeed} m/s</span>
               </div>
               <input
@@ -459,7 +327,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 pt-2">
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.wavelengthFront}
+            {tI18n('experiments.doppler_effect.wavelengthFront')}
           </div>
           <div className="text-lg font-mono font-bold text-sky-400">
             {wavelengthFront.toFixed(3)} m
@@ -469,7 +337,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.wavelengthBack}
+            {tI18n('experiments.doppler_effect.wavelengthBack')}
           </div>
           <div className="text-lg font-mono font-bold text-indigo-400">
             {wavelengthBack.toFixed(3)} m
@@ -479,7 +347,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.restWavelength}
+            {tI18n('experiments.doppler_effect.restWavelength')}
           </div>
           <div className="text-lg font-mono font-bold text-amber-400">
             {wavelengthRest.toFixed(3)} m
@@ -489,12 +357,12 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
           <div className="text-[11px] text-slate-400 font-medium">
-            {t.machNumber}
+            {tI18n('experiments.doppler_effect.machNumber')}
           </div>
           <div className="text-lg font-mono font-bold text-emerald-400">
             {machNumber.toFixed(3)} M
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">M = vₛ / v ({machNumber < 1 ? t.subsonic : t.supersonic})</div>
+          <div className="text-[10px] text-slate-500 font-mono">M = vₛ / v ({machNumber < 1 ? tI18n('experiments.doppler_effect.subsonic') : tI18n('experiments.doppler_effect.supersonic')})</div>
         </div>
       </div>
     </div>

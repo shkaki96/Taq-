@@ -11,83 +11,6 @@ interface Props {
 
 export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'الآلات البسيطة والمستوى المائل',
-      desc: 'دراسة الفائدة الميكانيكية المثالية IMA = L/h والحقيقية AMA = Fload/Feffort، وحساب الشغل المبذول وكفاءة المستوى المائل η = Wout/Win.',
-      logged: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      log: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      controlsTitle: 'أابعاد المنحدر والحمولة', // غير موثّق بمصدر
-      loadMass: 'كتلة الحمولة (m):',
-      rampHeight: 'ارتفاع المستوى (h):',
-      rampLength: 'طول المستوى المائل (L):',
-      frictionCoeff: 'معامل احتكاك السطح (μ):',
-      effortForce: 'قوة السحب المطلوبة',
-      ima: 'الفائدة الميكانيكية IMA',
-      ama: 'الفائدة الحقيقية AMA',
-      efficiency: 'كفاءة المستوى (η)',
-    },
-    en: {
-      title: 'Ramp & Inclined Plane (Simple Machines)',
-      desc: 'Ideal (IMA = L/h) & Actual Mechanical Advantage (AMA) and work efficiency on an inclined plane machine.',
-      logged: 'Logged ✓', // غير موثّق بمصدر
-      log: 'Log Measurement', // غير موثّق بمصدر
-      controlsTitle: 'Ramp & Load Controls', // غير موثّق بمصدر
-      loadMass: 'Load Mass (m):',
-      rampHeight: 'Ramp Height (h):',
-      rampLength: 'Ramp Length (L):',
-      frictionCoeff: 'Friction Coeff (μ):',
-      effortForce: 'Effort Force',
-      ima: 'Ideal Adv. (IMA)',
-      ama: 'Actual Adv. (AMA)',
-      efficiency: 'Efficiency (η)',
-    },
-    ku: {
-      title: 'ئامێرە سادەکان و ڕووی لێژ',
-      desc: 'لێکۆڵینەوە لە سوودی میکانیکی و توانستی کاریگەری ڕووی لێژ وەک ئامێرێکی سادە.',
-      logged: 'تۆمارکرا لە دەفتەر ✓', // غير موثّق بمصدر
-      log: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      controlsTitle: 'کۆنترۆڵەکانی ڕووی لێژ و بارستە', // غير موثّق بمصدر
-      loadMass: 'بارستەی بار (m):',
-      rampHeight: 'بەرزایی ڕووی لێژ (h):',
-      rampLength: 'درێژی ڕووی لێژ (L):',
-      frictionCoeff: 'هاوکۆلکەی لێکخشاندن (μ):',
-      effortForce: 'هێزی ڕاکێشانی پێویست',
-      ima: 'سوودی میکانیکیی تیۆری IMA',
-      ama: 'سوودی میکانیکیی کردارەکی AMA',
-      efficiency: 'کارتێکردنی ئامێر (η)',
-    },
-    kmr: {
-      title: 'Amûrên Sadeh û Rûyê Xwar',
-      desc: 'Lêkolîna li ser sûda mekanîkî ya îdeal (IMA) û ya rastîn (AMA) û karbidestiya rûyê xwar.',
-      logged: 'Hat tomarkirin ✓', // غير موثّق بمصدر
-      log: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      controlsTitle: 'Kontrolên rûyê xwar û bariste', // غير موثّق بمصدر
-      loadMass: 'Baristeya bar (m):',
-      rampHeight: 'Bilindahiya rûyê xwar (h):',
-      rampLength: 'Dirêjahiya rûyê xwar (L):',
-      frictionCoeff: 'Rêjeya lêkdanê (μ):',
-      effortForce: 'Hêza karkirinê ya pêwîst',
-      ima: 'Sûda mekanîkî ya îdeal IMA',
-      ama: 'Sûda mekanîkî ya rastîn AMA',
-      efficiency: 'Karbidestiya amûrê (η)',
-    },
-  }[lang] || {
-    title: 'الآلات البسيطة والمستوى المائل',
-    desc: 'دراسة الفائدة الميكانيكية المثالية IMA = L/h والحقيقية AMA = Fload/Feffort، وحساب الشغل المبذول وكفاءة المستوى المائل η = Wout/Win.',
-    logged: 'تم التسجيل في الدفتر ✓',
-    log: 'تسجيل في دفتر المختبر',
-    controlsTitle: 'أبعاد المنحدر والحمولة',
-    loadMass: 'كتلة الحمولة (m):',
-    rampHeight: 'ارتفاع المستوى (h):',
-    rampLength: 'طول المستوى المائل (L):',
-    frictionCoeff: 'معامل احتكاك السطح (μ):',
-    effortForce: 'قوة السحب المطلوبة',
-    ima: 'الفائدة الميكانيكية IMA',
-    ama: 'الفائدة الحقيقية AMA',
-    efficiency: 'كفاءة المستوى (η)',
-  };
-
   // Inputs
   const [loadMassKg, setLoadMassKg] = useState<number>(20); // kg
   const [rampHeightM, setRampHeightM] = useState<number>(1.5); // m
@@ -140,6 +63,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
           drawInclinedRamp(ctx, canvas.width, canvas.height);
         }
       }
@@ -300,15 +224,15 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
         <div>
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <TrendingUp  className="w-5 h-5 text-emerald-400"/>
-            <span>{t.title}</span>
+            <span>{tI18n('experiments.ramp_machine.title')}</span>
           </h2>
-          <p className="text-sm text-zinc-400 mt-1 max-w-2xl">{t.desc}</p>
+          <p className="text-sm text-zinc-400 mt-1 max-w-2xl">{tI18n('experiments.ramp_machine.desc')}</p>
         </div>
 
         <div className="flex items-center gap-2">
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={() => setIsRunning(!isRunning)}
-            className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700"
+            className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 flex items-center justify-center"
           >
             {isRunning ? <Pause  className="w-4 h-4"/> : <Play  className="w-4 h-4 text-emerald-400"/>}
           </button>
@@ -317,7 +241,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
             className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/30' }`}
           >
             <BookmarkCheck  className="w-4 h-4"/>
-            <span>{logged ? t.logged : t.log}</span>
+            <span>{logged ? tI18n('experiments.ramp_machine.logged') : tI18n('experiments.ramp_machine.log')}</span>
           </button>
         </div>
       </div>
@@ -329,14 +253,14 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Sliders  className="w-4 h-4 text-emerald-400"/>
-              {t.controlsTitle}
+              {tI18n('experiments.ramp_machine.controlsTitle')}
             </span>
           </div>
 
           {/* Load Mass Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.loadMass}</span>
+              <span className="text-zinc-400">{tI18n('experiments.ramp_machine.loadMass')}</span>
               <span className="font-mono text-indigo-400 font-semibold">{loadMassKg} kg</span>
             </div>
             <input
@@ -353,7 +277,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
           {/* Ramp Height Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.rampHeight}</span>
+              <span className="text-zinc-400">{tI18n('experiments.ramp_machine.rampHeight')}</span>
               <span className="font-mono text-amber-400 font-semibold">{clampedHeight.toFixed(2)} m</span>
             </div>
             <input
@@ -370,7 +294,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
           {/* Ramp Length Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.rampLength}</span>
+              <span className="text-zinc-400">{tI18n('experiments.ramp_machine.rampLength')}</span>
               <span className="font-mono text-sky-400 font-semibold">{rampLengthM.toFixed(1)} m</span>
             </div>
             <input
@@ -387,7 +311,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
           {/* Friction Coefficient Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.frictionCoeff}</span>
+              <span className="text-zinc-400">{tI18n('experiments.ramp_machine.frictionCoeff')}</span>
               <span className="font-mono text-rose-400 font-semibold">{frictionCoeffMu.toFixed(2)}</span>
             </div>
             <input
@@ -416,7 +340,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
             {/* Actual Effort Force */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.effortForce}
+                {tI18n('experiments.ramp_machine.effortForce')}
               </span>
               <div className="text-xl font-bold font-mono text-emerald-400">
                 {actualEffortN.toFixed(1)} <span className="text-sm text-zinc-400">N</span>
@@ -427,7 +351,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
             {/* Ideal Mech Adv (IMA) */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.ima}
+                {tI18n('experiments.ramp_machine.ima')}
               </span>
               <div className="text-xl font-bold font-mono text-sky-400">
                 {ima.toFixed(2)}x
@@ -438,7 +362,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
             {/* Actual Mech Adv (AMA) */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.ama}
+                {tI18n('experiments.ramp_machine.ama')}
               </span>
               <div className="text-xl font-bold font-mono text-indigo-400">
                 {ama.toFixed(2)}x
@@ -449,7 +373,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
             {/* Efficiency % */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.efficiency}
+                {tI18n('experiments.ramp_machine.efficiency')}
               </span>
               <div className="text-xl font-bold font-mono text-amber-400">
                 {efficiencyPercent.toFixed(1)}%

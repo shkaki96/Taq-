@@ -30,109 +30,6 @@ const PRESETS: WavelengthPreset[] = [
 
 export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'تشتت الضوء وتشتت رايلي',
-      subtitle: 'تفسير زرقة السماء وحمرة الغروب استناداً إلى قانون رايلي: شدة التشتت تتناسب عكسياً مع الأس الرابع للطول الموجي I ∝ 1/λ⁴.',
-      logMeasurement: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      logged: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      controlsTitle: 'الطول الموجي والغلاف الجوي', // غير موثّق بمصدر
-      incidentLightLabel: 'مصدر وطيف الضوء الساقط:', // غير موثّق بمصدر
-      wavelengthLabel: 'الطول الموجي للضوء (λ):',
-      atmospherePathLabel: 'مسار الغلاف الجوي (وقت اليوم):', // غير موثّق بمصدر
-      noonBtn: 'ظهيرة ساطعة (Noon - Blue)', // غير موثّق بمصدر
-      sunsetBtn: 'غروب الشمس (Sunset - Red)', // غير موثّق بمصدر
-      airMassLabel: 'سُمك مسار الهواء (Air Mass):', // غير موثّق بمصدر
-      scienceTitle: '💡 لماذا السماء زرقاء والغروب أحمر؟', // غير موثّق بمصدر
-      scienceBody: 'بما أن الطول الموجي للضوء الأزرق (~450nm) أقصر بكثير من الأحمر (~700nm)، فإن جزيئات الهواء تشتته بنسبة تزيد عن 6 أضعاف في كل الاتجاهات، فيرى الناظر نهاراً ضوءاً أزرق. وعند الغروب يعبر الضوء مسافة هائلة في الهواء فتتشتت الألوان القصيرة ويبقى الأحمر النافذ للعين.', // غير موثّق بمصدر
-      scatteringFactorCard: 'نسبة شدة التشتت (I_scatter)',
-      transmittedLightCard: 'الضوء النافذ (T)',
-      scatteredColorCard: 'اللون المتشتت للعين', // غير موثّق بمصدر
-      horizonColorCard: 'لون أفق الغروب', // غير موثّق بمصدر
-      skyBlueText: 'أزرق سماوي',
-      sunsetRedText: 'أحمر/برتقالي',
-      brightYellowText: 'أصفر ذهبي',
-      atmoCanvasLabel: 'الغلاف الجوي للأرض',
-      sunCanvasLabel: 'الشمس',
-      observerCanvasLabel: '👤 مراقب على الأرض (يرى السماء زرقاء)',
-    },
-    en: {
-      title: 'Light Scattering & Rayleigh’s Law',
-      subtitle: 'Explaining why the sky is blue and sunsets are red via Rayleigh scattering I ∝ 1/λ⁴.',
-      logMeasurement: 'Log Measurement', // غير موثّق بمصدر
-      logged: 'Logged ✓', // غير موثّق بمصدر
-      controlsTitle: 'Wavelength & Atmosphere', // غير موثّق بمصدر
-      incidentLightLabel: 'Incident Light Spectrum:', // غير موثّق بمصدر
-      wavelengthLabel: 'Wavelength (λ):',
-      atmospherePathLabel: 'Atmospheric Path / Time of Day:', // غير موثّق بمصدر
-      noonBtn: 'Noon Zenith (Blue)', // غير موثّق بمصدر
-      sunsetBtn: 'Sunset Horizon (Red)', // غير موثّق بمصدر
-      airMassLabel: 'Air Mass Optical Depth:', // غير موثّق بمصدر
-      scienceTitle: '💡 Why is the Sky Blue & Sunset Red?', // غير موثّق بمصدر
-      scienceBody: 'Because blue light wavelength is shorter, air molecules scatter it ~6x more than red omnidirectionally. At sunset, the path is so thick that blue is scattered away, leaving only penetrating red/orange rays.', // غير موثّق بمصدر
-      scatteringFactorCard: 'Scattering Factor',
-      transmittedLightCard: 'Transmitted Light',
-      scatteredColorCard: 'Scattered Color', // غير موثّق بمصدر
-      horizonColorCard: 'Horizon Color', // غير موثّق بمصدر
-      skyBlueText: 'Sky Blue',
-      sunsetRedText: 'Red/Orange Sunset',
-      brightYellowText: 'Bright Yellow',
-      atmoCanvasLabel: 'Earth Atmosphere',
-      sunCanvasLabel: 'SUN',
-      observerCanvasLabel: '👤 Ground Observer (Sees Blue Scattered Sky)',
-    },
-    ku: {
-      title: 'بڵاوبوونەوەی ڕووناکی و یاسای ڕایلی',
-      subtitle: 'ڕوونکردنەوەی شینی ئاسمان لە ڕۆژدا و سووربوونی لە کاتی خۆرئاوابووندا بە یاسای ڕایلی I ∝ ١/λ⁴.',
-      logMeasurement: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      logged: 'تۆمارکرا ✓', // غير موثّق بمصدر
-      controlsTitle: 'درێژیی شەپۆل و بەرگەهەوا', // غير موثّق بمصدر
-      incidentLightLabel: 'سەرچاوە و تەیفی ڕووناکی کەوتوو:', // غير موثّق بمصدر
-      wavelengthLabel: 'درێژیی شەپۆلی ڕووناکی (λ):',
-      atmospherePathLabel: 'ڕێڕەوی بەرگەهەوا (کاتی ڕۆژ):', // غير موثّق بمصدر
-      noonBtn: 'نیوەڕۆی ڕووناک (شین)', // غير موثّق بمصدر
-      sunsetBtn: 'خۆرئاوابوون (سوور)', // غير موثّق بمصدر
-      airMassLabel: 'ئەستووری ڕێڕەوی هەوا (Air Mass):', // غير موثّق بمصدر
-      scienceTitle: '💡 بۆچی ئاسمان شینە و خۆرئاوابوون سوورە؟', // غير موثّق بمصدر
-      scienceBody: 'لەبەر ئەوەی درێژیی شەپۆلی ڕووناکی شین کورتترە لە سوور، گەردیلەکانی هەوا زیاتر لە ٦ بەرامبەر لە هەموو لایەکەوە پەڕتی دەکەن. لە کاتی خۆرئاوابووندا ڕووناکی لە نێوان چڕییەکی گەورەی هەوادا تێدەپەڕێت و شین بڵاودەبێتەوە و تەنها تیشکی سوور دەگاتە چاو.', // غير موثّق بمصدر
-      scatteringFactorCard: 'ڕێژەی توندیی پەڕشبوون (I_scatter)',
-      transmittedLightCard: 'ڕووناکی تێپەڕبوو (T)',
-      scatteredColorCard: 'ڕەنگی پەڕشبوو بۆ چاو', // غير موثّق بمصدر
-      horizonColorCard: 'ڕەنگی ئاسۆی خۆرئاوابوون', // غير موثّق بمصدر
-      skyBlueText: 'شینی ئاسمانی',
-      sunsetRedText: 'سوور/پرتەقاڵی',
-      brightYellowText: 'زەردی زێڕینی',
-      atmoCanvasLabel: 'بەرگەهەوای زەوی',
-      sunCanvasLabel: 'خۆر',
-      observerCanvasLabel: '👤 چاودێری سەر زەوی (ئاسمانی شین دەبینێت)',
-    },
-    kmr: {
-      title: 'Belavbûna Ronahiyê û Qanûna Rayleigh',
-      subtitle: 'Şîrovekirina şîniya ezman û sorbûna rojiçûnê bi qanûna Rayleigh I ∝ 1/λ⁴.',
-      logMeasurement: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      logged: 'Hate tomarkirin ✓', // غير موثّق بمصدر
-      controlsTitle: 'Dirêjahiya pêlê û atmosfer', // غير موثّق بمصدر
-      incidentLightLabel: 'Çavkanî û spektra ronahiya ketî:', // غير موثّق بمصدر
-      wavelengthLabel: 'Dirêjahiya pêla ronahiyê (λ):',
-      atmospherePathLabel: 'Rêya atmosferê (demjimêra rojê):', // غير موثّق بمصدر
-      noonBtn: 'Nîvro (Şîn)', // غير موثّق بمصدر
-      sunsetBtn: 'Rojiçûn (Sor)', // غير موثّق بمصدر
-      airMassLabel: 'Ewuriya rêya hewayê (Air Mass):', // غير موثّق بمصدر
-      scienceTitle: '💡 Çima ezman şîn e û rojiçûn sor e?', // غير موثّق بمصدر
-      scienceBody: 'Ji ber ku dirêjahiya pêla ronahiya şîn kurttir e, molekulên hewayê wê ~6 caran zêdetir belav dikin. Di rojiçûnê de rêya hewayê pir dirêj dibe û ronahiya şîn belav dibe, tenê ronahiya sor derbasî çav dibe.', // غير موثّق بمصدر
-      scatteringFactorCard: 'Rêjeya tundiya belavbûnê (I_scatter)',
-      transmittedLightCard: 'Ronahiya derbasbûyî (T)',
-      scatteredColorCard: 'Rengê belavbûyî ji bo çav', // غير موثّق بمصدر
-      horizonColorCard: 'Rengê asoya rojiçûnê', // غير موثّق بمصدر
-      skyBlueText: 'Şînê ezmanî',
-      sunsetRedText: 'Sor/Porteqalî',
-      brightYellowText: 'Zerdê zêrîn',
-      atmoCanvasLabel: 'Atmosfera Cîhanê',
-      sunCanvasLabel: 'ROJ',
-      observerCanvasLabel: '👤 Çavdêrê ser erdê (Ezmanê şîn dibîne)',
-    },
-  }[lang];
-
   // Parameters
   const [selectedPresetIdx, setSelectedPresetIdx] = useState<number>(0);
   const [wavelengthNm, setWavelengthNm] = useState<number>(450); // nm (380 to 750)
@@ -221,6 +118,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
           drawScattering(ctx, canvas.width, canvas.height);
         }
       }
@@ -232,7 +130,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isRunning, wavelengthNm, isWhiteLight, relativeScatteringFactor, opticalPathLength, particleDensity, t]);
+  }, [isRunning, wavelengthNm, isWhiteLight, relativeScatteringFactor, opticalPathLength, particleDensity, tI18n]);
 
   // Convert wavelength nm to RGB hex color
   const wavelengthToColor = (wl: number) => {
@@ -277,7 +175,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
 
     ctx.fillStyle = '#cbd5e1';
     ctx.font = 'bold 10px monospace';
-    ctx.fillText(`${t.atmoCanvasLabel} (Air Mass = ${opticalPathLength.toFixed(1)}x)`, atmoX + 12, atmoY + 18);
+    ctx.fillText(`${tI18n('experiments.light_scattering.atmoCanvasLabel')} (Air Mass = ${opticalPathLength.toFixed(1)}x)`, atmoX + 12, atmoY + 18);
 
     // Incoming Sunlight Beam from the Left
     const beamY = height * 0.45;
@@ -294,7 +192,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
 
     ctx.fillStyle = '#ffffff';
     ctx.font = 'bold 11px sans-serif';
-    ctx.fillText(t.sunCanvasLabel, sunX - 12, beamY + 4);
+    ctx.fillText(tI18n('experiments.light_scattering.sunCanvasLabel'), sunX - 12, beamY + 4);
 
     // Incoming Beam Rays
     const inputColor = isWhiteLight ? '#ffffff' : wavelengthToColor(wavelengthNm);
@@ -355,7 +253,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
     // Observer icon
     ctx.fillStyle = '#38bdf8';
     ctx.font = 'bold 11px sans-serif';
-    ctx.fillText(t.observerCanvasLabel, observerX - 110, observerY - 25);
+    ctx.fillText(tI18n('experiments.light_scattering.observerCanvasLabel'), observerX - 110, observerY - 25);
 
     // Transmitted Light Detector at Right Horizon (Sunset Observer)
     const transTargetX = width - 45;
@@ -406,11 +304,11 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <CloudSun  className="w-5 h-5 text-sky-400"/>
             <span>
-              {t.title}
+              {tI18n('experiments.light_scattering.title')}
             </span>
           </h2>
           <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-            {t.subtitle}
+            {tI18n('experiments.light_scattering.subtitle')}
           </p>
         </div>
 
@@ -425,7 +323,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
             onClick={handleLog}
            className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-sky-600 hover:bg-sky-500 text-white shadow-sky-600/30' }`}>
             <BookmarkCheck  className="w-4 h-4"/>
-            <span>{logged ? t.logged : t.logMeasurement}</span>
+            <span>{logged ? tI18n('experiments.light_scattering.logged') : tI18n('experiments.light_scattering.logMeasurement')}</span>
           </button>
         </div>
       </div>
@@ -437,14 +335,14 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Sun  className="w-4 h-4 text-sky-400"/>
-              {t.controlsTitle}
+              {tI18n('experiments.light_scattering.controlsTitle')}
             </span>
           </div>
 
           {/* Preset Light Wavelength Selector */}
           <div>
             <label className="text-sm text-zinc-400 block mb-1.5 font-medium">
-              {t.incidentLightLabel}
+              {tI18n('experiments.light_scattering.incidentLightLabel')}
             </label>
             <select
               value={selectedPresetIdx}
@@ -466,7 +364,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
           {/* Wavelength Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.wavelengthLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.light_scattering.wavelengthLabel')}</span>
               <span style={{ color: wavelengthToColor(wavelengthNm) }} className="font-mono font-semibold">
                 {wavelengthNm} nm
               </span>
@@ -488,7 +386,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
           {/* Sun Position / Atmosphere Thickness */}
           <div>
             <label className="text-sm text-zinc-400 block mb-1.5 font-medium">
-              {t.atmospherePathLabel}
+              {tI18n('experiments.light_scattering.atmospherePathLabel')}
             </label>
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -502,7 +400,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
                     : 'bg-zinc-950 text-zinc-400 border-zinc-800 hover:bg-zinc-800'
                 }`}
               >
-                {t.noonBtn}
+                {tI18n('experiments.light_scattering.noonBtn')}
               </button>
               <button
                 onClick={() => {
@@ -515,7 +413,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
                     : 'bg-zinc-950 text-zinc-400 border-zinc-800 hover:bg-zinc-800'
                 }`}
               >
-                {t.sunsetBtn}
+                {tI18n('experiments.light_scattering.sunsetBtn')}
               </button>
             </div>
           </div>
@@ -523,7 +421,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
           {/* Atmospheric Path Length Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.airMassLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.light_scattering.airMassLabel')}</span>
               <span className="font-mono text-amber-400 font-semibold">{opticalPathLength.toFixed(1)}x</span>
             </div>
             <input
@@ -540,10 +438,10 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
           {/* Science Explanation Box */}
           <div className="p-3.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs text-zinc-300 space-y-1.5">
             <span className="font-semibold text-sky-400 block">
-              {t.scienceTitle}
+              {tI18n('experiments.light_scattering.scienceTitle')}
             </span>
             <p className="text-[11px] text-zinc-400 leading-relaxed">
-              {t.scienceBody}
+              {tI18n('experiments.light_scattering.scienceBody')}
             </p>
           </div>
         </div>
@@ -563,7 +461,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
             {/* Relative Scattering Ratio */}
             <div className="p-3.5 rounded-xl bg-gradient-to-br from-sky-950/40 via-zinc-900 to-indigo-950/40 border border-sky-700/60 space-y-1">
               <span className="text-[10px] text-sky-300 uppercase font-semibold">
-                {t.scatteringFactorCard}
+                {tI18n('experiments.light_scattering.scatteringFactorCard')}
               </span>
               <div className="text-xl font-bold font-mono text-sky-300">
                 {relativeScatteringFactor.toFixed(2)}x
@@ -574,7 +472,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
             {/* Transmitted Percentage */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.transmittedLightCard}
+                {tI18n('experiments.light_scattering.transmittedLightCard')}
               </span>
               <div className="text-xl font-bold font-mono text-amber-400">
                 {(transmittedIntensityRatio * 100).toFixed(1)} <span className="text-sm text-zinc-400">%</span>
@@ -585,10 +483,10 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
             {/* Scattered Color Dominance */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.scatteredColorCard}
+                {tI18n('experiments.light_scattering.scatteredColorCard')}
               </span>
               <div className="text-sm font-bold text-sky-400 mt-1">
-                {isWhiteLight ? t.skyBlueText : `${wavelengthNm} nm`}
+                {isWhiteLight ? tI18n('experiments.light_scattering.skyBlueText') : `${wavelengthNm} nm`}
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">Rayleigh Omnidirectional</span>
             </div>
@@ -596,10 +494,10 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
             {/* Transmitted Sunset Color */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.horizonColorCard}
+                {tI18n('experiments.light_scattering.horizonColorCard')}
               </span>
               <div className="text-sm font-bold text-rose-400 mt-1">
-                {opticalPathLength > 3.0 ? t.sunsetRedText : t.brightYellowText}
+                {opticalPathLength > 3.0 ? tI18n('experiments.light_scattering.sunsetRedText') : tI18n('experiments.light_scattering.brightYellowText')}
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">Air Mass = {opticalPathLength.toFixed(1)}</span>
             </div>

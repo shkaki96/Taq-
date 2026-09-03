@@ -49,47 +49,7 @@ const FLUID_PRESETS: FluidPreset[] = [
 ];
 
 export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
-  const { t } = useTranslation();
-  const controls = (t('controls', { returnObjects: true }) as any);
-
-  const localT = {
-    ar: {
-      overflowBeaker: 'وعاء الإزاحة', // غير موثّق بمصدر
-      scaleLabel: 'ميزان', // غير موثّق بمصدر
-      materialFluidConfig: 'خصائص الجسم والمائع', // غير موثّق بمصدر
-      naturalEquilibrium: 'الاتزان الفيزيائي الطبيعي', // غير موثّق بمصدر
-      manualImmersion: 'الإنزال اليدوي', // غير موثّق بمصدر
-      archimedesLaw: 'قاعدة أرخميدس',
-      buoyantForceVar: 'قوة الطفو المحسوبة (F_b)',
-    },
-    en: {
-      overflowBeaker: 'Overflow Beaker', // غير موثّق بمصدر
-      scaleLabel: 'SCALE', // غير موثّق بمصدر
-      materialFluidConfig: 'Material & Fluid Config', // غير موثّق بمصدر
-      naturalEquilibrium: 'Natural Physics Equilibrium', // غير موثّق بمصدر
-      manualImmersion: 'Manual Immersion', // غير موثّق بمصدر
-      archimedesLaw: "Archimedes' Law",
-      buoyantForceVar: 'Buoyant Force (F_b)',
-    },
-    ku: {
-      overflowBeaker: 'دەفری دەرپەڕیو', // غير موثّق بمصدر
-      scaleLabel: 'تەرازوو', // غير موثّق بمصدر
-      materialFluidConfig: 'تایبەتمەندییەکانی تەن و شلە', // غير موثّق بمصدر
-      naturalEquilibrium: 'هاوسەنگیی سروشتیی فیزیا', // غير موثّق بمصدر
-      manualImmersion: 'داگرتنی دەستی', // غير موثّق بمصدر
-      archimedesLaw: 'یاسای ئەرخەمیدس',
-      buoyantForceVar: 'هێزی پاڵنانی سەرەوە (F_b)',
-    },
-    kmr: {
-      overflowBeaker: 'Fîncana Derketî', // غير موثّق بمصدر
-      scaleLabel: 'Têrazû', // غير موثّق بمصدر
-      materialFluidConfig: 'Taybetmendiyên Tişt û Şilekê', // غير موثّق بمصدر
-      naturalEquilibrium: 'Havserengiya Xirokî ya Fîzîkê', // غير موثّق بمصدر
-      manualImmersion: 'Binavbûna Destî', // غير موثّق بمصدر
-      archimedesLaw: 'Qanûna Arşîmedes',
-      buoyantForceVar: 'Hêza Rakirina Jor (F_b)',
-    },
-  }[lang];
+  const { t: tI18n } = useTranslation();
 
   // Selected parameters
   const [selectedMaterial, setSelectedMaterial] = useState<string>('wood');
@@ -123,11 +83,11 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
   // Determine floating status
-  let statusText = t('experiments.buoyancy.statusFloating');
+  let statusText = tI18n('experiments.buoyancy.statusFloating');
   if (objectDensity > fluidDensity) {
-    statusText = t('experiments.buoyancy.statusSinking');
+    statusText = tI18n('experiments.buoyancy.statusSinking');
   } else if (Math.abs(objectDensity - fluidDensity) < 1e-2) {
-    statusText = t('experiments.buoyancy.statusNeutral');
+    statusText = tI18n('experiments.buoyancy.statusNeutral');
   }
 
   // Draw simulation on canvas
@@ -136,6 +96,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     const width = canvas.width;
     const height = canvas.height;
@@ -221,7 +182,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
     ctx.fillStyle = '#a1a1aa';
     ctx.font = '10px monospace';
     ctx.textAlign = 'center';
-    ctx.fillText(localT.overflowBeaker, catchX + catchW / 2, catchY + catchH + 16);
+    ctx.fillText(tI18n('experiments.buoyancy.overflowBeaker'), catchX + catchW / 2, catchY + catchH + 16);
     ctx.fillText(`${(submergedVolume * 1000).toFixed(1)} L`, catchX + catchW / 2, catchY + catchH - displacedLiquidHeight / 2 + 4);
 
     // Draw Submerged Block
@@ -255,7 +216,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
     ctx.fillText(`${apparentWeight.toFixed(1)}N`, scaleX, scaleY + 26);
     ctx.fillStyle = '#94a3b8';
     ctx.font = '8px monospace';
-    ctx.fillText(localT.scaleLabel, scaleX, scaleY + 38);
+    ctx.fillText(tI18n('experiments.buoyancy.scaleLabel'), scaleX, scaleY + 38);
 
     // Hanging wire to block
     ctx.strokeStyle = '#e4e4e7';
@@ -353,7 +314,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
   const handleLog = () => {
     onLogMeasurement({
       experiment: 'buoyancy',
-      variableName: localT.buoyantForceVar,
+      variableName: tI18n('experiments.buoyancy.buoyantForceVar'),
       measuredValue: Number(buoyantForce.toFixed(2)),
       theoreticalValue: Number((fluidDensity * submergedVolume * g).toFixed(2)),
       unit: 'N',
@@ -391,14 +352,14 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
               <span className="p-1.5 rounded-lg bg-sky-500/20 text-sky-400 border border-sky-500/30">
                 <Waves  className="w-4 h-4"/>
               </span>
-              <h2 className="text-base font-bold text-zinc-100">{t('experiments.buoyancy.title')}</h2>
+              <h2 className="text-base font-bold text-zinc-100">{tI18n('experiments.buoyancy.title')}</h2>
             </div>
-            <p className="text-sm text-zinc-400 mt-0.5">{t('experiments.buoyancy.shortDesc')}</p>
+            <p className="text-sm text-zinc-400 mt-0.5">{tI18n('experiments.buoyancy.shortDesc')}</p>
           </div>
 
           <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20">
             <BookmarkCheck  className="w-3.5 h-3.5"/>
-            <span>{logged ? controls.loggedSuccess : controls.logData}</span>
+            <span>{logged ? tI18n('controls.loggedSuccess') : tI18n('controls.logData')}</span>
           </button>
         </div>
 
@@ -409,7 +370,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
             <span className="text-zinc-200 font-semibold">{statusText}</span>
           </div>
           <div className="text-sky-400 font-mono text-xs">
-            {t('experiments.buoyancy.submergedPercent')}: <span className="font-bold text-zinc-100">{(effectiveSubmergedFraction * 100).toFixed(1)}%</span>
+            {tI18n('experiments.buoyancy.submergedPercent')}: <span className="font-bold text-zinc-100">{(effectiveSubmergedFraction * 100).toFixed(1)}%</span>
           </div>
         </div>
 
@@ -421,22 +382,22 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
         {/* Telemetry Strip */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 font-mono">
-            <span className="text-[10px] text-zinc-400 block">{t('experiments.buoyancy.actualWeight')}</span>
+            <span className="text-[10px] text-zinc-400 block">{tI18n('experiments.buoyancy.actualWeight')}</span>
             <span className="text-sm font-bold text-rose-400">{actualWeight.toFixed(2)} N</span>
           </div>
 
           <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 font-mono">
-            <span className="text-[10px] text-zinc-400 block">{t('experiments.buoyancy.buoyantForce')}</span>
+            <span className="text-[10px] text-zinc-400 block">{tI18n('experiments.buoyancy.buoyantForce')}</span>
             <span className="text-sm font-bold text-emerald-400">{buoyantForce.toFixed(2)} N</span>
           </div>
 
           <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 font-mono">
-            <span className="text-[10px] text-zinc-400 block">{t('experiments.buoyancy.apparentWeight')}</span>
+            <span className="text-[10px] text-zinc-400 block">{tI18n('experiments.buoyancy.apparentWeight')}</span>
             <span className="text-sm font-bold text-sky-400">{apparentWeight.toFixed(2)} N</span>
           </div>
 
           <div className="p-3 rounded-xl bg-zinc-900/70 border border-zinc-800 font-mono">
-            <span className="text-[10px] text-zinc-400 block">{t('experiments.buoyancy.submergedVolume')}</span>
+            <span className="text-[10px] text-zinc-400 block">{tI18n('experiments.buoyancy.submergedVolume')}</span>
             <span className="text-sm font-bold text-indigo-400">{(submergedVolume * 1000).toFixed(1)} L</span>
           </div>
         </div>
@@ -447,12 +408,12 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
         <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-4">
           <h3 className="text-xs font-bold text-zinc-300 uppercase tracking-wider flex items-center gap-1.5">
             <Gauge  className="w-3.5 h-3.5 text-sky-400"/>
-            <span>{localT.materialFluidConfig}</span>
+            <span>{tI18n('experiments.buoyancy.materialFluidConfig')}</span>
           </h3>
 
           {/* Object Material Select */}
           <div className="space-y-1.5">
-            <label className="text-sm text-zinc-400 block">{t('experiments.buoyancy.objectMaterial')}</label>
+            <label className="text-sm text-zinc-400 block">{tI18n('experiments.buoyancy.objectMaterial')}</label>
             <select
               value={selectedMaterial}
               onChange={(e) => setSelectedMaterial(e.target.value)}
@@ -468,7 +429,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
 
           {/* Fluid Select */}
           <div className="space-y-1.5">
-            <label className="text-sm text-zinc-400 block">{t('experiments.buoyancy.fluidType')}</label>
+            <label className="text-sm text-zinc-400 block">{tI18n('experiments.buoyancy.fluidType')}</label>
             <select
               value={selectedFluid}
               onChange={(e) => setSelectedFluid(e.target.value)}
@@ -485,7 +446,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
           {/* Object Volume Slider */}
           <div className="space-y-1.5">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t('experiments.buoyancy.objectVolume')}</span>
+              <span className="text-zinc-400">{tI18n('experiments.buoyancy.objectVolume')}</span>
               <span className="font-mono text-sky-400 font-bold">{(blockVolume * 1000).toFixed(1)} L</span>
             </div>
             <input
@@ -502,7 +463,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
           {/* Auto Float Toggle vs Manual Immersion */}
           <div className="space-y-2 pt-2 border-t border-zinc-800">
             <label className="min-h-[44px] flex items-center justify-between text-xs text-zinc-300 cursor-pointer">
-              <span>{localT.naturalEquilibrium}</span>
+              <span>{tI18n('experiments.buoyancy.naturalEquilibrium')}</span>
               <input
                 type="checkbox"
                 checked={autoFloatMode}
@@ -514,7 +475,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
             {!autoFloatMode && (
               <div className="space-y-1.5 pt-2">
                 <div className="flex justify-between text-xs">
-                  <span className="text-zinc-400">{localT.manualImmersion}</span>
+                  <span className="text-zinc-400">{tI18n('experiments.buoyancy.manualImmersion')}</span>
                   <span className="font-mono text-indigo-400 font-bold">{(submersionDepth * 100).toFixed(0)}%</span>
                 </div>
                 <input
@@ -533,7 +494,7 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
 
         {/* Theoretical Formula Box */}
         <div className="p-4 rounded-2xl bg-zinc-900/80 border border-zinc-800 space-y-2 text-xs font-mono">
-          <span className="text-zinc-400 block font-sans font-bold">{localT.archimedesLaw}</span>
+          <span className="text-zinc-400 block font-sans font-bold">{tI18n('experiments.buoyancy.archimedesLaw')}</span>
           <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800 text-sky-300 text-center text-sm font-bold">
             F_b = ρ_fluid · V_sub · g
           </div>

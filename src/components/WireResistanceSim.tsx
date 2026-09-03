@@ -9,63 +9,13 @@ interface WireResistanceSimProps {
 }
 
 export const WireResistanceSim: React.FC<WireResistanceSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [resistivity, setResistivity] = useState<number>(0.5); // rho in ohm*cm
   const [length_cm, setLength_cm] = useState<number>(10.0); // L in cm
   const [area_cm2, setArea_cm2] = useState<number>(4.0); // A in cm2
 
   // Resistance R = rho * L / A (Ohms)
   const resistance = (resistivity * length_cm) / area_cm2;
-
-  const t = {
-    ar: {
-      title: 'مقاومة السلك والعوامل المؤثرة (R = ρL / A)',
-      subtitle: 'مختبر الفيزياء الكهرومغناطيسية', // غير موثّق بمصدر
-      resistivity: 'المقاومة النوعية للمادة (ρ)',
-      length: 'طول السلك (L)',
-      area: 'مساحة المقطع العرضي (A)',
-      resistanceTotal: 'المقاومة الكهربائية الكلية (R)',
-      copper: 'نحاس (ρ منخفض)',
-      iron: 'حديد (ρ متوسط)',
-      nichrome: 'نيكروم (ρ مرتفع)',
-      reset: 'إعادة ضبط',
-    },
-    en: {
-      title: 'Resistance in a Wire Lab (R = ρL / A)',
-      subtitle: 'Electromagnetism Physics Lab', // غير موثّق بمصدر
-      resistivity: 'Material Resistivity (ρ)',
-      length: 'Wire Length (L)',
-      area: 'Cross-Sectional Area (A)',
-      resistanceTotal: 'Total Resistance (R)',
-      copper: 'Copper (Low ρ)',
-      iron: 'Iron (Medium ρ)',
-      nichrome: 'Nichrome (High ρ)',
-      reset: 'Reset',
-    },
-    ku: {
-      title: 'بەرگری لە وایەردا (R = ρL / A)',
-      subtitle: 'تاقیگەی فیزیا', // غير موثّق بمصدر
-      resistivity: 'بەرگری جۆری ماددە (ρ)',
-      length: 'درێژی وایەرەکە (L)',
-      area: 'ڕووبەری بڕگە (A)',
-      resistanceTotal: 'کۆی بەرگری کارەبایی (R)',
-      copper: 'مس',
-      iron: 'ئاسن',
-      nichrome: 'نیکرۆم',
-      reset: 'ڕێکخستنەوە',
-    },
-    kmr: {
-      title: 'Berxwedana Têlê (R = ρL / A)',
-      subtitle: 'Laboratûwara Fîzîkê', // غير موثّق بمصدر
-      resistivity: 'Berxwedana Taybet a Madeyê (ρ)',
-      length: 'Dirêjahiya Têlê (L)',
-      area: 'Rûbera Qada Têlê (A)',
-      resistanceTotal: 'Tevahiya Berxwedanê (R)',
-      copper: 'Sifir',
-      iron: 'Hesin',
-      nichrome: 'Nîkrom',
-      reset: 'Nûkirin',
-    },
-  }[lang];
 
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
@@ -75,8 +25,8 @@ export const WireResistanceSim: React.FC<WireResistanceSimProps> = ({ lang }) =>
             <Zap className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
-            <p className="text-xs text-slate-400 font-mono">{t.subtitle}</p>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.resistance_in_wire.title')}</h2>
+            <p className="text-xs text-slate-400 font-mono">{tI18n('experiments.resistance_in_wire.subtitle')}</p>
           </div>
         </div>
 
@@ -89,7 +39,7 @@ export const WireResistanceSim: React.FC<WireResistanceSimProps> = ({ lang }) =>
           className="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors flex items-center gap-1.5"
         >
           <RotateCcw className="w-3.5 h-3.5" />
-          {t.reset}
+          {tI18n('experiments.resistance_in_wire.reset')}
         </button>
       </div>
 
@@ -129,7 +79,7 @@ export const WireResistanceSim: React.FC<WireResistanceSimProps> = ({ lang }) =>
             {/* Resistivity */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-purple-400">{t.resistivity} (ρ)</span>
+                <span className="text-purple-400">{tI18n('experiments.resistance_in_wire.resistivity')} (ρ)</span>
                 <span className="font-mono text-white text-sm">{resistivity.toFixed(2)} Ω·cm</span>
               </div>
               <input
@@ -146,7 +96,7 @@ export const WireResistanceSim: React.FC<WireResistanceSimProps> = ({ lang }) =>
             {/* Length */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-sky-400">{t.length} (L)</span>
+                <span className="text-sky-400">{tI18n('experiments.resistance_in_wire.length')} (L)</span>
                 <span className="font-mono text-white text-sm">{length_cm.toFixed(1)} cm</span>
               </div>
               <input
@@ -163,7 +113,7 @@ export const WireResistanceSim: React.FC<WireResistanceSimProps> = ({ lang }) =>
             {/* Area */}
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-emerald-400">{t.area} (A)</span>
+                <span className="text-emerald-400">{tI18n('experiments.resistance_in_wire.area')} (A)</span>
                 <span className="font-mono text-white text-sm">{area_cm2.toFixed(1)} cm²</span>
               </div>
               <input
@@ -183,19 +133,19 @@ export const WireResistanceSim: React.FC<WireResistanceSimProps> = ({ lang }) =>
                 onClick={() => setResistivity(0.15)}
                 className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium"
               >
-                {t.copper}
+                {tI18n('experiments.resistance_in_wire.copper')}
               </button>
               <button
                 onClick={() => setResistivity(0.6)}
                 className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium"
               >
-                {t.iron}
+                {tI18n('experiments.resistance_in_wire.iron')}
               </button>
               <button
                 onClick={() => setResistivity(1.2)}
                 className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-300 font-medium"
               >
-                {t.nichrome}
+                {tI18n('experiments.resistance_in_wire.nichrome')}
               </button>
             </div>
           </div>

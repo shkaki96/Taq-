@@ -11,97 +11,6 @@ interface Props {
 
 export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'المنظار البصري وقانون الانعكاس',
-      subtitle: 'محاكاة المنظار الغواصي وتطبيق قانون الانعكاس (زاوية السقوط = زاوية الانعكاس θi = θr) عبر مرآتين متوازيتين بزاوية 45° لتجاوز الحواجز العالية.',
-      logMeasurement: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      logged: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      controlsTitle: 'معايير زوايا المرايا', // غير موثّق بمصدر
-      bottomMirrorAngleLabel: 'زاوية المرآة السفلية (θ₂):',
-      topMirrorAngleLabel: 'زاوية المرآة العلوية (θ₁):',
-      periscopeHeightLabel: 'ارتفاع عمود المنظار (H):', // غير موثّق بمصدر
-      presetsLabel: 'أوضاع سريعة:', // غير موثّق بمصدر
-      preset45Align: 'محاذاة 45° مثالية', // غير موثّق بمصدر
-      presetTilt: 'انحراف واختلال', // غير موثّق بمصدر
-      topMirrorCard: 'زاوية المرآة العلوية',
-      bottomMirrorCard: 'زاوية المرآة السفلية',
-      exitDeviationCard: 'انحراف الشعاع الخارج',
-      visibilityStateCard: 'حالة الرؤية للراصد', // غير موثّق بمصدر
-      clearView: 'مطابقة ومباشرة', // غير موثّق بمصدر
-      blockedView: 'غير مرئية', // غير موثّق بمصدر
-      obstacleWallLabel: 'جدار عازل', // غير موثّق بمصدر
-      targetObjectLabel: 'الهدف',
-      observerLabel: 'عين الراصد',
-    },
-    en: {
-      title: 'Periscope & Law of Reflection',
-      subtitle: 'Submarine periscope simulation demonstrating double planar mirror reflection (θi = θr = 45°) to observe over high barriers.',
-      logMeasurement: 'Log Measurement', // غير موثّق بمصدر
-      logged: 'Logged ✓', // غير موثّق بمصدر
-      controlsTitle: 'Mirror Angle Controls', // غير موثّق بمصدر
-      bottomMirrorAngleLabel: 'Bottom Mirror Angle (θ₂):',
-      topMirrorAngleLabel: 'Top Mirror Angle (θ₁):',
-      periscopeHeightLabel: 'Periscope Column Height:', // غير موثّق بمصدر
-      presetsLabel: 'Quick Presets:', // غير موثّق بمصدر
-      preset45Align: 'Perfect 45° Align', // غير موثّق بمصدر
-      presetTilt: 'Misaligned Tilt', // غير موثّق بمصدر
-      topMirrorCard: 'Top Mirror (θ₁)',
-      bottomMirrorCard: 'Bottom Mirror (θ₂)',
-      exitDeviationCard: 'Exit Deviation',
-      visibilityStateCard: 'Visibility State', // غير موثّق بمصدر
-      clearView: 'Clear View', // غير موثّق بمصدر
-      blockedView: 'Blocked', // غير موثّق بمصدر
-      obstacleWallLabel: 'Obstacle Wall', // غير موثّق بمصدر
-      targetObjectLabel: 'Target',
-      observerLabel: 'Observer',
-    },
-    ku: {
-      title: 'پێریسکۆپ و یاسای دانەوەی ڕووناکی',
-      subtitle: 'هاوشێوەکەری پێریسکۆپ و بەکارهێنانی یاسای دانەوە بۆ بینینی پشت بەربەستە بەرزەکان بە ئاوێنەی ٤٥ پلە.',
-      logMeasurement: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      logged: 'تۆمارکرا ✓', // غير موثّق بمصدر
-      controlsTitle: 'تایبەتمەندییەکانی گۆشەی ئاوێنەکان', // غير موثّق بمصدر
-      bottomMirrorAngleLabel: 'گۆشەی ئاوێنەی خوارەوە (θ₂):',
-      topMirrorAngleLabel: 'گۆشەی ئاوێنەی سەرەوە (θ₁):',
-      periscopeHeightLabel: 'بەرزیی ستوونی پێریسکۆپ (H):', // غير موثّق بمصدر
-      presetsLabel: 'بارە خێراکان:', // غير موثّق بمصدر
-      preset45Align: 'ڕێکخستنی نموونەییی ٤٥°', // غير موثّق بمصدر
-      presetTilt: 'لاادان و ناڕێکی', // غير موثّق بمصدر
-      topMirrorCard: 'گۆشەی ئاوێنەی سەرەوە',
-      bottomMirrorCard: 'گۆشەی ئاوێنەی خوارەوە',
-      exitDeviationCard: 'لاادانی تیشکی دەرچوو',
-      visibilityStateCard: 'باری بینینی بینەر', // غير موثّق بمصدر
-      clearView: 'ڕوون و ڕاستەوخۆ', // غير موثّق بمصدر
-      blockedView: 'نادیار / ڕێگراو', // غير موثّق بمصدر
-      obstacleWallLabel: 'دیواری بەربەست', // غير موثّق بمصدر
-      targetObjectLabel: 'ئامانج',
-      observerLabel: 'چاوی بینەر',
-    },
-    kmr: {
-      title: 'Pêrîskop û Qanûna Refleksiyonê',
-      subtitle: 'Modelkirina pêrîskopê û bikaranîna qanûna refleksiyonê ji bo dîtina pişt astengiyên bilind bi neynika 45°.',
-      logMeasurement: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      logged: 'Hate tomarkirin ✓', // غير موثّق بمصدر
-      controlsTitle: 'Parametreyên goşeya neynikan', // غير موثّق بمصدر
-      bottomMirrorAngleLabel: 'Goşeya neynika jêrîn (θ₂):',
-      topMirrorAngleLabel: 'Goşeya neynika jorîn (θ₁):',
-      periscopeHeightLabel: 'Bilindahiya stûna pêrîskopê (H):', // غير موثّق بمصدر
-      presetsLabel: 'Pêşantên lezgîn:', // غير موثّق بمصدر
-      preset45Align: 'Rêzkirina bêkêmasî ya 45°', // غير موثّق بمصدر
-      presetTilt: 'Laddan û xwarbûn', // غير موثّق بمصدر
-      topMirrorCard: 'Goşeya neynika jorîn',
-      bottomMirrorCard: 'Goşeya neynika jêrîn',
-      exitDeviationCard: 'Devîyasyona tîşka derketî',
-      visibilityStateCard: 'Rewşa dîtina çavnêr', // غير موثّق بمصدر
-      clearView: 'Rûn û rasterast', // غير موثّق بمصدر
-      blockedView: 'Nayê dîtin', // غير موثّق بمصدر
-      obstacleWallLabel: 'Dîwarê asteng', // غير موثّق بمصدر
-      targetObjectLabel: 'Amanç',
-      observerLabel: 'Çavê çavnêr',
-    },
-  }[lang];
-
   // Inputs
   const [bottomMirrorAngleDeg, setBottomMirrorAngleDeg] = useState<number>(45); // degrees
   const [topMirrorAngleDeg, setTopMirrorAngleDeg] = useState<number>(45); // degrees
@@ -125,6 +34,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
     if (canvas) {
       const ctx = canvas.getContext('2d');
       if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
         drawPeriscope(ctx, canvas.width, canvas.height);
       }
     }
@@ -176,7 +86,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
 
     ctx.fillStyle = '#a1a1aa';
     ctx.font = '9px monospace';
-    ctx.fillText(t.obstacleWallLabel, wallX - 25, wallY - 8);
+    ctx.fillText(tI18n('experiments.periscope.obstacleWallLabel'), wallX - 25, wallY - 8);
 
     // Periscope Tube Coordinates
     const tubeW = 44;
@@ -262,7 +172,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
 
     ctx.fillStyle = '#fca5a5';
     ctx.font = 'bold 10px monospace';
-    ctx.fillText(t.targetObjectLabel, objX - 25, objY + 45);
+    ctx.fillText(tI18n('experiments.periscope.targetObjectLabel'), objX - 25, objY + 45);
 
     // Observer's Eye on the Right
     const eyeX = tubeCenterX + 165;
@@ -288,7 +198,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
 
     ctx.fillStyle = '#38bdf8';
     ctx.font = 'bold 10px monospace';
-    ctx.fillText(t.observerLabel, eyeX - 35, eyeY + 30);
+    ctx.fillText(tI18n('experiments.periscope.observerLabel'), eyeX - 35, eyeY + 30);
 
     // Light Ray Paths (Gold Laser Beam)
     ctx.strokeStyle = '#fbbf24';
@@ -353,11 +263,11 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <Compass  className="w-5 h-5 text-teal-400"/>
             <span>
-              {t.title}
+              {tI18n('experiments.periscope.title')}
             </span>
           </h2>
           <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-            {t.subtitle}
+            {tI18n('experiments.periscope.subtitle')}
           </p>
         </div>
 
@@ -365,7 +275,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
           onClick={handleLog}
          className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-teal-600 hover:bg-teal-500 text-white shadow-teal-600/30' }`}>
           <BookmarkCheck  className="w-4 h-4"/>
-          <span>{logged ? t.logged : t.logMeasurement}</span>
+          <span>{logged ? tI18n('experiments.periscope.logged') : tI18n('experiments.periscope.logMeasurement')}</span>
         </button>
       </div>
 
@@ -376,14 +286,14 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Sliders  className="w-4 h-4 text-teal-400"/>
-              {t.controlsTitle}
+              {tI18n('experiments.periscope.controlsTitle')}
             </span>
           </div>
 
           {/* Bottom Mirror Angle Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.bottomMirrorAngleLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.periscope.bottomMirrorAngleLabel')}</span>
               <span className="font-mono text-teal-400 font-semibold">{bottomMirrorAngleDeg}°</span>
             </div>
             <input
@@ -400,7 +310,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
           {/* Top Mirror Angle Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.topMirrorAngleLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.periscope.topMirrorAngleLabel')}</span>
               <span className="font-mono text-sky-400 font-semibold">{topMirrorAngleDeg}°</span>
             </div>
             <input
@@ -417,7 +327,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
           {/* Periscope Height */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.periscopeHeightLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.periscope.periscopeHeightLabel')}</span>
               <span className="font-mono text-zinc-300 font-semibold">{periscopeHeightPx} px</span>
             </div>
             <input
@@ -434,7 +344,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
           {/* Quick Presets */}
           <div>
             <span className="text-[10px] text-zinc-400 block mb-1.5">
-              {t.presetsLabel}
+              {tI18n('experiments.periscope.presetsLabel')}
             </span>
             <div className="grid grid-cols-2 gap-2">
               <button
@@ -444,7 +354,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
                 }}
                 className="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-lg bg-teal-500/20 text-teal-300 border border-teal-500/30 text-xs font-semibold"
               >
-                {t.preset45Align}
+                {tI18n('experiments.periscope.preset45Align')}
               </button>
               <button
                 onClick={() => {
@@ -453,7 +363,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
                 }}
                 className="min-h-[44px] min-w-[44px] px-2.5 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs font-semibold"
               >
-                {t.presetTilt}
+                {tI18n('experiments.periscope.presetTilt')}
               </button>
             </div>
           </div>
@@ -474,7 +384,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
             {/* Top Reflection Angle */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.topMirrorCard}
+                {tI18n('experiments.periscope.topMirrorCard')}
               </span>
               <div className="text-xl font-bold font-mono text-sky-400">
                 {topMirrorAngleDeg}°
@@ -485,7 +395,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
             {/* Bottom Reflection Angle */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.bottomMirrorCard}
+                {tI18n('experiments.periscope.bottomMirrorCard')}
               </span>
               <div className="text-xl font-bold font-mono text-teal-400">
                 {bottomMirrorAngleDeg}°
@@ -496,7 +406,7 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
             {/* Exit Ray Deviation */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.exitDeviationCard}
+                {tI18n('experiments.periscope.exitDeviationCard')}
               </span>
               <div className={`text-xl font-bold font-mono ${isEyeAligned ? 'text-emerald-400' : 'text-rose-400'}`}>
                 {totalExitAngleDeg.toFixed(1)}°
@@ -507,11 +417,11 @@ export default function PeriscopeSim({ lang, onLogMeasurement }: Props) {
             {/* View Alignment Status */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.visibilityStateCard}
+                {tI18n('experiments.periscope.visibilityStateCard')}
               </span>
               <div className={`text-xs font-bold flex items-center gap-1 ${isEyeAligned ? 'text-emerald-400' : 'text-rose-400'}`}>
                 {isEyeAligned ? <CheckCircle2  className="w-4 h-4"/> : <AlertTriangle  className="w-4 h-4"/>}
-                <span>{isEyeAligned ? t.clearView : t.blockedView}</span>
+                <span>{isEyeAligned ? tI18n('experiments.periscope.clearView') : tI18n('experiments.periscope.blockedView')}</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">Parallel Mirrors</span>
             </div>

@@ -29,85 +29,6 @@ const FLUIDS: FluidType[] = [
 
 export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const localT = {
-    ar: {
-      title: 'مبدأ برنولي وتدفق الموائع في أنبوب فنتوري',
-      subtitle: 'التحقق من معادلة حفظ الطاقة للموائع P + ½ρv² + ρgh = ثابت، وزيادة السرعة مع انخفاض الضغط عند التضيق.',
-      logged: 'تم التسجيل في الدفتر ✓',
-      logMeasurement: 'تسجيل في دفتر المختبر',
-      controlsTitle: 'معايير أنبوب فنتوري والمائع',
-      fluidLabel: 'نوع المائع المتدفق:',
-      inletSpeedLabel: 'سرعة المدخل (v₁):',
-      inletPressureLabel: 'ضغط المدخل (P₁):',
-      wideDiameterLabel: 'قطر الأنبوب الواسع (D₁):',
-      narrowDiameterLabel: 'قطر التضيق الضيق (D₂):',
-      showStreamlinesLabel: 'إظهار جسيمات وخطوط الانسياب:',
-      throatVelocityCard: 'سرعة التضيق (v₂)',
-      throatPressureCard: 'ضغط التضيق (P₂)',
-      flowRateCard: 'معدل التدفق الحجمي (Q)',
-      dynamicPressureCard: 'الضغط الديناميكي (½ρv₂²)',
-      varThroatPressure: 'ضغط التضيق P₂ (مبدأ برنولي)', // غير موثّق بمصدر
-      notesLog: 'محاكاة تدفق فنتوري وتطبيق معادلة برنولي واستمرارية التدفق.', // غير موثّق بمصدر
-    },
-    en: {
-      title: 'Bernoulli’s Principle & Venturi Flow',
-      subtitle: 'Energy conservation in fluid dynamics P + ½ρv² + ρgh = const, demonstrating speed increase with pressure drop.',
-      logged: 'Logged ✓',
-      logMeasurement: 'Log Measurement',
-      controlsTitle: 'Venturi Flow Parameters',
-      fluidLabel: 'Fluid Substance:',
-      inletSpeedLabel: 'Inlet Velocity (v₁):',
-      inletPressureLabel: 'Inlet Pressure (P₁):',
-      wideDiameterLabel: 'Wide Diameter (D₁):',
-      narrowDiameterLabel: 'Throat Diameter (D₂):',
-      showStreamlinesLabel: 'Show Fluid Streamlines:',
-      throatVelocityCard: 'Throat Velocity (v₂)',
-      throatPressureCard: 'Throat Pressure (P₂)',
-      flowRateCard: 'Flow Rate (Q)',
-      dynamicPressureCard: 'Dynamic Pressure',
-      varThroatPressure: 'Bernoulli Pressure P2', // غير موثّق بمصدر
-      notesLog: 'Venturi flow simulation demonstrating Bernoulli equation and continuity equation.', // غير موثّق بمصدر
-    },
-    ku: {
-      title: 'بنەمای بێرنۆلی و جووڵەی شلە لە بۆری ڤێنتۆری',
-      subtitle: 'سەلماندنی هاوکێشەی پاراستنی وزەی شلەکان P + ½ρv² + ρgh = نەگۆڕ و دابەزینی پەستان لە کاتی زیادبوونی خێرایی.',
-      logged: 'تۆمارکرا ✓',
-      logMeasurement: 'تۆمارکردن لە دەفتەر',
-      controlsTitle: 'تایبەتمەندییەکانی بۆری ڤێنتۆری و شلە',
-      fluidLabel: 'جۆری شلەی ڕژاو:',
-      inletSpeedLabel: 'خێرایی چوونەژوورەوە (v₁):',
-      inletPressureLabel: 'پەستانی چوونەژوورەوە (P₁):',
-      wideDiameterLabel: 'تیرەی بۆری فراوان (D₁):',
-      narrowDiameterLabel: 'تیرەی بەشی تەسک (D₂):',
-      showStreamlinesLabel: 'پیشاندانی هێڵەکانی ڕژان:',
-      throatVelocityCard: 'خێرایی بەشی تەسک (v₂)',
-      throatPressureCard: 'پەستانی بەشی تەسک (P₂)',
-      flowRateCard: 'تێکڕای ڕژانی قەبارەیی (Q)',
-      dynamicPressureCard: 'پەستانی دینامیکی (½ρv₂²)',
-      varThroatPressure: 'پەستانی بەشی تەسک P₂ (بنەمای بێرنۆلی)', // غير موثّق بمصدر
-      notesLog: 'تاقیکردنەوەی بۆری ڤێنتۆری و سەلماندنی هاوکێشەی بێرنۆلی.', // غير موثّق بمصدر
-    },
-    kmr: {
-      title: 'Hevkêşeya Pernolî û Herikîna Tûpa Fîntorî',
-      subtitle: 'Selihandina zagona parastina enerjiyê P + ½ρv² + ρgh = sabît û daxistina zextê bi zêdebûna lezê re.',
-      logged: 'Tomaarkirî ✓',
-      logMeasurement: 'Pîvanê Tomar Bikin',
-      controlsTitle: 'Taybetmendiyên Tûpa Fîntorî û Şilekê',
-      fluidLabel: 'Cureyê Şilekê:',
-      inletSpeedLabel: 'Leza Ketinê (v₁):',
-      inletPressureLabel: 'Zexta Ketinê (P₁):',
-      wideDiameterLabel: 'Çapa Tûpa Fireh (D₁):',
-      narrowDiameterLabel: 'Çapa Beşa Teng (D₂):',
-      showStreamlinesLabel: 'Xêzên Herikînê Nîşan Bide:',
-      throatVelocityCard: 'Leza Beşa Teng (v₂)',
-      throatPressureCard: 'Zexta Beşa Teng (P₂)',
-      flowRateCard: 'Rêjeya Herikînê (Q)',
-      dynamicPressureCard: 'Zexta Dînamîk (½ρv₂²)',
-      varThroatPressure: 'Zexta Beşa Teng P₂ (Hevkêşeya Pernolî)', // غير موثّق بمصدر
-      notesLog: 'Taqîkirina herikîna tûpa Fîntorî û selihandina hevkêşeya Pernolî.', // غير موثّق بمصدر
-    },
-  }[lang];
-
   // Parameters
   const [selectedFluidIdx, setSelectedFluidIdx] = useState<number>(0);
   const [pipeDiameter1Cm, setPipeDiameter1Cm] = useState<number>(12); // cm (wide pipe)
@@ -213,6 +134,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
           drawVenturi(ctx, canvas.width, canvas.height);
         }
       }
@@ -374,7 +296,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
     const fluidName = getFluidName(fluid);
     onLogMeasurement({
       experiment: 'bernoulli',
-      variableName: localT.varThroatPressure,
+      variableName: tI18n('experiments.bernoulli.varThroatPressure'),
       measuredValue: throatPressureKPa,
       theoreticalValue: throatPressureKPa,
       unit: 'kPa',
@@ -389,7 +311,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
         'Pressure Drop ΔP': `${deltaPressureKPa.toFixed(2)} kPa`,
       },
       equation: `P₂ = P₁ + ½ρ(v₁² - v₂²) - ρgΔh = ${inletPressureKPa} kPa + ½(${fluid.density})(${inletVelocity}² - ${throatVelocity.toFixed(2)}²) Pa = ${throatPressureKPa.toFixed(2)} kPa`,
-      notes: localT.notesLog,
+      notes: tI18n('experiments.bernoulli.notesLog'),
     });
     setLogged(true);
     setTimeout(() => setLogged(false), 2000);
@@ -402,10 +324,10 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
         <div>
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <Waves  className="w-5 h-5 text-cyan-400"/>
-            <span>{localT.title}</span>
+            <span>{tI18n('experiments.bernoulli.title')}</span>
           </h2>
           <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-            {localT.subtitle}
+            {tI18n('experiments.bernoulli.subtitle')}
           </p>
         </div>
 
@@ -416,7 +338,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
           </button>
           <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-cyan-600/30' }`}>
             <BookmarkCheck  className="w-4 h-4"/>
-            <span>{logged ? localT.logged : localT.logMeasurement}</span>
+            <span>{logged ? tI18n('experiments.bernoulli.logged') : tI18n('experiments.bernoulli.logMeasurement')}</span>
           </button>
         </div>
       </div>
@@ -428,14 +350,14 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Gauge  className="w-4 h-4 text-cyan-400"/>
-              {localT.controlsTitle}
+              {tI18n('experiments.bernoulli.controlsTitle')}
             </span>
           </div>
 
           {/* Fluid Selector */}
           <div>
             <label className="text-sm text-zinc-400 block mb-1.5 font-medium">
-              {localT.fluidLabel}
+              {tI18n('experiments.bernoulli.fluidLabel')}
             </label>
             <select
               value={selectedFluidIdx}
@@ -453,7 +375,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
           {/* Inlet Speed v1 */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{localT.inletSpeedLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.bernoulli.inletSpeedLabel')}</span>
               <span className="font-mono text-cyan-400 font-semibold">{inletVelocity.toFixed(2)} m/s</span>
             </div>
             <input
@@ -470,7 +392,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
           {/* Inlet Static Pressure P1 */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{localT.inletPressureLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.bernoulli.inletPressureLabel')}</span>
               <span className="font-mono text-emerald-400 font-semibold">{inletPressureKPa.toFixed(1)} kPa</span>
             </div>
             <input
@@ -487,7 +409,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
           {/* Wide Pipe Diameter D1 */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{localT.wideDiameterLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.bernoulli.wideDiameterLabel')}</span>
               <span className="font-mono text-sky-400 font-semibold">{pipeDiameter1Cm} cm</span>
             </div>
             <input
@@ -504,7 +426,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
           {/* Narrow Throat Diameter D2 */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{localT.narrowDiameterLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.bernoulli.narrowDiameterLabel')}</span>
               <span className="font-mono text-amber-400 font-semibold">{pipeDiameter2Cm} cm</span>
             </div>
             <input
@@ -520,7 +442,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
 
           {/* Streamlines Toggle */}
           <div className="flex items-center justify-between p-2.5 rounded-xl bg-zinc-950 border border-zinc-800 text-xs">
-            <span className="text-zinc-300">{localT.showStreamlinesLabel}</span>
+            <span className="text-zinc-300">{tI18n('experiments.bernoulli.showStreamlinesLabel')}</span>
             <input
               type="checkbox"
               checked={showStreamlines}
@@ -545,7 +467,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
             {/* Throat Velocity */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {localT.throatVelocityCard}
+                {tI18n('experiments.bernoulli.throatVelocityCard')}
               </span>
               <div className="text-lg font-bold font-mono text-amber-400">
                 {throatVelocity.toFixed(2)} <span className="text-sm text-zinc-400">m/s</span>
@@ -556,7 +478,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
             {/* Throat Pressure */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {localT.throatPressureCard}
+                {tI18n('experiments.bernoulli.throatPressureCard')}
               </span>
               <div className="text-lg font-bold font-mono text-emerald-400">
                 {throatPressureKPa.toFixed(1)} <span className="text-sm text-zinc-400">kPa</span>
@@ -567,7 +489,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
             {/* Volumetric Flow */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {localT.flowRateCard}
+                {tI18n('experiments.bernoulli.flowRateCard')}
               </span>
               <div className="text-lg font-bold font-mono text-cyan-400">
                 {flowRateLitersSec.toFixed(2)} <span className="text-sm text-zinc-400">L/s</span>
@@ -578,7 +500,7 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
             {/* Dynamic Pressure */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {localT.dynamicPressureCard}
+                {tI18n('experiments.bernoulli.dynamicPressureCard')}
               </span>
               <div className="text-lg font-bold font-mono text-purple-400">
                 {(dynPressure2Pa / 1000).toFixed(2)} <span className="text-sm text-zinc-400">kPa</span>

@@ -116,6 +116,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
           drawViscosityColumn(ctx, canvas.width, canvas.height);
         }
       }
@@ -215,7 +216,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
     ctx.stroke();
 
     ctx.fillStyle = '#f59e0b';
-    ctx.fillText(tI18n('experiments.viscosity.dragCanvasLabel'), ballX - 58, ballY - 26);
+    ctx.fillText(tI18n('experiments.viscosity_stokes.dragCanvasLabel'), ballX - 58, ballY - 26);
 
     // 3. Buoyancy Force F_b (Up)
     ctx.strokeStyle = '#38bdf8';
@@ -235,7 +236,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
   const handleLog = () => {
     onLogMeasurement({
       experiment: 'viscosity_stokes',
-      variableName: tI18n('experiments.viscosity.varTerminalVel'),
+      variableName: tI18n('experiments.viscosity_stokes.varTerminalVel'),
       measuredValue: Number((terminalVelocityMps * 100).toFixed(2)),
       theoreticalValue: Number((((2 * Math.pow(radiusM, 2) * g * deltaRho) / (9 * eta)) * 100).toFixed(2)),
       unit: 'cm/s',
@@ -251,7 +252,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
         'Terminal Velocity vt': `${(terminalVelocityMps * 100).toFixed(2)} cm/s`,
       },
       equation: `vt = [2 · r² · g · (ρ_s - ρ_f)] / (9 · η) = ${(terminalVelocityMps * 100).toFixed(2)} cm/s, Fd = 6π·η·r·vt`,
-      notes: tI18n('experiments.viscosity.notesLog'),
+      notes: tI18n('experiments.viscosity_stokes.notesLog'),
     });
     setLogged(true);
     setTimeout(() => setLogged(false), 2000);
@@ -264,10 +265,10 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
         <div>
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <Droplets className="w-5 h-5 text-amber-400" />
-            <span>{tI18n('experiments.viscosity.title')}</span>
+            <span>{tI18n('experiments.viscosity_stokes.title')}</span>
           </h2>
           <p className="text-xs text-zinc-400 mt-1 max-w-2xl">
-            {tI18n('experiments.viscosity.subtitle')}
+            {tI18n('experiments.viscosity_stokes.subtitle')}
           </p>
         </div>
 
@@ -281,7 +282,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
           <button
             onClick={handleReset}
             className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700"
-            title={tI18n('experiments.viscosity.resetPosition')}
+            title={tI18n('experiments.viscosity_stokes.resetPosition')}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -294,7 +295,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
             }`}
           >
             <BookmarkCheck className="w-4 h-4" />
-            <span>{logged ? tI18n('experiments.viscosity.logged') : tI18n('experiments.viscosity.logMeasurement')}</span>
+            <span>{logged ? tI18n('experiments.viscosity_stokes.logged') : tI18n('experiments.viscosity_stokes.logMeasurement')}</span>
           </button>
         </div>
       </div>
@@ -306,14 +307,14 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Sliders className="w-4 h-4 text-amber-400" />
-              {tI18n('experiments.viscosity.controlsTitle')}
+              {tI18n('experiments.viscosity_stokes.controlsTitle')}
             </span>
           </div>
 
           {/* Liquid Selector */}
           <div>
             <label className="text-xs text-zinc-400 block mb-1.5">
-              {tI18n('experiments.viscosity.liquidLabel')}
+              {tI18n('experiments.viscosity_stokes.liquidLabel')}
             </label>
             <div className="grid grid-cols-2 gap-1.5">
               {(Object.keys(LIQUIDS) as LiquidType[]).map((liq) => (
@@ -336,7 +337,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
           {/* Sphere Material Selector */}
           <div>
             <label className="text-xs text-zinc-400 block mb-1.5">
-              {tI18n('experiments.viscosity.sphereMaterialLabel')}
+              {tI18n('experiments.viscosity_stokes.sphereMaterialLabel')}
             </label>
             <div className="grid grid-cols-2 gap-1.5">
               {(Object.keys(SPHERES) as SphereMaterialType[]).map((mat) => (
@@ -359,7 +360,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
           {/* Sphere Radius Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{tI18n('experiments.viscosity.radiusLabel')}</span>
+              <span className="text-zinc-400">{tI18n('experiments.viscosity_stokes.radiusLabel')}</span>
               <span className="font-mono text-amber-400 font-semibold">{radiusMm.toFixed(1)} mm</span>
             </div>
             <input
@@ -389,7 +390,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
             {/* Terminal Velocity */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {tI18n('experiments.viscosity.terminalSpeedCard')}
+                {tI18n('experiments.viscosity_stokes.terminalSpeedCard')}
               </span>
               <div className="text-xl font-bold font-mono text-amber-400">
                 {(terminalVelocityMps * 100).toFixed(2)} <span className="text-xs text-zinc-400">cm/s</span>
@@ -400,7 +401,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
             {/* Stokes Drag Force */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {tI18n('experiments.viscosity.stokesDragCard')}
+                {tI18n('experiments.viscosity_stokes.stokesDragCard')}
               </span>
               <div className="text-xl font-bold font-mono text-rose-400">
                 {(stokesDragForceN * 1000).toFixed(3)} <span className="text-xs text-zinc-400">mN</span>
@@ -411,7 +412,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
             {/* Viscosity η */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {tI18n('experiments.viscosity.viscosityCard')}
+                {tI18n('experiments.viscosity_stokes.viscosityCard')}
               </span>
               <div className="text-xl font-bold font-mono text-sky-400">
                 {eta} <span className="text-xs text-zinc-400">Pa·s</span>
@@ -424,7 +425,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
             {/* Net Gravity - Buoyancy */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {tI18n('experiments.viscosity.apparentWeightCard')}
+                {tI18n('experiments.viscosity_stokes.apparentWeightCard')}
               </span>
               <div className="text-xl font-bold font-mono text-emerald-400">
                 {((gravityForceN - buoyancyForceN) * 1000).toFixed(3)} <span className="text-xs text-zinc-400">mN</span>

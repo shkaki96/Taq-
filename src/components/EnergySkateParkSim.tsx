@@ -9,6 +9,7 @@ interface EnergySkateParkSimProps {
 }
 
 export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [mass, setMass] = useState<number>(60); // kg
   const [gravity, setGravity] = useState<number>(9.8); // m/s^2
@@ -116,53 +117,6 @@ export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) 
     setThermalE(0);
   };
 
-  const t = {
-    ar: {
-      title: 'حديقة التزلج وحفظ الطاقة (E_total = K + U + E_th)',
-      kinetic: 'طاقة الحركة (Kinetic K)',
-      potential: 'طاقة الوضع الجذبية (Potential U)',
-      thermal: 'الطاقة الحرارية الضائعة بالاحتكاك (Thermal E_th)',
-      totalEnergy: 'الطاقة الميكانيكية الكلية (Total E)',
-      mass: 'كتلة المتزلج (m)',
-      gravity: 'تسارع الجاذبية (g)',
-      friction: 'الاحتكاك مع المسار',
-      reset: 'إعادة ضبط المتزلج',
-    },
-    en: {
-      title: 'Energy Skate Park & Conservation (E_total = K + U + E_th)',
-      kinetic: 'Kinetic Energy (K)',
-      potential: 'Gravitational Potential Energy (U)',
-      thermal: 'Thermal Energy (E_th)',
-      totalEnergy: 'Total Energy (E)',
-      mass: 'Skater Mass (m)',
-      gravity: 'Gravity (g)',
-      friction: 'Track Friction',
-      reset: 'Reset Skater',
-    },
-    ku: {
-      title: 'پارکی خلیسکێنە و پاراستنی وزە',
-      kinetic: 'وزەی جوڵە (K)',
-      potential: 'وزەی دۆخ (U)',
-      thermal: 'وزەی گەرمی (E_th)',
-      totalEnergy: 'کۆی وزە (E)',
-      mass: 'بارستە (m)',
-      gravity: 'کێشکردن (g)',
-      friction: 'لێکخشاندن',
-      reset: 'ڕێکخستنەوە',
-    },
-    kmr: {
-      title: 'Baxçeyê Xweşiqandinê û Parastina Enerjiyê',
-      kinetic: 'Enerjiya Tevgerê (K)',
-      potential: 'Enerjiya Rewşê (U)',
-      thermal: 'Enerjiya Germiyê (E_th)',
-      totalEnergy: 'Tevahiya Enerjiyê (E)',
-      mass: 'Masa (m)',
-      gravity: 'Kêşwerî (g)',
-      friction: 'Lêkxişandin',
-      reset: 'Nûkirin',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -171,7 +125,7 @@ export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) 
             <Activity  className="w-6 h-6"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.energy_skate_park.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER D • SIMULATION 19</p>
           </div>
         </div>
@@ -182,11 +136,11 @@ export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) 
             className="min-h-[44px] min-w-[44px] flex items-center gap-1.5 px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-lg transition-colors"
           >
             {isRunning ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
-            {isRunning ? 'إيقاف مؤقت' : 'تشغيل الحركة'}
+            {isRunning ? tI18n('experiments.energy_skate_park.pause') : tI18n('experiments.energy_skate_park.play')}
           </button>
           <button
             onClick={handleReset}
-            title={t.reset}
+            title={tI18n('experiments.energy_skate_park.reset')}
            className="min-h-[44px] min-w-[44px] p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700">
             <RotateCcw  className="w-4 h-4"/>
           </button>
@@ -205,19 +159,19 @@ export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) 
           {/* Energy Bar Chart Bars */}
           <div className="grid grid-cols-4 gap-2 pt-2 border-t border-slate-800 text-center text-xs">
             <div className="p-2 bg-slate-900 rounded-lg">
-              <span className="text-[10px] text-emerald-400 font-semibold block">{t.kinetic}</span>
+              <span className="text-[10px] text-emerald-400 font-semibold block">{tI18n('experiments.energy_skate_park.kinetic')}</span>
               <span className="font-mono text-emerald-300 font-bold">{kineticE.toFixed(0)} J</span>
             </div>
             <div className="p-2 bg-slate-900 rounded-lg">
-              <span className="text-[10px] text-sky-400 font-semibold block">{t.potential}</span>
+              <span className="text-[10px] text-sky-400 font-semibold block">{tI18n('experiments.energy_skate_park.potential')}</span>
               <span className="font-mono text-sky-300 font-bold">{potentialE.toFixed(0)} J</span>
             </div>
             <div className="p-2 bg-slate-900 rounded-lg">
-              <span className="text-[10px] text-rose-400 font-semibold block">{t.thermal}</span>
+              <span className="text-[10px] text-rose-400 font-semibold block">{tI18n('experiments.energy_skate_park.thermal')}</span>
               <span className="font-mono text-rose-300 font-bold">{thermalE.toFixed(0)} J</span>
             </div>
             <div className="p-2 bg-slate-900 rounded-lg">
-              <span className="text-[10px] text-amber-400 font-semibold block">{t.totalEnergy}</span>
+              <span className="text-[10px] text-amber-400 font-semibold block">{tI18n('experiments.energy_skate_park.totalEnergy')}</span>
               <span className="font-mono text-amber-300 font-bold">{totalE.toFixed(0)} J</span>
             </div>
           </div>
@@ -228,7 +182,7 @@ export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) 
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">{t.mass} (m)</span>
+                <span className="text-slate-300">{tI18n('experiments.energy_skate_park.mass')} (m)</span>
                 <span className="font-mono text-white text-sm">{mass} kg</span>
               </div>
               <input
@@ -243,7 +197,7 @@ export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) 
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">{t.gravity} (g)</span>
+                <span className="text-slate-300">{tI18n('experiments.energy_skate_park.gravity')} (g)</span>
                 <span className="font-mono text-white text-sm">{gravity.toFixed(1)} m/s²</span>
               </div>
               <input
@@ -259,7 +213,7 @@ export const EnergySkateParkSim: React.FC<EnergySkateParkSimProps> = ({ lang }) 
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">{t.friction}</span>
+                <span className="text-slate-300">{tI18n('experiments.energy_skate_park.friction')}</span>
                 <span className="font-mono text-white text-sm">{(friction * 100).toFixed(0)}%</span>
               </div>
               <input

@@ -16,81 +16,6 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
   const [hasIronCore, setHasIronCore] = useState<boolean>(true);
   const [distance, setDistance] = useState<number>(5.0); // cm from coil
 
-  const t = {
-    ar: {
-      title: 'المغناطيسات والكهرومغناطيسات (الملف اللولبي)',
-      logMeasurement: 'تسجيل القياس في الدفتر', // غير موثّق بمصدر
-      dcSupply: 'مصدر التيار',
-      ironCore: 'قلب حديدي',
-      airCore: 'فراغ / هواء',
-      paperclips: 'مشابك الورق المنجذبة:', // غير موثّق بمصدر
-      outputsTitle: 'المخرجات المحسوبة', // غير موثّق بمصدر
-      coilField: 'مجال الملف (B_core):',
-      fieldAtCompass: 'المجال عند البوصلة:', // غير موثّق بمصدر
-      relPermeability: 'معامل النفاذية (μᵣ):',
-      inputsTitle: 'المتغيرات القابلة للتحكم', // غير موثّق بمصدر
-      currentLabel: 'التيار الكهربائي (I):',
-      turnsLabel: 'عدد اللفات (N):',
-      insertIronCore: 'إدخال قلب حديدي داخل الملف:',
-      activeState: 'مفعل (نعم)', // غير موثّق بمصدر
-      disabledState: 'معطل (هواء)', // غير موثّق بمصدر
-    },
-    en: {
-      title: 'Magnets and Electromagnets (Solenoid)',
-      logMeasurement: 'Log Measurement', // غير موثّق بمصدر
-      dcSupply: 'DC Supply',
-      ironCore: 'Iron Core',
-      airCore: 'Air Core',
-      paperclips: 'Attracted Paperclips:', // غير موثّق بمصدر
-      outputsTitle: 'Calculated Outputs', // غير موثّق بمصدر
-      coilField: 'Coil Field (B):',
-      fieldAtCompass: 'Field at Compass:', // غير موثّق بمصدر
-      relPermeability: 'Rel. Permeability:',
-      inputsTitle: 'Simulation Inputs', // غير موثّق بمصدر
-      currentLabel: 'Current (I):',
-      turnsLabel: 'Coil Turns (N):',
-      insertIronCore: 'Insert Iron Core:',
-      activeState: 'Active', // غير موثّق بمصدر
-      disabledState: 'Air Core', // غير موثّق بمصدر
-    },
-    ku: {
-      title: 'موگناتیس و کارۆموگناتیس (کۆیلی لولەیی)',
-      logMeasurement: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      dcSupply: 'سەرچاوەی تەزوو',
-      ironCore: 'ناوکی ئاسن',
-      airCore: 'ناوکی هەوا',
-      paperclips: 'گوپكی کاغەزی ڕاکێشراو:', // غير موثّق بمصدر
-      outputsTitle: 'دەرئەنجامە ئەژمارکراوەکان', // غير موثّق بمصدر
-      coilField: 'بواری کۆیل (B):',
-      fieldAtCompass: 'بوار لە شوێنی ڕووگەنما:', // غير موثّق بمصدر
-      relPermeability: 'نفاذيةی ڕێژەیی (μᵣ):',
-      inputsTitle: 'گۆڕاوە کۆنتڕۆڵکراوەکان', // غير موثّق بمصدر
-      currentLabel: 'تەزووی کارەبایی (I):',
-      turnsLabel: 'ژمارەی خولەکان (N):',
-      insertIronCore: 'دانانی ناوکی ئاسن لەناو کۆیلدا:',
-      activeState: 'چالاک (بەڵێ)', // غير موثّق بمصدر
-      disabledState: 'ناچالاک (هەوا)', // غير موثّق بمصدر
-    },
-    kmr: {
-      title: 'Magnet û Elektromagnet (Bobîn)',
-      logMeasurement: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      dcSupply: 'Çavkaniya herikînê',
-      ironCore: 'Dendika hesênî',
-      airCore: 'Dendika hewayî',
-      paperclips: 'Klîpên kaxezê yên kişandî:', // غير موثّق بمصدر
-      outputsTitle: 'Derketiyên hejmartî', // غير موثّق بمصدر
-      coilField: 'Zeviya bobînê (B):',
-      fieldAtCompass: 'Zeviya li ciyê qutibnamê:', // غير موثّق بمصدر
-      relPermeability: 'Derbasbûniya suxteyî (μᵣ):',
-      inputsTitle: 'Parametreyên simulasyonê', // غير موثّق بمصدر
-      currentLabel: 'Herikîna elektrîkî (I):',
-      turnsLabel: 'Hejmara dorpêçan (N):',
-      insertIronCore: 'Xistina dendika hesênî di nav bobînê de:',
-      activeState: 'Çalak (Erê)', // غير موثّق بمصدر
-      disabledState: 'Neçalak (Hewa)', // غير موثّق بمصدر
-    },
-  }[lang];
-
   // Constants
   const mu0 = 4 * Math.PI * 1e-7; // T*m/A
   const relativePermeability = hasIronCore ? 200 : 1; // Iron boosts field dramatically
@@ -141,16 +66,16 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
           </div>
           <div>
             <h3 className="text-sm font-bold text-white">
-              {t.title}
+              {tI18n('experiments.magnets_electromagnets.title')}
             </h3>
             <p className="text-xs text-slate-400 font-mono">B = μ₀ · μᵣ · n · I</p>
           </div>
         </div>
-        <button className="min-h-[44px] min-w-[44px]"
+        <button
           onClick={handleLog}
-         className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
+          className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
           <Activity  className="w-3.5 h-3.5"/>
-          <span>{t.logMeasurement}</span>
+          <span>{tI18n('experiments.magnets_electromagnets.logMeasurement')}</span>
         </button>
       </div>
 
@@ -180,7 +105,7 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
             <div className="flex flex-col items-center bg-slate-900 border border-amber-500/40 p-3 rounded-xl shadow-lg">
               <Zap className={`w-6 h-6 ${current > 0 ? 'text-yellow-400 animate-bounce' : 'text-slate-600'}`} />
               <span className="text-[11px] font-mono text-amber-300 font-bold">{current.toFixed(1)} A</span>
-              <span className="text-[10px] text-slate-400">{t.dcSupply}</span>
+              <span className="text-[10px] text-slate-400">{tI18n('experiments.magnets_electromagnets.dcSupply')}</span>
             </div>
 
             {/* Coil with Iron Core */}
@@ -192,7 +117,7 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
                   N
                 </span>
                 <span className="text-[9px] text-slate-950/80 font-mono font-bold">
-                  {hasIronCore ? t.ironCore : t.airCore}
+                  {hasIronCore ? tI18n('experiments.magnets_electromagnets.ironCore') : tI18n('experiments.magnets_electromagnets.airCore')}
                 </span>
                 <span className={`text-[10px] font-bold ${current > 0 ? 'text-blue-400' : 'text-slate-500'}`}>
                   S
@@ -227,7 +152,7 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
           {/* Paper Clips Pickup Visual */}
           <div className="flex items-center gap-2 mt-2 bg-slate-900/90 border border-slate-800 px-3 py-1.5 rounded-xl">
             <span className="text-xs text-slate-300">
-              {t.paperclips}
+              {tI18n('experiments.magnets_electromagnets.paperclips')}
             </span>
             <span className="text-xs font-bold text-amber-400 font-mono">{paperClips} 📎</span>
           </div>
@@ -238,19 +163,19 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
           {/* Outputs Box */}
           <div className="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-2.5">
             <h4 className="text-xs font-bold text-purple-300 uppercase tracking-wider">
-              {t.outputsTitle}
+              {tI18n('experiments.magnets_electromagnets.outputsTitle')}
             </h4>
             <div className="space-y-1.5 font-mono text-xs">
               <div className="flex justify-between p-2 rounded-lg bg-slate-900 border border-slate-800">
-                <span className="text-slate-400">{t.coilField}</span>
+                <span className="text-slate-400">{tI18n('experiments.magnets_electromagnets.coilField')}</span>
                 <span className="text-purple-300 font-bold">{B_core} mT</span>
               </div>
               <div className="flex justify-between p-2 rounded-lg bg-slate-900 border border-slate-800">
-                <span className="text-slate-400">{t.fieldAtCompass}</span>
+                <span className="text-slate-400">{tI18n('experiments.magnets_electromagnets.fieldAtCompass')}</span>
                 <span className="text-cyan-300 font-bold">{B_at_distance} mT</span>
               </div>
               <div className="flex justify-between p-2 rounded-lg bg-slate-900 border border-slate-800">
-                <span className="text-slate-400">{t.relPermeability}</span>
+                <span className="text-slate-400">{tI18n('experiments.magnets_electromagnets.relPermeability')}</span>
                 <span className="text-amber-300 font-bold">{relativePermeability}</span>
               </div>
             </div>
@@ -259,13 +184,13 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
           {/* Inputs Sliders */}
           <div className="bg-slate-950 border border-slate-800 rounded-xl p-3.5 space-y-3">
             <h4 className="text-xs font-bold text-indigo-300 uppercase tracking-wider">
-              {t.inputsTitle}
+              {tI18n('experiments.magnets_electromagnets.inputsTitle')}
             </h4>
 
             {/* Current Slider */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.currentLabel}</span>
+                <span className="text-slate-300">{tI18n('experiments.magnets_electromagnets.currentLabel')}</span>
                 <span className="font-mono text-amber-400 font-bold">{current.toFixed(1)} A</span>
               </div>
               <input
@@ -282,7 +207,7 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
             {/* Turns Slider */}
             <div className="space-y-1">
               <div className="flex justify-between text-xs">
-                <span className="text-slate-300">{t.turnsLabel}</span>
+                <span className="text-slate-300">{tI18n('experiments.magnets_electromagnets.turnsLabel')}</span>
                 <span className="font-mono text-indigo-400 font-bold">{turns}</span>
               </div>
               <input
@@ -299,17 +224,17 @@ export default function ElectromagnetSim({ lang, onLogMeasurement }: Props) {
             {/* Iron Core Toggle */}
             <div className="flex items-center justify-between pt-1">
               <span className="text-xs text-slate-300">
-                {t.insertIronCore}
+                {tI18n('experiments.magnets_electromagnets.insertIronCore')}
               </span>
-              <button className="min-h-[44px] min-w-[44px]"
+              <button
                 onClick={() => setHasIronCore(!hasIronCore)}
-                className={`px-3 py-1 text-xs rounded-lg font-bold transition-all ${
+                className={`min-h-[44px] min-w-[44px] px-3 py-1 text-xs rounded-lg font-bold transition-all ${
                   hasIronCore
                     ? 'bg-purple-600 text-white shadow'
                     : 'bg-slate-800 text-slate-400 border border-slate-700'
                 }`}
               >
-                {hasIronCore ? t.activeState : t.disabledState}
+                {hasIronCore ? tI18n('experiments.magnets_electromagnets.activeState') : tI18n('experiments.magnets_electromagnets.disabledState')}
               </button>
             </div>
           </div>

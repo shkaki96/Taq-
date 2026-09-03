@@ -21,80 +21,6 @@ const MATERIALS: Record<MaterialType, { nameAr: string; nameEn: string; nameKu: 
 
 export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'التوصيل الحراري في المعادن وقانون فورييه',
-      subtitle: 'دراسة معدل سريان وانتقال الحرارة بالتوصيل Q/t = k·A·ΔT/d عبر قضبان النحاس والألمنيوم والحديد والخشب وحساب التدرج الحراري مع الزمن.',
-      logMeasurement: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      logged: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      controlsTitle: 'معايير المادة والحرارة', // غير موثّق بمصدر
-      rodMaterialLabel: 'نوع المادة والقضيب:', // غير موثّق بمصدر
-      hotTempLabel: 'حرارة الطرف الساخن (T_hot):',
-      coldTempLabel: 'حرارة الطرف البارد (T_cold):',
-      rodLengthLabel: 'طول القضيب (d):',
-      crossSectionLabel: 'مساحة المقطع (A):',
-      heatRateCard: 'معدل انتقال الحرارة (Q/t)',
-      conductivityCard: 'المعامل الحراري (k)',
-      farEndTempCard: 'حرارة الطرف الآخر حالياً', // غير موثّق بمصدر
-      tempDiffCard: 'فرق درجات الحرارة (ΔT)',
-      heatSourceLabel: 'مصدر حراري', // غير موثّق بمصدر
-      coldEndLabel: 'الطرف البارد', // غير موثّق بمصدر
-    },
-    en: {
-      title: 'Heat Conduction in Metals (Fourier’s Law)',
-      subtitle: 'Thermal conduction rate Q/t = kAΔT/d across solid rods of copper, aluminum, steel, glass and wood.',
-      logMeasurement: 'Log Measurement', // غير موثّق بمصدر
-      logged: 'Logged ✓', // غير موثّق بمصدر
-      controlsTitle: 'Material & Thermal Controls', // غير موثّق بمصدر
-      rodMaterialLabel: 'Rod Material:', // غير موثّق بمصدر
-      hotTempLabel: 'Hot Source Temp (T_hot):',
-      coldTempLabel: 'Cold End Temp (T_cold):',
-      rodLengthLabel: 'Rod Length (d):',
-      crossSectionLabel: 'Cross Section (A):',
-      heatRateCard: 'Heat Rate (Q/t)',
-      conductivityCard: 'Conductivity (k)',
-      farEndTempCard: 'Far End Temp', // غير موثّق بمصدر
-      tempDiffCard: 'Temp Difference (ΔT)',
-      heatSourceLabel: 'Heat Source', // غير موثّق بمصدر
-      coldEndLabel: 'Cold End', // غير موثّق بمصدر
-    },
-    ku: {
-      title: 'گەیاندنی گەرمی لە ماددەکان و یاسای فۆریە',
-      subtitle: 'لێکۆڵینەوە لە خێرایی گواستنەوەی گەرمی بە گەیاندن لەناو کانزاکاندا بەپێی یاسای فۆریە.',
-      logMeasurement: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      logged: 'تۆمارکرا ✓', // غير موثّق بمصدر
-      controlsTitle: 'تایبەتمەندییەکانی ماددە و گەرمی', // غير موثّق بمصدر
-      rodMaterialLabel: 'جۆری ماددە و دارکەکە:', // غير موثّق بمصدر
-      hotTempLabel: 'پلەی گەرمیی سەرچاوەی گەرم (T_hot):',
-      coldTempLabel: 'پلەی گەرمیی سەرچاوەی سارد (T_cold):',
-      rodLengthLabel: 'درێژیی دارکەکە (d):',
-      crossSectionLabel: 'ڕووبەری بڕگە (A):',
-      heatRateCard: 'ڕێژەی گواستنەوەی گەرمی (Q/t)',
-      conductivityCard: 'هاوکۆلکەی گەیاندنی گەرمی (k)',
-      farEndTempCard: 'پلەی گەرمیی سەرەکەی تر', // غير موثّق بمصدر
-      tempDiffCard: 'جیاوازیی پلەی گەرمی (ΔT)',
-      heatSourceLabel: 'سەرچاوەی گەرمی', // غير موثّق بمصدر
-      coldEndLabel: 'سەرە ساردەکە', // غير موثّق بمصدر
-    },
-    kmr: {
-      title: 'Guhazdana Germiyê di Materyalan de û Qanûna Fourier',
-      subtitle: 'Lêkolîna leza guhazdana germiyê bi rêya guhastinê di nav metalan de li gorî qanûna Fourier.',
-      logMeasurement: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      logged: 'Hate tomarkirin ✓', // غير موثّق بمصدر
-      controlsTitle: 'Parametreyên materyal û germiyê', // غير موثّق بمصدر
-      rodMaterialLabel: 'Cûreyê materyal û stûnê:', // غير موثّق بمصدر
-      hotTempLabel: 'Playa germiya çavkaniya germ (T_hot):',
-      coldTempLabel: 'Playa germiya çavkaniya sar (T_cold):',
-      rodLengthLabel: 'Dirêjahiya stûna metalî (d):',
-      crossSectionLabel: 'Rûbera birrînê (A):',
-      heatRateCard: 'Leza guhazdana germiyê (Q/t)',
-      conductivityCard: 'Katsayıya guhazdana germiyê (k)',
-      farEndTempCard: 'Playa germiya aliyê din', // غير موثّق بمصدر
-      tempDiffCard: 'Cudahiya playên germiyê (ΔT)',
-      heatSourceLabel: 'Çavkaniya germiyê', // غير موثّق بمصدر
-      coldEndLabel: 'Aliyê sar', // غير موثّق بمصدر
-    },
-  }[lang];
   const [material, setMaterial] = useState<MaterialType>('copper');
   const [hotTempC, setHotTempC] = useState<number>(100); // °C
   const [coldTempC, setColdTempC] = useState<number>(20); // °C
@@ -154,6 +80,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
           drawHeatRod(ctx, canvas.width, canvas.height);
         }
       }
@@ -221,7 +148,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
     ctx.font = 'bold 12px monospace';
     ctx.fillText(`${hotTempC} °C`, rodStartX - 38, rodY - 18);
     ctx.font = '9px monospace';
-    ctx.fillText(t.heatSourceLabel, rodStartX - 38, rodY + rodH + 42);
+    ctx.fillText(tI18n('experiments.heat_conduction.heatSourceLabel'), rodStartX - 38, rodY + rodH + 42);
 
     // 2. Segmented Rod with Continuous Temperature Gradient
     const profile = tempProfileRef.current;
@@ -258,7 +185,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
     ctx.font = 'bold 12px monospace';
     ctx.fillText(`${farEndTemp.toFixed(1)} °C`, rodStartX + rodW + 4, rodY - 18);
     ctx.font = '9px monospace';
-    ctx.fillText(t.coldEndLabel, rodStartX + rodW + 4, rodY + rodH + 42);
+    ctx.fillText(tI18n('experiments.heat_conduction.coldEndLabel'), rodStartX + rodW + 4, rodY + rodH + 42);
 
     // Heat Flow Arrows along the rod
     if (isRunning && heatRateWatts > 0) {
@@ -355,11 +282,11 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <Flame  className="w-5 h-5 text-orange-400"/>
             <span>
-              {t.title}
+              {tI18n('experiments.heat_conduction.title')}
             </span>
           </h2>
           <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-            {t.subtitle}
+            {tI18n('experiments.heat_conduction.subtitle')}
           </p>
         </div>
 
@@ -380,7 +307,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
             onClick={handleLog}
            className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-orange-600 hover:bg-orange-500 text-white shadow-orange-600/30' }`}>
             <BookmarkCheck  className="w-4 h-4"/>
-            <span>{logged ? t.logged : t.logMeasurement}</span>
+            <span>{logged ? tI18n('experiments.heat_conduction.logged') : tI18n('experiments.heat_conduction.logMeasurement')}</span>
           </button>
         </div>
       </div>
@@ -392,14 +319,14 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Sliders  className="w-4 h-4 text-orange-400"/>
-              {t.controlsTitle}
+              {tI18n('experiments.heat_conduction.controlsTitle')}
             </span>
           </div>
 
           {/* Material Selector */}
           <div>
             <label className="text-sm text-zinc-400 block mb-1.5">
-              {t.rodMaterialLabel}
+              {tI18n('experiments.heat_conduction.rodMaterialLabel')}
             </label>
             <div className="grid grid-cols-2 gap-1.5">
               {(Object.keys(MATERIALS) as MaterialType[]).map((mat) => (
@@ -422,7 +349,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
           {/* Hot Temperature Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.hotTempLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.heat_conduction.hotTempLabel')}</span>
               <span className="font-mono text-rose-400 font-semibold">{hotTempC} °C</span>
             </div>
             <input
@@ -439,7 +366,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
           {/* Cold Ambient Temperature Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.coldTempLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.heat_conduction.coldTempLabel')}</span>
               <span className="font-mono text-sky-400 font-semibold">{coldTempC} °C</span>
             </div>
             <input
@@ -456,7 +383,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
           {/* Rod Length Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.rodLengthLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.heat_conduction.rodLengthLabel')}</span>
               <span className="font-mono text-zinc-200 font-semibold">{rodLengthCm} cm</span>
             </div>
             <input
@@ -473,7 +400,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
           {/* Cross-sectional Area Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.crossSectionLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.heat_conduction.crossSectionLabel')}</span>
               <span className="font-mono text-amber-400 font-semibold">{rodAreaCm2.toFixed(1)} cm²</span>
             </div>
             <input
@@ -502,7 +429,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
             {/* Heat Transfer Rate Q/t */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.heatRateCard}
+                {tI18n('experiments.heat_conduction.heatRateCard')}
               </span>
               <div className="text-xl font-bold font-mono text-orange-400">
                 {heatRateWatts.toFixed(2)} <span className="text-sm text-zinc-400">W</span>
@@ -513,7 +440,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
             {/* Thermal Conductivity k */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.conductivityCard}
+                {tI18n('experiments.heat_conduction.conductivityCard')}
               </span>
               <div className="text-xl font-bold font-mono text-amber-400">
                 {k} <span className="text-sm text-zinc-400">W/m·K</span>
@@ -524,7 +451,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
             {/* Far End Temperature */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.farEndTempCard}
+                {tI18n('experiments.heat_conduction.farEndTempCard')}
               </span>
               <div className="text-xl font-bold font-mono text-sky-400">
                 {tempProfileRef.current[numNodes - 1]?.toFixed(1)} <span className="text-sm text-zinc-400">°C</span>
@@ -535,7 +462,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
             {/* Temperature Difference ΔT */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.tempDiffCard}
+                {tI18n('experiments.heat_conduction.tempDiffCard')}
               </span>
               <div className="text-xl font-bold font-mono text-rose-400">
                 {deltaT} <span className="text-sm text-zinc-400">°C</span>

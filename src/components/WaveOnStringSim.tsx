@@ -9,6 +9,7 @@ interface WaveOnStringSimProps {
 }
 
 export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [amplitude, setAmplitude] = useState<number>(0.75); // cm
   const [frequency, setFrequency] = useState<number>(1.5); // Hz
@@ -117,65 +118,6 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
     setTimeStep(0);
   };
 
-  const t = {
-    ar: {
-      title: 'الأمواج في وتر مشدود (Wave on a String: v = √(T/μ))',
-      amplitude: 'سعة الموجة (Amplitude A)',
-      frequency: 'تردد الاهتزاز (Frequency f)',
-      damping: 'معامل التخميد (Damping)',
-      tension: 'قوة الشد في الوتر (Tension T)',
-      endType: 'طبيعة الطرف النهائي للوتر',
-      fixedEnd: 'طرف مثبت (Fixed End - انعكاس بقلب الطور)',
-      looseEnd: 'طرف حر (Loose End - انعكاس بنفس الطور)',
-      low: 'منخفض',
-      med: 'متوسط',
-      high: 'مرتفع',
-      reset: 'إعادة ضبط الوتر',
-    },
-    en: {
-      title: 'Wave on a String Lab (v = √(T/μ))',
-      amplitude: 'Wave Amplitude (A)',
-      frequency: 'Oscillation Frequency (f)',
-      damping: 'Damping',
-      tension: 'String Tension (T)',
-      endType: 'Boundary Condition',
-      fixedEnd: 'Fixed End (Phase Inversion)',
-      looseEnd: 'Loose End (In-phase Reflection)',
-      low: 'Low',
-      med: 'Medium',
-      high: 'High',
-      reset: 'Reset String',
-    },
-    ku: {
-      title: 'شەپۆل لەسەر پەت (v = √(T/μ))',
-      amplitude: 'فراوانی (A)',
-      frequency: 'فریکوێنسی (f)',
-      damping: 'خاوکردنەوە',
-      tension: 'ڕاکێشانی پەتەکە (T)',
-      endType: 'کۆتایی پەتەکە',
-      fixedEnd: 'بەستراو (Fixed)',
-      looseEnd: 'ئازاد (Loose)',
-      low: 'کەم',
-      med: 'ناوەند',
-      high: 'بەرز',
-      reset: 'ڕێکخستنەوە',
-    },
-    kmr: {
-      title: 'Pêl li ser Werîsekî (v = √(T/μ))',
-      amplitude: 'Firehiya Pêlê (A)',
-      frequency: 'Frekansa Lerzînê (f)',
-      damping: 'Damirandin',
-      tension: 'Girjbûna Werîs (T)',
-      endType: 'Rewşa Dawî ya Werîs',
-      fixedEnd: 'Serê Girêdayî (Fixed)',
-      looseEnd: 'Serê Azad (Loose)',
-      low: 'Kêm',
-      med: 'Navîn',
-      high: 'Bilind',
-      reset: 'Nûkirin',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -184,7 +126,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
             <Waves className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.wave_on_a_string.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER E • SIMULATION 23</p>
           </div>
         </div>
@@ -200,7 +142,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
           <button
             onClick={handleReset}
             className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700"
-            title={t.reset}
+            title={tI18n('experiments.wave_on_a_string.reset')}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -221,7 +163,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-3.5">
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-sky-400">{t.amplitude}</span>
+                <span className="text-sky-400">{tI18n('experiments.wave_on_a_string.amplitude')}</span>
                 <span className="font-mono text-white text-sm">{amplitude.toFixed(2)} cm</span>
               </div>
               <input
@@ -237,7 +179,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
 
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-amber-400">{t.frequency}</span>
+                <span className="text-amber-400">{tI18n('experiments.wave_on_a_string.frequency')}</span>
                 <span className="font-mono text-white text-sm">{frequency.toFixed(2)} Hz</span>
               </div>
               <input
@@ -253,7 +195,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
 
             <div className="space-y-1">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">{t.damping}</span>
+                <span className="text-slate-300">{tI18n('experiments.wave_on_a_string.damping')}</span>
                 <span className="font-mono text-white text-sm">{(damping * 100).toFixed(0)}%</span>
               </div>
               <input
@@ -268,7 +210,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
             </div>
 
             <div className="space-y-1 pt-1 border-t border-slate-800">
-              <span className="text-xs font-semibold text-slate-300 block">{t.tension}:</span>
+              <span className="text-xs font-semibold text-slate-300 block">{tI18n('experiments.wave_on_a_string.tension')}:</span>
               <div className="grid grid-cols-3 gap-1 text-xs">
                 {(['low', 'med', 'high'] as const).map((lvl) => (
                   <button
@@ -278,14 +220,14 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
                       tension === lvl ? 'bg-sky-500/20 border-sky-500 text-sky-300' : 'bg-slate-900 border-slate-800 text-slate-400'
                     }`}
                   >
-                    {t[lvl]}
+                    {tI18n(`experiments.wave_on_a_string.${lvl}`)}
                   </button>
                 ))}
               </div>
             </div>
 
             <div className="space-y-1 pt-1 border-t border-slate-800">
-              <span className="text-xs font-semibold text-slate-300 block">{t.endType}:</span>
+              <span className="text-xs font-semibold text-slate-300 block">{tI18n('experiments.wave_on_a_string.endType')}:</span>
               <div className="grid grid-cols-2 gap-1.5 text-xs">
                 <button
                   onClick={() => setEndType('fixed')}
@@ -293,7 +235,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
                     endType === 'fixed' ? 'bg-sky-500/20 border-sky-500 text-sky-300' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.fixedEnd}
+                  {tI18n('experiments.wave_on_a_string.fixedEnd')}
                 </button>
                 <button
                   onClick={() => setEndType('loose')}
@@ -301,7 +243,7 @@ export const WaveOnStringSim: React.FC<WaveOnStringSimProps> = ({ lang }) => {
                     endType === 'loose' ? 'bg-sky-500/20 border-sky-500 text-sky-300' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.looseEnd}
+                  {tI18n('experiments.wave_on_a_string.looseEnd')}
                 </button>
               </div>
             </div>

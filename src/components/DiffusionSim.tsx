@@ -17,6 +17,7 @@ interface GasParticle {
 }
 
 export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [barrierOpen, setBarrierOpen] = useState<boolean>(false);
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [temperature, setTemperature] = useState<number>(300); // Kelvin
@@ -170,57 +171,6 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
   const leftHeavy = particles.filter((p) => p.x < 300 && p.type === 'heavy').length;
   const rightHeavy = particles.filter((p) => p.x >= 300 && p.type === 'heavy').length;
 
-  const t = {
-    ar: {
-      title: 'انتشار الغازات وقانون غراهام (Diffusion & Graham\'s Law: r₁/r₂ = √(M₂/M₁))',
-      barrier: 'الحاجز الفاصل بين الحجرتين',
-      openBarrier: 'إزالة الحاجز وبدء الانتشار 🔓',
-      closeBarrier: 'إغلاق الحاجز 🔒',
-      temp: 'درجة حرارة الغازين (T)',
-      lightGas: 'غاز خفيف (هيليوم He - أزرق)',
-      heavyGas: 'غاز ثقيل (زينون Xe - أحمر)',
-      leftChamber: 'الحجرة اليسرى',
-      rightChamber: 'الحجرة اليمنى',
-      reset: 'إعادة ضبط الغازات',
-    },
-    en: {
-      title: 'Gas Diffusion & Graham\'s Law (r₁/r₂ = √(M₂/M₁))',
-      barrier: 'Dividing Chamber Barrier',
-      openBarrier: 'Remove Barrier & Diffuse 🔓',
-      closeBarrier: 'Close Barrier 🔒',
-      temp: 'Chamber Temperature (T)',
-      lightGas: 'Light Gas (Helium He - Blue)',
-      heavyGas: 'Heavy Gas (Xenon Xe - Red)',
-      leftChamber: 'Left Chamber',
-      rightChamber: 'Right Chamber',
-      reset: 'Reset Gases',
-    },
-    ku: {
-      title: 'بڵاوبوونەوەی گازەکان و یاسای گراهام',
-      barrier: 'پەردەی جیاکەرەوە',
-      openBarrier: 'لابردنی پەردە 🔓',
-      closeBarrier: 'داخستنی پەردە 🔒',
-      temp: 'پلەی گەرمی (T)',
-      lightGas: 'گازی سووک (هیلیۆم)',
-      heavyGas: 'گازی قورس (زینۆن)',
-      leftChamber: 'ژووری چەپ',
-      rightChamber: 'ژووری ڕاست',
-      reset: 'ڕێکخستنەوە',
-    },
-    kmr: {
-      title: 'Belavbûna Gazan û Qanûna Graham',
-      barrier: 'Astengiya Navberê',
-      openBarrier: 'Rakirina Astengiyê 🔓',
-      closeBarrier: 'Girtina Astengiyê 🔒',
-      temp: 'Germahî (T)',
-      lightGas: 'Gaza Sivik (Helyûm)',
-      heavyGas: 'Gaza Giran (Ksenon)',
-      leftChamber: 'Odeya Çepê',
-      rightChamber: 'Odeya Rastê',
-      reset: 'Nûkirin',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -229,26 +179,26 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
             <Sparkles  className="w-6 h-6"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.diffusion.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER F • SIMULATION 30</p>
           </div>
         </div>
 
         <div className="flex items-center gap-2">
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={() => setIsRunning(!isRunning)}
-            className="flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-lg transition-colors"
+            className="min-h-[44px] min-w-[44px] flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-lg transition-colors"
           >
             {isRunning ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
-            {isRunning ? 'إيقاف مؤقت' : 'تشغيل الحركة'}
+            {isRunning ? tI18n('experiments.diffusion.pause') : tI18n('experiments.diffusion.play')}
           </button>
-          <button className="min-h-[44px] min-w-[44px]"
+          <button
             onClick={() => {
               setBarrierOpen(false);
               initChamber();
             }}
-            className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700"
-            title={t.reset}
+            className="min-h-[44px] min-w-[44px] p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700"
+            title={tI18n('experiments.diffusion.reset')}
           >
             <RotateCcw  className="w-4 h-4"/>
           </button>
@@ -265,11 +215,11 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
 
           <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800 text-xs font-mono">
             <div className="p-2 bg-slate-900 rounded-lg text-center">
-              <span className="text-slate-400 font-bold block mb-1">{t.leftChamber}</span>
+              <span className="text-slate-400 font-bold block mb-1">{tI18n('experiments.diffusion.leftChamber')}</span>
               <span className="text-sky-400">He: {leftLight}</span> | <span className="text-red-400">Xe: {leftHeavy}</span>
             </div>
             <div className="p-2 bg-slate-900 rounded-lg text-center">
-              <span className="text-slate-400 font-bold block mb-1">{t.rightChamber}</span>
+              <span className="text-slate-400 font-bold block mb-1">{tI18n('experiments.diffusion.rightChamber')}</span>
               <span className="text-sky-400">He: {rightLight}</span> | <span className="text-red-400">Xe: {rightHeavy}</span>
             </div>
           </div>
@@ -277,20 +227,20 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
 
         <div className="lg:col-span-4 space-y-4">
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
-            <button className="min-h-[44px] min-w-[44px]"
+            <button
               onClick={() => setBarrierOpen(!barrierOpen)}
-              className={`w-full py-3 px-4 rounded-xl font-bold text-sm transition-all shadow-lg ${
+              className={`min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-sm transition-all shadow-lg ${
                 barrierOpen
                   ? 'bg-amber-600 hover:bg-amber-500 text-slate-950 shadow-amber-600/20'
                   : 'bg-emerald-600 hover:bg-emerald-500 text-white shadow-emerald-600/20'
               }`}
             >
-              {barrierOpen ? t.closeBarrier : t.openBarrier}
+              {barrierOpen ? tI18n('experiments.diffusion.closeBarrier') : tI18n('experiments.diffusion.openBarrier')}
             </button>
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-amber-400">{t.temp}</span>
+                <span className="text-amber-400">{tI18n('experiments.diffusion.temp')}</span>
                 <span className="font-mono text-white text-sm">{temperature} K</span>
               </div>
               <input

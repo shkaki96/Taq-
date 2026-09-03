@@ -19,6 +19,7 @@ interface AlphaParticle {
 }
 
 export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [energyMeV, setEnergyMeV] = useState<number>(5.0); // Alpha energy 5 MeV
   const [targetZ, setTargetZ] = useState<number>(79); // Gold (Au Z=79)
@@ -38,6 +39,7 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     const loop = () => {
       if (isRunning) {
@@ -114,7 +116,7 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
       ctx.fillStyle = '#fde68a';
       ctx.font = '10px monospace';
       ctx.textAlign = 'center';
-      ctx.fillText(`+${targetZ}e ${t.nucleusLabel}`, nucleusPos.x, nucleusPos.y + 22);
+      ctx.fillText(`+${targetZ}e ${tI18n('experiments.rutherford_scattering.nucleusLabel')}`, nucleusPos.x, nucleusPos.y + 22);
 
       // Render particles & trails
       particles.forEach((p) => {
@@ -144,73 +146,6 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
     return () => cancelAnimationFrame(animId);
   }, [isRunning, energyMeV, targetZ, impactParameter, particles]);
 
-  const t = {
-    ar: {
-      title: 'تشتت رذرفورد ورقاقة الذهب (F = k q₁q₂ / r²)',
-      alphaEnergy: 'طاقة جسيمات ألفا (E_k)',
-      targetElement: 'مادة الهدف النواة (Z)',
-      impactParameter: 'معامل التصادم (Impact Parameter b)',
-      gold: 'ذهب (Au, Z=79)',
-      silver: 'فضة (Ag, Z=47)',
-      aluminum: 'ألومنيوم (Al, Z=13)',
-      coulombRepulsion: 'قوة التنافر الكولومي المتبادلة',
-      deflectionObservation: 'تنحرف الجسيمات القريبة جداً بزوايا منفرجة ارتدادية حادة (>90°).',
-      reset: 'إعادة ضبط الحزمة',
-      play: 'تشغيل الحزمة',
-      pause: 'إيقاف مؤقت',
-      nucleusLabel: 'نواة',
-      alphaBeamSource: 'مصدر حزمة ألفا (α⁺⁺)',
-    },
-    en: {
-      title: 'Rutherford Scattering Lab (F = k q₁q₂ / r²)',
-      alphaEnergy: 'Alpha Particle Energy (E_k)',
-      targetElement: 'Target Foil Nucleus (Z)',
-      impactParameter: 'Impact Parameter (b)',
-      gold: 'Gold (Au, Z=79)',
-      silver: 'Silver (Ag, Z=47)',
-      aluminum: 'Aluminum (Al, Z=13)',
-      coulombRepulsion: 'Coulomb Electrostatic Repulsion',
-      deflectionObservation: 'Close trajectories experience sharp back-scattering (>90°).',
-      reset: 'Reset Beam',
-      play: 'Fire Beam',
-      pause: 'Pause',
-      nucleusLabel: 'Nucleus',
-      alphaBeamSource: 'Alpha Beam Source (α⁺⁺)',
-    },
-    ku: {
-      title: 'پەرشبوونەوەی ڕەزەرفۆرد (F = k q₁q₂ / r²)',
-      alphaEnergy: 'وزەی تەنۆلکەی ئەلفا',
-      targetElement: 'توخمی ئامانج (Z)',
-      impactParameter: 'دووری لێدان (b)',
-      gold: 'ئاڵتوون (Au, Z=79)',
-      silver: 'زیو (Ag, Z=47)',
-      aluminum: 'ئەلەمنیۆم (Al, Z=13)',
-      coulombRepulsion: 'هێزی پاڵنانی کۆلۆم',
-      deflectionObservation: 'تەنۆلکە نزیکەکان بە گۆشەی گەورە دەگەڕێنەوە.',
-      reset: 'ڕێکخستنەوەی تیشک',
-      play: 'لێدانی تیشک',
-      pause: 'وەستان',
-      nucleusLabel: 'ناوک',
-      alphaBeamSource: 'سەرچاوەی تیشکی ئەلفا (α⁺⁺)',
-    },
-    kmr: {
-      title: 'Belavbûna Rutherford (F = k q₁q₂ / r²)',
-      alphaEnergy: 'Enerjiya Parçikên Alfa',
-      targetElement: 'Dendika Hedefê (Z)',
-      impactParameter: 'Parametreya Lêdanê (b)',
-      gold: 'Zêr (Au, Z=79)',
-      silver: 'Zîv (Ag, Z=47)',
-      aluminum: 'Alumînyûm (Al, Z=13)',
-      coulombRepulsion: 'Hêza Dûrketinê ya Coulomb',
-      deflectionObservation: 'Parçikên pir nêzîk bi goşeyên fireh vedigerin.',
-      reset: 'Nûkirina Tîrêjê',
-      play: 'Tîrêj Bide',
-      pause: 'Aram Be',
-      nucleusLabel: 'Dendik',
-      alphaBeamSource: 'Çavkaniya Tîrêja Alfa (α⁺⁺)',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -219,7 +154,7 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
             <Target className="w-6 h-6" />
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.rutherford_scattering.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER A • SIMULATION 3</p>
           </div>
         </div>
@@ -230,12 +165,12 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
             className="flex items-center gap-1.5 px-3 py-1.5 bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold text-xs rounded-lg transition-colors"
           >
             {isRunning ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-            {isRunning ? t.pause : t.play}
+            {isRunning ? tI18n('experiments.rutherford_scattering.pause') : tI18n('experiments.rutherford_scattering.play')}
           </button>
           <button
             onClick={() => setParticles([])}
             className="p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700"
-            title={t.reset}
+            title={tI18n('experiments.rutherford_scattering.reset')}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
@@ -252,8 +187,8 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
             className="w-full h-auto max-h-[340px] rounded-xl bg-slate-950"
           />
           <div className="w-full flex justify-between items-center text-[11px] text-slate-400 px-3 pt-2 font-mono border-t border-slate-800 mt-2">
-            <span>{t.alphaBeamSource}</span>
-            <span className="text-amber-400">{t.deflectionObservation}</span>
+            <span>{tI18n('experiments.rutherford_scattering.alphaBeamSource')}</span>
+            <span className="text-amber-400">{tI18n('experiments.rutherford_scattering.deflectionObservation')}</span>
           </div>
         </div>
 
@@ -261,7 +196,7 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
         <div className="lg:col-span-4 space-y-4">
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="space-y-1.5">
-              <label className="text-xs font-semibold text-amber-400 block">{t.targetElement}</label>
+              <label className="text-xs font-semibold text-amber-400 block">{tI18n('experiments.rutherford_scattering.targetElement')}</label>
               <div className="grid grid-cols-3 gap-1.5 text-xs">
                 <button
                   onClick={() => setTargetZ(79)}
@@ -271,7 +206,7 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
                       : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.gold}
+                  {tI18n('experiments.rutherford_scattering.gold')}
                 </button>
                 <button
                   onClick={() => setTargetZ(47)}
@@ -281,7 +216,7 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
                       : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.silver}
+                  {tI18n('experiments.rutherford_scattering.silver')}
                 </button>
                 <button
                   onClick={() => setTargetZ(13)}
@@ -291,14 +226,14 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
                       : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  {t.aluminum}
+                  {tI18n('experiments.rutherford_scattering.aluminum')}
                 </button>
               </div>
             </div>
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">{t.alphaEnergy}</span>
+                <span className="text-slate-300">{tI18n('experiments.rutherford_scattering.alphaEnergy')}</span>
                 <span className="font-mono text-amber-300">{energyMeV.toFixed(1)} MeV</span>
               </div>
               <input
@@ -314,7 +249,7 @@ export const RutherfordScatteringSim: React.FC<RutherfordScatteringSimProps> = (
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">{t.impactParameter} (b)</span>
+                <span className="text-slate-300">{tI18n('experiments.rutherford_scattering.impactParameter')} (b)</span>
                 <span className="font-mono text-amber-300">{impactParameter}</span>
               </div>
               <input

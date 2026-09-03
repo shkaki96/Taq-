@@ -11,113 +11,6 @@ interface Props {
 
 export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'النظارات الطبية وقوة العدسات بالديوبتر',
-      subtitle: 'تصحيح عيوب الإبصار (قصر وطول النظر) بواسطة العدسات الطبية وحساب قوة العدسة بالديوبتر P = 1/f وقانون العدسات 1/f = 1/do + 1/di.',
-      logMeasurement: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      logged: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      controlsTitle: 'معايير فحص البصر والعدسة', // غير موثّق بمصدر
-      visionConditionLabel: 'حالة العين وعيب الإبصار:',
-      myopia: 'قصر نظر',
-      hyperopia: 'طول نظر',
-      normal: 'سليم',
-      focalLengthLabel: 'البعد البؤري للعدسة (f):',
-      objectDistanceLabel: 'بعد الجسم عن العين (do):',
-      glassesOn: '👓 النظارة الطبية: مفعّلة (مرتدية)', // غير موثّق بمصدر
-      glassesOff: 'خلع النظارة (بدون تصحيح)', // غير موثّق بمصدر
-      retinaLabel: 'الشبكية (Retina)',
-      eyeLensLabel: 'عدسة العين',
-      objectLabel: 'الجسم',
-      lensPowerCard: 'قوة العدسة بالديوبتر (P)',
-      imageDistanceCard: 'بعد الصورة (di)',
-      retinalFocusCard: 'جودة الرؤية على الشبكية', // غير موثّق بمصدر
-      focusSharp: 'حادة ومركزة', // غير موثّق بمصدر
-      focusBlurry: 'مشوشة', // غير موثّق بمصدر
-      prescriptionTypeCard: 'نوع العدسة الموصوفة', // غير موثّق بمصدر
-      concaveLens: 'مقعرة مفرقة (-)',
-      convexLens: 'محدبة مجمعة (+)',
-    },
-    en: {
-      title: 'Prescription Glasses & Optical Power',
-      subtitle: 'Correcting vision defects (Myopia & Hyperopia) using corrective lenses, calculating lens power P = 1/f and thin lens law.',
-      logMeasurement: 'Log Measurement', // غير موثّق بمصدر
-      logged: 'Logged ✓', // غير موثّق بمصدر
-      controlsTitle: 'Eye & Prescription Controls', // غير موثّق بمصدر
-      visionConditionLabel: 'Vision Condition:',
-      myopia: 'Myopia',
-      hyperopia: 'Hyperopia',
-      normal: 'Normal',
-      focalLengthLabel: 'Lens Focal Length (f):',
-      objectDistanceLabel: 'Object Distance (do):',
-      glassesOn: '👓 Eyeglasses: ON', // غير موثّق بمصدر
-      glassesOff: 'Eyeglasses: OFF', // غير موثّق بمصدر
-      retinaLabel: 'Retina',
-      eyeLensLabel: 'Eye Lens',
-      objectLabel: 'Object',
-      lensPowerCard: 'Lens Power (P)',
-      imageDistanceCard: 'Image Distance (di)',
-      retinalFocusCard: 'Retinal Focus', // غير موثّق بمصدر
-      focusSharp: 'Sharp', // غير موثّق بمصدر
-      focusBlurry: 'Blurry', // غير موثّق بمصدر
-      prescriptionTypeCard: 'Prescription Type', // غير موثّق بمصدر
-      concaveLens: 'Concave Diverging (-)',
-      convexLens: 'Convex Converging (+)',
-    },
-    ku: {
-      title: 'چاویلکەی پزیشکی و هێزی هاوێنە بە دیۆپتەر',
-      subtitle: 'چاککردنی کەمکوڕییەکانی بینین بە هاوێنەی پزیشکی و ژماردنی هێزی هاوێنە بە دیۆپتەر P = 1/f.',
-      logMeasurement: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      logged: 'تۆمارکرا ✓', // غير موثّق بمصدر
-      controlsTitle: 'تایبەتمەندییەکانی پشکنینی بینین و هاوێنە', // غير موثّق بمصدر
-      visionConditionLabel: 'باري چاو و کەمکوڕیی بینین:',
-      myopia: 'کورتبینی',
-      hyperopia: 'دووربینی',
-      normal: 'ئاسایی',
-      focalLengthLabel: 'دووریی تیشکۆییی هاوێنە (f):',
-      objectDistanceLabel: 'دووریی تەرم لە چاو (do):',
-      glassesOn: '👓 چاویلکەی پزیشکی: چالاکە', // غير موثّق بمصدر
-      glassesOff: 'داکەندنی چاویلکە (بێ چاککردن)', // غير موثّق بمصدر
-      retinaLabel: 'تۆڕەی چاو (Retina)',
-      eyeLensLabel: 'هاوێنەی چاو',
-      objectLabel: 'تەرم',
-      lensPowerCard: 'هێزی هاوێنە بە دیۆپتەر (P)',
-      imageDistanceCard: 'دووریی وێنە (di)',
-      retinalFocusCard: 'کوالێتیی بینین لەسەر تۆڕەی چاو', // غير موثّق بمصدر
-      focusSharp: 'ڕوون و دیار', // غير موثّق بمصدر
-      focusBlurry: 'لێڵ', // غير موثّق بمصدر
-      prescriptionTypeCard: 'جۆری هاوێنەی دەستنیشانکراو', // غير موثّق بمصدر
-      concaveLens: 'مەقعەر / بڵاوکەرەوە (-)',
-      convexLens: 'موهەدەب / کۆکەرەوە (+)',
-    },
-    kmr: {
-      title: 'Çavgavkên Pizîşkî û Hêza Lensan bi Dîyopterê',
-      subtitle: 'Rastkirina kêmasiyên dîtinê bi lensên pizîşkî û hesabkirina hêza lensê P = 1/f.',
-      logMeasurement: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      logged: 'Hate tomarkirin ✓', // غير موثّق بمصدر
-      controlsTitle: 'Parametreyên kontrolkirina çav û lensê', // غير موثّق بمصدر
-      visionConditionLabel: 'Rewşa çav û kêmasiya dîtinê:',
-      myopia: 'Kurbînî',
-      hyperopia: 'Dûrbînî',
-      normal: 'Asayî',
-      focalLengthLabel: 'Pêlava tîşkoyî ya lensê (f):',
-      objectDistanceLabel: 'Masiya tişt ji çav (do):',
-      glassesOn: '👓 Çavgavkên pizîşkî: Çalak', // غير موثّق بمصدر
-      glassesOff: 'Daketina çavgavkan (bê rastkirin)', // غير موثّق بمصدر
-      retinaLabel: 'Tora çav (Retina)',
-      eyeLensLabel: 'Lensa çav',
-      objectLabel: 'Tişt',
-      lensPowerCard: 'Hêza lensê bi dîyopterê (P)',
-      imageDistanceCard: 'Masiya wêneyê (di)',
-      retinalFocusCard: 'Kefiyeta dîtinê li ser tora çav', // غير موثّق بمصدر
-      focusSharp: 'Rûn û eşkere', // غير موثّق بمصدر
-      focusBlurry: 'Lêł', // غير موثّق بمصدر
-      prescriptionTypeCard: 'Cureya lensê', // غير موثّق بمصدر
-      concaveLens: 'Kevirî / Dabeşker (-)',
-      convexLens: 'Pevketî / Komker (+)',
-    },
-  }[lang];
-
   // Eye defect condition
   const [defectType, setDefectType] = useState<'myopia' | 'hyperopia' | 'normal'>('myopia');
   // Corrective lens focal length (cm)
@@ -171,6 +64,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
     if (canvas) {
       const ctx = canvas.getContext('2d');
       if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
         drawEyeballOptics(ctx, canvas.width, canvas.height);
       }
     }
@@ -234,7 +128,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
 
     ctx.fillStyle = '#fbbf24';
     ctx.font = 'bold 9px monospace';
-    ctx.fillText(t.retinaLabel, retinaX - 25, opticalAxisY - eyeRadius - 8);
+    ctx.fillText(tI18n('experiments.prescription_glasses.retinaLabel'), retinaX - 25, opticalAxisY - eyeRadius - 8);
 
     // Draw Crystalline Eye Lens
     ctx.fillStyle = 'rgba(56, 189, 248, 0.25)';
@@ -247,7 +141,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
 
     ctx.fillStyle = '#38bdf8';
     ctx.font = '9px monospace';
-    ctx.fillText(t.eyeLensLabel, eyeLensX - 20, opticalAxisY - 45);
+    ctx.fillText(tI18n('experiments.prescription_glasses.eyeLensLabel'), eyeLensX - 20, opticalAxisY - 45);
 
     // Eyeglasses Lens Position (in front of eye)
     const glassesX = eyeLensX - 85;
@@ -309,7 +203,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
 
     ctx.fillStyle = '#f43f5e';
     ctx.font = 'bold 10px monospace';
-    ctx.fillText(`${t.objectLabel} (${objectDistanceCm}cm)`, objX - 25, opticalAxisY + 18);
+    ctx.fillText(`${tI18n('experiments.prescription_glasses.objectLabel')} (${objectDistanceCm}cm)`, objX - 25, opticalAxisY + 18);
 
     // Ray Tracing Path
     // Ray 1: From Object Tip to Glasses/Eye Top
@@ -384,11 +278,11 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <Eye  className="w-5 h-5 text-sky-400"/>
             <span>
-              {t.title}
+              {tI18n('experiments.prescription_glasses.title')}
             </span>
           </h2>
           <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-            {t.subtitle}
+            {tI18n('experiments.prescription_glasses.subtitle')}
           </p>
         </div>
 
@@ -396,7 +290,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
           onClick={handleLog}
          className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-sky-600 hover:bg-sky-500 text-white shadow-sky-600/30' }`}>
           <BookmarkCheck  className="w-4 h-4"/>
-          <span>{logged ? t.logged : t.logMeasurement}</span>
+          <span>{logged ? tI18n('experiments.prescription_glasses.logged') : tI18n('experiments.prescription_glasses.logMeasurement')}</span>
         </button>
       </div>
 
@@ -407,14 +301,14 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Sliders  className="w-4 h-4 text-sky-400"/>
-              {t.controlsTitle}
+              {tI18n('experiments.prescription_glasses.controlsTitle')}
             </span>
           </div>
 
           {/* Eye Condition Selector */}
           <div>
             <label className="text-sm text-zinc-400 block mb-1.5">
-              {t.visionConditionLabel}
+              {tI18n('experiments.prescription_glasses.visionConditionLabel')}
             </label>
             <div className="grid grid-cols-3 gap-1.5">
               <button
@@ -429,7 +323,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
                     : 'bg-zinc-800 text-zinc-400 border-zinc-700 hover:text-zinc-200'
                 }`}
               >
-                {t.myopia}
+                {tI18n('experiments.prescription_glasses.myopia')}
               </button>
               <button
                 onClick={() => {
@@ -443,7 +337,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
                     : 'bg-zinc-800 text-zinc-400 border-zinc-700 hover:text-zinc-200'
                 }`}
               >
-                {t.hyperopia}
+                {tI18n('experiments.prescription_glasses.hyperopia')}
               </button>
               <button
                 onClick={() => {
@@ -457,7 +351,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
                     : 'bg-zinc-800 text-zinc-400 border-zinc-700 hover:text-zinc-200'
                 }`}
               >
-                {t.normal}
+                {tI18n('experiments.prescription_glasses.normal')}
               </button>
             </div>
           </div>
@@ -465,7 +359,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
           {/* Glasses Focal Length Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.focalLengthLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.prescription_glasses.focalLengthLabel')}</span>
               <span className={`font-mono font-semibold ${glassesFocalLengthCm < 0 ? 'text-rose-400' : 'text-emerald-400'}`}>
                 {glassesFocalLengthCm.toFixed(1)} cm
               </span>
@@ -487,7 +381,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
           {/* Object Distance Slider */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.objectDistanceLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.prescription_glasses.objectDistanceLabel')}</span>
               <span className="font-mono text-zinc-200 font-semibold">{objectDistanceCm} cm</span>
             </div>
             <input
@@ -513,7 +407,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
             >
               <Eye  className="w-4 h-4"/>
               <span>
-                {glassesEnabled ? t.glassesOn : t.glassesOff}
+                {glassesEnabled ? tI18n('experiments.prescription_glasses.glassesOn') : tI18n('experiments.prescription_glasses.glassesOff')}
               </span>
             </button>
           </div>
@@ -534,7 +428,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
             {/* Optical Power (P) in Diopters */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.lensPowerCard}
+                {tI18n('experiments.prescription_glasses.lensPowerCard')}
               </span>
               <div className={`text-xl font-bold font-mono ${lensPowerDiopters < 0 ? 'text-rose-400' : 'text-emerald-400'}`}>
                 {lensPowerDiopters > 0 ? '+' : ''}{lensPowerDiopters.toFixed(2)} <span className="text-sm text-zinc-400">D</span>
@@ -545,7 +439,7 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
             {/* Image Distance di */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.imageDistanceCard}
+                {tI18n('experiments.prescription_glasses.imageDistanceCard')}
               </span>
               <div className="text-xl font-bold font-mono text-sky-400">
                 {Math.abs(imageDistanceGlassesCm) < 1000 ? imageDistanceGlassesCm.toFixed(1) : '∞'} <span className="text-sm text-zinc-400">cm</span>
@@ -556,11 +450,11 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
             {/* Vision Quality State */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.retinalFocusCard}
+                {tI18n('experiments.prescription_glasses.retinalFocusCard')}
               </span>
               <div className={`text-sm font-bold flex items-center gap-1 ${isSharpRetinaFocus ? 'text-emerald-400' : 'text-rose-400'}`}>
                 {isSharpRetinaFocus ? <CheckCircle2  className="w-4 h-4"/> : <AlertTriangle  className="w-4 h-4"/>}
-                <span>{isSharpRetinaFocus ? t.focusSharp : t.focusBlurry}</span>
+                <span>{isSharpRetinaFocus ? tI18n('experiments.prescription_glasses.focusSharp') : tI18n('experiments.prescription_glasses.focusBlurry')}</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">Focus @ {finalFocusPoint.toFixed(2)} cm</span>
             </div>
@@ -568,10 +462,10 @@ export default function PrescriptionGlassesSim({ lang, onLogMeasurement }: Props
             {/* Corrective Lens Type */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.prescriptionTypeCard}
+                {tI18n('experiments.prescription_glasses.prescriptionTypeCard')}
               </span>
               <div className="text-xs font-bold font-mono text-zinc-200">
-                {glassesFocalLengthCm < 0 ? t.concaveLens : t.convexLens}
+                {glassesFocalLengthCm < 0 ? tI18n('experiments.prescription_glasses.concaveLens') : tI18n('experiments.prescription_glasses.convexLens')}
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">f = {glassesFocalLengthCm.toFixed(1)} cm</span>
             </div>

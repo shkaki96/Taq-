@@ -11,105 +11,6 @@ interface Props {
 
 export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'استقطاب الضوء وقانون مالوس',
-      subtitle: 'التحقق التجريبي من استقطاب الموجات الكهرومغناطيسية، قانون مالوس I = I₀ · cos²(θ)، وظاهرة الاستقطاب المتتالي.',
-      logMeasurement: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      logged: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      controlsTitle: 'زوايا المستقطب والمحلل', // غير موثّق بمصدر
-      incidentIntensityLabel: 'شدة الضوء الساقط (I₀):',
-      p1AngleLabel: 'زاوية المستقطب الأول (θ₁):',
-      p2AngleLabel: 'زاوية المحلل الثاني (θ₂):',
-      presetLabel: 'حالات زاوية قياسية:', // غير موثّق بمصدر
-      middleFilterToggle: 'إضافة مستقطب ثالث أوسط (3-Filter Paradox):', // غير موثّق بمصدر
-      middleAngleLabel: 'زاوية المستقطب الأوسط:', // غير موثّق بمصدر
-      finalIntensityCard: 'الشدة النافذة النهائية (I)',
-      transmissionRatioCard: 'نسبة النفاذ من الأصل', // غير موثّق بمصدر
-      eFieldCard: 'سعة المجال الكهربائي (E)',
-      extinctionCard: 'حالة الاستقطاب', // غير موثّق بمصدر
-      crossedExtinction: 'حجب تام (0%)',
-      maxParallel: 'أقصى نفاذ',
-      partialTransmission: 'نفاذ جزئي',
-      unpolarizedCanvas: 'غير مستقطب',
-      polarizer1Canvas: 'المستقطب الأول (P₁)',
-      middlePolarizerCanvas: 'المستقطب الأوسط (P_mid)',
-      analyzerCanvas: 'المحلل (P₂)',
-    },
-    en: {
-      title: 'Light Polarization & Malus’s Law',
-      subtitle: 'Experimental validation of EM wave polarization, Malus’s law I = I₀ · cos²(θ), and optical extinction.',
-      logMeasurement: 'Log Measurement', // غير موثّق بمصدر
-      logged: 'Logged ✓', // غير موثّق بمصدر
-      controlsTitle: 'Polarizer Angles', // غير موثّق بمصدر
-      incidentIntensityLabel: 'Incident Intensity (I₀):',
-      p1AngleLabel: 'Polarizer 1 Angle (θ₁):',
-      p2AngleLabel: 'Analyzer Angle (θ₂):',
-      presetLabel: 'Standard Test States:', // غير موثّق بمصدر
-      middleFilterToggle: '3rd Middle Polarizer Paradox:', // غير موثّق بمصدر
-      middleAngleLabel: 'Middle Polarizer Angle:', // غير موثّق بمصدر
-      finalIntensityCard: 'Transmitted Intensity (I)',
-      transmissionRatioCard: 'Total Transmission %', // غير موثّق بمصدر
-      eFieldCard: 'E-Field Amplitude (E)',
-      extinctionCard: 'Polarization State', // غير موثّق بمصدر
-      crossedExtinction: 'Crossed Extinction',
-      maxParallel: 'Max Parallel',
-      partialTransmission: 'Partial Transmission',
-      unpolarizedCanvas: 'Unpolarized',
-      polarizer1Canvas: 'Polarizer 1 (P₁)',
-      middlePolarizerCanvas: 'Middle Polarizer (P_mid)',
-      analyzerCanvas: 'Analyzer (P₂)',
-    },
-    ku: {
-      title: 'جەمسەربوونی ڕووناکی و یاسای مالۆس',
-      subtitle: 'سەلماندنی تاقیگەیی جەمسەربوونی شەپۆلە کارۆموگناتیسییەکان و یاسای مالۆس I = I₀ · cos²(θ).',
-      logMeasurement: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      logged: 'تۆمارکرا ✓', // غير موثّق بمصدر
-      controlsTitle: 'گۆشەکانی جەمسەربەر و شيكەرەوە', // غير موثّق بمصدر
-      incidentIntensityLabel: 'توندیی ڕووناکی کەوتوو (I₀):',
-      p1AngleLabel: 'گۆشەی جەمسەربەری یەکەم (θ₁):',
-      p2AngleLabel: 'گۆشەی شيكەرەوەی دووەم (θ₂):',
-      presetLabel: 'بارە پێوانەیییەکانی گۆشە:', // غير موثّق بمصدر
-      middleFilterToggle: 'زیادکردنی جەمسەربەری سێیەم (3-Filter Paradox):', // غير موثّق بمصدر
-      middleAngleLabel: 'گۆشەی جەمسەربەری ناوەڕاست:', // غير موثّق بمصدر
-      finalIntensityCard: 'توندیی کۆتایی تێپەڕبوو (I)',
-      transmissionRatioCard: 'ڕێژەی تێپەڕبوون لە سەرەتاوە', // غير موثّق بمصدر
-      eFieldCard: 'سەی مەیدانی کارەبایی (E)',
-      extinctionCard: 'باری جەمسەربوون', // غير موثّق بمصدر
-      crossedExtinction: 'داخستنی تەواو (0%)',
-      maxParallel: 'زۆرترین تێپەڕبوون',
-      partialTransmission: 'تێپەڕبوونی بەشەکی',
-      unpolarizedCanvas: 'نەجەمسەربوو',
-      polarizer1Canvas: 'جەمسەربەری یەکەم (P₁)',
-      middlePolarizerCanvas: 'جەمسەربەری ناوەڕاست (P_mid)',
-      analyzerCanvas: 'شيكەرەوە (P₂)',
-    },
-    kmr: {
-      title: 'Polarîzasyona Ronahiyê û Qanûna Malus',
-      subtitle: 'Piştrastkirina ezmûnî ya polarîzasyona pêlên elektro-magnetîk û qanûna Malus I = I₀ · cos²(θ).',
-      logMeasurement: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      logged: 'Hate tomarkirin ✓', // غير موثّق بمصدر
-      controlsTitle: 'Gۆşeyên polarîzor û analîzor', // غير موثّق بمصدر
-      incidentIntensityLabel: 'Tundiya ronahiya ketî (I₀):',
-      p1AngleLabel: 'Gۆşeya polarîzorê 1ê (θ₁):',
-      p2AngleLabel: 'Gۆşeya analîzorê 2yê (θ₂):',
-      presetLabel: 'Barên gۆşeyê yên standard:', // غير موثّق بمصدر
-      middleFilterToggle: 'Zêdekirina polarîzorê navîn (3-Filter Paradox):', // غير موثّق بمصدر
-      middleAngleLabel: 'Gۆşeya polarîzorê navîn:', // غير موثّق بمصدر
-      finalIntensityCard: 'Tundiya dawî ya derbasbûyî (I)',
-      transmissionRatioCard: 'Rêjeya derbasbûnê ji destpêkê', // غير موثّق بمصدر
-      eFieldCard: 'Amplitûda qada elektrîkê (E)',
-      extinctionCard: 'Barê polarîzasyonê', // غير موثّق بمصدر
-      crossedExtinction: 'Astengkirina tam (0%)',
-      maxParallel: 'Têketina herî zêde',
-      partialTransmission: 'Derbasbûna beşî',
-      unpolarizedCanvas: 'Nepolarîze',
-      polarizer1Canvas: 'Polarîzor 1 (P₁)',
-      middlePolarizerCanvas: 'Polarîzorê Navîn (P_mid)',
-      analyzerCanvas: 'Analîzor (P₂)',
-    },
-  }[lang];
-
   // Parameters
   const [initialIntensity, setInitialIntensity] = useState<number>(100); // W/m² or %
   const [polarizer1AngleDeg, setPolarizer1AngleDeg] = useState<number>(0); // degrees (vertical = 0)
@@ -165,6 +66,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
           drawPolarization(ctx, canvas.width, canvas.height);
         }
       }
@@ -231,7 +133,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
 
     ctx.fillStyle = '#fef08a';
     ctx.font = 'bold 10px monospace';
-    ctx.fillText(t.unpolarizedCanvas, xSource - 30, centerY - 25);
+    ctx.fillText(tI18n('experiments.polarization.unpolarizedCanvas'), xSource - 30, centerY - 25);
     ctx.fillText(`I₀=${initialIntensity}`, xSource - 18, centerY + 30);
 
     // Section A: Unpolarized wave propagating to P1 (multidirectional oscillating arrows)
@@ -258,7 +160,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
     }
 
     // --- DRAW POLARIZER 1 ---
-    drawPolarizerPlate(ctx, xP1, centerY, polarizer1AngleDeg, t.polarizer1Canvas, '#38bdf8');
+    drawPolarizerPlate(ctx, xP1, centerY, polarizer1AngleDeg, tI18n('experiments.polarization.polarizer1Canvas'), '#38bdf8');
 
     // Section B: Linearly polarized wave after P1
     const p1Rad = (polarizer1AngleDeg * Math.PI) / 180;
@@ -289,7 +191,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
 
     // Middle Polarizer if enabled
     if (useMiddlePolarizer) {
-      drawPolarizerPlate(ctx, xPMid, centerY, middleAngleDeg, t.middlePolarizerCanvas, '#a855f7');
+      drawPolarizerPlate(ctx, xPMid, centerY, middleAngleDeg, tI18n('experiments.polarization.middlePolarizerCanvas'), '#a855f7');
 
       // Wave between Middle and Analyzer
       const midRad = (middleAngleDeg * Math.PI) / 180;
@@ -318,7 +220,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
     }
 
     // --- DRAW ANALYZER ---
-    drawPolarizerPlate(ctx, xP2, centerY, analyzerAngleDeg, t.analyzerCanvas, '#10b981');
+    drawPolarizerPlate(ctx, xP2, centerY, analyzerAngleDeg, tI18n('experiments.polarization.analyzerCanvas'), '#10b981');
 
     // Section C: Transmitted wave after Analyzer
     const anaRad = (analyzerAngleDeg * Math.PI) / 180;
@@ -429,11 +331,11 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <Sun  className="w-5 h-5 text-amber-400"/>
             <span>
-              {t.title}
+              {tI18n('experiments.polarization.title')}
             </span>
           </h2>
           <p className="text-sm text-zinc-400 mt-1 max-w-2xl">
-            {t.subtitle}
+            {tI18n('experiments.polarization.subtitle')}
           </p>
         </div>
 
@@ -448,7 +350,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
             onClick={handleLog}
            className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-amber-600 hover:bg-amber-500 text-white shadow-amber-600/30' }`}>
             <BookmarkCheck  className="w-4 h-4"/>
-            <span>{logged ? t.logged : t.logMeasurement}</span>
+            <span>{logged ? tI18n('experiments.polarization.logged') : tI18n('experiments.polarization.logMeasurement')}</span>
           </button>
         </div>
       </div>
@@ -460,14 +362,14 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Compass  className="w-4 h-4 text-amber-400"/>
-              {t.controlsTitle}
+              {tI18n('experiments.polarization.controlsTitle')}
             </span>
           </div>
 
           {/* Initial Intensity */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.incidentIntensityLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.polarization.incidentIntensityLabel')}</span>
               <span className="font-mono text-amber-400 font-semibold">{initialIntensity} W/m²</span>
             </div>
             <input
@@ -484,7 +386,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
           {/* Polarizer 1 Angle */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.p1AngleLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.polarization.p1AngleLabel')}</span>
               <span className="font-mono text-sky-400 font-semibold">{polarizer1AngleDeg}°</span>
             </div>
             <input
@@ -501,7 +403,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
           {/* Analyzer Angle */}
           <div>
             <div className="flex justify-between text-xs mb-1">
-              <span className="text-zinc-400">{t.p2AngleLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.polarization.p2AngleLabel')}</span>
               <span className="font-mono text-emerald-400 font-semibold">{analyzerAngleDeg}° (Δθ = {relativeAngleDeg}°)</span>
             </div>
             <input
@@ -518,7 +420,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
           {/* Preset Angles */}
           <div>
             <span className="text-[10px] text-zinc-400 block mb-1.5">
-              {t.presetLabel}
+              {tI18n('experiments.polarization.presetLabel')}
             </span>
             <div className="flex flex-wrap gap-1.5">
               {[
@@ -545,7 +447,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
           <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800 space-y-2">
             <div className="flex items-center justify-between text-xs">
               <span className="text-zinc-300 font-medium">
-                {t.middleFilterToggle}
+                {tI18n('experiments.polarization.middleFilterToggle')}
               </span>
               <input
                 type="checkbox"
@@ -558,7 +460,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
             {useMiddlePolarizer && (
               <div>
                 <div className="flex justify-between text-xs mb-1">
-                  <span className="text-zinc-400">{t.middleAngleLabel}</span>
+                  <span className="text-zinc-400">{tI18n('experiments.polarization.middleAngleLabel')}</span>
                   <span className="font-mono text-purple-400 font-semibold">{middleAngleDeg}°</span>
                 </div>
                 <input
@@ -590,7 +492,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
             {/* Transmitted Intensity */}
             <div className="p-3.5 rounded-xl bg-gradient-to-br from-emerald-950/40 via-zinc-900 to-amber-950/40 border border-emerald-700/60 space-y-1">
               <span className="text-[10px] text-emerald-300 uppercase font-semibold">
-                {t.finalIntensityCard}
+                {tI18n('experiments.polarization.finalIntensityCard')}
               </span>
               <div className="text-xl font-bold font-mono text-emerald-300">
                 {finalIntensity.toFixed(2)} <span className="text-sm text-zinc-400">W/m²</span>
@@ -601,7 +503,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
             {/* Transmission Percentage */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.transmissionRatioCard}
+                {tI18n('experiments.polarization.transmissionRatioCard')}
               </span>
               <div className="text-xl font-bold font-mono text-amber-400">
                 {(transmissionRatio * 100).toFixed(1)} <span className="text-sm text-zinc-400">%</span>
@@ -612,7 +514,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
             {/* E-field Amplitude */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.eFieldCard}
+                {tI18n('experiments.polarization.eFieldCard')}
               </span>
               <div className="text-xl font-bold font-mono text-sky-400">
                 {(eFieldAmplitudeRatio * 100).toFixed(1)} <span className="text-sm text-zinc-400">%</span>
@@ -623,14 +525,14 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
             {/* Extinction Ratio */}
             <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
               <span className="text-[10px] text-zinc-400 uppercase font-semibold">
-                {t.extinctionCard}
+                {tI18n('experiments.polarization.extinctionCard')}
               </span>
               <div className="text-xs font-bold text-zinc-200 mt-1">
                 {relativeAngleDeg === 90 && !useMiddlePolarizer
-                  ? t.crossedExtinction
+                  ? tI18n('experiments.polarization.crossedExtinction')
                   : relativeAngleDeg === 0
-                  ? t.maxParallel
-                  : t.partialTransmission}
+                  ? tI18n('experiments.polarization.maxParallel')
+                  : tI18n('experiments.polarization.partialTransmission')}
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">Δθ = {relativeAngleDeg}°</span>
             </div>

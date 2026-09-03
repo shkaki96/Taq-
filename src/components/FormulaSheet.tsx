@@ -150,7 +150,7 @@ export default function FormulaSheet({ lang }: Props) {
             <div className="space-y-3">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] font-mono uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-zinc-800 text-zinc-300 border border-zinc-700/60 font-semibold">
-                  {item.topic}
+                  {tI18n(`formulas.${item.id}.topic`) || item.topic}
                 </span>
                 <div className="flex items-center gap-1">
                   <button

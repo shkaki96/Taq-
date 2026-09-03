@@ -15,143 +15,6 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
   const [mode, setMode] = useState<MagneticMode>('solenoid');
 
-  const t = {
-    ar: {
-      title: 'استقصاء المجال المغناطيسي والقوة الكهرومغناطيسية',
-      systemModeTitle: 'نظام التجربة والبارامترات',
-      solenoid: 'ملف لولبي',
-      straightWire: 'سلك مستقيم',
-      lorentzForce: 'قوة لورنتز F',
-      currentLabel: 'شدة التيار الكهربائي (I)',
-      fluxDensityLabel: 'كثافة التدفق المغناطيسي (B)',
-      gaussLabel: 'المجال بوحدة غاوس (Gauss)',
-      magneticForceLabel: 'القوة المغناطيسية (F)',
-      numTurnsLabel: 'عدد اللفات (N)',
-      coreMaterialLabel: 'مادة القلب الداخلي للملف (μᵣ):',
-      air: 'هواء',
-      ferrite: 'فيريت',
-      softIron: 'حديد مطاوع',
-      externalBLabel: 'المجال المغناطيسي الخارجي (B)',
-      wireAngleLabel: 'زاوية السلك مع المجال (θ)',
-      loggedSuccess: 'تم تسجيل القياس في دفتر المختبر!', // غير موثّق بمصدر
-      logBtn: 'تسجيل التدفق المغناطيسي والقوة', // غير موثّق بمصدر
-      lawsTitle: 'قوانين الكهرومغناطيسية وقاعدة اليد اليمنى:',
-      lawsDesc: 'ينتج التيار الكهربائي مجالاً مغناطيسياً يتناسب طردياً مع شدة التيار I وكثافة اللفات n. في الملف اللولبي يكون المجال منتظماً داخلياً ويحسب من B = μ₀ μᵣ n I، ويتضاعف مئات المرات عند إدخال قلب من الحديد المطاوع (μᵣ = 200). وتتأثر الأسلاك الحاملة للتيار في المجال بقوة لورنتز F = I L B sinθ.',
-      reset: 'إعادة ضبط', // غير موثّق بمصدر
-      softIronCoreCanvas: 'قلب حديد مطاوع (μr=200)',
-      ferriteCoreCanvas: 'قلب فيريت (μr=50)',
-      variableForce: 'القوة المغناطيسية (F)',
-      variableFlux: 'كثافة التدفق المغناطيسي (B)',
-    },
-    en: {
-      title: 'Magnetic Field & Electromagnetic Force Investigation',
-      systemModeTitle: 'System Mode & Parameters',
-      solenoid: 'Solenoid',
-      straightWire: 'Straight Wire',
-      lorentzForce: 'Lorentz Force',
-      currentLabel: 'Electric Current (I)',
-      fluxDensityLabel: 'Magnetic Flux (B)',
-      gaussLabel: 'Field in Gauss',
-      magneticForceLabel: 'Magnetic Force (F)',
-      numTurnsLabel: 'Number of Turns (N)',
-      coreMaterialLabel: 'Core Material (μᵣ):',
-      air: 'Air',
-      ferrite: 'Ferrite',
-      softIron: 'Soft Iron',
-      externalBLabel: 'External B Field',
-      wireAngleLabel: 'Wire Angle (θ)',
-      loggedSuccess: 'Logged to Lab Notebook!', // غير موثّق بمصدر
-      logBtn: 'Log Magnetic Field Data', // غير موثّق بمصدر
-      lawsTitle: 'Electromagnetism Laws & Right Hand Rule:',
-      lawsDesc: 'Electric current generates a magnetic field proportional to current I and turn density n. Solenoid field is uniform inside (B = μ₀ μᵣ n I) and amplifies hundreds of times with a soft iron core. Current-carrying wires experience Lorentz force F = I L B sin θ.',
-      reset: 'Reset', // غير موثّق بمصدر
-      softIronCoreCanvas: 'SOFT IRON CORE (μr=200)',
-      ferriteCoreCanvas: 'FERRITE CORE (μr=50)',
-      variableForce: 'Magnetic Force (F)',
-      variableFlux: 'Magnetic Flux Density (B)',
-    },
-    ku: {
-      title: 'لێکۆڵینەوە لە بواری موگناتیسی و هێزی کارۆموگناتیسی',
-      systemModeTitle: 'سیستەم و تایبەتمەندییەکان', // غير موثّق بمصدر
-      solenoid: 'کۆیلی لولەیی',
-      straightWire: 'تەلی ڕاست',
-      lorentzForce: 'هێزی لۆرێنتز F',
-      currentLabel: 'توندی تەزووی کارەبایی (I)',
-      fluxDensityLabel: 'توندوتیژی بواری موگناتیسی (B)',
-      gaussLabel: 'بوار بە یەکەی گاوس', // غير موثّق بمصدر
-      magneticForceLabel: 'هێزی موگناتیسی (F)',
-      numTurnsLabel: 'ژمارەی خولەکان (N)',
-      coreMaterialLabel: 'ماددەی ناوکی کۆیل (μᵣ):', // غير موثّق بمصدر
-      air: 'هەوا',
-      ferrite: 'فێریت',
-      softIron: 'ئاسنی نەرم',
-      externalBLabel: 'بواری موگناتیسی دەرەکی (B)',
-      wireAngleLabel: 'گۆشەی تەل لەگەڵ بواردا (θ)',
-      loggedSuccess: 'تۆمارکرا لە دەفتەری تاقیگە!', // غير موثّق بمصدر
-      logBtn: 'تۆمارکردنی زانیاری بواری موگناتیسی', // غير موثّق بمصدر
-      lawsTitle: 'یاساکانی کارۆموگناتیسی و یاسای دەستی ڕاست:',
-      lawsDesc: 'تەزووی کارەبایی بوارێکی موگناتیسی دروست دەکات کە ڕاستەوانە دەگۆڕێت لەگەڵ توندی تەزوو I و چڕی خولەکان n. لە کۆیلی لولەییدا بوارەکە لەناوەوە نەگۆڕە. بە بەکارهێنانی ئاسنی نەرم بوارەکە زۆر بەهێزتر دەبێت.',
-      reset: 'ڕێکخستنەوە', // غير موثّق بمصدر
-      softIronCoreCanvas: 'ناوکی ئاسنی نەرم (μr=200)', // غير موثّق بمصدر
-      ferriteCoreCanvas: 'ناوکی فێریت (μr=50)', // غير موثّق بمصدر
-      variableForce: 'هێزی موگناتیسی (F)',
-      variableFlux: 'توندوتیژی بواری موگناتیسی (B)',
-    },
-    kmr: {
-      title: 'Lêkolîna Zeviya Magnetîkî û Hêza Elektromanyetîkî',
-      systemModeTitle: 'Sîstem û Parametre', // غير موثّق بمصدر
-      solenoid: 'Bobîn',
-      straightWire: 'Têla rast',
-      lorentzForce: 'Hêza Lorêntiz F',
-      currentLabel: 'Herikîna elektrîkî (I)',
-      fluxDensityLabel: 'Pêvecoya zeviya magnetîkî (B)',
-      gaussLabel: 'Zevî bi yekeya Gauss', // غير موثّق بمصدر
-      magneticForceLabel: 'Hêza magnetîkî (F)',
-      numTurnsLabel: 'Hejmara dorpêçan (N)',
-      coreMaterialLabel: 'Maddetiya dendika bobînê (μᵣ):', // غير موثّق بمصدر
-      air: 'Hewa',
-      ferrite: 'Ferrît',
-      softIron: 'Hesênê nerm',
-      externalBLabel: 'Zeviya magnetîkî ya derve (B)',
-      wireAngleLabel: 'Goşeya têlê bi zeviyê re (θ)',
-      loggedSuccess: 'Hat tomarkirin di defterê de!', // غير موثّق بمصدر
-      logBtn: 'Tomarkirina daneyên zeviya magnetîkî', // غير موثّق بمصدر
-      lawsTitle: 'Qanûnên elektromanyetîkî û Rêzika Destê Rastê:',
-      lawsDesc: 'Herikîna elektrîkî zeviyeke magnetîkî çêdike ku rasterast bi herikîna I û draviya pêçanan n re diguhere. Di bobînê de zevî di nav de yekdest e. Bi karanîna hesênê nerm zevî gelekî bihêztir dibe.',
-      reset: 'Nûkirin', // غير موثّق بمصدر
-      softIronCoreCanvas: 'DENDIKA HESÊNÊ NERM (μr=200)', // غير موثّق بمصدر
-      ferriteCoreCanvas: 'DENDIKA FERRÎT (μr=50)', // غير موثّق بمصدر
-      variableForce: 'Hêza magnetîkî (F)',
-      variableFlux: 'Pêvecoya zeviya magnetîkî (B)',
-    },
-  }[lang] || {
-    title: 'استقصاء المجال المغناطيسي والقوة الكهرومغناطيسية',
-    systemModeTitle: 'نظام التجربة والبارامترات',
-    solenoid: 'ملف لولبي',
-    straightWire: 'سلك مستقيم',
-    lorentzForce: 'قوة لورنتز F',
-    currentLabel: 'شدة التيار الكهربائي (I)',
-    fluxDensityLabel: 'كثافة التدفق المغناطيسي (B)',
-    gaussLabel: 'المجال بوحدة غاوس (Gauss)',
-    magneticForceLabel: 'القوة المغناطيسية (F)',
-    numTurnsLabel: 'عدد اللفات (N)',
-    coreMaterialLabel: 'مادة القلب الداخلي للملف (μᵣ):',
-    air: 'هواء',
-    ferrite: 'فيريت',
-    softIron: 'حديد مطاوع',
-    externalBLabel: 'المجال المغناطيسي الخارجي (B)',
-    wireAngleLabel: 'زاوية السلك مع المجال (θ)',
-    loggedSuccess: 'تم تسجيل القياس في دفتر المختبر!',
-    logBtn: 'تسجيل التدفق المغناطيسي والقوة',
-    lawsTitle: 'قوانين الكهرومغناطيسية وقاعدة اليد اليمنى:',
-    lawsDesc: 'ينتج التيار الكهربائي مجالاً مغناطيسياً يتناسب طردياً مع شدة التيار I وكثافة اللفات n. في الملف اللولبي يكون المجال منتظماً داخلياً ويحسب من B = μ₀ μᵣ n I، ويتضاعف مئات المرات عند إدخال قلب من الحديد المطاوع (μᵣ = 200). وتتأثر الأسلاك الحاملة للتيار في المجال بقوة لورنتز F = I L B sinθ.',
-    reset: 'إعادة ضبط',
-    softIronCoreCanvas: 'قلب حديد مطاوع (μr=200)',
-    ferriteCoreCanvas: 'قلب فيريت (μr=50)',
-    variableForce: 'القوة المغناطيسية (F)',
-    variableFlux: 'كثافة التدفق المغناطيسي (B)',
-  };
-
   // Solenoid Parameters
   const [currentI, setCurrentI] = useState<number>(3.0); // Amperes (-8 to +8 A)
   const [numTurns, setNumTurns] = useState<number>(400); // Turns (N)
@@ -195,6 +58,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     const width = canvas.width;
     const height = canvas.height;
@@ -231,7 +95,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
         ctx.fillStyle = '#94a3b8';
         ctx.font = 'bold 10px sans-serif';
         ctx.textAlign = 'center';
-        ctx.fillText(coreMaterial === 'iron' ? t.softIronCoreCanvas : t.ferriteCoreCanvas, centerX, centerY + 4);
+        ctx.fillText(coreMaterial === 'iron' ? tI18n('experiments.magnetic_field.softIronCoreCanvas') : tI18n('experiments.magnetic_field.ferriteCoreCanvas'), centerX, centerY + 4);
       }
 
       // Magnetic Field Lines through Solenoid
@@ -456,7 +320,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
         coreMaterial: mode === 'solenoid' ? coreMaterial : 'N/A',
         magneticForce: mode === 'force_wire' ? `${magneticForce.toFixed(3)} N` : 'N/A',
       },
-      variableName: mode === 'force_wire' ? t.variableForce : t.variableFlux,
+      variableName: mode === 'force_wire' ? tI18n('experiments.magnetic_field.variableForce') : tI18n('experiments.magnetic_field.variableFlux'),
       measuredValue: Number(mode === 'force_wire' ? magneticForce.toFixed(4) : (bVal * 1000).toFixed(3)),
       theoreticalValue: Number(mode === 'force_wire' ? magneticForce.toFixed(4) : (bVal * 1000).toFixed(3)),
       unit: mode === 'force_wire' ? 'N' : 'mT',
@@ -479,7 +343,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
               </div>
               <div>
                 <h3 className="text-base font-bold text-zinc-100">
-                  {t.title}
+                  {tI18n('experiments.magnetic_field.title')}
                 </h3>
                 <p className="text-sm text-zinc-400 font-mono">
                   {mode === 'solenoid' ? 'B = μ₀ μᵣ n I' : mode === 'straight_wire' ? 'B = (μ₀ I) / (2π r)' : 'F = I L B sin θ'}
@@ -494,7 +358,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
                   setProbePos({ x: 350, y: 190 });
                 }}
                 className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700 transition-colors"
-                title={t.reset}
+                title={tI18n('experiments.magnetic_field.reset')}
               >
                 <RotateCcw  className="w-4 h-4"/>
               </button>
@@ -516,28 +380,28 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
           {/* Real-time Field Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.currentLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.magnetic_field.currentLabel')}</div>
               <div className="text-base font-bold font-mono text-amber-400">
                 {currentI.toFixed(2)} <span className="text-sm text-zinc-400">A</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.fluxDensityLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.magnetic_field.fluxDensityLabel')}</div>
               <div className="text-base font-bold font-mono text-sky-400">
                 {((mode === 'solenoid' ? solenoidB : straightWireB) * 1000).toFixed(2)} <span className="text-sm text-zinc-400">mT</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.gaussLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.magnetic_field.gaussLabel')}</div>
               <div className="text-base font-bold font-mono text-emerald-400">
                 {((mode === 'solenoid' ? solenoidB : straightWireB) * 10000).toFixed(1)} <span className="text-sm text-zinc-400">G</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.magneticForceLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.magnetic_field.magneticForceLabel')}</div>
               <div className="text-base font-bold font-mono text-rose-400">
                 {magneticForce.toFixed(3)} <span className="text-sm text-zinc-400">N</span>
               </div>
@@ -549,10 +413,10 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
         <div className="p-4 rounded-2xl bg-amber-950/20 border border-amber-800/30 text-xs text-zinc-300 space-y-2">
           <div className="font-semibold text-amber-300 flex items-center gap-1.5">
             <Zap  className="w-4 h-4"/>
-            <span>{t.lawsTitle}</span>
+            <span>{tI18n('experiments.magnetic_field.lawsTitle')}</span>
           </div>
           <p>
-            {t.lawsDesc}
+            {tI18n('experiments.magnetic_field.lawsDesc')}
           </p>
         </div>
       </div>
@@ -561,7 +425,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
       <div className="space-y-4">
         <div className="rounded-2xl bg-zinc-900 border border-zinc-800 p-5 shadow-xl space-y-5">
           <h4 className="text-sm font-bold text-zinc-200 pb-2 border-b border-zinc-800">
-            {t.systemModeTitle}
+            {tI18n('experiments.magnetic_field.systemModeTitle')}
           </h4>
 
           {/* Mode Selector */}
@@ -572,7 +436,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
                 mode === 'solenoid' ? 'bg-zinc-800 text-amber-400 border-amber-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.solenoid}
+              {tI18n('experiments.magnetic_field.solenoid')}
             </button>
             <button
               onClick={() => setMode('straight_wire')}
@@ -580,7 +444,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
                 mode === 'straight_wire' ? 'bg-zinc-800 text-amber-400 border-amber-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.straightWire}
+              {tI18n('experiments.magnetic_field.straightWire')}
             </button>
             <button
               onClick={() => setMode('force_wire')}
@@ -588,14 +452,14 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
                 mode === 'force_wire' ? 'bg-zinc-800 text-amber-400 border-amber-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.lorentzForce}
+              {tI18n('experiments.magnetic_field.lorentzForce')}
             </button>
           </div>
 
           {/* Current Slider */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.currentLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.magnetic_field.currentLabel')}</span>
               <span className="font-mono text-amber-400 font-bold">{currentI.toFixed(1)} A</span>
             </div>
             <input
@@ -614,7 +478,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
               {/* Turns Slider */}
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-zinc-400">{t.numTurnsLabel}</span>
+                  <span className="text-zinc-400">{tI18n('experiments.magnetic_field.numTurnsLabel')}</span>
                   <span className="font-mono text-sky-400 font-bold">{numTurns}</span>
                 </div>
                 <input
@@ -630,27 +494,27 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
 
               {/* Core Material Selection */}
               <div className="space-y-1.5">
-                <label className="text-sm text-zinc-400">{t.coreMaterialLabel}</label>
+                <label className="text-sm text-zinc-400">{tI18n('experiments.magnetic_field.coreMaterialLabel')}</label>
                 <div className="grid grid-cols-3 gap-1.5 text-xs">
                   <button
                     onClick={() => setCoreMaterial('air')}
                     className={`min-h-[44px] min-w-[44px] p-2 rounded-xl text-center font-mono ${coreMaterial === 'air' ? 'bg-sky-600 text-white' : 'bg-zinc-950 text-zinc-400 border border-zinc-800'}`}
                   >
-                    <div>{t.air}</div>
+                    <div>{tI18n('experiments.magnetic_field.air')}</div>
                     <div className="text-[10px]">μᵣ = 1</div>
                   </button>
                   <button
                     onClick={() => setCoreMaterial('ferrite')}
                     className={`min-h-[44px] min-w-[44px] p-2 rounded-xl text-center font-mono ${coreMaterial === 'ferrite' ? 'bg-sky-600 text-white' : 'bg-zinc-950 text-zinc-400 border border-zinc-800'}`}
                   >
-                    <div>{t.ferrite}</div>
+                    <div>{tI18n('experiments.magnetic_field.ferrite')}</div>
                     <div className="text-[10px]">μᵣ = 50</div>
                   </button>
                   <button
                     onClick={() => setCoreMaterial('iron')}
                     className={`min-h-[44px] min-w-[44px] p-2 rounded-xl text-center font-mono ${coreMaterial === 'iron' ? 'bg-sky-600 text-white' : 'bg-zinc-950 text-zinc-400 border border-zinc-800'}`}
                   >
-                    <div>{t.softIron}</div>
+                    <div>{tI18n('experiments.magnetic_field.softIron')}</div>
                     <div className="text-[10px]">μᵣ = 200</div>
                   </button>
                 </div>
@@ -662,7 +526,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
             <div className="space-y-2 pt-2 border-t border-zinc-800">
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-zinc-400">{t.externalBLabel}</span>
+                  <span className="text-zinc-400">{tI18n('experiments.magnetic_field.externalBLabel')}</span>
                   <span className="font-mono text-sky-400 font-bold">{externalB.toFixed(2)} T</span>
                 </div>
                 <input
@@ -678,7 +542,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
 
               <div className="space-y-1">
                 <div className="flex justify-between text-xs">
-                  <span className="text-zinc-400">{t.wireAngleLabel}</span>
+                  <span className="text-zinc-400">{tI18n('experiments.magnetic_field.wireAngleLabel')}</span>
                   <span className="font-mono text-emerald-400 font-bold">{fieldAngleDeg}°</span>
                 </div>
                 <input
@@ -700,7 +564,7 @@ export default function MagneticFieldSim({ lang, onLogMeasurement }: Props) {
            className={`min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 shadow-amber-900/30' }`}>
             <BookmarkCheck  className="w-4 h-4"/>
             <span>
-              {logged ? t.loggedSuccess : t.logBtn}
+              {logged ? tI18n('experiments.magnetic_field.loggedSuccess') : tI18n('experiments.magnetic_field.logBtn')}
             </span>
           </button>
         </div>

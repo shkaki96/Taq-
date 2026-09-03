@@ -9,6 +9,7 @@ interface KeplerLawsSimProps {
 }
 
 export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [eccentricity, setEccentricity] = useState<number>(0.6); // 0 to 0.8
   const [semiMajorAxis, setSemiMajorAxis] = useState<number>(180); // pixels
@@ -43,6 +44,7 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
           ctx.clearRect(0, 0, 600, 320);
 
           const a = semiMajorAxis;
@@ -120,41 +122,6 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
     return () => cancelAnimationFrame(animId);
   }, [isRunning, eccentricity, semiMajorAxis, orbitalAngle, showSweptArea]);
 
-  const t = {
-    ar: {
-      title: 'قوانين كبلر لحركة الكواكب (Kepler\'s Laws: T² / a³ = const)',
-      eccentricity: 'اللامركزية / الانحراف المداري (e)',
-      semiMajor: 'نصف المحور الأكبر (Semi-Major Axis a)',
-      orbitalPeriod: 'الزمن الدوري المداري (T)',
-      sweptArea: 'إظهار المساحة الممسوحة (dA/dt = ثابت)',
-      reset: 'إعادة ضبط',
-    },
-    en: {
-      title: 'Kepler\'s Laws of Planetary Motion (T² / a³ = const)',
-      eccentricity: 'Orbital Eccentricity (e)',
-      semiMajor: 'Semi-Major Axis (a)',
-      orbitalPeriod: 'Orbital Period (T)',
-      sweptArea: 'Show Swept Area (dA/dt = const)',
-      reset: 'Reset',
-    },
-    ku: {
-      title: 'یاساکانی کێپلەر بۆ جوڵەی هەسارەکان',
-      eccentricity: 'ناوەند لادان (e)',
-      semiMajor: 'نیوەتەوەری گەورە (a)',
-      orbitalPeriod: 'خولی خولانەوە (T)',
-      sweptArea: 'پیشاندانی ڕووبەری بڕاو',
-      reset: 'ڕێکخستنەوە',
-    },
-    kmr: {
-      title: 'Qanûnên Kepler ên Tevgera Gerstêrkan',
-      eccentricity: 'Nalendetiya Xelekê (e)',
-      semiMajor: 'Nîv-tewereya Mezin (a)',
-      orbitalPeriod: 'Dema Xelekê (T)',
-      sweptArea: 'Nîşandana Rûbera Birrî',
-      reset: 'Nûkirin',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -163,7 +130,7 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
             <Compass  className="w-6 h-6"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.keplers_laws.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER C • SIMULATION 16</p>
           </div>
         </div>
@@ -174,7 +141,7 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
             className="min-h-[44px] min-w-[44px] flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition-colors"
           >
             {isRunning ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
-            {isRunning ? 'إيقاف مؤقت' : 'تشغيل المدار'}
+            {isRunning ? tI18n('experiments.keplers_laws.pause') : tI18n('experiments.keplers_laws.play')}
           </button>
           <button
             onClick={() => {
@@ -183,7 +150,7 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
               setOrbitalAngle(0);
             }}
             className="min-h-[44px] min-w-[44px] p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700"
-            title={t.reset}
+            title={tI18n('experiments.keplers_laws.reset')}
           >
             <RotateCcw  className="w-4 h-4"/>
           </button>
@@ -203,7 +170,7 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-emerald-400">{t.eccentricity} (e)</span>
+                <span className="text-emerald-400">{tI18n('experiments.keplers_laws.eccentricity')} (e)</span>
                 <span className="font-mono text-white text-sm">{eccentricity.toFixed(2)}</span>
               </div>
               <input
@@ -219,7 +186,7 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
 
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-slate-300">{t.semiMajor} (a)</span>
+                <span className="text-slate-300">{tI18n('experiments.keplers_laws.semiMajor')} (a)</span>
                 <span className="font-mono text-white text-sm">{semiMajorAxis} px</span>
               </div>
               <input
@@ -234,7 +201,7 @@ export const KeplerLawsSim: React.FC<KeplerLawsSimProps> = ({ lang }) => {
             </div>
 
             <div className="p-3 bg-emerald-950/30 border border-emerald-500/30 rounded-xl space-y-1 text-xs">
-              <span className="text-emerald-300 font-semibold block">{t.orbitalPeriod} (Kepler 3rd):</span>
+              <span className="text-emerald-300 font-semibold block">{tI18n('experiments.keplers_laws.orbitalPeriod')} (Kepler 3rd):</span>
               <span className="text-base font-bold text-amber-300 font-mono">
                 {T_period_years.toFixed(2)} yr
               </span>

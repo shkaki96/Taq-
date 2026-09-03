@@ -77,13 +77,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
           <div className="flex items-center gap-2">
             <Calculator className="w-4 h-4 text-sky-400" />
             <h3 className="text-sm font-semibold text-zinc-100">
-              {lang === 'ar' 
-                ? 'أدوات ومراجع المختبر' 
-                : lang === 'kmr'
-                ? 'Amûr û Çavkaniyên Laboratûwarê'
-                : lang === 'ku' 
-                ? 'ئامراز و سەرچاوەکانی تاقیگە' 
-                : 'Laboratory Physics Tools'}
+              {t('labTools.title')}
             </h3>
           </div>
           <button
@@ -105,7 +99,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
             }`}
           >
             <Timer className="w-3.5 h-3.5" />
-            <span>{lang === 'ar' ? 'ساعة إيقاف' : lang === 'kmr' ? 'Seeta Rawestandinê' : lang === 'ku' ? 'کاتژمێری دەستی' : 'Stopwatch'}</span>
+            <span>{t('labTools.stopwatch.tab')}</span>
           </button>
           <button
             onClick={() => setActiveTool('converter')}
@@ -116,7 +110,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
             }`}
           >
             <Binary className="w-3.5 h-3.5" />
-            <span>{lang === 'ar' ? 'محول الوحدات' : lang === 'kmr' ? 'Guhêrbarê Yekeyan' : lang === 'ku' ? 'گۆڕەری یەکەکان' : 'Unit Converter'}</span>
+            <span>{t('labTools.converter.tab')}</span>
           </button>
           <button
             onClick={() => setActiveTool('constants')}
@@ -127,7 +121,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
             }`}
           >
             <Globe className="w-3.5 h-3.5" />
-            <span>{lang === 'ar' ? 'الثوابت الفيزيائية' : lang === 'kmr' ? 'Neguhêrbarên Fîzîkî' : lang === 'ku' ? 'نەگۆڕە فیزیاییەکان' : 'Constants'}</span>
+            <span>{t('labTools.constants.tab')}</span>
           </button>
         </div>
 
@@ -153,8 +147,8 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
                   {isSwRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
                   <span>
                     {isSwRunning 
-                      ? (lang === 'ar' ? 'إيقاف مؤقت' : lang === 'kmr' ? 'Rawestandin' : lang === 'ku' ? 'وەستانی کاتی' : 'Pause') 
-                      : (lang === 'ar' ? 'بدء' : lang === 'kmr' ? 'Destpêkirin' : lang === 'ku' ? 'دەستپێکردن' : 'Start')}
+                      ? t('labTools.stopwatch.pause')
+                      : t('labTools.stopwatch.start')}
                   </span>
                 </button>
 
@@ -163,7 +157,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
                   disabled={!isSwRunning}
                   className="px-4 py-2.5 rounded-xl bg-zinc-800 border border-zinc-700 text-zinc-300 hover:bg-zinc-700 disabled:opacity-40 text-xs font-medium transition-colors"
                 >
-                  {lang === 'ar' ? 'دورة (Lap)' : lang === 'ku' ? 'خول (Lap)' : 'Lap'}
+                  {t('labTools.stopwatch.lap')}
                 </button>
 
                 <button
@@ -171,7 +165,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
                   className="px-4 py-2.5 rounded-xl bg-zinc-800 border border-zinc-700 text-zinc-300 hover:bg-zinc-700 text-xs font-medium flex items-center gap-1.5 transition-colors"
                 >
                   <RotateCcw className="w-3.5 h-3.5" />
-                  <span>{lang === 'ar' ? 'تصفير' : lang === 'ku' ? 'ڕێکخستنەوە' : 'Reset'}</span>
+                  <span>{t('labTools.stopwatch.reset')}</span>
                 </button>
               </div>
 
@@ -202,11 +196,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
                         : 'bg-zinc-900 border-zinc-800 text-zinc-400'
                     }`}
                   >
-                    {type === 'speed' 
-                      ? (lang === 'ar' ? 'السرعة' : lang === 'ku' ? 'خێرایی' : 'Speed') 
-                      : type === 'energy' 
-                      ? (lang === 'ar' ? 'الطاقة' : lang === 'ku' ? 'وزە' : 'Energy') 
-                      : (lang === 'ar' ? 'الزاوية' : lang === 'ku' ? 'گۆشە' : 'Angle')}
+                    {t(`labTools.converter.${type}`)}
                   </button>
                 ))}
               </div>
@@ -214,10 +204,10 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
               <div className="space-y-2">
                 <label className="text-xs text-zinc-400">
                   {converterType === 'speed' 
-                    ? (lang === 'ar' ? 'قيمة السرعة (m/s)' : lang === 'ku' ? 'بڕی خێرایی (m/s)' : 'Input Speed (m/s)') 
+                    ? t('labTools.converter.inputSpeed')
                     : converterType === 'energy' 
-                    ? (lang === 'ar' ? 'قيمة الطاقة (J)' : lang === 'ku' ? 'بڕی وزە (J)' : 'Input Energy (J)') 
-                    : (lang === 'ar' ? 'الزاوية بالدرجات' : lang === 'ku' ? 'گۆشە بە پلە' : 'Input Angle (Degrees)')}
+                    ? t('labTools.converter.inputEnergy')
+                    : t('labTools.converter.inputAngle')}
                 </label>
                 <input
                   type="number"

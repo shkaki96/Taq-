@@ -9,6 +9,7 @@ interface BlackbodySimProps {
 }
 
 export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [temperatureK, setTemperatureK] = useState<number>(5800); // 5800 K (Sun surface)
 
   // Wien's Displacement Law: lambda_max * T = 2.898 * 10^-3 m*K
@@ -34,69 +35,6 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
     });
   }
 
-  const t = {
-    ar: {
-      title: 'طيف إشعاع الجسم الأسود وقانون فين (λ_max · T = b)',
-      temperature: 'درجة حرارة الجسم الأسود (T)',
-      peakWavelength: 'قمة الطول الموجي للإشعاع (λ_max)',
-      totalIntensity: 'القدرة الإشعاعية المنبعثة (I = σ T⁴)',
-      sun: 'سطح الشمس (5800 K)',
-      bulb: 'مصباح التنجستن (3000 K)',
-      earth: 'كوكب الأرض (300 K)',
-      sirius: 'نجم الشعرى اليمانية (9940 K)',
-      visibleRange: 'نطاق الضوء المرئي (380 - 750 nm)',
-      uv: 'فوق بنفسجي',
-      visible: 'مرئي',
-      ir: 'تحت حمراء',
-      reset: 'إعادة ضبط إلى الشمس',
-    },
-    en: {
-      title: 'Blackbody Spectrum & Wien\'s Law (λ_max · T = b)',
-      temperature: 'Blackbody Temperature (T)',
-      peakWavelength: 'Peak Emission Wavelength (λ_max)',
-      totalIntensity: 'Radiated Power Density (I = σ T⁴)',
-      sun: 'Sun Surface (5800 K)',
-      bulb: 'Lightbulb (3000 K)',
-      earth: 'Earth Surface (300 K)',
-      sirius: 'Sirius Star (9940 K)',
-      visibleRange: 'Visible Spectrum (380 - 750 nm)',
-      uv: 'UV',
-      visible: 'Visible',
-      ir: 'Infrared (IR)',
-      reset: 'Reset to Sun',
-    },
-    ku: {
-      title: 'سپێکتڕۆمی تەنە ڕەشەکان و یاسای ڤین',
-      temperature: 'پلەی گەرمی تەنە ڕەشەکە (T)',
-      peakWavelength: 'لوتکەی درێژی شەپۆل (λ_max)',
-      totalIntensity: 'چڕیی تیشکدان (I = σ T⁴)',
-      sun: 'خۆر (5800 K)',
-      bulb: 'گڵۆپ (3000 K)',
-      earth: 'زەوی (300 K)',
-      sirius: 'ئەستێرەی سیرۆس (9940 K)',
-      visibleRange: 'ڕووناکی بینراو',
-      uv: 'سەروو بنەوشەیی',
-      visible: 'بینراو',
-      ir: 'ژێر سوور',
-      reset: 'ڕێکخستنەوە بۆ خۆر',
-    },
-    kmr: {
-      title: 'Tîrêjên Laşê Reş û Qanûna Wien (λ_max · T = b)',
-      temperature: 'Germahiya Laşê Reş (T)',
-      peakWavelength: 'Lûtkeya Dirêjahiya Pêlê (λ_max)',
-      totalIntensity: 'Hêza Tîrêjê ya Giştî (I = σ T⁴)',
-      sun: 'Rûyê Rojê (5800 K)',
-      bulb: 'Lampeya Ronahiyê (3000 K)',
-      earth: 'Rûyê Erdê (300 K)',
-      sirius: 'Stêrka Sirius (9940 K)',
-      visibleRange: 'Ronahiya Xuyanî (380 - 750 nm)',
-      uv: 'Ser-binefşî (UV)',
-      visible: 'Xuyanî',
-      ir: 'Bin-sor (IR)',
-      reset: 'Nûkirin bo Rojê',
-    },
-  }[lang];
-
   // SVG path generator
   const pathD = curvePoints.reduce((acc, pt, idx) => {
     const x = (pt.x / 100) * 500 + 40;
@@ -112,7 +50,7 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
             <Sun  className="w-6 h-6 animate-pulse"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.blackbody_spectrum.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER A • SIMULATION 5</p>
           </div>
         </div>
@@ -120,7 +58,7 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
         <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors flex items-center gap-1.5"
         >
           <RotateCcw  className="w-3.5 h-3.5"/>
-          {t.reset}
+          {tI18n('experiments.blackbody_spectrum.reset')}
         </button>
       </div>
 
@@ -136,15 +74,15 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
               {/* Spectral bands (UV, Visible, IR) */}
               {/* UV: 0 to 0.38 um -> x: 40 to 40 + (0.38/3)*500 = 103 */}
               <rect x="40" y="30" width="63" height="190" fill="rgba(168, 85, 247, 0.15)" />
-              <text x="70" y="50" fill="#c084fc" fontSize="10" textAnchor="middle">{t.uv}</text>
+              <text x="70" y="50" fill="#c084fc" fontSize="10" textAnchor="middle">{tI18n('experiments.blackbody_spectrum.uv')}</text>
 
               {/* Visible: 0.38 to 0.75 um -> x: 103 to 103 + (0.37/3)*500 = 165 */}
               <rect x="103" y="30" width="62" height="190" fill="url(#rainbowGrad)" opacity="0.35" />
-              <text x="134" y="50" fill="#fde047" fontSize="10" textAnchor="middle">{t.visible}</text>
+              <text x="134" y="50" fill="#fde047" fontSize="10" textAnchor="middle">{tI18n('experiments.blackbody_spectrum.visible')}</text>
 
               {/* IR: 0.75 to 3.0 um -> x: 165 to 560 */}
               <rect x="165" y="30" width="395" height="190" fill="rgba(239, 68, 68, 0.1)" />
-              <text x="350" y="50" fill="#f87171" fontSize="10" textAnchor="middle">{t.ir}</text>
+              <text x="350" y="50" fill="#f87171" fontSize="10" textAnchor="middle">{tI18n('experiments.blackbody_spectrum.ir')}</text>
 
               {/* Rainbow Gradient Definition */}
               <defs>
@@ -191,10 +129,10 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
 
           <div className="flex flex-wrap items-center justify-between text-xs text-slate-300 pt-2 border-t border-slate-800">
             <span className="text-amber-400 font-mono font-semibold">
-              {t.peakWavelength}: {lambdaMax_nm.toFixed(0)} nm ({lambdaMax_um.toFixed(2)} μm)
+              {tI18n('experiments.blackbody_spectrum.peakWavelength')}: {lambdaMax_nm.toFixed(0)} nm ({lambdaMax_um.toFixed(2)} μm)
             </span>
             <span className="text-purple-400 font-mono">
-              {t.totalIntensity}: {intensity_MW_m2.toFixed(2)} MW/m²
+              {tI18n('experiments.blackbody_spectrum.totalIntensity')}: {intensity_MW_m2.toFixed(2)} MW/m²
             </span>
           </div>
         </div>
@@ -204,7 +142,7 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-amber-400">{t.temperature} (T)</span>
+                <span className="text-amber-400">{tI18n('experiments.blackbody_spectrum.temperature')} (T)</span>
                 <span className="font-mono text-white text-base font-bold">{temperatureK} K</span>
               </div>
               <input
@@ -226,25 +164,25 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
                     temperatureK === 9940 ? 'bg-sky-500/20 border-sky-500 text-sky-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  ⭐ {t.sirius}
+                  ⭐ {tI18n('experiments.blackbody_spectrum.sirius')}
                 </button>
                 <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
                     temperatureK === 5800 ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  ☀️ {t.sun}
+                  ☀️ {tI18n('experiments.blackbody_spectrum.sun')}
                 </button>
                 <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
                     temperatureK === 3000 ? 'bg-orange-500/20 border-orange-500 text-orange-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  💡 {t.bulb}
+                  💡 {tI18n('experiments.blackbody_spectrum.bulb')}
                 </button>
                 <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
                     temperatureK === 300 ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
-                  🌍 {t.earth}
+                  🌍 {tI18n('experiments.blackbody_spectrum.earth')}
                 </button>
               </div>
             </div>

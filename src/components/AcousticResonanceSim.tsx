@@ -29,123 +29,6 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animFrameRef = useRef<number | null>(null);
 
-  const t = {
-    ar: {
-      closedNode: 'طرف مغلق (عقدة)',
-      openAntinode: 'طرف مفتوح (بطن)',
-      resonanceAmp: 'سعة الرنين',
-      title: 'الرنين الصوتي في الأنابيب الهوائية والأمواج الموقوفة',
-      audioOn: 'الصوت مفعّل', // غير موثّق بمصدر
-      playTone: 'تشغيل النغمة', // غير موثّق بمصدر
-      sourceFreq: 'تردد المصدر الصوتي (f)',
-      resonanceFreq: 'تردد الرنين النظري (f_res)',
-      wavelength: 'الطول الموجي (λ)',
-      speedOfSound: 'سرعة الصوت في الهواء (v)',
-      theoryTitle: 'شروط الرنين الصوتي والأمواج الموقوفة:',
-      theoryDesc: 'في الأنبوب المغلق، يشترط وجود عقدة إزاحة (سكون جزيئات الهواء) عند النهاية المغلقة وبطن إزاحة عند الفوهة المفتوحة، فيحدث الرنين فقط عند الترددات الفردية f = (2n-1)v/(4L). أما في الأنبوب المفتوح فيحدث بطنان عند الطرفين ويكون الرنين عند كل التوافقيات f = n v/(2L).',
-      tubeTypeHeader: 'نوع الأنبوب والترددات',
-      closedTube: 'أنبوب مغلق الطرف (λ/4)',
-      openTube: 'أنبوب مفتوح الطرفين (λ/2)',
-      snapHarmonics: 'القفز السريع لترددات الرنين الطبيعية:',
-      freqLabel: 'التردد (f)',
-      tubeLengthLabel: 'طول الأنبوب (L)',
-      airTempLabel: 'درجة حرارة الهواء (T)',
-      loggedSuccess: 'تم تسجيل القياس في دفتر المختبر!', // غير موثّق بمصدر
-      logButton: 'تسجيل تردد وطول الرنين',
-    },
-    en: {
-      closedNode: 'Closed End (Node)',
-      openAntinode: 'Open End (Antinode)',
-      resonanceAmp: 'Resonance Amplitude',
-      title: 'Acoustic Resonance in Air Columns & Standing Waves',
-      audioOn: 'Audio On', // غير موثّق بمصدر
-      playTone: 'Play Tone', // غير موثّق بمصدر
-      sourceFreq: 'Source Frequency (f)',
-      resonanceFreq: 'Theoretical Resonance Freq (f_res)',
-      wavelength: 'Wavelength (λ)',
-      speedOfSound: 'Speed of Sound in Air (v)',
-      theoryTitle: 'Resonance Conditions & Standing Waves:',
-      theoryDesc: 'In a closed tube, a displacement node (at-rest air particles) is formed at the closed end and an antinode at the open end, resonating only at odd harmonics fn = (2n-1)v/(4L). In an open tube, antinodes exist at both open ends, resonating at all harmonic multiples fn = n v/(2L).',
-      tubeTypeHeader: 'Tube Type & Frequencies',
-      closedTube: 'Closed Tube (λ/4)',
-      openTube: 'Open Tube (λ/2)',
-      snapHarmonics: 'Snap to Harmonic Resonances:',
-      freqLabel: 'Frequency (f)',
-      tubeLengthLabel: 'Tube Length (L)',
-      airTempLabel: 'Air Temperature (T)',
-      loggedSuccess: 'Logged to Lab Notebook!', // غير موثّق بمصدر
-      logButton: 'Log Resonance Frequency & Length',
-    },
-    ku: {
-      closedNode: 'سەری داخراو (گرێ)',
-      openAntinode: 'سەری کراوه (سک)',
-      resonanceAmp: 'پانیی دەنگدانەوە',
-      title: 'دەنگدانەوەی دەنگی لە بۆرییە هەواییەکان و شەپۆلە مۆڵدراوەکان',
-      audioOn: 'دەنگ چالاکە', // غير موثّق بمصدر
-      playTone: 'لێدانی نەغمه', // غير موثّق بمصدر
-      sourceFreq: 'فرێکوێنسیی سەرچاوەی دەنگ (f)',
-      resonanceFreq: 'فرێکوێنسیی دەنگدانەوەی بیردۆزيی (f_res)',
-      wavelength: 'درێژیی شەپۆل (λ)',
-      speedOfSound: 'خێراییی دەنگ لە هەوادا (v)',
-      theoryTitle: 'مەرجەکانی دەنگدانەوەی دەنگی و شەپۆلە مۆڵدراوەکان:',
-      theoryDesc: 'لە بۆریی داخراودا، مەرجە گرێی لادان (وەستانی گەردەکانی هەوا) لە سەری داخراودا و سکی لادان لە سەری کراوەدا دروست بێت، بەمەش دەنگدانەوە تەنها لە فرێکوێنسییە تاکەکاندا f = (2n-1)v/(4L) ڕوودەدات. بەڵام لە بۆریی کراوەدا دوو سک لە هەردوو سەردا دروست دەبن و دەنگدانەوە لە هەموو هارمۆنیکەکاندا f = n v/(2L) ڕوودەدات.',
-      tubeTypeHeader: 'جۆری بۆری و فرێکوێنسییەکان',
-      closedTube: 'بۆریی سەری داخراو (λ/4)',
-      openTube: 'بۆریی سەری کراوە (λ/2)',
-      snapHarmonics: 'بازدانی خێرا بۆ فرێکوێنسییەکانی دەنگدانەوەی سروشتی:',
-      freqLabel: 'فرێکوێنسی (f)',
-      tubeLengthLabel: 'درێژیی بۆری (L)',
-      airTempLabel: 'پلەی گەرمیی هەوا (T)',
-      loggedSuccess: 'پێوانەکە لە دەفتەری تاقیگەدا تۆمارکرا!', // غير موثّق بمصدر
-      logButton: 'تۆمارکردنی فرێکوێنسی و درێژیی دەنگدانەوە',
-    },
-    kmr: {
-      closedNode: 'Sera girtî (girê)',
-      openAntinode: 'Sera vekirî (zik)',
-      resonanceAmp: 'Ferehiya dengvedanê',
-      title: 'Dengvedana dengî di boriyên hewayî de û pêlên sekinî',
-      audioOn: 'Deng çalakiye', // غير موثّق بمصدر
-      playTone: 'Lêdana dengî', // غير موثّق بمصدر
-      sourceFreq: 'Frekansa çavkaniya dengî (f)',
-      resonanceFreq: 'Frekansa dengvedanê ya teorîk (f_res)',
-      wavelength: 'Dirêjahiya pêlê (λ)',
-      speedOfSound: 'Leza deng di hewayê de (v)',
-      theoryTitle: 'Şertên dengvedana dengî û pêlên sekinî:',
-      theoryDesc: 'Di boriya girtî de, divê girêya veguhestinê li sera girtî û zikê veguhestinê li sera vekirî çêbibe, loma dengvedan tenê di frekansên tek de f = (2n-1)v/(4L) çêdibû. Lê di boriya vekirî de du zik li her du seran çêdibin û dengvedan di hemû harmonîkan de f = n v/(2L) çêdibû.',
-      tubeTypeHeader: 'Cûreyê boriyê û frekans',
-      closedTube: 'Boriya sera girtî (λ/4)',
-      openTube: 'Boriya sera vekirî (λ/2)',
-      snapHarmonics: 'Zû çûn ji bo frekansên dengvedana xwezayî:',
-      freqLabel: 'Frekans (f)',
-      tubeLengthLabel: 'Dirêjahiya boriyê (L)',
-      airTempLabel: 'Pileya germahiya hewayê (T)',
-      loggedSuccess: 'Pîvan di deftera labê de hat tomarkirin!', // غير موثّق بمصدر
-      logButton: 'Tomarkirina frekans û dirêjahiya dengvedanê',
-    },
-  }[lang] || {
-    closedNode: 'طرف مغلق (عقدة)',
-    openAntinode: 'طرف مفتوح (بطن)',
-    resonanceAmp: 'سعة الرنين',
-    title: 'الرنين الصوتي في الأنابيب الهوائية والأمواج الموقوفة',
-    audioOn: 'الصوت مفعّل',
-    playTone: 'تشغيل النغمة',
-    sourceFreq: 'تردد المصدر الصوتي (f)',
-    resonanceFreq: 'تردد الرنين النظري (f_res)',
-    wavelength: 'الطول الموجي (λ)',
-    speedOfSound: 'سرعة الصوت في الهواء (v)',
-    theoryTitle: 'شروط الرنين الصوتي والأمواج الموقوفة:',
-    theoryDesc: 'في الأنبوب المغلق، يشترط وجود عقدة إزاحة (سكون جزيئات الهواء) عند النهاية المغلقة وبطن إزاحة عند الفوهة المفتوحة، فيحدث الرنين فقط عند الترددات الفردية f = (2n-1)v/(4L). أما في الأنبوب المفتوح فيحدث بطنان عند الطرفين ويكون الرنين عند كل التوافقيات f = n v/(2L).',
-    tubeTypeHeader: 'نوع الأنبوب والترددات',
-    closedTube: 'أنبوب مغلق الطرف (λ/4)',
-    openTube: 'أنبوب مفتوح الطرفين (λ/2)',
-    snapHarmonics: 'القفز السريع لترددات الرنين الطبيعية:',
-    freqLabel: 'التردد (f)',
-    tubeLengthLabel: 'طول الأنبوب (L)',
-    airTempLabel: 'درجة حرارة الهواء (T)',
-    loggedSuccess: 'تم تسجيل القياس في دفتر المختبر!',
-    logButton: 'تسجيل تردد وطول الرنين',
-  };
-
   // Speed of Sound in air as a function of temperature: v = 331.3 * sqrt(1 + T/273.15)
   const speedOfSound = 331.3 * Math.sqrt(1 + temperatureC / 273.15);
 
@@ -243,6 +126,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
+      ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
       const width = canvas.width;
       const height = canvas.height;
@@ -315,11 +199,11 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
 
         ctx.fillStyle = '#f87171';
         ctx.font = 'bold 10px sans-serif';
-        ctx.fillText(t.closedNode, tubeEndX - 20, tubeY - 14);
+        ctx.fillText(tI18n('experiments.acoustic_resonance.closedNode'), tubeEndX - 20, tubeY - 14);
       } else {
         ctx.fillStyle = '#38bdf8';
         ctx.font = 'bold 10px sans-serif';
-        ctx.fillText(t.openAntinode, tubeEndX - 30, tubeY - 14);
+        ctx.fillText(tI18n('experiments.acoustic_resonance.openAntinode'), tubeEndX - 30, tubeY - 14);
       }
 
       // Draw Air Particles & Acoustic Pressure / Displacement Standing Wave
@@ -420,7 +304,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
       ctx.fillStyle = isAtResonance ? '#4ade80' : '#94a3b8';
       ctx.font = 'bold 11px sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(t.resonanceAmp, meterX + 10, meterY - 8);
+      ctx.fillText(tI18n('experiments.acoustic_resonance.resonanceAmp'), meterX + 10, meterY - 8);
       ctx.fillText(`${Math.round(resonanceIntensity * 100)}%`, meterX + 10, meterY + meterH + 16);
 
       animFrameRef.current = requestAnimationFrame(render);
@@ -430,7 +314,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [tubeType, tubeLength, frequency, wavelength, isAtResonance, isPlayingAudio, resonanceIntensity, lang, t]);
+  }, [tubeType, tubeLength, frequency, wavelength, isAtResonance, isPlayingAudio, resonanceIntensity, lang]);
 
   const snapToResonance = (fTarget: number) => {
     setFrequency(Math.round(fTarget * 10) / 10);
@@ -470,7 +354,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
               </div>
               <div>
                 <h3 className="text-base font-bold text-zinc-100">
-                  {t.title}
+                  {tI18n('experiments.acoustic_resonance.title')}
                 </h3>
                 <p className="text-sm text-zinc-400 font-mono">
                   v = {speedOfSound.toFixed(1)} m/s • λ = {wavelength.toFixed(3)} m • {tubeType === 'closed' ? 'L = (2n-1) λ/4' : 'L = n λ/2'}
@@ -486,7 +370,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
                 }`}
               >
                 {isPlayingAudio ? <Volume2  className="w-4 h-4 animate-pulse"/> : <VolumeX  className="w-4 h-4 text-zinc-400"/>}
-                <span>{isPlayingAudio ? t.audioOn : t.playTone}</span>
+                <span>{isPlayingAudio ? tI18n('experiments.acoustic_resonance.audioOn') : tI18n('experiments.acoustic_resonance.playTone')}</span>
               </button>
             </div>
           </div>
@@ -498,28 +382,28 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
           {/* Real-time Metrics */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.sourceFreq}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.acoustic_resonance.sourceFreq')}</div>
               <div className="text-base font-bold font-mono text-teal-400">
                 {frequency.toFixed(1)} <span className="text-sm text-zinc-400">Hz</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.resonanceFreq}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.acoustic_resonance.resonanceFreq')}</div>
               <div className="text-base font-bold font-mono text-emerald-400">
                 {currentHarmonic.f.toFixed(1)} <span className="text-sm text-zinc-400">Hz</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.wavelength}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.acoustic_resonance.wavelength')}</div>
               <div className="text-base font-bold font-mono text-sky-400">
                 {wavelength.toFixed(3)} <span className="text-sm text-zinc-400">m</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.speedOfSound}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.acoustic_resonance.speedOfSound')}</div>
               <div className="text-base font-bold font-mono text-amber-400">
                 {speedOfSound.toFixed(1)} <span className="text-sm text-zinc-400">m/s</span>
               </div>
@@ -531,10 +415,10 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
         <div className="p-4 rounded-2xl bg-teal-950/20 border border-teal-800/30 text-xs text-zinc-300 space-y-2">
           <div className="font-semibold text-teal-300 flex items-center gap-1.5">
             <Sparkles  className="w-4 h-4"/>
-            <span>{t.theoryTitle}</span>
+            <span>{tI18n('experiments.acoustic_resonance.theoryTitle')}</span>
           </div>
           <p>
-            {t.theoryDesc}
+            {tI18n('experiments.acoustic_resonance.theoryDesc')}
           </p>
         </div>
       </div>
@@ -543,7 +427,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
       <div className="space-y-4">
         <div className="rounded-2xl bg-zinc-900 border border-zinc-800 p-5 shadow-xl space-y-5">
           <h4 className="text-sm font-bold text-zinc-200 pb-2 border-b border-zinc-800">
-            {t.tubeTypeHeader}
+            {tI18n('experiments.acoustic_resonance.tubeTypeHeader')}
           </h4>
 
           {/* Tube Type Selection */}
@@ -552,19 +436,19 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
                 tubeType === 'closed' ? 'bg-zinc-800 text-teal-400 border-teal-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.closedTube}
+              {tI18n('experiments.acoustic_resonance.closedTube')}
             </button>
             <button className={`min-h-[44px] min-w-[44px] p-2.5 rounded-xl font-semibold border ${
                 tubeType === 'open' ? 'bg-zinc-800 text-teal-400 border-teal-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.openTube}
+              {tI18n('experiments.acoustic_resonance.openTube')}
             </button>
           </div>
 
           {/* Harmonic Selector Quick Snap */}
           <div className="space-y-1.5">
-            <label className="text-sm text-zinc-400">{t.snapHarmonics}</label>
+            <label className="text-sm text-zinc-400">{tI18n('experiments.acoustic_resonance.snapHarmonics')}</label>
             <div className="grid grid-cols-3 gap-1.5 text-xs">
               {resonantFrequencies.slice(0, 3).map((res) => (
                 <button className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-teal-400 font-mono text-center"
@@ -579,7 +463,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
           {/* Frequency Slider */}
           <div className="space-y-1 pt-2 border-t border-zinc-800">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.freqLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.acoustic_resonance.freqLabel')}</span>
               <span className="font-mono text-teal-400 font-bold">{frequency.toFixed(1)} Hz</span>
             </div>
             <input
@@ -596,7 +480,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
           {/* Tube Length Slider */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.tubeLengthLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.acoustic_resonance.tubeLengthLabel')}</span>
               <span className="font-mono text-sky-400 font-bold">{tubeLength.toFixed(2)} m</span>
             </div>
             <input
@@ -613,7 +497,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
           {/* Air Temperature Slider */}
           <div className="space-y-1">
             <div className="flex justify-between text-xs">
-              <span className="text-zinc-400">{t.airTempLabel}</span>
+              <span className="text-zinc-400">{tI18n('experiments.acoustic_resonance.airTempLabel')}</span>
               <span className="font-mono text-amber-400 font-bold">{temperatureC}°C</span>
             </div>
             <input
@@ -631,7 +515,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
           <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 shadow-teal-900/30' }`}>
             <BookmarkCheck  className="w-4 h-4"/>
             <span>
-              {logged ? t.loggedSuccess : t.logButton}
+              {logged ? tI18n('experiments.acoustic_resonance.loggedSuccess') : tI18n('experiments.acoustic_resonance.logButton')}
             </span>
           </button>
         </div>

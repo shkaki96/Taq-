@@ -53,98 +53,6 @@ const BASE_UNITS = [
 
 export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'البادئات المترية وتحويل الوحدات الفيزيائية',
-      desc: 'التحويل المنهجي بين مضاعفات وأجزاء الوحدات القياسية (SI) باستخدام قوى العدد 10 والقانون العام V_new = V_old × 10^(n1 - n2).',
-      logged: 'تم التسجيل في الدفتر ✓', // غير موثّق بمصدر
-      log: 'تسجيل في دفتر المختبر', // غير موثّق بمصدر
-      panelTitle: 'لوحة تحويل الوحدات والبادئات', // غير موثّق بمصدر
-      inputVal: 'القيمة العددية المراد تحويلها:',
-      fromPrefix: 'من البادئة المصدر (From):',
-      toPrefix: 'إلى البادئة الهدف (To):',
-      swap: 'تبديل',
-      quickPresets: 'أمثلة فيزيائية شائعة وسريعة:',
-      resultTitle: 'النتيجة المحسوبة الدقيقة:',
-      equation: 'معادلة التحويل:',
-      scientificForm: 'بالصيغة العلمية:',
-      scaleTitle: 'سلم المراتب والبادئات المترية (10^n)',
-      tagFrom: 'المصدر',
-      tagTo: 'الهدف',
-    },
-    en: {
-      title: 'Metric Prefixes & Physical Unit Conversion',
-      desc: 'Systematic conversion across SI decimal prefixes using power of ten formulation V_new = V_old × 10^(n1 - n2).',
-      logged: 'Logged ✓', // غير موثّق بمصدر
-      log: 'Log Measurement', // غير موثّق بمصدر
-      panelTitle: 'Unit & Prefix Conversion Panel', // غير موثّق بمصدر
-      inputVal: 'Input Numerical Value:',
-      fromPrefix: 'From Prefix:',
-      toPrefix: 'To Target Prefix:',
-      swap: 'Swap',
-      quickPresets: 'Quick Physics Presets:',
-      resultTitle: 'Calculated Conversion Result:',
-      equation: 'Equation:',
-      scientificForm: 'Scientific Form:',
-      scaleTitle: 'SI Prefix Magnitude Scale (10^n)',
-      tagFrom: 'FROM',
-      tagTo: 'TO',
-    },
-    ku: {
-      title: 'پێشگرە مەترییەکان و گۆڕینی یەکە فیزیاییەکان',
-      desc: 'گۆڕینی ڕێکوپێکی نێوان کەرتبووەکان و دوانەبووەکانی یەکەکانی سیستەمی نێودەوڵەتی SI بە بەکارهێنانی هێزەکانی ١٠.',
-      logged: 'تۆمارکرا لە دەفتەر ✓', // غير موثّق بمصدر
-      log: 'تۆمارکردنی پێوانە', // غير موثّق بمصدر
-      panelTitle: 'تەختەی گۆڕینی پێشگرەکان', // غير موثّق بمصدر
-      inputVal: 'بەهای ژمارەیی بۆ گۆڕین:',
-      fromPrefix: 'لە پێشگری سەرچاوە:',
-      toPrefix: 'بۆ پێشگری ئامانج:',
-      swap: 'ئاڵوگۆڕ',
-      quickPresets: 'نموونەی فیزیایی دیار:',
-      resultTitle: 'ئەنجامی ژمێردراو:',
-      equation: 'هاوکێشەی گۆڕین:',
-      scientificForm: 'بە شێوازی زانستی:',
-      scaleTitle: 'پەیژەی پێشگرە مەترییەکان (10^n)',
-      tagFrom: 'سەرچاوە',
-      tagTo: 'ئامانج',
-    },
-    kmr: {
-      title: 'Pêşgirên Metrî û Guherandina Yekeyan',
-      desc: 'Guherandina sîstematîk a di navbera pêşgirên metrî yên SI de bi karanîna hêzên 10an.',
-      logged: 'Hat tomarkirin ✓', // غير موثّق بمصدر
-      log: 'Tomarkirina pîvanê', // غير موثّق بمصدر
-      panelTitle: 'Panela guherandina pêşgir û yekeyan', // غير موثّق بمصدر
-      inputVal: 'Nirxa hejmarî ya ji bo guherandinê:',
-      fromPrefix: 'Ji pêşgira çavkanî:',
-      toPrefix: 'Ji bo pêşgira mebest:',
-      swap: 'Guhertin',
-      quickPresets: 'Mînakên fîzîkî yên lez:',
-      resultTitle: 'Encama hejmartî:',
-      equation: 'Hawrêşeya guherandinê:',
-      scientificForm: 'Bi awayê zanistî:',
-      scaleTitle: 'Pêleka pêşgirên metrî (10^n)',
-      tagFrom: 'ÇAVKANÎ',
-      tagTo: 'MEBEST',
-    },
-  }[lang] || {
-    title: 'البادئات المترية وتحويل الوحدات الفيزيائية',
-    desc: 'التحويل المنهجي بين مضاعفات وأجزاء الوحدات القياسية (SI) باستخدام قوى العدد 10 والقانون العام V_new = V_old × 10^(n1 - n2).',
-    logged: 'تم التسجيل في الدفتر ✓',
-    log: 'تسجيل في دفتر المختبر',
-    panelTitle: 'لوحة تحويل الوحدات والبادئات',
-    inputVal: 'القيمة العددية المراد تحويلها:',
-    fromPrefix: 'من البادئة المصدر (From):',
-    toPrefix: 'إلى البادئة الهدف (To):',
-    swap: 'تبديل',
-    quickPresets: 'أمثلة فيزيائية شائعة وسريعة:',
-    resultTitle: 'النتيجة المحسوبة الدقيقة:',
-    equation: 'معادلة التحويل:',
-    scientificForm: 'بالصيغة العلمية:',
-    scaleTitle: 'سلم المراتب والبادئات المترية (10^n)',
-    tagFrom: 'المصدر',
-    tagTo: 'الهدف',
-  };
-
   const [inputValue, setInputValue] = useState<number>(1000);
   const [fromPrefixIdx, setFromPrefixIdx] = useState<number>(6); // Base unit default
   const [toPrefixIdx, setToPrefixIdx] = useState<number>(3); // Kilo default
@@ -236,16 +144,16 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
         <div>
           <h2 className="text-base sm:text-lg font-bold text-zinc-100 flex items-center gap-2">
             <Scale  className="w-5 h-5 text-sky-400"/>
-            <span>{t.title}</span>
+            <span>{tI18n('experiments.metric_prefixes.title')}</span>
           </h2>
-          <p className="text-sm text-zinc-400 mt-1 max-w-2xl">{t.desc}</p>
+          <p className="text-sm text-zinc-400 mt-1 max-w-2xl">{tI18n('experiments.metric_prefixes.desc')}</p>
         </div>
 
         <button
           onClick={handleLog}
          className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30' }`}>
           <BookmarkCheck  className="w-4 h-4"/>
-          <span>{logged ? t.logged : t.log}</span>
+          <span>{logged ? tI18n('experiments.metric_prefixes.logged') : tI18n('experiments.metric_prefixes.log')}</span>
         </button>
       </div>
 
@@ -256,7 +164,7 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <ArrowRightLeft  className="w-4 h-4 text-sky-400"/>
-              {t.panelTitle}
+              {tI18n('experiments.metric_prefixes.panelTitle')}
             </span>
             {/* Base Unit Selector */}
             <select
@@ -275,7 +183,7 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
           {/* Input Value */}
           <div>
             <label className="text-sm text-zinc-400 block mb-1.5 font-medium">
-              {t.inputVal}
+              {tI18n('experiments.metric_prefixes.inputVal')}
             </label>
             <div className="flex items-center gap-2">
               <input
@@ -295,7 +203,7 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
             {/* From Prefix */}
             <div className="space-y-1.5">
               <span className="text-[11px] text-zinc-400 font-medium">
-                {t.fromPrefix}
+                {tI18n('experiments.metric_prefixes.fromPrefix')}
               </span>
               <select
                 value={fromPrefixIdx}
@@ -315,13 +223,13 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
             <div className="space-y-1.5">
               <div className="flex items-center justify-between">
                 <span className="text-[11px] text-zinc-400 font-medium">
-                  {t.toPrefix}
+                  {tI18n('experiments.metric_prefixes.toPrefix')}
                 </span>
                 <button
                   onClick={handleSwap}
                  className="min-h-[44px] min-w-[44px] text-[10px] text-indigo-400 hover:text-indigo-300 flex items-center gap-1 underline">
                   <ArrowRightLeft  className="w-3 h-3"/>
-                  {t.swap}
+                  {tI18n('experiments.metric_prefixes.swap')}
                 </button>
               </div>
               <select
@@ -342,7 +250,7 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
           {/* Quick Preset Buttons */}
           <div>
             <span className="text-[10px] text-zinc-400 block mb-1.5">
-              {t.quickPresets}
+              {tI18n('experiments.metric_prefixes.quickPresets')}
             </span>
             <div className="flex flex-wrap gap-1.5">
               {[
@@ -372,7 +280,7 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
           {/* Conversion Result Display Card */}
           <div className="p-4 rounded-xl bg-gradient-to-br from-indigo-950/40 via-zinc-900 to-sky-950/40 border border-indigo-700/50 space-y-2">
             <span className="text-[11px] font-semibold text-indigo-300 uppercase tracking-wider block">
-              {t.resultTitle}
+              {tI18n('experiments.metric_prefixes.resultTitle')}
             </span>
             <div className="flex flex-wrap items-baseline gap-2">
               <span className="text-xl sm:text-2xl font-bold font-mono text-emerald-400">
@@ -386,13 +294,13 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
             {/* Step-by-step formula breakdown */}
             <div className="pt-2 border-t border-zinc-800/80 text-[11px] font-mono text-zinc-300 space-y-1">
               <div>
-                <span className="text-zinc-400">{t.equation} </span>
+                <span className="text-zinc-400">{tI18n('experiments.metric_prefixes.equation')} </span>
                 <span>
                   {inputValue} × 10<sup>{fromPrefix.factor}</sup> ÷ 10<sup>{toPrefix.factor}</sup> = {inputValue} × 10<sup>{powerDiff}</sup>
                 </span>
               </div>
               <div>
-                <span className="text-zinc-400">{t.scientificForm} </span>
+                <span className="text-zinc-400">{tI18n('experiments.metric_prefixes.scientificForm')} </span>
                 <span className="text-sky-300">{convertedValue.toExponential(6)} {toPrefix.factor === 0 ? baseUnit.symbol : `${toPrefix.symbol}${baseUnit.symbol}`}</span>
               </div>
             </div>
@@ -404,7 +312,7 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
           <div className="flex items-center justify-between border-b border-zinc-800 pb-3">
             <span className="text-xs font-semibold text-zinc-300 flex items-center gap-1.5">
               <Layers  className="w-4 h-4 text-emerald-400"/>
-              {t.scaleTitle}
+              {tI18n('experiments.metric_prefixes.scaleTitle')}
             </span>
             <span className="text-[10px] text-zinc-400 font-mono">10^12 → 10^-15</span>
           </div>
@@ -443,12 +351,12 @@ export default function MetricPrefixesSim({ lang, onLogMeasurement }: Props) {
                         </span>
                         {isFrom && (
                           <span className="px-1.5 py-0.2 rounded bg-sky-500/20 text-sky-300 text-[9px] font-mono">
-                            {t.tagFrom}
+                            {tI18n('experiments.metric_prefixes.tagFrom')}
                           </span>
                         )}
                         {isTo && (
                           <span className="px-1.5 py-0.2 rounded bg-emerald-500/20 text-emerald-300 text-[9px] font-mono">
-                            {t.tagTo}
+                            {tI18n('experiments.metric_prefixes.tagTo')}
                           </span>
                         )}
                       </div>

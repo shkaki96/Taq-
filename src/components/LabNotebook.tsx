@@ -163,7 +163,7 @@ export default function LabNotebook({ lang, records, onDeleteRecord, onClearAll,
             type="text"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            placeholder={lang === 'ar' ? 'بحث في السجلات أو التجربة أو الملاحظات...' : lang === 'ku' ? 'گەڕان لە تۆمارەکان، تاقیکردنەوە یان تێبینییەکان...' : 'Search logs, experiment, notes...'}
+            placeholder={t.searchPlaceholder}
             className="w-full ltr:pl-9 ltr:pr-4 rtl:pr-9 rtl:pl-4 py-2.5 text-xs sm:text-sm rounded-xl bg-zinc-900 border border-zinc-800 text-zinc-100 placeholder-zinc-500 focus:outline-none focus:border-emerald-500 transition-colors"
           />
         </div>
@@ -182,9 +182,7 @@ export default function LabNotebook({ lang, records, onDeleteRecord, onClearAll,
           <div>
             <p className="text-sm font-semibold text-zinc-200">{t.empty}</p>
             <p className="text-xs text-zinc-500 max-w-md mx-auto mt-1">
-              {lang === 'ar'
-                ? 'انتقل إلى أي تجربة واضغط على زر "تسجيل القياس في دفتر المختبر" لإدراج محاولة جديدة وحساب نسبة الدقة.'
-                : 'Go to any simulation and click "Log to Lab Notebook" to record experimental data and calculate percent error.'}
+              {t.emptyInstructions}
             </p>
           </div>
         </div>
@@ -257,7 +255,7 @@ export default function LabNotebook({ lang, records, onDeleteRecord, onClearAll,
                         <button
                           onClick={() => handleOpenKeyboardForRecord(record)}
                           className="p-1.5 rounded-lg bg-zinc-900 hover:bg-zinc-800 text-indigo-400 border border-zinc-800 hover:border-indigo-500/40 transition-colors shrink-0"
-                          title={lang === 'ar' ? 'إدخال معادلات رياضية باللوحة' : 'Insert Equation with Keyboard'}
+                          title={t.insertEquation}
                         >
                           <Calculator className="w-3.5 h-3.5" />
                         </button>
@@ -267,7 +265,7 @@ export default function LabNotebook({ lang, records, onDeleteRecord, onClearAll,
                       <button
                         onClick={() => onDeleteRecord(record.id)}
                         className="p-1.5 rounded-lg text-zinc-500 hover:text-rose-400 hover:bg-rose-500/10 transition-colors"
-                        title="Delete record"
+                        title={t.deleteRecord}
                       >
                         <Trash2 className="w-3.5 h-3.5" />
                       </button>

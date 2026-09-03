@@ -9,6 +9,7 @@ interface GravityOrbitsSimProps {
 }
 
 export const GravityOrbitsSim: React.FC<GravityOrbitsSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [starMass, setStarMass] = useState<number>(1.0); // solar masses
   const [planetMass, setPlanetMass] = useState<number>(1.0); // earth masses
@@ -129,41 +130,6 @@ export const GravityOrbitsSim: React.FC<GravityOrbitsSimProps> = ({ lang }) => {
     setTrail([]);
   };
 
-  const t = {
-    ar: {
-      title: 'الجاذبية والمدارات الفلكية (F_g = G M m / r²)',
-      starMass: 'كتلة النجم المركزي (M_star)',
-      planetMass: 'كتلة الكوكب (m_planet)',
-      gravityToggle: 'الجاذبية الكونية (Gravity ON/OFF)',
-      showVectors: 'إظهار متجهات القوة والسرعة',
-      reset: 'إعادة ضبط المدار',
-    },
-    en: {
-      title: 'Gravity & Planetary Orbits (F_g = G M m / r²)',
-      starMass: 'Star Mass (M_star)',
-      planetMass: 'Planet Mass (m_planet)',
-      gravityToggle: 'Gravitational Force Toggle',
-      showVectors: 'Show Force & Velocity Vectors',
-      reset: 'Reset Orbit',
-    },
-    ku: {
-      title: 'کێشکردن و خولگەی هەسارەکان',
-      starMass: 'بارستەی ئەستێرە',
-      planetMass: 'بارستەی هەسارە',
-      gravityToggle: 'کێشکردن چالاک/ناچالاک',
-      showVectors: 'پیشاندانی تیشکەکان',
-      reset: 'ڕێکخستنەوەی خولگە',
-    },
-    kmr: {
-      title: 'Kêşwerî û Xelekên Gerstêrkan (F_g = G M m / r²)',
-      starMass: 'Masaya Stêrkê (M_star)',
-      planetMass: 'Masaya Gerstêrkê (m_planet)',
-      gravityToggle: 'Hêza Kêşweriyê Veke/Bigire',
-      showVectors: 'Nîşandana Tîrên Hêz û Lezê',
-      reset: 'Nûkirina Xelekê',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -172,7 +138,7 @@ export const GravityOrbitsSim: React.FC<GravityOrbitsSimProps> = ({ lang }) => {
             <Orbit  className="w-6 h-6 animate-spin-slow"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.gravity_and_orbits.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER C • SIMULATION 15</p>
           </div>
         </div>
@@ -183,11 +149,11 @@ export const GravityOrbitsSim: React.FC<GravityOrbitsSimProps> = ({ lang }) => {
             className="min-h-[44px] min-w-[44px] flex items-center gap-1.5 px-3 py-1.5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs rounded-lg transition-colors"
           >
             {isRunning ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
-            {isRunning ? 'إيقاف مؤقت' : 'تشغيل المدار'}
+            {isRunning ? tI18n('experiments.gravity_and_orbits.pause') : tI18n('experiments.gravity_and_orbits.play')}
           </button>
           <button
             onClick={handleReset}
-            title={t.reset}
+            title={tI18n('experiments.gravity_and_orbits.reset')}
            className="min-h-[44px] min-w-[44px] p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700">
             <RotateCcw  className="w-4 h-4"/>
           </button>
@@ -209,7 +175,7 @@ export const GravityOrbitsSim: React.FC<GravityOrbitsSimProps> = ({ lang }) => {
           <div className="bg-slate-950/60 border border-slate-800 rounded-xl p-4 space-y-4">
             <div className="space-y-1.5">
               <div className="flex justify-between text-xs font-semibold">
-                <span className="text-amber-400">{t.starMass}</span>
+                <span className="text-amber-400">{tI18n('experiments.gravity_and_orbits.starMass')}</span>
                 <span className="font-mono text-white text-sm">{starMass.toFixed(1)} M☉</span>
               </div>
               <input
@@ -224,7 +190,7 @@ export const GravityOrbitsSim: React.FC<GravityOrbitsSimProps> = ({ lang }) => {
             </div>
 
             <div className="flex items-center justify-between pt-2 border-t border-slate-800">
-              <span className="text-xs font-semibold text-slate-300">{t.gravityToggle}</span>
+              <span className="text-xs font-semibold text-slate-300">{tI18n('experiments.gravity_and_orbits.gravityToggle')}</span>
               <button
                 onClick={() => setGravityOn(!gravityOn)}
                 className={`min-h-[44px] min-w-[44px] px-3 py-1 text-xs font-bold rounded-lg transition-colors ${
@@ -236,7 +202,7 @@ export const GravityOrbitsSim: React.FC<GravityOrbitsSimProps> = ({ lang }) => {
             </div>
 
             <div className="flex items-center justify-between pt-1">
-              <span className="text-xs font-semibold text-slate-300">{t.showVectors}</span>
+              <span className="text-xs font-semibold text-slate-300">{tI18n('experiments.gravity_and_orbits.showVectors')}</span>
               <button
                 onClick={() => setShowVectors(!showVectors)}
                 className={`min-h-[44px] min-w-[44px] px-3 py-1 text-xs font-bold rounded-lg transition-colors ${

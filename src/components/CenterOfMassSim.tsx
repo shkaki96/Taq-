@@ -20,143 +20,6 @@ interface PointMass {
 
 export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
-  const t = {
-    ar: {
-      title: 'تحديد مركز الكتلة للأجسام الصلبة (Xcm = Σmi xi / Σmi)',
-      subTitle: 'تحديد مركز الكتلة للأجسام الصلبة (Xcm = Σmi xi / Σmi)',
-      shortDesc: 'حساب موقع مركز الكتلة لنظام كتل نقطية وتجربة خيط الشاقول',
-      dragPrompt: 'اسحب الكتل بالماوس على الشبكة لرؤية موضع مركز الكتلة ⨁ يتحرك في الزمن الحقيقي', // غير موثّق بمصدر
-      xCmLabel: 'إحداثي X لمركز الكتلة',
-      yCmLabel: 'إحداثي Y لمركز الكتلة',
-      totalMassLabel: 'الكتلة الكلية (M_total)',
-      firstMomentLabel: 'العزم الأول (Σ mi xi)',
-      physicsTitle: 'القوانين الفيزيائية لمركز الكتلة والاتزان:',
-      physicsText: 'مركز الكتلة هو النقطة المتوسطة الموزونة بكتل الأجسام، حيث يتصرف الجسم وكأن كتلته كلها متركزة فيها وتؤثر القوى الخارجية عليها: X_cm = Σ(m_i·x_i)/Σm_i و Y_cm = Σ(m_i·y_i)/Σm_i. عند وضع نقطة الارتكاز تحته مباشرة، يكون عزم الدوران المحصل صفراً فيحدث اتزان سكوني تام.',
-      modeTitle: 'أسلوب العرض والتجربة', // غير موثّق بمصدر
-      modeParticles: 'نظام الكتل', // غير موثّق بمصدر
-      modePlumbline: 'خيط الشاقول', // غير موثّق بمصدر
-      modeBalance: 'ميزان الارتكاز', // غير موثّق بمصدر
-      pivotLabel: 'نقطة التعليق الحرة:', // غير موثّق بمصدر
-      pivotA: 'الثقب A', // غير موثّق بمصدر
-      pivotB: 'الثقب B', // غير موثّق بمصدر
-      pivotC: 'الثقب C', // غير موثّق بمصدر
-      plumblineDesc: 'عند تعليق الصفيحة من نقطتين مختلفتين، يمر خط الشاقول الرأسي دائماً بمركز الثقل، ونقطة تقاطع الخطين تحدده عملياً بدقة.', // غير موثّق بمصدر
-      pointMassesLabel: 'الكتل النقطية:', // غير موثّق بمصدر
-      addMassBtn: 'إضافة كتلة', // غير موثّق بمصدر
-      loggedMsg: 'تم تسجيل القياس في دفتر المختبر!', // غير موثّق بمصدر
-      logBtn: 'تسجيل إحداثيات مركز الكتلة', // غير موثّق بمصدر
-      plumbCenterLabel: 'مركز الثقل الهندسي ⨁', // غير موثّق بمصدر
-      rotEquilMsg: '✓ النظام في حالة اتزان دوراني كامل (Στ = 0) حول نقطة الارتكاز X_cm', // غير موثّق بمصدر
-    },
-    en: {
-      title: 'Center of Mass Determination (Xcm = Σmi xi / Σmi)',
-      subTitle: 'Center of Mass Determination (Xcm = Σmi xi / Σmi)',
-      shortDesc: 'Calculate Center of Mass coordinates for point masses and plumb line experiments.',
-      dragPrompt: 'Drag masses on the grid to observe real-time shift of Center of Mass ⨁', // غير موثّق بمصدر
-      xCmLabel: 'X_cm Coordinate',
-      yCmLabel: 'Y_cm Coordinate',
-      totalMassLabel: 'Total Mass',
-      firstMomentLabel: 'First Moment (Σ mi xi)',
-      physicsTitle: 'Center of Mass & Equilibrium Physics:',
-      physicsText: 'The Center of Mass is the mass-weighted average position of all particles: X_cm = Σ(mi xi)/Σmi and Y_cm = Σ(mi yi)/Σmi. Placing a pivot directly below the center of mass yields zero net gravitational torque, achieving static rotational equilibrium.',
-      modeTitle: 'Experiment Mode', // غير موثّق بمصدر
-      modeParticles: 'Particles', // غير موثّق بمصدر
-      modePlumbline: 'Plumb Line', // غير موثّق بمصدر
-      modeBalance: 'Fulcrum', // غير موثّق بمصدر
-      pivotLabel: 'Suspension Pivot Point:', // غير موثّق بمصدر
-      pivotA: 'Pivot A', // غير موثّق بمصدر
-      pivotB: 'Pivot B', // غير موثّق بمصدر
-      pivotC: 'Pivot C', // غير موثّق بمصدر
-      plumblineDesc: 'Suspending from two different pivots draws vertical plumb lines that intersect exactly at the center of gravity.', // غير موثّق بمصدر
-      pointMassesLabel: 'Point Masses:', // غير موثّق بمصدر
-      addMassBtn: 'Add Mass', // غير موثّق بمصدر
-      loggedMsg: 'Logged to Lab Notebook!', // غير موثّق بمصدر
-      logBtn: 'Log Center of Mass Data', // غير موثّق بمصدر
-      plumbCenterLabel: 'Geometric Center of Gravity ⨁', // غير موثّق بمصدر
-      rotEquilMsg: '✓ System in perfect rotational equilibrium (Στ = 0) about fulcrum at X_cm', // غير موثّق بمصدر
-    },
-    ku: {
-      title: 'دیاریکردنی چەقی بارستایی تەنەکان (Xcm = Σmi xi / Σmi)',
-      subTitle: 'دیاریکردنی چەقی بارستایی تەنەکان (Xcm = Σmi xi / Σmi)',
-      shortDesc: 'ئەژمارکردنی شوێنی چەقی بارستایی بۆ سیستەمی بارستە خاڵییەکان.',
-      dragPrompt: 'بارستەی سەر تۆڕەکە ڕابکێشە بۆ بینینی جووڵەی چەقی بارستایی ⨁ لە کاتی ڕاستەقینەدا', // غير موثّق بمصدر
-      xCmLabel: 'پۆتانی X ی چەقی بارستایی',
-      yCmLabel: 'پۆتانی Y ی چەقی بارستایی',
-      totalMassLabel: 'کۆی بارستایی (M_total)',
-      firstMomentLabel: 'زەبری یەکەم (Σ mi xi)',
-      physicsTitle: 'یاسا فیزیاییەکانی چەقی بارستایی و هاوسەنگی:',
-      physicsText: 'چەقی بارستایی بریتییە لە ناوەندی بارستایی تێکڕای شوێنی گەردیلەکان: X_cm = Σ(mi xi)/Σmi. هەڵواسینی ڕاستەوخۆ لەژێر چەقی بارستاییدا هاوسەنگیی خولانەوەیی دروست دەکات.',
-      modeTitle: 'جۆری نیشاندان و تاقیکردنەوە', // غير موثّق بمصدر
-      modeParticles: 'سیستەمی بارستەکان', // غير موثّق بمصدر
-      modePlumbline: 'داوەشاگوڵ', // غير موثّق بمصدر
-      modeBalance: 'تەرازووی لێژین', // غير موثّق بمصدر
-      pivotLabel: 'خاڵی هەڵواسینی ئازاد:', // غير موثّق بمصدر
-      pivotA: 'کون A', // غير موثّق بمصدر
-      pivotB: 'کون B', // غير موثّق بمصدر
-      pivotC: 'کون C', // غير موثّق بمصدر
-      plumblineDesc: 'کاتێک پەڕەکە لە دوو خاڵی جیاوازەوە هەڵدەواسرێت، ڕاڕەوی داوەشاگوڵ هەمیشە لە چەقی بارستایی دەرژێت.', // غير موثّق بمصدر
-      pointMassesLabel: 'بارستە خاڵییەکان:', // غير موثّق بمصدر
-      addMassBtn: 'زیادکردنی بارستایی', // غير موثّق بمصدر
-      loggedMsg: 'تۆمارکرا لە دەفتەری تاقیگە!', // غير موثّق بمصدر
-      logBtn: 'تۆمارکردنی پۆتانەکانی چەقی بارستایی', // غير موثّق بمصدر
-      plumbCenterLabel: 'چەقی قورسایی ئەندازیاری ⨁', // غير موثّق بمصدر
-      rotEquilMsg: '✓ سیستەمەکە لە هاوسەنگیی خولانەوەیی تەواودایە (Στ = 0) لە دەوری X_cm', // غير موثّق بمصدر
-    },
-    kmr: {
-      title: 'Diyar kirina navenda massayê ya laşan (Xcm = Σmi xi / Σmi)',
-      subTitle: 'Diyar kirina navenda massayê ya laşan (Xcm = Σmi xi / Σmi)',
-      shortDesc: 'Hesabkirina koordînatên navenda massayê ji bo massayên xalî û azmûnên hêla plumbê.',
-      dragPrompt: 'Massayan li ser torê bikşîne ji bo dîtina tevgera navenda massayê ⨁ di dema rastî de', // غير موثّق بمصدر
-      xCmLabel: 'Koordînata X_cm',
-      yCmLabel: 'Koordînata Y_cm',
-      totalMassLabel: 'Massa giştî',
-      firstMomentLabel: 'Momena yekem (Σ mi xi)',
-      physicsTitle: 'Fîzîka navenda massayê û hevsengiyê:',
-      physicsText: 'Navenda massayê cihê navînî ye ku li ser bingeha giranaiya parçikan hatî hejmartin: X_cm = Σ(mi xi)/Σmi û Y_cm = Σ(mi yi)/Σmi.',
-      modeTitle: 'Moda azmûnê', // غير موثّق بمصدر
-      modeParticles: 'Parçik', // غير موثّق بمصدر
-      modePlumbline: 'Hêla plumbê', // غير موثّق بمصدر
-      modeBalance: 'Mêzîn', // غير موثّق بمصدر
-      pivotLabel: 'Xala dalikandina azad:', // غير موثّق بمصدر
-      pivotA: 'Sura A', // غير موثّق بمصدر
-      pivotB: 'Sura B', // غير موثّق بمصدر
-      pivotC: 'Sura C', // غير موثّق بمصدر
-      plumblineDesc: 'Daliqandina ji du xalên cuda dihêle ku hêla plumbê di navenda massayê re derbas bibe.', // غير موثّق بمصدر
-      pointMassesLabel: 'Massayên xalî:', // غير موثّق بمصدر
-      addMassBtn: 'Zêdekirina massayê', // غير موثّق بمصدر
-      loggedMsg: 'Hat tomarkirin di defterê de!', // غير موثّق بمصدر
-      logBtn: 'Tomarkirina koordînatên navenda massayê', // غير موثّق بمصدر
-      plumbCenterLabel: 'Navenda giraniyê ya geometrîk ⨁', // غير موثّق بمصدر
-      rotEquilMsg: '✓ Sîstem di hevsengiya zevirînê de ye (Στ = 0) li dora X_cm', // غير موثّق بمصدر
-    },
-  }[lang] || {
-    title: 'تحديد مركز الكتلة للأجسام الصلبة (Xcm = Σmi xi / Σmi)',
-    subTitle: 'تحديد مركز الكتلة للأجسام الصلبة (Xcm = Σmi xi / Σmi)',
-    shortDesc: 'حساب موقع مركز الكتلة لنظام كتل نقطية وتجربة خيط الشاقول',
-    dragPrompt: 'اسحب الكتل بالماوس على الشبكة لرؤية موضع مركز الكتلة ⨁ يتحرك في الزمن الحقيقي',
-    xCmLabel: 'إحداثي X لمركز الكتلة',
-    yCmLabel: 'إحداثي Y لمركز الكتلة',
-    totalMassLabel: 'الكتلة الكلية (M_total)',
-    firstMomentLabel: 'العزم الأول (Σ mi xi)',
-    physicsTitle: 'القوانين الفيزيائية لمركز الكتلة والاتزان:',
-    physicsText: 'مركز الكتلة هو النقطة المتوسطة الموزونة بكتل الأجسام، حيث يتصرف الجسم وكأن كتلته كلها متركزة فيها وتؤثر القوى الخارجية عليها: X_cm = Σ(m_i·x_i)/Σm_i و Y_cm = Σ(m_i·y_i)/Σm_i. عند وضع نقطة الارتكاز تحته مباشرة، يكون عزم الدوران المحصل صفراً فيحدث اتزان سكوني تام.',
-    modeTitle: 'أسلوب العرض والتجربة',
-    modeParticles: 'نظام الكتل',
-    modePlumbline: 'خيط الشاقول',
-    modeBalance: 'ميزان الارتكاز',
-    pivotLabel: 'نقطة التعليق الحرة:',
-    pivotA: 'الثقب A',
-    pivotB: 'الثقب B',
-    pivotC: 'الثقب C',
-    plumblineDesc: 'عند تعليق الصفيحة من نقطتين مختلفتين، يمر خط الشاقول الرأسي دائماً بمركز الثقل، ونقطة تقاطع الخطين تحدده عملياً بدقة.',
-    pointMassesLabel: 'الكتل النقطية:',
-    addMassBtn: 'إضافة كتلة',
-    loggedMsg: 'تم تسجيل القياس في دفتر المختبر!',
-    logBtn: 'تسجيل إحداثيات مركز الكتلة',
-    plumbCenterLabel: 'مركز الثقل الهندسي ⨁',
-    rotEquilMsg: '✓ النظام في حالة اتزان دوراني كامل (Στ = 0) حول نقطة الارتكاز X_cm',
-  };
-
   const [mode, setMode] = useState<'particles' | 'plumbline' | 'balance'>('particles');
 
   // Particles System State
@@ -190,6 +53,7 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     const width = canvas.width;
     const height = canvas.height;
@@ -371,7 +235,7 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
 
       ctx.fillStyle = '#34d399';
       ctx.font = 'bold 11px sans-serif';
-      ctx.fillText(t.plumbCenterLabel, cmPlateX + 12, cmPlateY + 4);
+      ctx.fillText(tI18n('experiments.center_of_mass.plumbCenterLabel'), cmPlateX + 12, cmPlateY + 4);
     } else {
       // Fulcrum Balance Mode: Balance beam on a pivot
       const beamLength = 400;
@@ -414,9 +278,9 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
       ctx.fillStyle = '#34d399';
       ctx.font = 'bold 13px sans-serif';
       ctx.textAlign = 'center';
-      ctx.fillText(t.rotEquilMsg, originX, height - 30);
+      ctx.fillText(tI18n('experiments.center_of_mass.rotEquilMsg'), originX, height - 30);
     }
-  }, [masses, xCM, yCM, mode, pivotPoint, lang, t]);
+  }, [masses, xCM, yCM, mode, pivotPoint, lang]);
 
   // Dragging masses on canvas
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -522,10 +386,10 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
               </div>
               <div>
                 <h3 className="text-base font-bold text-zinc-100">
-                  {t.subTitle}
+                  {tI18n('experiments.center_of_mass.subTitle')}
                 </h3>
                 <p className="text-sm text-zinc-400">
-                  {t.dragPrompt}
+                  {tI18n('experiments.center_of_mass.dragPrompt')}
                 </p>
               </div>
             </div>
@@ -554,28 +418,28 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
           {/* Real-time Coordinates Output */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-3">
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.xCmLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.center_of_mass.xCmLabel')}</div>
               <div className="text-base font-bold font-mono text-red-400">
                 {xCM.toFixed(3)} <span className="text-sm text-zinc-400">m</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.yCmLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.center_of_mass.yCmLabel')}</div>
               <div className="text-base font-bold font-mono text-red-400">
                 {yCM.toFixed(3)} <span className="text-sm text-zinc-400">m</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.totalMassLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.center_of_mass.totalMassLabel')}</div>
               <div className="text-base font-bold font-mono text-sky-400">
                 {totalMass.toFixed(2)} <span className="text-sm text-zinc-400">kg</span>
               </div>
             </div>
 
             <div className="p-3 rounded-xl bg-zinc-950/60 border border-zinc-800/60 text-center">
-              <div className="text-[11px] text-zinc-400">{t.firstMomentLabel}</div>
+              <div className="text-[11px] text-zinc-400">{tI18n('experiments.center_of_mass.firstMomentLabel')}</div>
               <div className="text-base font-bold font-mono text-amber-400">
                 {sumMx.toFixed(2)} <span className="text-sm text-zinc-400">kg·m</span>
               </div>
@@ -587,9 +451,9 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
         <div className="p-4 rounded-2xl bg-red-950/20 border border-red-800/30 text-xs text-zinc-300 space-y-2">
           <div className="font-semibold text-red-300 flex items-center gap-1.5">
             <Scale  className="w-4 h-4"/>
-            <span>{t.physicsTitle}</span>
+            <span>{tI18n('experiments.center_of_mass.physicsTitle')}</span>
           </div>
-          <p>{t.physicsText}</p>
+          <p>{tI18n('experiments.center_of_mass.physicsText')}</p>
         </div>
       </div>
 
@@ -597,7 +461,7 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
       <div className="space-y-4">
         <div className="rounded-2xl bg-zinc-900 border border-zinc-800 p-5 shadow-xl space-y-5">
           <h4 className="text-sm font-bold text-zinc-200 pb-2 border-b border-zinc-800">
-            {t.modeTitle}
+            {tI18n('experiments.center_of_mass.modeTitle')}
           </h4>
 
           {/* Mode Selection Buttons */}
@@ -606,40 +470,40 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
                 mode === 'particles' ? 'bg-zinc-800 text-red-400 border-red-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.modeParticles}
+              {tI18n('experiments.center_of_mass.modeParticles')}
             </button>
             <button className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
                 mode === 'plumbline' ? 'bg-zinc-800 text-red-400 border-red-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.modePlumbline}
+              {tI18n('experiments.center_of_mass.modePlumbline')}
             </button>
             <button className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
                 mode === 'balance' ? 'bg-zinc-800 text-red-400 border-red-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
-              {t.modeBalance}
+              {tI18n('experiments.center_of_mass.modeBalance')}
             </button>
           </div>
 
           {mode === 'plumbline' && (
             <div className="space-y-2 p-3 rounded-xl bg-zinc-950/70 border border-zinc-800">
-              <label className="text-sm text-zinc-300 font-semibold">{t.pivotLabel}</label>
+              <label className="text-sm text-zinc-300 font-semibold">{tI18n('experiments.center_of_mass.pivotLabel')}</label>
               <div className="grid grid-cols-3 gap-2 text-xs">
                 <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'A' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
                 >
-                  {t.pivotA}
+                  {tI18n('experiments.center_of_mass.pivotA')}
                 </button>
                 <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'B' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
                 >
-                  {t.pivotB}
+                  {tI18n('experiments.center_of_mass.pivotB')}
                 </button>
                 <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'C' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
                 >
-                  {t.pivotC}
+                  {tI18n('experiments.center_of_mass.pivotC')}
                 </button>
               </div>
-              <p className="text-[11px] text-zinc-400 pt-1">{t.plumblineDesc}</p>
+              <p className="text-[11px] text-zinc-400 pt-1">{tI18n('experiments.center_of_mass.plumblineDesc')}</p>
             </div>
           )}
 
@@ -647,14 +511,14 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
           {mode === 'particles' && (
             <div className="space-y-3 pt-2 border-t border-zinc-800">
               <div className="flex items-center justify-between">
-                <span className="text-sm text-zinc-300 font-bold">{t.pointMassesLabel}</span>
+                <span className="text-sm text-zinc-300 font-bold">{tI18n('experiments.center_of_mass.pointMassesLabel')}</span>
                 <button
                   onClick={handleAddMass}
                   disabled={masses.length >= 6}
                   className="min-h-[44px] min-w-[44px] px-2 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs flex items-center gap-1 disabled:opacity-40"
                 >
                   <Plus  className="w-3.5 h-3.5"/>
-                  <span>{t.addMassBtn}</span>
+                  <span>{tI18n('experiments.center_of_mass.addMassBtn')}</span>
                 </button>
               </div>
 
@@ -696,7 +560,7 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
           {/* Log Measurement Button */}
           <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 shadow-red-900/30' }`}>
             <BookmarkCheck  className="w-4 h-4"/>
-            <span>{logged ? t.loggedMsg : t.logBtn}</span>
+            <span>{logged ? tI18n('experiments.center_of_mass.loggedMsg') : tI18n('experiments.center_of_mass.logBtn')}</span>
           </button>
         </div>
       </div>

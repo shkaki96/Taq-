@@ -23,6 +23,7 @@ const ELEMENTS = [
 ];
 
 export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
+  const { t: tI18n } = useTranslation();
   const [protons, setProtons] = useState<number>(1);
   const [neutrons, setNeutrons] = useState<number>(0);
   const [electrons, setElectrons] = useState<number>(1);
@@ -53,73 +54,6 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
   const shell1 = Math.min(electrons, 2);
   const shell2 = Math.min(Math.max(electrons - 2, 0), 8);
 
-  const t = {
-    ar: {
-      title: 'بناء الذرة والنموذج الذري (Z = p, A = p + n)',
-      protons: 'البروتونات (Z)',
-      neutrons: 'النيوترونات (N)',
-      electrons: 'الإلكترونات (e⁻)',
-      massNumber: 'العدد الكتلي (A)',
-      netCharge: 'الشحنة الكلية (Net Charge)',
-      neutral: 'ذرة متعادلة كهربائياً',
-      positiveIon: 'أيون موجب (كاتيون)',
-      negativeIon: 'أيون سالب (أنيون)',
-      stable: 'نظير نووي مستقر ✅',
-      unstable: 'نظير غير مستقر (مشع) ⚠️',
-      orbits: 'مدارات بور',
-      cloud: 'السحابة الإلكترونية',
-      reset: 'إعادة ضبط الذرة',
-    },
-    en: {
-      title: 'Build an Atom & Quantum Model (Z = p, A = p + n)',
-      protons: 'Protons (Z)',
-      neutrons: 'Neutrons (N)',
-      electrons: 'Electrons (e⁻)',
-      massNumber: 'Mass Number (A)',
-      netCharge: 'Net Charge',
-      neutral: 'Neutral Atom',
-      positiveIon: 'Positive Ion (Cation)',
-      negativeIon: 'Negative Ion (Anion)',
-      stable: 'Stable Isotope ✅',
-      unstable: 'Unstable Isotope (Radioactive) ⚠️',
-      orbits: 'Bohr Orbits',
-      cloud: 'Electron Cloud',
-      reset: 'Reset Atom',
-    },
-    ku: {
-      title: 'دروستکردنی گەردیلە و مۆدێلی ئەتۆمی',
-      protons: 'پرۆتۆنەکان (Z)',
-      neutrons: 'نیوترۆنەکان (N)',
-      electrons: 'ئەلیکترۆنەکان (e⁻)',
-      massNumber: 'ژمارەی بارستە (A)',
-      netCharge: 'بارگەی گشتی',
-      neutral: 'گەردیلەی بێ بارگە',
-      positiveIon: 'ئایۆنی ئەرێنی',
-      negativeIon: 'ئایۆنی نەرێنی',
-      stable: 'نۆکڵیدای جێگیر ✅',
-      unstable: 'نادیار و تیشکدەر ⚠️',
-      orbits: 'خولگەی بۆر',
-      cloud: 'هەوری ئەلیکترۆنی',
-      reset: 'ڕێکخستنەوەی گەردیلە',
-    },
-    kmr: {
-      title: 'Avakirina Atomê û Mînakên Bohr (Z = p, A = p + n)',
-      protons: 'Proton (Z)',
-      neutrons: 'Neutron (N)',
-      electrons: 'Elektron (e⁻)',
-      massNumber: 'Hejmara Masayê (A)',
-      netCharge: 'Barga Giştî',
-      neutral: 'Atoma Bêalî',
-      positiveIon: 'Îyona Erênî (Katyon)',
-      negativeIon: 'Îyona Neyînî (Anyon)',
-      stable: 'Îzotopa Berxwedêr ✅',
-      unstable: 'Îzotopa Radyoaktîf ⚠️',
-      orbits: 'Xelekên Bohr',
-      cloud: 'Ewra Elektronî',
-      reset: 'Nûkirina Atomê',
-    },
-  }[lang];
-
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       {/* Top Banner */}
@@ -129,7 +63,7 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
             <Atom  className="w-6 h-6 animate-spin-slow"/>
           </div>
           <div>
-            <h2 className="text-lg sm:text-xl font-bold text-white">{t.title}</h2>
+            <h2 className="text-lg sm:text-xl font-bold text-white">{tI18n('experiments.build_atom.title')}</h2>
             <p className="text-xs text-slate-400 font-mono">CLUSTER A • SIMULATION 1</p>
           </div>
         </div>
@@ -137,10 +71,10 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
         <div className="flex items-center gap-2">
           <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors"
           >
-            {modelType === 'orbits' ? t.cloud : t.orbits}
+            {modelType === 'orbits' ? tI18n('experiments.build_atom.cloud') : tI18n('experiments.build_atom.orbits')}
           </button>
           <button className="min-h-[44px] min-w-[44px] p-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg border border-slate-700"
-            title={t.reset}
+            title={tI18n('experiments.build_atom.reset')}
           >
             <RotateCcw  className="w-4 h-4"/>
           </button>
@@ -176,11 +110,11 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
                     : 'bg-sky-950/60 text-sky-300 border-sky-500/40'
                 }`}
               >
-                {netCharge === 0 ? t.neutral : netCharge > 0 ? `${t.positiveIon} (+${netCharge})` : `${t.negativeIon} (${netCharge})`}
+                {netCharge === 0 ? tI18n('experiments.build_atom.neutral') : netCharge > 0 ? `${tI18n('experiments.build_atom.positiveIon')} (+${netCharge})` : `${tI18n('experiments.build_atom.negativeIon')} (${netCharge})`}
               </span>
               <span
                className={`text-[11px] font-bold px-2.5 py-1 rounded-full border ${ isStable ? 'bg-emerald-950/60 text-emerald-300 border-emerald-500/40' : 'bg-rose-950/60 text-rose-300 border-rose-500/40' }`}>
-                {isStable ? t.stable : t.unstable}
+                {isStable ? tI18n('experiments.build_atom.stable') : tI18n('experiments.build_atom.unstable')}
               </span>
             </div>
           </div>
@@ -249,15 +183,15 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
           <div className="text-[11px] text-slate-400 mt-2 font-mono flex gap-4">
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 bg-red-500 rounded-full inline-block"></span>
-              {t.protons}: {protons}
+              {tI18n('experiments.build_atom.protons')}: {protons}
             </span>
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 bg-slate-400 rounded-full inline-block"></span>
-              {t.neutrons}: {neutrons}
+              {tI18n('experiments.build_atom.neutrons')}: {neutrons}
             </span>
             <span className="flex items-center gap-1">
               <span className="w-2.5 h-2.5 bg-sky-400 rounded-full inline-block"></span>
-              {t.electrons}: {electrons}
+              {tI18n('experiments.build_atom.electrons')}: {electrons}
             </span>
           </div>
         </div>
@@ -271,7 +205,7 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
               <div className="flex justify-between text-xs font-semibold">
                 <span className="text-red-400 flex items-center gap-1.5">
                   <span className="w-2 h-2 bg-red-500 rounded-full"></span>
-                  {t.protons} (Z)
+                  {tI18n('experiments.build_atom.protons')} (Z)
                 </span>
                 <span className="font-mono text-white text-sm">{protons}</span>
               </div>
@@ -290,7 +224,7 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
               <div className="flex justify-between text-xs font-semibold">
                 <span className="text-slate-300 flex items-center gap-1.5">
                   <span className="w-2 h-2 bg-slate-400 rounded-full"></span>
-                  {t.neutrons} (N)
+                  {tI18n('experiments.build_atom.neutrons')} (N)
                 </span>
                 <span className="font-mono text-white text-sm">{neutrons}</span>
               </div>
@@ -309,7 +243,7 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
               <div className="flex justify-between text-xs font-semibold">
                 <span className="text-sky-400 flex items-center gap-1.5">
                   <span className="w-2 h-2 bg-sky-400 rounded-full"></span>
-                  {t.electrons} (e⁻)
+                  {tI18n('experiments.build_atom.electrons')} (e⁻)
                 </span>
                 <span className="font-mono text-white text-sm">{electrons}</span>
               </div>
@@ -327,13 +261,13 @@ export const BuildAtomSim: React.FC<BuildAtomSimProps> = ({ lang }) => {
           {/* Live Calculated Stats */}
           <div className="grid grid-cols-2 gap-3">
             <div className="p-3 bg-slate-950/80 border border-slate-800 rounded-xl">
-              <span className="text-[11px] text-slate-400 block">{t.massNumber} (A)</span>
+              <span className="text-[11px] text-slate-400 block">{tI18n('experiments.build_atom.massNumber')} (A)</span>
               <span className="text-lg font-bold text-amber-400 font-mono">{massNumber} u</span>
               <span className="text-[10px] text-slate-500 block">A = {protons} + {neutrons}</span>
             </div>
 
             <div className="p-3 bg-slate-950/80 border border-slate-800 rounded-xl">
-              <span className="text-[11px] text-slate-400 block">{t.netCharge} (Q)</span>
+              <span className="text-[11px] text-slate-400 block">{tI18n('experiments.build_atom.netCharge')} (Q)</span>
               <span className={`text-lg font-bold font-mono ${netCharge === 0 ? 'text-emerald-400' : netCharge > 0 ? 'text-amber-400' : 'text-sky-400'}`}>
                 {netCharge > 0 ? `+${netCharge}` : netCharge} e
               </span>
