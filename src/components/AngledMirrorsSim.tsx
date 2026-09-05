@@ -302,7 +302,10 @@ export default function AngledMirrorsSim({ lang, onLogMeasurement }: Props) {
           </p>
         </div>
 
-        <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-purple-600 hover:bg-purple-500 text-white shadow-purple-600/30' }`}>
+        <button
+          onClick={handleLog}
+          className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-purple-600 hover:bg-purple-500 text-white shadow-purple-600/30' }`}
+        >
           <BookmarkCheck  className="w-4 h-4"/>
           <span>{logged ? tI18n('experiments.angled_mirrors.logged') : tI18n('experiments.angled_mirrors.logMeasurement')}</span>
         </button>
@@ -350,7 +353,10 @@ export default function AngledMirrorsSim({ lang, onLogMeasurement }: Props) {
                 { angle: 45, label: '45° (N=7)' },
                 { angle: 30, label: '30° (N=11)' },
               ].map((p) => (
-                <button className={`min-h-[44px] min-w-[44px] px-2.5 py-1 rounded-lg text-[11px] font-mono border transition-colors ${
+                <button
+                  key={p.angle}
+                  onClick={() => setAngleDeg(p.angle)}
+                  className={`min-h-[44px] min-w-[44px] px-2.5 py-1 rounded-lg text-[11px] font-mono border transition-colors ${
                     angleDeg === p.angle
                       ? 'bg-purple-600 text-white border-purple-500'
                       : 'bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border-zinc-700/60'

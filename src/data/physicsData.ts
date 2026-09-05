@@ -185,7 +185,7 @@ export const FORMULAS: PhysicsFormulaMeta[] = [
   {
     id: 'solenoid_magnetic_field',
     topic: 'electricity',
-    formula: 'B = μ₀ · n · I  و  F = I · L · B · sin(θ)',
+    formula: 'B = μ₀ · n · I , F = I · L · B · sin(θ)',
     variableSymbols: [{ symbol: 'B', unit: 'T (Tesla)' }, { symbol: 'μ₀', unit: 'T·m/A' }, { symbol: 'n', unit: 'm⁻¹' }, { symbol: 'I', unit: 'A' }, { symbol: 'F', unit: 'N' }],
   },
   {

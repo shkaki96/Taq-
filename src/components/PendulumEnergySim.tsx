@@ -91,6 +91,8 @@ export default function PendulumEnergySim({ lang, onLogMeasurement }: Props) {
 
   // 60FPS Physics Runge-Kutta 4 / Euler-Cromer Loop
   useEffect(() => {
+    if (!isRunning) return;
+
     let lastTime = performance.now();
     let prevTheta = thetaRef.current;
 
@@ -98,7 +100,7 @@ export default function PendulumEnergySim({ lang, onLogMeasurement }: Props) {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning && !isDraggingRef.current) {
+      if (!isDraggingRef.current) {
         // Differential equation: d2(theta)/dt2 = -(g/L)*sin(theta) - (damping/m)*omega
         const alpha = -(currentG / length) * Math.sin(thetaRef.current) - (damping / mass) * omegaRef.current;
         omegaRef.current += alpha * dt;

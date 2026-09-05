@@ -89,6 +89,11 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
 
   // Main 60FPS Physics Simulation Loop
   useEffect(() => {
+    // Initial / static draw
+    drawCanvas();
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
     let zeroCrossings = 0;
     let lastCrossingTime = 0;
@@ -98,7 +103,7 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
       const dt = Math.min((now - lastTime) / 1000, 0.033); // seconds
       lastTime = now;
 
-      if (isRunning && !isDraggingRef.current) {
+      if (!isDraggingRef.current) {
         // Physics update: F_net = -k * x - b * v
         // In vertical equilibrium relative frame, gravity is absorbed into equilibrium position!
         const x = xRef.current;
@@ -161,10 +166,10 @@ export default function SpringSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isRunning, springConstant, mass, damping, orientation, selectedPlanet]);
+  }, [isRunning, springConstant, mass, damping, orientation, selectedPlanet, displacement, lang]);
 
   // Render Spring on HTML5 Canvas
-  const drawCanvas = () => {
+  function drawCanvas() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');

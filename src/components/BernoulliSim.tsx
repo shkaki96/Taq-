@@ -332,11 +332,16 @@ export default function BernoulliSim({ lang, onLogMeasurement }: Props) {
         </div>
 
         <div className="flex items-center gap-2">
-          <button className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700"
+          <button
+            onClick={() => setIsRunning(!isRunning)}
+            className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700"
           >
             {isRunning ? <Pause  className="w-4 h-4"/> : <Play  className="w-4 h-4 text-emerald-400"/>}
           </button>
-          <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-cyan-600/30' }`}>
+          <button
+            onClick={handleLog}
+            className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-cyan-600 hover:bg-cyan-500 text-white shadow-cyan-600/30' }`}
+          >
             <BookmarkCheck  className="w-4 h-4"/>
             <span>{logged ? tI18n('experiments.bernoulli.logged') : tI18n('experiments.bernoulli.logMeasurement')}</span>
           </button>

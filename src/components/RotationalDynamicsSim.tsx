@@ -165,7 +165,6 @@ export default function RotationalDynamicsSim({ lang, onLogMeasurement }: Props)
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
 
     const width = canvas.width;
     const height = canvas.height;
@@ -236,13 +235,20 @@ export default function RotationalDynamicsSim({ lang, onLogMeasurement }: Props)
         ctx.beginPath();
         ctx.arc(0, 0, rPix, 0, Math.PI * 2);
         ctx.fill();
-      } else {
-        // Rod
+      } else if (geometry === 'rod_center') {
+        // Rod - Center Pivot
         ctx.fillStyle = '#10b981';
         ctx.fillRect(-rPix, -8, rPix * 2, 16);
         ctx.strokeStyle = '#6ee7b7';
         ctx.lineWidth = 2;
         ctx.strokeRect(-rPix, -8, rPix * 2, 16);
+      } else {
+        // Rod - End Pivot
+        ctx.fillStyle = '#10b981';
+        ctx.fillRect(0, -8, rPix, 16);
+        ctx.strokeStyle = '#6ee7b7';
+        ctx.lineWidth = 2;
+        ctx.strokeRect(0, -8, rPix, 16);
       }
 
       // Spokes / Pattern to clearly show rotation
@@ -558,6 +564,16 @@ export default function RotationalDynamicsSim({ lang, onLogMeasurement }: Props)
               >
                 <span>{tI18n('experiments.rotational_dynamics.geoRodCenter')}</span>
                 <span className="font-bold text-emerald-400">¹/₁₂ M L²</span>
+              </button>
+
+              <button
+                onClick={() => setGeometry('rod_end')}
+                className={`p-2 rounded-xl text-start font-mono flex items-center justify-between border ${
+                  geometry === 'rod_end' ? 'bg-emerald-950/40 text-emerald-300 border-emerald-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-850'
+                }`}
+              >
+                <span>{tI18n('experiments.rotational_dynamics.geoRodEnd') || 'Rod (End)'}</span>
+                <span className="font-bold text-emerald-400">⅓ M L²</span>
               </button>
             </div>
           </div>

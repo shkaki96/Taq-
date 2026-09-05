@@ -174,28 +174,59 @@
     "circuits": {
       "title": "Qanûna Ohm û Çerxeyên Elektrîkê",
       "shortDesc": "Simulasyona çerxeya DC, pîvandina voltaj, herikîn, berxwedan û hêza elektrîkê.",
+      "subtitle": "Avakirina çerxeya DC, analîza Qanûna Ohm, multîmetreya dîjîtal, diyagrama I-V û hêza Joule",
       "voltage": "Voltaja Çavkaniyê (V)",
       "resistance1": "Berxwedana Yekem (R₁)",
       "resistance2": "Berxwedana Duyem (R₂)",
-      "circuitType": "Cureyê Girêdanê",
-      "series": "Li pey hev (Series)",
-      "parallel": "Hevtewere (Parallel)",
-      "single": "Tek Berxwedan (Single)",
+      "resistance3": "Berxwedana Sêyem (R₃)",
+      "circuitType": "Cureyê Girêdana Çerxê",
+      "series2": "Li pey hev (2 Berxwedan)",
+      "series3": "Li pey hev (3 Berxwedan)",
+      "parallel2": "Hevtewere (2 Berxwedan)",
+      "parallel3": "Hevtewere (3 Berxwedan)",
+      "mixed": "Têkel (R₁ + R₂||R₃)",
+      "lampCircuit": "Çira û Berxwedana Guherbar",
+      "single": "Tek Berxwedan (R₁)",
+      "series": "Li pey hev",
+      "parallel": "Hevtewere",
       "switch": "Mifteya Çerxeyê",
       "switchOn": "Çerxeya Girtî (Herikîn heye)",
       "switchOff": "Çerxeya Vekirî (Qutbûyî)",
+      "toggleToOpen": "Bikirtîne bo vekirina çerxeyê (qutkirina herikînê)",
+      "toggleToClose": "Bikirtîne bo girtina çerxeyê (girêdana herikînê)",
+      "canvasSwitchHint": "Bikirtîne ser mifteyê bo guherînê",
+      "canvasOpenState": "Çerxeya vekirî (Herikîn = 0)",
+      "canvasClosedState": "Çerxeya girtî (Herikîn heye)",
+      "circuitOpenFormulaNote": "Çerxe vekirî ye: Berxwedan bêdawî ye (Req = ∞) û herikîn sifir e (I = 0)",
       "current": "Herikîna Giştî (I)",
-      "totalResistance": "Berxwedana Hevseng (R_eq)",
+      "totalResistance": "Berxwedana Hevseng (Req)",
       "power": "Hêza Bikaranînê (P)",
-      "bulbBrightness": "Ronahiya Çirayê",
-      "multimeter": "Multîmetre (Pîvok)",
+      "bulbBrightness": "Ronahî û Germahiya Çirayê",
+      "multimeter": "Pîvoka Multîmetre",
+      "probeAll": "Tevahiya Çerxê (Giştî)",
+      "probeR1": "Berxwedana Yekem (R₁)",
+      "probeR2": "Berxwedana Duyem (R₂)",
+      "probeR3": "Berxwedana Sêyem (R₃)",
       "ammeter": "Ampermeter (A)",
       "voltmeter": "Voltmeter (V)",
-      "electronFlow": "Tevgera Elektronan",
+      "wattmeter": "Wattmeter (W)",
+      "ohmmeter": "Ohmmeter (Ω)",
+      "flowType": "Nîşandana Herikînê",
+      "electronFlow": "Herikîna Elektronan (e⁻)",
+      "conventionalFlow": "Herikîna Klasîk (+ bo -)",
+      "voltagePresets": "Voltaja Standard",
+      "presetAA": "1.5V (Bataryaya AA)",
+      "preset9V": "9.0V (Bataryaya 9V)",
+      "preset12V": "12V (Bataryaya Otomobîlê)",
+      "preset24V": "24V (Çavkaniya DC ya Laboratuvarê)",
+      "ivGraphTitle": "Diyagrama Qanûna Ohm (I-V Curve)",
+      "operatingPoint": "Xala Xebatê ya Zindî",
+      "jouleHeat": "Rêjeya Germahiya Joule",
       "varTotalCurrent": "Tewşema giştî ya çerxa elektrîkî (I)",
-      "notesText": "Qanûna Ohm V = I · R û belavbûna voltaj û tewşemê hate îspatkirin.",
-      "componentSettingsTitle": "Nirxên hêmanên çerxa elektrîkî",
-      "liveCalculationsTitle": "Hesabên zindî yên çerxê:"
+      "notesText": "Qanûna Ohm (V = I · R) û hêza windabûyî ya Joule (P = V · I = I² · R) hate îspatkirin.",
+      "componentSettingsTitle": "Mîhengên Hêmanên Çerxê",
+      "liveCalculationsTitle": "Hesabên Qanûna Ohm gav bi gav:",
+      "tip": "💡 Voltaj an berxwedanê biguherîne da ku dabeşkirina herikînê, hêza germê û tevgera xala xebatê li ser xêza Ohmê bibînî!"
     },
     "optics": {
       "title": "Optîk û Qanûna Snell ji bo Şikandina Ronahiyê",
@@ -281,7 +312,8 @@
       "loggedMsg": "Hat tomarkirin di defterê de!",
       "logBtn": "Tomarkirina parastina anarjiyê û leza binî",
       "photogateLabel": "Dergehê Ronahiyê",
-      "varEnergyVel": "Parastina anarjiya mekanîkî û leza binî"
+      "varEnergyVel": "Parastina anarjiya mekanîkî û leza binî",
+      "theoryBackground": "Di goşeya berdanê θ₀ de K=0 ye û hemi anarjî U_max = m·g·h_max e. Li xala herî jêr (h=0) anarjiya tewereyî dibe anarjiya tevgerê: K_max = ½ m v_max² = E."
     },
     "photoelectric_effect": {
       "title": "Diyardeya Fotoelektrîkê",
@@ -359,7 +391,8 @@
       "inclineAngleLabel": "Goşeya berpalê (θ)",
       "loggedMsg": "Hat tomarkirin di defterê de!",
       "logBtn": "Tomarkirina momena sistiyê û leztirbûnê",
-      "reset": "Rêk xistin"
+      "reset": "Rêk xistin",
+      "theoryBackground": "Berxwedana laş beramberî zevirînê (Momena sistiyê I) li ser belavbûna giraniyê ye: Bera tenik xwediya momena sistiyê ya herî mezin e (I = MR²)."
     },
     "viscosity_stokes": {
       "title": "Lîncbûn û Zagona Stoks (Leza Dawî)",
@@ -400,7 +433,8 @@
       "tubeLengthLabel": "Dirêjahiya boriyê (L)",
       "airTempLabel": "Pileya germahiya hewayê (T)",
       "loggedSuccess": "Pîvan di deftera labê de hat tomarkirin!",
-      "logButton": "Tomarkirina frekans û dirêjahiya dengvedanê"
+      "logButton": "Tomarkirina frekans û dirêjahiya dengvedanê",
+      "theoryBackground": "Di boriya girtî de, divê girêya veguhestinê li sera girtî û zikê veguhestinê li sera vekirî çêbibe, loma dengvedan tenê di frekansên tek de f = (2n-1)v/(4L) çêdibû. Lê di boriya vekirî de du zik li her du seran çêdibin û dengvedan di hemû harmonîkan de f = n v/(2L) çêdibû."
     },
     "angled_mirrors": {
       "title": "Dû Neynikên Rast ên bi Goşe",
@@ -447,19 +481,20 @@
       "showVectorsLabel": "Nîşandana vektorê leza masiyî (v)",
       "loggedMsg": "Hat tomarkirin di defterê de!",
       "logBtn": "Tomarkirina pîvanê di defterê de",
-      "unrolledTrackLabel": "Hêla kevana veguhastî (s)"
+      "unrolledTrackLabel": "Hêla kevana veguhastî (s)",
+      "theoryBackground": "Yek radyen goşeya navendî ye ku kevana beramberî wê yekcar di dirêjiya nîvçerxa çerxê de ye (s = r => θ = 1 rad). Têkiliya giştî s = r · θ ye û leza hêlî v = r · ω ye."
     },
     "atomic_spectra": {
       "title": "Analîza Spektrûma Atomî û Veguhestina Kuantumî",
-      "bohrModel": "Mawdelê Bohr",
+      "bohrModel": "Modela Bohr ya Atomê",
       "spectrometer": "Spektrometre",
       "gasDischarge": "Tûba valakirina gazê",
-      "grating": "Şebekeya tewandinê",
+      "grating": "Şebekeya tewandinê / Prîzma",
       "wavelengthRuler": "Dirêjahiya pêlê λ (nm)",
       "wavelengthLabel": "Dirêjahiya pêla fotonê (λ)",
-      "photonEnergyLabel": "Anargiya fotonê derketî (ΔE)",
-      "frequencyLabel": "Lêdana ronahiyê (f)",
-      "energyJoulesLabel": "Anargî bi Joule (J)",
+      "photonEnergyLabel": "Enerjiya fotonê derketî (ΔE)",
+      "frequencyLabel": "Frekansa optîkî (f)",
+      "energyJoulesLabel": "Enerjî bi Joule (J)",
       "theoryTitle": "Fîzîka atomî û qanûnên derketina kuantumî:",
       "theoryDesc": "Spektrûmên xêzî wekî şopek taybet in ji bo hêmanên kîmyayî. Dema ku elektronên excited dadikevin astên nizm tir, fotonan bi anargiyên diyarkirî derdixin: ΔE = hf = hc/λ.",
       "chemElementTitle": "Hêmana kîmyayî û xêzên spektrûmê",
@@ -467,7 +502,24 @@
       "emissionLinesLabel": "Xêzên spektrûmê derketî:",
       "hydrogenTransitionLabel": "Veguhestina rênîşan di atoma hîdrojenê de (n_i → n_f=2):",
       "loggedSuccess": "Hat tomarkirin di defterê de!",
-      "logBtn": "Tomarkirina daneyên kuantumî yên fotonê"
+      "logBtn": "Tomarkirina daneyên kuantumî yên fotonê",
+      "play": "Destpêkirin",
+      "pause": "Rawestandin",
+      "reset": "Reset bike",
+      "running": "Dixebite",
+      "paused": "Sekinî",
+      "triggerJump": "Dabestina Kuantumê",
+      "emissionSpectrum": "Spektruma Belavbûnê",
+      "absorptionSpectrum": "Spektruma Mijînê",
+      "spectrumType": "Cureyê Spektrumê:",
+      "calculationsTitle": "Gavên Hesabkirina Kuantumê (ΔE = hf = hc/λ):",
+      "seriesBalmer": "Rêzika Balmer (Ronahiya Dîtbar n_f=2)",
+      "seriesLyman": "Rêzika Lyman (UV n_f=1)",
+      "seriesPaschen": "Rêzika Paschen (IR n_f=3)",
+      "spectralSeries": "Rêzika Spektrumê ya Hîdrojenê:",
+      "detectorCrosshair": "Sensora Spektrometreyê",
+      "orbitEnergy": "Enerjiya rêgehê",
+      "theoryBackground": "Spektrûmên xêzî wekî şopek taybet in ji bo hêmanên kîmyayî. Dema ku elektronên excited dadikevin astên nizm tir, fotonan bi anargiyên diyarkirî derdixin: ΔE = hf = hc/λ."
     },
     "bernoulli": {
       "title": "Hevkêşeya Pernolî û Herikîna Tûpa Fîntorî",
@@ -499,9 +551,16 @@
       "sirius": "Stêrka Sirius (9940 K)",
       "visibleRange": "Ronahiya Xuyanî (380 - 750 nm)",
       "uv": "Ser-binefşî (UV)",
+      "presetsLabel": "Mînakên Berbelav",
       "visible": "Xuyanî",
       "ir": "Bin-sor (IR)",
-      "reset": "Nûkirin bo Rojê"
+      "reset": "Nûkirin bo Rojê",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê di defterê de",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Lûtkeya dirêjahiya pêlê λ_max û hêza tîrêjê",
+      "notes": "Sîmulasyona spektroma tiştê reş, qanûna Wien a guhestinê, qanûna Planck û Stefan-Boltzmann."
     },
     "build_atom": {
       "title": "Avakirina Atomê û Mînakên Bohr (Z = p, A = p + n)",
@@ -517,7 +576,16 @@
       "unstable": "Îzotopa Radyoaktîf ⚠️",
       "orbits": "Xelekên Bohr",
       "cloud": "Ewra Elektronî",
-      "reset": "Nûkirina Atomê"
+      "reset": "Nûkirina Atomê",
+      "log": "Tomarkirina Pîvanê",
+      "logged": "Di defterê de hate tomarkirin ✓",
+      "makeNeutral": "Bêbar bike (e⁻ = p)",
+      "stableIsotope": "Îzotopa Berxwedêr",
+      "commonElements": "Elementên Tabloya Periyodîk",
+      "electronConfig": "Belavbûna elektronan",
+      "valenceElectrons": "Elektronên hevhêz",
+      "addParticle": "Zêde bike",
+      "removeParticle": "Kêm bike"
     },
     "build_nucleus": {
       "title": "Avakirina Dendikê û Enerjiya Girêdanê (E = Δmc²)",
@@ -530,7 +598,20 @@
       "constituentMass": "Tevahiya Masaya Parçeyan",
       "valleyOfStability": "Geliyê Berxwedana Dendikî",
       "peakStability": "Lûtkeya berxwedanê nêzîkî Hesin-56 e",
-      "reset": "Nûkirin bo Karbon-12"
+      "reset": "Nûkirin bo Karbon-12",
+      "log": "Tomarkirina Pîvanê",
+      "logged": "Di defterê de hate tomarkirin ✓",
+      "optimalIsotope": "Berxwedana herî baş bo îzotopên Z",
+      "equalNZ": "Wekhevkirina N = Z",
+      "presets": "Dendikên sereke di fîzîka dendikî de",
+      "stable": "Dendika berxwedêr",
+      "unstable": "Dendika bêberxwedan / radyoaktîf",
+      "fusionZone": "Herêma Yekbûna Dendikî (A < 56)",
+      "fissionZone": "Herêma Parçebûna Dendikî (A > 56)",
+      "peakZone": "Lûtkeya Berxwedanê (Fe / Ni)",
+      "nuclearRadius": "Nîvçapa texmînkirî ya dendikê",
+      "addParticle": "Zêde bike",
+      "removeParticle": "Kêm bike"
     },
     "calorimetry_equilibrium": {
       "title": "Laboratuwara Kalorîmetriyê û Havserengiyê",
@@ -563,17 +644,53 @@
       "batteryVoltage": "Voltaja Bataryayê (V)",
       "plateArea": "Rûbera Pelan (A)",
       "separation": "Dûriya Navberê (d)",
-      "dielectric": "Qatjimara Bêguhêzbar (κ)",
+      "dielectric": "Madeya Îzoleker (κ)",
+      "dielectricOffset": "Têxistina Pelê Îzoleker",
       "capacitance": "Kapasîteya Elektrîkî (C)",
       "storedCharge": "Barga Tomarkirî (Q)",
       "storedEnergy": "Enerjiya Tomarkirî (U)",
       "electricField": "Qada Elektrîkê ya Yekreng (E)",
-      "air": "Hewa (κ=1)",
+      "plateVoltage": "Voltaja Pelan (V_c)",
+      "air": "Valahî / Hewa (κ=1.0)",
+      "teflon": "Teflon (κ=2.1)",
       "paper": "Kaxez (κ=3.5)",
-      "glass": "Cam (κ=5)",
-      "reset": "Nûkirin",
-      "topPlateLabel": "+Q (Pela Erênî ya Jorîn)",
-      "bottomPlateLabel": "-Q (Pela Negatîf a Jêrîn)"
+      "glass": "Cam (κ=5.0)",
+      "mica": "Mîka (κ=6.0)",
+      "ceramic": "Seramîka Îzoleker a Bilind (κ=15.0)",
+      "reset": "Nûkirina Azmûnê",
+      "topPlateLabel": "Pela Jorîn (+Q / -Q)",
+      "bottomPlateLabel": "Pela Jêrîn (-Q / +Q)",
+      "log": "Tomarkirina Pîvanê",
+      "logged": "Hate Tomarkirin ✓",
+      "circuitMode": "Rewşa Dewreya Elektrîkê",
+      "modeBattery": "Girêdayî Pîlê (Barkirin)",
+      "modeDisconnected": "Veqetandî ji Çavkaniyê (Barga Q Neguherbar)",
+      "modeBulb": "Valakirin bi Rêya Ampûlê",
+      "switchBattery": "Pîl / Batarya",
+      "switchOpen": "Vekirî (Veqetandî)",
+      "switchBulb": "Ampûl",
+      "presets": "Rewşên Amade",
+      "presetStandard": "Kondansatora Hewa ya Standard",
+      "presetMaxStorage": "Kapasîteya Herî Zêde (Îzolekera Bilind)",
+      "presetDisconnectExp": "Azmûna Barga Neguherbar",
+      "presetCameraFlash": "Kondansatora Flaşa Kamerayê",
+      "showFieldLines": "Xetên Qadê (E)",
+      "showCharges": "Barên Pelan (±)",
+      "showDipoles": "Dîpolên Madeya Îzoleker",
+      "showVoltmeter": "Voltmetraya Dîjîtal",
+      "discharge": "Niha Vala Bike",
+      "discharging": "Tê valakirin...",
+      "fullyDischarged": "Hate Valakirin (0V)",
+      "breakdownWarning": "⚠️ Sînorê têkçûna elektrîkî ya madeya îzoleker derbas bû!",
+      "boundCharge": "Barga Girêdayî ya Dîpolan (Q_b)",
+      "play": "Destpêkirin",
+      "pause": "Rawestandin",
+      "instantDischarge": "Valakirina Lezgîn (0V)",
+      "chargeBattery": "Barkirin (Pîl)",
+      "isolateCapacitor": "Cudakirin (Vekirî)",
+      "dischargeBulb": "Valakirin (Ampûl)",
+      "controlsBar": "Kontrolên Azmûnê",
+      "voltmeterTitle": "Voltmetraya Dîjîtal"
     },
     "center_of_mass": {
       "title": "Diyar kirina navenda massayê ya laşan (Xcm = Σmi xi / Σmi)",
@@ -600,24 +717,46 @@
       "loggedMsg": "Hat tomarkirin di defterê de!",
       "logBtn": "Tomarkirina koordînatên navenda massayê",
       "plumbCenterLabel": "Navenda giraniyê ya geometrîk ⨁",
-      "rotEquilMsg": "✓ Sîstem di hevsengiya zevirînê de ye (Στ = 0) li dora X_cm"
+      "rotEquilMsg": "✓ Sîstem di hevsengiya zevirînê de ye (Στ = 0) li dora X_cm",
+      "theoryBackground": "Navenda massayê cihê navînî ye ku li ser bingeha giranaiya parçikan hatî hejmartin: X_cm = Σ(mi xi)/Σmi û Y_cm = Σ(mi yi)/Σmi."
     },
     "charges_and_fields": {
       "title": "Barg û Qadên Elektrîkê (E = kQ / r²)",
       "subtitle": "Laboratûwara Fîzîkê",
-      "addPos": "Barga Erênî Zêde Bike (+)",
-      "addNeg": "Barga Neyînî Zêde Bike (-)",
-      "toggleVectors": "Nîşandana Tîrên Qadê",
-      "hideVectors": "Veqetandina Tîrên Qadê",
-      "manageCharges": "Rêveberiya Bargan:",
+      "addPos": "+1 nC (Erênî)",
+      "addNeg": "-1 nC (Neyînî)",
+      "toggleVectors": "Tîrên Qadê",
+      "hideVectors": "Veqetandina Tîran",
+      "manageCharges": "Kontrola Bargan:",
       "sensorHeader": "Sensora Qadê û Potansiyelê",
-      "clickToPlaceSensor": "Ji bo pîvanê li ser tabloyê bitikîne",
+      "clickToPlaceSensor": "Ji bo pîvanê li ser tabloyê bitikîne an bikişîne",
+      "dragTip": "Bargan an sensora zêrîn bi azadî li ser tabloyê bikişîne",
       "potential": "Potansiyela Elektrîkî (V)",
       "fieldIntensity": "Mezinahiya Qadê (E)",
-      "reset": "Nûkirin"
+      "angle": "Araste (θ)",
+      "reset": "Nûkirin",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
+      "clearAll": "Hemûyan Paqij Bike",
+      "presets": "Modelên Amadekirî",
+      "presetDipole": "Dîpol (+ -)",
+      "presetLikeCharges": "Du Bargên Wekhev (+ +)",
+      "presetQuadrupole": "Kwadrupol (+ - + -)",
+      "presetSinglePos": "Barga Erênî (+1 nC)",
+      "presetParallel": "Pelên Terîb",
+      "controlsBar": "Kontrolên Azmûn û Bargan",
+      "launchTestParticle": "Avêtina Barga Ezmûnî (+q)",
+      "traceEquipotential": "Xêzkirina Hevpotansiyelê",
+      "clearEquipotentials": "Paqijkirina Xetan",
+      "showGrid": "Tora Koordînatê",
+      "showVoltageHeatmap": "Nexşeya Rengê Potansiyelê",
+      "chargesCount": "Bargên Çalak",
+      "sensorDetails": "Daneyên Sensorê"
     },
     "color_vision": {
       "title": "Dîtina Rengan û Tevlihevkirina RGB",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
       "redBeam": "Ronahiya Sor (700 nm)",
       "greenBeam": "Ronahiya Kesk (546 nm)",
       "blueBeam": "Ronahiya Şîn (435 nm)",
@@ -627,6 +766,7 @@
       "mCones": "Hestiyarên M (Kesk 530nm)",
       "sCones": "Hestiyarên S (Şîn 420nm)",
       "reset": "Nûkirin bo Zer",
+      "presets": "Modelên Reng ên Standart",
       "colorCustom": "Tevliheviya Taybet (RGB)",
       "colorWhite": "Spî (Ronahiya Spî)",
       "colorBlack": "Reş (Bê Ronahî)",
@@ -635,7 +775,29 @@
       "colorMagenta": "Macenta (R + B)",
       "colorPureRed": "Sora Paqij",
       "colorPureGreen": "Keska Paqij",
-      "colorPureBlue": "Şîna Paqij"
+      "colorPureBlue": "Şîna Paqij",
+      "colorOrange": "Porteqalî (Sor + nîv Kesk)",
+      "colorAmber": "Kehrebayî / Zêrîn",
+      "colorLime": "Lîmonî (Kesk + nîv Sor)",
+      "colorTeal": "Şînekî Keskavî (Teal)",
+      "colorViolet": "Binefşî / Mor",
+      "colorGray": "Gewr (Hevsengiya Kêm)",
+      "viewMode": "Moda Nîşandanê",
+      "viewOverlapping": "Xelekên Ronahiyê (Venn)",
+      "viewObserver": "Temaşevan û Tora Çav",
+      "visionDeficiency": "Modela Dîtina Rengan",
+      "normalVision": "Asayî (Sê-Reng)",
+      "protanopia": "Protanopya (Koratiya Sora)",
+      "deuteranopia": "Deuteranopya (Koratiya Keska)",
+      "tritanopia": "Trîtanopya (Koratiya Şîna)",
+      "monochromacy": "Yekrengî (Gewriya Tev)",
+      "beamPower": "Vekirin / Girtin",
+      "luminance": "Ronahiya Têgihiştî (Y)",
+      "chromaticity": "Kordînatên Rengdariyê CIE",
+      "copyHex": "HEX Kopî Bike",
+      "copied": "Hate Kopîkirin!",
+      "increase": "Zêdekirin",
+      "decrease": "Kêmkirin"
     },
     "curved_mirrors": {
       "title": "Neynikên Goyer ên Çal û Gir",
@@ -685,7 +847,13 @@
       "rightChamber": "Odeya Rastê",
       "reset": "Nûkirin",
       "pause": "Rawestandin",
-      "play": "Destpêkirin"
+      "play": "Destpêkirin",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê di defterê de",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Rêjeya belavbûna gazan û rêjeya têkelbûnê",
+      "notes": "Sîmulasyona belavbûna gazan û qanûna Graham a belavbûnê li gorî maseya molekulî û germahiyê."
     },
     "gas_diffusion": {
       "title": "Belavbûna Gazan û Qanûna Graham",
@@ -699,7 +867,13 @@
       "rightChamber": "Odeya Rastê",
       "reset": "Nûkirin",
       "pause": "Rawestandin",
-      "play": "Destpêkirin"
+      "play": "Destpêkirin",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê di defterê de",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Rêjeya belavbûna gazan û rêjeya têkelbûnê",
+      "notes": "Sîmulasyona belavbûna gazan û qanûna Graham a belavbûnê li gorî maseya molekulî û germahiyê."
     },
     "doppler_effect": {
       "title": "Bandora Dopplerê",
@@ -793,36 +967,88 @@
     },
     "electromagnetic_induction": {
       "title": "Teşwîqa Elektromanyetîk û Qanûna Faraday",
-      "subTitle": "Teşwîqa Elektromanyetîk û Qanûna Faraday",
-      "desc": "Çêkirina hêza ajokera elektrîkî ya teşwîqkirî û herikîna elektrîkê bi rêya tevgera magnetê di nav solenoîdê de.",
+      "subTitle": "Qanûna Faraday a Teşwîqê û Qanûna Lenz",
+      "desc": "Çêkirina hêza ajokera elektrîkî ya teşwîqkirî ε = -N·(dΦ/dt) û herikîna elektrîkê bi rêya tevgera magnetê di nav solenoîdê de.",
+      "mode": "Cureyê Tevgerê",
+      "modeOscillate": "Hêjandina Otomatîk",
+      "modeManual": "Kişandina Destî ya Înteraktîf",
+      "modeAC": "Teşwîqa Zivirî (Jeneratorê AC)",
       "coilTurns": "Hejmara dorpêçên solenoîdê (N):",
       "magnetSpeed": "Leza tevgera magnetê (v):",
       "magneticField": "Hêza qada elektromanyetîk (B):",
       "coilResistance": "Berxwedana çerxê (R):",
+      "coilRadius": "Nîvqada solenoîdê (r):",
       "controlsTitle": "Parametreyên solenoîd û magnetê",
-      "inducedEmf": "Hêza ajokera elektrîkî ya teşwîqkirî (ε)",
+      "inducedEmf": "Hêza ajokera teşwîqkirî (ε)",
       "inducedCurrent": "Herikîna teşwîqkirî (I)",
-      "fluxChangeRate": "Rêjeya guherîna şewqa magnetîkî (dΦ/dt)",
+      "magneticFlux": "Şewqa Magnetîkî (Φ_B)",
+      "fluxChangeRate": "Rêjeya guherîna şewqê (dΦ/dt)",
       "coilLoopsLabel": "Dorpêçên solenoîdê",
       "turnsSuffix": "dorpêç",
-      "galvanometerLabel": "G (Galvanometer)",
-      "loggedSuccess": "Hat tomarkirin ✓",
-      "logData": "Pêvanê tomar bike",
-      "variableName": "Hêza ajokera elektrîkî ya teşwîqkirî ε",
-      "notes": "Ezmûna teşwîqa elektromanyetîk û qanûna Faraday."
+      "galvanometerLabel": "Galvanometer (±V)",
+      "flipMagnet": "Pêçewanekirina cemseran (N ↔ S)",
+      "showFieldLines": "Xêzên Qadê (B)",
+      "showFlux": "Şewqa Magnetîkî (Φ)",
+      "showScope": "Oskîloskopa Zindî",
+      "play": "Berdewam bike",
+      "pause": "Bisekine",
+      "reset": "Vekirin ji nû ve",
+      "loggedSuccess": "Di lênûskê de hat tomarkirin ✓",
+      "logData": "Di lênûska laboratuvarê de tomar bike",
+      "dragPrompt": "💡 Magnetê bi mişk an jî tiliya xwe bikişîne çep û rast di nav solenoîdê de da ku voltaja teşwîqkirî bibînî!",
+      "dragActive": "🖐️ Kişandina bi dest çalak e: Magnetê di nav bobînê de pêş û paş ve bibe!",
+      "manualPos": "Cihê magnetê (x):",
+      "quickThrust": "⚡ Palvedana lezgîn",
+      "centerMagnet": "Navenda bobînê",
+      "moveLeft": "◀ Çep",
+      "moveRight": "▶ Rast",
+      "variableName": "Hêza ajokera elektrîkî ya teşwîqkirî (ε)",
+      "notes": "Qanûna Faraday a teşwîqê (ε = -N · dΦ/dt) û Qanûna Lenz hate îspatkirin.",
+      "lenzNotice": "Qanûna Lenz: Arasteya herikîna teşwîqkirî dijberiya guherîna şewqa magnetîkî dike."
     },
     "energy_skate_park": {
-      "title": "Baxçeyê Xweşiqandinê û Parastina Enerjiyê",
+      "title": "Baxçeyê Xweşiqandinê û Parastina Enerjiyê (E_total = K + U + E_th)",
+      "subtitle": "Guherînên enerjiya tevger, rewş û germahiya bi lêkxişandinê",
       "kinetic": "Enerjiya Tevgerê (K)",
       "potential": "Enerjiya Rewşê (U)",
       "thermal": "Enerjiya Germiyê (E_th)",
       "totalEnergy": "Tevahiya Enerjiyê (E)",
-      "mass": "Masa (m)",
+      "mass": "Giraniya Xweşiqokê (m)",
       "gravity": "Kêşwerî (g)",
-      "friction": "Lêkxişandin",
+      "friction": "Lêkxişandin (μ)",
+      "frictionNone": "Tune",
+      "frictionLots": "Zêde",
+      "height": "Bilindahî (h)",
+      "speed": "Lez (v)",
       "reset": "Nûkirin",
       "pause": "Rawestandin",
-      "play": "Destpêkirin"
+      "play": "Destpêkirin",
+      "log": "Tomarkirin",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Tevahiya enerjiya mekanîkî û parastina enerjiyê",
+      "notes": "Lêkolîna parastina enerjiya mekanîkî, guherîna enerjiya rewş û tevgerê û germahiya bi lêkxişandinê.",
+      "trackU": "Rêça U-şêweyî",
+      "trackRoller": "Rêça Pêldar",
+      "trackSlope": "Zinarê Berfê",
+      "trackLoop": "Rêça Xelekî",
+      "envEarth": "Dinya (9.8 m/s²)",
+      "envMoon": "Heyv (1.6 m/s²)",
+      "envJupiter": "Berçîs (24.8 m/s²)",
+      "envSpace": "Valahî (0 m/s²)",
+      "pieChart": "Grafîka Parî",
+      "barGraph": "Sitûnên Enerjiyê",
+      "speedometer": "Pîvana Lezê",
+      "vectors": "Vektora Lezê",
+      "grid": "Tora Bilindahiyê",
+      "slowMo": "Tevgera Hêdî",
+      "skaterPresets": "Xweşiqok",
+      "skaterLight": "Zarok (35 kg)",
+      "skaterMedium": "Mezin (60 kg)",
+      "skaterHeavy": "Pro (90 kg)",
+      "dragTip": "💡 Tu dikarî xweşiqokê bikşînî û deynî ser her xala rêçê ji bo guhertina bilindahiya destpêkê!",
+      "energyConservationFormula": "E_total = K + U_g + E_th = sabît"
     },
     "forces_motion": {
       "title": "Hêz û Tevger: Bingeh (Qanûna Duyem a Newton)",
@@ -840,15 +1066,35 @@
       "frictionCoeff": "Hevkefiya lêkdanê (μ):"
     },
     "fourier_making_waves": {
-      "title": "Rêzeya Fourier û Çêkirina Pêlan",
-      "fundamental": "Frekansa Bingehîn (n=1)",
-      "harmonicsHeader": "Firehiya Harmonîkan (A₁ - A₈)",
-      "presets": "Pêşsaziyên Pêlan:",
+      "title": "Rêzeya Fourier û Çêkirina Pêlan (f(x) = Σ Aₙ sin(nωt))",
+      "subtitle": "Hevgirtina harmonîkan, spektra frekansê, dengê muzîkê, û şêweyên pêlên hevedudanî",
+      "fundamental": "Frekansa Bingehîn (f₀)",
+      "harmonicsHeader": "Firehiya Harmonîkan (A₁ - A₁₁)",
+      "presets": "Pêşsaziyên Standard",
       "square": "Pêla Çargoşe",
-      "sawtooth": "Pêla Diranê Mişarê",
+      "sawtooth": "Diranê Mişarê",
       "triangle": "Pêla Sêgoşe",
-      "sine": "Pêla Sine ya Paqij",
-      "reset": "Nûkirin"
+      "sine": "Sine ya Paqij",
+      "pulse": "Trêna Lêdanan",
+      "reset": "Nûkirin",
+      "pause": "Rawestandin",
+      "play": "Destpêkirin",
+      "slowMo": "Tevgera Hêdî",
+      "audioPlay": "Guhdarîkirina Dengê",
+      "audioMute": "Bêdengkirin",
+      "showComponents": "Nîşandana Parçeyan",
+      "showSpectrum": "Spektra Frekansê (FFT)",
+      "clearAll": "Hemû Paqij Bike",
+      "log": "Tomarkirin",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Analîza Rêzeya Fourier û Çêkirina Pêlan",
+      "notes": "Sîmulasyona rêzeya Fourier û çêkirina pêlên hevbeş ji harmonîkên sînusî û belavbûna spektralî.",
+      "rmsVoltage": "Nirxa Bibandor (RMS)",
+      "totalPower": "Hêza Harmonîk (P)",
+      "thd": "Rêjeya Xirabûna Harmonîk (THD)",
+      "tip": "💡 Bibihîze û bibîne ka çawa zêdekirina harmonîkên tek û cot şiklê pêlê û rengê dengê muzîkê diguherîne!"
     },
     "gravity_force_lab": {
       "title": "Laboratuvara hêza gravîtê (Qanûna gerdûnî ya gravîtê)",
@@ -862,13 +1108,41 @@
     },
     "gravity_and_orbits": {
       "title": "Kêşwerî û Xelekên Gerstêrkan (F_g = G M m / r²)",
+      "subtitle": "Laboratûwara Mekanîka Ezmanî û Kêşweriya Gerdûnî",
       "starMass": "Masaya Stêrkê (M_star)",
       "planetMass": "Masaya Gerstêrkê (m_planet)",
-      "gravityToggle": "Hêza Kêşweriyê Veke/Bigire",
-      "showVectors": "Nîşandana Tîrên Hêz û Lezê",
+      "gravityToggle": "Hêza Kêşweriyê",
+      "showVectors": "Tîrên Hêz û Lezê",
+      "showGrid": "Tora Koordînat û Xelekan",
       "reset": "Nûkirina Xelekê",
       "pause": "Rawestandin",
-      "play": "Destpêkirina Xelekê"
+      "play": "Destpêkirin",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê di defterê de",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Leza rêgehê û dema xelekê",
+      "notes": "Sîmulasyona kêşweriya gerdûnî û xelekên gerstêrkan li gorî Newton.",
+      "presets": "Modelên Rêgehê",
+      "presetCircular": "Rêgeha Dorhêlî (v = √GM/r)",
+      "presetElliptical": "Rêgeha Hêkî (Kepler)",
+      "presetEscape": "Leza Rizgarbûnê (v_esc)",
+      "presetHeavyStar": "Stêrka Mezin (2.0 M☉)",
+      "presetSatellite": "Peyka Nêzîk û Lezgîn",
+      "controlsBar": "Kontrolên Rêgeh û Modelan",
+      "simSpeed": "Leza Sîmulasyonê",
+      "clearTrail": "Paqijkirina Şopê",
+      "telemetry": "Daneyên Astronomîk ên Rêgehê",
+      "orbitalRadius": "Nîvçapa Rêgehê (r)",
+      "velocity": "Leza Rêgehê (v)",
+      "gravForce": "Hêza Kêşweriyê (F_g)",
+      "period": "Dema Xelekê (T)",
+      "dragTip": "Gerstêrk an serê tîra kesk a lezê bikişîne ji bo guhertinê",
+      "orbitType": "Cûreya Rêgehê",
+      "circular": "Dorhêlî ya Cîgirkirî",
+      "elliptical": "Hêkî ya Girtî",
+      "hyperbolic": "Hîperbolîk (Rizgarbûn)",
+      "crashed": "Li Stêrkê Xist"
     },
     "solar_system": {
       "title": "Kêşwerî û Xelekên Gerstêrkan (F_g = G M m / r²)",
@@ -899,14 +1173,42 @@
       "coldEndLabel": "Aliyê sar"
     },
     "keplers_laws": {
-      "title": "Qanûnên Kepler ên Tevgera Gerstêrkan",
-      "eccentricity": "Nalendetiya Xelekê (e)",
+      "title": "Qanûnên Kepler ên Tevgera Gerstêrkan (T² / a³ = const)",
+      "subtitle": "Laboratûwara Mekanîka Esmanî û Geometrîya Rêgehên Elîptîk",
+      "eccentricity": "Eksentrîsîte / Ji-navend-derketin (e)",
       "semiMajor": "Nîv-tewereya Mezin (a)",
+      "semiMinor": "Nîv-tewereya Biçûk (b)",
       "orbitalPeriod": "Dema Xelekê (T)",
-      "sweptArea": "Nîşandana Rûbera Birrî",
-      "reset": "Nûkirin",
+      "sweptArea": "Rûberên Wekhev (Qanûna Duyem dA/dt)",
+      "showFoci": "Çeq û Tewere (F₁, F₂, a, b)",
+      "showVectors": "Vektorên Lez û Hêzê",
+      "reset": "Nûkirina Rêgehê",
       "pause": "Rawestandin",
-      "play": "Destpêkirina Xelekê"
+      "play": "Destpêkirina Rêgehê",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê di defterê de",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Dema rêgeha Kepler û nîvtewereya mezin",
+      "notes": "Piştrastkirina sê qanûnên Kepler ên tevgera gerstêrkan û rêgehên elîptîk.",
+      "law1": "Qanûna 1: Rêgehên Elîptîk",
+      "law2": "Qanûna 2: Rûberên Wekhev",
+      "law3": "Qanûna 3: Qanûna Harmonîk T²∝a³",
+      "presets": "Cismên Esmanî",
+      "presetEarth": "Dinya (e = 0.02, 1.0 AU)",
+      "presetMars": "Behram (e = 0.09, 1.52 AU)",
+      "presetMercury": "Tîr (e = 0.21, 0.39 AU)",
+      "presetComet": "Stêrka Biboçik a Halley (e = 0.75, 2.2 AU)",
+      "presetCircular": "Rêgeha Bazneyî (e = 0.00)",
+      "telemetry": "Daneyên Esmanî yên Rêgehê",
+      "currentDist": "Dûriya Niha (r)",
+      "currentSpeed": "Leza Rêgehê (v)",
+      "perihelion": "Nêzîktirîn Xal (r_min)",
+      "aphelion": "Dûrtirîn Xal (r_max)",
+      "keplerRatio": "Sabîta Kepler (T²/a³)",
+      "arealVel": "Rêjeya Rûberê (dA/dt)",
+      "simSpeed": "Lez",
+      "fociNote": "Roj di çeqa yekem F₁ de ye. Dûriya navbera çeqan 2c = 2·a·e ye."
     },
     "kepler_laws": {
       "title": "Qanûnên Kepler ên Tevgera Gerstêrkan",
@@ -941,7 +1243,8 @@
       "brightYellowText": "Zerdê zêrîn",
       "atmoCanvasLabel": "Atmosfera Cîhanê",
       "sunCanvasLabel": "ROJ",
-      "observerCanvasLabel": "👤 Çavdêrê ser erdê (Ezmanê şîn dibîne)"
+      "observerCanvasLabel": "👤 Çavdêrê ser erdê (Ezmanê şîn dibîne)",
+      "theoryBackground": "Ji ber ku dirêjahiya pêla ronahiya şîn kurttir e, molekulên hewayê wê ~6 caran zêdetir belav dikin. Di rojiçûnê de rêya hewayê pir dirêj dibe û ronahiya şîn belav dibe, tenê ronahiya sor derbasî çav dibe."
     },
     "magnetic_field": {
       "title": "Lêkolîna Zeviya Magnetîkî û Hêza Elektromanyetîkî",
@@ -968,7 +1271,24 @@
       "softIronCoreCanvas": "DENDIKA HESÊNÊ NERM (μr=200)",
       "ferriteCoreCanvas": "DENDIKA FERRÎT (μr=50)",
       "variableForce": "Hêza magnetîkî (F)",
-      "variableFlux": "Pêvecoya zeviya magnetîkî (B)"
+      "variableFlux": "Pêvecoya zeviya magnetîkî (B)",
+      "play": "Destpêkirina Ezmûnê",
+      "pause": "Rawestandina Demkî",
+      "start": "Destpêkirin",
+      "running": "Dixebite",
+      "paused": "Sekinî",
+      "rodMassLabel": "Maseya milê gerok (m)",
+      "wireLengthLabel": "Dirêjahiya têlê di zeviyê de (L)",
+      "rodAcceleration": "Lezkirina têlê (a)",
+      "rodVelocity": "Leza arasteyî (v)",
+      "rodDisplacement": "Cihê milê (x)",
+      "calculationsTitle": "Hesabên Hêza Elektromanyetîkî F = I L B sin θ",
+      "sinAngleLabel": "Sînusa goşeyê sin(θ)",
+      "rightHandRuleHint": "Rêzika Destê Rastê: F (Tiliya mezin) = I (Şahid) × B (Navîn)",
+      "canvasPausedHint": "Ezmûn sekinî ye — Ji bo tevgera milê û herikîna baran pê li destpêkirinê bike",
+      "canvasRunningConducting": "Çerxe girtî ye û herikîn derbas dibe: Mil di bin hêza elektromanyetîkî de bilez dibe",
+      "toggleRun": "Guhertina rewşa xebatê",
+      "resetRod": "Vegera milê bo navendê"
     },
     "magnet_compass": {
       "title": "Lêkolîna Zeviya Magnetîkî û Hêza Elektromanyetîkî",
@@ -1017,6 +1337,8 @@
     },
     "molecules_and_light": {
       "title": "Têkiliya Molekulan bi Ronahiyê re",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
       "lightSource": "Cureyê Tîrêjê",
       "microwave": "Mîkropêl (Zivirîn)",
       "infrared": "Bin-sor (Lerzîna Bendan)",
@@ -1025,16 +1347,34 @@
       "targetMolecule": "Molekula Hedefê",
       "co2": "Duyem Oksîda Karbonê (CO₂)",
       "h2o": "Hilma Avê (H₂O)",
+      "ch4": "Metan (CH₄)",
       "n2": "Nîtrojen (N₂)",
+      "o2": "Oksîjen (O₂)",
       "o3": "Ozon (O₃)",
+      "co": "Yekem Oksîda Karbonê (CO)",
+      "no2": "Duyem Oksîda Nîtrojenê (NO₂)",
       "effect": "Bandora Mîkroskopîk",
       "rotationMsg": "🌀 Foton dibin sedema zivirîna molekulê.",
       "vibrationMsg": "🔥 Tîrêjên bin-sor bendên kîmyewî dilerizînin.",
       "dissociationMsg": "💥 Fotona bi hêz bendan dişkîne.",
       "transmittedMsg": "✨ Foton rasterast derbas dibin bêyî ku werin mijandin.",
+      "reemissionMsg": "♻️ Ji nû ve tîrêjdana fotona bin-sor bi aliyekî bêserûber.",
       "toggleEmitter": "Vekirin / Girtina Çavkaniyê",
       "pauseBeam": "Rawestandina Tîrêjê",
-      "playBeam": "Avêtina Fotonan"
+      "playBeam": "Avêtina Fotonan",
+      "fireSingle": "Avêtina Tek Fotonê",
+      "continuousBeam": "Tîrêja Berdewam",
+      "emissionRate": "Rêjeya Derxistina Fotonan",
+      "reset": "Nûkirina Ezmûnê",
+      "recombine": "Ji Nû Ve Yekkirina Molekulê",
+      "clearCounters": "Paqijkirina Hejmarokan",
+      "photonsAbsorbed": "Fotonên Hatine Mijandin",
+      "photonsTransmitted": "Fotonên Derbasbûyî",
+      "absorptionRate": "Rêjeya Mijandinê",
+      "speedSlow": "Tevgera Hêdî (0.4x)",
+      "speedNormal": "Leza Asayî (1x)",
+      "dipoleLabel": "Momena Ducerî",
+      "quantumTransition": "Derbasbûna Kuantûmî"
     },
     "normal_modes": {
       "title": "Modên Xwezayî yên Lerizînê (Pêlên Sekinî)",
@@ -1145,11 +1485,27 @@
       "gold": "Zêr (Au, Z=79)",
       "silver": "Zîv (Ag, Z=47)",
       "aluminum": "Alumînyûm (Al, Z=13)",
+      "lead": "Qurqûşum (Pb, Z=82)",
+      "copper": "Sifir (Cu, Z=29)",
       "coulombRepulsion": "Hêza Dûrketinê ya Coulomb",
       "deflectionObservation": "Parçikên pir nêzîk bi goşeyên fireh vedigerin.",
       "reset": "Nûkirina Tîrêjê",
       "play": "Tîrêj Bide",
       "pause": "Aram Be",
+      "log": "Tomarkirina Pîvanê",
+      "logged": "Di defterê de hate tomarkirin ✓",
+      "fireSingle": "Avêtina Tek Parçika Alfa (Zelal)",
+      "continuousBeam": "Tîrêja Berdewam",
+      "headOnShot": "Lihevketina Serî bi Serî (b = 0)",
+      "clearTrails": "Paqijkirina Rêçan",
+      "scatteringAngle": "Goşeya Vegerandinê (θ)",
+      "closestApproach": "Nêzîktirîn Dûriya ji Dendikê (d_min)",
+      "backscattered": "Vegera bi Goşeya Mezin (>90°)",
+      "largeAngle": "Ladana Navîn (45° - 90°)",
+      "smallAngle": "Ladana Kêm / Derbasbûna Rast (<45°)",
+      "detectorScreen": "Ekrana Ronahîdar a ZnS",
+      "coulombRepulsionFormula": "Qanûna Coulomb bo Dûrketina Karavayî",
+      "historicalFact": "Taqîkirina Rutherford (1911) nîşan da ku hemû bariste û barê erênî di dendikek pir piçûk de ye, û piraniya atomê valahî ye.",
       "nucleusLabel": "Dendik",
       "alphaBeamSource": "Çavkaniya Tîrêja Alfa (α⁺⁺)"
     },
@@ -1210,7 +1566,8 @@
       "waterLevelHeight": "Bilindahiya avê di boriyê de",
       "ambientTemp": "Pileya germahiya hewaya derdorê (T)",
       "loggedSuccess": "Pîvan di deftera labê de hat tomarkirin!",
-      "logButton": "Tomarkirina leza dengî ya pîvawî"
+      "logButton": "Tomarkirina leza dengî ya pîvawî",
+      "theoryBackground": "Çengala dengdar a hejandî li ser devê boriyê tê danîn, û rezervuarê avê hêdî hêdî tê daxistin ji bo zêdekirina dirêjahiya stûna hewayê L heta ku dengvedana herî bilind tê bihîstin (cihê dengvedana yekem L₁ ≈ λ/4 - c). Dema daxistina zêdetir em digihêjin dengvedana duyem (L₂ ≈ 3λ/4 - c). Dirêjahiya pêlê λ = 2(L₂ - L₁) û leza dengî v = f · λ bipîvin."
     },
     "states_of_matter": {
       "title": "Rewşên Madeyê û Guherîna Qonaxê",
@@ -1225,7 +1582,13 @@
       "gas": "Gaz",
       "heat": "Germkirin 🔥",
       "cool": "Sarkirin ❄️",
-      "currentPhase": "Qonaxa Niha:"
+      "currentPhase": "Qonaxa Niha:",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê di defterê de",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Rewşa Fazê, Zexta Gazê û Germahî",
+      "notes": "Sîmulasyona rewşên madeyê (hişk, şil, gaz) û guherîna fazê li gorî germahî û zextê."
     },
     "static_balloons": {
       "title": "Karaba Saqîn û Qanûna Coulomb",
@@ -1302,29 +1665,83 @@
     },
     "wave_on_a_string": {
       "title": "Pêl li ser Werîsekî (v = √(T/μ))",
-      "amplitude": "Firehiya Pêlê (A)",
-      "frequency": "Frekansa Lerzînê (f)",
-      "damping": "Damirandin",
-      "tension": "Girjbûna Werîs (T)",
-      "endType": "Rewşa Dawî ya Werîs",
-      "fixedEnd": "Serê Girêdayî (Fixed)",
-      "looseEnd": "Serê Azad (Loose)",
+      "subtitle": "Leza pêlê, girjbûna werîs, tîraniya xêzî, frekans û vegera dawiyan",
+      "amplitude": "Firehî (A)",
+      "frequency": "Frekans (f)",
+      "damping": "Damirandin (γ)",
+      "dampingNone": "Tune",
+      "dampingLots": "Zêde",
+      "tension": "Girjbûn (T)",
+      "linearDensity": "Tîraniya Xêzî (μ)",
+      "endType": "Rewşa Dawî",
+      "fixedEnd": "Girêdayî",
+      "looseEnd": "Azad",
+      "noEnd": "Vekirî (Bê dawî)",
+      "mode": "Awayê Lerzînê",
+      "modeOscillate": "Lerzok",
+      "modePulse": "Lêdana Yekane",
+      "modeManual": "Destî",
+      "sendPulse": "Lêdan bişîne",
       "low": "Kêm",
       "med": "Navîn",
       "high": "Bilind",
-      "reset": "Nûkirin"
+      "speed": "Leza Pêlê (v)",
+      "wavelength": "Dirêjahiya Pêlê (λ)",
+      "period": "Dema Dewrê (T)",
+      "ruler": "Rastek",
+      "referenceLine": "Xêzên Çavkaniyê",
+      "slowMo": "Tevgera Hêdî",
+      "reset": "Nûkirin",
+      "pause": "Rawestandin",
+      "play": "Destpêkirin",
+      "log": "Tomarkirin",
+      "logged": "Hate tomarkirin ✓",
+      "logMeasurement": "Tomarkirina pîvanê",
+      "loggedSuccess": "Hate tomarkirin di defterê de ✓",
+      "variableName": "Leza û belavbûna pêlê li ser werîs",
+      "notes": "Lêkolîna leza belavbûna pêla berwarî v = √(T/μ) û dirêjahiya pêlê û vegera li ser sînoran.",
+      "stringThin": "Werîsê Zrav (0.01 kg/m)",
+      "stringMedium": "Werîsê Asayî (0.02 kg/m)",
+      "stringHeavy": "Werîsê Stûr (0.05 kg/m)",
+      "standingWaveHarmonic": "Dengvedana Pêla Rawestayî",
+      "tip": "💡 Girjbûn (T) an tîraniya xêzî (μ) biguhere da ku guherîna leza pêlê û dirêjahiya pêlê di heman demê de bibînî!"
     },
     "resistance_in_wire": {
       "title": "Berxwedana Têlê (R = ρL / A)",
-      "subtitle": "Laboratûwara Fîzîkê",
+      "subtitle": "Laboratûwara Fîzîka Elektromanyetîk û Qanûna Ohm",
+      "log": "Tomarkirina pîvanê",
+      "logged": "Hate tomarkirin ✓",
       "resistivity": "Berxwedana Taybet a Madeyê (ρ)",
       "length": "Dirêjahiya Têlê (L)",
       "area": "Rûbera Qada Têlê (A)",
+      "diameter": "Qutrê Têlê (d)",
       "resistanceTotal": "Tevahiya Berxwedanê (R)",
-      "copper": "Sifir",
-      "iron": "Hesin",
-      "nichrome": "Nîkrom",
-      "reset": "Nûkirin"
+      "voltage": "Voltaja Pîlê (V)",
+      "current": "Herikîna Elektrîkê (I = V/R)",
+      "power": "Hêza Germiyê ya Wendabûyî (P = I²R)",
+      "wireTemp": "Germahiya Têlê",
+      "cool": "Saris",
+      "warm": "Germ",
+      "hot": "Geşbûna Sor 🔥",
+      "circuitSwitch": "Klîka Qewatê",
+      "electronDrift": "Tevgera Elektronan",
+      "materialPresets": "Materyalên Gihîner ên Standard",
+      "silver": "Zîv (Ag)",
+      "copper": "Sifir (Cu)",
+      "gold": "Zêr (Au)",
+      "aluminum": "Elemyom (Al)",
+      "tungsten": "Tungsten (W)",
+      "iron": "Hesin (Fe)",
+      "nichrome": "Nîkrom (Hêtir)",
+      "carbon": "Karbon (Grafît)",
+      "presets": "Bikaranînên Pratîkî",
+      "presetPowerCable": "Kêbla Guhestina Hêzê",
+      "presetHeater": "Têla Germkerê (Nîkrom)",
+      "presetFilament": "Fîtîla Çira ya Tungsten",
+      "presetThinWire": "Têla Pir Zirav",
+      "electronsTip": "Elektronên azad di tora krîstal de digerin û li navendên qirêjiyê dixin",
+      "dynamicFormula": "Qanûna Rêjeyî",
+      "reset": "Nûkirina Têlê"
     },
     "work_heat": {
       "title": "Karkirin û Germî û Qanûna Yekem a Termodînamîkê",
@@ -2447,6 +2864,8 @@
     "keepTrying": "Dîsa biceribînin û li ezmûnan vegerin."
   },
   "common": {
+    "logMeasurement": "Tomarkirina pîvanê",
+    "logged": "Hate tomarkirin ✓",
     "seconds": "çirke (s)",
     "meters": "metre (m)",
     "metersPerSec": "m/s",
@@ -2462,7 +2881,14 @@
     "copied": "Hate kopîkirin!",
     "hide": "Veşêre",
     "showDetails": "Hûragahiyan Nîşan Bide",
-    "cancel": "Betal bike"
+    "cancel": "Betal bike",
+    "errorBoundary": {
+      "title": "Di vê ezmûnê de çewtîyek çêbû",
+      "description": "Çewtîyeke neçaverêkirî çêbû. Hûn dikarin dîsa biceribînin an ezmûneke din hilbijêrin.",
+      "retry": "Dîsa biceribîne"
+    },
+    "selectLanguage": "Ziman Hilbijêre",
+    "storageFullWarning": "Cihê tomarkirinê tije ye. Daneyên zêdetir nayên tomarkirin."
   },
   "catalog": {
     "work_heat": {
@@ -2476,7 +2902,8 @@
         "Guhertina Enerjiya Hundirîn ΔU",
         "Germahiya Dawî T",
         "Qebareya Dawî V"
-      ]
+      ],
+      "theoryBackground": "Qanûna yekem a termodînamîkê sepandina prensîba parastina wizeyê ye li ser sîstemên germî. Qanûn dibêje ku guherîna wizeya hundirîn a sîstemeke girtî yeksan e bi wizeya germî ya ku li sîstemê hatiye zêdekirin, kêmî wî karê (êş) mêkanîkî ku sîstemê kiriye. Ev qanûn bingeha fîzîkî ya hemû motorên germî ye; ew rave dike ku çawa motora otomobîlê germahiya sotemeniyê vediguherîne karekî mêkanîkî ku otomobîlê dide meşandin."
     },
     "prescription_glasses": {
       "title": "Berçavkên Bijîşkî û Hêza Zerbînê",
@@ -2489,7 +2916,8 @@
         "Hêza Zerbîna Rastker P (Diyopter)",
         "Cihê Wêneyê li ser Tora Çav",
         "Zelaliya Dîtinê"
-      ]
+      ],
+      "theoryBackground": "Nîsk (Lens) ronahiyê dişikînin da ku wê rast kom bikin, ku ev yek bingeha rastkirina dîtina çavan e. Hêza nîskê, ku bi (Diopter) tê pîvan, nîşan dide ku nîskek çiqasî ronahiyê kom dike (ji bo dûrdîtinê) an belav dike (ji bo nêzîkdîtinê) daku dîmen bi awayekî rast li ser retînayê çêbibe. Ji bilî berçavkên bijîşkî, ev prensîb di çêkirina kamerayên têlefonên zîrek û mîkroskopan de jî tê bikaranîn."
     },
     "periscope": {
       "title": "Perîskop û Qanûna Rengvedanê",
@@ -2502,7 +2930,8 @@
         "Rêça Tîrêja Ronahiyê",
         "Kovara Derketina Dawî",
         "Hevsengbûna Xeta Dîtinê"
-      ]
+      ],
+      "theoryBackground": "Perîskop amûreke optîkî ye ku dihêle mirov li pişt astengiyan an ji cihekî veşartî çavdêriyê bike. Ew bi bingehîn xwe dispêre zagona vajîbûnê (goşeya hatinê = goşeya vajîbûnê). Di perîskopê de du neynikên rast bi goşeya 45 pileyî tên danîn daku ronahiyê du caran bi goşeya 90 pileyî vajî bikin û dîmenê bigihînin çavê mirov. Ev raman bi navdarî di keştiyên binavî (submarines) de ji bo dîtina ser rûyê avê tê bikaranîn, û herweha di endoskopiya bijîşkî de jî sûd jê tê wergirtin."
     },
     "static_balloons": {
       "title": "Elektrîka Rawestayî û Qanûna Coulomb",
@@ -2515,7 +2944,8 @@
         "Hêza Elektrostatîk F (Newton)",
         "Cureyê Hêzê (Kişandin / Dehfkirin)",
         "Lezbûna Balonan"
-      ]
+      ],
+      "theoryBackground": "Elektrîka statîk û zagona Coulomb (F = k_e · |q₁·q₂| / r²) bingeha têgihîştina hêzên elektromagnetîk in ku keriyên atomî û gerdîlan bi hev ve girêdidin; ev zagon diyar dike ku hêza di navbera du bargan de rasterast bi zêdebûna hejmara bargan re û berovajî bi çargoşeya dûrahiya wan re têkildar e, lewma bargên lihevhatî hevdu didehfînin û yên newekhev hevdu dikişînin, û heyberên bargirkirî materyalên nehêl bi riya polarîzasyonê dikişînin. Ev prensîb di pîşesaziyê de bi berfirehî tê bikaranîn; wek fîlterên elektrostatîk ên dûkêşa kargehan bo girtina tozê, boyaxkirina elektrostatîk a wesayîtan bo belavbûna hevseng a reng, û di çapkerên lazerî û kopyageran de."
     },
     "sled_friction": {
       "title": "Xişandin li ser Rûberên Xwar",
@@ -2528,7 +2958,8 @@
         "Hêza Xişandina Tevgerî f_k",
         "Lezbûna Giştî a",
         "Dema Derbasbûna Rêçê t"
-      ]
+      ],
+      "theoryBackground": "Hêza lêkxişandinê yek ji diyardeyên mîkanîkî yên herî sereke ye ku liv û tevgera tiştan di jiyana me ya rojane û pîşesaziyê de birêve dibe; ji ber ku bêyî lêkxişandinê ne meşîn mimkun bû û ne jî sekinandina tirombêlan pêkan dibû. Lêkxişandina livdar (f_k = μ_k · N) ji ber lihevketina mîkroskopîk a nizmî û bilindiyên rûberan û têkiliyên kîmyewî yên demkî yên navbera molekulan çêdibe; ev hêz rasterast bi hêza asayî ya stûnî N û hevkêşeya lêkxişandina livdar μ_k ve girêdayî ye ku li gorî cor û ziviriya her du rûberan diguhere. Li ser rûberên xwar, bi zêdebûna goşeya meyildariyê hêza stûnî kêm dibe (N = mg cosθ) ku lêkxişandinê kêm dike û leza xişandina xilîskê zêde dike. Ev zagon di endezyariya ewlehiya wesayîtan de bingeha pergala frena dijî-şemitînê (ABS) ye ku rê li ber xilîskîna tekeran li ser rêyên şil digire, herweha di werzîşê de ji bo çêkirina mûma taybet a xilîskan ji bo kêmkirina berxwedana berfê tê bikaranîn."
     },
     "heat_conduction": {
       "title": "Gihandina Germiyê û Qanûna Fourier",
@@ -2542,7 +2973,8 @@
         "Rêjeya Herikîna Germiyê q (Watt)",
         "Asta Germahiyê dT/dx",
         "Mîqdara Enerjiya Veguhestî"
-      ]
+      ],
+      "theoryBackground": "Gihandina germiyê pêvajoya veguhastina wizeya germî di nav maddeyên hişk de ji devera ku germahiya wê bilind e ber bi ya nizm e. Qanûna Fourier destnîşan dike ku rêjeya veguhastina germiyê bi rûber û cudahiya germahiyê re rasthevnas e. Ev prensîb di endezyariyê de gelek girîng e; wek mînak di dîzaynkirina îzolasyona germî ya avahiyan de ji bo kêmkirina xerckirina wizeyê, an çêkirina sarkerên metalî ji bo parastina pêvajoyên komputerê."
     },
     "seesaw_torque": {
       "title": "Hevsengiya Cilûkê û Zora Zivirînê",
@@ -2554,7 +2986,8 @@
         "Zora Zivirînê ya Giştî Στ",
         "Rewşa Hevsengiya Zivirînê",
         "Kovara Xwarbûna Cilûkê"
-      ]
+      ],
+      "theoryBackground": "Tork (momenta zivirînê τ) pênaseya zivirîna hêzê ye di mîkanîkê de, ku nîşan dide hêzek çawa dikare laşekî li dor xaleke lengerê an tewerekî bizivirîne. Tork ji berhema hêza sepandî F, dirêjahiya milê hêzê r û sînusa goşeya navbera wan pêk tê (τ = r F sinθ); lewma hêzeke biçûk li ser milekî dirêj dikare heman bandora hêzeke pir mezin a li nêzîkî tewerê bide. Hevsengiya zivirînê di cilûkê (darekewanê) de dema çêdibe ku koma hemû torkan li dor xala hevsengiyê bibe sifir (Στ = 0). Ev qanûna zanistî di jiyan û pîşesaziyê de bingeha xebata qulibkên avahîsaziyê (crane) ye ku kêşên hevsengker bi kar tînin da ku nequlibin, herwiha di amûrên destan ên mîna mifteyên hesinî (spanner) de tê bikaranîn da ku bi hêzeke kêm a destan peç û kunkikên tund werin vekirin."
     },
     "electromagnetic_induction": {
       "title": "Hêzkirina Elektromagnetîk û Qanûna Faraday",
@@ -2567,7 +3000,8 @@
         "Hêza Elektromotor a Hêzkirî ε (Volt)",
         "Herikîna Hêzkirî I",
         "Ronahiya Çirayê"
-      ]
+      ],
+      "theoryBackground": "Arandina elektromagnetîk, ya ku bi zagona Faradayê û zagona Lênzê tê îdarekirin (ε = -N · (ΔΦ / Δt)), mezintirîn vedîtina zanistî ye ku şaristaniya nûjen û şebekeyên elektrîkê li ser ava bûne; nîşan dide ku her guherîna di herikîna magnetîkî de di nav lûleyeke guhêzbar de dibe sedema çêbûna hêza livînera elektrîkî ya arîner û herikînekê, û nîşana neyînî ya zagona Lênzê nîşana parastina enerjiyê ye ku li dijî guherîna sedema xwe radiweste. Ev zagon bingeha karê hemû jeneratorên elektrîkê (dînamo) ye di stasyonên avî, ba û etomî de, veguhêzerên elektrîkî (guhêrkên elektrîkî / transformers), sobeyên induksiyonê, û şarjkerên bêtêl ên telefonan."
     },
     "viscosity_stokes": {
       "title": "Tîrbûn, Qanûna Stokes û Leza Dawî",
@@ -2581,7 +3015,8 @@
         "Leza Dawî v_t (m/s)",
         "Hêza Astengkirinê F_d",
         "Grafîka Lezê li Gorî Demê"
-      ]
+      ],
+      "theoryBackground": "Lînciya ronan nîşan dide ku şilek an gaz çiqas li hember herikînê xwegir e. Zagona Stoks (Stokes) hêza xwegiriya ron a li ber tevgera gewdeyekî gogî di nav ronayekî lînc de hesab dike. Dema ku ev hêza xwegiriyê bi hêza kêşkirinê re yeksan dibe, gewde digihîje lezeke sabît ku jê re 'leza dawî' tê gotin. Ev prensîb di laboratuwarên bijîşkî de ji bo pîvana leza niştecîbûna xaneyên sor ên xwînê tê bikaranîn û ji bo dîzayna paraşûtan gelek girîng e."
     },
     "ramp_machine": {
       "title": "Rûbera Xwar û Amûrên Hêsan",
@@ -2594,7 +3029,8 @@
         "Qezenca Mekanîkî MA",
         "Hêza Pêwîst ji bo Kişandinê F_pull",
         "Qabiliyeta Mekanîkî η"
-      ]
+      ],
+      "theoryBackground": "Rûbera xwar (rûyê meyildar) yek ji amûrên hêsan ên herî kevnar û bingehîn e di mîkanîkê de, ku ji bo kêmkirina hêza pêwîst ji bo bilindkirina barên giran li dijî erdê tê bikaranîn. Li gorî zagonê parastina enerjiyê, rûbera xwar tevahiya karê mîkanîkî (W = mgh) kêm nake; lê belê vî karî li ser dûrahiyeke dirêjtir L belav dike li şûna bilindahiya stûnî h, ku ev jî dibe sedema zêdebûna sûda mîkanîkî (MA = 1/sinθ = L/h) û kêmkirina hêza pêwîst. Her ku xwarbûna rûberê kêmtir be, ew qas hêzeke kêmtir pêdivî ye ji bo hilgirtina barê. Di jiyana hemdem û endezyariyê de, ev rêbaz di çêkirina rampa taybet a kursiyên seqetan de, rêyên çiyayî yên badokî yên ji bo derketina barhilgirên mezin, û herwiha di pêç û kunkikên hesinî de tê bikaranîn ku ew bixwe rûberên xwar ên li dora mîlekî pêçandî ne."
     },
     "metric_prefixes": {
       "title": "Pêşgirên Metrîkî û Veguherînên Zanistî",
@@ -2607,7 +3043,8 @@
         "Nirx bi Şêweya Zanistî",
         "Nirx bi Pêşgira Armanckirî",
         "Faktora Rastîn a Veguherînê"
-      ]
+      ],
+      "theoryBackground": "Pêşgirên metrîkî yên navneteweyî û nîşandana zanistî ya hêzên dehê (10^±n) zimanê hevpar ê tevahiya fîzîk, kîmya û endezyariyê ne; ji ber ku îmkanê didin ku hejmarên pir mezin û yên pir hûr û hûrik bi awayekî standard û hêsan werin nivîsandin bêyî ku rêzên dirêj ên sifiran werin danîn. Pergala Navneteweyî ya Yekeyan (SI) li ser qat û perçeyên dehan hatiye avakirin (wek kîlo 10^3, mêga 10^6, gîga 10^9 li hember mîlî 10^-3, mîkro 10^-6, û nano 10^-9). Ev hevrêziya pîvanê rê li ber şaşiyên mezin ên hejmartina karesatbar di navbera endezyarên fezayê û avahiyan de digire. Di cîhana pîşesazî û zanistê de, ev bingeh ji bo qebareya bîra kompîturan (Gîgabeyt û Têrabeyt), çêkirina çîpên elektronîk ên di asta nanometreyê de, û di pizişkî de ji bo pîvandina dozên dermanan bi mîlîgram û mîkrogram tê bikaranîn."
     },
     "stress_strain": {
       "title": "Zext, Kêşan û Modûla Young",
@@ -2622,7 +3059,8 @@
         "Kêşana Relatîv ε",
         "Dirêjbûn ΔL",
         "Sînorê Nermbûnê (Elastîk)"
-      ]
+      ],
+      "theoryBackground": "Têkiliya navbera zext û kêşanê (nermbûn) û hevkêşeya Young (E) hîmê zanista kirtas û endezyariya avahîsaziyê ne ji bo pîvandina reqbûn, nermbûn û hêza tehemulkirina madeyan li hember hêzên derve berî ku bi awayekî mayînde biçewisin an bişikên. Zexta mîkanîkî (σ = F/A) hêza belavbûyî li ser yekeya rûberê nîşan dide, lê kêşan ango dirêjbûn (ε = ΔL / L₀) guherîna rêjeyî ya dirêjahiya laş ji ber wê zextê diyar dike. Di sînorê nermbûnê de (li gorî Qanûna Hooke), Modûla Young rêjeya zextê li hember nermbûnê nîşan dide (E = σ / ε); madeyên ku xwedan modûla bilind in mîna pola, hêzeke gelek mezin dixwazin da ku hinekî biçewisin. Di pîşesazî û avahîsaziyê de, ev zanîn ji bo hilbijartina pola û hesinê stûnên asmanbiran û pirdên hilawîstî tê bikaranîn da ku ewlehiya wan misoger be, herwiha di çêkirina balafirên hewayî û protezên hestiyên bijîşkî de tê sepandin ku nermbûna wan wekî ya hestiyên mirov be."
     },
     "bernoulli": {
       "title": "Zanista Bernoulli û Lûleya Venturi",
@@ -2635,7 +3073,8 @@
         "Cudahiya Zextê ΔP",
         "Leza Şilemeniyê di Beşa Teng de v2",
         "Bilindahiya Stûna Şilemeniyê di Venturi de"
-      ]
+      ],
+      "theoryBackground": "Prensîba Pernolî (Bernoulli) pêwendiya navbera pestan, lez û bilindiya ronayan nîşan dide û nîşana parastina wizeyê ye di ronayên livok de. Li gorî vê prensîbê, dema ku leza ronayekê zêde bibe, pestana wê an jî wizeya wê ya potansiyel kêm dibe. Ev prensîb rave dike ku çawa baskên firokeyan hêza rakirinê çêdikin (ji ber pestana kêm a li ser baskê ku hewa zûtir derbas dibe), û herweha bingeha karkirina pijiqîner û motoran e."
     },
     "angled_mirrors": {
       "title": "Neynikên Xwar û Wêneyên Hevbeş",
@@ -2646,7 +3085,8 @@
       "outputs": [
         "Hejmara Wêneyên Çêbûyî N",
         "Cih û Hevsengiya Wêneyên Rengvedayî"
-      ]
+      ],
+      "theoryBackground": "Dema ku du neynikên rast bi goşeyekê li hemberî hev tên danîn, gewdeyek dikare ji ber vajîbûnên dubare di navbera rûyên neynikan de çendîn dîmenên xeyalî çêbike. Her ku goşeya di navbera neynikan de kêm dibe, hejmara dîmenên ku çêdibin zêde dibe li gorî hevkêşeya: (360/goşe) - 1. Ev taybetmendiya optîkî ya pir-vajîbûnê (multiple reflections) di kaleidoskopan de ji bo çêkirina neqşên sîmetrîk tê bikaranîn, û bi teknîkî di kelên lazerê û rezonatorên optîkî de jî cih digire."
     },
     "curved_mirrors": {
       "title": "Neynikên Gilover (Qor û Xwar)",
@@ -2660,7 +3100,8 @@
         "Dûriya Wêneyê d_i",
         "Mezinkirin M",
         "Taybetmendiyên Wêneyê (Rastîn/Xeyalî/Serûbin/Rast)"
-      ]
+      ],
+      "theoryBackground": "Neynikên gogî (çal û gir) dihêlin ku em ronahiyê kom bikin, dîmenan mezin bikin an qada dîtinê berfireh bikin. Neynikên çal (komker) tîrêjên hevteb di xala tîşkoyê de kom dikin û dîmenên rasteqîn an xeyalî çêdikin. Lê neynikên gir (cudaker) ronahiyê belav dikin û her dem dîmenên xeyalî û biçûkkirî çêdikin. Neynikên gir di kêlekên otomobîlan de ji bo berfirehkirina qada dîtinê, û neynikên çal jî di teleskop û neynikên makyajê de tên bikaranîn."
     },
     "thin_lenses": {
       "title": "Zerbînên Tenik û Dûriya Tîşkoyî",
@@ -2673,7 +3114,8 @@
         "Cihê Wêneyê d_i",
         "Faktora Mezinkirinê M",
         "Rêça Tîrêjan û Çêbûna Wêneyê"
-      ]
+      ],
+      "theoryBackground": "Nîskên tenik (Thin lenses) ronahiyê dişikînin da ku dîmenan çêbikin, û li gorî hevkêşeya nîskê (1/f = 1/do + 1/di) kar dikin. Ev prensîba optîkî ya bingehîn diyar dike ku çawa dûrahiya nîskokê cih û mezinkirina dîmenê nîşan dide. Ev prensîb di dîzaynkirina kamerayan, berçavkên dîtinê û mîkroskopan de tê bikaranîn daku wêne û dîmenên zelal werin dîtin."
     },
     "polarization": {
       "title": "Polarîzasyona Ronahiyê û Qanûna Malus",
@@ -2686,7 +3128,8 @@
         "Giranbûna Ronahiya Derbasbûyî I (Watt/m²)",
         "Rêjeya Derbasbûnê I/I0",
         "Tewereya Polarîzasyonê ya Bidestxistî"
-      ]
+      ],
+      "theoryBackground": "Cemsergiriya ronahiyê (Polarization), pêlên ronahiyê yên ne-cemsergir fîltre dike da ku tenê di yek astê de bilivin. Zagona Malûs tundiya vê ronahiya cemsergir hesab dike piştî ku ew di cemsergirekî duyem de bi goşeyeke diyarkirî re derbas dibe. Ev diyarde di teknolojiya nûjen de gelek girîng e; ew bingeha karkirina dîmenderên LCD û berçavkên rojê yên cemsergir e ku şewqa rojê kêm dikin."
     },
     "light_scattering": {
       "title": "Belavbûna Ronahiyê û Qanûna Rayleigh",
@@ -2699,7 +3142,8 @@
         "Giranbûna Ronahiya Belavbûyî I",
         "Rengê Xuyayî yê Atmosferê",
         "Ravekirina Şînbûna Esman û Sorahiya Şeveqê"
-      ]
+      ],
+      "theoryBackground": "Belavbûna ronahiyê (Scattering) nîşan dide ku çawa ronahî bi keriyên biçûk an molekulên di navgînekê de dikeve têkiliyê, ku ev yek rengê ezman û dîtina di nav mijê de diyar dike. Belavbûna Rayleigh destnîşan dike ku pêlên kin (wek şîn) li gorî pêlên dirêj (wek sor) pir zêdetir belav dibin. Ev yek rave dike ku çima ezman bi roj şîn e û di dema rojavabûnê de jî sor e (ji ber ku ronahiya şîn belav dibe û tenê sor digihîje çavên me)."
     },
     "arc_length": {
       "title": "Dirêjahiya Kevanê, Radyan û Tevgera Kovarî",
@@ -2712,7 +3156,8 @@
         "Dirêjahiya Kevana Birrî s (Metre)",
         "Leza Hêlî v (m/s)",
         "Cihê Kovarî"
-      ]
+      ],
+      "theoryBackground": "Têkiliya navbera dirêjahiya kevanê (s = r·θ) û leza hêlî ya lêkewtî (v = r·ω) pireke kînematîkî ya bingehîn e ku tevgera goşeyî ya zivirînê bi tevgera xêzî ya rasterast ve girêdide. Radyan ew goşeya navendî ye ku dirêjahiya kevana wê beramberî tîreka bazneyê ye, ku ev jî yekeyeke bê alî ye û hevrêzkirina hesabên fîzîkî hêsan dike. Qanûn nîşan dide ku her ku dûrahiya ji tewerê (r) mezintir be, ew xal di heman demê de rêyeke dirêjtir dibire û xwedan leza lêkewtî ya bilindtir e bi heman leza goşeyî ω. Ev prensîb di endezyariyê de ji bo hevrêzkirina pîvana leza tirombêlan li gorî mezinahiya tekeran, di dîskên hişk ên kompîturê (HDD) de ji bo xwendina daneyan li ser rêçên derve û hundur, û di santrîfûjên pîşesazî û taqîgehan de tê bikaranîn."
     },
     "rotational_dynamics": {
       "title": "Bêdengiya Zivirînê û Dînamîka Zivirînê",
@@ -2725,7 +3170,8 @@
         "Bêdengiya Zivirînê I",
         "Lezbûna Kovarî α (Radyan/çirke²)",
         "Leza Kovarî ω(t)"
-      ]
+      ],
+      "theoryBackground": "Zagona dînamîka zivirînê (τ = I · α) hevtayê zivirînî yê zagona duyem a Newton e (F = ma), ku têkiliya navbera torkê (τ) û lezandina goşeyî (α) diyar dike. Torka bêliviyê (bêdengiya zivirînê I) ne tenê bi tevahiya girseyê ve, lê belê rasterast bi belavbûna geometrîk a girseyê li dor tewerê ve girêdayî ye; her ku barste ji tewerê dûrtir be, ew qas li dijî guherîna leza zivirînê berxwedaneke mezin nîşan dide. Ev prensîb di werzîşa şemitîna ser cemedê de tê xebitandin gava lîstikvan destên xwe nêzîkî laş dikin da ku zûtir bizivirin, di çerxên hevsengker ên motorên şewata navxweyî (Flywheel) de ji bo embarkirina enerjiya zivirînê, û di çerxên bertekê yên peykan (satellites) de ji bo guhertina arasteya wan li fezayê tê bikaranîn."
     },
     "center_of_mass": {
       "title": "Navenda Maseyê ya Sîstem û Tiştan",
@@ -2736,7 +3182,8 @@
       "outputs": [
         "Koordînatên Navenda Maseyê (X_cm, Y_cm)",
         "Xala Hevsengiya Mekanîkî ya Sabît"
-      ]
+      ],
+      "theoryBackground": "Navenda girseyê (X_cm = Σ m_i x_i / Σ m_i) ew xala fîzîkî û geometrîk a taybet e ku hemû girseya gewdekî an sîstemekê wisa tê hesibandin ku li wir kom bûye, û tevgera wê wekî parçeyekî yekane di bin tesîra hemû hêzên derve de dimeşe. Cihê navenda girseyê hevsengî û cîgiriya laşan diyar dike; heyber heta wê demê di hevsengiyê de dimîne ku hêla stûnî ya navenda girseyê di navbera binyata lengerê de bimîne; eger ji binyatê derkeve, zora kêşkirinê dibe sedema wergerandina wê. Ev zagon di endezyariya wesayîtan de tê bikaranîn da ku navenda girseya otombêlan nizm bikin da ku di zivirînên tûj de wernequlibin, di hevsengkirina barê balafir û keştiyên mezin de da ku noqî avê nebin, û di werzîşa bazdana bilind de ji bo derbaskirina astengiyan."
     },
     "pendulum_energy": {
       "title": "Parastina Enerjiya Mekanîkî di Dandûlê de",
@@ -2749,7 +3196,8 @@
         "Enerjiya Tevgerê K (Joule)",
         "Enerjiya Potansiyel a Rakêşanê U (Joule)",
         "Diyagrama Guherînên Enerjiyê ya Zindî"
-      ]
+      ],
+      "theoryBackground": "Tevgera dandûlê nîşandana herî zelal a zagona parastina enerjiya mîkanîkî ye (E_tot = K + U = Const), ku tê de wazî di navbera du awayan de bi berdewamî tê veguhastin bêyî ku winda bibe. Di xala herî bilind a dûrbûnê de, dendikê dandûlê ji bo bîskekê disekine û hemû enerjiya wê dibe enerjiya potansiyel a kêşkirinê (U = mgh); gava ber bi xala hevsengiyê ya jêr dadikeve, ev wazî vediguhere enerjiya kînetîk a herî zêde (K = ½mv²) li xala herî nizm. Ev veguhastina berdewam di pîşesazî û endezyariyê de bingeha sêwirandina trênên lezgîn ên lîstikgehan (roller coaster) e ji bo guhertina bilindahiyê bo lezeke mezin, topên hesinî yên hilweşandina xaniyan, û santralên hîdroelektrîk ên embarkirina avê."
     },
     "pendulum": {
       "title": "Dandûla Hêsan û Dema Hejînê",
@@ -2762,7 +3210,8 @@
         "Dema Hejînê T (Çirke)",
         "Frekansa Hejînê f (Hertz)",
         "Leza Rakêşanê ya Hesabkirî"
-      ]
+      ],
+      "theoryBackground": "Dandûla hêsan stûna bingehîn a tevgera ahengdar a sade ye (SHM), ku Galîleo tê de diyardeya hevdankiyê dît: ji bo goşeyên biçûk (θ < 15°), dema hejînê ya dandûlê (T = 2π√(L/g)) qet bi girseya laşê daliqandî û bi firehiya lerizînê ve girêdayî nîne. Dema xulê tenê bi dirêjahiya werîs L û lezandina kêşkirina erdê g ve girêdayî ye; ev jî dandûlê dike amûreke pîvanê ya gerdûnî ya pir hûr. Ev vedîtin bû sedema çêkirina saetên dîrokî yên dandûlî ji aliyê Huygens ve ji bo pîvandina dema deryavaniyê, û îro jî gravîmetrên dandûlî ji bo pîvandina guherînên leza erdkêşê ji bo dîtina bîrên petrolê û madenên bin erdê, herweha di sîsmografên erdhejê de tên bikaranîn."
     },
     "projectile": {
       "title": "Tevgera Hawêjtiyan û Rêça Kevanî",
@@ -2776,7 +3225,8 @@
         "Bilindahiya Herî Zêde H",
         "Tevahiya Dema Firînê t_flight",
         "Rêça Kevanî"
-      ]
+      ],
+      "theoryBackground": "Tevgera hawêjtiyan di du rehendan de mînaka herî zelal a tevgerên serbixwe yên hevgirtî ye; ku tê de tevgera gewdê dibe du par: tevgereke asoyî ya bi leza sabît ji ber nebûna hêzê (a_x = 0), û tevgereke stûnî ya bi lezandina erdê (a_y = -g). Lihevkirina van her du tevgereyan rêçeke kevanî (parabolî) çêdike, ku tê de dûrahiya herî zêde ya asoyî di goşeya 45° de pêk tê (R = v₀² sin(2θ) / g). Zagon nîşan dide ku her du goşeyên temamker (ku koma wan 90° e) heman dûrahiya asoyî digirin lê bi dem û bilindahiyên cuda. Ev prensîb bingeha endezyariya balîstîk a guleyên topan û moşekan e, arastekirina lûleyên avê yên agirvemirandinê ji bo gihîştina qatên bilind ên avahiyan, û di werzîşê de ji bo avêtina rimbil û gogê de tê bikaranîn."
     },
     "spring": {
       "title": "Qanûna Hooke û Hejîna Ahengdar a Sprîngê",
@@ -2789,7 +3239,8 @@
         "Hêza Vegerandinê F_spring",
         "Enerjiya Potansiyel a Nermbûnê U_s",
         "Dema Hejînê T (Çirke)"
-      ]
+      ],
+      "theoryBackground": "Zagona Hooke (F = -k · x) hêza vegerîner a elastîk diyar dike ku zemberek (spring) ji bo rawestandina guherîna şêweyê û vegera li cihê hevsengiyê hildiberîne, ku ev hêz rasterast bi labirina x ve girêdayî ye û berovajî arasteya wê ye. Gava girseya m bi vê zemberekê ve tê girêdan, sîstem tevgereke ahengdar a sade (SHM) pêk tîne bi dema xulê ya (T = 2π · √(m / k)) ku tenê bi girseyê û sabîta zemberekê k ve girêdayî ye, bêyî ku bi firehiya lerizînê ve girêdayî be. Ev prensîb bingeha endezyariya amortîsor û sîstemên rawestandina wesayîtan e ji bo parastina ji hejînên rêyan, di pîvanên kêşê yên zemberekî, di sîsmografên tomarkirina erdhejan, û di mîkroskopên hêza atomî (AFM) de ji bo pîvandina hêzên nanometreyî."
     },
     "collision": {
       "title": "Parastina Momentûma Hêlî û Pevketin",
@@ -2802,7 +3253,8 @@
         "Lezên Dawî (v1f, v2f)",
         "Tevahiya Momentûma Parastî P_tot",
         "Enerjiya Tevgerê ya Wenda ΔK"
-      ]
+      ],
+      "theoryBackground": "Zagona parastina momenta xêzî (m₁v₁ᵢ + m₂v₂ᵢ = m₁v₁_f + m₂v₂_f) encama rasterast a zagona sêyem a Newton e, ji ber ku hêzên navxweyî yên di dema lihevketinê de wekhev û berovajî ne, lewma momenta giştî ya sîstemekê berî û piştî lêkdanê sabît dimîne. Lihevketin yan elastîk e (nerm) ku tê de enerjiya kînetîk jî tê parastin, yan neelastîk e ku beşek ji waziyê vediguhere germî, deng û guherîna şêweyê. Ev zagon di endezyariya ewlehiya tirombêlan de roleke sereke dilîze di çêkirina beşa pêşiyê ya qirçînê (crumple zones) û balîfên hewayê de da ku dema lêkdanê zêde bikin û hêza derbê kêm bikin, di lezkerên parçikan (wek LHC) de ji bo keşifkirina keresteyên gerdûnê, û di mekanîka fezayê de."
     },
     "freefall": {
       "title": "Ketina Azad û Lezbûna Rakêşanê",
@@ -2815,7 +3267,8 @@
         "Dema Ketina Azad t (Çirke)",
         "Leza Li Erdê Ketinê v_impact",
         "Diyagrama Dûrî û Lezê"
-      ]
+      ],
+      "theoryBackground": "Ketina serbest (v = g · t, y = ½ · g · t²) tevgera heyberan e tenê di bin bandora kişandina erdkêşê de bêyî ku berxwedana hewayê hebe, ku bingeha fîzîka nûjen ji aliyê Galîleo ve danî. Ev qanûn îsbat dike ku hemû laş, bêyî ku girse an mezinahiya wan çi be, bi heman lezandina neguher ber bi erdê ve dadikevin (g ≈ 9.81 m/s²); leza wan bi awayekî xêzî li gorî demê zêde dibe û dûrahî jî bi çargoşeya demê zêde dibe. Ev prensîb di bircên ketina serbest de ji bo ezmûnkirina nebûna giranîyê (mîkrogravîtî) di lêkolînên derman û zanistên fezayê de, di hesabkirina daketina keştiyên asmanî, û di tespîtkirina leza dawî ya çetirbazan de gava berxwedana hewayê û giranî wekhev dibin tê bikaranîn."
     },
     "acoustic_resonance": {
       "title": "Dengvedan di Lûleyên Hewayê de",
@@ -2828,7 +3281,8 @@
         "Frekansên Harmonîk fn",
         "Cihên Girê û Zikên Pêla Zextê",
         "Rewşa Dengvedanê"
-      ]
+      ],
+      "theoryBackground": "Dengvedana dengî (tingîniya akustîk) diyardeyeke fîzîkî ya sereke ye ji bo bihêzkirina deng û diyarkirina bilindahiya lerzan di stûnên hewayê de. Ev diyarde gava çêdibe ku frekansa çavkaniyeke dengê ya derve bi yek ji frekansên xwezayî yên stûna hewayê re wekhev dibe, û di encama lêkçûna pêlan de pêlên bicihbûyî (sekinî) pêk tên; bi awayekî ku li serên girtî girêkên lerizînê (N) û li serên vekirî zikên lerizînê (A) çêdibin, lewma boriyên vekirî hemû harmonîkan (fn = n·v / 2L) û boriyên girtî tenê harmonîkên tek (fn = n·v / 4L) diafirînin. Ev bingeh di sêwirandina amûrên muzîkê yên bayî yên mîna bilûr û organê de tê bikaranîn, herwiha di pîşesaziyê de ji bo bêdengkerên dengê eksoza tirombêlan û lûleyên hewageriyê yên ji bo kêmkirina deng tê sepandin."
     },
     "sound_speed": {
       "title": "Leza Deng bi Stûna Avê",
@@ -2841,7 +3295,8 @@
         "Dirêjahiya Pêla Deng λ",
         "Leza Deng a Hesabkirî v (m/s)",
         "Rêjeya Çewtiya Standard"
-      ]
+      ],
+      "theoryBackground": "Leza dengê di hewayê de pîvaneke fîzîkî ya bingehîn e ku nîşan dide çawa pêlên zextê û waziya mîkanîkî di nav gazan de belav dibin, ku leza wê rasterast bi germahiya hewayê ve girêdayî ye (v ∝ √T). Di ezmûna lûleya avî ya dengvedanê de, leza dengê bi awayekî pir hûr tê pîvan bi rêya dîtina stûnên hewayê yên dengvedanê (L₁, L₂) ji bo çengala lerzînê ya bi frekansa f; ferqa navbera du zikên dengvedanê yên li pey hev tam nîvê dirêjahiya pêlê dide (ΔL = λ / 2). Di teknolojî û pîşesaziyê de, ev prensîb di cîhazên sonarê yên binê deryayê de ji bo diyarkirina kûrahiya avê û keştiyên binavî, herwiha di cîhazên ultrasonografî yên bijîşkî de ji bo pîvandina dûrahiya şaneyên laş tê bikaranîn."
     },
     "waves": {
       "title": "Pêl û Du Qelîşên Young",
@@ -2853,7 +3308,8 @@
       "outputs": [
         "Dûriya di Navbera Xetên Ronî de Δy",
         "Şêwaza Destwerdanê û Giranbûna Ronahiyê li ser Perdeyê"
-      ]
+      ],
+      "theoryBackground": "Têkelbûn (destwerdan) û berguherîna pêlan (barguherîn) delîlên herî xurt ên fîzîkî ne li ser sirûşta pêlî ya ronahiyê. Li gorî ezmûna dîrokî ya cot-qelîştek a Young, gava pêlên hevgirtî di nav du qelîştekên bi dûrahiya d de derbas dibin, li gorî prensîba Huygens her qelîştek wekî çavkaniyeke nû ya pêlê tevdigere; lihevketina pêlan li gorî ferqa rêkê dibe sedema têkilbûna avaker (hêlên geş d sinθ = mλ) an jî têkilbûna rûxîner (hêlên tarî). Ev têgeha zanistî bingeha sêwirandina toreyên berguherînê ye ji bo analîzkirina tîrêjên stêrkan di stêrnasiyê de, û herwiha çêkirina tebeqeyên li dijî şikestina ronahiyê li ser camên çavîlkan û lenseyên kamerayan."
     },
     "magnetic_field": {
       "title": "Qada Magnetîkî û Hêza Lorentz",
@@ -2867,7 +3323,8 @@
         "Hêza Lorentz F (Newton)",
         "Tîreya Nîvî ya Rêça Xelekî r",
         "Frekansa Sîklotronê"
-      ]
+      ],
+      "theoryBackground": "Hêza magnetîkî ya Lorenzê (F = q · v · B · sin(θ)) tevgera keriyên barkirî di nav zeviyên magnetîkî de diyar dike; ev hêz her dem stûnî (perpendicular) ye li ser lez û zeviya magnetîkî, lewma tu karî nake û leza gewdê naguherîne lê belê rêça wê diçemîne da ku di xelekeke bazneyî de bizivire bi tîreka çerxê ya sîklotronê (r = (m·v) / (q·B)). Ev qanûn bingeha spektrometra girseyê (mass spectrometer) ye bo naskirina îzotopan û analîza kîmyewî, lezkerên sîklotronê bo çêkirina îzotopên bijîşkî yên dermankirina şêrpenceyê, û parastina mertalê magnetîkî yê erdê li hember bayê rojê ku dibe sedema ronahiya cemserî (aurora)."
     },
     "atomic_spectra": {
       "title": "Analîza Spektromî û Guhertina Kuantûmê",
@@ -2879,7 +3336,8 @@
         "Xetên Spektromî yên Derketî yên Xuyayî",
         "Enerjiya Fotona Derketî ΔE (eV)",
         "Dirêjahiya Pêlê λ"
-      ]
+      ],
+      "theoryBackground": "Şefengên gerdileyî (tayfa atomî) û modêla Bohr tevî hevkêşeya Planck (ΔE = E_final - E_initial = (h · c) / λ) deriyê sereke yê têgihîştina mekanîka kwantûmê û enerjiyên atomî ne; elektron tenê di astên enerjiyê yên diyarkirî de dizivirin û tenê dema ji astekê derbasî asteke din dibin fotonan diweşînin an dimijin, ku ev jî xetên tîrêjî yên taybet wek şopa tiliyê ya her elementekî kîmyewî çêdike. Ev zagon di stêrnasiyê de bingeha spektroskopiyê ye ji bo zanîna pêkhateya kîmyewî û germahiya stêrk û galaksiyên dûr ji riya ronahiya wan, di çêkirina çirayên LED û amûrên lazerê yên cerahiyê de, û di analîzên kîmyewî yên dermanan de tê bikaranîn."
     },
     "circuits": {
       "title": "Çerxeyên Elektrîkê, Qanûna Ohm û Hêza Elektrîkê",
@@ -2892,7 +3350,8 @@
         "Giranbûna Herikîna Derbasbûyî I (Amper)",
         "Hêza Elektrîkê ya Bikaranînê P (Watt)",
         "Daketina Voltajê"
-      ]
+      ],
+      "theoryBackground": "Zagona Ohm û hevkêşeyên hêza elektrîkî (V = I · R, P = V · I = I² · R) bingeha hemû endezyariya elektrîkê û dîzaynkirina gergehên elektronîkî ne; têkiliya navbera cudahiya potansiyelê (voltaj), xurtahiya herikînê (amper), û berxwedana materyalan diyar dikin û nîşan didin ka waziya elektrîkê çawa vediguhere hêz an germahiya Joule ku bi çargoşeya herikînê ve zêde dibe. Ev zagon bingeha veguhestina elektrîkê ye di şebekeyên neteweyî de bi voltaja bilind da ku herikîn kêm bibe û windabûna germiyê di têlan de kêm bibe (P_loss = I² · R), di parastina beşên hestiyar ên bîrok û motherboard ên kompîtur û mobîlan de, û di germkerên elektrîkî (hîter) de tê bikaranîn."
     },
     "buoyancy": {
       "title": "Zanista Arşîmedes û Hêza Rakirina Şilemeniyan",
@@ -2905,7 +3364,8 @@
         "Hêza Rakirinê F_B (Newton)",
         "Giraniya Xuyayî ya Tiştê W_apparent",
         "Rewşa Tiştê (Li ser avê dimîne / Daliqandî / Noq dibe)"
-      ]
+      ],
+      "theoryBackground": "Prensîba Arxemîdês (Archimedes) destnîşan dike ku her gewdeyê ku bikeve nav ronayekî (şilek an gaz), rastî hêzeke dehfdanê (hêza paldanê) ya ber bi jor ve tê ku yeksanî giraniya wî ronayî ye ku ji cihê xwe ketiye. Ev zagona bingehîn a mêkanîka ronan diyar dike ku gelo gewdeyek wê binav bibe an li ser avê bimîne, li gorî tîrbûna wî li hember tîrbûna ronayê. Ev prensîba endezyariyê ya bingehîn e ku dihêle keştiyên mezin ên ji pola li ser deryayan bimînin û balonên hewayê li asîmanan bifirin."
     },
     "thermodynamics": {
       "title": "Gaza Îdeal û Termodînamîk",
@@ -2918,7 +3378,8 @@
         "Zexta Gazê P (Pascal)",
         "Navîna Enerjiya Tevgerê ya Parçeyan <E_k>",
         "Grafîka P-V"
-      ]
+      ],
+      "theoryBackground": "Rewşa sîstemeke termodînamîk bi guherbarên mezin ên wekî dewisîn (pestan), qebare û pileya germahiyê tê naskirin, ku bi rêya qanûna xaza nimûneyî (PV = nRT) bi hev ve girêdayî ne. Analîzkirina guherînên rewşê bi rêya pêvajoyên germî (mîna vekşîna di germahî an dewisîna sabît de) nîşan dide ku wize çawa di navbera germî û kar de vediguhere. Ev teoriya bingehîn ji bo dîzaynkirina motorên otomobîlan, kompresorên hewayê û pêşbînîkirina seqayê gelek girîng e."
     },
     "optics": {
       "title": "Optîk û Qanûna Snell di Şikandinê de",
@@ -2931,10 +3392,12 @@
         "Kovara Şikandinê θ2",
         "Kovara Sînorî ji bo Rengvedana Tevahî ya Navxweyî θ_c",
         "Leza Ronahiyê di Navgînê de"
-      ]
+      ],
+      "theoryBackground": "Şikestina ronahiyê (Refraksiyon) rave dike ku çawa arasteya ronahiyê dema derbasî navgînên cihê dibe diguhere, ku ev yek bingeha vîzyon û nîskan (lenses) e. Qanûna Snell diyar dike ku rêjeya navbera sîncê goşeya ketinê û sîncê goşeya şikestinê neguher e û girêdayî pêrista şikestinê ya her du navgînan e. Di teknolojiyê de, fîberên optîkî xwe dispêrin vajîbûna hundirîn a temam (ku encameke Qanûna Snell e) ji bo veguhestina daneyên înternetê."
     },
     "build_atom": {
       "title": "Çêkirina Atomê û Tabloya Periyodîk",
+      "theoryBackground": "Atom kevirê bingehîn ê hemû madeyên gerdûnê ye, û pêkhateya wê ya bine-atomî nasnameya kîmyewî û taybetmendiyên fîzîkî yên elementan diyar dike. Hejmara protonên erênî yên di dendikê (tovikê) de wekî hejmara atomî (Z) cihê elementê di xaneya xulî de diyar dike; di heman demê de nêytronên bêbar bi hejmara maseyê (A = p + n) îzotopan û îstîkrara dendikê pêk tînin, û elektronên li derdorê jî bara paqij û girêdanên kîmyewî bi rê ve dibin. Fêmkirina pêkhateya atomî bingeha teknolojiya nîvçegihayan e di pêvajoya dopîngkirina çîpên sîlîkonê de ji bo çêkirina mîkroprosesorên elektronîk û xaneyên enerjiya rojê.",
       "inputs": [
         "Hejmara Protonan p",
         "Hejmara Neutronan n",
@@ -2948,6 +3411,7 @@
     },
     "build_nucleus": {
       "title": "Çêkirina Dendikê û Enerjiya Girêdanê ya Dendikî",
+      "theoryBackground": "Enerjiya girêdana nûklerî sedema pêkveman û îstîkrara mezin a dendikên (tovikên) atomê radixe ber çavan li gel hebûna hêza bihêz a repûlsiyona elektrîkî di navbera protonên erênî de. Maseya dendikekê her tim ji koma maseyên niyokilyonên (proton û nêytronên) wê yên cuda kêmtir e; ev cudahî wekî kêmbûna di sengê de (Δm) tê binavkirin, ku li gor hevkêşeya hemberiya seng û enerjiyê ya Einstein (E_b = Δm · c²) vediguhere enerjiya girêdana nûklerî ya bihêz. Ev qanûn bingeha berhemanîna elektrîkê ye di reaktorên letbûna nûklerî de û bingeha çêkirina îzotopên radyoaktîf e di tîmarkirin û wênegirtina nexweşiyên penceşêrê de di bijîşkiyê de.",
       "inputs": [
         "Hejmara Atomî Z",
         "Hejmara Maseyê A",
@@ -2961,6 +3425,7 @@
     },
     "rutherford_scattering": {
       "title": "Belavbûna Alfa ya Rutherford û Vedîtina Dendikê",
+      "theoryBackground": "Taqîkirina belavbûna parçeyên alfayê ya Rutherford qonaxeke dîrokî ya sereke bû di fîzîka nûjen de; ji ber ku modela Thomson betal kir û îsbat kir ku atom bi giranî valahî ye û hema hemû mase û barga wê ya erênî di navendeke pir biçûk û xest de ya bi navê dendik (tovik) kom bûye. Dema ku parçeyên alfayê yên erênî (+2e) ber bi pelê zêr ê pir tenik ve tên avêtin, piraniya wan bê guherîna rê derbas dibin, lê parçeyên nêzîkî dendikê dibin bi hêza elektrîkî ya Coulomb (F ∝ 1/r²) bi goşeyên berfireh ber bi paş ve tên belavkirin. Ev mekanîzma îro di şebengpîva belavbûna paşve ya Rutherford (RBS) de tê bikaranîn ji bo analîzkirina kûrahî û stûriya tebeqeyên tenik ên sîlîkonê di pîşesaziya nîvçegihayan de.",
       "inputs": [
         "Enerjiya Parçeyên Alfa yên Ketî E_α",
         "Hejmara Atomî ya Rûpelê Armanc Z",
@@ -2974,6 +3439,7 @@
     },
     "molecules_and_light": {
       "title": "Molekul, Ronahî û Bandora Fotonan",
+      "theoryBackground": "Bandora danûstandina di navbera molekul û ronahiyê de nîşan dide ka madde çawa tîrêjên elektromagnetîkî bi awayekî kuantûmî dimije, ku ev yek bingeha fîzîkî ya şebengnasiyê, zanista atmosferê û bandora serayê pêk tîne. Bersivdana molekulê rasterast bi enerjiya fotonê ya ketî (E = h · f) ve girêdayî ye: fotonên kêm-enerjî yên mîkropêlan dibin sedema zivirîna molekulê; fotonên tîrêjên jêr-sor bi hejîna xwezayî ya gazên serayê re (wek CO2, H2O, CH4) dibin yek û germahiyê dihêlin; û tîrêjên ser-binefşî yên bi hêz elektronan vediguhezînin an jî girêdanên kîmyewî dişkînin. Ev prensîb di spektroskopiya tîrêjên jêr-sor (FTIR) de tê sepandin ji bo şopandina qirêjiya hewayê û kontrolkirina kîmyewî ya pîşesaziyê.",
       "inputs": [
         "Cureyê Molekulê (CO2, H2O, CH4, O2, N2)",
         "Dirêjahiya Pêla Fotonê (Mîkropêl / Jêr-sor / Xuyayî / Ser-binefşî)"
@@ -2993,10 +3459,12 @@
       "outputs": [
         "Rengê Dawî yê Hatî Dîtin di Çav de",
         "Bersiva Wergirên Konîk ên Dîtinê"
-      ]
+      ],
+      "theoryBackground": "Dîtina rengan girêdayî wê yekê ye ku çavên me çawa pêlên cihêreng ên şebenga elektromagnetîkî ya dîtbar hîs dikin. Modela tevlihevkirina rengan (Sor, Kesk, Şîn - RGB) diyar dike ku bi tevlihevkirina van her sê rengên sereke yên ronahiyê em dikarin her rengekî çêbikin, û eger bi heman astê werin têkelkirin rengê spî çêdibin. Ev prensîba optîkî bi awayekî rasterast di çêkirina hemû dîmenderên dîjîtal ên nûjen de, wekî televîzyon, dîmenderên komputerê û têlefonên zîrek, tê bikaranîn."
     },
     "capacitor_lab": {
       "title": "Laboratûvara Kondansatorê û Enerjiya Elektrîkê",
+      "theoryBackground": "Kapasîtor (kondansator) stûnên bingehîn ên dewreyên elektronîkî ne ji ber şiyana wan a embarkirina enerjiya potansiyel a elektrostatîk di qada elektrîkî de û valakirina wê bi lezeke pir zêde ku ji pîlên kîmyewî gelekî bileztir e. Kapasîteya kondansatorê (C = ε·A/d) bi rûbera lewheyan, dûriya navbera wan û madeya îzoleker ve girêdayî ye; sepandina voltajê (V) dibe sedema komkirina barên wekhev û dijber li ser lewheyan (Q = C · V) ku qadeke elektrîkî ji bo embarkirina enerjiyê (U = ½ · C · V²) pêk tîne. Ev prensîb di amûrên vejenandina dil (AED) de li nexweşxaneyan ji bo dayîna şokeke elektrîkî ya lezgîn a rizgarkirina jiyanê, fîlterên paqijkirina herikînê û flaşên kamerayan de tê bikaranîn.",
       "inputs": [
         "Rûbera Her Du Pelan A",
         "Dûriya Navberê d (Milîmetre)",
@@ -3019,7 +3487,8 @@
         "Tora Vektorên Giranbûna Qadê E",
         "Xetên Hevpotansiyel V",
         "Tevgera Bara Ceribandinê"
-      ]
+      ],
+      "theoryBackground": "Bargên elektrîkî li gorî Qanûna Coulomb qadeke elektrostatîk (E = kQ/r²) li dora xwe diafirînin ku hêzê li ser barga ceribandinê pêk tîne û gradyenta potansiyela elektrîkî (V = kQ/r) saz dike. Xetên qadê ji bargên erênî derdikevin û diçin ser bargên neyînî, û her dem li ser rûyên wekhev-potansiyel stûnî (amûdî) ne. Di pîşesaziyê de, ev prensîb di parzûnên elektrostatîk (ESPs) ên dûkêşên kargehan de tê bikaranîn da ku zêdetirî 99% ji toz û pirtikên gemarî bigire, her weha di makîneyên fotokopî û çapkerên lazerî de."
     },
     "resistance_in_wire": {
       "title": "Berxwedan di Têlê de û Berxwedana Taybet",
@@ -3031,7 +3500,8 @@
       "outputs": [
         "Berxwedana Giştî R (Ohm)",
         "Dendika Qisûran ku Herikînê Asteng Dike"
-      ]
+      ],
+      "theoryBackground": "Berxwedana elektrîkî ya di gihêneran de bi zagona berxwedana taybet (R = ρL / A) tê birêvebirin; berxwedan bi awayekî rasterast bi dirêjahiya têlê L û berxwedana taybet ρ ve, û bi berovajî bi rûberê birîna têlê A ve girêdayî ye. Lihevketina elektronan bi atomên gihêner re dibe sedema astengkirina herikînê û veguherîna wizeyê bo germiyê. Di endezyariya elektrîkê de, xetên veguhastina wizeyê yên dûr bi têlên stûr ên mis an alumînyûmê tên çêkirin da ku windabûna germiyê (P = I²R) kêm bikin, lê di germkerên elektrîkî de têlên bi berxwedana bilind ên Nîkromê ji bo hilberîna germiyê tên bikaranîn."
     },
     "gravity_and_orbits": {
       "title": "Rakêşan û Rêgehên Fezayî",
@@ -3044,7 +3514,8 @@
         "Leza Rêgehî v",
         "Dema Rêgehê T",
         "Rêça Îstîkrara Rêgehê"
-      ]
+      ],
+      "theoryBackground": "Mîkanîka rêgehî têkiliya rasterast a navbera kêşan û hêza navendî nîşan dide; ev zanist şirove dike ka çawa gerstêrk û peykên destkird di ketineke azad a berdewam de li dor gewdeya navendî dizivirin bêyî ku bikevin ser an jî ber bi fezayê ve bifirin. Rêgehek aram gava çêdibe ku hêza kêşanê bi temamî wekî hêza navendî (Fg = Fc) bixebite, ku ev jî leza pêwîst a rêgehê (v = √(GM/r)) li gorî dûrahî û girseya navendî diyar dike. Ev qanûn bingeha teknolojîk a danîna peykên ragihandinê, pergala cihdîtinê ya cîhanî (GPS) û rawestgeha fezayê ya navneteweyî (ISS) ye."
     },
     "keplers_laws": {
       "title": "Qanûnên Kepler ji bo Tevgera Gerstêrkan",
@@ -3057,7 +3528,8 @@
         "Dema Rêgehê T",
         "Rûberên Wekhev di Demên Wekhev de (Qanûna Duyem a Kepler)",
         "Cihê Nêzîktirîn Xal (Perihelion) û Dûrtirîn Xal (Aphelion)"
-      ]
+      ],
+      "theoryBackground": "Qanûnên Kepler ên tevgera gerstêrkan şoreşek mezin di fîzîka astronomî de pêk anîn bi rêya îsbatkirina ku rêgehên gerstêrkan ne çemberên temam in, lê belê şêweyê hêkdane (elîps) ne ku Roj li yek ji tîrêjên wê ye. Qanûna duyem nîşan dide ku leza gerstêrkê li nêzîkî Rojê zêde dibe û li dûr kêm dibe da ku rûberên wekhev di demên wekhev de derbas bike, û qanûna sêyem çargoşeya dema zivirînê bi sêgoşeya tîreya nîvî ya mezin ve girêdide (T² ∝ a³). Ev qanûn di endezyariya fezayê de ji bo diyarkirina rêgeha firîna keştiyên fezayî ber bi gerstêrka Behramê (Mars) û lêkolîna sîstemên nû yên stêrkan têne bikaranîn."
     },
     "energy_skate_park": {
       "title": "Parka Pilingan û Guherînên Enerjiyê",
@@ -3071,7 +3543,8 @@
         "Enerjiya Potansiyel a Rakêşanê U_g",
         "Enerjiya Germiyê ya Çêbûyî",
         "Leza Xizok di Her Xalekê de"
-      ]
+      ],
+      "theoryBackground": "Ev sîstem zagona giştî ya parastina enerjiyê nîşan dide (E_mech = K + U_g + E_thermal), ku diyar dike wazî di sîstemeke cûdakirî de qet winda nabe û ji tunebûnê nayê afirandin, lê tenê ji rengekî derbasî rengekî din dibe. Dema şemitokvan bê lêkxişandin tevdigere, enerjiya potansiyel a kêşkirinê (U_g = mgh) li serê xilxileyê û enerjiya kînetîk (K = ½mv²) li binê xilxileyê bi berdewamî di navbera hev de diguherin; lê bi zêdekirina firkasyonê (lêkxişandinê), hêzên lêkxişandinê parçeyek ji enerjiya mîkanîkî vediguherînin enerjiya germî (E_thermal) ku dibe sedema germbûna tekeran û sekinandina wî. Ev zagon di endezyariya wesayîtên karebayî de ji bo frenên nûjenker (regenerative braking) tê xebitandin da ku enerjiya rawestanê veguhêzin pîlê li şûna ku wek germî bê wendakirin, û di trênên şahiyê (roller coaster) de tê bikaranîn."
     },
     "fourier_making_waves": {
       "title": "Rêzeçiyayên Fourier û Çêkirina Pêlên Ahengdar",
@@ -3083,7 +3556,8 @@
       "outputs": [
         "Şiklê Pêla Hevbeş",
         "Spektroma Frekansê (Analîzatora Spektromê)"
-      ]
+      ],
+      "theoryBackground": "Şirovekirina Fourier û çêkirina pêlan yek ji serkeftinên herî mezin ên bîrkarî û fîzîkê ye di warê pêlan û pêvajoya sînyalan de, ku nîşan dide çawa her pêleke dewriyî ya aloz (wek pêlên çargoşeyî an sêgoşeyî) dikare bi rêya komkirina pêlên sînusî yên sade bi frekansên harmonîk (nω) bê perçekirin an ji nû ve avakirin. Ev pênaseya fîzîkî nîşan dide ka çima dengê kemanê û daholê ji hev cuda ye (rengê dengê / tîmbre) her çend heman notayê jî lê bidin. Ev rêbaz di cîhana hemdem de bingeha teknolojîk a formatên dengî yên dîjîtal (wek MP3), algorîtmayên wênesaziya rezonansa manyetîk (MRI) a nexweşxaneyan, û hilberîna muzîka elektronîk e."
     },
     "wave_on_a_string": {
       "title": "Pêl li ser Têlê û Leza Qonaxê",
@@ -3097,7 +3571,8 @@
         "Leza Belavbûna Pêlê v",
         "Dirêjahiya Pêlê λ",
         "Vegerîna Pêlê ji Serê Sabît / Azad"
-      ]
+      ],
+      "theoryBackground": "Belavbûna pêlên panî li ser têlek an werîsekî girjkirî mînaka herî zelal a mîkanîkî ye ji bo fêrbûna ka çawa enerjiya tevgerê di nav navgînên nerm de derbas dibe, ku tê de leza pêlê bi hêza girjiyê T û tîrbûna hêlî ya girseyê μ ve girêdayî ye (v = √(T/μ)). Zêdekirina girjiya têlê dibe sedem ku pêl zûtir biçe, lê giranbûn û stûrbûna têlê ji ber tevizînê (inercî) leza pêlê kêm dike. Ev qanûna fîzîkî hîmê hevrêzkirin û çêkirina tevahiya tembûr, gîtar û amûrên têldar e, herwiha di endezyariyê de ji bo çavdêrîkirin û bihêzkirina kabloyên pirdên hilawîstî û xetên elektrîkê yên voltaja bilind li hember bayên tund tê bikaranîn."
     },
     "states_of_matter": {
       "title": "Rewşên Madeyê, Guherîna Rewşê û Germiya Veşartî",
@@ -3110,7 +3585,8 @@
         "Rewşa Fîzîkî (Zexm / Şil / Gaz)",
         "Grafîka Rewşê (Phase Diagram)",
         "Enerjiya Tevgerê ya Molekulî"
-      ]
+      ],
+      "theoryBackground": "Made bi gelemperî di sê rewşan de heye: hişk, ron û gaz, ku ev girêdayî pileya germahî û dewisînê ye. Dema ku made ji rewşekê derbasî rewşeke din dibe, ew wizeya germî dikişîne an berdide bêyî ku germahiya wê biguhere; ji vê re 'Têhna veşartî' (Latent heat) tê gotin. Ev prensîb rave dike ku çawa xwêdan bedena mirovan hênik dike (têhna veşartî ya kelînê germahiya bedenê dikişîne) û herweha bingeha karkirina sarinc û klîmayên nûjen e."
     },
     "gas_diffusion": {
       "title": "Belavbûna Gazan û Qanûna Graham",
@@ -3122,7 +3598,8 @@
       "outputs": [
         "Rêjeya Leza Belavbûnê r1/r2",
         "Belavbûna Cihê ya Molekulan li Gorî Demê"
-      ]
+      ],
+      "theoryBackground": "Belavbûna gazê pêvajoyek e ku tê de molekulên gazekê ji ber tevgera xwe ya kînetîk bi molekulên gazeke din re tevlîhev dibin. Zagona Graham ji bo herikînê dibêje ku rêjeya herikîna gazekê bi koka çargoşeya barsteya wê ya molî re vajîhevnas e; ango gazên siviktir zûtir diherikin. Ev prensîb di veqetandina îzotopan de gelek girîng e, mîna dewlemendkirina uranyumê ji bo wizeya navokî, û herweha rave dike ka çawa bêhn bi lez di hundirê odeyekê de belav dibe."
     },
     "rotational_dynamics_torque": {
       "title": "Tevgera Zivirînê û Zora Zivirînê ya Bidestxistî",
@@ -3135,7 +3612,8 @@
         "Momentûma Kovarî L",
         "Lezbûna Kovarî α",
         "Enerjiya Tevgerê ya Zivirînê K_rot"
-      ]
+      ],
+      "theoryBackground": "Hevkêşeyên dînamîka zivirînê (Στ = I · α, L = I · ω) tevgera heyberên hişk li dor tewera zivirînê diyar dikin; ku tê de tork (τ = F · d · sin(θ)) şiyana hêzê ya ji bo çêkirina zivirînê li gorî mezinahiya hêzê û baskê hêzê yê stûnî dipîve, û zagona duyem a Newton torkê bi lezandina goşeyî α ve bi riya torka bêliviyê I ve girêdide. Di heman demê de, momenta goşeyî (L = I · ω) di nebûna torkên derve de sabît û parastî dimîne; ev tê wê wateyê ku her kêmkirina I dibe sedema zêdebûna leza goşeyî ω. Ev prensîb di helîkopteran de tê bikaranîn ku perwazeya dûvikê rê li ber zivirîna laşê balafirê digire, di stabîlkirina peykên fezayî û teleskopan de bi riya çerxên bertekê, û di stêrkên nûtronî yên zivirî de li fezayê."
     },
     "models_h_atom": {
       "title": "Modelên Atoma Hîdrojenê",
@@ -3148,7 +3626,8 @@
         "Enerjiya Rêgehê En (eV)",
         "Dirêjahiya Pêla Fotona Derketî λ (nm)",
         "Rêzeya Spektromê (Lyman / Balmer / Paschen)"
-      ]
+      ],
+      "theoryBackground": "Modela kûantûmî ya Niels Bohr ji bo atoma Hîdrojenê pirsgirêka hilweşîna atomê çareser kir bi danîna astên wizeyê yên kûantîzekirî (En = -13.6/n² eV). Elektron tenê dema ku di navbera astan de derbas dibe fotonek bi wizeyeke diyarkirî (ΔE = hf = hc/λ) dertîne an dimêje, ku ev jî dibe sedema çêbûna xêzên spektral (Lyman, Balmer, Paschen). Ev prensîb bingeha sereke ya spektroskopiya stêrnasiyê ye ji bo tespîtkirina pêkhateya kîmyayî û germahiya stêrkên fezayê, her weha bingeha xebata ampûlên gazê û amûrên lazerê ye."
     },
     "circuit_construction_kit": {
       "title": "Çêkirina Çerxeya Elektrîkê ya Pêşketî",
@@ -3161,7 +3640,8 @@
         "Herikîn di Her Çiqekê de I_branches",
         "Cudahiya Potansiyel li ser Her Parçeyekê",
         "Tevahiya Hêza Windabûyî"
-      ]
+      ],
+      "theoryBackground": "Analîzkirina dewreyên elektrîkî li ser du zagonên bingehîn ên Kirchhoff ava dibe: Zagona Girêkê bo herikînê (ΣI_in = ΣI_out) li ser bingeha parastina barga elektrîkî, û Zagona Xelekê bo voltajê (ΣV = 0) li ser bingeha parastina wizeyê. Ev her du zagon rê didin hesibandina herikînên çiqan, daketina voltajê û hêza windabûyî di nav torên elektrîkî yên aloz de. Di pîşesaziya nûjen de, zagonên Kirchhoff bingeha bernamên endezyariya elektronîkî ne ji bo dîzaynkirin û xebitandina mîkroçîpên komputerê, panelên PCB û torên belavkirina elektrîkê."
     },
     "generator": {
       "title": "Jeneratora Elektrîkê",
@@ -3174,7 +3654,8 @@
         "Herî Zêde Hêza Elektromotor ε_max (Volt)",
         "Frekansa Herikîna Guherbar a Çêbûyî f (Hz)",
         "Şiklê Pêla Sînusê ji bo Voltajê"
-      ]
+      ],
+      "theoryBackground": "Jeneratora elektrîkê (Molîde) sepandina herî sereke ya Zagona Faraday a kargiriya elektromagnetîk û Zagona Lenz e; hêza elektromotor a çêbûyî (ε = -N·ΔΦ/Δt = NBAω·sin(ωt)) bi rêya zivirandina bobîneke gihêner di nav qada magnetîkî de tê afirandin. Guherîna berdewam a lehiya magnetîkî wizeya mekanîkî ya zivirî vediguherîne wizeya elektrîkî ya herikîna guherbar (AC). Ev diyarde bingeha dabînkirina wizeya elektrîkê ya cîhanê ye bi rêya turbînên bendavên avê (hîdroelektrîk), turbînên bayê û santralên nukleerî, her weha dînamoya wesayîtan."
     },
     "magnet_compass": {
       "title": "Qible-nima û Magnet",
@@ -3187,7 +3668,8 @@
         "Kovara Guhestina Derziya Qible-nimayê θ",
         "Nexşeya Vektorên Qada Giştî",
         "Xetên Hêza Magnetîkî"
-      ]
+      ],
+      "theoryBackground": "Têkiliya magnet û qiblenimayê nîşan dide ka çawa xetên qada magnetîkî ji qutbê bakur derdikevin û dikevin qutbê başûr. Derziya qiblenimayê dûtewereyeke magnetîkî ya serbest e ku di bin bandora torka magnetîkî de her gav xwe bi arasteya xetên qada magnetîkî ya giştî re rêz dike, bi vî rengî qada magnetîkî ya Erdê jî destnîşan dike. Ev prensîb bi sedsalan bingeha deryavanî û rêdîtinê bûye, herweha di teknolojiya nûjen de di sensorên Hall ên têlefonên jîr û sîstemên rêberiya tirimbêlên xweajok de tê bikaranîn."
     },
     "magnets_electromagnets": {
       "title": "Magnet û Elektromagnet",
@@ -3200,7 +3682,8 @@
         "Giranbûna Qada Magnetîkî di Navendê de B (Tesla / mT)",
         "Hejmara Derziyên Kişandî",
         "Qutbbûna Magnetê N/S"
-      ]
+      ],
+      "theoryBackground": "Elektromagnet têkiliya kûr a navbera elektrîk û magnetîzmê ya li gorî zagona Ampère nîşan dide, ku tê de herikîna tezuya elektrîkê di nav bobîneke pêçekî (solenoid) re qadeke magnetîkî ya xurt çêdike (B = μ·n·I). Berevajî magnetên mayînde, qada elektromagnetan bi kontrolkirina herikîna elektrîkê dikare were kêmkirin, zêdekirin an qutkirin, herweha bi danîna hundirê hesinî yê xwedî derbasbûna bilind xurtiya wê pir zêde dibe. Di pîşesaziyê de ev prensîb di trênên lezgîn ên Maglev, cîhazên wênesaziya rezonansa magnetîkî (MRI) ya nexweşxaneyan, krênên hilgirtina hesin û bilindgoyan de tê bikaranîn."
     },
     "gravity_force_lab": {
       "title": "Laboratûvara Hêza Rakêşanê",
@@ -3212,7 +3695,8 @@
       "outputs": [
         "Hêza Kişandina Hevbeş F (nN)",
         "Vektorên Hêza Wekhev û Dijber F12 û F21"
-      ]
+      ],
+      "theoryBackground": "Qanûna Kêşana Gerdûnî ya Newton hîmê sereke yê mîkanîka klasîk û stêrknasiyê ye, ku nîşan dide çawa her gewdeyek di gerdûnê de bi hêzeke hevbeş gewdeyên din ber bi xwe ve dikişîne. Ev hêza kêşanê rasterast bi zêdebûna girseyên her du gewdeyan zêde dibe û bi awayekî berovajî bi çargoşeya dûrahiya navbera navendên wan kêm dibe (F ∝ 1/r²). Di jiyana pratîk û pîşesaziyê de, ev qanûn ji bo hejmartina hêza kêşana deryayî (hildan û daketina avê) ya ji ber Heyvê û amadekirina rêgeha moşekan ji bo danîna peykên destkird di fezayê de tê bikaranîn."
     },
     "solar_system": {
       "title": "Koma Rojê û Rêgehên Gerstêrkan",
@@ -3224,7 +3708,8 @@
       "outputs": [
         "Rêçên Tevgera Rastîn (Rêgeha Xelekî / Hêkî / Parabol)",
         "Parastina Momentûma Kovarî û Enerjiya Giştî"
-      ]
+      ],
+      "theoryBackground": "Dînamîka Koma Rojê û gewdeyên pir-hejmar pirsgirêka gerdûnî ya pir-gewdeyî (N-body problem) çareser dike, ku nîşan dide çawa hemû gerstêrk ne tenê bi Rojê ve girêdayî ne, lê belê di heman demê de hêza kêşanê li ser hevûdu jî dikin ku dibe sedema guhertinên hûrik di rêgehên wan de di dirêjahiya mîlyonan salan de. Ev têkiliya tevlîhev a kêşanê di asmannasiyê de ji bo teknîka avêtina kêşanê (Gravity Assist) tê bikaranîn, ku tê de keştiyên fezayî (wek Voyager û Cassini) hêza kêşana gerstêrkên gewre yên wekî Berçîs (Jupiter) bi kar tînin da ku leza xwe zêde bikin bêyî ku sotemeniyeke zêde bişewitînin."
     },
     "energy_forms": {
       "title": "Şêwazên Enerjiyê û Guherînên Wan",
@@ -3236,7 +3721,8 @@
         "Germahî T li Gorî Demê",
         "Belavbûna Yekîneyên Enerjiyê (Tevgerî, Germî, Tîrêjdar, Kîmyewî)",
         "Hevsengiya Germiyê ya Dawî"
-      ]
+      ],
+      "theoryBackground": "Qanûna parastina wizeyê diyar dike ku wize nayê afirandin û nayê tunekirin, tenê ji formekê derbasî formeke din dibe. Ev bingeha termodînamîk û mêkanîkê ye. Wize di navbera formên wekî wizeya tevgerî, wizeya potansiyel, germî û elektrîkî de diguhere, lê wizeya giştî ya sîstemê heman dimîne. Wek mînak, bendav wizeya potansiyel a avê vediguherînin wizeya tevgerî û piştre jî dikin wizeya elektrîkê."
     },
     "normal_modes": {
       "title": "Şêwazên Xwezayî yên Hejînê",
@@ -3250,7 +3736,8 @@
         "Frekansa Dengvedanê fn (Hz)",
         "Dirêjahiya Pêlê λn",
         "Cihên Girê (Nodes) û Zikan (Antinodes)"
-      ]
+      ],
+      "theoryBackground": "Modên asayî yên lerizînê (şêweyên xwezayî yên lerzan) wan tevgerên taybet ên pergalên mîkanîkî an molekulî nîşan didin ku tê de hemû perçeyên pergalê bi heman frekansa xwezayî û di qonaxeke sabît de dilerizin. Di her moda n-emîn de, şêweyê pêleke bicihbûyî pêk tê ku ji girêkên bêliv (xalên lenger) û zikên lerizînê (xalên herî bilind ên firehiyê) pêk tê. Zanîna van modan di endezyariya avahîsazî û firokvaniyê de jiyanî ye da ku rê li ber hilweşîna avahî û pirdên mezin di dema erdhej û bayên dijwar de ji ber karesata dengvedanê were girtin, herweha di kîmyayê de ji bo şopandina lerizîna girêdanên navbera molekulan tê bikaranîn."
     },
     "forces_motion": {
       "title": "Hêz û Tevger: Bingeh",
@@ -3264,7 +3751,9 @@
         "Lezbûna Encambûyî a (m/s²)",
         "Diyagrama Tiştê Azad a Hêzan (FBD)",
         "Leza Arasteyî v"
-      ]
+      ],
+      "lawDescription": "Yasaya Duyem ya Newton:",
+      "theoryBackground": "Zagona duyem a Newton ji bo livînê (F_net = Σ F = m · a) bingeha sereke ya mekanîka klasîk e, ku têkiliya rasterast a navbera hêza giştî (hêza pûxte) û lezandina laş diyar dike; nîşan dide ku her guherîna di leza heyberekê de pêdivî bi hêzeke derve ya ne-sifir heye, û lezandin rasterast bi hêzê re û berovajî bi girseya wê m re têkildar e (a = F_net / m). Gava hêz di hevsengiyê de bin (Σ F = 0), lezandin dibe sifir û laş di bariya rawestanê de an bi leza sabît dimîne li gorî zagona yekem. Ev zagon di endezyariya fezayî de bo firok û moşekan tê bikaranîn ku bi şewitandina sotemeniyê û kêmbûna girseyê lezandina wan zêde dibe, di hesibandina têlên asansoran de ji bo ewlehiya mirovan, û di sîstemên hevsengiya elektronîk a tirimbêlan de (ESC)."
     },
     "gas_properties": {
       "title": "Taybetmendiyên Gazê û Zexta Tevgerî",
@@ -3277,7 +3766,8 @@
         "Zexta Hundirîn P (Pascal)",
         "Navîna Leza Molekulî v_rms",
         "Rêjeya Lihevketina Molekulan bi Dîwarê Firaqê re"
-      ]
+      ],
+      "theoryBackground": "Têgihîştina taybetmendiyên xazan ji bo xwendina fîzîkê û motoran gelek girîng e. Qanûna xaza nimûneyî pêwendiya navbera pestan, qebare û germahiya xazekê rave dike. Teoriya kînetîk nîşan dide ku pestan ji ber lêdana molekulên xazê li dîwarên derdan çêdibe. Wekî mînak, balonên hewayê germ radibin ji ber ku germkirina xazê qebareya wê zêde dike û tîrbûna wê kêm dike, û bi vî rengî hêza rakirinê çêdibe."
     },
     "diffusion": {
       "title": "Belavbûna Molekulî û Qanûna Fick",
@@ -3290,7 +3780,8 @@
         "Rêjeya Herikîna Belavbûnê J",
         "Asta Xestiyê dC/dx",
         "Dema Gihiştina Hevsengiya Yekreng"
-      ]
+      ],
+      "theoryBackground": "Belavbûna molekulî tevgera germî ya korane ya keriyan e ji cihên ku tîrbûna (xestiya) wan zêde ye ber bi cihên ku tîrbûna wan kêm e. Zagona yekem a Fîk (Fick) vê pêvajoyê rave dike û dibêje ku herikîna belavbûnê rasterast bi cudahiya tîrbûnê re rasthevnas e. Ev mekanîzmayeke bingehîn e di biyolojî û kîmyayê de, ku nîşan dide çawa oksîjen ji perdeyên xaneyan di pişikan de derbas dibe û çawa pîsî di rûbaran de belav dibe."
     },
     "blackbody_spectrum": {
       "title": "Spektroma Tiştên Reş û Qanûnên Planck û Wien",
@@ -3301,7 +3792,8 @@
         "Dirêjahiya Pêla Lûtkeya Tîrêjdanê λ_max (Mîkrometre)",
         "Giranbûna Tîrêjdana Giştî I (Watt/m²)",
         "Grafîka Belavbûna Spektromî û Rengê Xuyayî"
-      ]
+      ],
+      "theoryBackground": "Gewdeyê reş (Blackbody) gewdeyekî fîzîkî yê nimûneyî ye ku hemû frekansên tîrêjdana elektromagnetîk bi temamî dikişîne û derdixe. Zagona Planck tîrbûna şebengî ya vê tîrêjdanê di nav pêlên cihêreng de vedibêje, di heman demê de Zagona Wien nîşan dide ku dirêjahiya pêla herî zêde bi zêdebûna germahiyê ber bi pêlên kurtir (şîntir) ve diçe. Ev zagonan bûn sedema peydabûna mêkanîka kuantûm û di stêrnasiyê de bi berfirehî tên bikaranîn daku germahiya rûyê stêrkên dûr û di kamerayên germî de werin pîvan."
     },
     "doppler_effect": {
       "title": "Bandora Doppler û Guherîna Frekansê",
@@ -3316,7 +3808,8 @@
         "Guherîna Frekansa Doppler Δf",
         "Dirêjahiya Pêla Pêş û Paş λ",
         "Hejmara Mach"
-      ]
+      ],
+      "theoryBackground": "Bandora Dopler (mef'ûlê Doppler) diyardeyeke fîzîkî ya giring e ku guherîna xuyayî ya frekans û dirêjahiya pêlan diyar dike gava di navbera çavkaniya pêlê û çavdêr de tevgereke têkildar hebe; dema ku çavkanî nêzîk dibe pêl tên guvaştin û frekansa tê bihîstin zêde dibe (f' > f), û gava dûr dikeve pêl vedikişin û frekans kêm dibe (f' < f). Ev pênase di jiyana nûjen de di radara polîsan de ji bo pîvandina leza tirombêlan, radarên hewayî ji bo şopandina bahozan, û cîhazên Eko-Doppler ên nexweşxaneyan ji bo pîvandina leza herikîna xwînê di dil de tê bikaranîn; herwiha di asmannasiyê de bûye sedema îsbatkirina firehbûna gerdûnê (guhêrîna ber bi sor)."
     },
     "electrical_transformer": {
       "title": "Transformatora Elektrîkê û Qanûna Hêzkirina Hevbeş",
@@ -3332,7 +3825,8 @@
         "Herikîna Her Du Bobînan Iₚ û Iₛ (Amper)",
         "Rêjeya Guhertinê a û Cureyê Transformatorê",
         "Hêza Elektrîkê ya Veguhestî Pₛ (Watt)"
-      ]
+      ],
+      "theoryBackground": "Guhêrka elektrîkî (transformator) amûreke sereke ya şebekeyên herikîna guhêrbar (AC) e û li gorî zagona Faraday a arandina hevbeş kar dike (V_s / V_p = N_s / N_p). Dema herikîna guhêrbar di bobîna yekem re derbas dibe, lehiya magnetîkî ya guhêrbar di dendika hesinî de diherike û di bobîna duyem de hêza livînera elektrîkî ya arîner çêdike bêyî ku têkiliya wan a fîzîkî hebe. Guhêrk bi bilindkirina potansiyela elektrîkê wendabûna enerjiyê di têlên dirêj de pir kêm dike (P_loss = I²R) û paşê bo 220V dadixîne ji bo karanîna ewle ya malan, şarjorên telefonan û tirimbêlên elektrîkî."
     },
     "photoelectric_effect": {
       "title": "Diyardeya Fotoelektrîkê û Qanûna Kuantûmê ya Einstein",
@@ -3348,7 +3842,8 @@
         "Voltaja Rawestandinê V_stop (Volt)",
         "Frekans û Dirêjahiya Pêla Sînor f₀ û λ₀",
         "Leza Derketina Elektronan v_max"
-      ]
+      ],
+      "theoryBackground": "Diyardeya fotoelektrîkê ew keşfa mezin e ku xwezaya kuantûmî ya ronahiyê îsbat kir û Albert Einstein pê xelata Nobelê wergirt; nîşan da ku ronahî ji pakêtên enerjiyê (foton) pêk tê. Dema enerjiya fotonê ji enerjiya derkirina metalê (fonksiyona kar) mezintir be (E = hf ≥ Φ), elektron ji rûyê metalê dertên û enerjiya wan a tevgerî ya herî mezin tenê bi frekansa ronahiyê ve girêdayî ye ne bi tundiya wê (K_max = hf - Φ). Ev prensîb bingeha mekanîka kuantûmê ye û di panelên enerjiya rojê de bo hilberîna elektrîkê, sensorên kamerayên dîjîtal (CMOS), û deriyên otomatîk ên ewlehiyê de tê bikaranîn."
     },
     "radioactive_decay": {
       "title": "Hilweşîna Radyoaktîf û Qanûna Nîv-jiyana Dendikî",
@@ -3364,7 +3859,8 @@
         "Rêjeya Sedî ya Mayî %",
         "Çalakiya Radyoaktîf A(t) (Bq)",
         "Berdewamiya Hilweşînê λ"
-      ]
+      ],
+      "theoryBackground": "Hilweşîna radyoaktîf pêvajoyeke navokî ya xwebexş e ku tê de navokên nestîkrêt bi avêtina keriyên alfa, bêta an tîrêjên gama digihîjin aramiya navokî. Ev diyarde li gorî zagona nîv-jiyanê (nîv-temen) dimeşe (N(t) = N₀ · (1/2)^(t/T₁/₂))؛ ku tê de nîv-jiyan dema pêwîst e bo hilweşîna nîvê navokên radyoaktîf di nimûneyekê de bêyî ku bandora germahî an zextê lê hebe. Ev zagon di diyarkirina temenê fosîl û şûnwarên dîrokî bi rêya Karbon-14, dermankirina şêrpenceyê di bijîşkiya navokî de, û peydakirina enerjiya keştiyên fezayî bi jeneratorên RTG de tê bikaranîn."
     },
     "calorimetry_equilibrium": {
       "title": "Kalorîmetre û Qanûna Hevsengiya Germiyê",
@@ -3379,8 +3875,16 @@
         "Mîqdara Enerjiya Germiyê ya Guherbar Q (Joule û Kalorî)",
         "Kapasîteyên Germiyê C₁ û C₂",
         "Guherîna Germahiyan ΔT₁ û ΔT₂"
-      ]
-    }
+      ],
+      "theoryBackground": "Pîvana germiyê (Kalorîmetrî) zanistiya pîvana veguhastina germiyê ye ku bi guherînên rewşa gewdeyekê ve girêdayî ye. Li ser bingeha parastina wizeyê, zagona hevsengiya germiyê dibêje ku dema du tişt di germahiyên cihêreng de di sîstemeke îzolekirî de werin tevlîhevkirin, germahiya ku tiştê germtir winda dike bi temamî yeksan e bi germahiya ku tiştê sartir qezenc dike heta ku ew digihîjin heman germahiya dawî. Ev prensîb di zanistiya materyalan de pir girîng e daku kapasîteya germî ya taybet a materyalên nû were zanîn û pergalên germkirinê werin dîzaynkirin."
+    },
+    "gravity_force": {
+      "lawDescription": "Yasaya Rakêşana Gerdûnî ya Newton"
+    },
+    "gravity_orbits": {
+      "lawDescription": "Mîkanîka Cismên Pirjimar:"
+    },
+    "custom": {}
   },
   "planets": {
     "earth": {
@@ -3712,6 +4216,126 @@
     },
     "constants": {
       "tab": "Neguhêrbarên Fîzîkî"
+    }
+  },
+  "units": {
+    "kmh": "km/h",
+    "mph": "Mîl di Saetê de",
+    "calories": "Kalorî",
+    "ev": "Elektron-volt",
+    "radians": "Radyan"
+  },
+  "keyboard": {
+    "variables": {
+      "m": "Bariste",
+      "v": "Lez",
+      "v0": "Leza destpêkê",
+      "a": "Lezgînî",
+      "g": "Lezkirina kêşkirinê",
+      "t": "Dem",
+      "F": "Hêz",
+      "p": "Momentûm",
+      "E_k": "Enerjiya tevgerê",
+      "E_p": "Enerjiya potansiyel",
+      "W": "Karê kirî",
+      "P": "Hêz / Zext",
+      "L": "Dirêjahî",
+      "r": "Nîv-tîrêj",
+      "d": "Dûrahî",
+      "h": "Bilindahî",
+      "T": "Dema gerê / Germî",
+      "f": "Pirhêzî",
+      "k": "Hevkêşeya kanî",
+      "I": "Tewzûya elektrîkê / Sistî",
+      "V": "Volt / Qeware",
+      "R": "Berxwedan",
+      "q": "Barga elektrîkê",
+      "C": "Kapasîte",
+      "B": "Qada Magnetîk",
+      "c": "Leza ronahiyê"
+    },
+    "greek": {
+      "θ": "Têta (Goşe)",
+      "α": "Alfa (Lezgîniya goşeyî)",
+      "β": "Bêta",
+      "γ": "Gama",
+      "δ": "Deltaya Biçûk",
+      "Δ": "Deltaya Mezin (Guherîn)",
+      "ε": "Epsîlon",
+      "λ": "Lambda (Dirêjahiya pêlê)",
+      "μ": "Mîyû (Hevkêşeya xişandinê)",
+      "π": "Pî (Neguhêrbar 3.14159)",
+      "ρ": "Rho (Tîrbûn)",
+      "σ": "Sîgma",
+      "τ": "Taw (Torq)",
+      "φ": "Fay (Herikîn)",
+      "ω": "Omega ya biçûk (Leza goşeyî)",
+      "Ω": "Omega ya mezin (Ohm)",
+      "Σ": "Sîgma ya Mezin (Komkirin)",
+      "Ψ": "Psi (Fonksiyona pêlê)",
+      "η": "Eta (Şiyana bikêr)",
+      "ν": "Nû (Pirbûn)"
+    },
+    "units": {
+      "2": "Duco (²)",
+      ".": "Xala dehiyê (Point)",
+      ",": "Koma",
+      "+": "Komkirin",
+      "-": "Dergirtin",
+      "×": "Kerkirin",
+      "÷": "Dabeşkirin",
+      "=": "Wekhev e",
+      "±": "Zêde an Kêm",
+      "(": "Kevana Vekirî",
+      ")": "Kevana Girtî",
+      "[": "Kevana Çargoşe",
+      "]": "Kevana Çargoşe ya Girtî",
+      "|": "Nirxê Bêguman",
+      "^": "Hêz (x^y)",
+      "³": "Sêco (³)",
+      "√(": "Rehê Ducarî",
+      "∛(": "Rehê Sêcarî",
+      "½": "Nîv (½)",
+      "×10^": "Hêza dehê (Nivîsandina Zanstî)",
+      "sin(": "Sînus",
+      "cos(": "Kosînus",
+      "tan(": "Tancent",
+      "arcsin(": "Bervajiyê Sînusê",
+      "arccos(": "Bervajiyê Kosînusê",
+      "arctan(": "Bervajiyê Tancentê",
+      "ln(": "Logarîtmaya Xwezayî",
+      "log(": "Logarîtmaye Dehî",
+      "exp(": "Fonksiyona Ekspomansiyel",
+      "≈": "Nêzîkî",
+      "≠": "Wekhev nîne",
+      "≤": "Kêmtir an Wekhev",
+      "≥": "Mezintir an Wekhev",
+      "·": "Kêşana Xalî",
+      "Δ": "Guherîn (Delta)",
+      "∫": "Întegral",
+      "d_per_dt": "Dergirtî li gorî demê",
+      "∞": "Bêdawî",
+      "%": "Rêjeya Sedî",
+      "m": "Metre",
+      "s": "Saniye",
+      "kg": "Kîlogram",
+      "m_per_s": "m/s (lez)",
+      "m_per_s2": "m/s² (lezgînî)",
+      "N": "Newton (hêz)",
+      "J": "Joule (enerjî)",
+      "W": "Watt (hêz)",
+      "Pa": "Paskal (zext)",
+      "V": "Volt (voltaj)",
+      "A": "Amper (tewzû)",
+      "Ω": "Ohm (berxwedan)",
+      "Hz": "Hertz (pirhêzî)",
+      "C": "Coulomb (barg)",
+      "F": "Farad (kapasîte)",
+      "T": "Tesla (qada magnetîk)",
+      "deg": "Pileyê goşeyî",
+      "rad": "Radyen",
+      "K": "Kelvîn",
+      "eV": "Elektron-volt"
     }
   }
 }

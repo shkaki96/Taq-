@@ -1,5 +1,5 @@
 import { Activity, Pause, Play, RotateCcw } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Language } from '../types';
 
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,8 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [position, setPosition] = useState<number>(0); // meters
   const [velocity, setVelocity] = useState<number>(0); // m/s
+  const posRef = useRef<number>(0);
+  const velRef = useRef<number>(0);
 
   const g = 9.8;
   const normalForce = mass * g;
@@ -39,6 +41,8 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
 
   // Animation frame loop
   useEffect(() => {
+    if (!isPlaying) return;
+
     let animationId: number;
     let lastTime = performance.now();
 
@@ -46,32 +50,49 @@ export default function ForcesMotionSim({ lang, onLogMeasurement }: Props) {
       const dt = Math.min((time - lastTime) / 1000, 0.05);
       lastTime = time;
 
-      if (isPlaying) {
-        setVelocity((prevV) => {
-          const nextV = prevV + acceleration * dt;
-          if (appliedForce === 0 && Math.abs(prevV) > 0 && Math.sign(prevV) !== Math.sign(nextV)) {
-            return 0; // come to complete stop due to friction
-          }
-          return nextV;
-        });
+      const v = velRef.current;
+      const p = posRef.current;
 
-        setPosition((prevX) => {
-          let nextX = prevX + velocity * dt;
-          if (nextX > 40) nextX = -40;
-          if (nextX < -40) nextX = 40;
-          return nextX;
-        });
+      // Calculate friction force based on current velocity
+      let fFriction = 0;
+      if (Math.abs(v) > 0.01) {
+        fFriction = -Math.sign(v) * frictionCoeff * normalForce;
+      } else {
+        if (Math.abs(appliedForce) <= maxStaticFriction) {
+          fFriction = -appliedForce;
+        } else {
+          fFriction = -Math.sign(appliedForce) * frictionCoeff * normalForce;
+        }
       }
+
+      const fNet = appliedForce + fFriction;
+      const accel = Math.abs(fNet) < 0.1 && Math.abs(v) < 0.05 ? 0 : fNet / mass;
+
+      let nextV = v + accel * dt;
+      if (appliedForce === 0 && Math.abs(v) > 0 && Math.sign(v) !== Math.sign(nextV)) {
+        nextV = 0; // come to complete stop due to friction
+      }
+
+      let nextX = p + nextV * dt;
+      if (nextX > 40) nextX = -40;
+      if (nextX < -40) nextX = 40;
+
+      velRef.current = nextV;
+      posRef.current = nextX;
+      setVelocity(nextV);
+      setPosition(nextX);
 
       animationId = requestAnimationFrame(loop);
     };
 
     animationId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animationId);
-  }, [isPlaying, acceleration, velocity, appliedForce]);
+  }, [isPlaying, mass, appliedForce, frictionCoeff, normalForce, maxStaticFriction]);
 
   const handleReset = () => {
     setIsPlaying(false);
+    posRef.current = 0;
+    velRef.current = 0;
     setPosition(0);
     setVelocity(0);
   };

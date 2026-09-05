@@ -395,7 +395,18 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
             </div>
 
             <div className="flex items-center gap-2">
-              <button className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700 transition-colors"
+              <button 
+                onClick={() => {
+                  setMasses([
+                    { id: 'm1', name: 'm₁', m: 2.0, x: -2.0, y: 1.5, color: '#38bdf8' },
+                    { id: 'm2', name: 'm₂', m: 3.0, x: 2.5, y: 1.0, color: '#f59e0b' },
+                    { id: 'm3', name: 'm₃', m: 1.5, x: 0.0, y: -2.0, color: '#10b981' },
+                    { id: 'm4', name: 'm₄', m: 2.5, x: -1.5, y: -1.0, color: '#ec4899' },
+                  ]);
+                  setMode('particles');
+                  setPivotPoint('A');
+                }}
+                className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700 transition-colors"
                 title="Reset"
               >
                 <RotateCcw  className="w-4 h-4"/>
@@ -466,19 +477,25 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
 
           {/* Mode Selection Buttons */}
           <div className="grid grid-cols-3 gap-1.5 text-xs">
-            <button className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
+            <button 
+                onClick={() => setMode('particles')}
+                className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
                 mode === 'particles' ? 'bg-zinc-800 text-red-400 border-red-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
               {tI18n('experiments.center_of_mass.modeParticles')}
             </button>
-            <button className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
+            <button 
+                onClick={() => setMode('plumbline')}
+                className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
                 mode === 'plumbline' ? 'bg-zinc-800 text-red-400 border-red-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
               {tI18n('experiments.center_of_mass.modePlumbline')}
             </button>
-            <button className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
+            <button 
+                onClick={() => setMode('balance')}
+                className={`min-h-[44px] min-w-[44px] p-2 rounded-xl font-semibold border ${
                 mode === 'balance' ? 'bg-zinc-800 text-red-400 border-red-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
@@ -490,15 +507,21 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
             <div className="space-y-2 p-3 rounded-xl bg-zinc-950/70 border border-zinc-800">
               <label className="text-sm text-zinc-300 font-semibold">{tI18n('experiments.center_of_mass.pivotLabel')}</label>
               <div className="grid grid-cols-3 gap-2 text-xs">
-                <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'A' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
+                <button 
+                  onClick={() => setPivotPoint('A')}
+                  className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'A' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
                 >
                   {tI18n('experiments.center_of_mass.pivotA')}
                 </button>
-                <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'B' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
+                <button 
+                  onClick={() => setPivotPoint('B')}
+                  className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'B' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
                 >
                   {tI18n('experiments.center_of_mass.pivotB')}
                 </button>
-                <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'C' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
+                <button 
+                  onClick={() => setPivotPoint('C')}
+                  className={`min-h-[44px] min-w-[44px] p-2 rounded-lg font-bold ${pivotPoint === 'C' ? 'bg-sky-600 text-white' : 'bg-zinc-800 text-zinc-300'}`}
                 >
                   {tI18n('experiments.center_of_mass.pivotC')}
                 </button>
@@ -532,7 +555,9 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
                       </span>
                       <span className="font-mono text-zinc-300">{p.m.toFixed(1)} kg</span>
                       {masses.length > 2 && (
-                        <button className="min-h-[44px] min-w-[44px] text-zinc-500 hover:text-red-400 p-0.5"
+                        <button 
+                          onClick={() => handleRemoveMass(p.id)}
+                          className="min-h-[44px] min-w-[44px] text-zinc-500 hover:text-red-400 p-0.5"
                           title="Delete"
                         >
                           <Trash2  className="w-3.5 h-3.5"/>
@@ -558,7 +583,10 @@ export default function CenterOfMassSim({ lang, onLogMeasurement }: Props) {
           )}
 
           {/* Log Measurement Button */}
-          <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 shadow-red-900/30' }`}>
+          <button 
+            onClick={handleLog}
+            className={`min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-red-600 to-amber-600 hover:from-red-500 hover:to-amber-500 shadow-red-900/30' }`}
+          >
             <BookmarkCheck  className="w-4 h-4"/>
             <span>{logged ? tI18n('experiments.center_of_mass.loggedMsg') : tI18n('experiments.center_of_mass.logBtn')}</span>
           </button>

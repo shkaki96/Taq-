@@ -46,20 +46,28 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
   const animFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawInclinedRamp(ctx, canvas.width, canvas.height);
+      }
+    }
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning) {
-        boxProgressRef.current += dt * 0.25;
-        if (boxProgressRef.current > 0.95) {
-          boxProgressRef.current = 0.05;
-        }
+      boxProgressRef.current += dt * 0.25;
+      if (boxProgressRef.current > 0.95) {
+        boxProgressRef.current = 0.05;
       }
 
-      const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -75,7 +83,7 @@ export default function RampMachineSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [loadMassKg, rampHeightM, rampLengthM, frictionCoeffMu, isRunning, thetaRad, clampedHeight]);
+  }, [loadMassKg, rampHeightM, rampLengthM, frictionCoeffMu, isRunning, thetaRad, clampedHeight, lang]);
 
   const drawInclinedRamp = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
     ctx.clearRect(0, 0, width, height);

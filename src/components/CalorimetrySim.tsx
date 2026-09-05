@@ -78,6 +78,8 @@ export default function CalorimetrySim({ lang, onLogMeasurement }: Props) {
 
   // Real-time thermal equilibration simulation
   useEffect(() => {
+    if (!isPlaying || !isSubmerged) return;
+
     let animationId: number;
     let lastTime = performance.now();
 
@@ -85,21 +87,19 @@ export default function CalorimetrySim({ lang, onLogMeasurement }: Props) {
       const dt = Math.min((currentTime - lastTime) / 1000, 0.1);
       lastTime = currentTime;
 
-      if (isPlaying && isSubmerged) {
-        setElapsedTime((prevT) => prevT + dt);
+      setElapsedTime((prevT) => prevT + dt);
 
-        // Newton's law of cooling / heat transfer rate
-        const kRate = 0.5; // thermal transfer constant
-        setCurrentLiquidTemp((prevT) => {
-          const diff = finalEquilibriumTemp - prevT;
-          return prevT + diff * (1 - Math.exp(-kRate * dt * 2));
-        });
+      // Newton's law of cooling / heat transfer rate
+      const kRate = 0.5; // thermal transfer constant
+      setCurrentLiquidTemp((prevT) => {
+        const diff = finalEquilibriumTemp - prevT;
+        return prevT + diff * (1 - Math.exp(-kRate * dt * 2));
+      });
 
-        setCurrentSolidTemp((prevT) => {
-          const diff = finalEquilibriumTemp - prevT;
-          return prevT + diff * (1 - Math.exp(-kRate * dt * 2));
-        });
-      }
+      setCurrentSolidTemp((prevT) => {
+        const diff = finalEquilibriumTemp - prevT;
+        return prevT + diff * (1 - Math.exp(-kRate * dt * 2));
+      });
 
       animationId = requestAnimationFrame(loop);
     };
@@ -176,17 +176,25 @@ export default function CalorimetrySim({ lang, onLogMeasurement }: Props) {
         </div>
 
         <div className="flex items-center gap-2">
-          <button className={`min-h-[44px] min-w-[44px] px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all ${
+          <button
+            onClick={() => setIsPlaying(!isPlaying)}
+            className={`min-h-[44px] min-w-[44px] px-3.5 py-1.5 rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all ${
               isPlaying ? 'bg-amber-600 hover:bg-amber-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white'
             }`}
           >
             {isPlaying ? <Pause  className="w-3.5 h-3.5"/> : <Play  className="w-3.5 h-3.5"/>}
             <span>{isPlaying ? tI18n('experiments.calorimetry_equilibrium.pause') : tI18n('experiments.calorimetry_equilibrium.play')}</span>
           </button>
-          <button className="min-h-[44px] min-w-[44px] px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all">
+          <button
+            onClick={handleReset}
+            className="min-h-[44px] min-w-[44px] px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold flex items-center gap-1 transition-all"
+          >
             <RotateCcw  className="w-3.5 h-3.5"/>
           </button>
-          <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all">
+          <button
+            onClick={handleLog}
+            className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-semibold shadow flex items-center gap-1.5 transition-all"
+          >
             <Activity  className="w-3.5 h-3.5"/>
             <span>{tI18n('experiments.calorimetry_equilibrium.log')}</span>
           </button>

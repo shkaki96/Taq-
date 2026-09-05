@@ -1,4 +1,4 @@
-import { Sparkles, Pause, Play, RotateCcw } from 'lucide-react';
+import { Sparkles, Pause, Play, RotateCcw, Activity, BookmarkCheck } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -6,6 +6,7 @@ import { Language } from '../types';
 
 interface DiffusionSimProps {
   lang: Language;
+  onLogMeasurement?: (data: any) => void;
 }
 
 interface GasParticle {
@@ -16,12 +17,15 @@ interface GasParticle {
   type: 'light' | 'heavy';
 }
 
-export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
+export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang, onLogMeasurement }) => {
   const { t: tI18n } = useTranslation();
   const [barrierOpen, setBarrierOpen] = useState<boolean>(false);
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [temperature, setTemperature] = useState<number>(300); // Kelvin
-  const [particles, setParticles] = useState<GasParticle[]>([]);
+  const particlesRef = useRef<GasParticle[]>([]);
+  const [counts, setCounts] = useState({ leftLight: 30, rightLight: 0, leftHeavy: 0, rightHeavy: 30 });
+  const [resetKey, setResetKey] = useState<number>(0);
+  const [logged, setLogged] = useState<boolean>(false);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -48,114 +52,144 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
         type: 'heavy',
       });
     }
-    setParticles(newParticles);
+    particlesRef.current = newParticles;
+    setCounts({ leftLight: 30, rightLight: 0, leftHeavy: 0, rightHeavy: 30 });
+    setResetKey((k) => k + 1);
   };
 
   useEffect(() => {
     initChamber();
   }, []);
 
+  const drawDiffusion = (ctx: CanvasRenderingContext2D) => {
+    ctx.clearRect(0, 0, 600, 280);
+
+    // Container border
+    ctx.strokeStyle = '#64748b';
+    ctx.lineWidth = 3;
+    ctx.strokeRect(50, 30, 500, 220);
+
+    // Divider Barrier
+    if (!barrierOpen) {
+      ctx.beginPath();
+      ctx.moveTo(300, 30);
+      ctx.lineTo(300, 250);
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+    } else {
+      // Open barrier indicator
+      ctx.beginPath();
+      ctx.moveTo(300, 30);
+      ctx.lineTo(300, 70);
+      ctx.moveTo(300, 210);
+      ctx.lineTo(300, 250);
+      ctx.strokeStyle = '#f59e0b';
+      ctx.lineWidth = 4;
+      ctx.stroke();
+    }
+
+    // Draw particles
+    particlesRef.current.forEach((p) => {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.type === 'light' ? 4.5 : 7.5, 0, Math.PI * 2);
+      ctx.fillStyle = p.type === 'light' ? '#38bdf8' : '#ef4444';
+      ctx.fill();
+      ctx.strokeStyle = '#ffffff';
+      ctx.lineWidth = 1;
+      ctx.stroke();
+    });
+  };
+
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+
+    drawDiffusion(ctx);
+
+    if (!isRunning) return;
+
     let animId: number;
+    let lastTime = performance.now();
+    let frameCount = 0;
 
-    const loop = () => {
-      if (isRunning) {
-        const speedScale = Math.sqrt(temperature / 300);
+    const loop = (now: number) => {
+      const dt = Math.min((now - lastTime) / 1000, 0.05);
+      lastTime = now;
+      const stepFactor = dt / 0.016;
 
-        setParticles((prev) =>
-          prev.map((p) => {
-            const massFactor = p.type === 'light' ? 1.8 : 0.7;
-            const vx = p.vx * speedScale * massFactor;
-            const vy = p.vy * speedScale * massFactor;
+      const speedScale = Math.sqrt(temperature / 300);
 
-            let nx = p.x + vx;
-            let ny = p.y + vy;
-            let nvx = p.vx;
-            let nvy = p.vy;
+      const minX = 50;
+      const maxX = 550;
+      const minY = 30;
+      const maxY = 250;
+      const barrierX = 300;
 
-            const minX = 50;
-            const maxX = 550;
-            const minY = 30;
-            const maxY = 250;
-            const barrierX = 300;
+      const particles = particlesRef.current;
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        const massFactor = p.type === 'light' ? 1.8 : 0.7;
+        const vx = p.vx * speedScale * massFactor * stepFactor;
+        const vy = p.vy * speedScale * massFactor * stepFactor;
 
-            // Outer walls
-            if (nx < minX) {
-              nx = minX;
-              nvx = -nvx;
-            }
-            if (nx > maxX) {
-              nx = maxX;
-              nvx = -nvx;
-            }
-            if (ny < minY) {
-              ny = minY;
-              nvy = -nvy;
-            }
-            if (ny > maxY) {
-              ny = maxY;
-              nvy = -nvy;
-            }
+        let nx = p.x + vx;
+        let ny = p.y + vy;
+        let nvx = p.vx;
+        let nvy = p.vy;
 
-            // Barrier in middle (if closed)
-            if (!barrierOpen) {
-              if (p.x < barrierX && nx >= barrierX) {
-                nx = barrierX - 2;
-                nvx = -nvx;
-              } else if (p.x > barrierX && nx <= barrierX) {
-                nx = barrierX + 2;
-                nvx = -nvx;
-              }
-            }
+        // Outer walls
+        if (nx < minX) {
+          nx = minX;
+          nvx = -nvx;
+        }
+        if (nx > maxX) {
+          nx = maxX;
+          nvx = -nvx;
+        }
+        if (ny < minY) {
+          ny = minY;
+          nvy = -nvy;
+        }
+        if (ny > maxY) {
+          ny = maxY;
+          nvy = -nvy;
+        }
 
-            return { ...p, x: nx, y: ny, vx: nvx, vy: nvy };
-          })
-        );
+        // Barrier in middle (if closed)
+        if (!barrierOpen) {
+          if (p.x < barrierX && nx >= barrierX) {
+            nx = barrierX - 2;
+            nvx = -nvx;
+          } else if (p.x > barrierX && nx <= barrierX) {
+            nx = barrierX + 2;
+            nvx = -nvx;
+          }
+        }
+
+        p.x = nx;
+        p.y = ny;
+        p.vx = nvx;
+        p.vy = nvy;
       }
 
-      // Draw
-      const canvas = canvasRef.current;
-      if (canvas) {
-        const ctx = canvas.getContext('2d');
-        if (ctx) {
-          ctx.clearRect(0, 0, 600, 280);
+      drawDiffusion(ctx);
 
-          // Container border
-          ctx.strokeStyle = '#64748b';
-          ctx.lineWidth = 3;
-          ctx.strokeRect(50, 30, 500, 220);
-
-          // Divider Barrier
-          if (!barrierOpen) {
-            ctx.beginPath();
-            ctx.moveTo(300, 30);
-            ctx.lineTo(300, 250);
-            ctx.strokeStyle = '#f59e0b';
-            ctx.lineWidth = 4;
-            ctx.stroke();
+      // Periodically update chamber counts
+      frameCount++;
+      if (frameCount % 10 === 0) {
+        let ll = 0, rl = 0, lh = 0, rh = 0;
+        for (const p of particles) {
+          if (p.type === 'light') {
+            if (p.x < 300) ll++; else rl++;
           } else {
-            // Open barrier indicator
-            ctx.beginPath();
-            ctx.moveTo(300, 30);
-            ctx.lineTo(300, 70);
-            ctx.moveTo(300, 210);
-            ctx.lineTo(300, 250);
-            ctx.strokeStyle = '#f59e0b';
-            ctx.lineWidth = 4;
-            ctx.stroke();
+            if (p.x < 300) lh++; else rh++;
           }
-
-          // Draw particles
-          particles.forEach((p) => {
-            ctx.beginPath();
-            ctx.arc(p.x, p.y, p.type === 'light' ? 4.5 : 7.5, 0, Math.PI * 2);
-            ctx.fillStyle = p.type === 'light' ? '#38bdf8' : '#ef4444';
-            ctx.fill();
-            ctx.strokeStyle = '#ffffff';
-            ctx.lineWidth = 1;
-            ctx.stroke();
-          });
         }
+        setCounts({ leftLight: ll, rightLight: rl, leftHeavy: lh, rightHeavy: rh });
       }
 
       animId = requestAnimationFrame(loop);
@@ -163,13 +197,40 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
 
     animId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animId);
-  }, [isRunning, barrierOpen, temperature, particles]);
+  }, [isRunning, barrierOpen, temperature, lang, resetKey]);
 
   // Count particles in chambers
-  const leftLight = particles.filter((p) => p.x < 300 && p.type === 'light').length;
-  const rightLight = particles.filter((p) => p.x >= 300 && p.type === 'light').length;
-  const leftHeavy = particles.filter((p) => p.x < 300 && p.type === 'heavy').length;
-  const rightHeavy = particles.filter((p) => p.x >= 300 && p.type === 'heavy').length;
+  const { leftLight, rightLight, leftHeavy, rightHeavy } = counts;
+
+  const handleLog = () => {
+    if (onLogMeasurement) {
+      const mixingRatio = ((rightLight + leftHeavy) / 60) * 100;
+      const grahamRatio = Math.sqrt(131 / 4);
+
+      onLogMeasurement({
+        experiment: 'diffusion',
+        variableName: 'Diffusion_Rate_and_Mixing_Ratio',
+        measuredValue: parseFloat(mixingRatio.toFixed(1)),
+        theoreticalValue: 50.0,
+        unit: '%',
+        parameters: {
+          Absolute_Temperature_T: `${temperature} K`,
+          Barrier_State: barrierOpen ? 'Open (Active Inter-diffusion)' : 'Closed (Isolated Chambers)',
+          Light_Gas_He_Mass: '4 g/mol (Left initial)',
+          Heavy_Gas_Xe_Mass: '131 g/mol (Right initial)',
+          Left_Chamber_He_Count: `${leftLight} particles`,
+          Right_Chamber_He_Count: `${rightLight} particles`,
+          Left_Chamber_Xe_Count: `${leftHeavy} particles`,
+          Right_Chamber_Xe_Count: `${rightHeavy} particles`,
+          Mixing_Equilibrium_Progress: `${mixingRatio.toFixed(1)}%`,
+          Graham_Effusion_Rate_Ratio: `${grahamRatio.toFixed(2)}× (He is ~5.72× faster than Xe)`,
+        },
+        equation: 'Rate_1 / Rate_2 = √(M_2 / M_1) | v_rms = √(3·k_B·T / m) | J = -D·(dC/dx)',
+      });
+      setLogged(true);
+      setTimeout(() => setLogged(false), 2000);
+    }
+  };
 
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
@@ -185,6 +246,18 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang }) => {
         </div>
 
         <div className="flex items-center gap-2">
+          <button
+            id="diffusion-log-btn"
+            onClick={handleLog}
+            className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              logged
+                ? 'bg-emerald-600 text-white'
+                : 'bg-purple-600 hover:bg-purple-500 text-white shadow-lg shadow-purple-900/20'
+            }`}
+          >
+            {logged ? <BookmarkCheck className="w-4 h-4" /> : <Activity className="w-4 h-4" />}
+            <span>{logged ? (tI18n('experiments.diffusion.logged') || tI18n('common.logged') || 'تم التسجيل ✓') : (tI18n('experiments.diffusion.log') || tI18n('common.logMeasurement') || 'تسجيل القياس')}</span>
+          </button>
           <button
             onClick={() => setIsRunning(!isRunning)}
             className="min-h-[44px] min-w-[44px] flex items-center gap-1.5 px-3 py-1.5 bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs rounded-lg transition-colors"

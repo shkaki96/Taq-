@@ -1,10 +1,12 @@
+import i18n from '../i18n';
+
 export const safeSetItem = (key: string, value: string): boolean => {
   try {
     localStorage.setItem(key, value);
     return true;
   } catch (error) {
     console.error('localStorage error:', error);
-    alert('مساحة التخزين ممتلئة. يرجى حذف بعض الملاحظات القديمة.');
+    alert(i18n.t('common.storageFullWarning') as string);
     return false;
   }
 };

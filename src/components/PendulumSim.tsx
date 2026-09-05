@@ -46,6 +46,7 @@ export default function PendulumSim({ lang, onLogMeasurement }: Props) {
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const animFrameId = useRef<number | null>(null);
+  const drawSceneRef = useRef<() => void>(() => {});
 
   // Derived Theoretical Values
   const theoreticalPeriod = 2 * Math.PI * Math.sqrt(length / Math.max(gravity, 0.001));
@@ -284,15 +285,25 @@ export default function PendulumSim({ lang, onLogMeasurement }: Props) {
         oscillations: state.oscillations,
       });
 
-      animFrameId.current = requestAnimationFrame(updateAndDraw);
+      if (isRunning) {
+        animFrameId.current = requestAnimationFrame(updateAndDraw);
+      }
     };
+
+    drawSceneRef.current = () => updateAndDraw(performance.now());
+
+    // Initial / static frame render
+    updateAndDraw(performance.now());
+
+    // Do not start animation loop if paused
+    if (!isRunning) return;
 
     animFrameId.current = requestAnimationFrame(updateAndDraw);
 
     return () => {
       if (animFrameId.current) cancelAnimationFrame(animFrameId.current);
     };
-  }, [length, mass, gravity, damping, isRunning, simSpeed, showVectors]);
+  }, [length, mass, gravity, damping, isRunning, simSpeed, showVectors, initialAngleDeg, lang]);
 
   // Interactive mouse drag to position the pendulum
   const handleMouseDown = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -312,6 +323,9 @@ export default function PendulumSim({ lang, onLogMeasurement }: Props) {
     simState.current.isDragging = true;
     simState.current.theta = newAngle;
     simState.current.omega = 0;
+    if (!isRunning) {
+      drawSceneRef.current();
+    }
   };
 
   const handleMouseMove = (e: React.MouseEvent<HTMLCanvasElement>) => {
@@ -333,6 +347,9 @@ export default function PendulumSim({ lang, onLogMeasurement }: Props) {
     const clamped = Math.max((-80 * Math.PI) / 180, Math.min((80 * Math.PI) / 180, newAngle));
     simState.current.theta = clamped;
     simState.current.omega = 0;
+    if (!isRunning) {
+      drawSceneRef.current();
+    }
   };
 
   const handleMouseUp = () => {

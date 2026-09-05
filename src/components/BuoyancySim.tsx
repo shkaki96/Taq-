@@ -357,7 +357,10 @@ export default function BuoyancySim({ lang, onLogMeasurement }: Props) {
             <p className="text-sm text-zinc-400 mt-0.5">{tI18n('experiments.buoyancy.shortDesc')}</p>
           </div>
 
-          <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20">
+          <button
+            onClick={handleLog}
+            className="min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20"
+          >
             <BookmarkCheck  className="w-3.5 h-3.5"/>
             <span>{logged ? tI18n('controls.loggedSuccess') : tI18n('controls.logData')}</span>
           </button>

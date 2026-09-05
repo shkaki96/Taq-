@@ -174,28 +174,59 @@
     "circuits": {
       "title": "Ohm's Law & DC Circuit Simulator",
       "shortDesc": "DC circuit builder with live voltage, current, resistance, and dissipated power meters.",
+      "subtitle": "Interactive DC circuit builder, Ohm's Law analysis, live multimeters, I-V curves, and Joule power dissipation",
       "voltage": "Supply Voltage (V)",
       "resistance1": "Resistor 1 (R₁)",
       "resistance2": "Resistor 2 (R₂)",
+      "resistance3": "Resistor 3 (R₃)",
       "circuitType": "Circuit Topology",
+      "series2": "Series (2 Resistors)",
+      "series3": "Series (3 Resistors)",
+      "parallel2": "Parallel (2 Resistors)",
+      "parallel3": "Parallel (3 Resistors)",
+      "mixed": "Combination (R₁ + R₂||R₃)",
+      "lampCircuit": "Lamp & Resistor Load",
+      "single": "Single Resistor (R₁)",
       "series": "Series",
       "parallel": "Parallel",
-      "single": "Single Resistor",
       "switch": "Circuit Switch",
-      "switchOn": "Closed Switch (Conducting)",
-      "switchOff": "Open Switch (Disconnected)",
-      "current": "Total Circuit Current (I)",
-      "totalResistance": "Equivalent Resistance (R_eq)",
-      "power": "Total Power Dissipation (P)",
-      "bulbBrightness": "Light Bulb Brightness",
+      "switchOn": "Closed Circuit (Conducting)",
+      "switchOff": "Open Circuit (Disconnected)",
+      "toggleToOpen": "Click to open circuit (disconnect)",
+      "toggleToClose": "Click to close circuit (connect)",
+      "canvasSwitchHint": "Click switch to toggle",
+      "canvasOpenState": "Open Circuit (Zero Current)",
+      "canvasClosedState": "Closed Circuit (Conducting)",
+      "circuitOpenFormulaNote": "Circuit is open: Infinite resistance (Req = ∞) and zero current (I = 0)",
+      "current": "Total Current (I)",
+      "totalResistance": "Equivalent Resistance (Req)",
+      "power": "Total Dissipated Power (P)",
+      "bulbBrightness": "Lamp Brightness & Heat",
       "multimeter": "Multimeter Probes",
+      "probeAll": "Whole Circuit (Total)",
+      "probeR1": "Resistor 1 (R₁)",
+      "probeR2": "Resistor 2 (R₂)",
+      "probeR3": "Resistor 3 (R₃)",
       "ammeter": "Ammeter (A)",
       "voltmeter": "Voltmeter (V)",
-      "electronFlow": "Live Electron Flow Particles",
+      "wattmeter": "Wattmeter (W)",
+      "ohmmeter": "Ohmmeter (Ω)",
+      "flowType": "Current Display",
+      "electronFlow": "Electron Flow (e⁻)",
+      "conventionalFlow": "Conventional Current (+ to -)",
+      "voltagePresets": "Voltage Presets",
+      "presetAA": "1.5V (AA Battery)",
+      "preset9V": "9.0V (9V Block)",
+      "preset12V": "12V (Car Battery)",
+      "preset24V": "24V (DC Bench)",
+      "ivGraphTitle": "Ohm's Law Characteristic (I-V Curve)",
+      "operatingPoint": "Operating Point",
+      "jouleHeat": "Joule Heating Rate",
       "varTotalCurrent": "Total Circuit Current (I)",
-      "notesText": "Verified Ohm's Law and series/parallel resistor rules.",
-      "componentSettingsTitle": "Circuit Component Settings",
-      "liveCalculationsTitle": "Live Calculations:"
+      "notesText": "Verified Ohm's Law (V = I · R) and Joule power dissipation (P = V · I = I² · R).",
+      "componentSettingsTitle": "Circuit Component Controls",
+      "liveCalculationsTitle": "Step-by-Step Ohm's Law Equations:",
+      "tip": "💡 Change the voltage or resistances to see real-time current redistribution, power dissipation, and the linear I-V operating point!"
     },
     "optics": {
       "title": "Optics & Snell's Law of Refraction",
@@ -281,7 +312,8 @@
       "loggedMsg": "Logged to Lab Notebook!",
       "logBtn": "Log Energy Conservation Data",
       "photogateLabel": "PHOTOGATE",
-      "varEnergyVel": "Total Energy & Bottom Velocity"
+      "varEnergyVel": "Total Energy & Bottom Velocity",
+      "theoryBackground": "At release angle θ₀, K=0 and all energy is potential: E = U = m·g·h = m·g·L(1 - cos θ₀). At the lowest point (h=0), potential energy converts completely into kinetic energy: K = ½ m v² = E. Hence, bottom velocity is v = √(2 g h)."
     },
     "photoelectric_effect": {
       "title": "Photoelectric Effect Simulation",
@@ -353,13 +385,15 @@
       "geoRing": "Thin Ring / Hoop",
       "geoSphere": "Solid Sphere",
       "geoRodCenter": "Thin Rod (Center)",
+      "geoRodEnd": "Thin Rod (End Pivot)",
       "massLabel": "Object Mass (M)",
       "radiusLabel": "Object Radius (R)",
       "hangingMassLabel": "Hanging Mass (m)",
       "inclineAngleLabel": "Incline Angle (θ)",
       "loggedMsg": "Logged to Lab Notebook!",
       "logBtn": "Log Inertia & Acceleration",
-      "reset": "Reset"
+      "reset": "Reset",
+      "theoryBackground": "Resistance to rotation (Moment of Inertia I) depends on mass distribution: Thin Ring (I = MR²) has maximum inertia, whereas Solid Cylinder (I = 0.5 MR²) and Solid Sphere (I = 0.4 MR²) rotate faster under the same torque."
     },
     "viscosity_stokes": {
       "title": "Viscosity & Stokes' Law (Terminal Velocity)",
@@ -400,7 +434,8 @@
       "tubeLengthLabel": "Tube Length (L)",
       "airTempLabel": "Air Temperature (T)",
       "loggedSuccess": "Logged to Lab Notebook!",
-      "logButton": "Log Resonance Frequency & Length"
+      "logButton": "Log Resonance Frequency & Length",
+      "theoryBackground": "In a closed tube, a displacement node (at-rest air particles) is formed at the closed end and an antinode at the open end, resonating only at odd harmonics fn = (2n-1)v/(4L). In an open tube, antinodes exist at both open ends, resonating at all harmonic multiples fn = n v/(2L)."
     },
     "angled_mirrors": {
       "title": "Two Flat Mirrors at an Angle (Kaleidoscope)",
@@ -447,14 +482,15 @@
       "showVectorsLabel": "Show tangential velocity vector (v)",
       "loggedMsg": "Logged to Lab Notebook!",
       "logBtn": "Log Measurement to Notebook",
-      "unrolledTrackLabel": "Unrolled Arc Line (s)"
+      "unrolledTrackLabel": "Unrolled Arc Line (s)",
+      "theoryBackground": "One radian is the central angle subtended by an arc equal in length to the radius (s = r => θ = 1 rad). Therefore, the general arc length is s = r · θ. Tangential velocity is v = r · ω."
     },
     "atomic_spectra": {
       "title": "Atomic Emission Spectra & Quantum Photon Transitions",
       "bohrModel": "Bohr Model",
       "spectrometer": "Spectrometer",
-      "gasDischarge": "Gas Discharge",
-      "grating": "GRATING",
+      "gasDischarge": "Gas Discharge Tube",
+      "grating": "Diffraction Grating / Prism",
       "wavelengthRuler": "Wavelength λ (nm)",
       "wavelengthLabel": "Wavelength (λ)",
       "photonEnergyLabel": "Photon Energy (ΔE)",
@@ -467,7 +503,24 @@
       "emissionLinesLabel": "Element Emission Lines:",
       "hydrogenTransitionLabel": "Bohr Orbital Transition (ni → nf=2):",
       "loggedSuccess": "Logged to Lab Notebook!",
-      "logBtn": "Log Photon Quantum Data"
+      "logBtn": "Log Photon Quantum Data",
+      "play": "Play",
+      "pause": "Pause",
+      "reset": "Reset",
+      "running": "Simulation Running",
+      "paused": "Simulation Paused",
+      "triggerJump": "Trigger Quantum Jump",
+      "emissionSpectrum": "Emission Spectrum",
+      "absorptionSpectrum": "Absorption Spectrum",
+      "spectrumType": "Spectrum Mode:",
+      "calculationsTitle": "Detailed Quantum Step-by-Step (ΔE = hf = hc/λ):",
+      "seriesBalmer": "Balmer Series (Visible nf=2)",
+      "seriesLyman": "Lyman Series (UV nf=1)",
+      "seriesPaschen": "Paschen Series (IR nf=3)",
+      "spectralSeries": "Hydrogen Spectral Series:",
+      "detectorCrosshair": "Optical Detector Crosshair",
+      "orbitEnergy": "Orbit Energy",
+      "theoryBackground": "Line emission spectra act as unique fingerprints for chemical elements. Excited electrons drop to lower orbitals, emitting photons with exact quantized energies: ΔE = hf = hc/λ. The Hydrogen Balmer series represents all electron transitions falling down to the n=2 orbital."
     },
     "bernoulli": {
       "title": "Bernoulli’s Principle & Venturi Flow",
@@ -499,9 +552,16 @@
       "sirius": "Sirius Star (9940 K)",
       "visibleRange": "Visible Spectrum (380 - 750 nm)",
       "uv": "UV",
+      "presetsLabel": "Quick Presets",
       "visible": "Visible",
       "ir": "Infrared (IR)",
-      "reset": "Reset to Sun"
+      "reset": "Reset to Sun",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Peak Wavelength λ_max & Total Intensity",
+      "notes": "Blackbody radiation spectrum simulation demonstrating Wien displacement law, Planck law, and Stefan-Boltzmann law."
     },
     "build_atom": {
       "title": "Build an Atom & Quantum Model (Z = p, A = p + n)",
@@ -517,7 +577,16 @@
       "unstable": "Unstable Isotope (Radioactive) ⚠️",
       "orbits": "Bohr Orbits",
       "cloud": "Electron Cloud",
-      "reset": "Reset Atom"
+      "reset": "Reset Atom",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "makeNeutral": "Neutralize (e⁻ = p)",
+      "stableIsotope": "Stable Isotope",
+      "commonElements": "Periodic Table Elements",
+      "electronConfig": "Electron Configuration",
+      "valenceElectrons": "Valence Electrons",
+      "addParticle": "Add",
+      "removeParticle": "Remove"
     },
     "build_nucleus": {
       "title": "Build a Nucleus & Binding Energy (E = Δmc²)",
@@ -530,7 +599,20 @@
       "constituentMass": "Sum of Free Nucleon Masses",
       "valleyOfStability": "Nuclear Stability Valley",
       "peakStability": "Peak nuclear stability sits near Iron-56 (~8.8 MeV)",
-      "reset": "Reset to Carbon-12"
+      "reset": "Reset to Carbon-12",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "optimalIsotope": "Auto-Balance N (Stable Isotope)",
+      "equalNZ": "Set N = Z",
+      "presets": "Key Nuclides in Nuclear Physics",
+      "stable": "Stable Nucleus",
+      "unstable": "Unstable / Radioactive Nucleus",
+      "fusionZone": "Fusion Regime (A < 56)",
+      "fissionZone": "Fission Regime (A > 56)",
+      "peakZone": "Peak Stability (Fe / Ni)",
+      "nuclearRadius": "Estimated Nuclear Radius",
+      "addParticle": "Add",
+      "removeParticle": "Remove"
     },
     "calorimetry_equilibrium": {
       "title": "Calorimetry & Thermal Equilibrium Lab",
@@ -563,17 +645,53 @@
       "batteryVoltage": "Battery Voltage (V)",
       "plateArea": "Plate Area (A)",
       "separation": "Plate Separation (d)",
-      "dielectric": "Dielectric Constant (κ)",
+      "dielectric": "Dielectric Material (κ)",
+      "dielectricOffset": "Dielectric Insertion",
       "capacitance": "Capacitance (C)",
-      "storedCharge": "Stored Charge (Q = CV)",
-      "storedEnergy": "Stored Energy (U = ½CV²)",
-      "electricField": "Electric Field Strength (E = V/d)",
-      "air": "Vacuum / Air (κ=1)",
+      "storedCharge": "Stored Charge (Q)",
+      "storedEnergy": "Stored Energy (U)",
+      "electricField": "Electric Field Strength (E)",
+      "plateVoltage": "Plate Voltage (V_c)",
+      "air": "Vacuum / Air (κ=1.0)",
+      "teflon": "Teflon (κ=2.1)",
       "paper": "Paper (κ=3.5)",
-      "glass": "Glass (κ=5)",
-      "reset": "Reset",
-      "topPlateLabel": "+Q (Top Positive Plate)",
-      "bottomPlateLabel": "-Q (Bottom Negative Plate)"
+      "glass": "Glass (κ=5.0)",
+      "mica": "Mica (κ=6.0)",
+      "ceramic": "High-K Ceramic (κ=15.0)",
+      "reset": "Reset Simulation",
+      "topPlateLabel": "Top Plate (+Q / -Q)",
+      "bottomPlateLabel": "Bottom Plate (-Q / +Q)",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "circuitMode": "Circuit State",
+      "modeBattery": "Connected to Battery",
+      "modeDisconnected": "Disconnected (Constant Q)",
+      "modeBulb": "Discharge via Lightbulb",
+      "switchBattery": "Battery",
+      "switchOpen": "Open (Disconnect)",
+      "switchBulb": "Lightbulb",
+      "presets": "Presets",
+      "presetStandard": "Standard (Air)",
+      "presetMaxStorage": "Max Storage (High-K)",
+      "presetDisconnectExp": "Constant Charge Demo",
+      "presetCameraFlash": "Flash Capacitor",
+      "showFieldLines": "Field Lines (E)",
+      "showCharges": "Plate Charges (±)",
+      "showDipoles": "Dielectric Dipoles",
+      "showVoltmeter": "Digital Voltmeter",
+      "discharge": "Discharge Now",
+      "discharging": "Discharging...",
+      "fullyDischarged": "Discharged (0V)",
+      "breakdownWarning": "⚠️ Dielectric Breakdown Limit Exceeded!",
+      "boundCharge": "Bound Dipole Charge (Q_b)",
+      "play": "Play",
+      "pause": "Pause",
+      "instantDischarge": "Instant 0V",
+      "chargeBattery": "Battery (Charge)",
+      "isolateCapacitor": "Open (Isolate)",
+      "dischargeBulb": "Lamp (Discharge)",
+      "controlsBar": "Simulation Controls",
+      "voltmeterTitle": "Digital Multimeter"
     },
     "center_of_mass": {
       "title": "Center of Mass Determination (Xcm = Σmi xi / Σmi)",
@@ -600,24 +718,46 @@
       "loggedMsg": "Logged to Lab Notebook!",
       "logBtn": "Log Center of Mass Data",
       "plumbCenterLabel": "Geometric Center of Gravity ⨁",
-      "rotEquilMsg": "✓ System in perfect rotational equilibrium (Στ = 0) about fulcrum at X_cm"
+      "rotEquilMsg": "✓ System in perfect rotational equilibrium (Στ = 0) about fulcrum at X_cm",
+      "theoryBackground": "The Center of Mass is the mass-weighted average position of all particles: X_cm = Σ(mi xi)/Σmi and Y_cm = Σ(mi yi)/Σmi. Placing a pivot directly below the center of mass yields zero net gravitational torque, achieving static rotational equilibrium."
     },
     "charges_and_fields": {
       "title": "Charges and Fields Lab (E = kQ / r²)",
       "subtitle": "Electromagnetism Physics Lab",
-      "addPos": "Add Positive (+1 nC)",
-      "addNeg": "Add Negative (-1 nC)",
-      "toggleVectors": "Toggle Vector Grid",
-      "hideVectors": "Hide Vector Grid",
+      "addPos": "+1 nC (Positive)",
+      "addNeg": "-1 nC (Negative)",
+      "toggleVectors": "Vector Field",
+      "hideVectors": "Hide Vectors",
       "manageCharges": "Point Charge Control:",
       "sensorHeader": "Field & Potential Sensor Probe",
-      "clickToPlaceSensor": "Click anywhere on canvas to move sensor probe",
+      "clickToPlaceSensor": "Click/drag anywhere to place the sensor probe",
+      "dragTip": "Drag charges or the gold sensor probe freely across the canvas",
       "potential": "Electric Potential (V)",
       "fieldIntensity": "Field Magnitude (E)",
-      "reset": "Reset Charges"
+      "angle": "Field Direction (θ)",
+      "reset": "Reset Charges",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "clearAll": "Clear All",
+      "presets": "Presets",
+      "presetDipole": "Electric Dipole (+ -)",
+      "presetLikeCharges": "Like Charges (+ +)",
+      "presetQuadrupole": "Quadrupole (+ - + -)",
+      "presetSinglePos": "Single (+1 nC)",
+      "presetParallel": "Parallel Plates",
+      "controlsBar": "Simulation & Field Controls",
+      "launchTestParticle": "Release Test Charge (+q)",
+      "traceEquipotential": "Plot Equipotential Line",
+      "clearEquipotentials": "Clear Lines",
+      "showGrid": "Coordinate Grid",
+      "showVoltageHeatmap": "Voltage Colors",
+      "chargesCount": "Active Charges",
+      "sensorDetails": "Sensor Telemetry"
     },
     "color_vision": {
       "title": "Color Vision & Additive RGB Mixing",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
       "redBeam": "Red Flashlight (R - 700 nm)",
       "greenBeam": "Green Flashlight (G - 546 nm)",
       "blueBeam": "Blue Flashlight (B - 435 nm)",
@@ -627,6 +767,7 @@
       "mCones": "M-Cones (Green 530nm)",
       "sCones": "S-Cones (Blue 420nm)",
       "reset": "Reset to Yellow",
+      "presets": "Color Presets",
       "colorCustom": "Custom RGB Mix",
       "colorWhite": "White (White Light)",
       "colorBlack": "Black (No Light)",
@@ -635,7 +776,29 @@
       "colorMagenta": "Magenta (R + B)",
       "colorPureRed": "Pure Red",
       "colorPureGreen": "Pure Green",
-      "colorPureBlue": "Pure Blue"
+      "colorPureBlue": "Pure Blue",
+      "colorOrange": "Orange (R + half G)",
+      "colorAmber": "Amber / Gold",
+      "colorLime": "Lime (G + half R)",
+      "colorTeal": "Teal / Aqua",
+      "colorViolet": "Violet / Purple",
+      "colorGray": "Gray (Balanced Low)",
+      "viewMode": "Display Mode",
+      "viewOverlapping": "Venn Spotlights",
+      "viewObserver": "Observer & Retina",
+      "visionDeficiency": "Color Vision Model",
+      "normalVision": "Normal (Trichromat)",
+      "protanopia": "Protanopia (Red-Blind)",
+      "deuteranopia": "Deuteranopia (Green-Blind)",
+      "tritanopia": "Tritanopia (Blue-Blind)",
+      "monochromacy": "Monochromacy (Achromat)",
+      "beamPower": "Toggle Beam",
+      "luminance": "Relative Photometric Luminance (Y)",
+      "chromaticity": "CIE Chromaticity Coordinates",
+      "copyHex": "Copy HEX",
+      "copied": "Copied!",
+      "increase": "Increase",
+      "decrease": "Decrease"
     },
     "curved_mirrors": {
       "title": "Curved Spherical Mirrors (Ray Tracing)",
@@ -685,7 +848,13 @@
       "rightChamber": "Right Chamber",
       "reset": "Reset Gases",
       "pause": "Pause",
-      "play": "Play"
+      "play": "Play",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Gas Diffusion Rate & Mixing Ratio",
+      "notes": "Gas diffusion simulation demonstrating Graham law of effusion based on molecular masses and temperature."
     },
     "gas_diffusion": {
       "title": "Gas Diffusion & Graham's Law (r₁/r₂ = √(M₂/M₁))",
@@ -699,7 +868,13 @@
       "rightChamber": "Right Chamber",
       "reset": "Reset Gases",
       "pause": "Pause",
-      "play": "Play"
+      "play": "Play",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Gas Diffusion Rate & Mixing Ratio",
+      "notes": "Gas diffusion simulation demonstrating Graham law of effusion based on molecular masses and temperature."
     },
     "doppler_effect": {
       "title": "Doppler Effect Simulation",
@@ -771,7 +946,10 @@
       "turnsLabel": "Coil Turns (N):",
       "insertIronCore": "Insert Iron Core:",
       "activeState": "Active",
-      "disabledState": "Air Core"
+      "disabledState": "Air Core",
+      "reset": "Reset",
+      "log": "Log",
+      "logged": "Logged ✓"
     },
     "electromagnet": {
       "title": "Magnets and Electromagnets (Solenoid)",
@@ -789,40 +967,95 @@
       "turnsLabel": "Coil Turns (N):",
       "insertIronCore": "Insert Iron Core:",
       "activeState": "Active",
-      "disabledState": "Air Core"
+      "disabledState": "Air Core",
+      "reset": "Reset",
+      "log": "Log",
+      "logged": "Logged ✓"
     },
     "electromagnetic_induction": {
       "title": "Electromagnetic Induction (Faraday’s Law)",
-      "subTitle": "Electromagnetic Induction and Faraday Law",
+      "subTitle": "Faraday’s Law of Induction & Lenz’s Law",
       "desc": "Generating induced EMF ε = -N(dΦ/dt) and current from relative motion between a magnet and a multi-turn solenoid coil.",
+      "mode": "Motion Mode",
+      "modeOscillate": "Auto Oscillating",
+      "modeManual": "Manual Interactive Drag",
+      "modeAC": "AC Rotary Induction",
       "coilTurns": "Coil Turns (N):",
       "magnetSpeed": "Magnet Velocity (v):",
       "magneticField": "Magnetic Field (B):",
       "coilResistance": "Circuit Resistance (R):",
-      "controlsTitle": "Coil & Magnet Controls",
+      "coilRadius": "Coil Radius (r):",
+      "controlsTitle": "Coil & Magnet Parameters",
       "inducedEmf": "Induced EMF (ε)",
       "inducedCurrent": "Induced Current (I)",
-      "fluxChangeRate": "Flux Change Rate (dΦ/dt)",
+      "magneticFlux": "Magnetic Flux (Φ_B)",
+      "fluxChangeRate": "Flux Rate (dΦ/dt)",
       "coilLoopsLabel": "Coil Loops",
       "turnsSuffix": "turns",
-      "galvanometerLabel": "G (Galvanometer)",
-      "loggedSuccess": "Logged ✓",
+      "galvanometerLabel": "Galvanometer (±V)",
+      "flipMagnet": "Flip Magnet Poles (N ↔ S)",
+      "showFieldLines": "Field Lines (B)",
+      "showFlux": "Magnetic Flux (Φ)",
+      "showScope": "Live Oscilloscope",
+      "play": "Resume",
+      "pause": "Pause",
+      "reset": "Reset",
+      "loggedSuccess": "Logged to Notebook ✓",
       "logData": "Log Measurement",
-      "variableName": "Induced EMF ε & Current",
-      "notes": "Electromagnetic induction simulation demonstrating Faraday Law and Lenz Law."
+      "dragPrompt": "💡 Drag the bar magnet left and right through the coil with your mouse/touch to induce voltage!",
+      "dragActive": "🖐️ Manual Dragging Active: Move the magnet back & forth through the solenoid!",
+      "manualPos": "Magnet Position (x):",
+      "quickThrust": "⚡ Quick Thrust",
+      "centerMagnet": "Center in Coil",
+      "moveLeft": "◀ Left",
+      "moveRight": "▶ Right",
+      "variableName": "Induced EMF (ε) & Current",
+      "notes": "Verified Faraday’s Law of Induction (ε = -N · dΦ/dt) and Lenz’s Law opposing flux changes.",
+      "lenzNotice": "Lenz’s Law: The induced current creates a magnetic field that opposes the change in magnetic flux."
     },
     "energy_skate_park": {
       "title": "Energy Skate Park & Conservation (E_total = K + U + E_th)",
+      "subtitle": "Kinetic, Potential, and Thermal Energy Transformations",
       "kinetic": "Kinetic Energy (K)",
-      "potential": "Gravitational Potential Energy (U)",
-      "thermal": "Thermal Energy (E_th)",
+      "potential": "Gravitational Potential (U)",
+      "thermal": "Thermal Dissipation (E_th)",
       "totalEnergy": "Total Energy (E)",
       "mass": "Skater Mass (m)",
       "gravity": "Gravity (g)",
-      "friction": "Track Friction",
-      "reset": "Reset Skater",
+      "friction": "Friction (μ)",
+      "frictionNone": "None",
+      "frictionLots": "High",
+      "height": "Height (h)",
+      "speed": "Speed (v)",
+      "reset": "Reset",
       "pause": "Pause",
-      "play": "Play"
+      "play": "Play",
+      "log": "Log",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Total Energy & Mechanical Conservation",
+      "notes": "Conservation of mechanical energy, kinetic-potential transformations, and thermal dissipation via friction.",
+      "trackU": "U-Ramp",
+      "trackRoller": "Roller Coaster",
+      "trackSlope": "Ski Slope",
+      "trackLoop": "Loop Track",
+      "envEarth": "Earth (9.8 m/s²)",
+      "envMoon": "Moon (1.6 m/s²)",
+      "envJupiter": "Jupiter (24.8 m/s²)",
+      "envSpace": "Space (0 m/s²)",
+      "pieChart": "Pie Chart",
+      "barGraph": "Bar Graph",
+      "speedometer": "Speedometer",
+      "vectors": "Velocity Vector",
+      "grid": "Height Grid",
+      "slowMo": "Slow Motion",
+      "skaterPresets": "Skater",
+      "skaterLight": "Child (35 kg)",
+      "skaterMedium": "Adult (60 kg)",
+      "skaterHeavy": "Pro (90 kg)",
+      "dragTip": "💡 Drag and drop the skater onto any point on the track to change initial height!",
+      "energyConservationFormula": "E_total = K + U_g + E_th = const"
     },
     "forces_motion": {
       "title": "Forces and Motion: Basics (Newton 2nd Law)",
@@ -841,14 +1074,34 @@
     },
     "fourier_making_waves": {
       "title": "Fourier: Making Waves Lab (f(x) = Σ Aₙ sin(nωt))",
-      "fundamental": "Fundamental Harmonic (n=1)",
-      "harmonicsHeader": "Harmonic Amplitudes (A₁ - A₈)",
-      "presets": "Waveform Presets:",
+      "subtitle": "Harmonic Synthesis, Frequency Spectrum, Timbre, and Composite Waveforms",
+      "fundamental": "Fundamental Frequency (f₀)",
+      "harmonicsHeader": "Harmonic Amplitudes (A₁ - A₁₁)",
+      "presets": "Standard Presets",
       "square": "Square Wave",
       "sawtooth": "Sawtooth Wave",
       "triangle": "Triangle Wave",
       "sine": "Pure Sine",
-      "reset": "Reset (Square)"
+      "pulse": "Pulse Train",
+      "reset": "Reset",
+      "pause": "Pause",
+      "play": "Play",
+      "slowMo": "Slow Motion",
+      "audioPlay": "Listen Tone",
+      "audioMute": "Mute Audio",
+      "showComponents": "Show Harmonic Components",
+      "showSpectrum": "Spectrum (FFT)",
+      "clearAll": "Clear All",
+      "log": "Log",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Fourier Waveform Synthesis & RMS Power",
+      "notes": "Fourier harmonic series synthesis demonstrating waveform reconstruction from sinusoidal harmonics and spectral distribution.",
+      "rmsVoltage": "RMS Amplitude",
+      "totalPower": "Harmonic Power (P)",
+      "thd": "Harmonic Distortion (THD)",
+      "tip": "💡 Hear and see how adding higher odd or even harmonics changes the waveform shape and acoustic timbre!"
     },
     "gravity_force_lab": {
       "title": "Gravity Force Lab (Universal Gravitation Law)",
@@ -862,13 +1115,41 @@
     },
     "gravity_and_orbits": {
       "title": "Gravity & Planetary Orbits (F_g = G M m / r²)",
+      "subtitle": "Celestial Mechanics & Universal Gravitation Lab",
       "starMass": "Star Mass (M_star)",
       "planetMass": "Planet Mass (m_planet)",
-      "gravityToggle": "Gravitational Force Toggle",
-      "showVectors": "Show Force & Velocity Vectors",
+      "gravityToggle": "Gravity Force",
+      "showVectors": "Force & Velocity Vectors",
+      "showGrid": "Orbital Grid & Rings",
       "reset": "Reset Orbit",
       "pause": "Pause",
-      "play": "Start Orbit"
+      "play": "Start Orbit",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Orbital Velocity and Period",
+      "notes": "Universal gravitation and planetary orbital mechanics simulation following Newton gravity.",
+      "presets": "Presets",
+      "presetCircular": "Circular Orbit (v = √GM/r)",
+      "presetElliptical": "Elliptical Orbit (Kepler)",
+      "presetEscape": "Escape Trajectory (v_esc)",
+      "presetHeavyStar": "Massive Star (2.0 M☉)",
+      "presetSatellite": "Fast Low Orbit",
+      "controlsBar": "Orbital Dynamics & Presets",
+      "simSpeed": "Simulation Speed",
+      "clearTrail": "Clear Trail",
+      "telemetry": "Orbital Telemetry",
+      "orbitalRadius": "Orbital Radius (r)",
+      "velocity": "Orbital Speed (v)",
+      "gravForce": "Gravity Force (F_g)",
+      "period": "Period (T)",
+      "dragTip": "Drag planet or the green velocity vector arrow to customize orbit",
+      "orbitType": "Trajectory Type",
+      "circular": "Stable Circular",
+      "elliptical": "Bound Elliptical",
+      "hyperbolic": "Unbound Hyperbolic (Escaping)",
+      "crashed": "Collided with Star"
     },
     "solar_system": {
       "title": "Gravity & Planetary Orbits (F_g = G M m / r²)",
@@ -900,13 +1181,41 @@
     },
     "keplers_laws": {
       "title": "Kepler's Laws of Planetary Motion (T² / a³ = const)",
+      "subtitle": "Celestial Mechanics & Orbital Geometry Lab",
       "eccentricity": "Orbital Eccentricity (e)",
       "semiMajor": "Semi-Major Axis (a)",
+      "semiMinor": "Semi-Minor Axis (b)",
       "orbitalPeriod": "Orbital Period (T)",
-      "sweptArea": "Show Swept Area (dA/dt = const)",
-      "reset": "Reset",
+      "sweptArea": "Equal Areas (2nd Law dA/dt)",
+      "showFoci": "Foci & Axes (F₁, F₂, a, b)",
+      "showVectors": "Velocity & Force Vectors",
+      "reset": "Reset Orbit",
       "pause": "Pause",
-      "play": "Start Orbit"
+      "play": "Start Orbit",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Kepler Orbital Period & Semi-Major Axis",
+      "notes": "Verification of Kepler three laws of planetary motion, elliptical orbits, and areal velocity.",
+      "law1": "1st Law: Ellipses",
+      "law2": "2nd Law: Equal Areas",
+      "law3": "3rd Law: Harmonic T²∝a³",
+      "presets": "Celestial Presets",
+      "presetEarth": "Earth (e = 0.02, 1.0 AU)",
+      "presetMars": "Mars (e = 0.09, 1.52 AU)",
+      "presetMercury": "Mercury (e = 0.21, 0.39 AU)",
+      "presetComet": "Comet (e = 0.75, 2.2 AU)",
+      "presetCircular": "Circular (e = 0.00)",
+      "telemetry": "Orbital Dynamics Readout",
+      "currentDist": "Current Distance (r)",
+      "currentSpeed": "Orbital Speed (v)",
+      "perihelion": "Perihelion (r_min)",
+      "aphelion": "Aphelion (r_max)",
+      "keplerRatio": "Kepler Constant (T²/a³)",
+      "arealVel": "Areal Rate (dA/dt)",
+      "simSpeed": "Speed",
+      "fociNote": "Sun sits at Focus F₁. Distance between foci is 2c = 2·a·e."
     },
     "kepler_laws": {
       "title": "Kepler's Laws of Planetary Motion (T² / a³ = const)",
@@ -941,7 +1250,8 @@
       "brightYellowText": "Bright Yellow",
       "atmoCanvasLabel": "Earth Atmosphere",
       "sunCanvasLabel": "SUN",
-      "observerCanvasLabel": "👤 Ground Observer (Sees Blue Scattered Sky)"
+      "observerCanvasLabel": "👤 Ground Observer (Sees Blue Scattered Sky)",
+      "theoryBackground": "Because blue light wavelength is shorter, air molecules scatter it ~6x more than red omnidirectionally. At sunset, the path is so thick that blue is scattered away, leaving only penetrating red/orange rays."
     },
     "magnetic_field": {
       "title": "Magnetic Field & Electromagnetic Force Investigation",
@@ -968,7 +1278,24 @@
       "softIronCoreCanvas": "SOFT IRON CORE (μr=200)",
       "ferriteCoreCanvas": "FERRITE CORE (μr=50)",
       "variableForce": "Magnetic Force (F)",
-      "variableFlux": "Magnetic Flux Density (B)"
+      "variableFlux": "Magnetic Flux Density (B)",
+      "play": "Run Simulation",
+      "pause": "Pause",
+      "start": "Run",
+      "running": "Running",
+      "paused": "Paused",
+      "rodMassLabel": "Movable Rod Mass (m)",
+      "wireLengthLabel": "Active Wire Length (L)",
+      "rodAcceleration": "Wire Acceleration (a)",
+      "rodVelocity": "Velocity (v)",
+      "rodDisplacement": "Rod Position (x)",
+      "calculationsTitle": "Electromagnetic Force Calculations (F = I L B sin θ)",
+      "sinAngleLabel": "sin(θ)",
+      "rightHandRuleHint": "Right Hand Rule: F (Thumb) = I (Index) × B (Middle/Palm)",
+      "canvasPausedHint": "Simulation Paused — Click Run to start current flow and wire motion",
+      "canvasRunningConducting": "Circuit Closed & Conducting: Rod accelerating under electromagnetic force",
+      "toggleRun": "Toggle Run / Pause",
+      "resetRod": "Center Rod"
     },
     "magnet_compass": {
       "title": "Magnetic Field & Electromagnetic Force Investigation",
@@ -1017,24 +1344,44 @@
     },
     "molecules_and_light": {
       "title": "Molecules & Light Interaction Lab",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
       "lightSource": "Photon Energy & Radiation Type",
       "microwave": "Microwave (Rotation)",
       "infrared": "Infrared (Bond Vibration)",
       "visible": "Visible Light",
       "uv": "Ultraviolet (Dissociation)",
       "targetMolecule": "Target Molecule",
-      "co2": "Carbon Dioxide (CO₂)",
-      "h2o": "Water Vapor (H₂O)",
-      "n2": "Nitrogen (N₂)",
-      "o3": "Ozone (O₃)",
+      "co2": "Carbon Dioxide (CO₂ - Greenhouse)",
+      "h2o": "Water Vapor (H₂O - Polar)",
+      "ch4": "Methane (CH₄ - Potent Greenhouse)",
+      "n2": "Nitrogen (N₂ - Non-polar)",
+      "o2": "Oxygen (O₂ - Non-polar)",
+      "o3": "Ozone (O₃ - UV Shield)",
+      "co": "Carbon Monoxide (CO - Polar Diatomic)",
+      "no2": "Nitrogen Dioxide (NO₂ - Smog)",
       "effect": "Microscopic Interaction Mode",
       "rotationMsg": "🌀 Photons induce molecular dipole rotation.",
       "vibrationMsg": "🔥 IR absorption causes bond stretching/bending (Greenhouse Effect).",
       "dissociationMsg": "💥 High-energy UV photon breaks covalent bonds (Photodissociation).",
       "transmittedMsg": "✨ Photons pass straight through without absorption.",
+      "reemissionMsg": "♻️ Spontaneous re-emission of an IR photon in a random direction (Greenhouse Warming).",
       "toggleEmitter": "Toggle Photon Emitter",
       "pauseBeam": "Stop Beam",
-      "playBeam": "Emit Photons"
+      "playBeam": "Emit Photons",
+      "fireSingle": "Fire Single Photon (Precision)",
+      "continuousBeam": "Continuous Beam",
+      "emissionRate": "Photon Emission Rate",
+      "reset": "Reset Simulation",
+      "recombine": "Recombine Molecule",
+      "clearCounters": "Clear Counters",
+      "photonsAbsorbed": "Photons Absorbed",
+      "photonsTransmitted": "Photons Transmitted",
+      "absorptionRate": "Absorption Efficiency",
+      "speedSlow": "Slow Motion (0.4x)",
+      "speedNormal": "Normal Speed (1x)",
+      "dipoleLabel": "Dipole Moment",
+      "quantumTransition": "Quantum Transition"
     },
     "normal_modes": {
       "title": "Normal Modes & Standing Waves",
@@ -1145,11 +1492,27 @@
       "gold": "Gold (Au, Z=79)",
       "silver": "Silver (Ag, Z=47)",
       "aluminum": "Aluminum (Al, Z=13)",
+      "lead": "Lead (Pb, Z=82)",
+      "copper": "Copper (Cu, Z=29)",
       "coulombRepulsion": "Coulomb Electrostatic Repulsion",
       "deflectionObservation": "Close trajectories experience sharp back-scattering (>90°).",
       "reset": "Reset Beam",
       "play": "Fire Beam",
       "pause": "Pause",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "fireSingle": "Fire Single Alpha (Precision b)",
+      "continuousBeam": "Continuous Beam",
+      "headOnShot": "Head-on Collision (b = 0)",
+      "clearTrails": "Clear Trails",
+      "scatteringAngle": "Scattering Deflection Angle (θ)",
+      "closestApproach": "Closest Approach Distance (d_min)",
+      "backscattered": "Sharp Back-Scattering (>90°)",
+      "largeAngle": "Medium Deflection (45° - 90°)",
+      "smallAngle": "Slight Deflection / Forward (<45°)",
+      "detectorScreen": "ZnS Scintillation Detector Screen",
+      "coulombRepulsionFormula": "Coulomb Electrostatic Repulsion Formula",
+      "historicalFact": "Rutherford's 1911 experiment revealed that the positive charge and mass are concentrated in a tiny nucleus, with most of the atom being empty space.",
       "nucleusLabel": "Nucleus",
       "alphaBeamSource": "Alpha Beam Source (α⁺⁺)"
     },
@@ -1210,7 +1573,8 @@
       "waterLevelHeight": "Water Column Height",
       "ambientTemp": "Ambient Air Temperature (T)",
       "loggedSuccess": "Logged to Lab Notebook!",
-      "logButton": "Log Measured Speed of Sound"
+      "logButton": "Log Measured Speed of Sound",
+      "theoryBackground": "Hold vibrating fork over open top, lower water level to find 1st resonance (L1 ≈ λ/4 - c) and 2nd resonance (L2 ≈ 3λ/4 - c). Compute wavelength λ = 2(L2 - L1) and speed of sound v = f · λ independent of end correction."
     },
     "states_of_matter": {
       "title": "States of Matter & Phase Changes (PV = NkT, E_k = 3/2 kT)",
@@ -1225,7 +1589,13 @@
       "gas": "Gas",
       "heat": "Heat Flame 🔥",
       "cool": "Cool Ice ❄️",
-      "currentPhase": "Current Phase State:"
+      "currentPhase": "Current Phase State:",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Phase State, Pressure & Temperature",
+      "notes": "States of matter simulation investigating phase changes (solid, liquid, gas), kinetic energy, and gas law PV = NkT."
     },
     "static_balloons": {
       "title": "Static Electricity Balloons (Coulomb’s Law)",
@@ -1302,29 +1672,83 @@
     },
     "wave_on_a_string": {
       "title": "Wave on a String Lab (v = √(T/μ))",
-      "amplitude": "Wave Amplitude (A)",
-      "frequency": "Oscillation Frequency (f)",
-      "damping": "Damping",
-      "tension": "String Tension (T)",
+      "subtitle": "Wave Speed, Tension, Linear Density, Frequency, and Boundary Reflections",
+      "amplitude": "Amplitude (A)",
+      "frequency": "Frequency (f)",
+      "damping": "Damping (γ)",
+      "dampingNone": "None",
+      "dampingLots": "High",
+      "tension": "Tension (T)",
+      "linearDensity": "Linear Density (μ)",
       "endType": "Boundary Condition",
-      "fixedEnd": "Fixed End (Phase Inversion)",
-      "looseEnd": "Loose End (In-phase Reflection)",
+      "fixedEnd": "Fixed End",
+      "looseEnd": "Loose End",
+      "noEnd": "No End (Open)",
+      "mode": "Excitation Mode",
+      "modeOscillate": "Oscillator",
+      "modePulse": "Single Pulse",
+      "modeManual": "Manual",
+      "sendPulse": "Send Pulse",
       "low": "Low",
       "med": "Medium",
       "high": "High",
-      "reset": "Reset String"
+      "speed": "Wave Speed (v)",
+      "wavelength": "Wavelength (λ)",
+      "period": "Wave Period (T)",
+      "ruler": "Rulers",
+      "referenceLine": "Reference Lines",
+      "slowMo": "Slow Motion",
+      "reset": "Reset",
+      "pause": "Pause",
+      "play": "Play",
+      "log": "Log",
+      "logged": "Logged ✓",
+      "logMeasurement": "Log Measurement",
+      "loggedSuccess": "Logged to Notebook ✓",
+      "variableName": "Wave Speed & Propagation on String",
+      "notes": "Investigation of transverse wave propagation speed v = √(T/μ), wavelength λ = v/f, and boundary reflection dynamics.",
+      "stringThin": "Thin String (0.01 kg/m)",
+      "stringMedium": "Medium String (0.02 kg/m)",
+      "stringHeavy": "Heavy Cord (0.05 kg/m)",
+      "standingWaveHarmonic": "Harmonic Resonance",
+      "tip": "💡 Change tension or linear density to see how v = √(T/μ) alters the wavelength λ in real time!"
     },
     "resistance_in_wire": {
       "title": "Resistance in a Wire Lab (R = ρL / A)",
       "subtitle": "Electromagnetism Physics Lab",
+      "log": "Log Measurement",
+      "logged": "Logged ✓",
       "resistivity": "Material Resistivity (ρ)",
       "length": "Wire Length (L)",
       "area": "Cross-Sectional Area (A)",
+      "diameter": "Wire Diameter (d)",
       "resistanceTotal": "Total Resistance (R)",
-      "copper": "Copper (Low ρ)",
-      "iron": "Iron (Medium ρ)",
-      "nichrome": "Nichrome (High ρ)",
-      "reset": "Reset"
+      "voltage": "Battery Voltage (V)",
+      "current": "Current (I = V/R)",
+      "power": "Joule Heating Power (P = I²R)",
+      "wireTemp": "Thermal Glow",
+      "cool": "Cool",
+      "warm": "Warm",
+      "hot": "Incandescent Glow 🔥",
+      "circuitSwitch": "Circuit Switch",
+      "electronDrift": "Electron Drift",
+      "materialPresets": "Conductor Materials",
+      "silver": "Silver (Ag)",
+      "copper": "Copper (Cu)",
+      "gold": "Gold (Au)",
+      "aluminum": "Aluminum (Al)",
+      "tungsten": "Tungsten (W)",
+      "iron": "Iron (Fe)",
+      "nichrome": "Nichrome (Heater)",
+      "carbon": "Carbon (Graphite)",
+      "presets": "Application Presets",
+      "presetPowerCable": "High-Voltage Cable (Low R)",
+      "presetHeater": "Toaster Coil (Nichrome)",
+      "presetFilament": "Light Bulb Filament",
+      "presetThinWire": "Thin Wire Sensor",
+      "electronsTip": "Free electrons drift through the atomic lattice and collide with impurity centers",
+      "dynamicFormula": "Proportional Law",
+      "reset": "Reset Wire"
     },
     "work_heat": {
       "title": "Work & Heat (1st Law of Thermodynamics)",
@@ -2447,6 +2871,8 @@
     "keepTrying": "Review the experiment simulations and try again."
   },
   "common": {
+    "logMeasurement": "Log Measurement",
+    "logged": "Logged ✓",
     "seconds": "seconds (s)",
     "meters": "meters (m)",
     "metersPerSec": "m/s",
@@ -2462,7 +2888,14 @@
     "copied": "Copied!",
     "hide": "Hide",
     "showDetails": "Show Details",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "errorBoundary": {
+      "title": "An error occurred in this simulation",
+      "description": "An unexpected error occurred. You can retry or choose another experiment.",
+      "retry": "Retry"
+    },
+    "selectLanguage": "Select Language",
+    "storageFullWarning": "Storage is full. Cannot save more data."
   },
   "catalog": {
     "work_heat": {
@@ -2476,7 +2909,8 @@
         "Change in Internal Energy ΔU",
         "Final Temperature T",
         "Final Volume V"
-      ]
+      ],
+      "theoryBackground": "The First Law of Thermodynamics is the application of energy conservation to heat and thermodynamic systems. It states that the change in the internal energy of a closed system equals the heat added to the system minus the mechanical work done by the system. This law is the physical foundation for all heat engines, explaining how a car's internal combustion engine converts the chemical heat of burning fuel into the mechanical work that physically moves the vehicle forward."
     },
     "prescription_glasses": {
       "title": "Prescription Glasses and Lens Power",
@@ -2489,7 +2923,8 @@
         "Corrective Lens Power P (Diopters)",
         "Retinal Image Position",
         "Visual Acuity"
-      ]
+      ],
+      "theoryBackground": "Optical lenses refract (bend) light to focus it precisely, which is the foundational mechanism for correcting human vision. Lens power, measured in Diopters, indicates how strongly a lens converges (for farsightedness) or diverges (for nearsightedness) incoming light to ensure it focuses exactly on the retina. Beyond prescription eyeglasses and contact lenses, this identical principle is used to engineer multiple-lens systems in modern smartphone cameras, microscopes, and telescopes."
     },
     "periscope": {
       "title": "Periscope and Law of Reflection",
@@ -2502,7 +2937,8 @@
         "Light Ray Path",
         "Final Emergence Angle",
         "Line-of-Sight Alignment"
-      ]
+      ],
+      "theoryBackground": "A periscope is an optical instrument that allows observation over, around, or through an obstacle from a concealed position. It fundamentally relies on the Law of Reflection, where light strikes two parallel plane mirrors set at 45-degree angles, reflecting the image 90 degrees twice to reach the observer's eye (Angle of incidence = Angle of reflection). This simple but powerful concept is famously used in submarines to view above the water surface, and variations are used in medical endoscopes to look inside the human body."
     },
     "static_balloons": {
       "title": "Static Electricity and Coulomb Law",
@@ -2515,7 +2951,8 @@
         "Electrostatic Force F (N)",
         "Force Type (Attraction / Repulsion)",
         "Balloons Acceleration"
-      ]
+      ],
+      "theoryBackground": "Electrostatics and Coulomb's law (F = k_e · |q₁·q₂| / r²) form the foundation of electromagnetic interactions that bind atoms, molecules, and all tangible matter. The law dictates that the electrostatic force between two charges is proportional to the product of their magnitudes and inversely proportional to the square of their separation distance—attracting opposite charges, repelling like charges, and inducing surface polarization in neutral insulators. This principle is utilized extensively in electrostatic precipitators in industrial chimneys to capture fly ash and air pollutants, electrostatic spray painting that uniformly coats car chassis with zero overspray, and toner adhesion in photocopiers and laser printers."
     },
     "sled_friction": {
       "title": "Sled Racing and Friction Laws",
@@ -2528,7 +2965,8 @@
         "Kinetic Friction Force f_k",
         "Net Acceleration a",
         "Track Traversal Time t"
-      ]
+      ],
+      "theoryBackground": "Frictional forces represent one of the most critical mechanical phenomena governing terrestrial motion; without friction, walking, driving, steering, and stopping would be virtually impossible. Kinetic friction (f_k = μ_k · N) arises from microscopic surface asperities interlocking and forming transient intermolecular bonds between contacting surfaces, resisting relative motion. The kinetic friction force is directly proportional to the normal contact force N and the kinetic friction coefficient μ_k, which depends intrinsically on material roughness and interface chemistry. On an inclined plane, the normal force decreases with steeper slope angles (N = mg cosθ), lowering frictional drag and accelerating descent. In modern industry and automotive safety, this fundamental principle guides the engineering of anti-lock braking systems (ABS) to prevent tire skidding on wet roads, the chemical formulation of low-friction waxes for racing bobsleds, and the design of high-grip conveyor belts."
     },
     "heat_conduction": {
       "title": "Heat Conduction and Fourier Law",
@@ -2542,7 +2980,8 @@
         "Heat Transfer Rate q (W)",
         "Thermal Gradient dT/dx",
         "Transferred Energy Amount"
-      ]
+      ],
+      "theoryBackground": "Heat conduction is the process of thermal energy transfer through a solid material from a region of higher temperature to lower temperature. Fourier's Law states that the rate of this heat transfer is proportional to the temperature gradient and the cross-sectional area of the material. This principle is vital in engineering everyday products, such as designing effective insulation for houses to reduce heating costs, or creating metal heat sinks to prevent computer processors from overheating."
     },
     "seesaw_torque": {
       "title": "Seesaw Balance and Torque Equilibrium",
@@ -2554,7 +2993,8 @@
         "Net Torque Στ",
         "Rotational Equilibrium State",
         "Seesaw Tilt Angle"
-      ]
+      ],
+      "theoryBackground": "Torque (τ) is the rotational analog of linear force in classical mechanics, quantifying the capability of an applied force to induce angular acceleration about a pivotal axis. It is determined by the product of the applied force F, the radial distance r from the pivot to the application point, and the sine of the angle between them (τ = r F sinθ). Consequently, a small effort applied at a long lever arm produces equivalent turning effect to an immense force applied close to the fulcrum. Rotational equilibrium on a seesaw is established when the net sum of clockwise and counterclockwise torques equals zero (Στ = 0). In industrial and practical engineering, this principle governs the design of construction tower cranes that utilize calibrated counterweights to prevent tip-over disasters, mechanical wrenches that multiply human muscle force to loosen overtightened bolts, and the biomechanics of human musculoskeletal levers."
     },
     "electromagnetic_induction": {
       "title": "Electromagnetic Induction and Faraday Law",
@@ -2567,7 +3007,8 @@
         "Induced Electromotive Force ε (V)",
         "Induced Current I",
         "Bulb Brightness"
-      ]
+      ],
+      "theoryBackground": "Electromagnetic induction, governed by Faraday's and Lenz's laws (ε = -N · (ΔΦ / Δt)), is the defining discovery that inaugurated the modern electrified era and power grids. It dictates that any temporal rate of change in magnetic flux penetrating a conducting circuit induces an electromotive force (EMF) and corresponding current, with Lenz's negative sign embodying energy conservation by creating a magnetic field that opposes the very flux change inducing it. This physical law powers all hydroelectric, wind, and nuclear electric generators (dynamos), drives step-up and step-down electrical transformers across national distribution grids, and operates domestic induction cooktops and wireless smartphone charging pads."
     },
     "viscosity_stokes": {
       "title": "Viscosity, Stokes Law & Terminal Velocity",
@@ -2581,7 +3022,8 @@
         "Terminal Velocity v_t (m/s)",
         "Drag Force F_d",
         "Velocity vs Time Curve"
-      ]
+      ],
+      "theoryBackground": "Viscosity represents a fluid's internal resistance to flow. Stokes' Law mathematically describes the opposing drag force acting on a spherical object moving through a viscous fluid. As the object accelerates, the drag increases until it perfectly balances the gravitational force, causing the object to fall at a constant 'terminal velocity'. This physics principle is used in medical laboratories to measure the sedimentation rate of red blood cells (ESR test) and is crucial for designing aerodynamic vehicles and parachutes."
     },
     "ramp_machine": {
       "title": "Inclined Plane & Simple Machines",
@@ -2594,7 +3036,8 @@
         "Mechanical Advantage MA",
         "Required Pulling Force F_pull",
         "Mechanical Efficiency η"
-      ]
+      ],
+      "theoryBackground": "The inclined plane is one of the foundational classical simple machines engineered to reduce the input force required to lift heavy loads against gravitational pull. Operating under the law of conservation of energy, the ramp does not diminish the total mechanical work required (W = mgh); instead, it distributes that work over a significantly longer displacement distance L rather than the direct vertical height h. This trade-off multiplies the human or mechanical effort, defined by the ideal mechanical advantage (MA = 1/sinθ = L/h). Consequently, a gentler incline requires much less driving force to elevate massive objects. In modern infrastructure, this timeless concept is universally applied in handicap wheelchair accessibility ramps, serpentine mountain highways engineered to allow heavy freight trucks to ascend steep gradients safely, and mechanical screw fasteners—which are simply inclined planes wound helically around a cylinder."
     },
     "metric_prefixes": {
       "title": "Metric Prefixes and Scientific Conversions",
@@ -2607,7 +3050,8 @@
         "Scientific Notation Value",
         "Value in Target Prefix",
         "Exact Conversion Factor"
-      ]
+      ],
+      "theoryBackground": "Metric prefixes and powers-of-ten scientific notation (10^±n) constitute the standardized universal language of quantitative measurement across physics, technology, and industry. They allow scientists and engineers to express phenomena spanning vast dimensional scales—from subatomic quark interactions to cosmological cluster distances—without cumbersome strings of zeroes. Standardized by the International System of Units (SI), decimal scaling employs uniform multipliers such as kilo (10^3), mega (10^6), and giga (10^9), alongside fractional subdivisions like milli (10^-3), micro (10^-6), nano (10^-9), and pico (10^-12). This international standardization prevents catastrophic unit conversion errors in aerospace and structural engineering. In modern commerce and technology, it defines digital memory storage capacities (Gigabytes and Terabytes), semiconductor fabrication lithography (silicon gate widths measured in nanometers), and medical pharmacology where life-critical medications are calibrated down to micrograms."
     },
     "stress_strain": {
       "title": "Stress, Strain and Young Modulus",
@@ -2622,7 +3066,8 @@
         "Relative Strain ε",
         "Elongation ΔL",
         "Elastic Limit"
-      ]
+      ],
+      "theoryBackground": "The stress-strain relationship and Young's Modulus (E) represent the theoretical foundation of materials science, structural mechanics, and civil engineering, defining a material's stiffness and resistance to elastic deformation under tensile or compressive loads. Mechanical stress (σ = F/A) measures the internal restoring force distributed per unit cross-sectional area, while strain (ε = ΔL / L₀) quantifies the dimensionless relative fractional elongation caused by that stress. Within the linear elastic regime (governed by Hooke's Law), Young's Modulus is the slope of this curve (E = σ / ε); a high modulus signifies an exceptionally rigid material like structural steel that resists bending, whereas a low modulus denotes compliant elasticity like rubber. In real-world engineering, this characterization is critical for selecting load-bearing structural beams in skyscrapers, designing carbon-fiber wings for commercial aircraft that flex safely under aerodynamic turbulence, and fabricating titanium orthopedic implants calibrated to match the natural elasticity of human bone."
     },
     "bernoulli": {
       "title": "Bernoulli Principle and Venturi Flow",
@@ -2635,7 +3080,8 @@
         "Pressure Difference ΔP",
         "Fluid Velocity in Constriction v2",
         "Liquid Column Height in Venturi"
-      ]
+      ],
+      "theoryBackground": "Bernoulli's principle connects fluid pressure, speed, and height, demonstrating the conservation of energy in flowing fluids. It states that an increase in the speed of a fluid occurs simultaneously with a decrease in static pressure or a decrease in the fluid's potential energy. It explains how airplane wings generate lift (lower pressure above the faster-moving air over the wing) and how atomizers and carburetors work."
     },
     "angled_mirrors": {
       "title": "Angled Mirrors and Multiple Reflection Images",
@@ -2646,7 +3092,8 @@
       "outputs": [
         "Number of Formed Images N",
         "Positions and Symmetry of Reflected Images"
-      ]
+      ],
+      "theoryBackground": "When two plane mirrors are placed at an angle to each other, a single object can produce multiple virtual images due to repeated reflections between the mirrored surfaces. As the angle between the mirrors decreases, the number of intersecting reflections increases according to the formula: (360/angle) - 1. This optical property of multiple reflections is playfully utilized in kaleidoscopes to generate infinite symmetrical patterns, and is technically applied in laser cavities and optical resonators."
     },
     "curved_mirrors": {
       "title": "Curved Spherical Mirrors (Concave & Convex)",
@@ -2660,7 +3107,8 @@
         "Image Distance d_i",
         "Magnification M",
         "Image Characteristics (Real / Virtual / Inverted / Upright)"
-      ]
+      ],
+      "theoryBackground": "Curved mirrors (concave and convex) allow us to focus light, magnify images, or widen the field of view. Concave mirrors converge incoming parallel light rays to a focal point, creating real or virtual images depending on object distance. Convex mirrors diverge light, always forming smaller, upright virtual images. Convex mirrors are used in car side mirrors and store security for a wider view. Concave mirrors are used in reflecting telescopes and makeup mirrors."
     },
     "thin_lenses": {
       "title": "Thin Lenses and Focal Length Equation",
@@ -2673,7 +3121,8 @@
         "Image Position d_i",
         "Magnification Factor M",
         "Ray Trajectory & Image Formation"
-      ]
+      ],
+      "theoryBackground": "Thin lenses refract light to form images, governed by the lens equation (1/f = 1/do + 1/di). This fundamental principle of optics describes how the focal length determines the image's position and magnification. It is extensively applied in designing cameras, corrective eyeglasses, and microscopes to achieve precise optical focus and clarity."
     },
     "polarization": {
       "title": "Light Polarization and Malus Law",
@@ -2686,7 +3135,8 @@
         "Transmitted Light Intensity I (W/m²)",
         "Transmittance Ratio I/I0",
         "Resultant Polarization Axis"
-      ]
+      ],
+      "theoryBackground": "Light polarization filters unpolarized light waves so they oscillate in a single plane. Malus's Law calculates the intensity of this polarized light after it passes through a second polarizer rotated at a specific angle. This phenomenon is crucial for modern technology, being the core working principle behind LCD screens, polarized sunglasses that reduce glare, and optical stress analysis."
     },
     "light_scattering": {
       "title": "Light Scattering and Rayleigh Scattering Law",
@@ -2699,7 +3149,8 @@
         "Scattered Light Intensity I",
         "Observed Atmospheric Color",
         "Explanation of Sky Blue & Sunset Redness"
-      ]
+      ],
+      "theoryBackground": "Scattering explains how light interacts with small particles or molecules in a medium, determining the color of the sky and the visibility of objects in fog. Rayleigh scattering shows that shorter wavelengths (blue) scatter much more strongly than longer wavelengths (red) when interacting with particles smaller than the wavelength of light. It explains why the sky is blue during the day (blue light scatters everywhere) and sunsets are red (blue light is scattered away, leaving red to reach our eyes)."
     },
     "arc_length": {
       "title": "Arc Length, Radians & Angular Motion",
@@ -2712,7 +3163,8 @@
         "Arc Length Traveled s (m)",
         "Linear Velocity v (m/s)",
         "Angular Position"
-      ]
+      ],
+      "theoryBackground": "The relationship between arc length (s = r·θ) and tangential linear velocity (v = r·ω) establishes the vital kinematic bridge connecting rotational angular motion with linear translational motion. A radian is defined dimensionlessly as the central angle subtending an arc equal in length to the circle's radius, enabling direct mathematical harmony between linear and circular dynamics. The equation demonstrates that as distance r from the rotational axis increases, points must traverse larger physical distances in identical time intervals, resulting in proportionally higher tangential velocities for a constant angular speed ω. In engineering and daily technology, this governs the calibration of automotive speedometers based on outer tire radius, the optical design of DVD and hard disk drive (HDD) read/write sectors where outer tracks sweep past heads much faster than inner tracks, and the structural design of high-speed centrifuges."
     },
     "rotational_dynamics": {
       "title": "Moment of Inertia & Rotational Dynamics",
@@ -2725,7 +3177,8 @@
         "Moment of Inertia I",
         "Angular Acceleration α (rad/s²)",
         "Angular Velocity ω(t)"
-      ]
+      ],
+      "theoryBackground": "Newton's second law for rotational dynamics (τ = I · α) constitutes the rotational equivalent of linear dynamics (F = ma), mathematically linking the applied net torque τ to the resulting angular acceleration α. Crucially, the moment of inertia I depends not merely on the system's total mass, but fundamentally on how that mass is geometrically distributed relative to the rotation axis (I = ∫ r² dm); mass positioned further outward exerts exponentially greater resistance to angular acceleration. This physical law governs the breathtaking spins of figure skaters who accelerate their rotation simply by pulling their limbs inward to decrease I, the mechanical engineering of automotive flywheels that smooth engine crankshaft pulsations by storing rotational inertia, and momentum reaction wheels deployed to reorient orbiting satellites in deep space without propellant."
     },
     "center_of_mass": {
       "title": "Center of Mass of Systems and Objects",
@@ -2736,7 +3189,8 @@
       "outputs": [
         "Center of Mass Coordinates (X_cm, Y_cm)",
         "Stable Mechanical Equilibrium Point"
-      ]
+      ],
+      "theoryBackground": "The center of mass (X_cm = Σ m_i x_i / Σ m_i) is the unique spatial point at which the entire distributed mass of an object or system behaves as if it were concentrated, moving in direct accordance with Newton's second law under external net forces. The vertical position and alignment of the center of mass relative to the base of support dictate mechanical equilibrium and stability; an object remains securely balanced as long as the gravity vector through its center of mass falls within its supporting footprint. If displaced beyond this perimeter, gravitational torque induces an inevitable rollover. In technological and civil applications, this principle governs the engineering of high-performance sports cars with ultra-low centers of gravity to resist rollover during high-speed turns, dynamic weight and balance protocols in aviation and maritime cargo loading to prevent capsizing, and the iconic Fosbury Flop technique in high-jump athletics."
     },
     "pendulum_energy": {
       "title": "Conservation of Energy in a Pendulum",
@@ -2749,7 +3203,8 @@
         "Kinetic Energy K (J)",
         "Gravitational Potential Energy U (J)",
         "Live Energy Transformation Diagram"
-      ]
+      ],
+      "theoryBackground": "The oscillating pendulum offers a classical demonstration of the law of conservation of mechanical energy (E_tot = K + U = Const), illustrating how energy seamlessly exchanges between distinct forms without net loss in an idealized frictionless system. At maximum angular amplitude, the bob momentarily halts, concentrating the system's entire energy into gravitational potential energy (U = mgh). As gravity accelerates the bob downward toward the central equilibrium nadir, this potential energy converts completely into kinetic energy (K = ½mv²), achieving maximum velocity at the lowest point. This continuous harmonic energy interconversion serves as the physical cornerstone for engineering gravity-driven roller coasters that convert mechanical height into breathtaking velocity loops, demolition wrecking balls that maximize kinetic impact energy, and pumped-storage hydroelectric stations that store energy as gravitational potential."
     },
     "pendulum": {
       "title": "Simple Pendulum Period and Gravity",
@@ -2762,7 +3217,8 @@
         "Period T (s)",
         "Oscillation Frequency f (Hz)",
         "Calculated Gravitational Acceleration"
-      ]
+      ],
+      "theoryBackground": "The simple pendulum represents the quintessential harmonic oscillator, exhibiting the profound property of isochronism first discovered by Galileo: for small angular amplitudes (θ < 15°), its period of oscillation (T = 2π√(L/g)) is strictly independent of both the bob's mass and the oscillation amplitude. The swing period is uniquely governed by the physical suspension length L and local gravitational acceleration g, making the pendulum an exquisitely precise instrument for measuring time and gravity. Historically, Christiaan Huygens leveraged this invariant behavior to invent the pendulum clock, inaugurating modern precise timekeeping for navigation and industry. Today, high-precision pendulum gravimeters measure subtle micro-variations in Earth's gravitational field to prospect for subterranean petroleum deposits, mineral ores, and fault lines, while also forming the basis of seismological sensors."
     },
     "projectile": {
       "title": "Projectile Motion and Range Trajectory",
@@ -2776,7 +3232,8 @@
         "Maximum Height H",
         "Total Flight Time t_flight",
         "Curved Trajectory Profile"
-      ]
+      ],
+      "theoryBackground": "Projectile motion in two dimensions represents the foundational classical model of independent orthogonal kinematics: horizontal motion proceeds uniformly at constant velocity without external forces (a_x = 0), while vertical motion undergoes constant acceleration governed by gravity (a_y = -g). The superposition of these two independent motions traces a characteristic parabolic trajectory. In an idealized vacuum, the maximum horizontal range occurs at an optimal launch angle of 45° (R = v₀² sin(2θ) / g), and complementary launch angles summing to 90° produce identical horizontal landing points with different flight durations and peak altitudes (H = v₀² sin²θ / 2g). This theory forms the mathematical core of military ballistics, orbital rocket ascent profiles, firefighting water cannon trajectory targeting, and biomechanical optimization in athletic sports such as javelin throwing, basketball jump shooting, and soccer free-kicks."
     },
     "spring": {
       "title": "Hooke Law and Spring Harmonic Oscillation",
@@ -2789,7 +3246,8 @@
         "Restoring Force F_spring",
         "Elastic Potential Energy U_s",
         "Oscillation Period T (s)"
-      ]
+      ],
+      "theoryBackground": "Hooke's law (F = -k · x) governs the elastic restoring force exerted by a spring to resist mechanical deformation and restore its equilibrium position, where force is directly proportional to displacement x and acts in the opposite direction. When coupled with an inertial mass m, the system executes simple harmonic motion (SHM) with an oscillation period (T = 2π · √(m / k)) dictated entirely by mass and spring stiffness k, completely independent of amplitude. This principle forms the structural foundation of automotive and railway suspension shock absorbers that isolate passengers from terrain vibrations, precision spring scales and industrial load cells, seismographs that record earthquake waveforms, and atomic force microscopes (AFM) that map nanoscale intermolecular forces through microcantilever spring deflection."
     },
     "collision": {
       "title": "Linear Momentum Conservation and Collisions",
@@ -2802,7 +3260,8 @@
         "Final Velocities (v1f, v2f)",
         "Total Conserved Momentum P_tot",
         "Lost Kinetic Energy ΔK"
-      ]
+      ],
+      "theoryBackground": "The law of conservation of linear momentum (m₁v₁ᵢ + m₂v₂ᵢ = m₁v₁_f + m₂v₂_f) derives directly from Newton's third law: internal interactive forces between colliding bodies are equal and opposite, rendering the net momentum of an isolated system invariant before and after impact. Collisions range from perfectly elastic, where total kinetic energy is conserved alongside momentum, to inelastic, where mechanical energy partially dissipates into structural deformation, heat, and acoustic waves. In modern engineering, this principle underpins automotive crashworthiness design—including crumple zones and deploying airbags that extend collision duration Δt to drastically attenuate peak impact forces on passengers (F = Δp / Δt). It is equally indispensable in particle physics colliders (such as the Large Hadron Collider) to probe fundamental quantum constituents and in astrophysics to model planetary and asteroid impacts."
     },
     "freefall": {
       "title": "Free Fall Kinematics and Gravitational Acceleration",
@@ -2815,7 +3274,8 @@
         "Free Fall Time t (s)",
         "Ground Impact Velocity v_impact",
         "Distance & Velocity Plot"
-      ]
+      ],
+      "theoryBackground": "Free fall (v = g · t, y = ½ · g · t²) describes the idealized motion of an object accelerating solely under the influence of gravitational attraction in the total absence of atmospheric aerodynamic drag. Historically demonstrated by Galileo, this phenomenon establishes the equivalence principle: all bodies, irrespective of their mass, shape, or composition, experience the exact same downward gravitational acceleration (g ≈ 9.81 m/s²). Velocity escalates linearly with elapsed time, while traversed vertical distance scales quadratically. This physical law is essential for operating vertical microgravity drop towers that simulate weightlessness for materials and fluid research, designing orbital ballistic trajectories and planetary descent capsules, and analyzing skydiver terminal velocity where air resistance balances gravitational weight."
     },
     "acoustic_resonance": {
       "title": "Acoustic Resonance in Open and Closed Pipes",
@@ -2828,7 +3288,8 @@
         "Harmonic Frequencies fn",
         "Pressure Wave Nodes and Antinodes Locations",
         "Resonance State"
-      ]
+      ],
+      "theoryBackground": "Acoustic resonance is the fundamental physical mechanism responsible for sound amplification and pitch selection within air columns and pipes. It occurs when an external sound frequency precisely matches one of the natural frequencies of the air column, causing incident and reflected longitudinal waves to interfere constructively into standing waves. In these stationary patterns, displacement nodes form at closed boundaries and antinodes form at open ends, producing all integer harmonics in open pipes (fn = n·v / 2L) and exclusively odd harmonics in closed pipes (fn = n·v / 4L). This principle is essential in designing acoustic wind instruments like flutes and pipe organs, as well as industrial exhaust mufflers and HVAC silencers to cancel unwanted engine noise."
     },
     "sound_speed": {
       "title": "Speed of Sound with Water Column Resonance",
@@ -2841,7 +3302,8 @@
         "Sound Wavelength λ",
         "Calculated Speed of Sound v (m/s)",
         "Standard Percentage Error"
-      ]
+      ],
+      "theoryBackground": "The speed of sound in air is a fundamental physical constant measuring how rapidly mechanical pressure disturbances and acoustic energy propagate through a compressible medium, depending directly on absolute temperature (v ∝ √T). In a resonance water tube, sound speed is measured with high accuracy by finding successive resonance air column lengths (L₁, L₂) for a tuning fork of known frequency f. The difference between two consecutive resonant peaks corresponds precisely to half a wavelength (ΔL = λ / 2), eliminating tube end-correction errors. In real-world engineering, accurate knowledge of sound speed is vital for oceanographic sonar depth sounding, submarine acoustic navigation, and diagnostic medical ultrasound to compute exact tissue depths."
     },
     "waves": {
       "title": "Wave Optics & Young Double Slit Interference",
@@ -2853,7 +3315,8 @@
       "outputs": [
         "Fringe Spacing Between Bright Fringes Δy",
         "Interference Pattern & Intensity Profile on Screen"
-      ]
+      ],
+      "theoryBackground": "Interference and diffraction provide the ultimate physical proof of the wave nature of light and physical oscillations, illustrating how waves constructively combine and cancel across space. In Young's historic double-slit experiment, when coherent wavefronts pass through two narrow slits separated by distance d, each slit acts as a secondary wave source according to Huygens' principle. The overlapping paths produce an alternating pattern of bright constructive fringes (d sinθ = mλ) and dark destructive fringes on a screen. In modern science and technology, this principle underpins diffraction gratings used in astronomical spectrometers to decode stellar chemical compositions, as well as anti-reflective optical coatings on lenses and semiconductor photolithography."
     },
     "magnetic_field": {
       "title": "Magnetic Field and Lorentz Force on Charges",
@@ -2867,7 +3330,8 @@
         "Lorentz Force F (N)",
         "Circular Orbit Radius r",
         "Cyclotron Frequency"
-      ]
+      ],
+      "theoryBackground": "The magnetic Lorentz force (F = q · v · B · sin(θ)) governs the trajectories of charged particles traversing magnetic fields, uniquely acting perpendicular to both instantaneous velocity and magnetic field vectors. Because this deflecting force does zero thermodynamic work, it preserves particle kinetic speed while bending paths into uniform circular orbits characterized by the cyclotron radius (r = (m·v) / (q·B)). This proportionality to particle momentum and inverse dependence on field intensity is fundamental to mass spectrometers that identify isotopes and chemical molecules, circular cyclotrons that synthesize medical radioisotopes for cancer diagnostics (PET scans), and the Earth's geomagnetic deflection of harmful solar wind cosmic rays forming the polar auroras."
     },
     "atomic_spectra": {
       "title": "Atomic Emission Spectra and Quantum Transitions",
@@ -2879,7 +3343,8 @@
         "Visible Emission Spectral Lines",
         "Emitted Photon Energy ΔE (eV)",
         "Wavelength λ"
-      ]
+      ],
+      "theoryBackground": "Atomic spectra and quantum theory, quantified by the Bohr model and the Planck-Einstein relation (ΔE = E_final - E_initial = (h · c) / λ), unlocked modern understanding of quantized atomic energy states and wave-particle duality. Electrons orbit exclusively in discrete, stable quantum energy levels, emitting or absorbing photons of precise wavelength λ solely during discrete quantum jumps, yielding unique spectral emission lines that serve as the elemental fingerprint of each chemical species. This principle is foundational to astronomical spectroscopy to decode the chemical composition and temperatures of distant stars and galaxies light-years away, drives laser and light-emitting diode (LED) lighting technologies, and enables spectrophotometric chemical assays in medicine and metallurgy."
     },
     "circuits": {
       "title": "Electric Circuits, Ohm Law and Power Dissipation",
@@ -2892,7 +3357,8 @@
         "Current Intensity I (Amperes)",
         "Consumed Electrical Power P (Watts)",
         "Voltage Drop"
-      ]
+      ],
+      "theoryBackground": "Ohm's law and electrical power equations (V = I · R, P = V · I = I² · R) form the analytical and physical bedrock of all electrical engineering, microelectronics, and circuit design. They establish the fundamental relationship between driving potential difference (voltage), electric current flow rate, and material resistance, demonstrating how electrical potential converts into active mechanical work or dissipated Joule heating scaling quadratically with current. This relationship underpins ultra-high-voltage power grid transmission engineering designed to minimize grid dissipation losses (P_loss = I² · R), drives PCB trace and load resistor calculations across modern microprocessors and computing chips, and governs the thermal design of electric heaters, thermostats, and battery chargers."
     },
     "buoyancy": {
       "title": "Archimedes Principle and Buoyant Force",
@@ -2905,7 +3371,8 @@
         "Buoyant Force F_B (N)",
         "Apparent Weight of Body W_apparent",
         "Body State (Floats / Suspended / Sinks)"
-      ]
+      ],
+      "theoryBackground": "The Archimedes Principle dictates that any object submerged in a fluid experiences an upward buoyant force equal to the weight of the fluid it displaces. This fundamental law of fluid mechanics dictates whether an object will sink, float, or rise based on its density relative to the fluid. It is the core engineering principle allowing massive steel ships and submarines to float on oceans, and hot air balloons to soar through the atmosphere."
     },
     "thermodynamics": {
       "title": "Ideal Gas Law and Thermodynamics State",
@@ -2918,7 +3385,8 @@
         "Gas Pressure P (Pa)",
         "Average Kinetic Energy of Molecules <E_k>",
         "P-V Diagram"
-      ]
+      ],
+      "theoryBackground": "The state of a thermodynamic system is defined by macroscopic variables such as pressure, volume, and temperature, related by the Ideal Gas Law (PV = nRT). Analyzing state changes through thermodynamic processes (like isothermal, isobaric, or adiabatic expansions) reveals how energy transforms between heat and work. This foundational theory is essential for designing internal combustion engines, air compressors, and predicting atmospheric weather patterns."
     },
     "optics": {
       "title": "Optics and Snell Law of Refraction",
@@ -2931,10 +3399,12 @@
         "Refracted Angle θ2",
         "Critical Angle for Total Internal Reflection θ_c",
         "Speed of Light in Medium"
-      ]
+      ],
+      "theoryBackground": "Refraction governs how light changes direction when passing between different media, which is fundamental for lenses and vision. Snell's Law states that the ratio of the sine of the angle of incidence to the sine of the angle of refraction is constant, depending on the refractive indices of the two media. Light bends towards the normal in a denser medium. Optical fibers use total internal reflection (a consequence of Snell's Law) to transmit internet data globally with minimal loss."
     },
     "build_atom": {
       "title": "Build an Atom & Periodic Table",
+      "theoryBackground": "The atom is the fundamental building block of all matter, and its internal subatomic structure dictates the chemical identity and physical behavior of the elements. The number of positive protons (atomic number Z) uniquely identifies the element in the periodic table, while uncharged neutrons contribute to the mass number (A = p + n) and determine isotopic stability against electrostatic repulsion. Surrounding electrons balance the nuclear charge and govern chemical bonding. Mastery of atomic structure is the cornerstone of modern semiconductor technology, enabling precise silicon doping to manufacture microprocessors, transistors, and photovoltaic cells.",
       "inputs": [
         "Number of Protons p",
         "Number of Neutrons n",
@@ -2948,6 +3418,7 @@
     },
     "build_nucleus": {
       "title": "Build a Nucleus & Binding Energy",
+      "theoryBackground": "Nuclear binding energy explains how atomic nuclei remain tightly bound despite tremendous electrostatic Coulomb repulsion between positively charged protons confined in a femtometer-scale volume. The actual mass of any stable nucleus is consistently less than the sum of the individual masses of its constituent free protons and neutrons. This missing mass, known as the mass defect (Δm), is directly converted via Einstein's mass-energy equivalence equation (E_b = Δm · c²) into binding energy mediated by the strong nuclear force. This principle underpins clean electricity generation in commercial nuclear fission reactors and enables medical radioisotope production for targeted cancer radiotherapy.",
       "inputs": [
         "Atomic Number Z",
         "Mass Number A",
@@ -2961,6 +3432,7 @@
     },
     "rutherford_scattering": {
       "title": "Rutherford Alpha Scattering Experiment",
+      "theoryBackground": "Rutherford's alpha scattering experiment represents a landmark breakthrough in modern physics; it conclusively refuted Thomson's 'plum pudding' model and proved that atoms consist mostly of empty space with virtually all positive charge and mass concentrated in a dense core called the nucleus. When positive alpha particles (+2e) are directed at an ultra-thin gold foil, most pass undeflected through the atomic void, while those passing close to a gold nucleus experience tremendous Coulomb repulsion (F ∝ 1/r²), scattering them at wide angles and even causing backward deflection. Today, this mechanism is utilized in Rutherford Backscattering Spectrometry (RBS) for non-destructive surface depth-profiling and thin-film thickness analysis in semiconductor nanofabrication.",
       "inputs": [
         "Incident Alpha Particle Energy E_α",
         "Target Foil Atomic Number Z",
@@ -2974,6 +3446,7 @@
     },
     "molecules_and_light": {
       "title": "Molecules and Light Photon Interaction",
+      "theoryBackground": "The interaction between molecules and light reveals the quantum mechanism of how matter absorbs electromagnetic radiation, providing the physical foundation for molecular spectroscopy, atmospheric science, and the greenhouse effect. A molecule's physical response depends strictly on the quantized photon energy (E = h · f): low-energy microwave photons induce molecular rotation, whereas mid-energy infrared photons resonate with natural vibrational modes of greenhouse gases (such as CO2, H2O, CH4), causing bond vibration and thermal trapping. Higher-energy visible and ultraviolet photons promote valence electronic transitions or break chemical bonds (photodissociation). This mechanism is universally applied in Fourier-Transform Infrared (FTIR) spectroscopy for industrial pollutant detection and chemical quality control.",
       "inputs": [
         "Molecule Type (CO2, H2O, CH4, O2, N2)",
         "Photon Wavelength (Microwave / Infrared / Visible / Ultraviolet)"
@@ -2993,10 +3466,12 @@
       "outputs": [
         "Final Perceived Color in Eye",
         "Retinal Cone Photoreceptors Response"
-      ]
+      ],
+      "theoryBackground": "Color vision is determined by how our eyes perceive different wavelengths of the electromagnetic spectrum in the visible range. The RGB (Red, Green, Blue) additive color model dictates that mixing varying intensities of these three primary light colors can create any perceptible color, producing pure white when combined equally. This optical principle is directly utilized in engineering all modern digital displays, including television screens, computer monitors, and smartphone OLED panels."
     },
     "capacitor_lab": {
       "title": "Capacitor Lab & Stored Electric Energy",
+      "theoryBackground": "Capacitors are foundational building blocks of modern electronic circuits, renowned for their ability to store electrostatic potential energy in an internal electric field and discharge it almost instantaneously, far faster than chemical batteries. The capacitance (C = ε·A/d) is dictated by the overlapping surface area of the conductive plates, their separation distance, and the dielectric permittivity of the insulating layer. Applying a voltage (V) induces equal and opposite surface charges (Q = C · V), establishing an electric field that stores energy (U = ½ · C · V²). This principle powers automated external defibrillators (AEDs) that deliver rapid therapeutic electrical pulses to save cardiac patients, camera flash units, and supercapacitors in electric vehicle energy recovery.",
       "inputs": [
         "Plate Area A (m²)",
         "Separation Distance d (mm)",
@@ -3012,26 +3487,28 @@
     "charges_and_fields": {
       "title": "Electric Charges, Field Lines & Potential",
       "inputs": [
-        "مواقع الشحنات الموجبة والسالبة (x, y)",
-        "مقدار الشحنة Q"
+        "Positive & Negative Charge Locations (x, y)",
+        "Charge Magnitude Q"
       ],
       "outputs": [
-        "شبكة متجهات شدة المجال E",
-        "خطوط تساوي الجهد V",
-        "حركة الشحنة الاختبارية"
-      ]
+        "Electric Field Intensity Vector Grid E",
+        "Equipotential Contour Lines V",
+        "Test Charge Trajectory & Force"
+      ],
+      "theoryBackground": "Electric charges create electrostatic fields in surrounding space governed by Coulomb's Law, exerting force on test charges (E = kQ/r²) and establishing scalar potential gradients (V = kQ/r). Electric field lines point away from positive charges toward negative charges, while equipotential lines remain perpendicular to field vectors everywhere. In real-world engineering, electrostatic fields are harnessed in industrial electrostatic precipitators (ESPs) inside factory smokestacks to capture over 99% of fine ash and soot particulate pollution, as well as in photocopiers, laser printers, and cathode-ray oscilloscopes."
     },
     "resistance_in_wire": {
       "title": "Wire Resistance & Specific Resistivity Law",
       "inputs": [
-        "المقاومية النوعية للمادة ρ",
-        "طول السلك L",
-        "مساحة المقطع العرضي A"
+        "Material Specific Resistivity ρ",
+        "Wire Length L",
+        "Cross-Sectional Area A"
       ],
       "outputs": [
-        "المقاومة الإجمالية R (أوم)",
-        "كثافة الشوائب الذرية المعيقة للتيار"
-      ]
+        "Total Resistance R (Ohms)",
+        "Atomic Impurity Current Impedance Density"
+      ],
+      "theoryBackground": "Electrical resistance in a conductor is governed by the resistivity law (R = ρL / A), demonstrating that resistance is directly proportional to conductor length L and material resistivity ρ, and inversely proportional to cross-sectional area A. Collisions between conduction electrons and lattice ions impede charge flow, dissipating electrical energy into thermal energy. In electrical power engineering, long-distance high-voltage transmission lines utilize low-resistivity thick aluminum conductors to minimize resistive Joule heating power losses (P = I²R), while heating appliances (toasters, electric heaters) deliberately use high-resistivity Nichrome coils to produce concentrated heat."
     },
     "gravity_and_orbits": {
       "title": "Gravity and Orbital Mechanics",
@@ -3044,7 +3521,8 @@
         "Orbital Velocity (v)",
         "Orbital Period (T)",
         "Orbital Stability Trajectory"
-      ]
+      ],
+      "theoryBackground": "Orbital mechanics represents the critical bridge between gravitation and centripetal motion, explaining how planets and artificial satellites remain in perpetual free-fall around a massive body without colliding or flying off into deep space. A stable orbit is achieved when gravitational attraction precisely provides the necessary centripetal force (Fg = Fc), dictating a specific orbital velocity that depends solely on the central body's mass and the orbital radius (v = √(GM/r)). In modern engineering, this principle governs the deployment and orbital maintenance of Global Positioning System (GPS) constellations, weather satellites, and the International Space Station (ISS)."
     },
     "keplers_laws": {
       "title": "Kepler Laws of Planetary Motion",
@@ -3057,7 +3535,8 @@
         "Orbital Period (T)",
         "Equal Areas in Equal Times (Kepler’s Second Law)",
         "Perihelion & Aphelion Positions"
-      ]
+      ],
+      "theoryBackground": "Kepler's three laws of planetary motion revolutionized astrophysics by replacing ancient circular orbits with precise elliptical geometries governed by mathematical rigor. The first law establishes that planets orbit in ellipses with the Sun at one focal point; the second law shows that orbital velocity is variable, accelerating near perihelion and decelerating at aphelion to sweep equal areas in equal time intervals; and the third law dictates that the square of the orbital period is proportional to the cube of the semi-major axis (T² ∝ a³). In aerospace engineering, these laws are indispensable for calculating interplanetary transfer trajectories (such as Hohmann transfer orbits) for probes journeying to Mars and the outer solar system."
     },
     "energy_skate_park": {
       "title": "Energy Skate Park and Energy Transformations",
@@ -3071,7 +3550,8 @@
         "Gravitational Potential Energy U_g",
         "Generated Thermal Energy",
         "Skater Speed at Each Point"
-      ]
+      ],
+      "theoryBackground": "This model demonstrates the universal law of conservation of energy (E_mech = K + U_g + E_thermal), illustrating that energy within an isolated system is neither created nor destroyed, but continuously transforms across distinct thermodynamic forms. On a frictionless curved ramp, gravitational potential energy (U_g = mgh) at the crest converts symmetrically into peak kinetic energy (K = ½mv²) at the trough nadir. When friction and aerodynamic drag are introduced, non-conservative dissipative forces perform negative work, transforming mechanical energy irreversibly into microscopic thermal energy (E_thermal) that heats wheels and track surfaces until kinetic motion ceases. In modern engineering, this understanding powers regenerative braking in hybrid and electric vehicles (EVs) to reclaim kinetic deceleration energy into battery storage rather than wasting it as friction brake heat, and informs roller coaster circuit dynamics and high-speed rail braking safety."
     },
     "fourier_making_waves": {
       "title": "Fourier Series and Harmonic Wave Synthesis",
@@ -3083,7 +3563,8 @@
       "outputs": [
         "Resultant Composite Waveform",
         "Frequency Spectrum (Spectrum Analyzer)"
-      ]
+      ],
+      "theoryBackground": "Fourier analysis and wave synthesis constitute one of the greatest mathematical and physical breakthroughs in wave mechanics and signal processing, proving that any complex periodic waveform (such as square, triangle, or sawtooth waves) can be decomposed into or synthesized from an infinite sum of simple sinusoidal harmonics (nω). This principle explains the concept of musical timbre—why a violin and a trumpet sound distinctly unique even when playing the identical musical pitch and fundamental frequency, due to variations in harmonic amplitude profiles. Fourier theory forms the indispensable foundation of modern digital audio compression (such as MP3 codecs), magnetic resonance imaging (MRI) reconstruction algorithms, noise filtering, and electronic music synthesizers."
     },
     "wave_on_a_string": {
       "title": "Wave on a String & Phase Speed",
@@ -3097,7 +3578,8 @@
         "Wave Propagation Speed v",
         "Wavelength λ",
         "Wave Reflection at Fixed/Free End"
-      ]
+      ],
+      "theoryBackground": "Transverse wave propagation along a stretched string is the classical model for understanding how mechanical energy travels through elastic solid media, where the wave speed is governed by the tension T and the linear mass density μ through the relation (v = √(T/μ)). Higher tension provides stronger restoring forces that accelerate adjacent string segments, increasing wave velocity, whereas greater mass per unit length introduces greater mechanical inertia, slowing wave propagation down. This principle directly dictates the tuning and physical construction of all stringed musical instruments (violins, guitars, and harps), while also playing a critical safety role in civil engineering to analyze vibration stability in suspension bridge stay cables and high-voltage transmission lines exposed to aerodynamic forces."
     },
     "states_of_matter": {
       "title": "States of Matter, Phase Transitions & Latent Heat",
@@ -3110,7 +3592,8 @@
         "Physical State (Solid / Liquid / Gas)",
         "Phase Diagram",
         "Molecular Kinetic Energy"
-      ]
+      ],
+      "theoryBackground": "Matter generally exists in three states: solid, liquid, and gas, depending on its temperature and pressure. When matter changes from one state to another (phase transition), it requires or releases thermal energy without changing temperature; this is called 'Latent Heat'. This physics principle explains why sweating cools the human body (latent heat of vaporization absorbs body heat) and is the foundation for how modern refrigerators and air conditioners operate to cool air."
     },
     "gas_diffusion": {
       "title": "Gas Diffusion and Graham Law of Effusion",
@@ -3122,7 +3605,8 @@
       "outputs": [
         "Diffusion Rate Ratio r1/r2",
         "Spatial Molecular Distribution over Time"
-      ]
+      ],
+      "theoryBackground": "Gas diffusion is the gradual mixing of molecules of one gas with molecules of another by virtue of their kinetic properties. Graham's Law of Effusion states that the rate of effusion of a gas is inversely proportional to the square root of its molar mass, meaning lighter gases travel faster. This principle is vital in separating isotopes, such as enriching uranium for nuclear power, and explains how smells rapidly travel across a room."
     },
     "rotational_dynamics_torque": {
       "title": "Rotational Motion & Net Torque",
@@ -3135,7 +3619,8 @@
         "Angular Momentum L (kg·m²/s)",
         "Angular Acceleration α (rad/s²)",
         "Rotational Kinetic Energy K_rot (J)"
-      ]
+      ],
+      "theoryBackground": "The governing laws of rotational dynamics (Στ = I · α, L = I · ω) dictate the mechanics of rigid bodies spinning about fixed axes. Torque (τ = F · d · sin(θ)) measures the rotational capacity of an applied force scaled by its perpendicular lever arm distance, while Newton's rotational second law correlates net torque with angular acceleration α via moment of inertia I. Crucially, angular momentum (L = I · ω) remains strictly conserved whenever external net torque is zero, causing angular speed ω to surge inversely as mass collapses toward the rotation axis. This principle is vital in heavy mechanical engineering, helicopter anti-torque tail rotors that counteract main blade rotational torque to stabilize the airframe, satellite and Hubble telescope orientation control via internal gyroscopic reaction wheels, and astrophysical pulsars spinning hundreds of times per second due to angular momentum conservation during stellar core collapse."
     },
     "models_h_atom": {
       "title": "Models of the Hydrogen Atom",
@@ -3148,7 +3633,8 @@
         "Orbital Energy En (eV)",
         "Emitted Photon Wavelength λ (nm)",
         "Spectral Series (Lyman / Balmer / Paschen)"
-      ]
+      ],
+      "theoryBackground": "Niels Bohr's quantum model of the hydrogen atom resolved classical physics' orbital collapse dilemma by postulating that electrons orbit in discrete, quantized stationary energy levels (En = -13.6/n² eV). An electron emits or absorbs a photon of precise wavelength only when transitioning between these quantized states (ΔE = hf = hc/λ), producing characteristic spectral series (Lyman in UV, Balmer in visible, Paschen in IR). This quantum mechanism is the foundational pillar of modern astrophysics and spectroscopy, enabling astronomers to decipher the elemental composition, temperature, and velocity of stars billions of light-years away, and underpins gas-discharge lighting and quantum semiconductor lasers."
     },
     "circuit_construction_kit": {
       "title": "Circuit Construction Kit (Advanced)",
@@ -3161,7 +3647,8 @@
         "Branch Currents I_branches",
         "Voltage Drops Across Elements",
         "Total Dissipated Power"
-      ]
+      ],
+      "theoryBackground": "Circuit analysis is grounded in Gustav Kirchhoff's laws: the Junction Rule (KCL: ΣI_in = ΣI_out), based on the conservation of electric charge, and the Loop Rule (KVL: ΣV = 0), based on the conservation of energy. These fundamental conservation laws enable the rigorous determination of branch currents, nodal potential differences, and power consumption in complex multi-loop circuits. In modern technology, Kirchhoff's laws form the mathematical backbone of electronic computer-aided design (ECAD) software used to simulate and route trillions of interconnects on microprocessor silicon chips and multilayer printed circuit boards (PCBs), as well as designing resilient power distribution grids."
     },
     "generator": {
       "title": "Electric Generator",
@@ -3174,7 +3661,8 @@
         "Maximum EMF ε_max (Volts)",
         "Generated AC Frequency f (Hz)",
         "Sinusoidal Voltage Waveform"
-      ]
+      ],
+      "theoryBackground": "The electric generator is the quintessential application of Michael Faraday's law of electromagnetic induction and Heinrich Lenz's law, generating an induced electromotive force (ε = -N·ΔΦ/Δt = NBAω·sin(ωt)) by rotating a conductive armature coil through a static magnetic field. The continuous sinusoidal variation in magnetic flux converts mechanical rotational kinetic energy into alternating current (AC) electricity. This physical process supplies virtually all the world's electrical grid energy—powering steam and gas turbines in thermal and nuclear power plants, massive water turbines in hydroelectric dams, and giant wind turbine farms, as well as automotive alternators."
     },
     "magnet_compass": {
       "title": "Magnet and Compass",
@@ -3187,7 +3675,8 @@
         "Compass Needle Deflection Angle θ",
         "Total Field Vector Map",
         "Magnetic Lines of Force"
-      ]
+      ],
+      "theoryBackground": "Magnetic dipoles and field lines illustrate how magnetic forces govern the alignment of magnetic moments in space, described by Coulomb's magnetic law and dipolar field distributions (B ∝ 1/r³). A compass needle is simply a freely suspended magnetic dipole that aligns itself along the external magnetic field vectors, originating at the north pole and terminating at the south pole. Earth itself behaves as a giant magnetic dipole, allowing compasses to be used for global navigation. In modern engineering, magnetic field sensing is essential in smartphone digital magnetometers, aerospace geomagnetic orientation systems, and Hall effect sensors in automated vehicles."
     },
     "magnets_electromagnets": {
       "title": "Magnets and Electromagnets",
@@ -3200,7 +3689,8 @@
         "Center Magnetic Field Intensity B (Tesla / mT)",
         "Number of Attracted Pins",
         "Magnet Polarity N/S"
-      ]
+      ],
+      "theoryBackground": "Electromagnets demonstrate the fundamental synthesis of electricity and magnetism discovered by Oersted and Ampère, where an electric current flowing through a coiled solenoid generates a concentrated, controllable magnetic field (B = μ·n·I). Unlike permanent magnets, an electromagnet's field strength and polarity can be instantly adjusted or switched on and off by regulating the electric current, and is dramatically amplified by inserting a high-permeability ferromagnetic iron core. In modern technology, electromagnets are the core driving mechanism in magnetic resonance imaging (MRI) scanners, high-speed Maglev bullet trains that eliminate mechanical track friction, scrap metal lifting cranes, relays, and electric audio speakers."
     },
     "gravity_force_lab": {
       "title": "Gravity Force Lab",
@@ -3212,7 +3702,8 @@
       "outputs": [
         "Mutual Gravitational Attraction Force F (nN)",
         "Equal & Opposite Force Vectors F12 & F21"
-      ]
+      ],
+      "theoryBackground": "Newton's Law of Universal Gravitation is fundamental to classical mechanics and astrophysics, explaining how every mass in the cosmos exerts a mutual attractive pull on every other mass. The gravitational force is directly proportional to the product of the two masses and inversely proportional to the square of the distance between their centers (F ∝ 1/r²). If the separation distance doubles, the gravitational attraction drops to one-fourth. In the real world, this principle is essential for calculating ocean tides caused by the Moon and Sun, as well as computing the required thrust and trajectory to place space probes into planetary orbits."
     },
     "solar_system": {
       "title": "My Solar System & Multi-Body Mechanics",
@@ -3224,7 +3715,8 @@
       "outputs": [
         "Real Motion Trajectories (Circular / Elliptical / Parabolic Orbit)",
         "Conservation of Angular Momentum & Total Energy"
-      ]
+      ],
+      "theoryBackground": "Multi-body celestial mechanics tackles the fundamental gravitational N-body problem, demonstrating that planets in a solar system do not travel along isolated tracks, but continuously perturb one another through simultaneous vector gravitational forces. While the Sun's massive gravitational field dominates, mutual planetary interactions cause subtle orbital shifts and resonance patterns that govern the long-term stability of planetary systems. In modern astronautics, multi-body gravitational mechanics is harnessed for gravitational slingshots (gravity assists)—allowing spacecraft such as Voyager and Cassini to harvest orbital momentum from giant planets like Jupiter to reach deep-space targets with minimal fuel expenditure."
     },
     "energy_forms": {
       "title": "Energy Forms and Transformations",
@@ -3236,7 +3728,8 @@
         "Temperature T over Time",
         "Energy Unit Distribution (Kinetic, Thermal, Radiant, Chemical)",
         "Final Thermal Equilibrium"
-      ]
+      ],
+      "theoryBackground": "The Law of Conservation of Energy dictates that energy cannot be created or destroyed, only transformed, which is the foundation of thermodynamics and mechanics. Energy shifts between various forms—such as kinetic, potential, thermal, chemical, and electrical—while the total energy of a closed system remains constant. Hydroelectric dams convert gravitational potential energy of water into kinetic energy, and then into electrical energy using a generator."
     },
     "normal_modes": {
       "title": "Normal Modes & Resonant Frequencies",
@@ -3250,7 +3743,8 @@
         "Resonant Frequency fn (Hz)",
         "Wavelength λn",
         "Nodes and Antinodes Positions"
-      ]
+      ],
+      "theoryBackground": "Normal modes represent the characteristic stationary vibrational patterns of an oscillating mechanical or molecular system, where all components oscillate harmonically at the same intrinsic resonant frequencies (eigenfrequencies) with fixed relative phases. In each integer mode n, standing wave geometries emerge featuring distinct stationary nodes (zero displacement points) and antinodes (maximum amplitude peaks). Mastering normal mode theory is crucial in structural and aerospace engineering to design buildings, suspension bridges, and aircraft wings that prevent destructive resonance under seismic excitation or wind-induced turbulence, as well as in chemistry and quantum mechanics to model molecular vibrational spectra."
     },
     "forces_motion": {
       "title": "Forces and Motion: Basics",
@@ -3264,7 +3758,9 @@
         "Resulting Acceleration a (m/s²)",
         "Free Body Diagram (FBD)",
         "Velocity Vector v"
-      ]
+      ],
+      "lawDescription": "Newton's Second Law:",
+      "theoryBackground": "Newton's second law of motion (F_net = Σ F = m · a) represents the bedrock foundation of classical Newtonian mechanics, mathematically bridging the net external vector forces applied to an object and its resulting linear acceleration. It establishes that changes in momentum require unbalanced net forces; acceleration is directly proportional to net force in the identical directional vector and inversely proportional to the body's inertial mass m (a = F_net / m). When forces balance precisely (Σ F = 0), acceleration vanishes, preserving inertial equilibrium in accordance with Newton's first law. This relationship dictates rocket propulsion engineering, where vehicle acceleration escalates continuously as propellants burn off and total mass m diminishes under constant thrust. It is equally fundamental to passenger elevator hoist cable tension calculations and automotive Electronic Stability Control (ESC) braking algorithms."
     },
     "gas_properties": {
       "title": "Gas Properties & Kinetic Pressure Law",
@@ -3277,7 +3773,8 @@
         "Internal Pressure P (Pa)",
         "RMS Molecular Speed v_rms",
         "Molecule Collision Rate with Container Walls"
-      ]
+      ],
+      "theoryBackground": "Understanding gas properties is crucial for studying atmospheric physics, engines, and respiration. The Ideal Gas Law relates the pressure, volume, and temperature of a gas to the number of moles. The kinetic theory explains that pressure arises from gas molecules colliding with container walls, with temperature reflecting their average kinetic energy. Hot air balloons rise because heating the gas increases its volume and lowers its density compared to the surrounding air, creating buoyant force."
     },
     "diffusion": {
       "title": "Molecular Diffusion & Fick First Law",
@@ -3290,7 +3787,8 @@
         "Diffusion Flux Rate J",
         "Concentration Gradient dC/dx",
         "Time to Homogeneous Equilibrium"
-      ]
+      ],
+      "theoryBackground": "Molecular diffusion is the random thermal movement of particles from regions of high concentration to low concentration. Fick's First Law models this process, stating that the diffusion flux is directly proportional to the concentration gradient. This is a fundamental transport mechanism in biology and chemistry, explaining how oxygen crosses cell membranes in the lungs and how pollutants disperse in rivers."
     },
     "blackbody_spectrum": {
       "title": "Blackbody Spectrum, Planck & Wien Laws",
@@ -3301,7 +3799,8 @@
         "Peak Wavelength λ_max (μm)",
         "Total Radiant Intensity I (W/m²)",
         "Spectral Distribution Curve & Visible Color"
-      ]
+      ],
+      "theoryBackground": "A blackbody is an idealized physical body that perfectly absorbs and emits all frequencies of electromagnetic radiation. Planck's Law describes the spectral density of this emission across different wavelengths, while Wien's Displacement Law shows that the peak emission wavelength shifts toward shorter (bluer) wavelengths as temperature increases. These laws gave birth to quantum mechanics and are heavily used in astronomy to determine the surface temperature of distant stars and in thermal imaging cameras."
     },
     "doppler_effect": {
       "title": "Doppler Effect & Sound Shift",
@@ -3316,7 +3815,8 @@
         "Doppler Frequency Shift Δf",
         "Front & Rear Wavelength λ",
         "Mach Number"
-      ]
+      ],
+      "theoryBackground": "The Doppler effect is a cornerstone wave phenomenon describing the apparent shift in observed frequency and wavelength when there is relative motion between a wave source and an observer. As the source approaches, consecutive wave crests compress, resulting in a higher perceived frequency (f' > f), whereas receding motion stretches the waves, lowering the detected frequency (f' < f). In daily life and industry, this principle powers police radar guns for vehicle speed enforcement, meteorological Doppler radars to track rotational storm dynamics and hurricanes, and medical echocardiography to assess blood flow velocities across heart valves. In astrophysics, optical Doppler redshift provided the definitive discovery that our universe is expanding."
     },
     "electrical_transformer": {
       "title": "Electrical Transformer & Mutual Induction Law",
@@ -3332,7 +3832,8 @@
         "Primary Iₚ & Secondary Iₛ Currents (Amperes)",
         "Transformation Ratio a & Transformer Type",
         "Transferred Electric Power Pₛ (Watts)"
-      ]
+      ],
+      "theoryBackground": "The electrical transformer is a foundational alternating current (AC) device operating on Faraday's law of mutual electromagnetic induction (V_s / V_p = N_s / N_p). An alternating voltage applied to the primary winding induces a continuously oscillating magnetic flux within the shared laminated iron core, which in turn induces a proportional secondary voltage without any direct electrical connection. Transformers make modern wide-area electrical power grids possible by stepping up voltages to hundreds of kilovolts for long-distance, low-loss transmission (P_loss = I²R), and stepping them down safely to 110V/220V for residential use, consumer electronics adapters, and electric vehicle charging."
     },
     "photoelectric_effect": {
       "title": "Photoelectric Effect & Einstein Quantum Law",
@@ -3348,7 +3849,8 @@
         "Stopping Potential V_stop (Volts)",
         "Threshold Frequency & Wavelength f₀ & λ₀",
         "Emitted Electron Speed v_max"
-      ]
+      ],
+      "theoryBackground": "The photoelectric effect, explained by Albert Einstein in 1905, proved the quantum nature of light and earned him the Nobel Prize. When incident photons carry energy exceeding the metal's characteristic work function (E = hf ≥ Φ), they instantly eject electrons whose maximum kinetic energy depends solely on light frequency, not intensity (K_max = hf - Φ). This phenomenon directly established wave-particle duality and birthed modern quantum mechanics. In today's technology, the photoelectric principle drives solar photovoltaic panels for renewable energy, digital camera CMOS/CCD image sensors, night-vision photomultiplier tubes, and automatic optical safety doors."
     },
     "radioactive_decay": {
       "title": "Radioactive Decay & Nuclear Half-Life Law",
@@ -3364,7 +3866,8 @@
         "Remaining Percentage %",
         "Instantaneous Activity A(t) (Bq)",
         "Decay Constant λ"
-      ]
+      ],
+      "theoryBackground": "Radioactive decay is a fundamental nuclear process where unstable atomic nuclei spontaneously transform into more stable configurations by emitting alpha particles, beta particles, or gamma radiation. Governed by the exponential decay law (N(t) = N₀ · e^(-λt) = N₀ · (1/2)^(t/T₁/₂)), the rate of decay is characterized by the constant half-life (T₁/₂), representing the time required for half of the radioactive nuclei in a sample to decay. This nuclear law is universally utilized in radiometric carbon-14 dating to determine the age of archaeological artifacts, cancer radiation therapy and PET scans in nuclear medicine, and space probe radioisotope thermoelectric generators (RTGs) powering missions to the outer planets."
     },
     "calorimetry_equilibrium": {
       "title": "Calorimetry & Thermal Equilibrium Law",
@@ -3379,8 +3882,16 @@
         "Exchanged Thermal Energy Quantity Q (J & cal)",
         "Heat Capacities C₁ & C₂",
         "Temperature Changes ΔT₁ & ΔT₂"
-      ]
-    }
+      ],
+      "theoryBackground": "Calorimetry is the science of measuring heat transfer associated with changes in a body's state. Based on the conservation of energy, the law of thermal equilibrium states that when two objects at different temperatures are mixed in an isolated system, the heat lost by the hotter object exactly equals the heat gained by the colder one until they reach the same final temperature. This principle is vital in material science to determine the specific heat capacity of new alloys and in designing energy-efficient heating systems."
+    },
+    "gravity_force": {
+      "lawDescription": "Newton's Law of Universal Gravitation"
+    },
+    "gravity_orbits": {
+      "lawDescription": "N-Body Mechanics:"
+    },
+    "custom": {}
   },
   "planets": {
     "earth": {
@@ -3712,6 +4223,126 @@
     },
     "constants": {
       "tab": "Constants"
+    }
+  },
+  "units": {
+    "kmh": "km/h",
+    "mph": "Miles per Hour",
+    "calories": "Calories",
+    "ev": "Electron-volts",
+    "radians": "Radians"
+  },
+  "keyboard": {
+    "variables": {
+      "m": "Mass (m)",
+      "v": "Velocity (v)",
+      "v0": "Initial Velocity (v₀)",
+      "a": "Acceleration (a)",
+      "g": "Gravity (g)",
+      "t": "Time (t)",
+      "F": "Force (F)",
+      "p": "Momentum (p)",
+      "E_k": "Kinetic Energy (Ek)",
+      "E_p": "Potential Energy (Ep)",
+      "W": "Work (W)",
+      "P": "Power / Pressure",
+      "L": "Length (L)",
+      "r": "Radius (r)",
+      "d": "Distance (d)",
+      "h": "Height (h)",
+      "T": "Period / Temp (T)",
+      "f": "Frequency (f)",
+      "k": "Spring Constant (k)",
+      "I": "Current / Inertia (I)",
+      "V": "Voltage / Volume (V)",
+      "R": "Resistance (R)",
+      "q": "Electric Charge (q)",
+      "C": "Capacitance (C)",
+      "B": "Magnetic Field (B)",
+      "c": "Speed of Light (c)"
+    },
+    "greek": {
+      "θ": "Theta (angle)",
+      "α": "Alpha (angular accel)",
+      "β": "Beta",
+      "γ": "Gamma",
+      "δ": "delta (small)",
+      "Δ": "Delta (change)",
+      "ε": "Epsilon (permittivity)",
+      "λ": "Lambda (wavelength)",
+      "μ": "Mu (friction / micro)",
+      "π": "Pi (3.14159...)",
+      "ρ": "Rho (density / resistivity)",
+      "σ": "Sigma (stress / surface charge)",
+      "τ": "Tau (torque / time constant)",
+      "φ": "Phi (phase / flux)",
+      "ω": "Omega (angular velocity)",
+      "Ω": "Omega (Ohm resistance)",
+      "Σ": "Sigma (Summation)",
+      "Ψ": "Psi (wavefunction)",
+      "η": "Eta (efficiency / viscosity)",
+      "ν": "Nu (frequency)"
+    },
+    "units": {
+      "2": "Square (x²)",
+      ".": "Decimal Point (.)",
+      ",": "Comma (,)",
+      "+": "Add (+)",
+      "-": "Subtract (-)",
+      "×": "Multiply (×)",
+      "÷": "Divide (÷)",
+      "=": "Equals (=)",
+      "±": "Plus-Minus (±)",
+      "(": "Open Parenthesis",
+      ")": "Close Parenthesis",
+      "[": "Open Bracket",
+      "]": "Close Bracket",
+      "|": "Absolute Value (|x|)",
+      "^": "Power (^)",
+      "³": "Cube (x³)",
+      "√(": "Square Root (√)",
+      "∛(": "Cube Root (∛)",
+      "½": "Half (1/2)",
+      "×10^": "Scientific Notation (×10^)",
+      "sin(": "Sine (sin)",
+      "cos(": "Cosine (cos)",
+      "tan(": "Tangent (tan)",
+      "arcsin(": "Inverse Sine (arcsin)",
+      "arccos(": "Inverse Cosine (arccos)",
+      "arctan(": "Inverse Tangent (arctan)",
+      "ln(": "Natural Log (ln)",
+      "log(": "Base-10 Log (log)",
+      "exp(": "Exponential (e^x)",
+      "≈": "Approximately (≈)",
+      "≠": "Not Equal (≠)",
+      "≤": "Less or Equal (≤)",
+      "≥": "Greater or Equal (≥)",
+      "·": "Dot Product (·)",
+      "Δ": "Delta / Change (Δ)",
+      "∫": "Integral (∫)",
+      "d_per_dt": "Time Derivative (d/dt)",
+      "∞": "Infinity (∞)",
+      "%": "Percent (%)",
+      "m": "meter (length)",
+      "s": "second (time)",
+      "kg": "kilogram (mass)",
+      "m_per_s": "m/s (velocity)",
+      "m_per_s2": "m/s² (accel)",
+      "N": "Newton (force)",
+      "J": "Joule (energy)",
+      "W": "Watt (power)",
+      "Pa": "Pascal (pressure)",
+      "V": "Volt (potential)",
+      "A": "Ampere (current)",
+      "Ω": "Ohm (resistance)",
+      "Hz": "Hertz (frequency)",
+      "C": "Coulomb (charge)",
+      "F": "Farad (capacitance)",
+      "T": "Tesla (mag field)",
+      "deg": "degree (°)",
+      "rad": "radian (rad)",
+      "K": "Kelvin (temp)",
+      "eV": "electron-volt (eV)"
     }
   }
 }

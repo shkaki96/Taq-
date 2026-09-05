@@ -1,0 +1,57 @@
+const fs = require('fs');
+const path = require('path');
+
+const localesDir = path.join(__dirname, 'public', 'locales');
+const langs = ['en', 'ar', 'ku', 'kmr'];
+
+const content = {
+  en: {
+    thin_lenses: "Thin lenses refract light to form images, governed by the lens equation (1/f = 1/do + 1/di). This fundamental principle of optics describes how the focal length determines the image's position and magnification. It is extensively applied in designing cameras, corrective eyeglasses, and microscopes to achieve precise optical focus and clarity.",
+    polarization: "Light polarization filters unpolarized light waves so they oscillate in a single plane. Malus's Law calculates the intensity of this polarized light after it passes through a second polarizer rotated at a specific angle. This phenomenon is crucial for modern technology, being the core working principle behind LCD screens, polarized sunglasses that reduce glare, and optical stress analysis.",
+    diffusion: "Molecular diffusion is the random thermal movement of particles from regions of high concentration to low concentration. Fick's First Law models this process, stating that the diffusion flux is directly proportional to the concentration gradient. This is a fundamental transport mechanism in biology and chemistry, explaining how oxygen crosses cell membranes in the lungs and how pollutants disperse in rivers.",
+    blackbody_spectrum: "A blackbody is an idealized physical body that perfectly absorbs and emits all frequencies of electromagnetic radiation. Planck's Law describes the spectral density of this emission across different wavelengths, while Wien's Displacement Law shows that the peak emission wavelength shifts toward shorter (bluer) wavelengths as temperature increases. These laws gave birth to quantum mechanics and are heavily used in astronomy to determine the surface temperature of distant stars and in thermal imaging cameras.",
+    calorimetry_equilibrium: "Calorimetry is the science of measuring heat transfer associated with changes in a body's state. Based on the conservation of energy, the law of thermal equilibrium states that when two objects at different temperatures are mixed in an isolated system, the heat lost by the hotter object exactly equals the heat gained by the colder one until they reach the same final temperature. This principle is vital in material science to determine the specific heat capacity of new alloys and in designing energy-efficient heating systems.",
+    angled_mirrors: "When two plane mirrors are placed at an angle to each other, a single object can produce multiple virtual images due to repeated reflections between the mirrored surfaces. As the angle between the mirrors decreases, the number of intersecting reflections increases according to the formula: (360/angle) - 1. This optical property of multiple reflections is playfully utilized in kaleidoscopes to generate infinite symmetrical patterns, and is technically applied in laser cavities and optical resonators."
+  },
+  ar: {
+    thin_lenses: "تقوم العدسات الرقيقة بكسر الضوء لتكوين الصور، وتخضع لمعادلة العدسة (1/f = 1/do + 1/di). يصف هذا المبدأ البصري الأساسي كيف يحدد البعد البؤري موقع الصورة وتكبيرها. يُطبق هذا المبدأ بشكل واسع في تصميم الكاميرات، والنظارات الطبية، والمجاهر الدقيقة لتحقيق تركيز بصري دقيق وواضح.",
+    polarization: "تعمل استقطاب الضوء على فلترة موجات الضوء غير المستقطبة لتتذبذب في مستوى واحد فقط. يحسب قانون مالوس شدة هذا الضوء المستقطب بعد مروره عبر مستقطب ثانٍ يميل بزاوية محددة. تُعد هذه الظاهرة حاسمة في التكنولوجيا الحديثة، فهي المبدأ الأساسي لعمل شاشات LCD، والنظارات الشمسية المستقطبة التي تقلل الوهج، وتحليل الإجهاد البصري للمواد.",
+    diffusion: "الانتشار الجزيئي هو الحركة الحرارية العشوائية للجسيمات من مناطق التركيز العالي إلى التركيز المنخفض. يصف قانون فيك الأول هذه العملية، موضحاً أن تدفق الانتشار يتناسب طردياً مع تدرج التركيز. تُعد هذه الآلية أساسية للنقل في علم الأحياء والكيمياء، حيث تفسر كيفية انتقال الأكسجين عبر أغشية الخلايا في الرئتين، وكيفية انتشار الملوثات في الأنهار.",
+    blackbody_spectrum: "الجسم الأسود هو جسم فيزيائي مثالي يمتص ويبعث كافة ترددات الإشعاع الكهرومغناطيسي بفعالية تامة. يصف قانون بلانك الكثافة الطيفية لهذا الانبعاث عبر الأطوال الموجية المختلفة، بينما يوضح قانون إزاحة وين أن طول الموجة ذروة الانبعاث ينزاح نحو الأطوال الموجية الأقصر (الأكثر زرقة) مع زيادة درجة الحرارة. شكلت هذه القوانين ميلاد ميكانيكا الكم، وتُستخدم بكثافة في علم الفلك لتحديد درجة حرارة سطح النجوم البعيدة وفي كاميرات التصوير الحراري.",
+    calorimetry_equilibrium: "قياس الكالوريمتري (المسعرية) هو علم قياس انتقال الحرارة المرتبط بتغيرات حالة الجسم. بناءً على قانون حفظ الطاقة، ينص مبدأ التوازن الحراري على أنه عند خلط جسمين بدرجتي حرارة مختلفتين في نظام معزول، فإن الحرارة المفقودة من الجسم الأسخن تساوي تماماً الحرارة المكتسبة للجسم الأبرد حتى يصلا إلى نفس درجة الحرارة النهائية. هذا المبدأ ضروري في علم المواد لتحديد السعة الحرارية النوعية للسبائك الجديدة، وفي تصميم أنظمة التدفئة الموفرة للطاقة.",
+    angled_mirrors: "عندما تُوضع مرآتان مستويتان بزاوية متقاطعة، يمكن لجسم واحد أن يُنتج عدة صور تقديرية بسبب الانعكاسات المتكررة بين الأسطح العاكسة. مع تناقص الزاوية بين المرآتين، يزداد عدد الانعكاسات المتقاطعة وفقاً للصيغة: (360/الزاوية) - 1. تُستخدم هذه الخاصية البصرية للانعكاس المتعدد بشكل إبداعي في ألعاب المشكال (الكاليدوسكوب) لتوليد أنماط متناظرة لا نهائية، وتُطبق تقنياً في تجاويف الليزر والرنانات البصرية."
+  },
+  ku: {
+    thin_lenses: "هاوێنە تەنکەکان ڕووناکی دەشکێننەوە بۆ دروستکردنی وێنە، کە بەپێی هاوکێشەی هاوێنە (1/f = 1/do + 1/di) کار دەکەن. ئەم بنەما سەرەکییەی بیناییەکان ڕوونی دەکاتەوە کە چۆن دووری تیشکۆ شوێن و گەورەکردنی وێنەکە دیاری دەکات. ئەمە زۆر بەکاردێت لە دروستکردنی کامێرا، چاویلکەی پزیشکی، و مایکرۆسکۆپەکان بۆ بەدەستهێنانی وێنەی ڕوون.",
+    polarization: "جەمسەرگری ڕووناکی شەپۆلەکانی ڕووناکی نا جەمسەرگیر پاڵاوتە دەکات بۆ ئەوەی تەنها لە یەک ڕووتەختدا ببنە لەرینەوە. یاسای مالۆس توندای ئەم ڕووناکییە جەمسەرگیراوە دەپێوێت دوای تێپەڕبوونی بەناو جەمسەرگرێکی تردا کە بە گۆشەیەکی دیاریکراو سووڕاوەتەوە. ئەم دیاردەیە لە تەکنەلۆژیای سەردەمدا زۆر گرنگە و بنەمای کارکردنی شاشەی LCD، و چاویلکەی خۆری جەمسەرگیراوە کە بریقە کەمدەکاتەوە.",
+    diffusion: "بڵاوبوونەوەی گەردیلەیی بریتییە لە جووڵەی گەرمی هەڕەمەکی تەنۆلکەکان لە ناوچەی خەستی بەرزەوە بۆ خەستی نزم. یاسای یەکەمی فیک ئەم پرۆسەیە ڕووندەکاتەوە و دەڵێت کە لێشاوی بڵاوبوونەوە هاوڕێژەیە لەگەڵ لێژی خەستی. ئەمە میکانیزمێکی بنەڕەتییە لە زیندەوەرزانی و کیمیادا، کە ڕوونی دەکاتەوە چۆن ئۆکسجین بە پەردەی خانەکانی سییەکاندا تێپەڕ دەبێت، یان چۆن پیسکەرەکان لە ڕووبارەکاندا بڵاو دەبنەوە.",
+    blackbody_spectrum: "تەنی ڕەش تەنێکی فیزیکی نموونەییە کە هەموو لەرەلەرەکانی تیشکدانی کارۆموگناتیسی هەڵدەمژێت و دەیداتەوە. یاسای پلانک چڕی شەبەنگی ئەم تیشکدانە بە درێژییە شەپۆلە جیاوازەکان وەسف دەکات، لە کاتێکدا یاسای لابردنی وین دەری دەخات کە تیشکدانە لوتکەییەکە بەرەو درێژی شەپۆلی کورتتر دەچێت (شینتر دەبێت) لەگەڵ بەرزبوونەوەی پلەی گەرمی. ئەم یاسایانە بوونە هۆی سەرهەڵدانی میکانیکی کوانتەم و زۆر بەکاردێن لە گەردوونناسیدا بۆ زانینی پلەی گەرمی ئەستێرە دوورەکان و لە کامێرای وێنەگری گەرمیدا.",
+    calorimetry_equilibrium: "گەرمیپێوان (Calorimetry) زانستی پێوانی گواستنەوەی گەرمییە کە پەیوەندی بە گۆڕانکارییەکانی باری تەنێکەوە هەیە. بە پشتبەستن بە پاراستنی وزە، یاسای هاوسەنگی گەرمی دەڵێت کاتێک دوو تەن بە پلەی گەرمی جیاواز لە سیستەمێکی داخراودا تێکەڵ دەکرێن، ئەو گەرمییەی تەنی گەرمترەکە لەدەستی دەدات بەتەواوی یەکسانە بەو گەرمییەی تەنە ساردەکە وەریدەگرێت تا دەگەنە هەمان پلەی گەرمی کۆتایی. ئەم بنەمایە زۆر پێویستە لە زانستی ماددەکاندا بۆ دۆزینەوەی گەرمی گونجاوی داڕشتە نوێیەکان و دیزاینکردنی سیستەمی گەرمکەرەوە.",
+    angled_mirrors: "کاتێک دوو ئاوێنەی ڕووتەخت بە گۆشەیەک بەرامبەر یەکتر دادەنرێن، تەنێک دەتوانێت چەندین وێنەی خەیاڵی دروست بکات بەهۆی دانەوەی دووبارە لە نێوان ڕووە ئاوێنەییەکاندا. کاتێک گۆشەی نێوان ئاوێنەکان بچووک دەبێتەوە، ژمارەی وێنە دروستبووەکان زیاد دەکات بەپێی هاوکێشەی: (360/گۆشە) - 1. ئەم تایبەتمەندییە بیناییەی دانەوەی فرەجۆر لە ئامێری کالییدۆسکۆپدا بۆ دروستکردنی نەخشی ئەندازەیی جوان بەکاردێت، هەروەها لە لێزەر و ئامێرە بیناییەکاندا سوودی لێ دەبینرێت."
+  },
+  kmr: {
+    thin_lenses: "Nîskên tenik (Thin lenses) ronahiyê dişikînin da ku dîmenan çêbikin, û li gorî hevkêşeya nîskê (1/f = 1/do + 1/di) kar dikin. Ev prensîba optîkî ya bingehîn diyar dike ku çawa dûrahiya nîskokê cih û mezinkirina dîmenê nîşan dide. Ev prensîb di dîzaynkirina kamerayan, berçavkên dîtinê û mîkroskopan de tê bikaranîn daku wêne û dîmenên zelal werin dîtin.",
+    polarization: "Cemsergiriya ronahiyê (Polarization), pêlên ronahiyê yên ne-cemsergir fîltre dike da ku tenê di yek astê de bilivin. Zagona Malûs tundiya vê ronahiya cemsergir hesab dike piştî ku ew di cemsergirekî duyem de bi goşeyeke diyarkirî re derbas dibe. Ev diyarde di teknolojiya nûjen de gelek girîng e; ew bingeha karkirina dîmenderên LCD û berçavkên rojê yên cemsergir e ku şewqa rojê kêm dikin.",
+    diffusion: "Belavbûna molekulî tevgera germî ya korane ya keriyan e ji cihên ku tîrbûna (xestiya) wan zêde ye ber bi cihên ku tîrbûna wan kêm e. Zagona yekem a Fîk (Fick) vê pêvajoyê rave dike û dibêje ku herikîna belavbûnê rasterast bi cudahiya tîrbûnê re rasthevnas e. Ev mekanîzmayeke bingehîn e di biyolojî û kîmyayê de, ku nîşan dide çawa oksîjen ji perdeyên xaneyan di pişikan de derbas dibe û çawa pîsî di rûbaran de belav dibe.",
+    blackbody_spectrum: "Gewdeyê reş (Blackbody) gewdeyekî fîzîkî yê nimûneyî ye ku hemû frekansên tîrêjdana elektromagnetîk bi temamî dikişîne û derdixe. Zagona Planck tîrbûna şebengî ya vê tîrêjdanê di nav pêlên cihêreng de vedibêje, di heman demê de Zagona Wien nîşan dide ku dirêjahiya pêla herî zêde bi zêdebûna germahiyê ber bi pêlên kurtir (şîntir) ve diçe. Ev zagonan bûn sedema peydabûna mêkanîka kuantûm û di stêrnasiyê de bi berfirehî tên bikaranîn daku germahiya rûyê stêrkên dûr û di kamerayên germî de werin pîvan.",
+    calorimetry_equilibrium: "Pîvana germiyê (Kalorîmetrî) zanistiya pîvana veguhastina germiyê ye ku bi guherînên rewşa gewdeyekê ve girêdayî ye. Li ser bingeha parastina wizeyê, zagona hevsengiya germiyê dibêje ku dema du tişt di germahiyên cihêreng de di sîstemeke îzolekirî de werin tevlîhevkirin, germahiya ku tiştê germtir winda dike bi temamî yeksan e bi germahiya ku tiştê sartir qezenc dike heta ku ew digihîjin heman germahiya dawî. Ev prensîb di zanistiya materyalan de pir girîng e daku kapasîteya germî ya taybet a materyalên nû were zanîn û pergalên germkirinê werin dîzaynkirin.",
+    angled_mirrors: "Dema ku du neynikên rast bi goşeyekê li hemberî hev tên danîn, gewdeyek dikare ji ber vajîbûnên dubare di navbera rûyên neynikan de çendîn dîmenên xeyalî çêbike. Her ku goşeya di navbera neynikan de kêm dibe, hejmara dîmenên ku çêdibin zêde dibe li gorî hevkêşeya: (360/goşe) - 1. Ev taybetmendiya optîkî ya pir-vajîbûnê (multiple reflections) di kaleidoskopan de ji bo çêkirina neqşên sîmetrîk tê bikaranîn, û bi teknîkî di kelên lazerê û rezonatorên optîkî de jî cih digire."
+  }
+};
+
+for (const lang of langs) {
+  const filePath = path.join(localesDir, lang, 'translation.json');
+  if (fs.existsSync(filePath)) {
+    const data = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    
+    if (!data.catalog) data.catalog = {};
+    
+    for (const [expKey, theoryText] of Object.entries(content[lang])) {
+      if (!data.catalog[expKey]) data.catalog[expKey] = {};
+      data.catalog[expKey].theoryBackground = theoryText;
+    }
+    
+    fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
+    console.log(`Updated ${lang}/translation.json`);
+  }
+}

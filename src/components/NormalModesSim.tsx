@@ -26,15 +26,15 @@ export default function NormalModesSim({ lang, onLogMeasurement }: Props) {
   const wavelength = (2 * length) / harmonicMode;
 
   useEffect(() => {
+    if (!isPlaying) return;
+
     let animationId: number;
     let lastTime = performance.now();
 
     const loop = (t: number) => {
       const dt = (t - lastTime) / 1000;
       lastTime = t;
-      if (isPlaying) {
-        setTime((prev) => prev + dt * frequency * 2 * Math.PI);
-      }
+      setTime((prev) => prev + dt * frequency * 2 * Math.PI);
       animationId = requestAnimationFrame(loop);
     };
 

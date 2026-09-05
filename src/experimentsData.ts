@@ -210,13 +210,13 @@ export const experimentsList: ExperimentMeta[] = [
     id: 31,
     expKey: 'magnetic_field',
     category: 'em_atomic',
-    physical_law: 'F = q · v · B · sin(θ),  r = (m·v) / (q·B)',
+    physical_law: 'F = I · L · B · sin(θ),  B = μ₀ · n · I',
   },
   {
     id: 32,
     expKey: 'atomic_spectra',
     category: 'em_atomic',
-    physical_law: 'ΔE = E_final - E_initial = (h · c) / λ',
+    physical_law: 'ΔE = h · f = (h · c) / λ,  E_n = -13.6 eV / n²',
   },
   {
     id: 33,
@@ -372,13 +372,13 @@ export const experimentsList: ExperimentMeta[] = [
     id: 58,
     expKey: 'gravity_force_lab',
     category: 'gravity_astrophysics',
-    physical_law: 'F = G · (m₁ · m₂) / r²  (قانون الجذب العام لنيوتن)',
+    physical_law: 'F = G · (m₁ · m₂) / r²',
   },
   {
     id: 59,
     expKey: 'solar_system',
     category: 'gravity_astrophysics',
-    physical_law: 'ميكانيكا الأجسام المتعددة: d²r_i/dt² = Σ G · m_j · (r_j - r_i) / |r_j - r_i|³',
+    physical_law: 'd²r_i/dt² = Σ G · m_j · (r_j - r_i) / |r_j - r_i|³',
   },
   {
     id: 60,
@@ -396,7 +396,7 @@ export const experimentsList: ExperimentMeta[] = [
     id: 62,
     expKey: 'forces_motion',
     category: 'mechanics',
-    physical_law: 'قانون نيوتن الثاني: F_net = Σ F = m · a',
+    physical_law: 'F_net = Σ F = m · a',
   },
   {
     id: 63,

@@ -1,5 +1,5 @@
 import { Radio, Pause, Play, RotateCcw, Activity } from 'lucide-react';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Language } from '../types';
 
 import { useTranslation } from 'react-i18next';
@@ -17,6 +17,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
   const [soundSpeed, setSoundSpeed] = useState<number>(343); // m/s (standard air at 20°C)
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [sourceX, setSourceX] = useState<number>(20); // % position
+  const sourceXRef = useRef<number>(20);
   const [observerX] = useState<number>(80); // % position
   const [wavefronts, setWavefronts] = useState<{ id: number; x: number; y: number; r: number; opacity: number }[]>([]);
 
@@ -36,43 +37,47 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
   const wavelengthBack = (soundSpeed + sourceSpeed) / emittedFreq;
 
   useEffect(() => {
+    if (!isPlaying) return;
+
     let animationId: number;
     let lastTime = performance.now();
-    let waveCounter = 0;
     let emitTimer = 0;
 
     const loop = (t: number) => {
       const dt = Math.min((t - lastTime) / 1000, 0.1);
       lastTime = t;
 
-      if (isPlaying) {
-        // Move source
-        setSourceX((prev) => {
-          const moveDelta = (sourceSpeed / 343) * 30 * dt;
-          let nextX = prev + moveDelta;
-          if (nextX > 95) nextX = 5;
-          return nextX;
-        });
+      // Move source
+      const moveDelta = (sourceSpeed / 343) * 30 * dt;
+      let nextX = sourceXRef.current + moveDelta;
+      if (nextX > 95) nextX = 5;
+      sourceXRef.current = nextX;
+      setSourceX(nextX);
 
-        // Emit wavefronts at intervals proportional to frequency
-        emitTimer += dt;
-        const emitInterval = Math.max(0.08, 120 / emittedFreq);
+      // Emit wavefronts at intervals proportional to frequency
+      emitTimer += dt;
+      const emitInterval = Math.max(0.08, 120 / emittedFreq);
 
-        if (emitTimer >= emitInterval) {
-          emitTimer = 0;
-          waveCounter++;
-          setWavefronts((prev) => [
-            ...prev.slice(-30),
-            {
-              id: waveCounter,
-              x: sourceX,
-              y: 50,
-              r: 2,
-              opacity: 1,
-            },
-          ]);
-        }
-
+      if (emitTimer >= emitInterval) {
+        emitTimer = 0;
+        setWavefronts((prev) => [
+          ...prev
+            .slice(-30)
+            .map((w) => ({
+              ...w,
+              r: w.r + (soundSpeed / 343) * 50 * dt,
+              opacity: Math.max(0, 1 - w.r / 75),
+            }))
+            .filter((w) => w.opacity > 0.02),
+          {
+            id: Date.now() + Math.random(),
+            x: nextX,
+            y: 50,
+            r: 2,
+            opacity: 1,
+          },
+        ]);
+      } else {
         // Expand existing wavefronts at speed of sound
         setWavefronts((prev) =>
           prev
@@ -90,9 +95,10 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
 
     animationId = requestAnimationFrame(loop);
     return () => cancelAnimationFrame(animationId);
-  }, [isPlaying, sourceSpeed, soundSpeed, emittedFreq, sourceX]);
+  }, [isPlaying, sourceSpeed, soundSpeed, emittedFreq]);
 
   const handleReset = () => {
+    sourceXRef.current = 15;
     setSourceX(15);
     setWavefronts([]);
   };
@@ -332,7 +338,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
           <div className="text-lg font-mono font-bold text-sky-400">
             {wavelengthFront.toFixed(3)} m
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">λ = (v - vₛ) / f (انضغاط أمامي)</div>
+          <div className="text-[10px] text-slate-500 font-mono">λ = (v - vₛ) / f {tI18n('experiments.doppler_effect.frontCompression')}</div>
         </div>
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
@@ -342,7 +348,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
           <div className="text-lg font-mono font-bold text-indigo-400">
             {wavelengthBack.toFixed(3)} m
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">λ = (v + vₛ) / f (تخلخل خلفي)</div>
+          <div className="text-[10px] text-slate-500 font-mono">λ = (v + vₛ) / f {tI18n('experiments.doppler_effect.rearRarefaction')}</div>
         </div>
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
@@ -352,7 +358,7 @@ export default function DopplerEffectSim({ lang, onLogMeasurement }: Props) {
           <div className="text-lg font-mono font-bold text-amber-400">
             {wavelengthRest.toFixed(3)} m
           </div>
-          <div className="text-[10px] text-slate-500 font-mono">λ₀ = v / f (المصدر ساكن)</div>
+          <div className="text-[10px] text-slate-500 font-mono">λ₀ = v / f {tI18n('experiments.doppler_effect.sourceStationary')}</div>
         </div>
 
         <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">

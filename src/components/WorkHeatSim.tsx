@@ -41,17 +41,34 @@ export default function WorkHeatSim({ lang, onLogMeasurement }: Props) {
   const paddleAngleRef = useRef<number>(0);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawApparatus(ctx, canvas.width, canvas.height);
+      }
+    }
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning) {
-        paddleAngleRef.current += dt * (appliedForceN > 0 ? 3.5 : 0.5);
-      }
+      paddleAngleRef.current += dt * (appliedForceN > 0 ? 3.5 : 0.5);
 
-      const canvas = canvasRef.current;
+      setSimProgress((prev) => {
+        const next = prev + dt * 0.2; // complete in 5 seconds
+        if (next >= 1.0) {
+          setIsRunning(false);
+          return 1.0;
+        }
+        return next;
+      });
+
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -67,7 +84,7 @@ export default function WorkHeatSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isRunning, waterMassKg, appliedForceN, displacementM, burnerHeatJ, currentTempC, simProgress]);
+  }, [isRunning, waterMassKg, appliedForceN, displacementM, burnerHeatJ, lang]); // Removed simProgress & currentTempC from deps
 
   const drawApparatus = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
     ctx.clearRect(0, 0, width, height);
@@ -293,7 +310,10 @@ export default function WorkHeatSim({ lang, onLogMeasurement }: Props) {
 
         <div className="flex items-center gap-2">
           <button
-            onClick={() => setIsRunning(!isRunning)}
+            onClick={() => {
+              if (!isRunning && simProgress >= 1.0) setSimProgress(0);
+              setIsRunning(!isRunning);
+            }}
             className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700"
           >
             {isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 text-emerald-400" />}
@@ -478,6 +498,8 @@ export default function WorkHeatSim({ lang, onLogMeasurement }: Props) {
                   setAppliedForceN(400);
                   setDisplacementM(10);
                   setBurnerHeatJ(0);
+                  setSimProgress(0);
+                  setIsRunning(true);
                 }}
                 className="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-[11px] font-mono border border-zinc-700/60"
               >
@@ -488,6 +510,8 @@ export default function WorkHeatSim({ lang, onLogMeasurement }: Props) {
                   setAppliedForceN(0);
                   setDisplacementM(0);
                   setBurnerHeatJ(5000);
+                  setSimProgress(0);
+                  setIsRunning(true);
                 }}
                 className="px-2.5 py-1 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-[11px] font-mono border border-zinc-700/60"
               >

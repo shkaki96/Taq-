@@ -1,4 +1,4 @@
-import { Sun, RotateCcw } from 'lucide-react';
+import { Sun, RotateCcw, Activity, BookmarkCheck } from 'lucide-react';
 import React, { useState } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -6,11 +6,13 @@ import { Language } from '../types';
 
 interface BlackbodySimProps {
   lang: Language;
+  onLogMeasurement?: (data: any) => void;
 }
 
-export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
+export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang, onLogMeasurement }) => {
   const { t: tI18n } = useTranslation();
   const [temperatureK, setTemperatureK] = useState<number>(5800); // 5800 K (Sun surface)
+  const [logged, setLogged] = useState<boolean>(false);
 
   // Wien's Displacement Law: lambda_max * T = 2.898 * 10^-3 m*K
   // In micrometers (um): lambda_max = 2898 / T
@@ -42,6 +44,29 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
     return `${acc} ${idx === 0 ? 'M' : 'L'} ${x} ${y}`;
   }, '');
 
+  const handleLog = () => {
+    if (onLogMeasurement) {
+      onLogMeasurement({
+        experiment: 'blackbody_spectrum',
+        variableName: 'Peak_Wavelength_LambdaMax',
+        measuredValue: parseFloat(lambdaMax_nm.toFixed(1)),
+        theoreticalValue: parseFloat((2898000 / temperatureK).toFixed(1)),
+        unit: 'nm',
+        parameters: {
+          Body_Temperature_T: `${temperatureK} K`,
+          Peak_Wavelength_λ_max: `${lambdaMax_nm.toFixed(1)} nm (${lambdaMax_um.toFixed(3)} μm)`,
+          Dominant_Spectral_Band: lambdaMax_nm < 380 ? 'Ultraviolet (UV)' : lambdaMax_nm <= 750 ? 'Visible Spectrum' : 'Infrared (IR)',
+          Total_Emitted_Intensity_I: `${intensity_MW_m2.toFixed(3)} MW/m²`,
+          Wien_Constant_b: '2.898 × 10⁻³ m·K',
+          Stefan_Boltzmann_Constant_σ: '5.670 × 10⁻⁸ W/(m²·K⁴)',
+        },
+        equation: 'λ_max = b / T | I_total = σ·T⁴ | u(λ,T) = (8πhc/λ⁵) / (e^(hc/λkT) - 1)',
+      });
+      setLogged(true);
+      setTimeout(() => setLogged(false), 2000);
+    }
+  };
+
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -55,11 +80,27 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
           </div>
         </div>
 
-        <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors flex items-center gap-1.5"
-        >
-          <RotateCcw  className="w-3.5 h-3.5"/>
-          {tI18n('experiments.blackbody_spectrum.reset')}
-        </button>
+        <div className="flex items-center gap-2">
+          <button
+            id="blackbody-log-btn"
+            onClick={handleLog}
+            className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              logged
+                ? 'bg-emerald-600 text-white'
+                : 'bg-amber-600 hover:bg-amber-500 text-slate-950 font-bold shadow-lg shadow-amber-900/20'
+            }`}
+          >
+            {logged ? <BookmarkCheck className="w-4 h-4" /> : <Activity className="w-4 h-4" />}
+            <span>{logged ? (tI18n('experiments.blackbody_spectrum.logged') || tI18n('common.logged') || 'تم التسجيل ✓') : (tI18n('experiments.blackbody_spectrum.log') || tI18n('common.logMeasurement') || 'تسجيل القياس')}</span>
+          </button>
+          <button
+            onClick={() => setTemperatureK(5800)}
+            className="min-h-[44px] min-w-[44px] px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-xs font-semibold rounded-lg border border-slate-700 text-slate-300 transition-colors flex items-center gap-1.5"
+          >
+            <RotateCcw  className="w-3.5 h-3.5"/>
+            {tI18n('experiments.blackbody_spectrum.reset')}
+          </button>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -158,27 +199,35 @@ export const BlackbodySim: React.FC<BlackbodySimProps> = ({ lang }) => {
 
             {/* Presets */}
             <div className="space-y-1.5 pt-2">
-              <span className="text-xs font-semibold text-slate-400 block">نماذج معيارية (Presets):</span>
+              <span className="text-xs font-semibold text-slate-400 block">{tI18n('experiments.blackbody_spectrum.presetsLabel')}</span>
               <div className="grid grid-cols-2 gap-2 text-xs">
-                <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
+                <button
+                  onClick={() => setTemperatureK(9940)}
+                  className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
                     temperatureK === 9940 ? 'bg-sky-500/20 border-sky-500 text-sky-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
                   ⭐ {tI18n('experiments.blackbody_spectrum.sirius')}
                 </button>
-                <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
+                <button
+                  onClick={() => setTemperatureK(5800)}
+                  className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
                     temperatureK === 5800 ? 'bg-amber-500/20 border-amber-500 text-amber-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
                   ☀️ {tI18n('experiments.blackbody_spectrum.sun')}
                 </button>
-                <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
+                <button
+                  onClick={() => setTemperatureK(3000)}
+                  className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
                     temperatureK === 3000 ? 'bg-orange-500/20 border-orange-500 text-orange-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >
                   💡 {tI18n('experiments.blackbody_spectrum.bulb')}
                 </button>
-                <button className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
+                <button
+                  onClick={() => setTemperatureK(300)}
+                  className={`min-h-[44px] min-w-[44px] p-2 rounded-lg border text-left transition-all ${
                     temperatureK === 300 ? 'bg-emerald-500/20 border-emerald-500 text-emerald-300 font-bold' : 'bg-slate-900 border-slate-800 text-slate-400'
                   }`}
                 >

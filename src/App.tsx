@@ -284,7 +284,11 @@ export default function App() {
   // Add new measurement record
   const handleLogMeasurement = (data: Omit<MeasurementRecord, 'id' | 'timestamp' | 'percentError'>) => {
     const theoretical = data.theoreticalValue === 0 ? 0.0001 : data.theoreticalValue;
-    const percentError = Math.abs((data.measuredValue - data.theoreticalValue) / theoretical) * 100;
+    let percentError = Math.abs((data.measuredValue - data.theoreticalValue) / theoretical) * 100;
+    
+    if (!Number.isFinite(percentError) || isNaN(percentError)) {
+      percentError = 0;
+    }
 
     const newRecord: MeasurementRecord = {
       ...data,
@@ -320,7 +324,7 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   const currentExpIndex = experimentsList.findIndex((e) => e.expKey === activeExperimentKey);
   const currentExp = (currentExpIndex !== -1 ? experimentsList[currentExpIndex] : experimentsList[0]) || experimentsList[0];
@@ -578,7 +582,7 @@ export default function App() {
 
                         {/* Physical Law */}
                         <div className="p-2 rounded-xl bg-slate-950/80 border border-slate-800/80 font-mono text-[11px] text-amber-300 font-medium truncate">
-                          {exp.physical_law}
+                          {t(`catalog.${exp.id}.lawDescription`, { defaultValue: '' })} {exp.physical_law}
                         </div>
 
                         {/* Action Launch Button */}
@@ -671,10 +675,21 @@ export default function App() {
 
                 {/* 1. Active Experiment Render - Simulation Canvas Area */}
                 <div className="transition-all duration-200">
-                  <ErrorBoundary>
+                  <ErrorBoundary key={activeExperimentKey} lang={lang}>
                     <Suspense fallback={
-                      <div className="flex items-center justify-center min-h-[400px] text-gray-400">
-                        {t('loading')}
+                      <div className="flex flex-col items-center justify-center min-h-[420px] p-8 rounded-2xl bg-slate-900/60 border border-slate-800/80 shadow-2xl backdrop-blur-sm text-center">
+                        <div className="relative flex items-center justify-center mb-4">
+                          <div className="w-12 h-12 rounded-full border-2 border-indigo-500/20 border-t-indigo-500 animate-spin" />
+                          <Sparkles className="w-5 h-5 text-indigo-400 absolute animate-pulse" />
+                        </div>
+                        <p className="text-slate-200 font-medium text-base mb-1">
+                          {t('loading') || (lang === 'ar' ? 'جاري تحميل المحاكاة...' : 'Loading simulation...')}
+                        </p>
+                        {currentExp && (
+                          <p className="text-xs text-slate-400 font-mono mt-0.5">
+                            #{currentExp.id} · {getExpTitle(currentExp, lang)}
+                          </p>
+                        )}
                       </div>
                     }>
                       {/* 36 Classic Experiments */}
@@ -708,7 +723,7 @@ export default function App() {
                       {activeExperimentKey === 'acoustic_resonance' && <AcousticResonanceSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {activeExperimentKey === 'sound_speed' && <SoundSpeedSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {activeExperimentKey === 'waves' && <WavesSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
-                      {activeExperimentKey === 'magnetic_field' && <MagneticFieldSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'magnetic_field' && <MagneticFieldSim lang={lang} onLogMeasurement={handleLogMeasurement} initialMode="solenoid" />}
                       {activeExperimentKey === 'atomic_spectra' && <AtomicSpectraSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {activeExperimentKey === 'circuits' && <CircuitSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {activeExperimentKey === 'buoyancy' && <BuoyancySim lang={lang} onLogMeasurement={handleLogMeasurement} />}
@@ -716,21 +731,22 @@ export default function App() {
                       {activeExperimentKey === 'optics' && <OpticsSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
 
                       {/* Extended & The 13 New Simulation Labs (53-65) */}
-                      {activeExperimentKey === 'build_atom' && <BuildAtomSim lang={lang} />}
-                      {activeExperimentKey === 'build_nucleus' && <BuildNucleusSim lang={lang} />}
-                      {activeExperimentKey === 'rutherford_scattering' && <RutherfordScatteringSim lang={lang} />}
-                      {activeExperimentKey === 'molecules_and_light' && <MoleculesLightSim lang={lang} />}
-                      {activeExperimentKey === 'color_vision' && <ColorVisionSim lang={lang} />}
-                      {activeExperimentKey === 'capacitor_lab' && <CapacitorSim lang={lang} />}
-                      {activeExperimentKey === 'charges_and_fields' && <ChargesFieldsSim lang={lang} />}
-                      {activeExperimentKey === 'resistance_in_wire' && <WireResistanceSim lang={lang} />}
-                      {activeExperimentKey === 'gravity_and_orbits' && <GravityOrbitsSim lang={lang} />}
-                      {activeExperimentKey === 'keplers_laws' && <KeplerLawsSim lang={lang} />}
-                      {activeExperimentKey === 'energy_skate_park' && <EnergySkateParkSim lang={lang} />}
-                      {activeExperimentKey === 'fourier_making_waves' && <FourierWavesSim lang={lang} />}
-                      {activeExperimentKey === 'wave_on_a_string' && <WaveOnStringSim lang={lang} />}
-                      {activeExperimentKey === 'states_of_matter' && <StatesOfMatterSim lang={lang} />}
-                      {activeExperimentKey === 'gas_diffusion' && <DiffusionSim lang={lang} />}
+                      {activeExperimentKey === 'build_atom' && <BuildAtomSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'build_nucleus' && <BuildNucleusSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'rutherford_scattering' && <RutherfordScatteringSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'molecules_and_light' && <MoleculesLightSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'color_vision' && <ColorVisionSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'capacitor_lab' && <CapacitorSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'charges_and_fields' && <ChargesFieldsSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'resistance_in_wire' && <WireResistanceSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'gravity_and_orbits' && <GravityOrbitsSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'keplers_laws' && <KeplerLawsSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'energy_skate_park' && <EnergySkateParkSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'fourier_making_waves' && <FourierWavesSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'wave_on_a_string' && <WaveOnStringSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'states_of_matter' && <StatesOfMatterSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'gas_diffusion' && <DiffusionSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'rotational_dynamics_torque' && <RotationalDynamicsSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
 
                       {/* ID 53: Models of Hydrogen Atom */}
                       {activeExperimentKey === 'models_h_atom' && <AtomicSpectraSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
@@ -739,13 +755,13 @@ export default function App() {
                       {/* ID 55: Generator */}
                       {activeExperimentKey === 'generator' && <ElectromagneticInductionSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {/* ID 56: Magnet and Compass */}
-                      {activeExperimentKey === 'magnet_compass' && <MagneticFieldSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
+                      {activeExperimentKey === 'magnet_compass' && <MagneticFieldSim lang={lang} onLogMeasurement={handleLogMeasurement} initialMode="magnet_compass" />}
                       {/* ID 57: Magnets and Electromagnets (Solenoid) */}
                       {activeExperimentKey === 'magnets_electromagnets' && <ElectromagnetSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {/* ID 58: Gravity Force Lab */}
                       {activeExperimentKey === 'gravity_force_lab' && <GravityForceSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {/* ID 59: Solar System */}
-                      {activeExperimentKey === 'solar_system' && <GravityOrbitsSim lang={lang} />}
+                      {activeExperimentKey === 'solar_system' && <GravityOrbitsSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {/* ID 60: Energy Forms and Changes */}
                       {activeExperimentKey === 'energy_forms' && <WorkHeatSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {/* ID 61: Normal Modes */}
@@ -755,9 +771,9 @@ export default function App() {
                       {/* ID 63: Gas Properties */}
                       {activeExperimentKey === 'gas_properties' && <ThermodynamicsSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {/* ID 64: Diffusion */}
-                      {activeExperimentKey === 'diffusion' && <DiffusionSim lang={lang} />}
+                      {activeExperimentKey === 'diffusion' && <DiffusionSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
                       {/* ID 65: Blackbody Spectrum */}
-                      {activeExperimentKey === 'blackbody_spectrum' && <BlackbodySim lang={lang} />}
+                      {activeExperimentKey === 'blackbody_spectrum' && <BlackbodySim lang={lang} onLogMeasurement={handleLogMeasurement} />}
 
                       {/* ID 66: Doppler Effect */}
                       {activeExperimentKey === 'doppler_effect' && <DopplerEffectSim lang={lang} onLogMeasurement={handleLogMeasurement} />}
@@ -792,7 +808,7 @@ export default function App() {
                             </span>
                           </h3>
                           <p className="text-[11px] text-slate-400">
-                            {currentExp.physical_law}
+                            {t(`catalog.${currentExp.id}.lawDescription`, { defaultValue: '' })} {currentExp.physical_law}
                           </p>
                         </div>
                       </div>
@@ -818,9 +834,24 @@ export default function App() {
                             </span>
                           </span>
                           <span className="text-xs sm:text-sm font-mono text-amber-300 font-bold tracking-wide">
-                            {currentExp.physical_law}
+                            {t(`catalog.${currentExp.id}.lawDescription`, { defaultValue: '' })} {currentExp.physical_law}
                           </span>
                         </div>
+
+                        {/* Theoretical Background Row */}
+                        {(i18n.exists(`catalog.${currentExp.expKey}.theoryBackground`) || i18n.exists(`experiments.${currentExp.expKey}.theoryBackground`)) && (
+                          <div className="p-3.5 rounded-xl bg-slate-950/80 border border-slate-800 space-y-1.5">
+                            <h4 className="text-xs font-bold text-indigo-400 flex items-center gap-1.5">
+                              <BookOpen className="w-3.5 h-3.5" />
+                              <span>{t('catalogUI.theoryTitle')}</span>
+                            </h4>
+                            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                              {i18n.exists(`catalog.${currentExp.expKey}.theoryBackground`)
+                                ? t(`catalog.${currentExp.expKey}.theoryBackground`)
+                                : t(`experiments.${currentExp.expKey}.theoryBackground`)}
+                            </p>
+                          </div>
+                        )}
 
                         {/* Inputs & Outputs Grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">

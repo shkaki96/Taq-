@@ -51,32 +51,40 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
   }, [hotTempC, coldTempC]);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawHeatRod(ctx, canvas.width, canvas.height);
+      }
+    }
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning) {
-        simTimeRef.current += dt;
-        // 1D Transient Heat Diffusion: dT/dt = alpha * d²T/dx²
-        const profile = tempProfileRef.current;
-        profile[0] = hotTempC;
+      simTimeRef.current += dt;
+      // 1D Transient Heat Diffusion: dT/dt = alpha * d²T/dx²
+      const profile = tempProfileRef.current;
+      profile[0] = hotTempC;
 
-        // Effective diffusivity scale
-        const alpha = Math.min(k * 0.00015, 0.08);
-        const newProfile = [...profile];
+      // Effective diffusivity scale
+      const alpha = Math.min(k * 0.00015, 0.08);
+      const newProfile = [...profile];
 
-        for (let i = 1; i < numNodes - 1; i++) {
-          const d2T = profile[i - 1] - 2 * profile[i] + profile[i + 1];
-          newProfile[i] += alpha * d2T * dt * 60;
-        }
-        // Right boundary heat loss / ambient
-        newProfile[numNodes - 1] += alpha * (profile[numNodes - 2] - profile[numNodes - 1]) * dt * 60;
-        tempProfileRef.current = newProfile;
+      for (let i = 1; i < numNodes - 1; i++) {
+        const d2T = profile[i - 1] - 2 * profile[i] + profile[i + 1];
+        newProfile[i] += alpha * d2T * dt * 60;
       }
+      // Right boundary heat loss / ambient
+      newProfile[numNodes - 1] += alpha * (profile[numNodes - 2] - profile[numNodes - 1]) * dt * 60;
+      tempProfileRef.current = newProfile;
 
-      const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -92,7 +100,7 @@ export default function HeatConductionSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [material, hotTempC, coldTempC, rodLengthCm, rodAreaCm2, isRunning, k]);
+  }, [material, hotTempC, coldTempC, rodLengthCm, rodAreaCm2, isRunning, k, lang]);
 
   const drawHeatRod = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
     ctx.clearRect(0, 0, width, height);

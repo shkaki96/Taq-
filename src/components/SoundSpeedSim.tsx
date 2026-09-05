@@ -112,186 +112,198 @@ export default function SoundSpeedSim({ lang, onLogMeasurement }: Props) {
     setTimeout(() => setIsStriking(false), 2500);
   };
 
+  const drawApparatus = (ctx: CanvasRenderingContext2D, width: number, height: number, animTime: number) => {
+    ctx.clearRect(0, 0, width, height);
+
+    // Background Grid
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
+    ctx.lineWidth = 1;
+    for (let x = 0; x < width; x += 25) {
+      ctx.beginPath();
+      ctx.moveTo(x, 0);
+      ctx.lineTo(x, height);
+      ctx.stroke();
+    }
+
+    const tubeX = width * 0.38;
+    const tubeTopY = 70;
+    const tubeH = 260;
+    const tubeW = 46;
+
+    // Draw Tuning Fork at top of tube
+    const forkY = tubeTopY - 35;
+    const forkVibe = isStriking ? Math.sin(animTime * 30) * 3 : 0;
+
+    // Fork stem
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillRect(tubeX + tubeW / 2 - 4, forkY + 18, 8, 14);
+
+    // Fork prongs
+    ctx.strokeStyle = isStriking ? '#38bdf8' : '#cbd5e1';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    // Left prong
+    ctx.moveTo(tubeX + tubeW / 2 - 12 - forkVibe, forkY);
+    ctx.lineTo(tubeX + tubeW / 2 - 12 - forkVibe, forkY + 18);
+    ctx.lineTo(tubeX + tubeW / 2, forkY + 22);
+    ctx.lineTo(tubeX + tubeW / 2 + 12 + forkVibe, forkY + 18);
+    ctx.lineTo(tubeX + tubeW / 2 + 12 + forkVibe, forkY);
+    ctx.stroke();
+
+    // Sound Waves if vibrating
+    if (isStriking) {
+      ctx.strokeStyle = `rgba(56, 189, 248, ${0.4 + 0.4 * Math.sin(animTime * 10)})`;
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(tubeX + tubeW / 2, tubeTopY - 5, 14, 0, Math.PI);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.arc(tubeX + tubeW / 2, tubeTopY - 5, 24, 0, Math.PI);
+      ctx.stroke();
+    }
+
+    // Draw Vertical Glass Tube
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.5)';
+    ctx.fillRect(tubeX, tubeTopY, tubeW, tubeH);
+
+    // Water inside tube
+    const waterHeightPix = (waterLevel / totalTubeLength) * tubeH;
+    const waterTopY = tubeTopY + tubeH - waterHeightPix;
+
+    const waterGrad = ctx.createLinearGradient(0, waterTopY, 0, tubeTopY + tubeH);
+    waterGrad.addColorStop(0, 'rgba(14, 165, 233, 0.7)');
+    waterGrad.addColorStop(1, 'rgba(2, 132, 199, 0.9)');
+    ctx.fillStyle = waterGrad;
+    ctx.fillRect(tubeX, waterTopY, tubeW, waterHeightPix);
+
+    // Water meniscus line
+    ctx.strokeStyle = '#bae6fd';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(tubeX, waterTopY);
+    ctx.lineTo(tubeX + tubeW, waterTopY);
+    ctx.stroke();
+
+    // Air column standing wave inside tube
+    const airHeightPix = tubeH - waterHeightPix;
+    if (isStriking && isAtResonance) {
+      ctx.strokeStyle = '#38bdf8';
+      ctx.lineWidth = 2.5;
+      const wavePhase = Math.sin(animTime * 12);
+      const waveAmp = (tubeW / 2 - 4) * resonanceIntensity * wavePhase;
+
+      ctx.beginPath();
+      for (let y = 0; y <= airHeightPix; y += 2) {
+        // Node at water surface (y = airHeightPix), Antinode at open top (y = 0)
+        const k = Math.PI / (2 * airHeightPix);
+        const xOffset = waveAmp * Math.cos(k * y);
+        const drawX = tubeX + tubeW / 2 + xOffset;
+        const drawY = tubeTopY + y;
+        if (y === 0) ctx.moveTo(drawX, drawY);
+        else ctx.lineTo(drawX, drawY);
+      }
+      ctx.stroke();
+    }
+
+    // Glass Tube Outer Walls
+    ctx.strokeStyle = '#64748b';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.moveTo(tubeX, tubeTopY);
+    ctx.lineTo(tubeX, tubeTopY + tubeH);
+    ctx.lineTo(tubeX + tubeW, tubeTopY + tubeH);
+    ctx.lineTo(tubeX + tubeW, tubeTopY);
+    ctx.stroke();
+
+    // Calibrated Ruler along the side of the tube
+    const rulerX = tubeX - 35;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(rulerX, tubeTopY);
+    ctx.lineTo(rulerX, tubeTopY + tubeH);
+    ctx.stroke();
+
+    ctx.fillStyle = '#94a3b8';
+    ctx.font = '9px monospace';
+    ctx.textAlign = 'right';
+    for (let cm = 0; cm <= 100; cm += 10) {
+      const yPos = tubeTopY + (cm / 100) * tubeH;
+      ctx.beginPath();
+      ctx.moveTo(rulerX - 5, yPos);
+      ctx.lineTo(rulerX + 5, yPos);
+      ctx.stroke();
+      ctx.fillText(`${cm}cm`, rulerX - 8, yPos + 3);
+    }
+
+    // Air Column Length (L) Dimension Arrow
+    const arrowX = tubeX + tubeW + 25;
+    ctx.strokeStyle = '#38bdf8';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(arrowX, tubeTopY);
+    ctx.lineTo(arrowX, waterTopY);
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.moveTo(arrowX - 4, tubeTopY);
+    ctx.lineTo(arrowX + 4, tubeTopY);
+    ctx.moveTo(arrowX - 4, waterTopY);
+    ctx.lineTo(arrowX + 4, waterTopY);
+    ctx.stroke();
+
+    ctx.fillStyle = '#38bdf8';
+    ctx.font = 'bold 11px sans-serif';
+    ctx.textAlign = 'left';
+    ctx.fillText(`L = ${(airColumnLength * 100).toFixed(1)} cm`, arrowX + 8, (tubeTopY + waterTopY) / 2 + 4);
+
+    // Connected Water Reservoir Flask on right side
+    const resX = width * 0.76;
+    const resY = waterTopY - 20;
+    ctx.fillStyle = 'rgba(14, 165, 233, 0.7)';
+    ctx.fillRect(resX - 20, resY, 40, 70);
+    ctx.strokeStyle = '#bae6fd';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(resX - 20, resY, 40, 70);
+
+    // Connecting flexible rubber hose between tube bottom and reservoir
+    ctx.strokeStyle = '#334155';
+    ctx.lineWidth = 6;
+    ctx.beginPath();
+    ctx.moveTo(tubeX + tubeW / 2, tubeTopY + tubeH);
+    ctx.bezierCurveTo(tubeX + tubeW / 2, tubeTopY + tubeH + 40, resX, tubeTopY + tubeH + 40, resX, resY + 70);
+    ctx.stroke();
+
+    ctx.fillStyle = '#cbd5e1';
+    ctx.font = '10px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(tI18n('experiments.sound_speed.movableReservoir'), resX, resY - 8);
+  };
+
   // Canvas Drawing Loop
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawApparatus(ctx, canvas.width, canvas.height, 0);
+      }
+    }
+
+    if (!isStriking) return;
+
     let animTime = 0;
 
     const render = () => {
       animTime += 0.05;
-      const canvas = canvasRef.current;
-      if (!canvas) return;
-      const ctx = canvas.getContext('2d');
-      if (!ctx) return;
-      ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
-
-      const width = canvas.width;
-      const height = canvas.height;
-
-      ctx.clearRect(0, 0, width, height);
-
-      // Background Grid
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.03)';
-      ctx.lineWidth = 1;
-      for (let x = 0; x < width; x += 25) {
-        ctx.beginPath();
-        ctx.moveTo(x, 0);
-        ctx.lineTo(x, height);
-        ctx.stroke();
-      }
-
-      const tubeX = width * 0.38;
-      const tubeTopY = 70;
-      const tubeH = 260;
-      const tubeW = 46;
-
-      // Draw Tuning Fork at top of tube
-      const forkY = tubeTopY - 35;
-      const forkVibe = isStriking ? Math.sin(animTime * 30) * 3 : 0;
-
-      // Fork stem
-      ctx.fillStyle = '#94a3b8';
-      ctx.fillRect(tubeX + tubeW / 2 - 4, forkY + 18, 8, 14);
-
-      // Fork prongs
-      ctx.strokeStyle = isStriking ? '#38bdf8' : '#cbd5e1';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      // Left prong
-      ctx.moveTo(tubeX + tubeW / 2 - 12 - forkVibe, forkY);
-      ctx.lineTo(tubeX + tubeW / 2 - 12 - forkVibe, forkY + 18);
-      ctx.lineTo(tubeX + tubeW / 2, forkY + 22);
-      ctx.lineTo(tubeX + tubeW / 2 + 12 + forkVibe, forkY + 18);
-      ctx.lineTo(tubeX + tubeW / 2 + 12 + forkVibe, forkY);
-      ctx.stroke();
-
-      // Sound Waves if vibrating
-      if (isStriking) {
-        ctx.strokeStyle = `rgba(56, 189, 248, ${0.4 + 0.4 * Math.sin(animTime * 10)})`;
-        ctx.lineWidth = 2;
-        ctx.beginPath();
-        ctx.arc(tubeX + tubeW / 2, tubeTopY - 5, 14, 0, Math.PI);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.arc(tubeX + tubeW / 2, tubeTopY - 5, 24, 0, Math.PI);
-        ctx.stroke();
-      }
-
-      // Draw Vertical Glass Tube
-      ctx.fillStyle = 'rgba(15, 23, 42, 0.5)';
-      ctx.fillRect(tubeX, tubeTopY, tubeW, tubeH);
-
-      // Water inside tube
-      const waterHeightPix = (waterLevel / totalTubeLength) * tubeH;
-      const waterTopY = tubeTopY + tubeH - waterHeightPix;
-
-      const waterGrad = ctx.createLinearGradient(0, waterTopY, 0, tubeTopY + tubeH);
-      waterGrad.addColorStop(0, 'rgba(14, 165, 233, 0.7)');
-      waterGrad.addColorStop(1, 'rgba(2, 132, 199, 0.9)');
-      ctx.fillStyle = waterGrad;
-      ctx.fillRect(tubeX, waterTopY, tubeW, waterHeightPix);
-
-      // Water meniscus line
-      ctx.strokeStyle = '#bae6fd';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.moveTo(tubeX, waterTopY);
-      ctx.lineTo(tubeX + tubeW, waterTopY);
-      ctx.stroke();
-
-      // Air column standing wave inside tube
-      const airHeightPix = tubeH - waterHeightPix;
-      if (isStriking && isAtResonance) {
-        ctx.strokeStyle = '#38bdf8';
-        ctx.lineWidth = 2.5;
-        const wavePhase = Math.sin(animTime * 12);
-        const waveAmp = (tubeW / 2 - 4) * resonanceIntensity * wavePhase;
-
-        ctx.beginPath();
-        for (let y = 0; y <= airHeightPix; y += 2) {
-          // Node at water surface (y = airHeightPix), Antinode at open top (y = 0)
-          const k = Math.PI / (2 * airHeightPix);
-          const xOffset = waveAmp * Math.cos(k * y);
-          const drawX = tubeX + tubeW / 2 + xOffset;
-          const drawY = tubeTopY + y;
-          if (y === 0) ctx.moveTo(drawX, drawY);
-          else ctx.lineTo(drawX, drawY);
+      if (canvas) {
+        const ctx = canvas.getContext('2d');
+        if (ctx) {
+          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+          drawApparatus(ctx, canvas.width, canvas.height, animTime);
         }
-        ctx.stroke();
       }
-
-      // Glass Tube Outer Walls
-      ctx.strokeStyle = '#64748b';
-      ctx.lineWidth = 3;
-      ctx.beginPath();
-      ctx.moveTo(tubeX, tubeTopY);
-      ctx.lineTo(tubeX, tubeTopY + tubeH);
-      ctx.lineTo(tubeX + tubeW, tubeTopY + tubeH);
-      ctx.lineTo(tubeX + tubeW, tubeTopY);
-      ctx.stroke();
-
-      // Calibrated Ruler along the side of the tube
-      const rulerX = tubeX - 35;
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.3)';
-      ctx.lineWidth = 1.5;
-      ctx.beginPath();
-      ctx.moveTo(rulerX, tubeTopY);
-      ctx.lineTo(rulerX, tubeTopY + tubeH);
-      ctx.stroke();
-
-      ctx.fillStyle = '#94a3b8';
-      ctx.font = '9px monospace';
-      ctx.textAlign = 'right';
-      for (let cm = 0; cm <= 100; cm += 10) {
-        const yPos = tubeTopY + (cm / 100) * tubeH;
-        ctx.beginPath();
-        ctx.moveTo(rulerX - 5, yPos);
-        ctx.lineTo(rulerX + 5, yPos);
-        ctx.stroke();
-        ctx.fillText(`${cm}cm`, rulerX - 8, yPos + 3);
-      }
-
-      // Air Column Length (L) Dimension Arrow
-      const arrowX = tubeX + tubeW + 25;
-      ctx.strokeStyle = '#38bdf8';
-      ctx.lineWidth = 2;
-      ctx.beginPath();
-      ctx.moveTo(arrowX, tubeTopY);
-      ctx.lineTo(arrowX, waterTopY);
-      ctx.stroke();
-
-      ctx.beginPath();
-      ctx.moveTo(arrowX - 4, tubeTopY);
-      ctx.lineTo(arrowX + 4, tubeTopY);
-      ctx.moveTo(arrowX - 4, waterTopY);
-      ctx.lineTo(arrowX + 4, waterTopY);
-      ctx.stroke();
-
-      ctx.fillStyle = '#38bdf8';
-      ctx.font = 'bold 11px sans-serif';
-      ctx.textAlign = 'left';
-      ctx.fillText(`L = ${(airColumnLength * 100).toFixed(1)} cm`, arrowX + 8, (tubeTopY + waterTopY) / 2 + 4);
-
-      // Connected Water Reservoir Flask on right side
-      const resX = width * 0.76;
-      const resY = waterTopY - 20;
-      ctx.fillStyle = 'rgba(14, 165, 233, 0.7)';
-      ctx.fillRect(resX - 20, resY, 40, 70);
-      ctx.strokeStyle = '#bae6fd';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(resX - 20, resY, 40, 70);
-
-      // Connecting flexible rubber hose between tube bottom and reservoir
-      ctx.strokeStyle = '#334155';
-      ctx.lineWidth = 6;
-      ctx.beginPath();
-      ctx.moveTo(tubeX + tubeW / 2, tubeTopY + tubeH);
-      ctx.bezierCurveTo(tubeX + tubeW / 2, tubeTopY + tubeH + 40, resX, tubeTopY + tubeH + 40, resX, resY + 70);
-      ctx.stroke();
-
-      ctx.fillStyle = '#cbd5e1';
-      ctx.font = '10px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText(tI18n('experiments.sound_speed.movableReservoir'), resX, resY - 8);
 
       animFrameRef.current = requestAnimationFrame(render);
     };

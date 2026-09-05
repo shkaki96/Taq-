@@ -37,16 +37,16 @@ export default function ArcLengthSim({ lang, onLogMeasurement }: Props) {
 
   // Handle continuous rotation
   useEffect(() => {
+    if (!isRotating || angularVelocity === 0) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRotating && angularVelocity !== 0) {
-        const deltaDeg = (angularVelocity * 180 / Math.PI) * dt;
-        setAngleDeg((prev) => (prev + deltaDeg) % 720);
-      }
+      const deltaDeg = (angularVelocity * 180 / Math.PI) * dt;
+      setAngleDeg((prev) => (prev + deltaDeg) % 720);
 
       animFrameRef.current = requestAnimationFrame(loop);
     };
@@ -361,7 +361,9 @@ export default function ArcLengthSim({ lang, onLogMeasurement }: Props) {
             </div>
 
             <div className="flex items-center gap-2">
-              <button className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              <button 
+                onClick={() => setIsRotating(!isRotating)}
+                className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
                   isRotating
                     ? 'bg-amber-600 text-white shadow-lg shadow-amber-900/30'
                     : 'bg-zinc-800 text-zinc-200 hover:bg-zinc-700'
@@ -371,7 +373,14 @@ export default function ArcLengthSim({ lang, onLogMeasurement }: Props) {
                 <span>{isRotating ? tI18n('experiments.arc_length.pause') : tI18n('experiments.arc_length.rotate')}</span>
               </button>
 
-              <button className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700 transition-colors"
+              <button 
+                onClick={() => {
+                  setRadius(1.2);
+                  setAngleDeg(120);
+                  setAngularVelocity(0);
+                  setIsRotating(false);
+                }}
+                className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 text-zinc-400 hover:text-zinc-200 hover:bg-zinc-700 transition-colors"
                 title="Reset"
               >
                 <RotateCcw  className="w-4 h-4"/>
@@ -529,7 +538,10 @@ export default function ArcLengthSim({ lang, onLogMeasurement }: Props) {
           </div>
 
           {/* Log Measurement Button */}
-          <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 shadow-indigo-900/30' }`}>
+          <button 
+            onClick={handleLog}
+            className={`min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-sky-600 to-indigo-600 hover:from-sky-500 hover:to-indigo-500 shadow-indigo-900/30' }`}
+          >
             <BookmarkCheck  className="w-4 h-4"/>
             <span>{logged ? tI18n('experiments.arc_length.loggedMsg') : tI18n('experiments.arc_length.logBtn')}</span>
           </button>

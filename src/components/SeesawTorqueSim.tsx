@@ -222,15 +222,15 @@ export default function SeesawTorqueSim({ lang, onLogMeasurement }: Props) {
           <button
             onClick={handleBalancePreset}
             className="min-h-[44px] min-w-[44px] px-3 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 text-xs font-semibold flex items-center gap-1.5">
-            <ArrowRightLeft  className="w-3.5 h-3.5 text-emerald-400"/>
-            <span>{tI18n('experiments.seesaw_torque.autoBalance')}</span>
+            <ArrowRightLeft  className="w-3.5 h-3.5 text-emerald-400 shrink-0"/>
+            <span className="whitespace-nowrap">{tI18n('experiments.seesaw_torque.autoBalance')}</span>
           </button>
           <button
             onClick={handleLog}
             className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${ logged ? 'bg-emerald-600 text-white' : 'bg-amber-600 hover:bg-amber-500 text-white shadow-amber-600/30' }`}
           >
-            <BookmarkCheck  className="w-4 h-4"/>
-            <span>{logged ? tI18n('experiments.seesaw_torque.logged') : tI18n('experiments.seesaw_torque.log')}</span>
+            <BookmarkCheck  className="w-4 h-4 shrink-0"/>
+            <span className="whitespace-nowrap">{logged ? tI18n('experiments.seesaw_torque.logged') : tI18n('experiments.seesaw_torque.log')}</span>
           </button>
         </div>
       </div>
@@ -322,50 +322,50 @@ export default function SeesawTorqueSim({ lang, onLogMeasurement }: Props) {
               ref={canvasRef}
               width={680}
               height={360}
-             className="w-full h-[360px] rounded-xl bg-zinc-950 block shadow-inner"/>
+             className="w-full aspect-[17/9] rounded-xl bg-zinc-950 block shadow-inner object-contain"/>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {/* Left Torque */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.seesaw_torque.leftTorque')}
               </span>
-              <div className="text-xl font-bold font-mono text-rose-400">
-                {leftTorqueNm.toFixed(0)} <span className="text-sm text-zinc-400">N·m</span>
+              <div className="text-base sm:text-lg font-bold font-mono text-rose-400 whitespace-nowrap">
+                {leftTorqueNm.toFixed(0)} <span className="text-[10px] sm:text-xs text-zinc-400">N·m</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">τ₁ = m₁·g·r₁</span>
             </div>
 
             {/* Right Torque */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.seesaw_torque.rightTorque')}
               </span>
-              <div className="text-xl font-bold font-mono text-emerald-400">
-                {rightTorqueNm.toFixed(0)} <span className="text-sm text-zinc-400">N·m</span>
+              <div className="text-base sm:text-lg font-bold font-mono text-emerald-400 whitespace-nowrap">
+                {rightTorqueNm.toFixed(0)} <span className="text-[10px] sm:text-xs text-zinc-400">N·m</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">τ₂ = m₂·g·r₂</span>
             </div>
 
             {/* Equilibrium State */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.seesaw_torque.eqState')}
               </span>
-              <div className={`text-xs font-bold flex items-center gap-1 ${isBalanced ? 'text-emerald-400' : 'text-amber-400'}`}>
-                <CheckCircle2  className="w-4 h-4"/>
+              <div className={`text-xs font-bold flex items-center justify-center gap-1 whitespace-nowrap ${isBalanced ? 'text-emerald-400' : 'text-amber-400'}`}>
+                <CheckCircle2  className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0"/>
                 <span>{isBalanced ? tI18n('experiments.seesaw_torque.balanced') : tI18n('experiments.seesaw_torque.unbalanced')}</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">Δτ = {netTorqueNm.toFixed(1)} N·m</span>
             </div>
 
             {/* Tilt Angle */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.seesaw_torque.tiltAngle')}
               </span>
-              <div className="text-xl font-bold font-mono text-sky-400">
+              <div className="text-base sm:text-lg font-bold font-mono text-sky-400 whitespace-nowrap">
                 {tiltAngleDeg.toFixed(1)}°
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">Max ±15°</span>

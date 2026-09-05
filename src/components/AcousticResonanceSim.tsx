@@ -363,7 +363,9 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
             </div>
 
             <div className="flex items-center gap-2">
-              <button className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              <button 
+                onClick={() => setIsPlayingAudio(!isPlayingAudio)}
+                className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
                   isPlayingAudio
                     ? 'bg-teal-600 text-white shadow-lg shadow-teal-900/30'
                     : 'bg-zinc-800 text-zinc-200 hover:bg-zinc-700'
@@ -432,13 +434,17 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
 
           {/* Tube Type Selection */}
           <div className="grid grid-cols-2 gap-2 text-xs">
-            <button className={`min-h-[44px] min-w-[44px] p-2.5 rounded-xl font-semibold border ${
+            <button 
+              onClick={() => setTubeType('closed')}
+              className={`min-h-[44px] min-w-[44px] p-2.5 rounded-xl font-semibold border ${
                 tubeType === 'closed' ? 'bg-zinc-800 text-teal-400 border-teal-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
               {tI18n('experiments.acoustic_resonance.closedTube')}
             </button>
-            <button className={`min-h-[44px] min-w-[44px] p-2.5 rounded-xl font-semibold border ${
+            <button 
+              onClick={() => setTubeType('open')}
+              className={`min-h-[44px] min-w-[44px] p-2.5 rounded-xl font-semibold border ${
                 tubeType === 'open' ? 'bg-zinc-800 text-teal-400 border-teal-500/50' : 'bg-zinc-950 text-zinc-400 border-zinc-800'
               }`}
             >
@@ -451,7 +457,13 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
             <label className="text-sm text-zinc-400">{tI18n('experiments.acoustic_resonance.snapHarmonics')}</label>
             <div className="grid grid-cols-3 gap-1.5 text-xs">
               {resonantFrequencies.slice(0, 3).map((res) => (
-                <button className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-teal-400 font-mono text-center"
+                <button 
+                  key={res.n}
+                  onClick={() => {
+                    setHarmonicIndex(res.n);
+                    snapToResonance(res.f);
+                  }}
+                  className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-950 border border-zinc-800 text-zinc-300 hover:bg-zinc-800 hover:text-teal-400 font-mono text-center"
                 >
                   <div className="text-[10px] text-zinc-400">n={res.n}</div>
                   <div className="font-bold">{res.f.toFixed(0)} Hz</div>
@@ -512,7 +524,10 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
           </div>
 
           {/* Log Measurement Button */}
-          <button className={`min-h-[44px] min-w-[44px] min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 shadow-teal-900/30' }`}>
+          <button 
+            onClick={handleLog}
+            className={`min-h-[44px] min-w-[44px] w-full py-3 px-4 rounded-xl font-bold text-xs flex items-center justify-center gap-2 shadow-lg transition-all ${ logged ? 'bg-emerald-600 text-white shadow-emerald-900/40' : 'bg-gradient-to-r from-teal-600 to-emerald-600 hover:from-teal-500 hover:to-emerald-500 shadow-teal-900/30' }`}
+          >
             <BookmarkCheck  className="w-4 h-4"/>
             <span>
               {logged ? tI18n('experiments.acoustic_resonance.loggedSuccess') : tI18n('experiments.acoustic_resonance.logButton')}

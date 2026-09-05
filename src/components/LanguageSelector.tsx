@@ -77,13 +77,7 @@ export default function LanguageSelector({ currentLang, onSelectLang, className 
           className="absolute ltr:right-0 rtl:left-0 mt-1.5 w-44 rounded-xl bg-slate-950/95 border border-slate-800/90 shadow-2xl shadow-black/80 backdrop-blur-xl p-1.5 z-50 animate-fade-in space-y-1 focus:outline-none"
         >
           <div className="px-2 py-1 text-[10px] font-mono uppercase tracking-wider text-slate-400 border-b border-slate-800/80">
-            {currentLang === 'ar'
-              ? 'اختر اللغة'
-              : currentLang === 'ku'
-              ? 'زمانێک هەڵبژێرە'
-              : currentLang === 'kmr'
-              ? 'Zimanek Hilbijêre'
-              : 'Select Language'}
+            {tI18n('common.selectLanguage')}
           </div>
 
           {LANGUAGES.map((l) => {

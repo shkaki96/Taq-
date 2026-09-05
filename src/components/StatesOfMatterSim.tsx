@@ -1,4 +1,4 @@
-import { Flame } from 'lucide-react';
+import { Flame, Activity, BookmarkCheck } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -6,6 +6,7 @@ import { Language } from '../types';
 
 interface StatesOfMatterSimProps {
   lang: Language;
+  onLogMeasurement?: (data: any) => void;
 }
 
 interface Particle {
@@ -14,13 +15,16 @@ interface Particle {
   vx: number;
   vy: number;
   color: string;
+  origX?: number;
+  origY?: number;
 }
 
-export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) => {
+export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang, onLogMeasurement }) => {
   const { t: tI18n } = useTranslation();
   const [element, setElement] = useState<'neon' | 'argon' | 'water'>('neon');
   const [tempK, setTempK] = useState<number>(27); // default solid Neon (27K)
   const [particles, setParticles] = useState<Particle[]>([]);
+  const [logged, setLogged] = useState<boolean>(false);
 
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
 
@@ -46,9 +50,13 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
     const cols = 8;
     for (let r = 0; r < rows; r++) {
       for (let c = 0; c < cols; c++) {
+        const ox = 180 + c * 30;
+        const oy = 120 + r * 25;
         newParticles.push({
-          x: 180 + c * 30,
-          y: 120 + r * 25,
+          x: ox,
+          y: oy,
+          origX: ox,
+          origY: oy,
           vx: (Math.random() - 0.5) * 0.5,
           vy: (Math.random() - 0.5) * 0.5,
           color,
@@ -70,10 +78,14 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
           let nvx = p.vx + (Math.random() - 0.5) * speedScale * 0.2;
           let nvy = p.vy + (Math.random() - 0.5) * speedScale * 0.2;
 
-          // In solid, particles oscillate near bottom
+          // In solid, particles oscillate near equilibrium crystal lattice positions via moderate restoring force
           if (phase === 'solid') {
-            nvx *= 0.85;
-            nvy *= 0.85;
+            const ox = p.origX ?? p.x;
+            const oy = p.origY ?? p.y;
+            const fx = (ox - p.x) * 0.08;
+            const fy = (oy - p.y) * 0.08;
+            nvx = (p.vx + fx) * 0.88 + (Math.random() - 0.5) * speedScale * 0.12;
+            nvy = (p.vy + fy) * 0.88 + (Math.random() - 0.5) * speedScale * 0.12;
           }
 
           let nx = p.x + nvx;
@@ -155,6 +167,35 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
     else setTempK(450);
   };
 
+  const handleLog = () => {
+    if (onLogMeasurement) {
+      const kB = 1.380649e-23;
+      const avgEk_J = 1.5 * kB * tempK;
+      const avgEk_meV = avgEk_J / 1.602176634e-22;
+      const pAtm = parseFloat(pressureAtm);
+
+      onLogMeasurement({
+        experiment: 'states_of_matter',
+        variableName: 'Internal_Gas_Pressure_P',
+        measuredValue: pAtm,
+        theoreticalValue: pAtm,
+        unit: 'atm',
+        parameters: {
+          Substance: element.toUpperCase(),
+          Temperature_Kelvin: `${tempK} K`,
+          Temperature_Celsius: `${(tempK - 273.15).toFixed(1)} °C`,
+          Phase_State: phase.toUpperCase(),
+          Particle_Count_N: particles.length,
+          Calculated_Pressure: `${pAtm.toFixed(2)} atm`,
+          Average_Kinetic_Energy_Ek: `${avgEk_meV.toFixed(2)} meV (${avgEk_J.toExponential(3)} J)`,
+        },
+        equation: 'PV = N·k_B·T | ⟨E_k⟩ = (3/2)·k_B·T | v_rms = √(3k_B·T / m)',
+      });
+      setLogged(true);
+      setTimeout(() => setLogged(false), 2000);
+    }
+  };
+
   return (
     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 space-y-6 text-slate-100 shadow-xl">
       <div className="flex flex-wrap items-center justify-between gap-3 border-b border-slate-800 pb-4">
@@ -168,11 +209,23 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
           </div>
         </div>
 
-        {/* Phase buttons */}
-        <div className="flex items-center gap-1.5">
+        {/* Phase buttons & Log Button */}
+        <div className="flex flex-wrap items-center gap-1.5">
+          <button
+            id="states-of-matter-log-btn"
+            onClick={handleLog}
+            className={`min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              logged
+                ? 'bg-emerald-600 text-white'
+                : 'bg-rose-600 hover:bg-rose-500 text-white shadow-lg shadow-rose-900/20'
+            }`}
+          >
+            {logged ? <BookmarkCheck className="w-4 h-4" /> : <Activity className="w-4 h-4" />}
+            <span>{logged ? (tI18n('experiments.states_of_matter.logged') || tI18n('common.logged') || 'تم التسجيل ✓') : (tI18n('experiments.states_of_matter.log') || tI18n('common.logMeasurement') || 'تسجيل القياس')}</span>
+          </button>
           <button
             onClick={setSolidPreset}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors min-h-[44px] min-w-[44px] ${
               phase === 'solid' ? 'bg-sky-500/20 border-sky-500 text-sky-300' : 'bg-slate-800 border-slate-700 text-slate-400'
             }`}
           >
@@ -180,7 +233,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
           </button>
           <button
             onClick={setLiquidPreset}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors min-h-[44px] min-w-[44px] ${
               phase === 'liquid' ? 'bg-blue-500/20 border-blue-500 text-blue-300' : 'bg-slate-800 border-slate-700 text-slate-400'
             }`}
           >
@@ -188,7 +241,7 @@ export const StatesOfMatterSim: React.FC<StatesOfMatterSimProps> = ({ lang }) =>
           </button>
           <button
             onClick={setGasPreset}
-            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors ${
+            className={`px-3 py-1.5 rounded-lg text-xs font-bold border transition-colors min-h-[44px] min-w-[44px] ${
               phase === 'gas' ? 'bg-amber-500/20 border-amber-500 text-amber-300' : 'bg-slate-800 border-slate-700 text-slate-400'
             }`}
           >

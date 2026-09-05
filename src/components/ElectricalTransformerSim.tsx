@@ -40,15 +40,15 @@ export default function ElectricalTransformerSim({ lang, onLogMeasurement }: Pro
   const isOneToOne = secondaryTurns === primaryTurns;
 
   useEffect(() => {
+    if (!isPlaying) return;
+
     let animationId: number;
     let lastTime = performance.now();
 
     const loop = (t: number) => {
       const dt = Math.min((t - lastTime) / 1000, 0.1);
       lastTime = t;
-      if (isPlaying) {
-        setAcPhase((prev) => (prev + dt * frequency * 2 * Math.PI) % (2 * Math.PI));
-      }
+      setAcPhase((prev) => (prev + dt * frequency * 2 * Math.PI) % (2 * Math.PI));
       animationId = requestAnimationFrame(loop);
     };
 

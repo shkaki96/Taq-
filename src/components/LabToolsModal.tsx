@@ -222,11 +222,11 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
                 {converterType === 'speed' && (
                   <>
                     <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                      <span className="text-[11px] text-zinc-500 block">km/h (كيلومتر/ساعة)</span>
+                      <span className="text-[11px] text-zinc-500 block">{t('units.kmh')}</span>
                       <span className="text-base font-bold text-sky-400 font-mono">{kmh.toFixed(2)} km/h</span>
                     </div>
                     <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                      <span className="text-[11px] text-zinc-500 block">Miles per Hour (ميل/ساعة)</span>
+                      <span className="text-[11px] text-zinc-500 block">{t('units.mph')}</span>
                       <span className="text-base font-bold text-emerald-400 font-mono">{mph.toFixed(2)} mph</span>
                     </div>
                   </>
@@ -235,11 +235,11 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
                 {converterType === 'energy' && (
                   <>
                     <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                      <span className="text-[11px] text-zinc-500 block">Calories (سعرة حرارية)</span>
+                      <span className="text-[11px] text-zinc-500 block">{t('units.calories')}</span>
                       <span className="text-base font-bold text-sky-400 font-mono">{calories.toFixed(4)} cal</span>
                     </div>
                     <div className="p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                      <span className="text-[11px] text-zinc-500 block">Electron-volts (إلكترون فولت)</span>
+                      <span className="text-[11px] text-zinc-500 block">{t('units.ev')}</span>
                       <span className="text-base font-bold text-emerald-400 font-mono">{eV.toExponential(3)} eV</span>
                     </div>
                   </>
@@ -247,7 +247,7 @@ export default function LabToolsModal({ lang, isOpen, onClose }: Props) {
 
                 {converterType === 'angle' && (
                   <div className="col-span-2 p-3 rounded-xl bg-zinc-900/60 border border-zinc-800">
-                    <span className="text-[11px] text-zinc-500 block">Radians (راديان / ڕادیان)</span>
+                    <span className="text-[11px] text-zinc-500 block">{t('units.radians')}</span>
                     <span className="text-base font-bold text-sky-400 font-mono">
                       {radians.toFixed(4)} rad ({(radians / Math.PI).toFixed(3)} π)
                     </span>

@@ -52,17 +52,25 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
   const phaseRef = useRef<number>(0);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawPolarization(ctx, canvas.width, canvas.height);
+      }
+    }
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning) {
-        phaseRef.current += dt * 4.5;
-      }
+      phaseRef.current += dt * 4.5;
 
-      const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -78,7 +86,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isRunning, initialIntensity, polarizer1AngleDeg, analyzerAngleDeg, useMiddlePolarizer, middleAngleDeg, finalIntensity]);
+  }, [isRunning, initialIntensity, polarizer1AngleDeg, analyzerAngleDeg, useMiddlePolarizer, middleAngleDeg, finalIntensity, lang]);
 
   const drawPolarization = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
     ctx.clearRect(0, 0, width, height);

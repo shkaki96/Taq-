@@ -41,8 +41,8 @@ export default function LabNotebook({ lang, records, onDeleteRecord, onClearAll,
       r.measuredValue,
       r.theoreticalValue,
       `"${sanitizeCSVField(r.unit)}"`,
-      r.percentError.toFixed(2),
-      `"${sanitizeCSVField(Object.entries(r.parameters).map(([k, v]) => `${k}:${v}`).join('; '))}"`,
+      r.percentError != null ? r.percentError.toFixed(2) : 'NaN',
+      `"${sanitizeCSVField(Object.entries(r.parameters || {}).map(([k, v]) => `${k}:${v}`).join('; '))}"`,
       `"${sanitizeCSVField(r.timestamp)}"`,
       `"${sanitizeCSVField(r.notes || '')}"`,
     ]);
@@ -204,7 +204,7 @@ export default function LabNotebook({ lang, records, onDeleteRecord, onClearAll,
             </thead>
             <tbody className="divide-y divide-zinc-800/60">
               {filtered.map((record) => {
-                const error = record.percentError;
+                const error = record.percentError != null ? record.percentError : 999;
                 const errorColor =
                   error < 1.0
                     ? 'text-emerald-400 bg-emerald-500/10 border-emerald-500/30'
@@ -231,12 +231,12 @@ export default function LabNotebook({ lang, records, onDeleteRecord, onClearAll,
                     </td>
                     <td className="p-3.5">
                       <span className={`px-2 py-0.5 rounded-full text-[11px] font-mono font-medium border ${errorColor}`}>
-                        {record.percentError.toFixed(2)}%
+                        {record.percentError != null ? record.percentError.toFixed(2) : 'NaN'}%
                       </span>
                     </td>
                     <td className="p-3.5 text-[11px] text-zinc-400 font-mono">
                       <div className="flex flex-wrap gap-1 max-w-xs">
-                        {Object.entries(record.parameters).map(([k, v]) => (
+                        {Object.entries(record.parameters || {}).map(([k, v]) => (
                           <span key={k} className="px-1.5 py-0.5 rounded bg-zinc-900 text-zinc-300 border border-zinc-800">
                             {k}: {v}
                           </span>

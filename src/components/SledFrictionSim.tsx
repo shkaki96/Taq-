@@ -25,6 +25,7 @@ export default function SledFrictionSim({ lang, onLogMeasurement }: Props) {
   const [pushForceN, setPushForceN] = useState<number>(100); // N
   const [isRunning, setIsRunning] = useState<boolean>(true);
   const [logged, setLogged] = useState<boolean>(false);
+  const [resetKey, setResetKey] = useState<number>(0);
 
   // Dynamic physics states
   const sledPosRef = useRef<number>(50); // px
@@ -46,26 +47,34 @@ export default function SledFrictionSim({ lang, onLogMeasurement }: Props) {
   const animFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawFrictionRace(ctx, canvas.width, canvas.height);
+      }
+    }
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning) {
-        if (willMove) {
-          sledVelRef.current += acceleration * dt;
-          if (sledVelRef.current < 0) sledVelRef.current = 0;
-          sledPosRef.current += sledVelRef.current * dt * 45; // scale to pixels
+      if (willMove) {
+        sledVelRef.current += acceleration * dt;
+        if (sledVelRef.current < 0) sledVelRef.current = 0;
+        sledPosRef.current += sledVelRef.current * dt * 45; // scale to pixels
 
-          // Wrap around track
-          if (sledPosRef.current > 580) {
-            sledPosRef.current = 40;
-          }
+        // Wrap around track
+        if (sledPosRef.current > 580) {
+          sledPosRef.current = 40;
         }
       }
 
-      const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -81,7 +90,7 @@ export default function SledFrictionSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [surface, sledMassKg, pushForceN, isRunning, willMove, acceleration, maxStaticFrictionN, kineticFrictionN]);
+  }, [surface, sledMassKg, pushForceN, isRunning, willMove, acceleration, maxStaticFrictionN, kineticFrictionN, lang, resetKey]);
 
   const drawFrictionRace = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
     ctx.clearRect(0, 0, width, height);
@@ -217,6 +226,7 @@ export default function SledFrictionSim({ lang, onLogMeasurement }: Props) {
   const handleReset = () => {
     sledPosRef.current = 50;
     sledVelRef.current = 0;
+    setResetKey((k) => k + 1);
   };
 
   const handleLog = () => {
@@ -260,27 +270,27 @@ export default function SledFrictionSim({ lang, onLogMeasurement }: Props) {
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsRunning(!isRunning)}
-            className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700"
+            className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 flex items-center justify-center"
           >
             {isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4 text-emerald-400" />}
           </button>
           <button
             onClick={handleReset}
-            className="p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700"
+            className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-700 flex items-center justify-center"
             title={tI18n('experiments.sled_friction.resetPosition')}
           >
             <RotateCcw className="w-4 h-4" />
           </button>
           <button
             onClick={handleLog}
-            className={`px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${
+            className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${
               logged
                 ? 'bg-emerald-600 text-white'
                 : 'bg-indigo-600 hover:bg-indigo-500 text-white shadow-indigo-600/30'
             }`}
           >
-            <BookmarkCheck className="w-4 h-4" />
-            <span>{logged ? tI18n('experiments.sled_friction.logged') : tI18n('experiments.sled_friction.log')}</span>
+            <BookmarkCheck className="w-4 h-4 shrink-0" />
+            <span className="whitespace-nowrap">{logged ? tI18n('experiments.sled_friction.logged') : tI18n('experiments.sled_friction.log')}</span>
           </button>
         </div>
       </div>
@@ -306,13 +316,13 @@ export default function SledFrictionSim({ lang, onLogMeasurement }: Props) {
                 <button
                   key={st}
                   onClick={() => setSurface(st)}
-                  className={`px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all text-start ${
+                  className={`px-2.5 py-2 rounded-xl text-xs font-semibold border transition-all text-start flex flex-col items-start justify-center overflow-hidden ${
                     surface === st
                       ? 'bg-indigo-500/20 text-indigo-300 border-indigo-500/40 shadow-sm'
                       : 'bg-zinc-800 text-zinc-400 border-zinc-700 hover:text-zinc-200'
                   }`}
                 >
-                  <div>{tI18n(`experiments.sled_friction.surfaces.${st}`)}</div>
+                  <div className="truncate w-full">{tI18n(`experiments.sled_friction.surfaces.${st}`)}</div>
                   <div className="text-[10px] text-zinc-500 font-mono">μs={SURFACES[st].muS}, μk={SURFACES[st].muK}</div>
                 </button>
               ))}
@@ -361,51 +371,51 @@ export default function SledFrictionSim({ lang, onLogMeasurement }: Props) {
               ref={canvasRef}
               width={680}
               height={360}
-              className="w-full h-[360px] rounded-xl bg-zinc-950 block shadow-inner"
+              className="w-full aspect-[17/9] rounded-xl bg-zinc-950 block shadow-inner object-contain"
             />
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {/* Max Static Friction */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.sled_friction.staticLimit')}
               </span>
-              <div className="text-xl font-bold font-mono text-rose-400">
-                {maxStaticFrictionN.toFixed(1)} <span className="text-xs text-zinc-400">N</span>
+              <div className="text-base sm:text-lg font-bold font-mono text-rose-400 whitespace-nowrap">
+                {maxStaticFrictionN.toFixed(1)} <span className="text-[10px] sm:text-xs text-zinc-400">N</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">fs,max = μs · N</span>
             </div>
 
             {/* Kinetic Friction fk */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.sled_friction.kineticFriction')}
               </span>
-              <div className="text-xl font-bold font-mono text-amber-400">
-                {kineticFrictionN.toFixed(1)} <span className="text-xs text-zinc-400">N</span>
+              <div className="text-base sm:text-lg font-bold font-mono text-amber-400 whitespace-nowrap">
+                {kineticFrictionN.toFixed(1)} <span className="text-[10px] sm:text-xs text-zinc-400">N</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">fk = μk · N</span>
             </div>
 
             {/* Acceleration a */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.sled_friction.acceleration')}
               </span>
-              <div className={`text-xl font-bold font-mono ${willMove ? 'text-emerald-400' : 'text-zinc-500'}`}>
-                {acceleration.toFixed(2)} <span className="text-xs text-zinc-400">m/s²</span>
+              <div className={`text-base sm:text-lg font-bold font-mono whitespace-nowrap ${willMove ? 'text-emerald-400' : 'text-zinc-500'}`}>
+                {acceleration.toFixed(2)} <span className="text-[10px] sm:text-xs text-zinc-400">m/s²</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">a = (F - fk)/m</span>
             </div>
 
             {/* Normal Force N */}
-            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1">
-              <span className="text-[10px] text-zinc-400 uppercase font-semibold">
+            <div className="p-3.5 rounded-xl bg-zinc-900/90 border border-zinc-800 space-y-1 flex flex-col items-center justify-center text-center">
+              <span className="text-[9px] sm:text-[10px] text-zinc-400 uppercase font-semibold leading-tight">
                 {tI18n('experiments.sled_friction.normalForce')}
               </span>
-              <div className="text-xl font-bold font-mono text-sky-400">
-                {normalForceN.toFixed(1)} <span className="text-xs text-zinc-400">N</span>
+              <div className="text-base sm:text-lg font-bold font-mono text-sky-400 whitespace-nowrap">
+                {normalForceN.toFixed(1)} <span className="text-[10px] sm:text-xs text-zinc-400">N</span>
               </div>
               <span className="text-[9px] text-zinc-500 font-mono">N = m · g</span>
             </div>

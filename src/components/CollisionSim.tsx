@@ -75,59 +75,62 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
 
   // Main 60FPS physics animation loop
   useEffect(() => {
+    // Initial / static draw
+    drawCanvas();
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning) {
-        let p1 = pos1Ref.current;
-        let p2 = pos2Ref.current;
-        let v1 = v1Ref.current;
-        let v2 = v2Ref.current;
+      let p1 = pos1Ref.current;
+      let p2 = pos2Ref.current;
+      let v1 = v1Ref.current;
+      let v2 = v2Ref.current;
 
-        // Visual scale: 100 pixels = 1 meter
-        const pScale = 90;
-        p1 += v1 * pScale * dt;
-        p2 += v2 * pScale * dt;
+      // Visual scale: 100 pixels = 1 meter
+      const pScale = 90;
+      p1 += v1 * pScale * dt;
+      p2 += v2 * pScale * dt;
 
-        const cart1Width = Math.max(40, Math.min(80, 35 + mass1 * 15));
-        const cart2Width = Math.max(40, Math.min(80, 35 + mass2 * 15));
+      const cart1Width = Math.max(40, Math.min(80, 35 + mass1 * 15));
+      const cart2Width = Math.max(40, Math.min(80, 35 + mass2 * 15));
 
-        // Check Collision between cart 1 and cart 2
-        if (p1 + cart1Width / 2 >= p2 - cart2Width / 2 && v1 > v2) {
-          // Trigger Collision event
-          const newV1 = ((mass1 - restitution * mass2) * v1 + (1 + restitution) * mass2 * v2) / (mass1 + mass2);
-          const newV2 = ((mass2 - restitution * mass1) * v2 + (1 + restitution) * mass1 * v1) / (mass1 + mass2);
+      // Check Collision between cart 1 and cart 2
+      if (p1 + cart1Width / 2 >= p2 - cart2Width / 2 && v1 > v2) {
+        // Trigger Collision event
+        const newV1 = ((mass1 - restitution * mass2) * v1 + (1 + restitution) * mass2 * v2) / (mass1 + mass2);
+        const newV2 = ((mass2 - restitution * mass1) * v2 + (1 + restitution) * mass1 * v1) / (mass1 + mass2);
 
-          v1 = newV1;
-          v2 = newV2;
-          setHasCollided(true);
+        v1 = newV1;
+        v2 = newV2;
+        setHasCollided(true);
 
-          // Prevent overlap clipping
-          const overlap = p1 + cart1Width / 2 - (p2 - cart2Width / 2);
-          p1 -= overlap / 2;
-          p2 += overlap / 2;
-        }
-
-        // Bumper walls
-        if (p1 - cart1Width / 2 <= 60 && v1 < 0) {
-          v1 = -v1;
-          p1 = 60 + cart1Width / 2;
-        }
-        if (p2 + cart2Width / 2 >= 700 && v2 > 0) {
-          v2 = -v2;
-          p2 = 700 - cart2Width / 2;
-        }
-
-        pos1Ref.current = p1;
-        pos2Ref.current = p2;
-        v1Ref.current = v1;
-        v2Ref.current = v2;
-        setLiveV1(v1);
-        setLiveV2(v2);
+        // Prevent overlap clipping
+        const overlap = p1 + cart1Width / 2 - (p2 - cart2Width / 2);
+        p1 -= overlap / 2;
+        p2 += overlap / 2;
       }
+
+      // Bumper walls
+      if (p1 - cart1Width / 2 <= 60 && v1 < 0) {
+        v1 = -v1;
+        p1 = 60 + cart1Width / 2;
+      }
+      if (p2 + cart2Width / 2 >= 700 && v2 > 0) {
+        v2 = -v2;
+        p2 = 700 - cart2Width / 2;
+      }
+
+      pos1Ref.current = p1;
+      pos2Ref.current = p2;
+      v1Ref.current = v1;
+      v2Ref.current = v2;
+      setLiveV1(v1);
+      setLiveV2(v2);
 
       drawCanvas();
       animFrameRef.current = requestAnimationFrame(loop);
@@ -137,10 +140,10 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isRunning, mass1, mass2, restitution]);
+  }, [isRunning, mass1, mass2, restitution, lang]);
 
   // Draw Air Track & Gliders on Canvas
-  const drawCanvas = () => {
+  function drawCanvas() {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
@@ -241,8 +244,9 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
     ctx.fillText(`m₁=${mass1}kg`, p1, trackY - cart1H / 2 + 3);
 
     // Cart 1 Velocity Vector Arrow
-    if (Math.abs(liveV1) > 0.05) {
-      const vLen = liveV1 * 25;
+    const currentV1 = v1Ref.current;
+    if (Math.abs(currentV1) > 0.05) {
+      const vLen = currentV1 * 25;
       ctx.strokeStyle = '#38bdf8';
       ctx.fillStyle = '#38bdf8';
       ctx.lineWidth = 2;
@@ -257,7 +261,7 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
       ctx.lineTo(p1 + vLen - dir * 5, trackY - cart1H - 6);
       ctx.fill();
 
-      ctx.fillText(`v₁ = ${liveV1.toFixed(2)}m/s`, p1 + vLen / 2, trackY - cart1H - 16);
+      ctx.fillText(`v₁ = ${currentV1.toFixed(2)}m/s`, p1 + vLen / 2, trackY - cart1H - 16);
     }
 
     // Cart 2 (Rose Glider)
@@ -292,8 +296,9 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
     ctx.fillText(`m₂=${mass2}kg`, p2, trackY - cart2H / 2 + 3);
 
     // Cart 2 Velocity Vector
-    if (Math.abs(liveV2) > 0.05) {
-      const vLen = liveV2 * 25;
+    const currentV2 = v2Ref.current;
+    if (Math.abs(currentV2) > 0.05) {
+      const vLen = currentV2 * 25;
       ctx.strokeStyle = '#fb7185';
       ctx.fillStyle = '#fb7185';
       ctx.lineWidth = 2;
@@ -308,7 +313,7 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
       ctx.lineTo(p2 + vLen - dir * 5, trackY - cart2H - 6);
       ctx.fill();
 
-      ctx.fillText(`v₂ = ${liveV2.toFixed(2)}m/s`, p2 + vLen / 2, trackY - cart2H - 16);
+      ctx.fillText(`v₂ = ${currentV2.toFixed(2)}m/s`, p2 + vLen / 2, trackY - cart2H - 16);
     }
   };
 
@@ -352,7 +357,10 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
             <p className="text-sm text-zinc-400 mt-0.5">{t('experiments.collision.shortDesc')}</p>
           </div>
 
-          <button className="min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20">
+          <button 
+            onClick={handleLog}
+            className="min-h-[44px] min-w-[44px] px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-medium flex items-center gap-1.5 transition-all shadow-md shadow-emerald-600/20"
+          >
             <BookmarkCheck  className="w-3.5 h-3.5"/>
             <span>{logged ? controls.loggedSuccess : controls.logData}</span>
           </button>
@@ -373,7 +381,9 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
         {/* Live Playback Controls */}
         <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800">
           <div className="flex items-center gap-2">
-            <button className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${
+            <button 
+              onClick={() => setIsRunning(!isRunning)}
+              className={`min-h-[44px] min-w-[44px] px-4 py-2 rounded-xl text-xs font-semibold flex items-center gap-2 transition-all shadow-md ${
                 isRunning
                   ? 'bg-amber-600 hover:bg-amber-500 text-white shadow-amber-600/20'
                   : 'bg-rose-600 hover:bg-rose-500 text-white shadow-rose-600/20'
@@ -383,19 +393,26 @@ export default function CollisionSim({ lang, onLogMeasurement }: Props) {
               <span>{isRunning ? controls.pause : t('experiments.collision.launchCarts')}</span>
             </button>
 
-            <button className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs transition-colors">
+            <button 
+              onClick={resetSimulation}
+              className="min-h-[44px] min-w-[44px] p-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 text-xs transition-colors"
+            >
               <RotateCcw  className="w-4 h-4"/>
             </button>
           </div>
 
           <div className="flex items-center gap-2 text-xs">
-            <button className={`min-h-[44px] min-w-[44px] px-2.5 py-1 rounded-lg border transition-all ${
+            <button 
+              onClick={() => setRestitution(1.0)}
+              className={`min-h-[44px] min-w-[44px] px-2.5 py-1 rounded-lg border transition-all ${
                 restitution === 1.0 ? 'bg-sky-500/20 border-sky-500 text-sky-200 font-bold' : 'bg-zinc-800 border-zinc-700 text-zinc-400'
               }`}
             >
               e = 1.0 ({t('experiments.collision.elasticShort')})
             </button>
-            <button className={`min-h-[44px] min-w-[44px] px-2.5 py-1 rounded-lg border transition-all ${
+            <button 
+              onClick={() => setRestitution(0.0)}
+              className={`min-h-[44px] min-w-[44px] px-2.5 py-1 rounded-lg border transition-all ${
                 restitution === 0.0 ? 'bg-rose-500/20 border-rose-500 text-rose-200 font-bold' : 'bg-zinc-800 border-zinc-700 text-zinc-400'
               }`}
             >

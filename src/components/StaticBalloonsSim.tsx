@@ -44,13 +44,23 @@ export default function StaticBalloonsSim({ lang, onLogMeasurement }: Props) {
   const animFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawCoulombBalloons(ctx, canvas.width, canvas.height);
+      }
+    }
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -66,7 +76,7 @@ export default function StaticBalloonsSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [charge1MicroC, charge2MicroC, distanceCm, balloonMassG, coulombForceN, isRepulsive, isAttractive, isRunning]);
+  }, [charge1MicroC, charge2MicroC, distanceCm, balloonMassG, coulombForceN, isRepulsive, isAttractive, isRunning, lang]);
 
   const drawCoulombBalloons = (ctx: CanvasRenderingContext2D, width: number, height: number) => {
     ctx.clearRect(0, 0, width, height);

@@ -1,4 +1,4 @@
-import { Flame, BookmarkCheck, Snowflake, RotateCcw, Gauge } from 'lucide-react';
+import { Flame, BookmarkCheck, Snowflake, RotateCcw, Gauge, Play, Pause } from 'lucide-react';
 import React, { useState, useEffect, useRef } from 'react';
 
 import { useTranslation } from 'react-i18next';
@@ -32,6 +32,20 @@ export default function ThermodynamicsSim({ lang, onLogMeasurement }: Props) {
   const [logged, setLogged] = useState<boolean>(false);
   const [heatingActive, setHeatingActive] = useState<boolean>(false);
   const [coolingActive, setCoolingActive] = useState<boolean>(false);
+
+  // Global listeners to prevent sticky buttons
+  useEffect(() => {
+    const handleGlobalUp = () => {
+      setHeatingActive(false);
+      setCoolingActive(false);
+    };
+    window.addEventListener('mouseup', handleGlobalUp);
+    window.addEventListener('touchend', handleGlobalUp);
+    return () => {
+      window.removeEventListener('mouseup', handleGlobalUp);
+      window.removeEventListener('touchend', handleGlobalUp);
+    };
+  }, []);
 
   // Ideal Gas Law: P = (N * k_B * T) / V  or in scaled units: P = (n * R * T) / V
   // Let's compute scaled Pressure in kPa:
@@ -95,6 +109,28 @@ export default function ThermodynamicsSim({ lang, onLogMeasurement }: Props) {
       return updated.slice(-60); // keep last 60 points
     });
   }, [calculatedPressure, volume]);
+
+  // Handle Thermodynamic Process Constraints
+  const prevT = useRef(temperature);
+  const prevV = useRef(volume);
+
+  useEffect(() => {
+    if (activeProcess === 'isobaric') {
+      if (temperature !== prevT.current) {
+        // T changed, adjust V: V2 = V1 * (T2/T1)
+        const newV = Math.min(10, Math.max(1.5, volume * (temperature / prevT.current)));
+        setVolume(newV);
+        prevV.current = newV;
+      } else if (volume !== prevV.current) {
+        // V changed, adjust T: T2 = T1 * (V2/V1)
+        const newT = Math.min(800, Math.max(80, temperature * (volume / prevV.current)));
+        setTemperature(newT);
+        prevT.current = newT;
+      }
+    }
+    prevT.current = temperature;
+    prevV.current = volume;
+  }, [temperature, volume, activeProcess]);
 
   // 60FPS Canvas Animation Loop
   useEffect(() => {
@@ -401,27 +437,35 @@ export default function ThermodynamicsSim({ lang, onLogMeasurement }: Props) {
         <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-zinc-900/80 border border-zinc-800">
           <div className="flex items-center gap-2">
             <button
-              onMouseDown={() => setHeatingActive(true)}
-              onMouseUp={() => setHeatingActive(false)}
-              onMouseLeave={() => setHeatingActive(false)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              onMouseDown={(e) => { e.preventDefault(); setHeatingActive(true); }}
+              onTouchStart={(e) => { e.preventDefault(); setHeatingActive(true); }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all select-none active:scale-95 ${
                 heatingActive ? 'bg-orange-500 text-white scale-105 shadow-lg shadow-orange-500/30' : 'bg-zinc-800 hover:bg-zinc-700 text-orange-400'
               }`}
             >
-              <Flame className="w-4 h-4 text-orange-400" />
+              <Flame className="w-4 h-4" />
               <span>{tI18n('experiments.thermodynamics.heatPiston')}</span>
             </button>
 
             <button
-              onMouseDown={() => setCoolingActive(true)}
-              onMouseUp={() => setCoolingActive(false)}
-              onMouseLeave={() => setCoolingActive(false)}
-              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all ${
+              onMouseDown={(e) => { e.preventDefault(); setCoolingActive(true); }}
+              onTouchStart={(e) => { e.preventDefault(); setCoolingActive(true); }}
+              className={`px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all select-none active:scale-95 ${
                 coolingActive ? 'bg-sky-500 text-white scale-105 shadow-lg shadow-sky-500/30' : 'bg-zinc-800 hover:bg-zinc-700 text-sky-400'
               }`}
             >
-              <Snowflake className="w-4 h-4 text-sky-400" />
+              <Snowflake className="w-4 h-4" />
               <span>{tI18n('experiments.thermodynamics.coolPiston')}</span>
+            </button>
+
+            <button
+              onClick={() => setIsRunning(!isRunning)}
+              className={`p-2 rounded-xl border text-xs transition-all active:scale-90 ${
+                isRunning ? 'bg-amber-600/20 border-amber-500/50 text-amber-400' : 'bg-zinc-800 border-zinc-700 text-zinc-400'
+              }`}
+              title={isRunning ? controls.pause : controls.play}
+            >
+              {isRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
             </button>
 
             <button
@@ -433,7 +477,42 @@ export default function ThermodynamicsSim({ lang, onLogMeasurement }: Props) {
             </button>
           </div>
 
-          <div className="font-mono text-xs text-zinc-300">
+          <div className="flex items-center gap-1.5">
+            <button
+              onClick={() => setActiveProcess('isothermal')}
+              className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                activeProcess === 'isothermal' ? 'bg-sky-500/20 border-sky-500 text-sky-400' : 'bg-zinc-800 border-zinc-700 text-zinc-500'
+              }`}
+            >
+              ISO-T
+            </button>
+            <button
+              onClick={() => setActiveProcess('isobaric')}
+              className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                activeProcess === 'isobaric' ? 'bg-rose-500/20 border-rose-500 text-rose-400' : 'bg-zinc-800 border-zinc-700 text-zinc-500'
+              }`}
+            >
+              ISO-P
+            </button>
+            <button
+              onClick={() => setActiveProcess('isochoric')}
+              className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                activeProcess === 'isochoric' ? 'bg-emerald-500/20 border-emerald-500 text-emerald-400' : 'bg-zinc-800 border-zinc-700 text-zinc-500'
+              }`}
+            >
+              ISO-V
+            </button>
+            <button
+              onClick={() => setActiveProcess('free')}
+              className={`px-2 py-1 rounded-lg text-[10px] font-bold border transition-all ${
+                activeProcess === 'free' ? 'bg-zinc-700 border-zinc-600 text-zinc-300' : 'bg-zinc-800 border-zinc-700 text-zinc-500'
+              }`}
+            >
+              FREE
+            </button>
+          </div>
+
+          <div className="font-mono text-xs text-zinc-300 hidden sm:block">
             {tI18n('experiments.thermodynamics.tempLabel')}: <span className="text-amber-400 font-bold">{temperature} K</span> ({temperature - 273}°C)
           </div>
         </div>
@@ -481,9 +560,10 @@ export default function ThermodynamicsSim({ lang, onLogMeasurement }: Props) {
               min={1.5}
               max={10.0}
               step={0.1}
+              disabled={activeProcess === 'isochoric'}
               value={volume}
               onChange={(e) => setVolume(Number(e.target.value))}
-              className="w-full h-1.5 rounded-lg bg-zinc-800 accent-sky-500 cursor-pointer"
+              className={`w-full h-1.5 rounded-lg bg-zinc-800 accent-sky-500 cursor-pointer ${activeProcess === 'isochoric' ? 'opacity-30 cursor-not-allowed' : ''}`}
             />
           </div>
 
@@ -498,9 +578,10 @@ export default function ThermodynamicsSim({ lang, onLogMeasurement }: Props) {
               min={100}
               max={700}
               step={10}
+              disabled={activeProcess === 'isothermal'}
               value={temperature}
               onChange={(e) => setTemperature(Number(e.target.value))}
-              className="w-full h-1.5 rounded-lg bg-zinc-800 accent-amber-500 cursor-pointer"
+              className={`w-full h-1.5 rounded-lg bg-zinc-800 accent-amber-500 cursor-pointer ${activeProcess === 'isothermal' ? 'opacity-30 cursor-not-allowed' : ''}`}
             />
           </div>
 

@@ -74,47 +74,55 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
   }, []);
 
   useEffect(() => {
+    const canvas = canvasRef.current;
+    if (canvas) {
+      const ctx = canvas.getContext('2d');
+      if (ctx) {
+        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        drawScattering(ctx, canvas.width, canvas.height);
+      }
+    }
+
+    if (!isRunning) return;
+
     let lastTime = performance.now();
 
     const loop = (now: number) => {
       const dt = Math.min((now - lastTime) / 1000, 0.033);
       lastTime = now;
 
-      if (isRunning) {
-        // Periodically emit scattered photon flashes from gas molecules
-        const particles = particlesRef.current;
-        for (const p of particles) {
-          // Probability of scattering depends on 1/λ^4
-          const scatterProb = isWhiteLight ? 0.35 : Math.min(relativeScatteringFactor * 0.06, 0.6);
+      // Periodically emit scattered photon flashes from gas molecules
+      const particles = particlesRef.current;
+      for (const p of particles) {
+        // Probability of scattering depends on 1/λ^4
+        const scatterProb = isWhiteLight ? 0.35 : Math.min(relativeScatteringFactor * 0.06, 0.6);
 
-          if (Math.random() < scatterProb * dt * 30 && p.scatteredRays.length < 4) {
-            // Pick color: if white light, favor blue/violet for scattering
-            let rayColor = '#38bdf8';
-            if (isWhiteLight) {
-              const r = Math.random();
-              rayColor = r < 0.65 ? '#38bdf8' : r < 0.85 ? '#818cf8' : '#22c55e';
-            } else {
-              rayColor = wavelengthToColor(wavelengthNm);
-            }
-
-            p.scatteredRays.push({
-              angle: Math.random() * 2 * Math.PI,
-              age: 0,
-              color: rayColor,
-            });
+        if (Math.random() < scatterProb * dt * 30 && p.scatteredRays.length < 4) {
+          // Pick color: if white light, favor blue/violet for scattering
+          let rayColor = '#38bdf8';
+          if (isWhiteLight) {
+            const r = Math.random();
+            rayColor = r < 0.65 ? '#38bdf8' : r < 0.85 ? '#818cf8' : '#22c55e';
+          } else {
+            rayColor = wavelengthToColor(wavelengthNm);
           }
 
-          // Age scattered rays
-          for (let i = p.scatteredRays.length - 1; i >= 0; i--) {
-            p.scatteredRays[i].age += dt * 2.2;
-            if (p.scatteredRays[i].age > 1.0) {
-              p.scatteredRays.splice(i, 1);
-            }
+          p.scatteredRays.push({
+            angle: Math.random() * 2 * Math.PI,
+            age: 0,
+            color: rayColor,
+          });
+        }
+
+        // Age scattered rays
+        for (let i = p.scatteredRays.length - 1; i >= 0; i--) {
+          p.scatteredRays[i].age += dt * 2.2;
+          if (p.scatteredRays[i].age > 1.0) {
+            p.scatteredRays.splice(i, 1);
           }
         }
       }
 
-      const canvas = canvasRef.current;
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
@@ -130,7 +138,7 @@ export default function LightScatteringSim({ lang, onLogMeasurement }: Props) {
     return () => {
       if (animFrameRef.current) cancelAnimationFrame(animFrameRef.current);
     };
-  }, [isRunning, wavelengthNm, isWhiteLight, relativeScatteringFactor, opticalPathLength, particleDensity, tI18n]);
+  }, [isRunning, wavelengthNm, isWhiteLight, relativeScatteringFactor, opticalPathLength, particleDensity, lang, tI18n]);
 
   // Convert wavelength nm to RGB hex color
   const wavelengthToColor = (wl: number) => {
