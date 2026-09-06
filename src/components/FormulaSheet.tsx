@@ -68,8 +68,7 @@ export default function FormulaSheet({ lang }: Props) {
               ? 'دليل القوانين والمعادلات الأساسية المستخدمة في تجارب المختبر مع توضيح الوحدات والمتغيرات ولوحة المفاتيح الرياضية.'
               : lang === 'kmr'
               ? 'Rêberê qanûn û hevkêşeyên bingehîn ên ezmûnên laboratûwarê ligel şiroveya yekeyan û tebleya matematîkî.'
-              : lang === 'ku'
-              ? 'ڕێبەری یاسا و هاوکێشە بنەڕەتییەکان لەگەڵ ڕوونکردنەوەی یەکەکان و تەختەکلیلی هاوکێشەی فیزیایی.'
+              : lang === 'ku' ? 'ڕێبەری یاسا و هاوکێشە بنەڕەتییەکان لەگەڵ ڕوونکردنەوەی یەکەکان و تەختەکلیلی هاوکێشەی فیزیایی.' : lang === 'bad' ? 'رێبەرێ یاسا و هاوکێشەیێن بنەڕەتی دگەل رۆنکرنا یەکەیان و تەختەکلیلا هاوکێشەیێن فیزیایی.'
               : 'Fundamental equations and physical laws explored across the experimental simulations with live physics keyboard.'}
           </p>
         </div>
@@ -84,7 +83,7 @@ export default function FormulaSheet({ lang }: Props) {
           }`}
         >
           <Calculator className="w-4 h-4" />
-          <span>{lang === 'ar' ? 'منشئ وحاسبة المعادلات' : lang === 'kmr' ? 'Avakirok û Hesabkera Hevkêşeyan' : lang === 'ku' ? 'دروستکەر و شیکارکەری هاوکێشە' : 'Equation Builder & Solver'}</span>
+          <span>{lang === 'ar' ? 'منشئ وحاسبة المعادلات' : lang === 'kmr' ? 'Avakirok û Hesabkera Hevkêşeyan' : (lang === 'ku') ? 'دروستکەر و شیکارکەری هاوکێشە' : 'Equation Builder & Solver'}</span>
         </button>
       </div>
 
@@ -124,7 +123,7 @@ export default function FormulaSheet({ lang }: Props) {
             { id: 'electricity', label: t.filterElectricity },
             { id: 'optics', label: t.filterOptics },
             { id: 'waves', label: t.filterWaves },
-            { id: 'thermodynamics', label: lang === 'ar' ? 'الديناميكا الحرارية' : lang === 'kmr' ? 'Termodînamîk' : lang === 'ku' ? 'داینامیکی گەرمی' : 'Thermodynamics' },
+            { id: 'thermodynamics', label: lang === 'ar' ? 'الديناميكا الحرارية' : lang === 'kmr' ? 'Termodînamîk' : (lang === 'ku') ? 'داینامیکی گەرمی' : 'Thermodynamics' },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -159,7 +158,7 @@ export default function FormulaSheet({ lang }: Props) {
                       setShowCustomEquationBuilder(true);
                     }}
                     className="p-1.5 rounded-lg text-zinc-400 hover:text-indigo-300 hover:bg-zinc-800 transition-colors"
-                    title={lang === 'ar' ? 'فتح في لوحة المعادلات' : lang === 'kmr' ? 'Di klavyeya hevkêşeyan de veke' : lang === 'ku' ? 'کردنەوە لە تەختەکلیلی هاوکێشەکان' : 'Open in Equation Keyboard'}
+                    title={lang === 'ar' ? 'فتح في لوحة المعادلات' : lang === 'kmr' ? 'Di klavyeya hevkêşeyan de veke' : (lang === 'ku') ? 'کردنەوە لە تەختەکلیلی هاوکێشەکان' : lang === 'bad' ? 'ڤەکرن د تەختەکلیلا هاوکێشەیان دا' : 'Open in Equation Keyboard'}
                   >
                     <Calculator className="w-3.5 h-3.5" />
                   </button>

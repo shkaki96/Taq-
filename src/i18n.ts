@@ -9,7 +9,7 @@ i18n
   .use(initReactI18next)
   .init({
     fallbackLng: 'ar',
-    supportedLngs: ['ar', 'en', 'ku', 'kmr'],
+    supportedLngs: ['ar', 'en', 'ku', 'kmr', 'bad'],
     debug: false,
     backend: {
       loadPath: '/locales/{{lng}}/translation.json',
@@ -28,8 +28,8 @@ i18n
   });
 
 // Keep <html dir="rtl|ltr"> in sync with the active language,
-// same rule as before: ar and ku render right-to-left.
-const RTL_LANGS = ['ar', 'ku'];
+// same rule as before: ar, ku, and bad render right-to-left.
+const RTL_LANGS = ['ar', 'ku', 'bad'];
 function applyDirection(lng: string) {
   document.documentElement.dir = RTL_LANGS.includes(lng) ? 'rtl' : 'ltr';
   document.documentElement.lang = lng;

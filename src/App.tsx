@@ -55,75 +55,95 @@ import {
 import { useTranslation } from 'react-i18next';
 import i18n from './i18n';
 import { Language, ExperimentType, MeasurementRecord } from './types';
-import { LANGUAGES } from './config/languages';
+import { LANGUAGES, isRtlLanguage } from './config/languages';
 import { experimentsList as experimentsMeta, ExperimentMeta } from './experimentsData';
 
-// 36 Classic Simulations (Lazy Loaded)
-const PendulumSim = React.lazy(() => import('./components/PendulumSim'));
-const ProjectileSim = React.lazy(() => import('./components/ProjectileSim'));
-const CircuitSim = React.lazy(() => import('./components/CircuitSim'));
-const OpticsSim = React.lazy(() => import('./components/OpticsSim'));
-const FreeFallSim = React.lazy(() => import('./components/FreeFallSim'));
-const WavesSim = React.lazy(() => import('./components/WavesSim'));
-const SpringSim = React.lazy(() => import('./components/SpringSim'));
-const BuoyancySim = React.lazy(() => import('./components/BuoyancySim'));
-const CollisionSim = React.lazy(() => import('./components/CollisionSim'));
-const ThermodynamicsSim = React.lazy(() => import('./components/ThermodynamicsSim'));
-const ArcLengthSim = React.lazy(() => import('./components/ArcLengthSim'));
-const RotationalDynamicsSim = React.lazy(() => import('./components/RotationalDynamicsSim'));
-const CenterOfMassSim = React.lazy(() => import('./components/CenterOfMassSim'));
-const PendulumEnergySim = React.lazy(() => import('./components/PendulumEnergySim'));
-const AcousticResonanceSim = React.lazy(() => import('./components/AcousticResonanceSim'));
-const SoundSpeedSim = React.lazy(() => import('./components/SoundSpeedSim'));
-const MagneticFieldSim = React.lazy(() => import('./components/MagneticFieldSim'));
-const AtomicSpectraSim = React.lazy(() => import('./components/AtomicSpectraSim'));
-const MetricPrefixesSim = React.lazy(() => import('./components/MetricPrefixesSim'));
-const StressStrainSim = React.lazy(() => import('./components/StressStrainSim'));
-const BernoulliSim = React.lazy(() => import('./components/BernoulliSim'));
-const AngledMirrorsSim = React.lazy(() => import('./components/AngledMirrorsSim'));
-const CurvedMirrorsSim = React.lazy(() => import('./components/CurvedMirrorsSim'));
-const ThinLensesSim = React.lazy(() => import('./components/ThinLensesSim'));
-const PolarizationSim = React.lazy(() => import('./components/PolarizationSim'));
-const LightScatteringSim = React.lazy(() => import('./components/LightScatteringSim'));
-const WorkHeatSim = React.lazy(() => import('./components/WorkHeatSim'));
-const PrescriptionGlassesSim = React.lazy(() => import('./components/PrescriptionGlassesSim'));
-const PeriscopeSim = React.lazy(() => import('./components/PeriscopeSim'));
-const StaticBalloonsSim = React.lazy(() => import('./components/StaticBalloonsSim'));
-const SledFrictionSim = React.lazy(() => import('./components/SledFrictionSim'));
-const HeatConductionSim = React.lazy(() => import('./components/HeatConductionSim'));
-const SeesawTorqueSim = React.lazy(() => import('./components/SeesawTorqueSim'));
-const ElectromagneticInductionSim = React.lazy(() => import('./components/ElectromagneticInductionSim'));
-const ViscosityStokesSim = React.lazy(() => import('./components/ViscosityStokesSim'));
-const RampMachineSim = React.lazy(() => import('./components/RampMachineSim'));
+// Helper to reliably load lazy components with automatic retry on chunk/network glitch
+function lazyWithRetry<T extends React.ComponentType<any>>(
+  componentImport: () => Promise<{ default: T } | any>
+) {
+  return React.lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      console.warn('Dynamic import failed, retrying once...', error);
+      await new Promise((resolve) => setTimeout(resolve, 400));
+      try {
+        return await componentImport();
+      } catch (secondError) {
+        console.error('Dynamic import retry failed:', secondError);
+        throw secondError;
+      }
+    }
+  });
+}
 
-// Extended & Newly Added Specialized Simulations (53-65) (Lazy Loaded)
-const BuildAtomSim = React.lazy(() => import('./components/BuildAtomSim').then(m => ({ default: m.BuildAtomSim })));
-const BuildNucleusSim = React.lazy(() => import('./components/BuildNucleusSim').then(m => ({ default: m.BuildNucleusSim })));
-const RutherfordScatteringSim = React.lazy(() => import('./components/RutherfordScatteringSim').then(m => ({ default: m.RutherfordScatteringSim })));
-const BlackbodySim = React.lazy(() => import('./components/BlackbodySim').then(m => ({ default: m.BlackbodySim })));
-const MoleculesLightSim = React.lazy(() => import('./components/MoleculesLightSim').then(m => ({ default: m.MoleculesLightSim })));
-const ColorVisionSim = React.lazy(() => import('./components/ColorVisionSim').then(m => ({ default: m.ColorVisionSim })));
-const CapacitorSim = React.lazy(() => import('./components/CapacitorSim').then(m => ({ default: m.CapacitorSim })));
-const ChargesFieldsSim = React.lazy(() => import('./components/ChargesFieldsSim').then(m => ({ default: m.ChargesFieldsSim })));
-const WireResistanceSim = React.lazy(() => import('./components/WireResistanceSim').then(m => ({ default: m.WireResistanceSim })));
-const GravityOrbitsSim = React.lazy(() => import('./components/GravityOrbitsSim').then(m => ({ default: m.GravityOrbitsSim })));
-const KeplerLawsSim = React.lazy(() => import('./components/KeplerLawsSim').then(m => ({ default: m.KeplerLawsSim })));
-const EnergySkateParkSim = React.lazy(() => import('./components/EnergySkateParkSim').then(m => ({ default: m.EnergySkateParkSim })));
-const FourierWavesSim = React.lazy(() => import('./components/FourierWavesSim').then(m => ({ default: m.FourierWavesSim })));
-const WaveOnStringSim = React.lazy(() => import('./components/WaveOnStringSim').then(m => ({ default: m.WaveOnStringSim })));
-const StatesOfMatterSim = React.lazy(() => import('./components/StatesOfMatterSim').then(m => ({ default: m.StatesOfMatterSim })));
-const DiffusionSim = React.lazy(() => import('./components/DiffusionSim').then(m => ({ default: m.DiffusionSim })));
-const ElectromagnetSim = React.lazy(() => import('./components/ElectromagnetSim'));
-const GravityForceSim = React.lazy(() => import('./components/GravityForceSim'));
-const ForcesMotionSim = React.lazy(() => import('./components/ForcesMotionSim'));
-const NormalModesSim = React.lazy(() => import('./components/NormalModesSim'));
+// 36 Classic Simulations (Lazy Loaded with Auto-Retry)
+const PendulumSim = lazyWithRetry(() => import('./components/PendulumSim'));
+const ProjectileSim = lazyWithRetry(() => import('./components/ProjectileSim'));
+const CircuitSim = lazyWithRetry(() => import('./components/CircuitSim'));
+const OpticsSim = lazyWithRetry(() => import('./components/OpticsSim'));
+const FreeFallSim = lazyWithRetry(() => import('./components/FreeFallSim'));
+const WavesSim = lazyWithRetry(() => import('./components/WavesSim'));
+const SpringSim = lazyWithRetry(() => import('./components/SpringSim'));
+const BuoyancySim = lazyWithRetry(() => import('./components/BuoyancySim'));
+const CollisionSim = lazyWithRetry(() => import('./components/CollisionSim'));
+const ThermodynamicsSim = lazyWithRetry(() => import('./components/ThermodynamicsSim'));
+const ArcLengthSim = lazyWithRetry(() => import('./components/ArcLengthSim'));
+const RotationalDynamicsSim = lazyWithRetry(() => import('./components/RotationalDynamicsSim'));
+const CenterOfMassSim = lazyWithRetry(() => import('./components/CenterOfMassSim'));
+const PendulumEnergySim = lazyWithRetry(() => import('./components/PendulumEnergySim'));
+const AcousticResonanceSim = lazyWithRetry(() => import('./components/AcousticResonanceSim'));
+const SoundSpeedSim = lazyWithRetry(() => import('./components/SoundSpeedSim'));
+const MagneticFieldSim = lazyWithRetry(() => import('./components/MagneticFieldSim'));
+const AtomicSpectraSim = lazyWithRetry(() => import('./components/AtomicSpectraSim'));
+const MetricPrefixesSim = lazyWithRetry(() => import('./components/MetricPrefixesSim'));
+const StressStrainSim = lazyWithRetry(() => import('./components/StressStrainSim'));
+const BernoulliSim = lazyWithRetry(() => import('./components/BernoulliSim'));
+const AngledMirrorsSim = lazyWithRetry(() => import('./components/AngledMirrorsSim'));
+const CurvedMirrorsSim = lazyWithRetry(() => import('./components/CurvedMirrorsSim'));
+const ThinLensesSim = lazyWithRetry(() => import('./components/ThinLensesSim'));
+const PolarizationSim = lazyWithRetry(() => import('./components/PolarizationSim'));
+const LightScatteringSim = lazyWithRetry(() => import('./components/LightScatteringSim'));
+const WorkHeatSim = lazyWithRetry(() => import('./components/WorkHeatSim'));
+const PrescriptionGlassesSim = lazyWithRetry(() => import('./components/PrescriptionGlassesSim'));
+const PeriscopeSim = lazyWithRetry(() => import('./components/PeriscopeSim'));
+const StaticBalloonsSim = lazyWithRetry(() => import('./components/StaticBalloonsSim'));
+const SledFrictionSim = lazyWithRetry(() => import('./components/SledFrictionSim'));
+const HeatConductionSim = lazyWithRetry(() => import('./components/HeatConductionSim'));
+const SeesawTorqueSim = lazyWithRetry(() => import('./components/SeesawTorqueSim'));
+const ElectromagneticInductionSim = lazyWithRetry(() => import('./components/ElectromagneticInductionSim'));
+const ViscosityStokesSim = lazyWithRetry(() => import('./components/ViscosityStokesSim'));
+const RampMachineSim = lazyWithRetry(() => import('./components/RampMachineSim'));
 
-// 5 New Physics Experiments (IDs 66 to 70) (Lazy Loaded)
-const DopplerEffectSim = React.lazy(() => import('./components/DopplerEffectSim'));
-const ElectricalTransformerSim = React.lazy(() => import('./components/ElectricalTransformerSim'));
-const PhotoelectricEffectSim = React.lazy(() => import('./components/PhotoelectricEffectSim'));
-const RadioactiveDecaySim = React.lazy(() => import('./components/RadioactiveDecaySim'));
-const CalorimetrySim = React.lazy(() => import('./components/CalorimetrySim'));
+// Extended & Newly Added Specialized Simulations (53-65) (Lazy Loaded with Auto-Retry)
+const BuildAtomSim = lazyWithRetry(() => import('./components/BuildAtomSim').then(m => ({ default: m.BuildAtomSim })));
+const BuildNucleusSim = lazyWithRetry(() => import('./components/BuildNucleusSim').then(m => ({ default: m.BuildNucleusSim })));
+const RutherfordScatteringSim = lazyWithRetry(() => import('./components/RutherfordScatteringSim').then(m => ({ default: m.RutherfordScatteringSim })));
+const BlackbodySim = lazyWithRetry(() => import('./components/BlackbodySim').then(m => ({ default: m.BlackbodySim })));
+const MoleculesLightSim = lazyWithRetry(() => import('./components/MoleculesLightSim').then(m => ({ default: m.MoleculesLightSim })));
+const ColorVisionSim = lazyWithRetry(() => import('./components/ColorVisionSim').then(m => ({ default: m.ColorVisionSim })));
+const CapacitorSim = lazyWithRetry(() => import('./components/CapacitorSim').then(m => ({ default: m.CapacitorSim })));
+const ChargesFieldsSim = lazyWithRetry(() => import('./components/ChargesFieldsSim').then(m => ({ default: m.ChargesFieldsSim })));
+const WireResistanceSim = lazyWithRetry(() => import('./components/WireResistanceSim').then(m => ({ default: m.WireResistanceSim })));
+const GravityOrbitsSim = lazyWithRetry(() => import('./components/GravityOrbitsSim').then(m => ({ default: m.GravityOrbitsSim })));
+const KeplerLawsSim = lazyWithRetry(() => import('./components/KeplerLawsSim').then(m => ({ default: m.KeplerLawsSim })));
+const EnergySkateParkSim = lazyWithRetry(() => import('./components/EnergySkateParkSim').then(m => ({ default: m.EnergySkateParkSim })));
+const FourierWavesSim = lazyWithRetry(() => import('./components/FourierWavesSim').then(m => ({ default: m.FourierWavesSim })));
+const WaveOnStringSim = lazyWithRetry(() => import('./components/WaveOnStringSim').then(m => ({ default: m.WaveOnStringSim })));
+const StatesOfMatterSim = lazyWithRetry(() => import('./components/StatesOfMatterSim').then(m => ({ default: m.StatesOfMatterSim })));
+const DiffusionSim = lazyWithRetry(() => import('./components/DiffusionSim').then(m => ({ default: m.DiffusionSim })));
+const ElectromagnetSim = lazyWithRetry(() => import('./components/ElectromagnetSim'));
+const GravityForceSim = lazyWithRetry(() => import('./components/GravityForceSim'));
+const ForcesMotionSim = lazyWithRetry(() => import('./components/ForcesMotionSim'));
+const NormalModesSim = lazyWithRetry(() => import('./components/NormalModesSim'));
+
+// 5 New Physics Experiments (IDs 66 to 70) (Lazy Loaded with Auto-Retry)
+const DopplerEffectSim = lazyWithRetry(() => import('./components/DopplerEffectSim'));
+const ElectricalTransformerSim = lazyWithRetry(() => import('./components/ElectricalTransformerSim'));
+const PhotoelectricEffectSim = lazyWithRetry(() => import('./components/PhotoelectricEffectSim'));
+const RadioactiveDecaySim = lazyWithRetry(() => import('./components/RadioactiveDecaySim'));
+const CalorimetrySim = lazyWithRetry(() => import('./components/CalorimetrySim'));
 
 // Additional UI Tabs & Tools
 import ErrorBoundary from './components/ErrorBoundary';
@@ -276,8 +296,8 @@ export default function App() {
   }, [records]);
 
   useEffect(() => {
-    // Direction handling for RTL languages (Arabic and Sorani Kurdish)
-    document.documentElement.dir = lang === 'ku' || lang === 'ar' ? 'rtl' : 'ltr';
+    // Direction handling for RTL languages (Arabic, Sorani Kurdish, and Badini Kurdish)
+    document.documentElement.dir = isRtlLanguage(lang) ? 'rtl' : 'ltr';
     document.documentElement.lang = lang;
   }, [lang]);
 
@@ -340,7 +360,7 @@ export default function App() {
 
   // Cross-language subtitle fallback logic
   const getSubTitle = (exp: ExperimentItem, language: Language) => {
-    if (language === 'ku' || language === 'ar') {
+    if (language === 'ku' || language === 'ar' || language === 'bad') {
       return t(`catalog.${exp.expKey}.title`, { lng: 'en' });
     }
     return t(`catalog.${exp.expKey}.title`, { lng: 'ku' });
@@ -357,7 +377,7 @@ export default function App() {
     const outputs = (t(`catalog.${exp.expKey}.outputs`, { returnObjects: true }) as string[]) || [];
 
     const matchesSearch =
-      ['ar', 'en', 'ku', 'kmr'].some((l) =>
+      ['ar', 'en', 'ku', 'kmr', 'bad'].some((l) =>
         i18n.getFixedT(l)(`catalog.${exp.expKey}.title`).toLowerCase().includes(query)
       ) ||
       exp.physical_law.toLowerCase().includes(query) ||
@@ -390,7 +410,7 @@ export default function App() {
     <div
       id="app-container"
       /* Direction attribute for RTL languages */
-      dir={lang === 'ar' || lang === 'ku' ? 'rtl' : 'ltr'}
+      dir={isRtlLanguage(lang) ? 'rtl' : 'ltr'}
       className="min-h-screen bg-slate-950 text-slate-100 flex flex-col font-sans selection:bg-indigo-500/20 selection:text-indigo-200"
     >
       {/* Top Main Navigation Header */}

@@ -85,6 +85,8 @@ export default function LabQuiz({ lang }: Props) {
             <span>
               {lang === 'ar' 
                 ? `السؤال ${currentIndex + 1} من ${total}` 
+                : lang === 'bad'
+                ? `پرسیارا ${currentIndex + 1} ژ ${total}`
                 : lang === 'ku'
                 ? `پرسیاری ${currentIndex + 1} لە ${total}`
                 : lang === 'kmr'
@@ -194,6 +196,8 @@ export default function LabQuiz({ lang }: Props) {
             <p className="text-sm text-zinc-400 font-mono">
               {lang === 'ar' 
                 ? `نتيجتك النهائية: ${score} من ${total}` 
+                : lang === 'bad'
+                ? `ئەنجامێ تە یێ دووماهییێ: ${score} ژ ${total}`
                 : lang === 'ku'
                 ? `ئەنجامی کۆتاییت: ${score} لە ${total}`
                 : `Final Score: ${score} out of ${total}`} (

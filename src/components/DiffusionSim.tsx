@@ -106,7 +106,7 @@ export const DiffusionSim: React.FC<DiffusionSimProps> = ({ lang, onLogMeasureme
     if (!canvas) return;
     const ctx = canvas.getContext('2d');
     if (!ctx) return;
-    ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+    ctx.direction = (lang === 'ar' || lang === 'ku' || lang === 'bad') ? 'rtl' : 'ltr';
 
     drawDiffusion(ctx);
 

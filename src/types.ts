@@ -1,4 +1,4 @@
-export type Language = 'ar' | 'en' | 'ku' | 'kmr';
+export type Language = 'ar' | 'en' | 'ku' | 'kmr' | 'bad';
 
 export type SimulationCluster = 
   | 'all'

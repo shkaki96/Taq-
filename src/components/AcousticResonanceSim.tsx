@@ -126,7 +126,7 @@ export default function AcousticResonanceSim({ lang, onLogMeasurement }: Props) 
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       if (!ctx) return;
-      ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+      ctx.direction = (lang === 'ar' || lang === 'ku' || lang === 'bad') ? 'rtl' : 'ltr';
 
       const width = canvas.width;
       const height = canvas.height;

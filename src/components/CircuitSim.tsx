@@ -975,7 +975,7 @@ export default function CircuitSim({ lang, onLogMeasurement }: Props) {
         ? t('experiments.circuits.notesText')
         : (lang === 'ar'
             ? 'تم فحص وتسجيل حالة الدائرة المفتوحة (انقطاع تام للتيار والمقاومة المكافئة لا نهائية).'
-            : lang === 'ku'
+            : (lang === 'ku' || lang === 'bad')
             ? 'پشکنین و تۆمارکردنی دۆخی خولگەی کراوە (پچڕانی تەزوو و بەرگری هاوتا بێ کۆتایە).'
             : lang === 'kmr'
             ? 'Kontrolkirin û qeydkirina rewşa çerxeya vekirî (herikîn sifir e û berxwedan bêdawî ye).'

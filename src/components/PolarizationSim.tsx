@@ -56,7 +56,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
     if (canvas) {
       const ctx = canvas.getContext('2d');
       if (ctx) {
-        ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+        ctx.direction = (lang === 'ar' || lang === 'ku' || lang === 'bad') ? 'rtl' : 'ltr';
         drawPolarization(ctx, canvas.width, canvas.height);
       }
     }
@@ -74,7 +74,7 @@ export default function PolarizationSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
-          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+          ctx.direction = (lang === 'ar' || lang === 'ku' || lang === 'bad') ? 'rtl' : 'ltr';
           drawPolarization(ctx, canvas.width, canvas.height);
         }
       }

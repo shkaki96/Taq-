@@ -1,0 +1,582 @@
+[
+  {
+    "key": "experiments.sled_friction.desc",
+    "pattern": "جووڵاو",
+    "val": "بەراوردکرنا هێزا لێکخشاندنێی نەجووڵاو و جووڵاو ل سەر رویێ جیاواز وەک سەهۆڵ، دار و گیا."
+  },
+  {
+    "key": "experiments.sled_friction.desc",
+    "pattern": "بەراوردکرنا",
+    "val": "بەراوردکرنا هێزا لێکخشاندنێی نەجووڵاو و جووڵاو ل سەر رویێ جیاواز وەک سەهۆڵ، دار و گیا."
+  },
+  {
+    "key": "experiments.sled_friction.massLabel",
+    "pattern": "ەکە",
+    "val": "بارستەیا سندوقەکە (m):"
+  },
+  {
+    "key": "experiments.sled_friction.massLabel",
+    "pattern": "سندوقەکە",
+    "val": "بارستەیا سندوقەکە (m):"
+  },
+  {
+    "key": "experiments.sled_friction.pushForceLabel",
+    "pattern": "سەپێنراو",
+    "val": "هێزا پاڵنانی سەپێنراو (F_push):"
+  },
+  {
+    "key": "experiments.sled_friction.kineticFriction",
+    "pattern": "لڤینای",
+    "val": "خشینا لڤینای (fk)"
+  },
+  {
+    "key": "experiments.seesaw_torque.title",
+    "pattern": "تەرازوو",
+    "val": "زەڤر و هاوسەنگیا تەرازوویا لەوحەیی"
+  },
+  {
+    "key": "experiments.seesaw_torque.title",
+    "pattern": "زەڤر",
+    "val": "زەڤر و هاوسەنگیا تەرازوویا لەوحەیی"
+  },
+  {
+    "key": "experiments.seesaw_torque.desc",
+    "pattern": "تەرازوو",
+    "val": "بکارئینانی یاسایا زەڤر τ = m·g·r و مەرجی هاوسەنگی زڤڕین ل سەر جۆلانەی تەرازوو."
+  },
+  {
+    "key": "experiments.seesaw_torque.desc",
+    "pattern": "بکارئینانی",
+    "val": "بکارئینانی یاسایا زەڤر τ = m·g·r و مەرجی هاوسەنگی زڤڕین ل سەر جۆلانەی تەرازوو."
+  },
+  {
+    "key": "experiments.seesaw_torque.desc",
+    "pattern": "زەڤر",
+    "val": "بکارئینانی یاسایا زەڤر τ = m·g·r و مەرجی هاوسەنگی زڤڕین ل سەر جۆلانەی تەرازوو."
+  },
+  {
+    "key": "experiments.seesaw_torque.controlsTitle",
+    "pattern": "زەڤر",
+    "val": "رێکخستنێن جۆلانێ و زەڤری"
+  },
+  {
+    "key": "experiments.seesaw_torque.leftDist",
+    "pattern": "شوێنی",
+    "val": "شوێنی لای چەپ (r₁):"
+  },
+  {
+    "key": "experiments.seesaw_torque.rightDist",
+    "pattern": "شوێنی",
+    "val": "شوێنی لای ڕاست (r₂):"
+  },
+  {
+    "key": "experiments.seesaw_torque.leftTorque",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ لای چەپ (τ₁)"
+  },
+  {
+    "key": "experiments.seesaw_torque.rightTorque",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ لای ڕاست (τ₂)"
+  },
+  {
+    "key": "experiments.seesaw_torque.tiltAngle",
+    "pattern": "ەکە",
+    "val": "گۆشە لادانا تەختەکە (θ)"
+  },
+  {
+    "key": "experiments.seesaw_torque.shortDesc",
+    "pattern": "زەڤر",
+    "val": "مەرجێ هاوسەنگیا زەڤران τ₁ = τ₂ (F₁ d₁ = F₂ d₂)."
+  },
+  {
+    "key": "experiments.seesaw_torque.notesText",
+    "pattern": "تەرازوو",
+    "val": "تەرازوو هاوسەنگ دبیت دەمێ کۆما زەڤرێن دەمژمێری یەکسان بیت ب کۆما زەڤرێن دژە-دەمژمێری."
+  },
+  {
+    "key": "experiments.seesaw_torque.notesText",
+    "pattern": "زەڤر",
+    "val": "تەرازوو هاوسەنگ دبیت دەمێ کۆما زەڤرێن دەمژمێری یەکسان بیت ب کۆما زەڤرێن دژە-دەمژمێری."
+  },
+  {
+    "key": "catalog.seesaw_torque.theoryBackground",
+    "pattern": "تەرازوو",
+    "val": "هاوسەنگیا زەڤران د تەرازوویا لەوحەیی دا مەرجێ دووێ یێ هاوسەنگیێ یە (Στ = 0)، کو تێدا زەڤرێ زڤڕینێ یەکسانە ب (τ = F · d · sin θ). بۆ هەبوونا هاوسەنگیێ پێدڤیە زەڤرێن دەمژمێری دگەل زەڤرێن دژە-دەمژمێری یەکسان بن. ئەڤ یاسایە بنەمایێ هەمی رافيعە و کرێنێن مەزن یێن بارگۆهاستنێ یە، د بەرزکەرێن ترۆمبێلان دا، و د زانستێ بیۆمیکانیکێ لەشێ مرۆڤی دا بۆ هەڵگرتنا کێشان."
+  },
+  {
+    "key": "catalog.seesaw_torque.theoryBackground",
+    "pattern": "زەڤر",
+    "val": "هاوسەنگیا زەڤران د تەرازوویا لەوحەیی دا مەرجێ دووێ یێ هاوسەنگیێ یە (Στ = 0)، کو تێدا زەڤرێ زڤڕینێ یەکسانە ب (τ = F · d · sin θ). بۆ هەبوونا هاوسەنگیێ پێدڤیە زەڤرێن دەمژمێری دگەل زەڤرێن دژە-دەمژمێری یەکسان بن. ئەڤ یاسایە بنەمایێ هەمی رافيعە و کرێنێن مەزن یێن بارگۆهاستنێ یە، د بەرزکەرێن ترۆمبێلان دا، و د زانستێ بیۆمیکانیکێ لەشێ مرۆڤی دا بۆ هەڵگرتنا کێشان."
+  },
+  {
+    "key": "experiments.metric_prefixes.desc",
+    "pattern": "نێوان",
+    "val": "گۆڕینی ڕێکوپێکی نێوان کەرتبووەکان و دوانەبووەکانی یەکەکانی سیستەمی نێودەوڵەتی SI بە بکارئینانی هێزێن ١٠."
+  },
+  {
+    "key": "experiments.metric_prefixes.desc",
+    "pattern": "ەکان",
+    "val": "گۆڕینی ڕێکوپێکی نێوان کەرتبووەکان و دوانەبووەکانی یەکەکانی سیستەمی نێودەوڵەتی SI بە بکارئینانی هێزێن ١٠."
+  },
+  {
+    "key": "experiments.metric_prefixes.desc",
+    "pattern": "ەکانی",
+    "val": "گۆڕینی ڕێکوپێکی نێوان کەرتبووەکان و دوانەبووەکانی یەکەکانی سیستەمی نێودەوڵەتی SI بە بکارئینانی هێزێن ١٠."
+  },
+  {
+    "key": "experiments.metric_prefixes.desc",
+    "pattern": "ەکە",
+    "val": "گۆڕینی ڕێکوپێکی نێوان کەرتبووەکان و دوانەبووەکانی یەکەکانی سیستەمی نێودەوڵەتی SI بە بکارئینانی هێزێن ١٠."
+  },
+  {
+    "key": "experiments.metric_prefixes.desc",
+    "pattern": "بکارئینانی",
+    "val": "گۆڕینی ڕێکوپێکی نێوان کەرتبووەکان و دوانەبووەکانی یەکەکانی سیستەمی نێودەوڵەتی SI بە بکارئینانی هێزێن ١٠."
+  },
+  {
+    "key": "experiments.metric_prefixes.panelTitle",
+    "pattern": "ەکان",
+    "val": "تەختەی گۆڕینی پێشگرەکان"
+  },
+  {
+    "key": "experiments.metric_prefixes.tagFrom",
+    "pattern": "سەرچاوە",
+    "val": "سەرچاوە"
+  },
+  {
+    "key": "experiments.metric_prefixes.shortDesc",
+    "pattern": "ەکە",
+    "val": "گۆڕینا یەکەیێن پێڤانێ ب بکارئینانا پێشگرێن (گیگا، مێگا، کیلۆ، میلی، مایکڕۆ، نانۆ، پیکۆ)."
+  },
+  {
+    "key": "experiments.stress_strain.desc",
+    "pattern": "ەکان",
+    "val": "ڤەکۆلین ل سەر نەرمی و پتەوی ماددەکان، یاسایا هووک σ = E · ε و سنووری شکان."
+  },
+  {
+    "key": "experiments.stress_strain.fractured",
+    "pattern": "ەکە",
+    "val": "ئاگەداری: پچڕان و شکانی نموونەکە!"
+  },
+  {
+    "key": "experiments.stress_strain.appliedStress",
+    "pattern": "ەکە",
+    "val": "پەستان / شەکەستی (σ = F/A)"
+  },
+  {
+    "key": "experiments.arc_length.title",
+    "pattern": "بازنە",
+    "val": "درێژیا کەڤانەی و لڤینا بازنەیی"
+  },
+  {
+    "key": "experiments.arc_length.subTitle",
+    "pattern": "نێوان",
+    "val": "پەیوەندی نێوان گۆشە و درێژیا کەوانە (s = r θ)"
+  },
+  {
+    "key": "experiments.arc_length.shortDesc",
+    "pattern": "بازنە",
+    "val": "پەیوەندیا د ناڤبەرا نیڤتیرە، گۆشەیا رادیان و درێژیا کەڤانەی د لڤینا بازنەیی دا."
+  },
+  {
+    "key": "experiments.arc_length.dragPrompt",
+    "pattern": "ەکە",
+    "val": "خاڵە پرتەقاڵییەکە ڕابکێشە بۆ گۆڕینی گۆشە و بینینی درێژیا کەوانە"
+  },
+  {
+    "key": "experiments.arc_length.sectorAreaLabel",
+    "pattern": "بازنە",
+    "val": "ڕووبەری کەرتی بازنەیی (A)"
+  },
+  {
+    "key": "experiments.arc_length.physicsDefText",
+    "pattern": "ەکە",
+    "val": "ڕادیان بریتییە لەو گۆشە ناوەندییەی کە درێژیا کەوانەکەی یەکسانە بە نیوەتیرەی بازنەکە (دەمێک s = r ئەوا θ = 1 rad). کەواتە هاوکێشەیا گشتی بریتییە لە s = r · θ."
+  },
+  {
+    "key": "experiments.arc_length.physicsDefText",
+    "pattern": "بازنە",
+    "val": "ڕادیان بریتییە لەو گۆشە ناوەندییەی کە درێژیا کەوانەکەی یەکسانە بە نیوەتیرەی بازنەکە (دەمێک s = r ئەوا θ = 1 rad). کەواتە هاوکێشەیا گشتی بریتییە لە s = r · θ."
+  },
+  {
+    "key": "experiments.arc_length.controlsTitle",
+    "pattern": "بازنە",
+    "val": "رێکخستنێن کەڤانێ بازنەیی"
+  },
+  {
+    "key": "experiments.arc_length.standardPresetsLabel",
+    "pattern": "ەکان",
+    "val": "گۆشە پێڤانیییەکان بە ڕادیان:"
+  },
+  {
+    "key": "experiments.arc_length.showUnrolledLabel",
+    "pattern": "ەکە",
+    "val": "ڕاکێشانی کەوانەکە بە شێوەیێ ڕاستەهێڵ بۆ بەراوردکرن"
+  },
+  {
+    "key": "experiments.arc_length.unrolledTrackLabel",
+    "pattern": "ەکە",
+    "val": "ڕاکێشانی کەوانەکە بە ڕاستەهێڵ"
+  },
+  {
+    "key": "experiments.arc_length.theoryBackground",
+    "pattern": "بازنە",
+    "val": "درێژیا کەڤانەی (s = r · θ) پەیوەندیا د ناڤبەرا گۆشەلڤینێ و لڤینا هێڵی شڕۆڤە دکەت، کو تێدا پێدڤیە گۆشە ب یەکا رادیان (Radian) بهێتە پیڤان. ئەڤ هاوکێشەیە بنەمایێ هەژمارتنا لەزاتیا هێڵی (v = r · ω) و لەزدانا بەرەڤ ناڤەندێ یە د لڤینا بازنەیی دا. ئەڤ چەمکە د ئەندازیاریا دروستکرنا رێکارێن چەماو و هێڵێن شەمەندەفەرێ دا، د دیزاینکرنا سستەمێن گێڕ و چەرخێن ددانەدار دا، و د ئاراستەکرنا سەتەلایتان دا دهێتە بکارئینان."
+  },
+  {
+    "key": "catalog.arc_length.theoryBackground",
+    "pattern": "بازنە",
+    "val": "درێژیا کەڤانەی (s = r · θ) پەیوەندیا د ناڤبەرا گۆشەلڤینێ و لڤینا هێڵی شڕۆڤە دکەت، کو تێدا پێدڤیە گۆشە ب یەکا رادیان (Radian) بهێتە پیڤان. ئەڤ هاوکێشەیە بنەمایێ هەژمارتنا لەزاتیا هێڵی (v = r · ω) و لەزدانا بەرەڤ ناڤەندێ یە د لڤینا بازنەیی دا. ئەڤ چەمکە د ئەندازیاریا دروستکرنا رێکارێن چەماو و هێڵێن شەمەندەفەرێ دا، د دیزاینکرنا سستەمێن گێڕ و چەرخێن ددانەدار دا، و د ئاراستەکرنا سەتەلایتان دا دهێتە بکارئینان."
+  },
+  {
+    "key": "experiments.rotational_dynamics.title",
+    "pattern": "زەڤر",
+    "val": "دینامیکا زڤڕینێ و زەڤرێ سستیێ"
+  },
+  {
+    "key": "experiments.rotational_dynamics.subTitle",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ سستی و لڤینا خولانەوەیی (τ = I α)"
+  },
+  {
+    "key": "experiments.rotational_dynamics.shortDesc",
+    "pattern": "زەڤر",
+    "val": "پەیوەندیا د ناڤبەرا زەڤر، زەڤرێ سستیێ (I) و گۆشەلەزدانێ دا."
+  },
+  {
+    "key": "experiments.rotational_dynamics.inertiaLabel",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ سستی (I)"
+  },
+  {
+    "key": "experiments.rotational_dynamics.theoryTitle",
+    "pattern": "ەکان",
+    "val": "بەراوردکرنا زەڤرێ سستی بۆ شێوە ئەندازیارییە جیاوازەکان:"
+  },
+  {
+    "key": "experiments.rotational_dynamics.theoryTitle",
+    "pattern": "بەراوردکرنا",
+    "val": "بەراوردکرنا زەڤرێ سستی بۆ شێوە ئەندازیارییە جیاوازەکان:"
+  },
+  {
+    "key": "experiments.rotational_dynamics.theoryTitle",
+    "pattern": "زەڤر",
+    "val": "بەراوردکرنا زەڤرێ سستی بۆ شێوە ئەندازیارییە جیاوازەکان:"
+  },
+  {
+    "key": "experiments.rotational_dynamics.theoryText",
+    "pattern": "ەکە",
+    "val": "بەرگری جەستە بەرامبەر زڤڕین بەندە ل سەر دابەشبوونی مسەکەی؛ ئەڵقەی تەنک خاوەنی گەورەترین زەڤرێ سستییە (I = MR²)، بەلێ لوولەکی پڕ (I = ½MR²) و گۆی پڕ (I = ⅖MR²) بە خێراتر دزڤڕن."
+  },
+  {
+    "key": "experiments.rotational_dynamics.theoryText",
+    "pattern": "زەڤر",
+    "val": "بەرگری جەستە بەرامبەر زڤڕین بەندە ل سەر دابەشبوونی مسەکەی؛ ئەڵقەی تەنک خاوەنی گەورەترین زەڤرێ سستییە (I = MR²)، بەلێ لوولەکی پڕ (I = ½MR²) و گۆی پڕ (I = ⅖MR²) بە خێراتر دزڤڕن."
+  },
+  {
+    "key": "experiments.rotational_dynamics.modePulley",
+    "pattern": "زەڤر",
+    "val": "زەڤر بە بارستەیا هەڵواسراو"
+  },
+  {
+    "key": "experiments.rotational_dynamics.geometryLabel",
+    "pattern": "ەکە",
+    "val": "شێوەیێ ئەندازیاری تەنە خولاوەکە:"
+  },
+  {
+    "key": "experiments.rotational_dynamics.hangingMassLabel",
+    "pattern": "زەڤر",
+    "val": "بارستەیا هەڵواسراوی دروستکەری زەڤر (m)"
+  },
+  {
+    "key": "experiments.rotational_dynamics.logBtn",
+    "pattern": "زەڤر",
+    "val": "تۆمارکردنی زەڤرێ سستی و لەزدان"
+  },
+  {
+    "key": "experiments.rotational_dynamics.theoryBackground",
+    "pattern": "بازنە",
+    "val": "یاسایا دینامیکا زڤڕینێ (τ = I · α) هاوتایێ یاسایا دووێ یا نیوتنییە بۆ لڤینا بازنەیی، کو تێدا زەڤرێ زڤڕینێ τ یەکسانە ب بەرهەمێ زەڤرێ سستیێ I و گۆشەلەزدانێ α. زەڤرێ سستیێ نیشان ددەت کا بارستە چەوا ل دەور تەوەرێ زڤڕینێ هاتیە بەلاڤکرن. ئەڤ یاسایە د ژیانا وەرزشی دا د خلیسکانا ل سەر سەهۆڵێ دا، د چەرخێ هاوسەنگیێ یێ مۆتۆران (Flywheel) دا بۆ پاراستنا وزەیا زڤڕینێ، و د گۆڕینا ئاراستێ سەتەلایتان دا ب چەرخێن کارڤەدانێ دهێتە بکارئینان."
+  },
+  {
+    "key": "experiments.rotational_dynamics.theoryBackground",
+    "pattern": "زەڤر",
+    "val": "یاسایا دینامیکا زڤڕینێ (τ = I · α) هاوتایێ یاسایا دووێ یا نیوتنییە بۆ لڤینا بازنەیی، کو تێدا زەڤرێ زڤڕینێ τ یەکسانە ب بەرهەمێ زەڤرێ سستیێ I و گۆشەلەزدانێ α. زەڤرێ سستیێ نیشان ددەت کا بارستە چەوا ل دەور تەوەرێ زڤڕینێ هاتیە بەلاڤکرن. ئەڤ یاسایە د ژیانا وەرزشی دا د خلیسکانا ل سەر سەهۆڵێ دا، د چەرخێ هاوسەنگیێ یێ مۆتۆران (Flywheel) دا بۆ پاراستنا وزەیا زڤڕینێ، و د گۆڕینا ئاراستێ سەتەلایتان دا ب چەرخێن کارڤەدانێ دهێتە بکارئینان."
+  },
+  {
+    "key": "experiments.rotational_dynamics.torque",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ لێدراو (τ)"
+  },
+  {
+    "key": "experiments.rotational_dynamics.momentOfInertia",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ سستیێ (I)"
+  },
+  {
+    "key": "catalog.rotational_dynamics.theoryBackground",
+    "pattern": "بازنە",
+    "val": "یاسایا دینامیکا زڤڕینێ (τ = I · α) هاوتایێ یاسایا دووێ یا نیوتنییە بۆ لڤینا بازنەیی، کو تێدا زەڤرێ زڤڕینێ τ یەکسانە ب بەرهەمێ زەڤرێ سستیێ I و گۆشەلەزدانێ α. زەڤرێ سستیێ نیشان ددەت کا بارستە چەوا ل دەور تەوەرێ زڤڕینێ هاتیە بەلاڤکرن. ئەڤ یاسایە د ژیانا وەرزشی دا د خلیسکانا ل سەر سەهۆڵێ دا، د چەرخێ هاوسەنگیێ یێ مۆتۆران (Flywheel) دا بۆ پاراستنا وزەیا زڤڕینێ، و د گۆڕینا ئاراستێ سەتەلایتان دا ب چەرخێن کارڤەدانێ دهێتە بکارئینان."
+  },
+  {
+    "key": "catalog.rotational_dynamics.theoryBackground",
+    "pattern": "زەڤر",
+    "val": "یاسایا دینامیکا زڤڕینێ (τ = I · α) هاوتایێ یاسایا دووێ یا نیوتنییە بۆ لڤینا بازنەیی، کو تێدا زەڤرێ زڤڕینێ τ یەکسانە ب بەرهەمێ زەڤرێ سستیێ I و گۆشەلەزدانێ α. زەڤرێ سستیێ نیشان ددەت کا بارستە چەوا ل دەور تەوەرێ زڤڕینێ هاتیە بەلاڤکرن. ئەڤ یاسایە د ژیانا وەرزشی دا د خلیسکانا ل سەر سەهۆڵێ دا، د چەرخێ هاوسەنگیێ یێ مۆتۆران (Flywheel) دا بۆ پاراستنا وزەیا زڤڕینێ، و د گۆڕینا ئاراستێ سەتەلایتان دا ب چەرخێن کارڤەدانێ دهێتە بکارئینان."
+  },
+  {
+    "key": "experiments.center_of_mass.dragPrompt",
+    "pattern": "ەکە",
+    "val": "بارستەیا سەر تۆڕەکە ڕابکێشە بۆ بینینی لڤینا ناڤەندا بارستە ⨁ د دەمێ ڕاستەقینەدا"
+  },
+  {
+    "key": "experiments.center_of_mass.firstMomentLabel",
+    "pattern": "ەکە",
+    "val": "زەڤرێ یەکەم (Σ mi xi)"
+  },
+  {
+    "key": "experiments.center_of_mass.firstMomentLabel",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ یەکەم (Σ mi xi)"
+  },
+  {
+    "key": "experiments.center_of_mass.physicsTitle",
+    "pattern": "ەکان",
+    "val": "یاسا فیزیاییەکانی ناڤەندا بارستە و هاوسەنگی:"
+  },
+  {
+    "key": "experiments.center_of_mass.physicsTitle",
+    "pattern": "ەکانی",
+    "val": "یاسا فیزیاییەکانی ناڤەندا بارستە و هاوسەنگی:"
+  },
+  {
+    "key": "experiments.center_of_mass.physicsText",
+    "pattern": "لەژێر",
+    "val": "ناڤەندا بارستە بریتییە لە ناڤەندێ بارستە تێکڕای شوێنی گەردیلەیان: X_cm = Σ(mi xi)/Σmi. هەڵواسینی راستەوخۆ لەژێر ناڤەندا بارستاییدا هاوسەنگیی خولانەوەیی دروست دکەت."
+  },
+  {
+    "key": "experiments.center_of_mass.physicsText",
+    "pattern": "شوێنی",
+    "val": "ناڤەندا بارستە بریتییە لە ناڤەندێ بارستە تێکڕای شوێنی گەردیلەیان: X_cm = Σ(mi xi)/Σmi. هەڵواسینی راستەوخۆ لەژێر ناڤەندا بارستاییدا هاوسەنگیی خولانەوەیی دروست دکەت."
+  },
+  {
+    "key": "experiments.center_of_mass.modeBalance",
+    "pattern": "تەرازوو",
+    "val": "تەرازووی لێژین"
+  },
+  {
+    "key": "experiments.center_of_mass.plumblineDesc",
+    "pattern": "ەکە",
+    "val": "دەمێک پەڕەکە لە دوو خاڵی جیاوازەوە هەڵدەواسرێت، ڕاڕەوی داوەشاگوڵ هەمیشە د ناڤەندا بارستە دەرژێت."
+  },
+  {
+    "key": "experiments.center_of_mass.pointMassesLabel",
+    "pattern": "ەکان",
+    "val": "بارستە خاڵییەکان:"
+  },
+  {
+    "key": "experiments.center_of_mass.logBtn",
+    "pattern": "ەکان",
+    "val": "تۆمارکردنی پۆتانەکانی ناڤەندا بارستە"
+  },
+  {
+    "key": "experiments.center_of_mass.logBtn",
+    "pattern": "ەکانی",
+    "val": "تۆمارکردنی پۆتانەکانی ناڤەندا بارستە"
+  },
+  {
+    "key": "experiments.center_of_mass.rotEquilMsg",
+    "pattern": "ەکە",
+    "val": "✓ سیستەمەکە لە هاوسەنگیی خولانەوەیی تمامدایە (Στ = 0) لە دەوری X_cm"
+  },
+  {
+    "key": "experiments.pendulum_energy.subTitle",
+    "pattern": "بکارئینانی",
+    "val": "سەلماندنی پاراستنا وزێ بە بکارئینانی پاندۆلا سادە (E = K + U)"
+  },
+  {
+    "key": "experiments.pendulum_energy.lengthLabel",
+    "pattern": "ەکە",
+    "val": "درێژیا پەتەکە (L)"
+  },
+  {
+    "key": "experiments.pendulum_energy.massLabel",
+    "pattern": "ەکە",
+    "val": "بارستەیا تۆپەکە (m)"
+  },
+  {
+    "key": "experiments.projectile.missedTarget",
+    "pattern": "ەکە",
+    "val": "بەر ئارمانجێ نەکەفت! ❌"
+  },
+  {
+    "key": "catalog.spring.theoryBackground",
+    "pattern": "تەرازوو",
+    "val": "یاسایا هۆکی (F = -k · x) دەربڕینێ ژ وێ هێزا ڤەگێڕ یا لاستیكی دکەت کو سپرینگ پەیدا دکەت دژی هەر شێواندنەکێ بۆ ڤەگەڕیانێ بەرەڤ جهێ هاوسەنگیێ؛ کو تێدا هێز راستەوانە دگەل لادانێ x و پێچەوانەی ئاراستێ وێیە. دەمێ بارستەیەکا m ب وی سپرینگی ڤە دهێتە گرێدان، لڤینا لەرینێ یا سادە ب دەمێ لەرینێ (T = 2π · √(m / k)) دروست دبیت، کو ب تنێ ب بارستەیێ و نەگۆڕێ رەقیا سپرینگی k ڤە گرێدایە. ئەڤ یاسایە بنەمایێ ئەندازیارییە بۆ چێکرنا دانپێنەرێن هەژاندنێ (Shock Absorbers) د ترۆمبێلان دا بۆ کێمکرنا لەرینێ، د تەرازوویێن سپرینگی و هەستەوەرێن کێشێ دا، د ئامیرێن سیسمۆگرافی یێن پێڤانا بوومەلەرزان دا، و د مایکڕۆسکۆپێن هێزا ئەتۆمی (AFM) دا."
+  },
+  {
+    "key": "experiments.collision.launchCarts",
+    "pattern": "ەکان",
+    "val": "بەردانا عەرەبانەکان بۆ پێکدادان"
+  },
+  {
+    "key": "experiments.collision.cartsConfig",
+    "pattern": "ەکان",
+    "val": "رێکخستنا عەرەبانەکان"
+  },
+  {
+    "key": "experiments.collision.calculatedFinalVel",
+    "pattern": "ەکان",
+    "val": "لەزاتیە ئەژمارکراوەکانی دوای پێکدادان"
+  },
+  {
+    "key": "experiments.collision.calculatedFinalVel",
+    "pattern": "ەکانی",
+    "val": "لەزاتیە ئەژمارکراوەکانی دوای پێکدادان"
+  },
+  {
+    "key": "experiments.freefall.objectA",
+    "pattern": "ەکە",
+    "val": "تەنێ یەکەم (تۆپی ئاسنین 5kg)"
+  },
+  {
+    "key": "experiments.freefall.timeA",
+    "pattern": "ەکە",
+    "val": "دەمی گەیشتنی تەنێ یەکەم"
+  },
+  {
+    "key": "experiments.freefall.finalSpeedA",
+    "pattern": "ەکە",
+    "val": "لەزاتی بەرکەوتنی تەنێ یەکەم"
+  },
+  {
+    "key": "experiments.freefall.theoreticalVacuumTitle",
+    "pattern": "ەکان",
+    "val": "نرخە تیۆرییەکان د ڤالاهیا تمامدا:"
+  },
+  {
+    "key": "experiments.freefall.recordedResultsTitle",
+    "pattern": "ەکان",
+    "val": "ئەنجامە تۆمارکراوەکانی کەوتن:"
+  },
+  {
+    "key": "experiments.freefall.recordedResultsTitle",
+    "pattern": "ەکانی",
+    "val": "ئەنجامە تۆمارکراوەکانی کەوتن:"
+  },
+  {
+    "key": "experiments.freefall.vacuumNote",
+    "pattern": "خوارەوە",
+    "val": "د ڤالاهیێدا پەڕ و تۆپە ئاسنینەکە د هەمان دەمدا کەوتنە خوارەوە بۆ سەلماندنی بنەمای گالیلیۆ."
+  },
+  {
+    "key": "experiments.freefall.vacuumNote",
+    "pattern": "ەکە",
+    "val": "د ڤالاهیێدا پەڕ و تۆپە ئاسنینەکە د هەمان دەمدا کەوتنە خوارەوە بۆ سەلماندنی بنەمای گالیلیۆ."
+  },
+  {
+    "key": "experiments.freefall.airNote",
+    "pattern": "ەکە",
+    "val": "بەرگری هەوا بووە هۆی دواکەوتنی پەڕەکە و گەیشتنی بە لەزاتی سنووری."
+  },
+  {
+    "key": "experiments.energy_skate_park.subtitle",
+    "pattern": "ەکان",
+    "val": "گوهۆڕینکارییەکانی وزا لڤین و رەوش و وزا گەرماتی خشین"
+  },
+  {
+    "key": "experiments.energy_skate_park.subtitle",
+    "pattern": "ەکانی",
+    "val": "گوهۆڕینکارییەکانی وزا لڤین و رەوش و وزا گەرماتی خشین"
+  },
+  {
+    "key": "experiments.energy_skate_park.trackLoop",
+    "pattern": "بازنە",
+    "val": "لووپا بازنەیی (Loop-the-Loop)"
+  },
+  {
+    "key": "experiments.energy_skate_park.pieChart",
+    "pattern": "بازنە",
+    "val": "دیاگراما بازنەیی یا وزەیێ"
+  },
+  {
+    "key": "experiments.energy_skate_park.barGraph",
+    "pattern": "ەکان",
+    "val": "ستوونەکانی وزە"
+  },
+  {
+    "key": "experiments.energy_skate_park.barGraph",
+    "pattern": "ەکانی",
+    "val": "ستوونەکانی وزە"
+  },
+  {
+    "key": "experiments.energy_skate_park.dragTip",
+    "pattern": "ەکە",
+    "val": "💡 تۆ دشێی خلیسکێنەرەکە رابکێشی و لە هەر شوێنێکی ڕێڕەوەکە دایبنێیت بۆ گۆڕینی بلنداهی دەستپێک!"
+  },
+  {
+    "key": "experiments.rotational_dynamics_torque.title",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ زڤڕینێ و هاوسەنگی"
+  },
+  {
+    "key": "experiments.rotational_dynamics_torque.shortDesc",
+    "pattern": "زەڤر",
+    "val": "ڤەکۆلینا زەڤرێ هێزان و مەرجێن هاوسەنگیا میکانیکی."
+  },
+  {
+    "key": "experiments.rotational_dynamics_torque.torque",
+    "pattern": "زەڤر",
+    "val": "زەڤر (τ)"
+  },
+  {
+    "key": "experiments.rotational_dynamics_torque.clockwiseTorque",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ دەمژمێری"
+  },
+  {
+    "key": "experiments.rotational_dynamics_torque.counterClockwiseTorque",
+    "pattern": "زەڤر",
+    "val": "زەڤرێ دژە-دەمژمێری"
+  },
+  {
+    "key": "experiments.rotational_dynamics_torque.notesText",
+    "pattern": "زەڤر",
+    "val": "مەرجێ هاوسەنگیا زڤڕینێ ئەوە کۆما زەڤران یەکسان بیت ب سفرێ: Στ = 0."
+  },
+  {
+    "key": "catalog.rotational_dynamics_torque.theoryBackground",
+    "pattern": "بازنە",
+    "val": "یاسایا دینامیکا زڤڕینێ (τ = I · α) هاوتایێ یاسایا دووێ یا نیوتنییە بۆ لڤینا بازنەیی، کو تێدا زەڤرێ زڤڕینێ τ یەکسانە ب بەرهەمێ زەڤرێ سستیێ I و گۆشەلەزدانێ α. زەڤرێ سستیێ نیشان ددەت کا بارستە چەوا ل دەور تەوەرێ زڤڕینێ هاتیە بەلاڤکرن. ئەڤ یاسایە د ژیانا وەرزشی دا د خلیسکانا ل سەر سەهۆڵێ دا، د چەرخێ هاوسەنگیێ یێ مۆتۆران (Flywheel) دا بۆ پاراستنا وزەیا زڤڕینێ، و د گۆڕینا ئاراستێ سەتەلایتان دا ب چەرخێن کارڤەدانێ دهێتە بکارئینان."
+  },
+  {
+    "key": "catalog.rotational_dynamics_torque.theoryBackground",
+    "pattern": "زەڤر",
+    "val": "یاسایا دینامیکا زڤڕینێ (τ = I · α) هاوتایێ یاسایا دووێ یا نیوتنییە بۆ لڤینا بازنەیی، کو تێدا زەڤرێ زڤڕینێ τ یەکسانە ب بەرهەمێ زەڤرێ سستیێ I و گۆشەلەزدانێ α. زەڤرێ سستیێ نیشان ددەت کا بارستە چەوا ل دەور تەوەرێ زڤڕینێ هاتیە بەلاڤکرن. ئەڤ یاسایە د ژیانا وەرزشی دا د خلیسکانا ل سەر سەهۆڵێ دا، د چەرخێ هاوسەنگیێ یێ مۆتۆران (Flywheel) دا بۆ پاراستنا وزەیا زڤڕینێ، و د گۆڕینا ئاراستێ سەتەلایتان دا ب چەرخێن کارڤەدانێ دهێتە بکارئینان."
+  },
+  {
+    "key": "experiments.forces_motion.frictionExplanation",
+    "pattern": "ەکە",
+    "val": "ئەگەر هێزا سەپێنراو گەورەتر بێت لە ئەوپەڕی هێزا لێكخشاندنی سكونی، سندوقەکە بە ڕێژەیا a = F_net / m تاودەدرێت."
+  },
+  {
+    "key": "experiments.forces_motion.frictionExplanation",
+    "pattern": "سندوقەکە",
+    "val": "ئەگەر هێزا سەپێنراو گەورەتر بێت لە ئەوپەڕی هێزا لێكخشاندنی سكونی، سندوقەکە بە ڕێژەیا a = F_net / m تاودەدرێت."
+  },
+  {
+    "key": "experiments.forces_motion.frictionExplanation",
+    "pattern": "سەپێنراو",
+    "val": "ئەگەر هێزا سەپێنراو گەورەتر بێت لە ئەوپەڕی هێزا لێكخشاندنی سكونی، سندوقەکە بە ڕێژەیا a = F_net / m تاودەدرێت."
+  },
+  {
+    "key": "experiments.forces_motion.notesText",
+    "pattern": "دەگۆڕێت",
+    "val": "لەزدانا تەنێ راستەوانە دگەل هێزا پوختە و پێچەوانە دگەل بارستەیا وی دەگۆڕێت."
+  },
+  {
+    "key": "catalog.forces_motion.theoryBackground",
+    "pattern": "ەکە",
+    "val": "یاسایێن نیوتنی یێن لڤینێ بناغەیا میکانیکا کلاسیک پێکتینن: یاسایا ئێکێ یا سستیێ یە (تەن ل سەر حالەتێ خۆ دمینیت ئەگەر هێزەکا دەرەکی کاری لێ نەکەت)، یاسایا دووێ (F = m · a) پەیوەندیا هێز و لەزدانێ یە، و یاسایا سێیێ دبێژیت بۆ هەر کردارەکێ پەرچەکردارەکا یەکسان و پێچەوانە هەیە. ئەڤ یاسایانە بنەمایێ هەمی ئەندازیاریا لڤینێ، ترۆمبێل، فڕۆکە، و کەشتیێن ئەسمانی نە."
+  }
+]

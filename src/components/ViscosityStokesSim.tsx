@@ -48,14 +48,14 @@ const SPHERES: Record<SphereMaterialType, SphereData> = {
 export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
   const { t: tI18n } = useTranslation();
   const getLiquidName = (item: LiquidData) => {
-    if (lang === 'ku') return item.nameKu;
+    if (lang === 'ku' || lang === 'bad') return item.nameKu;
     if (lang === 'kmr') return item.nameKmr;
     if (lang === 'en') return item.nameEn;
     return item.nameAr;
   };
 
   const getSphereName = (item: SphereData) => {
-    if (lang === 'ku') return item.nameKu;
+    if (lang === 'ku' || lang === 'bad') return item.nameKu;
     if (lang === 'kmr') return item.nameKmr;
     if (lang === 'en') return item.nameEn;
     return item.nameAr;
@@ -116,7 +116,7 @@ export default function ViscosityStokesSim({ lang, onLogMeasurement }: Props) {
       if (canvas) {
         const ctx = canvas.getContext('2d');
         if (ctx) {
-          ctx.direction = (lang === 'ar' || lang === 'ku') ? 'rtl' : 'ltr';
+          ctx.direction = (lang === 'ar' || lang === 'ku' || lang === 'bad') ? 'rtl' : 'ltr';
           drawViscosityColumn(ctx, canvas.width, canvas.height);
         }
       }
